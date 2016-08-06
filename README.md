@@ -59,6 +59,15 @@ We offer a solid edge based on quantitive information not generally available to
    "days_owned" : 1465
 }
 ```
+- Posts Collection (optional)
+```
+{
+   author: 'Mark Lyck',
+   posted: 'date',
+   title: 'Title',
+   body: '<html>'
+}
+```
 
 ### Routes
 - /
@@ -66,6 +75,7 @@ We offer a solid edge based on quantitive information not generally available to
 - /resources
 - /blog
 - /about-us
+- /legal
 - /dashboard
 - /dashboard/basic/portfolio
 - /dashboard/basic/suggestions
@@ -76,6 +86,10 @@ We offer a solid edge based on quantitive information not generally available to
 - /dashboard/fund/portfolio
 - /dashboard/fund/suggestions
 - /dashboard/admin
+- /dashboard/admin/api
+- /dashboard/admin/users
+- /dashboard/admin/new-blog
+- /dashboard/admin/newsletter
 
 ### User flow
 - read what we do
@@ -86,14 +100,16 @@ We offer a solid edge based on quantitive information not generally available to
 - upgrade to a better plan to access better stock suggestions
 
 ### Libraries
-- JQuery (or other altegrnative for AJAX calls)
-- Stripe
-- AmCharts
+- JQuery (or other alternative for AJAX calls)
+- Stripe (payment system)
+- AmCharts (financial chart system)
+- dropzonejs (drag and drop file upload)
+- react-html-parser (optional for blogs)
 
 ### Special requirements
 - Geolocation (country codes)
 - Custom logarithmic graph layout.
-- PostMark (newsletter email service)
+- MaiLgun / Nodemailer / PostMark (newsletter email service)
 - FastMail (contact emails)
 - 12 updatable JSON files hosted with Amazon Web Services
 - Extremely Polished user interface
@@ -101,3 +117,4 @@ We offer a solid edge based on quantitive information not generally available to
 ### Extra possible features
 - Mark stocks as bought, and keep track of your stocks.
 - Implement a full portfolio system, integrated with Formula Stocks
+- blog system w/ rich media formatting
