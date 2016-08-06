@@ -1,7 +1,7 @@
 # Formula Stocks
 
 ### Elevator pitch
-We make it possible to identify some of next years' big winners of the stock market with 84%, 90% or 95% success rate.
+We offer a solid edge based on quantitive information not generally available to the stock market, yielding higher returns obtained with lower risk.
 
 ### Basic Features
 - Access to stock suggestions, based the users plan.
@@ -41,7 +41,8 @@ We make it possible to identify some of next years' big winners of the stock mar
 ### Special requirements
 - Geolocation (country codes)
 - Custom logarithmic graph layout.
-- PostMark (Emailing service, for newsletters)
+- PostMark (newsletter email service)
+- FastMail (contact emails)
 - 12 updatable JSON files hosted with Amazon Web Services
 - Extremely Polished user interface
 
