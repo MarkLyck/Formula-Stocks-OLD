@@ -9,14 +9,15 @@ We offer a solid edge based on quantitive information not generally available to
 - Access to the current Formula Stocks portfolio
   - Users will have access to the entire Formula Stocks portfolio, this will be updated on a monthly basis.
 - Access to proprietary analysis data on Formula Stocks
-  - On suggested stocks, users can also see some of our proprietary data points we use to analyse stocks.
+  - On suggested stocks, users can also see some of our proprietary data points we use to analyze stocks.
 - A subscription based information service
 - Free 30 day trial to the Basic plan.
 
 ### APIs
-- Quandl (stocks API)
+- [Quandl](https://Quandl.com/)
 - Kinvey (baas)
 - Formula Stocks proprietary API
+- [Free Geo api](https://github.com/fiorix/freegeoip)
 
 ### Data Modeling
 - Users Collection
@@ -100,14 +101,19 @@ We offer a solid edge based on quantitive information not generally available to
 - upgrade to a better plan to access better stock suggestions
 
 ### Libraries
-- JQuery (or other alternative for AJAX calls)
-- Stripe (payment system)
-- AmCharts (financial chart system)
-- dropzonejs (drag and drop file upload)
-- react-html-parser (optional for blogs)
+- JQuery
+- Underscore
+- [Stripe](https://stripe.com/) (payment system)
+- [AmCharts](https://www.amcharts.com/) (financial chart system)
+- [dropzonejs](http://www.dropzonejs.com/) (drag and drop file upload)
+- [moment](http://momentjs.com/) (date formatting)
+- [react-html-parser](https://github.com/wrakky/react-html-parser) (optional for blogs)
+
+### Frameworks
+- React
+- Backbone
 
 ### Special requirements
-- Geolocation (country codes)
 - Custom logarithmic graph layout.
 - MaiLgun / Nodemailer / PostMark (newsletter email service)
 - FastMail (contact emails)
