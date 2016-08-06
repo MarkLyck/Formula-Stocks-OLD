@@ -62,6 +62,10 @@ We offer a solid edge based on quantitive information not generally available to
 
 ### Routes
 - /
+- /products
+- /resources
+- /blog
+- /about-us
 - /dashboard
 - /dashboard/basic/portfolio
 - /dashboard/basic/suggestions
@@ -73,9 +77,16 @@ We offer a solid edge based on quantitive information not generally available to
 - /dashboard/fund/suggestions
 - /dashboard/admin
 
+### User flow
+- read what we do
+- read about our products
+- sign up for free trial
+- go to portfolio and see performance
+- go to suggestions and assess stocks
+- upgrade to a better plan to access better stock suggestions
 
 ### Libraries
-- JQuery (or other alternative for AJAX calls)
+- JQuery (or other altegrnative for AJAX calls)
 - Stripe
 - AmCharts
 
