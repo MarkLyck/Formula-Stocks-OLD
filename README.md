@@ -77,7 +77,6 @@ What if it was possible to identify some of the next years’ winners in the sto
 - /blog
 - /about-us
 - /legal
--
 - /dashboard/
 - /dashboard/basic/portfolio
 - /dashboard/basic/suggestions
@@ -87,7 +86,6 @@ What if it was possible to identify some of the next years’ winners in the sto
 - /dashboard/business/suggestions
 - /dashboard/fund/portfolio
 - /dashboard/fund/suggestions
--
 - /dashboard/admin
 - /dashboard/admin/api
 - /dashboard/admin/users
