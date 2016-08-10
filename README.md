@@ -1,7 +1,7 @@
 # Formula Stocks
 
 ### Elevator pitch
-We offer a solid edge based on quantitive information not generally available to the stock market, yielding higher returns obtained with lower risk.
+What if it was possible to identify some of the next years’ winners in the stock market, at an 84-95% success rate? Would you invest?
 
 ### Basic Features
 - Access to stock suggestions, based the users plan.
@@ -26,7 +26,7 @@ We offer a solid edge based on quantitive information not generally available to
   email: 'example@email.com',
   plan: 'Basic',
   nextBillingDate: '',
-  authtoken: '12345',
+  authtoken: '12345'
 }
 ```
 - StockSuggestions Collection
@@ -77,7 +77,8 @@ We offer a solid edge based on quantitive information not generally available to
 - /blog
 - /about-us
 - /legal
-- /dashboard
+-
+- /dashboard/
 - /dashboard/basic/portfolio
 - /dashboard/basic/suggestions
 - /dashboard/premium/portfolio
@@ -86,6 +87,7 @@ We offer a solid edge based on quantitive information not generally available to
 - /dashboard/business/suggestions
 - /dashboard/fund/portfolio
 - /dashboard/fund/suggestions
+-
 - /dashboard/admin
 - /dashboard/admin/api
 - /dashboard/admin/users
@@ -104,7 +106,7 @@ We offer a solid edge based on quantitive information not generally available to
 - JQuery
 - Underscore
 - [Stripe](https://stripe.com/) (payment system)
-- [AmCharts](https://www.amcharts.com/) (financial chart system)
+- [AmCharts](https://www.amcharts.com/) (financial charts)
 - [dropzonejs](http://www.dropzonejs.com/) (drag and drop file upload)
 - [moment](http://momentjs.com/) (date formatting)
 - [react-html-parser](https://github.com/wrakky/react-html-parser) (optional for blogs)
