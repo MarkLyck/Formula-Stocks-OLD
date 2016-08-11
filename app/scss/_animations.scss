@@ -1,33 +1,51 @@
-.shake {
-  animation: 300ms shake;
+.bounce-down {
+  animation: .75s BounceDown;
 }
-
-.slide-in {
-  animation: 500ms slideDown;
-}
-
-.slide-out {
-  animation: 500ms slideOut;
-}
-
-@keyframes slideDown {
+@keyframes BounceDown {
   0% {
-    transform: translateY(-100%);
+    transform: translateY(-160%);
   }
   25%{
-    transform: translateY(8%);
+    transform: translateY(10%);
   }
   50%{
-    transform: translateY(-4%);
+    transform: translateY(-5%);
   }
   75%{
-    transform: translateY(4%);
+    transform: translateY(5%);
   }
   100% {
     transform: translateY(0%);
   }
 }
 
+.fade-in {
+  animation: 500ms fadeIn;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.slide-up {
+  animation: 0.75s slideUp;
+}
+@keyframes slideUp {
+  from {
+    bottom: -100%;
+  }
+  to {
+    bottom: 0;
+  }
+}
+
+.slide-out {
+  animation: 500ms slideOut;
+}
 @keyframes slideOut {
   from {
     transform: translateY(0);
@@ -37,26 +55,9 @@
   }
 }
 
-@keyframes animateIn {
-  0% {
-    opacity: 0;
-    transform: translateY(-10%);
-  }
-  25%{
-    opacity: 0.25;
-  }
-  50%{
-    opacity: 0.5;
-  }
-  75%{
-    opacity: 0.75;
-  }
-  100% {
-    transform: translateY(0%);
-    opacity: 1;
-  }
+.shake {
+  animation: 300ms shake;
 }
-
 @keyframes shake {
   0% {
     transform: translateX(-5%);
@@ -72,40 +73,5 @@
   }
   100% {
     transform: translateX(0%);
-  }
-}
-
-
-
-.loading {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  top: 75px;
-  background: url('assets/images/logo.svg');
-  width: 100px;
-  height: 100px;
-  border-radius: 100%;
-}
-.loading:after {
-  content: '';
-  background: trasparent;
-  width: 140%;
-  height: 140%;
-  position: absolute;
-  border-radius: 100%;
-  top: -20%;
-  left: -20%;
-  opacity: 0.7;
-  box-shadow: rgba(255, 255, 255, 0.6) -4px -5px 3px -3px;
-  animation: rotate 2s infinite linear;
-}
-
-@keyframes rotate {
-  0% {
-    transform: rotateZ(0deg);
-  }
-  100% {
-    transform: rotateZ(360deg);
   }
 }

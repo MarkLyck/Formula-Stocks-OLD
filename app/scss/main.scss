@@ -1,10 +1,29 @@
 @import "../../node_modules/normalize-scss/sass/normalize/import-now";
 @import "variables";
+@import "fonts";
+@import "animations";
 @import "header";
+@import "whatisit";
+
+
+body {
+  font-family: 'proxima-nova', 'Lato', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+h1, h2 {
+  font-weight: 300;
+}
 
 a {
   text-decoration: none;
-  color: #fff;
+  color: $text-color;
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 ul {
@@ -19,6 +38,55 @@ button, input {
 
 button {
   background: $primary-color;
+  color: #fff;
+  padding: 20px;
   border: none;
   border-radius: 3px;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.filled-btn {
+  background: $action-color;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 75px;
+  max-width: 320px;
+  width: 100%;
+  font-weight: 400;
+  font-size: 1.25rem;
+  border-radius: 5px;
+  transition: background .3s;
+  &:hover {
+    background: darken($action-color, 5%);
+  }
+  &:active {
+    background: darken($action-color, 10%);
+  }
+}
+
+.outline-btn {
+  background: none;
+  color: #fff;
+  border: 2px solid #fff;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 75px;
+  max-width: 320px;
+  width: 100%;
+  font-size: 1.25rem;
+  font-weight: 400;
+  transition: background .3s, color .3s;
+  &:hover {
+    background: #fff;
+    color: $text-color;
+  }
+  &:active {
+    background: darken(#fff, 5%);
+  }
 }

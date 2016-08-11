@@ -1,0 +1,36 @@
+#what-is-it {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  top: 250px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80vw;
+  .left {
+    max-width: 400px;
+    margin-right: 50px;
+    .fs-title {
+      font-size: 0.8rem;
+      font-weight: 100;
+      margin: 0;
+    }
+    .title {
+      margin-top: 10px;
+      font-size: 2rem;
+      font-weight: bold;
+      font-weight: 100;
+    }
+    p {
+      font-size: 1.2rem;
+      font-weight: 100;
+    }
+  }
+  .right {
+    max-width: 50%;
+    margin-left: 50px;
+    img {
+      max-width: 600px;
+    }
+  }
+}

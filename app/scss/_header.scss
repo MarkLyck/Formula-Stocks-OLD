@@ -1,27 +1,102 @@
 header {
+  padding-top: 75px;
+  // height: 80vh;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 75px;
-  background: $primary-color;
-  a {
+  flex-direction: column;
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#2d3a65+0,18aed6+100 */
+  background: #2d3a65; /* Old browsers */
+  background: -moz-linear-gradient(-45deg,  #2d3a65 0%, #18aed6 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(-45deg,  #2d3a65 0%,#18aed6 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(135deg,  #2d3a65 0%,#18aed6 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2d3a65', endColorstr='#18aed6',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+  nav {
+    height: 75px;
+    width: 100%;
     display: flex;
-    align-items: center;
     justify-content: center;
-    height: 100%;
-    width: 100px;
-    &:hover {
-      background: darken($primary-color, 5%);
+    align-items: center;
+    position: fixed;
+    top: 0;
+    z-index: 10;
+    .content {
+      width: 80vw;
+      height: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    #logo {
+      width: auto;
+      font-size: 2rem;
+      display: flex;
+      align-items: center;
+    }
+    .right {
+      display: flex;
+      height: 100%;
+      a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        width: 100px;
+        color: #fff;
+        transition: color .3s;
+        &:hover {
+          color: $primary-color !important;
+        }
+      }
     }
   }
-  #logo {
-    width: auto;
-    padding: 0 20px;
-  }
-  nav {
-    height: 100%;
-    display: flex;
-    align-items: center;
+}
 
+#hero {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  color: #fff;
+  position: relative;
+  height: 1100px;
+  .content {
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 5;
+    width: 60%;
+    text-align: center;
+    .CTA {
+      margin-top: 50px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      button,a {
+        margin: 0 10px;
+      }
+    }
   }
+  &::before {
+    content: "";
+    background: url('assets/images/hero.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0.75;
+    top: -75px;
+    width: 100%;
+    height: calc(100vh + 25px);
+    // height: 80vh;
+    position: absolute;
+    z-index: 1;
+  }
+}
+
+#hero-chart {
+  background: url('assets/images/hero-chart.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  bottom: 0;
+  width: 100%;
+  height: 750px;
+  position: absolute;
+  z-index: 2;
 }
