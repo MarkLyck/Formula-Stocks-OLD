@@ -1,0 +1,24 @@
+@import "../../node_modules/normalize-scss/sass/normalize/import-now";
+@import "variables";
+@import "header";
+
+a {
+  text-decoration: none;
+  color: #fff;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+button, input {
+  outline: none;
+}
+
+button {
+  background: $primary-color;
+  border: none;
+  border-radius: 3px;
+}
