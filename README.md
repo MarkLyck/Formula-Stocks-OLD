@@ -114,6 +114,7 @@ What if it was possible to predict some of the next years’ winners in the stoc
 - JQuery
 - Underscore
 - [Stripe](https://stripe.com/) (payment system)
+- [aws-sdk](https://aws.com/) Cloud json storage
 - [AmCharts](https://www.amcharts.com/) (financial charts)
 - [dropzonejs](http://www.dropzonejs.com/) (drag and drop file upload)
 - [moment](http://momentjs.com/) (date formatting)
