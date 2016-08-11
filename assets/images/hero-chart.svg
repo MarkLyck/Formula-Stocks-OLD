@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="1920px" height="1137px" viewBox="0 0 1920 1137" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 39.1 (31720) - http://www.bohemiancoding.com/sketch -->
+    <title>svg export</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="81.1826917%" y1="4.14725943%" x2="96.1702293%" y2="97.6091491%" id="linearGradient-1">
+            <stop stop-color="#0D3E5E" offset="0%"></stop>
+            <stop stop-color="#27A5F9" offset="100%"></stop>
+        </linearGradient>
+        <path d="M171.190103,295.933298 L346.556999,272.105422 L526.870232,281.963779 C526.870232,281.963779 703.796689,205.165912 703.796689,205.165912 C703.796689,205.165912 880.976805,211.012725 880.976805,211.012725 C880.976805,211.012724 1239.03845,132.655451 1239.03845,132.655451 C1239.03845,132.65545 1423.74852,132.655451 1423.74852,132.655451 C1423.74852,132.655451 1593.54429,74.0838579 1593.54429,74.0838582 C1593.54429,74.0838583 1775.9618,81.3176604 1775.96192,81.3176607 C1775.96198,81.3176608 1920.07494,2.2209106 1920.07494,2.22091065 C1920.07494,2.22091071 1920.07491,1135.33041 1920.07491,1135.33041 L1.94355806,1135.33041 L1.94355806,363.557154 L171.190103,295.933298 Z" id="path-2"></path>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-4">
+            <stop stop-color="#FFFFFF" offset="0%"></stop>
+            <stop stop-color="#FFFFFF" stop-opacity="0" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Front-page" transform="translate(0.000000, -492.000000)">
+            <g id="Landing-View" transform="translate(-56.000000, -41.000000)">
+                <g id="svg-export" transform="translate(56.000000, 534.000000)">
+                    <mask id="mask-3" fill="white">
+                        <use xlink:href="#path-2"></use>
+                    </mask>
+                    <use id="Mask" fill="url(#linearGradient-1)" xlink:href="#path-2"></use>
+                    <polyline id="Line" stroke="#FFFFFF" stroke-width="3" stroke-linecap="square" points="0 363.5 171 295.5 346.589697 271.399669 527.433105 280.407723 705.904724 204.249474 881.093018 209.875756 1238.73743 131.707177 1423.96899 132.111718 1595.13205 73.660854 1776.17505 81.1014255 1921.26823 0.840828236"></polyline>
+                    <g id="Dots" transform="translate(163.000000, 66.000000)">
+                        <g id="Dot" transform="translate(0.000000, 223.000000)">
+                            <path d="M8,8 L8,58" id="Line" stroke="url(#linearGradient-4)" stroke-linecap="square"></path>
+                            <circle id="Oval-1-Copy-10" fill="#FFFFFF" cx="7.5" cy="7.5" r="7.5"></circle>
+                            <circle id="Oval-1-Copy-11" fill="#18AED6" cx="7.5" cy="7.5" r="3.5"></circle>
+                        </g>
+                        <g id="Dot-Copy" transform="translate(175.000000, 198.000000)">
+                            <path d="M8,8 L8,58" id="Line" stroke="url(#linearGradient-4)" stroke-linecap="square"></path>
+                            <circle id="Oval-1-Copy-10" fill="#FFFFFF" cx="7.5" cy="7.5" r="7.5"></circle>
+                            <circle id="Oval-1-Copy-11" fill="#18AED6" cx="7.5" cy="7.5" r="3.5"></circle>
+                        </g>
+                        <g id="Dot-Copy-2" transform="translate(356.000000, 209.000000)">
+                            <path d="M8,8 L8,58" id="Line" stroke="url(#linearGradient-4)" stroke-linecap="square"></path>
+                            <circle id="Oval-1-Copy-10" fill="#FFFFFF" cx="7.5" cy="7.5" r="7.5"></circle>
+                            <circle id="Oval-1-Copy-11" fill="#18AED6" cx="7.5" cy="7.5" r="3.5"></circle>
+                        </g>
+                        <g id="Dot-Copy-3" transform="translate(535.000000, 132.000000)">
+                            <path d="M8,8 L8,58" id="Line" stroke="url(#linearGradient-4)" stroke-linecap="square"></path>
+                            <circle id="Oval-1-Copy-10" fill="#FFFFFF" cx="7.5" cy="7.5" r="7.5"></circle>
+                            <circle id="Oval-1-Copy-11" fill="#18AED6" cx="7.5" cy="7.5" r="3.5"></circle>
+                        </g>
+                        <g id="Dot-Copy-4" transform="translate(710.000000, 137.000000)">
+                            <path d="M8,8 L8,58" id="Line" stroke="url(#linearGradient-4)" stroke-linecap="square"></path>
+                            <circle id="Oval-1-Copy-10" fill="#FFFFFF" cx="7.5" cy="7.5" r="7.5"></circle>
+                            <circle id="Oval-1-Copy-11" fill="#18AED6" cx="7.5" cy="7.5" r="3.5"></circle>
+                        </g>
+                        <g id="Dot-Copy-5" transform="translate(1068.000000, 58.000000)">
+                            <path d="M8,8 L8,58" id="Line" stroke="url(#linearGradient-4)" stroke-linecap="square"></path>
+                            <circle id="Oval-1-Copy-10" fill="#FFFFFF" cx="7.5" cy="7.5" r="7.5"></circle>
+                            <circle id="Oval-1-Copy-11" fill="#18AED6" cx="7.5" cy="7.5" r="3.5"></circle>
+                        </g>
+                        <g id="Dot-Copy-6" transform="translate(1253.000000, 59.000000)">
+                            <path d="M8,8 L8,58" id="Line" stroke="url(#linearGradient-4)" stroke-linecap="square"></path>
+                            <circle id="Oval-1-Copy-10" fill="#FFFFFF" cx="7.5" cy="7.5" r="7.5"></circle>
+                            <circle id="Oval-1-Copy-11" fill="#18AED6" cx="7.5" cy="7.5" r="3.5"></circle>
+                        </g>
+                        <g id="Dot-Copy-7" transform="translate(1424.000000, 0.000000)">
+                            <path d="M8,8 L8,58" id="Line" stroke="url(#linearGradient-4)" stroke-linecap="square"></path>
+                            <circle id="Oval-1-Copy-10" fill="#FFFFFF" cx="7.5" cy="7.5" r="7.5"></circle>
+                            <circle id="Oval-1-Copy-11" fill="#18AED6" cx="7.5" cy="7.5" r="3.5"></circle>
+                        </g>
+                        <g id="Dot-Copy-8" transform="translate(1605.000000, 9.000000)">
+                            <path d="M8,8 L8,58" id="Line" stroke="url(#linearGradient-4)" stroke-linecap="square"></path>
+                            <circle id="Oval-1-Copy-10" fill="#FFFFFF" cx="7.5" cy="7.5" r="7.5"></circle>
+                            <circle id="Oval-1-Copy-11" fill="#18AED6" cx="7.5" cy="7.5" r="3.5"></circle>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
