@@ -1,7 +1,7 @@
 # Formula Stocks
 
 ### Elevator pitch
-What if it was possible to identify some of the next years’ winners in the stock market, at an 84-95% success rate? Would you invest?
+What if it was possible to predict some of the next years’ winners in the stock market, at an 84-95% success rate? Would you invest?
 
 ### Basic Features
 - Access to stock suggestions, based the users plan.
@@ -24,9 +24,19 @@ What if it was possible to identify some of the next years’ winners in the sto
 ```
 {
   email: 'example@email.com',
+  firstname: 'Mark',
+  lastname: 'Lyck',
+  country: 'DK',
+  ip_address: '127.0.0.1',
   plan: 'Basic',
   nextBillingDate: '',
-  authtoken: '12345'
+  trialExpires: '',
+  stripe_id: '',
+  sub_id: '',
+  authtoken: '12345',
+  company: 'Microsoft',
+
+
 }
 ```
 - StockSuggestions Collection
