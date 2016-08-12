@@ -481,6 +481,7 @@ header {
   padding-top: 75px;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#2d3a65+0,18aed6+100 */
   background: #2d3a65;
   /* Old browsers */
@@ -500,6 +501,7 @@ header {
     align-items: center;
     position: fixed;
     top: 0;
+    background: rgba(255, 255, 255, 0.2);
     z-index: 10; }
     header nav .content {
       width: 80vw;
@@ -530,9 +532,8 @@ header {
   display: flex;
   align-items: center;
   flex-direction: column;
-  color: #fff;
   position: relative;
-  height: 1100px; }
+  height: 1000px; }
   #hero .content {
     margin-top: 100px;
     display: flex;
@@ -541,6 +542,8 @@ header {
     z-index: 5;
     width: 60%;
     text-align: center; }
+    #hero .content h1, #hero .content h2 {
+      color: #fff; }
     #hero .content .CTA {
       margin-top: 50px;
       width: 100%;
@@ -566,9 +569,11 @@ header {
   background-size: cover;
   bottom: 0;
   width: 100%;
-  height: 750px;
+  height: 650px;
   position: absolute;
   z-index: 2; }
+  #hero-chart h1, #hero-chart h2, #hero-chart h3, #hero-chart h4, #hero-chart p {
+    color: #fff; }
 
 #what-is-it {
   display: flex;
@@ -598,7 +603,171 @@ header {
     max-width: 50%;
     margin-left: 50px; }
     #what-is-it .right img {
-      max-width: 600px; }
+      width: 100%;
+      height: auto;
+      transition: transform 1s; }
+      #what-is-it .right img:hover {
+        transform: scale(1.25); }
+
+.split-section {
+  width: 100%;
+  padding: 50px 0;
+  overflow: hidden; }
+  .split-section .content {
+    width: 80%;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    position: relative; }
+    .split-section .content img {
+      position: absolute;
+      bottom: -40px; }
+  .split-section .left {
+    width: 50%;
+    margin-right: 50px;
+    position: relative; }
+    .split-section .left p {
+      max-width: 400px; }
+  .split-section .right {
+    width: 50%;
+    margin-left: 50px;
+    position: relative; }
+    .split-section .right p {
+      max-width: 400px; }
+  .split-section .title {
+    font-size: 1.75rem; }
+
+.above-average-returns .right .container {
+  position: relative;
+  height: 100%;
+  transform: translateY(-25%); }
+.above-average-returns .right p {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  color: #27A5F9;
+  transition: transform .3s;
+  font-weight: 100; }
+.above-average-returns .right .p1 {
+  font-size: 3rem;
+  opacity: 1; }
+  .above-average-returns .right .p1:hover {
+    transform: translate(-50%, -50%) scale(1.2); }
+.above-average-returns .right .p2 {
+  font-size: 2.8rem;
+  opacity: 0.9;
+  transform: translate(-125%, -150%);
+  animation: .5s p2; }
+  .above-average-returns .right .p2:hover {
+    transform: translate(-125%, -150%) scale(1.2); }
+@keyframes p2 {
+  from {
+    transform: translate(0); }
+  to {
+    transform: translate(-125%, -150%); } }
+.above-average-returns .right .p3 {
+  font-size: 2.6rem;
+  opacity: 0.8;
+  transform: translate(25%, 90%);
+  animation: .5s p3; }
+  .above-average-returns .right .p3:hover {
+    transform: translate(25%, 90%) scale(1.2); }
+@keyframes p3 {
+  from {
+    transform: translate(0); }
+  to {
+    transform: translate(25%, 90%); } }
+.above-average-returns .right .p4 {
+  font-size: 2.4rem;
+  opacity: 0.7;
+  transform: translate(-200%, 15%);
+  animation: .5s p4; }
+  .above-average-returns .right .p4:hover {
+    transform: translate(-200%, 15%) scale(1.2); }
+@keyframes p4 {
+  from {
+    transform: translate(0); }
+  to {
+    transform: translate(-200%, 15%); } }
+.above-average-returns .right .p5 {
+  font-size: 2.2rem;
+  opacity: 0.6;
+  transform: translate(-125%, 135%);
+  animation: .5s p5; }
+  .above-average-returns .right .p5:hover {
+    transform: translate(-125%, 135%) scale(1.2); }
+@keyframes p5 {
+  from {
+    transform: translate(0); }
+  to {
+    transform: translate(-125%, 135%); } }
+.above-average-returns .right .p6 {
+  font-size: 2rem;
+  opacity: 0.5;
+  transform: translate(95%, -105%);
+  animation: .5s p6; }
+  .above-average-returns .right .p6:hover {
+    transform: translate(95%, -105%) scale(1.2); }
+@keyframes p6 {
+  from {
+    transform: translate(0); }
+  to {
+    transform: translate(95%, -105%); } }
+.above-average-returns .right .p7 {
+  font-size: 1.8rem;
+  opacity: 0.4;
+  transform: translate(-20%, -230%);
+  animation: .5s p7; }
+  .above-average-returns .right .p7:hover {
+    transform: translate(-20%, -230%) scale(1.2); }
+@keyframes p7 {
+  from {
+    transform: translate(0); }
+  to {
+    transform: translate(-20%, -230%); } }
+.reach-your-goals {
+  padding: 50px 0;
+  box-sizing: content-box; }
+  .reach-your-goals .left img {
+    height: 250px;
+    bottom: -160%; }
+  .reach-your-goals .left .slide-up-reach-goal-img {
+    animation: 0.75s slideUpReachGoalImg;
+    bottom: -50px; }
+@keyframes slideUpReachGoalImg {
+  from {
+    bottom: -160%; }
+  to {
+    bottom: -50px; } }
+.informational-advantage .right {
+  display: flex;
+  align-items: flex-end; }
+  .informational-advantage .right .bar-chart {
+    display: flex;
+    align-items: flex-end;
+    height: 100%; }
+    .informational-advantage .right .bar-chart div {
+      width: 60px;
+      margin: 0 10px;
+      background-color: #27A5F9; }
+      .informational-advantage .right .bar-chart div p {
+        text-align: center;
+        background: rgba(255, 255, 255, 0.5);
+        padding: 15px 0;
+        margin: 0; }
+    .informational-advantage .right .bar-chart .basic-bar {
+      height: 84%; }
+    .informational-advantage .right .bar-chart .premium-bar {
+      height: 90%; }
+    .informational-advantage .right .bar-chart .business-bar {
+      height: 95%; }
+    .informational-advantage .right .bar-chart .fund-bar {
+      height: 87%; }
+    .informational-advantage .right .bar-chart .sp-bar {
+      background-color: #49494A;
+      height: 60%; }
 
 body {
   font-family: 'proxima-nova', 'Lato', sans-serif; }
@@ -607,13 +776,17 @@ body {
   box-sizing: border-box; }
 
 h1, h2 {
-  font-weight: 300; }
+  font-weight: 300;
+  color: #49494A; }
 
 a {
   text-decoration: none;
   color: #49494A; }
   a:hover {
     cursor: pointer; }
+
+p {
+  color: #49494A; }
 
 ul {
   list-style: none;
@@ -669,5 +842,8 @@ button {
     color: #49494A; }
   .outline-btn:active {
     background: #f2f2f2; }
+
+.bg-gray {
+  background: #F9F9F9; }
 
 /*# sourceMappingURL=main.css.map */
