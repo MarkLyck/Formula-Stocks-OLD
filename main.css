@@ -558,6 +558,7 @@ header {
     background: url("assets/images/hero.png");
     background-repeat: no-repeat;
     background-size: cover;
+    background-attachment: fixed;
     opacity: 0.75;
     top: -75px;
     width: 100%;
