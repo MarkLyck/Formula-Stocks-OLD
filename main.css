@@ -747,15 +747,17 @@ header {
   .informational-advantage .right .bar-chart {
     display: flex;
     align-items: flex-end;
-    height: 100%; }
+    height: calc(100% - 45px); }
     .informational-advantage .right .bar-chart div {
       width: 60px;
       margin: 0 10px;
       background-color: #27A5F9; }
       .informational-advantage .right .bar-chart div p {
-        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         background: rgba(255, 255, 255, 0.5);
-        padding: 15px 0;
+        height: 45px;
         margin: 0; }
     .informational-advantage .right .bar-chart .basic-bar {
       height: 84%; }
