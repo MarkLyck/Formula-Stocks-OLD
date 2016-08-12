@@ -8,6 +8,9 @@ const ReachYourGoals = React.createClass({
   componentDidMount() {
     $(window).on('scroll', this.animate)
   },
+  componentWillUnmount() {
+    $(window).off('scroll', this.animate)
+  },
   animate() {
     let hT = $(this.refs.content).offset().top
     let hH = $(this.refs.content).outerHeight()
