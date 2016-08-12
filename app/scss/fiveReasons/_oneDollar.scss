@@ -1,0 +1,55 @@
+.one-dollar {
+  .left {
+    .plans {
+      button {
+        background: none;
+        color: $text-color;
+        &:hover {
+          color: $primary-color;
+        }
+      }
+      .selected {
+        color: $primary-color;
+      }
+    }
+    .bar {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      width: 300px;
+      height: 50px;
+      p {
+        margin: 0 10px 0 0;
+        color: #fff;
+        font-size: 1.5rem;
+      }
+    }
+
+    .fs.bar {
+      background: $primary-color;
+    }
+    .plan-name {
+      margin-top: 10px;
+    }
+    .fs.plan-name {
+      color: $primary-color;
+    }
+    .market-bar-container {
+      margin-top: 25px;
+      display: flex;
+      align-items: center;
+      .market.bar {
+        background: $dark-color;
+      }
+      p {
+        margin: 0 0 0 10px;
+        font-size: 1.5rem;
+      }
+    }
+  }
+  .right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}

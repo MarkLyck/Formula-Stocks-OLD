@@ -3,6 +3,7 @@ import React from 'React'
 import AboveAverageReturns from './fiveReasons/AboveAverageReturns'
 import ReachYourGoals from './fiveReasons/ReachYourGoals'
 import InformationalAdvantage from './fiveReasons/InformationalAdvantage'
+import OneDollar from './fiveReasons/OneDollar'
 
 const Home = React.createClass({
   render () {
@@ -11,6 +12,7 @@ const Home = React.createClass({
         <AboveAverageReturns/>
         <ReachYourGoals/>
         <InformationalAdvantage/>
+        <OneDollar/>
       </div>
     )
   }
