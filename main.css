@@ -425,6 +425,9 @@ textarea {
 .font.dark {
   color: #49494A; }
 
+.blue {
+  color: #27A5F9; }
+
 .bounce-down {
   animation: .75s BounceDown; }
 
@@ -829,6 +832,35 @@ header {
   .higher-performance .left .cta button {
     margin-right: 10px; }
 
+.our-products {
+  display: flex;
+  justify-content: center;
+  padding: 25px 0; }
+  .our-products .title-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 40px; }
+    .our-products .title-container h1 {
+      margin: 0; }
+  .our-products .icon-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 0; }
+    .our-products .icon-container .plan-icon {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: transform .5s; }
+      .our-products .icon-container .plan-icon:hover {
+        transform: scale(1.1); }
+      .our-products .icon-container .plan-icon img {
+        height: 100px; }
+      .our-products .icon-container .plan-icon p {
+        margin: 10px 0 0 0; }
+  .our-products a:hover {
+    text-decoration: underline; }
+
 body {
   font-family: 'proxima-nova', 'Lato', sans-serif; }
 
@@ -912,5 +944,13 @@ button {
 
 .bg-gray {
   background: #F9F9F9; }
+
+.content {
+  width: 80%; }
+
+.divider {
+  width: 75px;
+  background: #27A5F9;
+  height: 2px; }
 
 /*# sourceMappingURL=main.css.map */
