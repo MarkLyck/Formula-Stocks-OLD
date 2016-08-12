@@ -24,8 +24,6 @@ const InformationalAdvantage = React.createClass({
     let wH = $(window).height()
 
     if ($(window).scrollTop() > (hT + hH - wH)) {
-      console.log('ANIMATE');
-      // this.setState({animate: true})
       this.updateNumbers()
       $(window).off('scroll', this.animate)
     };

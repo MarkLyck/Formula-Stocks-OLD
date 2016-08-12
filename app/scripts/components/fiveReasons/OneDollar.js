@@ -1,6 +1,8 @@
 import React from 'react'
 import $ from 'jquery'
 
+import store from '../../store'
+
 function commafy(num){
   var parts = (''+(num<0?-num:num)).split("."), s=parts[0], L, i=L= s.length, o='';
   while(i--){ o = (i===0?'':((L-i)%3?'':','))
@@ -24,7 +26,6 @@ const OneDollar = React.createClass({
     let wH = $(window).height()
 
     if ($(window).scrollTop() > (hT + hH - wH)) {
-      console.log('ANIMATE');
       this.updateNumbers()
       $(window).off('scroll', this.animate)
     };
@@ -35,7 +36,6 @@ const OneDollar = React.createClass({
     let year = this.state.currYear
 
     if (plan) {
-      console.log('PLAN DEFINED');
       plan = plan
       fs = 1;
       sp = 1;
@@ -44,13 +44,11 @@ const OneDollar = React.createClass({
       plan = this.state.plan
     }
 
-    console.log(plan);
-
     let multiplier
-    if(plan === 'basic') {multiplier = 1.1924}
-    if(plan === 'premium') {multiplier = 1.2523}
-    if(plan === 'business') {multiplier = 1.3541}
-    if(plan === 'fund') {multiplier = 1.22}
+    if(plan === 'basic') {multiplier = store.plans.basic.cagr / 100 + 1}
+    if(plan === 'premium') {multiplier = store.plans.premium.cagr / 100 + 1}
+    if(plan === 'business') {multiplier = store.plans.business.cagr / 100 + 1}
+    if(plan === 'fund') {multiplier = store.plans.fund.cagr / 100 + 1}
 
     fs = fs * multiplier
     sp = sp * 1.1047
@@ -64,9 +62,6 @@ const OneDollar = React.createClass({
       fsPercent: year / 45,
       spPercent: sp / Math.pow((1 * multiplier), 45)
     })
-
-    console.log(this.state.fsPercent);
-    console.log(this.state.spPercent);
 
     if (year < 44) {
       window.setTimeout(this.updateNumbers, 20)

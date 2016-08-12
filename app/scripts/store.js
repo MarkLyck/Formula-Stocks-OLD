@@ -8,6 +8,20 @@ let store = {
     appKey: 'kid_rJRC6m9F',
     appSecret: 'e6688b599fca47e1bf150d99a786132d',
     basicAuth: btoa('kid_rJRC6m9F:e6688b599fca47e1bf150d99a786132d')
+  },
+  plans: {
+    basic: {
+      cagr: 19.24
+    },
+    premium: {
+      cagr: 25.23
+    },
+    business: {
+      cagr: 35.41
+    },
+    fund: {
+      cagr: 22
+    }
   }
 }
 

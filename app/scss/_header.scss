@@ -1,6 +1,5 @@
 header {
   padding-top: 75px;
-  // height: 80vh;
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -77,6 +76,8 @@ header {
       justify-content: center;
       button,a {
         margin: 0 10px;
+        max-width: 250px;
+        font-size: 1.25rem;
       }
     }
   }
@@ -89,7 +90,6 @@ header {
     top: -75px;
     width: 100%;
     height: calc(100vh + 25px);
-    // height: 80vh;
     position: absolute;
     z-index: 1;
   }
