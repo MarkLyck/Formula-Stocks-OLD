@@ -753,14 +753,26 @@ header {
     .informational-advantage .right .bar-chart div {
       width: 60px;
       margin: 0 10px;
-      background-color: #27A5F9; }
+      background-color: #27A5F9;
+      position: relative;
+      transition: transform .5s; }
+      .informational-advantage .right .bar-chart div:hover {
+        transform: scale(1.05); }
       .informational-advantage .right .bar-chart div p {
         display: flex;
         align-items: center;
         justify-content: center;
-        background: rgba(255, 255, 255, 0.5);
+        background: rgba(255, 255, 255, 0.75);
+        font-weight: 100;
         height: 45px;
         margin: 0; }
+      .informational-advantage .right .bar-chart div .plan-name {
+        display: flex;
+        justify-content: center;
+        width: 60px;
+        position: absolute;
+        top: -35px;
+        background: none; }
     .informational-advantage .right .bar-chart .basic-bar {
       height: 84%; }
     .informational-advantage .right .bar-chart .premium-bar {
@@ -811,6 +823,7 @@ header {
   justify-content: center; }
 
 .higher-performance .left .cta {
+  margin-top: 25px;
   display: flex; }
   .higher-performance .left .cta button {
     margin-right: 10px; }
