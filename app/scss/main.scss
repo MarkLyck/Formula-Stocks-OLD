@@ -2,13 +2,14 @@
 @import "variables";
 @import "fonts";
 @import "animations";
-@import "header";
-@import "whatisit";
-@import "fiveReasons/aboveAverageReturns";
-@import "fiveReasons/reachYourGoals";
-@import "fiveReasons/informationalAdvantage";
-@import "fiveReasons/oneDollar";
-@import "fiveReasons/higherPerformance";
+@import "home/header";
+@import "home/whatisit";
+@import "home/fiveReasons/aboveAverageReturns";
+@import "home/fiveReasons/reachYourGoals";
+@import "home/fiveReasons/informationalAdvantage";
+@import "home/fiveReasons/oneDollar";
+@import "home/fiveReasons/higherPerformance";
+@import "home/ourProducts";
 
 
 body {
@@ -112,4 +113,14 @@ button {
 
 .bg-gray {
   background: $seconday-background;
+}
+
+.content {
+  width: 80%;
+}
+
+.divider {
+  width: 75px;
+  background: $primary-color;
+  height: 2px;
 }

@@ -1,6 +1,7 @@
 import React from 'react'
 
-import Header from './Header'
+import Header from './home/Header'
+import Home from './home/Home'
 
 
 const App = React.createClass({
@@ -8,6 +9,7 @@ const App = React.createClass({
     return (
       <div id="app">
         <Header/>
+        <Home/>
         {this.props.children}
       </div>
     )

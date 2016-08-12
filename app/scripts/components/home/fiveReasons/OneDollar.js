@@ -1,7 +1,7 @@
 import React from 'react'
 import $ from 'jquery'
 
-import store from '../../store'
+import store from '../../../store'
 
 function commafy(num){
   var parts = (''+(num<0?-num:num)).split("."), s=parts[0], L, i=L= s.length, o='';

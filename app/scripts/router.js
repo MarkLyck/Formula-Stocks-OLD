@@ -11,7 +11,6 @@ import Signup from './components/Signup'
 const router = (
   <Router history={store.settings.history}>
     <Route path="/" component={App}>
-      <IndexRoute component={Home}/>
       <Route path="login" component={Login}/>
       <Route path="signup" component={Signup}/>
     </Route>
