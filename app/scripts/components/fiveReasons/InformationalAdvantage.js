@@ -90,11 +90,11 @@ const InformationalAdvantage = React.createClass({
           </div>
           <div className="right">
             <div className="bar-chart">
-              <div className="bar basic-bar" style={basStyle}><p>{this.state.basic}%</p></div>
-              <div className="bar premium-bar" style={preStyle}><p>{this.state.premium}%</p></div>
-              <div className="bar business-bar" style={busStyle}><p>{this.state.business}%</p></div>
-              <div className="bar fund-bar" style={funStyle}><p>{this.state.fund}%</p></div>
-              <div className="sp-bar" style={marStyle}><p>{this.state.market}%</p></div>
+              <div className="bar basic-bar" style={basStyle}><p>{this.state.basic}%</p><p className="plan-name">Basic</p></div>
+              <div className="bar premium-bar" style={preStyle}><p>{this.state.premium}%</p><p className="plan-name">Premium</p></div>
+              <div className="bar business-bar" style={busStyle}><p>{this.state.business}%</p><p className="plan-name">Business</p></div>
+              <div className="bar fund-bar" style={funStyle}><p>{this.state.fund}%</p><p className="plan-name">Fund</p></div>
+              <div className="sp-bar" style={marStyle}><p>{this.state.market}%</p><p className="plan-name">Market</p></div>
             </div>
           </div>
         </div>

@@ -10,14 +10,27 @@
         width: 60px;
         margin: 0 10px;
         background-color: $primary-color;
+        position: relative;
+        transition: transform .5s;
+        &:hover {
+          transform: scale(1.05);
+        }
         p {
           display: flex;
           align-items: center;
           justify-content: center;
-          background: rgba(#fff, 0.5);
-          // padding: 15px 0;
+          background: rgba(#fff, 0.75);
+          font-weight: 100;
           height: 45px;
           margin: 0;
+        }
+        .plan-name {
+          display: flex;
+          justify-content: center;
+          width: 60px;
+          position: absolute;
+          top: -35px;
+          background: none;
         }
       }
       .basic-bar {
