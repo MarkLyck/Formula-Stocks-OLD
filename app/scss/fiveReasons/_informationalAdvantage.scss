@@ -1,0 +1,38 @@
+.informational-advantage {
+  .right {
+    display: flex;
+    align-items: flex-end;
+    .bar-chart {
+      display: flex;
+      align-items: flex-end;
+      height: 100%;
+      div {
+        width: 60px;
+        margin: 0 10px;
+        background-color: $primary-color;
+        p {
+          text-align: center;
+          background: rgba(#fff, 0.5);
+          padding: 15px 0;
+          margin: 0;
+        }
+      }
+      .basic-bar {
+        height: 84%
+      }
+      .premium-bar {
+        height: 90%
+      }
+      .business-bar {
+        height: 95%
+      }
+      .fund-bar {
+        height: 87%
+      }
+      .sp-bar {
+        background-color: $dark-color;
+        height: 60%;
+      }
+    }
+  }
+}

@@ -30,7 +30,12 @@
     max-width: 50%;
     margin-left: 50px;
     img {
-      max-width: 600px;
+      width: 100%;
+      height: auto;
+      transition: transform 1s;
+      &:hover {
+        transform: scale(1.25);
+      }
     }
   }
 }

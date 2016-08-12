@@ -4,6 +4,9 @@
 @import "animations";
 @import "header";
 @import "whatisit";
+@import "fiveReasons/aboveAverageReturns";
+@import "fiveReasons/reachYourGoals";
+@import "fiveReasons/informationalAdvantage";
 
 
 body {
@@ -16,6 +19,7 @@ body {
 
 h1, h2 {
   font-weight: 300;
+  color: $text-color;
 }
 
 a {
@@ -24,6 +28,10 @@ a {
   &:hover {
     cursor: pointer;
   }
+}
+
+p {
+  color: $text-color;
 }
 
 ul {
@@ -89,4 +97,8 @@ button {
   &:active {
     background: darken(#fff, 5%);
   }
+}
+
+.bg-gray {
+  background: $seconday-background;
 }

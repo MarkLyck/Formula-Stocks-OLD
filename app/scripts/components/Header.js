@@ -8,12 +8,12 @@ const Header = React.createClass({
   componentDidMount() {
     $(window).scroll(function(){
         if($(window).scrollTop() === 0){
-            $("nav").css({"background-color":"transparent"});
+            $("nav").css({"background-color":"rgba(255,255,255,0.2)"});
             $(".nav-link").css({"color":`white`});
         }
         else if ($(window).scrollTop() < 100){
-            $('nav').css({"background-color":`rgba(255, 255, 255, ${$(window).scrollTop() / 100})`});
-            if ($(window).scrollTop() > 40){
+            $('nav').css({"background-color":`rgba(255, 255, 255, ${$(window).scrollTop() / 100 + 0.2})`});
+            if ($(window).scrollTop() > 30){
               $(".nav-link").css({"color":`rgba(73, 73, 73, ${$(window).scrollTop() / 50})`});
             } else {
               $(".nav-link").css({"color":`white`});

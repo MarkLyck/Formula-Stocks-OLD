@@ -1,0 +1,22 @@
+.reach-your-goals {
+  padding: 50px 0;
+  box-sizing: content-box;
+  .left {
+    img {
+      height: 250px;
+      bottom: -160%;
+    }
+    .slide-up-reach-goal-img {
+      animation: 0.75s slideUpReachGoalImg;
+      bottom: -50px;
+    }
+    @keyframes slideUpReachGoalImg {
+      from {
+        bottom: -160%;
+      }
+      to {
+        bottom: -50px;
+      }
+    }
+  }
+}
