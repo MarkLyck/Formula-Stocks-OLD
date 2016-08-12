@@ -1,6 +1,8 @@
 import Session from './models/Session'
 import {hashHistory, browserHistory} from 'react-router'
 
+import Plan from './models/Plan'
+
 let store = {
   session: new Session(),
   settings: {
@@ -11,16 +13,36 @@ let store = {
   },
   plans: {
     basic: {
-      cagr: 19.24
+      data: new Plan({
+        name: 'basic',
+        stats: {
+          cagr: 19.24,
+        }
+      })
     },
     premium: {
-      cagr: 25.23
+      data: new Plan({
+        name: 'premium',
+        stats: {
+          cagr: 25.23,
+        }
+      })
     },
     business: {
-      cagr: 35.41
+      data: new Plan({
+        name: 'business',
+        stats: {
+          cagr: 35.41,
+        }
+      })
     },
     fund: {
-      cagr: 22
+      data: new Plan({
+        name: 'business',
+        stats: {
+          cagr: 22,
+        }
+      })
     }
   }
 }

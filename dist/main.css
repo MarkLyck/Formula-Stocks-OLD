@@ -409,18 +409,18 @@ textarea {
 @font-face {
   font-family: 'proxima-nova';
   src: url("assets/fonts/proxima-nova/ProximaNova-Semibold.otf");
-  font-weight: 800; }
-.font.light {
+  font-weight: 600; }
+.light {
   font-weight: 100; }
 
-.font.regular {
+.regular {
   font-weight: 400; }
 
-.font.bold {
+.bold {
   font-weight: 700; }
 
-.font.semibold {
-  font-weight: 700; }
+.semibold {
+  font-weight: 600; }
 
 .font.dark {
   color: #49494A; }
@@ -861,6 +861,10 @@ header {
   .our-products a:hover {
     text-decoration: underline; }
 
+#result-chart {
+  background: lightgray;
+  height: 500px; }
+
 body {
   font-family: 'proxima-nova', 'Lato', sans-serif; }
 
@@ -946,7 +950,8 @@ button {
   background: #F9F9F9; }
 
 .content {
-  width: 80%; }
+  width: 80%;
+  margin: 0 auto; }
 
 .divider {
   width: 75px;

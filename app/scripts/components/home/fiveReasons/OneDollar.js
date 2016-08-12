@@ -45,14 +45,13 @@ const OneDollar = React.createClass({
     }
 
     let multiplier
-    if(plan === 'basic') {multiplier = store.plans.basic.cagr / 100 + 1}
-    if(plan === 'premium') {multiplier = store.plans.premium.cagr / 100 + 1}
-    if(plan === 'business') {multiplier = store.plans.business.cagr / 100 + 1}
-    if(plan === 'fund') {multiplier = store.plans.fund.cagr / 100 + 1}
+    if(plan === 'basic') {multiplier = store.plans.basic.data.get('stats').cagr / 100 + 1}
+    if(plan === 'premium') {multiplier = store.plans.premium.data.get('stats').cagr / 100 + 1}
+    if(plan === 'business') {multiplier = store.plans.business.data.get('stats').cagr / 100 + 1}
+    if(plan === 'fund') {multiplier = store.plans.fund.data.get('stats').cagr / 100 + 1}
 
     fs = fs * multiplier
     sp = sp * 1.1047
-
 
     this.setState({
       fs: fs.toFixed(2),

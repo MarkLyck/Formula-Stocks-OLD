@@ -42,9 +42,9 @@ const OurProducts = React.createClass({
           </div>
 
           <p>
-          <span className="bold">Basic</span> and <span className="bold">Premium</span> are both diversified retail products with excellent value propositions.
-          <span className="bold">Business</span> is designed for CEOs, accredited investores, and enterprising investores with focus on performance and margin of safety,
-          at the expense of diversification. Our <span className="bold">Fund</span> product is for institutional capital,
+          <span className="semibold">Basic</span> and <span className="semibold">Premium</span> are both diversified retail products with excellent value propositions.
+          <span className="semibold"> Business</span> is designed for CEOs, accredited investores, and enterprising investores with focus on performance and margin of safety,
+          at the expense of diversification. Our <span className="semibold">Fund</span> product is for institutional capital,
           capable of handling large diversified AUMs, which other products cannot.
            Each product utilizes a different number of Intelligent Investment Technology formulas.
           You could explore our <a className="blue">product matrix</a> below.
