@@ -10,6 +10,11 @@
       justify-content: space-between;
       margin-top: 40px;
     }
+    .disclaimer {
+      margin-top: 25px;
+      width: 80%;
+      text-align: center;
+    }
   }
 }
 
@@ -70,7 +75,7 @@
     margin: 0;
     border-radius: 0;
     border-bottom-right-radius: 5px;
-    border-bottom-left-radius: 5px; 
+    border-bottom-left-radius: 5px;
   }
 }
 .plan:first-child{

@@ -37,8 +37,4 @@ store.plans.add({
   name: 'fund'
 })
 
-store.plans.get('basic').getAnnualData()
-store.plans.get('premium').getAnnualData()
-store.plans.get('business').getAnnualData()
-
 export default store

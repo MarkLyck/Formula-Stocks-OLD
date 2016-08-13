@@ -1,0 +1,32 @@
+.brochures {
+  background: linear-gradient(rgba($primary-color, .2),rgba($primary-color, .2)),url('assets/images/NY_Skyline.jpg');
+  background-size: cover;
+  // background-position: center;
+  // background-attachment: fixed;
+  background-repeat: no-repeat;
+  padding: 100px 0;
+  // height: 300px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .title {
+    color: #fff;
+    font-size: 1.75rem;
+  }
+  .cta {
+    display: flex;
+    margin-top: 20px;
+    button {
+      margin: 0 40px;
+
+      max-width: 40% !important;
+      width: 300px;
+      // padding: 0 40px;
+      background: $primary-color;
+      &:hover {
+        background: darken($primary-color, 10%);
+      }
+    }
+  }
+}

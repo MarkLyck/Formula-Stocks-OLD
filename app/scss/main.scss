@@ -12,6 +12,7 @@
 @import "home/ourProducts";
 @import "home/theResults";
 @import "home/pricingTable";
+@import "home/brochures";
 
 
 body {
@@ -126,4 +127,9 @@ button {
   width: 75px;
   background: $primary-color;
   height: 2px;
+}
+
+.disclaimer {
+  font-weight: 100;
+  font-size: 0.8rem;
 }

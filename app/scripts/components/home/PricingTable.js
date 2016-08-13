@@ -16,7 +16,6 @@ const PricingTable = React.createClass({
     store.plans.get('basic').on('change', this.updateState)
   },
   updateState() {
-    // console.log('change');
     this.setState({basicStats: store.plans.get('basic').get('stats')})
   },
   render() {
@@ -28,11 +27,15 @@ const PricingTable = React.createClass({
           <div className="divider"></div>
           <h3 className="subtitle">Compare the products and find the right solution for you</h3>
           <div className="plans">
-            <Product name="Basic" price="50" stats={store.plans.get('basic').get('stats')} billed="Monthly" signupText="Start Month Now"/>
-            <Product name="Premium" price="100" stats={store.plans.get('premium').get('stats')} billed="Monthly" signupText="Sign Up"/>
-            <Product name="Business" price="20,000" stats={store.plans.get('business').get('stats')} billed="Yearly" signupText="Sign Up"/>
-            <Product name="Fund" price="120,000" stats={store.plans.get('fund').get('stats')} billed="Yearly" signupText="Sign Up"/>
+            <Product name="Basic" price="50" stats={store.plans.get('basic').get('stats')} billed="Monthly" signupText="Start Free Month"/>
+            <Product name="Premium" price="100" stats={store.plans.get('premium').get('stats')} billed="Monthly" signupText="Get Started"/>
+            <Product name="Business" price="20,000" stats={store.plans.get('business').get('stats')} billed="Yearly" signupText="Get Started"/>
+            <Product name="Fund" price="120,000" stats={store.plans.get('fund').get('stats')} billed="Yearly" signupText="Get Started"/>
           </div>
+          <p className="disclaimer">
+            The pricing tables are not a representation, warranty or gurantee of future investment performance. Making investments always involve varying degrees of risk.
+            The above numbers are based on historical data from 1975 - 2009, and data from 2009 - 2016 which reflects actual investment results.
+          </p>
         </div>
       </section>
     )
