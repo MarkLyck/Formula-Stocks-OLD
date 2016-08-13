@@ -1040,6 +1040,23 @@ header {
       flex-direction: column;
       justify-content: space-between; }
 
+.quote-section {
+  background: url("assets/images/Albert_Einstein.jpg");
+  background-size: cover;
+  height: 350px; }
+  .quote-section .content {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%; }
+    .quote-section .content .quote {
+      color: #fff;
+      font-size: 1.8rem; }
+    .quote-section .content .disclaimer {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 1rem; }
+
 body {
   font-family: 'proxima-nova', 'Lato', sans-serif; }
 

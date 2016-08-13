@@ -12,16 +12,12 @@ import TheResults from './TheResults'
 import PricingTable from './PricingTable'
 import Brochures from './Brochures'
 import RewardVSRisk from './RewardVSRisk'
+import Quote from './Quote'
 
 import AmTest from './AmTest'
 
 const Home = React.createClass({
   componentDidMount() {
-
-    // store.plans.get('fund').getAnnualData()
-    // store.plans.premium.data.getAnnualData()
-    // store.plans.business.data.getAnnualData()
-    // store.plans.fund.data.getAnnualData()
 
     store.plans.get('basic').getAnnualData()
     store.plans.get('premium').getAnnualData()
@@ -42,6 +38,7 @@ const Home = React.createClass({
         <PricingTable/>
         <Brochures/>
         <RewardVSRisk/>
+        <Quote/>
       </div>
     )
   }
