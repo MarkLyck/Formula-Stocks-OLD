@@ -22,10 +22,19 @@ const TheResults = React.createClass({
     })
   },
   render() {
-    let annualData = store.plans.business.data.get('annualData')
-    let fixedData = annualData.map((point) => {
+    let basicData = store.plans.basic.data.get('annualData')
+    let premiumData = store.plans.premium.data.get('annualData')
+    let businessData = store.plans.business.data.get('annualData')
+    // let fundData = store.plans.fund.data.get('annualData')
+
+    let fixedData = basicData.map((point, i) => {
+      // console.log(point.balance);
+      console.log(businessData[i].balance);
       return {
-        value: point.balance,
+        basic: point.balance,
+        premium: premiumData[i].balance,
+        business: businessData[i].balance,
+        // fund: fundData[i].balance,
         date: `${point.date.year}-${point.date.month}-${point.date.day}`
       }
     })
@@ -43,30 +52,58 @@ const TheResults = React.createClass({
       dataProvider: chartData,
 
       balloon: {
-        borderThickness: 1,
-        shadowAlpha: 0
+        adjustBorderColor: true,
+        color: '#49494A',
+        cornerRadius: 3,
+        fillColor: "#FFF",
+        fillAlpha: 1,
+        offsetX: 0,
       },
 
       graphs: [{
         id: "basic",
         lineColor: "#fff",
 
-        balloon:{
-          drop: true,
-          adjustBorderColor: false,
-          color:"#FFF"
-        },
+        bullet: "round",
+        bulletBorderAlpha: 1,
+        bulletColor: "#FFF",
+        bulletSize: 5,
+        hideBulletsCount: 50,
+        lineThickness: 2,
+        title: "red line",
+        useLineColorForBulletBorder: true,
+        valueField: "basic",
+        balloonText: "<span style='font-size:18px;'>basic $[[basic]]</span>"
+      },
+      {
+        id: "premium",
+        lineColor: "#fff",
 
         bullet: "round",
         bulletBorderAlpha: 1,
         bulletColor: "#FFF",
         bulletSize: 5,
-        hideBulletsCount: 100,
+        hideBulletsCount: 50,
         lineThickness: 2,
         title: "red line",
         useLineColorForBulletBorder: true,
-        valueField: "value",
-        balloonText: "<span style='font-size:18px;'>$[[value]]</span>"
+        valueField: "premium",
+        balloonText: "<span style='font-size:18px;'>premium $[[premium]]</span>"
+      },
+      {
+        id: "business",
+        lineColor: "#fff",
+
+        bullet: "round",
+        bulletBorderAlpha: 1,
+        bulletColor: "#FFF",
+        bulletSize: 5,
+        hideBulletsCount: 50,
+        lineThickness: 2,
+        title: "red line",
+        useLineColorForBulletBorder: true,
+        valueField: "business",
+        balloonText: "<span style='font-size:18px;'> business $[[business]]</span>"
       }],
 
       valueAxes: [{
@@ -75,11 +112,11 @@ const TheResults = React.createClass({
         unitPosition: 'left',
 			}],
 
-      chartScrollbar: {
-  	    enabled: true,
-  	    scrollbarHeight: 10,
-  	    dragIconWidth: 20
-      },
+      // chartScrollbar: {
+  	  //   enabled: true,
+  	  //   scrollbarHeight: 10,
+  	  //   dragIconWidth: 20
+      // },
 
       chartCursor: {
 	        valueLineEnabled: true,
