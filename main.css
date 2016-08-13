@@ -930,6 +930,10 @@ header {
       display: flex;
       justify-content: space-between;
       margin-top: 40px; }
+    .pricing-table .content .disclaimer {
+      margin-top: 25px;
+      width: 80%;
+      text-align: center; }
 
 .plan {
   background: #2C323D;
@@ -985,6 +989,29 @@ header {
 
 .plan:last-child {
   margin-right: 0; }
+
+.brochures {
+  background: linear-gradient(rgba(39, 165, 249, 0.2), rgba(39, 165, 249, 0.2)), url("assets/images/NY_Skyline.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 100px 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+  .brochures .title {
+    color: #fff;
+    font-size: 1.75rem; }
+  .brochures .cta {
+    display: flex;
+    margin-top: 20px; }
+    .brochures .cta button {
+      margin: 0 40px;
+      max-width: 40% !important;
+      width: 300px;
+      background: #27A5F9; }
+      .brochures .cta button:hover {
+        background: #068de7; }
 
 body {
   font-family: 'proxima-nova', 'Lato', sans-serif; }
@@ -1078,5 +1105,9 @@ button {
   width: 75px;
   background: #27A5F9;
   height: 2px; }
+
+.disclaimer {
+  font-weight: 100;
+  font-size: 0.8rem; }
 
 /*# sourceMappingURL=main.css.map */
