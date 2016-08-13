@@ -16,9 +16,16 @@ const OneDollar = React.createClass({
   },
   componentDidMount() {
     $(window).on('scroll', this.animate)
+    store.plans.on('change', this.resetState)
+    // store.plans.premium.data.on('change', this.resetState)
+    // store.plans.business.data.on('change', this.resetState)
+    // store.plans.fund.data.on('change', this.resetState)
   },
   componentWillUnmount() {
     $(window).off('scroll', this.animate)
+  },
+  resetState() {
+    this.setState({fs: 1, market: 1, plan: 'premium', currYear: 0, fsPercent: 0, spPercent: 0})
   },
   animate() {
     let hT = $(this.refs.content).offset().top
@@ -36,6 +43,7 @@ const OneDollar = React.createClass({
     let year = this.state.currYear
 
     if (plan) {
+      console.log('CHANGED TO PLAN: ', plan);
       plan = plan
       fs = 1;
       sp = 1;
@@ -44,24 +52,31 @@ const OneDollar = React.createClass({
       plan = this.state.plan
     }
 
-    let multiplier
-    if(plan === 'basic') {multiplier = store.plans.basic.data.get('stats').cagr / 100 + 1}
-    if(plan === 'premium') {multiplier = store.plans.premium.data.get('stats').cagr / 100 + 1}
-    if(plan === 'business') {multiplier = store.plans.business.data.get('stats').cagr / 100 + 1}
-    if(plan === 'fund') {multiplier = store.plans.fund.data.get('stats').cagr / 100 + 1}
+
+    // console.log('plan: ', plan, store.plans.get(plan).get('stats').cagr);
+
+    let multiplier = (store.plans.get(plan).get('stats').cagr / 100 + 1)
+    // if(plan === 'basic') {multiplier = store.plans.basic.data.get('stats').cagr / 100 + 1}
+    // if(plan === 'premium') {multiplier = store.plans.premium.data.get('stats').cagr / 100 + 1}
+    // if(plan === 'business') {multiplier = store.plans.business.data.get('stats').cagr / 100 + 1}
+    // if(plan === 'fund') {multiplier = store.plans.fund.data.get('stats').cagr / 100 + 1}
 
     fs = fs * multiplier
-    sp = sp * 1.1047
+    sp = sp * (store.market.cagr / 100 + 1)
 
-    this.setState({
-      fs: fs.toFixed(2),
-      market: sp.toFixed(2),
-      currYear: year + 1,
-      plan: plan,
-      fsPercent: year / 45,
-      spPercent: sp / Math.pow((1 * multiplier), 45)
-    })
+    // console.log('plan: ', plan + '| cagr: ' + store.plans.get(plan).get('stats').cagr);
 
+    if (multiplier > 1) {
+      this.setState({
+        fs: fs.toFixed(2),
+        market: sp.toFixed(2),
+        currYear: year + 1,
+        plan: plan,
+        fsPercent: year / 45,
+        spPercent: sp / Math.pow((1 * multiplier), 45),
+        reAnimate: false
+      })
+    }
     if (year < 44) {
       window.setTimeout(this.updateNumbers, 20)
     }

@@ -8,10 +8,7 @@ const TheResults = React.createClass({
     return {fetched: false, logarithmic:true}
   },
   componentDidMount() {
-    store.plans.basic.data.on('change', this.drawGraph)
-    store.plans.premium.data.on('change', this.drawGraph)
-    store.plans.business.data.on('change', this.drawGraph)
-    store.plans.fund.data.on('change', this.drawGraph)
+    store.plans.on('change', this.drawGraph)
     store.market.data.on('change', this.drawGraph)
   },
   drawGraph() {
@@ -21,10 +18,11 @@ const TheResults = React.createClass({
     // this.setState({logarithmic: !this.state.logarithmic})
   },
   render() {
-    let basicData = store.plans.basic.data.get('annualData')
-    let premiumData = store.plans.premium.data.get('annualData')
-    let businessData = store.plans.business.data.get('annualData')
-    // let fundData = store.plans.fund.data.get('annualData')
+    let basicData = store.plans.get('basic').get('annualData')
+    let premiumData = store.plans.get('premium').get('annualData')
+    let businessData = store.plans.get('business').get('annualData')
+    // let fundData = store.plans.get('fund').get('annualData')
+
     let marketData = store.market.data.get('annualData')
 
     let fixedData = basicData.map((point, i) => {

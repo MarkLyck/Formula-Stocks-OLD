@@ -9,7 +9,6 @@ const Market = Backbone.Model.extend({
   getAnnualData() {
     $.ajax(`https://www.quandl.com/api/v1/datasets/YAHOO/INDEX_GSPC.json?trim_start=1970-01-01&collapse=monthly&column=4&auth_token=6SfHcXos6YBX51kuAq8B`)
     .then((r) => {
-      console.log(r.data[1][1]);
 
       let fixedData = r.data.map((point) => {
         return point[1].toFixed(0)

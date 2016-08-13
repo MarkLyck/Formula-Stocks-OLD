@@ -1,0 +1,81 @@
+.pricing-table {
+  padding: 40px 0;
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .plans {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      margin-top: 40px;
+    }
+  }
+}
+
+.plan {
+  background: $dark-background;
+  border-radius: 5px;
+  width: calc(100% / 4);
+  margin: 0 10px;
+  transition: transform .3s;
+  &:hover {
+    transform: scale(1.05) translateY(-2.5%);
+  }
+  .top {
+    background: $primary-color;
+    // padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    h3 {
+      color: #fff;
+      font-weight: 400;
+      margin: 10px 0 15px 0;
+    }
+    .price {
+      color: #fff;
+      margin: 0;
+      font-weight: 400;
+    }
+    .billed {
+      color: #fff;
+      margin-top: 5px;
+      font-weight: 100;
+    }
+  }
+  .main-stats {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    p {
+      color: #fff;
+      font-weight: 100;
+      font-size: 1rem;
+    }
+  }
+  .more-info {
+    background: rgba(#fff, 0.15);
+    max-width: 100%;
+    margin: 0;
+    border-radius: 0;
+    &:hover {
+      background: $primary-color;
+    }
+  }
+  .sign-up {
+    max-width: 100%;
+    margin: 0;
+    border-radius: 0;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px; 
+  }
+}
+.plan:first-child{
+  margin-left: 0;
+}
+.plan:last-child{
+  margin-right: 0;
+}
