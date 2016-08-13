@@ -28,16 +28,21 @@ const TheResults = React.createClass({
     // let fundData = store.plans.fund.data.get('annualData')
 
     let fixedData = basicData.map((point, i) => {
-      // console.log(point.balance);
-      console.log(businessData[i].balance);
+
+      let premiumBalance = 0
+      let businessBalance = 0
+
+      if (premiumData[i]) { premiumBalance = premiumData[i].balance }
+      if (businessData[i]) { businessBalance = businessData[i].balance }
+
       return {
         basic: point.balance,
-        premium: premiumData[i].balance,
-        business: businessData[i].balance,
+        premium: premiumBalance,
+        business: businessBalance,
         // fund: fundData[i].balance,
         basicBalloon: formatPrice(point.balance),
-        premiumBalloon: formatPrice(premiumData[i].balance),
-        businessBalloon: formatPrice(businessData[i].balance),
+        premiumBalloon: formatPrice(premiumBalance),
+        businessBalloon: formatPrice(businessBalance),
 
         date: `${point.date.year}-${point.date.month}-${point.date.day}`
       }
@@ -57,9 +62,9 @@ const TheResults = React.createClass({
       type: "serial",
       theme: "dark",
 
-      marginRight: 30,
-	    marginTop: 17,
-	    autoMarginOffset: 20,
+      // marginRight: 30,
+	    // marginTop: 17,
+	    // autoMarginOffset: 20,
 
       dataProvider: chartData,
 
@@ -83,7 +88,6 @@ const TheResults = React.createClass({
         bulletSize: 5,
         hideBulletsCount: 50,
         lineThickness: 2,
-        title: "red line",
         useLineColorForBulletBorder: true,
         valueField: "basic",
         balloonText: "<div class=\"chart-balloon\"><span class=\"plan-name\">Basic</span><span class=\"balloon-value\">[[basicBalloon]]</span></div>"
@@ -98,7 +102,6 @@ const TheResults = React.createClass({
         bulletSize: 5,
         hideBulletsCount: 50,
         lineThickness: 2,
-        title: "red line",
         useLineColorForBulletBorder: true,
         valueField: "premium",
         balloonText: "<div class=\"chart-balloon\"><span class=\"plan-name\">Premium</span><span class=\"balloon-value\">[[premiumBalloon]]</span></div>"
@@ -113,7 +116,6 @@ const TheResults = React.createClass({
         bulletSize: 5,
         hideBulletsCount: 50,
         lineThickness: 2,
-        title: "red line",
         useLineColorForBulletBorder: true,
         valueField: "business",
         "balloonText": "<div class=\"chart-balloon\"><span class=\"plan-name\">Business</span><span class=\"balloon-value\">[[businessBalloon]]</span></div>",
@@ -159,7 +161,9 @@ const TheResults = React.createClass({
     return (
       <section className="the-results">
         <div className="content">
-          <h2>The Results</h2>
+          <h2 className="title">The Results</h2>
+          <div className="divider"></div>
+          <h3 className="subtitle">Log Graph</h3>
           {chart}
         </div>
       </section>

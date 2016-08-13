@@ -17,7 +17,7 @@ const Home = React.createClass({
     store.plans.basic.data.getAnnualData()
     store.plans.premium.data.getAnnualData()
     store.plans.business.data.getAnnualData()
-    store.plans.fund.data.getAnnualData()
+    // store.plans.fund.data.getAnnualData()
   },
   render () {
     return (
