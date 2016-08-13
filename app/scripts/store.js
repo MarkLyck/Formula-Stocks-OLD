@@ -2,6 +2,7 @@ import Session from './models/Session'
 import {hashHistory, browserHistory} from 'react-router'
 
 import Plan from './models/Plan'
+import Market from './models/Market'
 
 let store = {
   session: new Session(),
@@ -44,6 +45,9 @@ let store = {
         }
       })
     }
+  },
+  market: {
+    data: new Market()
   }
 }
 

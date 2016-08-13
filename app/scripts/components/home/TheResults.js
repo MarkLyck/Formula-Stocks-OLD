@@ -20,29 +20,38 @@ const TheResults = React.createClass({
     store.plans.fund.data.on('change', () => {
       this.setState({fetched: true})
     })
+    store.market.data.on('change', () => {
+      this.setState({fetched: true})
+    })
   },
   render() {
     let basicData = store.plans.basic.data.get('annualData')
     let premiumData = store.plans.premium.data.get('annualData')
     let businessData = store.plans.business.data.get('annualData')
     // let fundData = store.plans.fund.data.get('annualData')
+    let marketData = store.market.data.get('annualData')
 
     let fixedData = basicData.map((point, i) => {
 
       let premiumBalance = 0
       let businessBalance = 0
+      let marketBalance = 0
 
       if (premiumData[i]) { premiumBalance = premiumData[i].balance }
       if (businessData[i]) { businessBalance = businessData[i].balance }
+      if (marketData[i]) { marketBalance = marketData[i] }
 
       return {
         basic: point.balance,
         premium: premiumBalance,
         business: businessBalance,
         // fund: fundData[i].balance,
+        market: marketBalance,
+
         basicBalloon: formatPrice(point.balance),
         premiumBalloon: formatPrice(premiumBalance),
         businessBalloon: formatPrice(businessBalance),
+        marketBalloon: formatPrice(marketBalance),
 
         date: `${point.date.year}-${point.date.month}-${point.date.day}`
       }
@@ -56,37 +65,30 @@ const TheResults = React.createClass({
   		return price;
   	}
 
-    // var chartData = [{title:"sample 1",value:130},{title:"sample 2",value:26}];
     var chartData = fixedData;
     var config = {
       type: "serial",
       theme: "dark",
-
-      // marginRight: 30,
-	    // marginTop: 17,
-	    // autoMarginOffset: 20,
+      addClassNames: true,
 
       dataProvider: chartData,
 
       balloon: {
-        // adjustBorderColor: true,
         color: '#49494A',
-        // color: '#FFF',
-        // cornerRadius: 3,
-        // fillColor: "#27A5F9",
         fillAlpha: 1,
-        // offsetX: 0,
+        borderColor: '#FFF',
+        borderThickness: 0,
       },
 
       graphs: [{
         id: "basic",
         lineColor: "#fff",
 
-        bullet: "round",
+        bullet: "square",
         bulletBorderAlpha: 1,
         bulletColor: "#FFF",
         bulletSize: 5,
-        hideBulletsCount: 50,
+        hideBulletsCount: 10,
         lineThickness: 2,
         useLineColorForBulletBorder: true,
         valueField: "basic",
@@ -96,11 +98,11 @@ const TheResults = React.createClass({
         id: "premium",
         lineColor: "#fff",
 
-        bullet: "round",
+        bullet: "square",
         bulletBorderAlpha: 1,
         bulletColor: "#FFF",
         bulletSize: 5,
-        hideBulletsCount: 50,
+        hideBulletsCount: 10,
         lineThickness: 2,
         useLineColorForBulletBorder: true,
         valueField: "premium",
@@ -110,16 +112,29 @@ const TheResults = React.createClass({
         id: "business",
         lineColor: "#fff",
 
-        bullet: "round",
+        bullet: "square",
         bulletBorderAlpha: 1,
         bulletColor: "#FFF",
         bulletSize: 5,
-        hideBulletsCount: 50,
+        hideBulletsCount: 10,
         lineThickness: 2,
         useLineColorForBulletBorder: true,
         valueField: "business",
         "balloonText": "<div class=\"chart-balloon\"><span class=\"plan-name\">Business</span><span class=\"balloon-value\">[[businessBalloon]]</span></div>",
-        // balloonText: "<span style='font-size:18px;'> business $[[business]]</span>"
+      },
+      {
+        id: "market",
+        lineColor: "#49494A",
+
+        bullet: "square",
+        bulletBorderAlpha: 1,
+        bulletColor: "#FFF",
+        bulletSize: 5,
+        hideBulletsCount: 10,
+        lineThickness: 2,
+        useLineColorForBulletBorder: true,
+        valueField: "market",
+        "balloonText": "<div class=\"chart-balloon\"><span class=\"plan-name market-name\">S&P 500</span><span class=\"balloon-value\">[[marketBalloon]]</span></div>",
       }],
 
       valueAxes: [{
@@ -127,21 +142,10 @@ const TheResults = React.createClass({
         unit: '$',
         unitPosition: 'left',
         gridAlpha: 0.15,
-        // autoGridCount: false,
-        // gridCount: 100,
-        // minVerticalGap: 0,
         minorGridEnabled: true,
         dashLength: 0,
-        // minimum: 0,
-        // maximum: 20000000000,
-        // inside: true,
+        min: 0,
 			}],
-
-      // chartScrollbar: {
-  	  //   enabled: true,
-  	  //   scrollbarHeight: 10,
-  	  //   dragIconWidth: 20
-      // },
 
       chartCursor: {
 	        valueLineEnabled: true,
