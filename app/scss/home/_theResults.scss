@@ -6,9 +6,17 @@
   height: 500px;
   .chart-balloon {
     font-family: 'proxima-nova', sans-serif;
+    display: flex;
+    flex-direction: column;
+    padding: 0 5px;
     .plan-name {
-      font-size: 1.25rem;
+      font-size: 1rem;
       font-weight: 100;
+      margin-bottom: 5px;
+      color: $primary-color;
+    }
+    .balloon-value {
+      font-size: 1.25rem;
     }
   }
 }

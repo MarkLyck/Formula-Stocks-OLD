@@ -35,9 +35,21 @@ const TheResults = React.createClass({
         premium: premiumData[i].balance,
         business: businessData[i].balance,
         // fund: fundData[i].balance,
+        basicBalloon: formatPrice(point.balance),
+        premiumBalloon: formatPrice(premiumData[i].balance),
+        businessBalloon: formatPrice(businessData[i].balance),
+
         date: `${point.date.year}-${point.date.month}-${point.date.day}`
       }
     })
+
+    function formatPrice(value) {
+  		while(/(\d+)(\d{3})/.test(value.toString())) {
+  			value = value.toString().replace(/(\d+)(\d{3})/, '$1'+','+'$2');
+  		}
+  		var price = '$' + value;
+  		return price;
+  	}
 
     // var chartData = [{title:"sample 1",value:130},{title:"sample 2",value:26}];
     var chartData = fixedData;
@@ -74,7 +86,7 @@ const TheResults = React.createClass({
         title: "red line",
         useLineColorForBulletBorder: true,
         valueField: "basic",
-        balloonText: "<span class=\"chart-balloon\"><span class=\"plan-name\">Basic</span><br>[[basic]]</span>"
+        balloonText: "<div class=\"chart-balloon\"><span class=\"plan-name\">Basic</span><span class=\"balloon-value\">[[basicBalloon]]</span></div>"
       },
       {
         id: "premium",
@@ -89,7 +101,7 @@ const TheResults = React.createClass({
         title: "red line",
         useLineColorForBulletBorder: true,
         valueField: "premium",
-        balloonText: "<span class=\"chart-balloon\"><span class=\"plan-name\">Premium</span><br>[[premium]]</span>"
+        balloonText: "<div class=\"chart-balloon\"><span class=\"plan-name\">Premium</span><span class=\"balloon-value\">[[premiumBalloon]]</span></div>"
       },
       {
         id: "business",
@@ -104,7 +116,7 @@ const TheResults = React.createClass({
         title: "red line",
         useLineColorForBulletBorder: true,
         valueField: "business",
-        "balloonText": "<span class=\"chart-balloon\"><span class=\"plan-name\">Business</span><br>[[business]]</span>",
+        "balloonText": "<div class=\"chart-balloon\"><span class=\"plan-name\">Business</span><span class=\"balloon-value\">[[businessBalloon]]</span></div>",
         // balloonText: "<span style='font-size:18px;'> business $[[business]]</span>"
       }],
 
