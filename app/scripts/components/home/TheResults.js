@@ -22,31 +22,13 @@ const TheResults = React.createClass({
     })
   },
   render() {
-    let annualData = store.plans.premium.data.get('annualData')
+    let annualData = store.plans.business.data.get('annualData')
     let fixedData = annualData.map((point) => {
       return {
         value: point.balance,
         date: `${point.date.year}-${point.date.month}-${point.date.day}`
       }
     })
-
-    function formatLabel(value) {
-  		// while(/(\d+)(\d{3})/.test(value.toString())) {
-  		// 	value = value.toString().replace(/(\d+)(\d{3})/, '$1'+','+'$2');
-  		// }
-		  // return "$" + value;
-      console.log(value);
-      return 'test'
-	  }
-
-    function formatLabel(value) {
-  		// while(/(\d+)(\d{3})/.test(value.toString())) {
-  		// 	value = value.toString().replace(/(\d+)(\d{3})/, '$1'+','+'$2');
-  		// }
-		  // return "$" + value;
-      console.log(value);
-      return 'test'
-	  }
 
     // var chartData = [{title:"sample 1",value:130},{title:"sample 2",value:26}];
     var chartData = fixedData;
@@ -79,7 +61,7 @@ const TheResults = React.createClass({
         bulletBorderAlpha: 1,
         bulletColor: "#FFF",
         bulletSize: 5,
-        hideBulletsCount: 50,
+        hideBulletsCount: 100,
         lineThickness: 2,
         title: "red line",
         useLineColorForBulletBorder: true,
@@ -89,22 +71,8 @@ const TheResults = React.createClass({
 
       valueAxes: [{
         logarithmic: true,
-        dashLength: 1,
-
-        guides: [{
-            dashLength: 6,
-            inside: true,
-            label: "average",
-            lineAlpha: 1,
-            value: 90.4
-        }],
         unit: '$',
         unitPosition: 'left',
-        position: "left",
-        // "labelText": "test"
-        // "labelFunction": function() {
-        //   return 'test'
-        // }
 			}],
 
       chartScrollbar: {
@@ -115,7 +83,7 @@ const TheResults = React.createClass({
 
       chartCursor: {
 	        valueLineEnabled: true,
-	        valueLineBalloonEnabled: false,
+	        // valueLineBalloonEnabled: true,
 	        valueLineAlpha: 0.5,
 	        fullWidth: true,
 	        cursorAlpha: 0.5
