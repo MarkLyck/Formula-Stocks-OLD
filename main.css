@@ -861,8 +861,10 @@ header {
   .our-products a:hover {
     text-decoration: underline; }
 
+.the-results {
+  background: #27A5F9; }
+
 #result-chart {
-  background: lightgray;
   height: 500px; }
 
 body {
