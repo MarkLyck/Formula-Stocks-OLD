@@ -11,6 +11,7 @@ import OurProducts from './OurProducts'
 import TheResults from './TheResults'
 import PricingTable from './PricingTable'
 import Brochures from './Brochures'
+import RewardVSRisk from './RewardVSRisk'
 
 import AmTest from './AmTest'
 
@@ -40,6 +41,7 @@ const Home = React.createClass({
         <TheResults/>
         <PricingTable/>
         <Brochures/>
+        <RewardVSRisk/>
       </div>
     )
   }

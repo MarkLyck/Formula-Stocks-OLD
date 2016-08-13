@@ -16,7 +16,7 @@ let store = {
   plans: new Plans(),
   market: {
     data: new Market(),
-    cagr: 10.47
+    cagr: 10.71
   }
 }
 

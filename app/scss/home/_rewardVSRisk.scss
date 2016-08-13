@@ -1,0 +1,34 @@
+.reward-vs-risk {
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    .title {
+      margin-top: 0;
+    }
+    .wrapper {
+      margin-top: 25px;
+      display: flex;
+      height: 100%;
+      width: 100%;
+      .left {
+        width: 50%;
+        height: 100%;
+        position: relative;
+        img {
+          position: relative;
+          width: 100%;
+          top: 0;
+          bottom: 0;
+        }
+      }
+      .right {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+    }
+  }
+}
