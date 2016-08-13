@@ -994,7 +994,7 @@ header {
   background: linear-gradient(rgba(39, 165, 249, 0.2), rgba(39, 165, 249, 0.2)), url("assets/images/NY_Skyline.jpg");
   background-size: cover;
   background-repeat: no-repeat;
-  padding: 100px 0;
+  padding: 50px 0 75px 0;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -1004,7 +1004,7 @@ header {
     font-size: 1.75rem; }
   .brochures .cta {
     display: flex;
-    margin-top: 20px; }
+    margin-top: 90px; }
     .brochures .cta button {
       margin: 0 40px;
       max-width: 40% !important;
@@ -1012,6 +1012,33 @@ header {
       background: #27A5F9; }
       .brochures .cta button:hover {
         background: #068de7; }
+
+.reward-vs-risk .content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%; }
+  .reward-vs-risk .content .title {
+    margin-top: 0; }
+  .reward-vs-risk .content .wrapper {
+    margin-top: 25px;
+    display: flex;
+    height: 100%;
+    width: 100%; }
+    .reward-vs-risk .content .wrapper .left {
+      width: 50%;
+      height: 100%;
+      position: relative; }
+      .reward-vs-risk .content .wrapper .left img {
+        position: relative;
+        width: 100%;
+        top: 0;
+        bottom: 0; }
+    .reward-vs-risk .content .wrapper .right {
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between; }
 
 body {
   font-family: 'proxima-nova', 'Lato', sans-serif; }
