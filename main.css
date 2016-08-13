@@ -867,10 +867,17 @@ header {
 #result-chart {
   height: 500px; }
   #result-chart .chart-balloon {
-    font-family: 'proxima-nova', sans-serif; }
+    font-family: 'proxima-nova', sans-serif;
+    display: flex;
+    flex-direction: column;
+    padding: 0 5px; }
     #result-chart .chart-balloon .plan-name {
-      font-size: 1.25rem;
-      font-weight: 100; }
+      font-size: 1rem;
+      font-weight: 100;
+      margin-bottom: 5px;
+      color: #27A5F9; }
+    #result-chart .chart-balloon .balloon-value {
+      font-size: 1.25rem; }
 
 body {
   font-family: 'proxima-nova', 'Lato', sans-serif; }
