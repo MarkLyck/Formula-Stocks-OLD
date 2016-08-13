@@ -126,6 +126,15 @@ const TheResults = React.createClass({
         logarithmic: true,
         unit: '$',
         unitPosition: 'left',
+        gridAlpha: 0.15,
+        // autoGridCount: false,
+        // gridCount: 100,
+        // minVerticalGap: 0,
+        minorGridEnabled: true,
+        dashLength: 0,
+        // minimum: 0,
+        // maximum: 20000000000,
+        // inside: true,
 			}],
 
       // chartScrollbar: {
