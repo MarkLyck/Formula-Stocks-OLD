@@ -106,6 +106,7 @@ const OneDollar = React.createClass({
               If you had invested it either in the market (S&P 500)
               or a Formula Stocks strategy*
             </p>
+            <sub>(*) in a tax free account, excluding trading costs & slippage</sub>
           </div>
           </div>
       </div>
