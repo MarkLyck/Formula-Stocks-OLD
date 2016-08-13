@@ -4,4 +4,11 @@
 
 #result-chart {
   height: 500px;
+  .chart-balloon {
+    font-family: 'proxima-nova', sans-serif;
+    .plan-name {
+      font-size: 1.25rem;
+      font-weight: 100;
+    }
+  }
 }

@@ -52,12 +52,13 @@ const TheResults = React.createClass({
       dataProvider: chartData,
 
       balloon: {
-        adjustBorderColor: true,
+        // adjustBorderColor: true,
         color: '#49494A',
-        cornerRadius: 3,
-        fillColor: "#FFF",
+        // color: '#FFF',
+        // cornerRadius: 3,
+        // fillColor: "#27A5F9",
         fillAlpha: 1,
-        offsetX: 0,
+        // offsetX: 0,
       },
 
       graphs: [{
@@ -73,7 +74,7 @@ const TheResults = React.createClass({
         title: "red line",
         useLineColorForBulletBorder: true,
         valueField: "basic",
-        balloonText: "<span style='font-size:18px;'>basic $[[basic]]</span>"
+        balloonText: "<span class=\"chart-balloon\"><span class=\"plan-name\">Basic</span><br>[[basic]]</span>"
       },
       {
         id: "premium",
@@ -88,7 +89,7 @@ const TheResults = React.createClass({
         title: "red line",
         useLineColorForBulletBorder: true,
         valueField: "premium",
-        balloonText: "<span style='font-size:18px;'>premium $[[premium]]</span>"
+        balloonText: "<span class=\"chart-balloon\"><span class=\"plan-name\">Premium</span><br>[[premium]]</span>"
       },
       {
         id: "business",
@@ -103,7 +104,8 @@ const TheResults = React.createClass({
         title: "red line",
         useLineColorForBulletBorder: true,
         valueField: "business",
-        balloonText: "<span style='font-size:18px;'> business $[[business]]</span>"
+        "balloonText": "<span class=\"chart-balloon\"><span class=\"plan-name\">Business</span><br>[[business]]</span>",
+        // balloonText: "<span style='font-size:18px;'> business $[[business]]</span>"
       }],
 
       valueAxes: [{

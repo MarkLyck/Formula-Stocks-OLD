@@ -866,6 +866,11 @@ header {
 
 #result-chart {
   height: 500px; }
+  #result-chart .chart-balloon {
+    font-family: 'proxima-nova', sans-serif; }
+    #result-chart .chart-balloon .plan-name {
+      font-size: 1.25rem;
+      font-weight: 100; }
 
 body {
   font-family: 'proxima-nova', 'Lato', sans-serif; }
