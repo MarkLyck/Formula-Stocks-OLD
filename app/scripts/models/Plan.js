@@ -13,9 +13,7 @@ const Plan = Backbone.Model.extend({
     $.ajax(`https://s3-us-west-2.amazonaws.com/aws-fs/public/api/annual_${this.get('name')}.json`)
     .then((r) => {
       let data = JSON.parse(r)
-
-      console.log('fetched succesfully', data);
-
+      
       this.set('annualData', data.logs)
 
       let stats = this.get('stats')
