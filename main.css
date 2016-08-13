@@ -876,6 +876,11 @@ header {
       margin: 0 auto; }
     .the-results .content .subtitle {
       color: #fff; }
+    .the-results .content .second.title {
+      margin-top: 40px; }
+    .the-results .content p {
+      color: #fff;
+      text-align: left; }
 
 #result-chart {
   height: 500px; }
