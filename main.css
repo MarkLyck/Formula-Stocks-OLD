@@ -1133,6 +1133,37 @@ input[type=range]::-moz-range-thumb {
   border: 2px solid #27A5F9;
   box-shadow: 0 0 1px 0px rgba(0, 0, 0, 0.1); }
 
+.newsletter {
+  background: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)), url("assets/images/WallStreet.jpg");
+  background-size: cover;
+  height: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+  .newsletter .title {
+    color: #fff;
+    font-weight: 400;
+    font-size: 2rem;
+    margin-bottom: 25px; }
+  .newsletter form {
+    display: flex;
+    max-width: 600px;
+    width: 80%;
+    opacity: 0.9; }
+    .newsletter form input[type=text] {
+      border: none;
+      width: calc(100% - 100px);
+      padding-left: 20px; }
+    .newsletter form input[type=submit] {
+      border-radius: 0;
+      border: none;
+      background: #27A5F9;
+      width: 100px; }
+      .newsletter form input[type=submit]:hover {
+        cursor: pointer;
+        background: #068de7; }
+
 body {
   font-family: 'proxima-nova', 'Lato', sans-serif; }
 
