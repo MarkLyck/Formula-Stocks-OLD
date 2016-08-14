@@ -13,6 +13,7 @@ import PricingTable from './PricingTable'
 import Brochures from './Brochures'
 import RewardVSRisk from './RewardVSRisk'
 import Quote from './Quote'
+import CumulativeInterest from './CumulativeInterest'
 
 import AmTest from './AmTest'
 
@@ -39,6 +40,7 @@ const Home = React.createClass({
         <Brochures/>
         <RewardVSRisk/>
         <Quote/>
+        <CumulativeInterest/>
       </div>
     )
   }

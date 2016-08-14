@@ -1057,6 +1057,82 @@ header {
       color: rgba(255, 255, 255, 0.8);
       font-size: 1rem; }
 
+.cumulative-interest {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 700px; }
+  .cumulative-interest .content {
+    padding-top: 40px;
+    height: 100%; }
+  .cumulative-interest .left {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around; }
+    .cumulative-interest .left input {
+      width: 100%;
+      margin-bottom: 15px; }
+    .cumulative-interest .left output {
+      padding-top: 10px;
+      margin-left: 10px; }
+  .cumulative-interest .right {
+    height: 100%; }
+    .cumulative-interest .right #bar-chart {
+      height: 100%; }
+  .cumulative-interest .disclaimer {
+    text-align: center;
+    margin-top: 40px;
+    width: 80%; }
+
+input[type=range] {
+  margin: auto;
+  outline: none;
+  padding: 0;
+  width: 50%;
+  height: 10px;
+  background-color: #eee;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #27A5F9), color-stop(100%, #27A5F9));
+  background-image: -webkit-linear-gradient(#27A5F9, #27A5F9);
+  background-image: -moz-linear-gradient(#27A5F9, #27A5F9);
+  background-image: -o-linear-gradient(#27A5F9, #27A5F9);
+  background-image: linear-gradient(#27A5F9, #27A5F9);
+  background-size: 50% 100%;
+  background-repeat: no-repeat;
+  border-radius: 10px;
+  cursor: pointer;
+  -webkit-appearance: none; }
+
+input[type=range]::-webkit-slider-runnable-track {
+  box-shadow: none;
+  border: none;
+  background: transparent;
+  -webkit-appearance: none; }
+
+input[type=range]::-moz-range-track {
+  box-shadow: none;
+  border: none;
+  background: transparent; }
+
+input[type=range]::-moz-focus-outer {
+  border: 0; }
+
+input[type=range]::-webkit-slider-thumb {
+  width: 25px;
+  height: 25px;
+  background: #fff;
+  border-radius: 100%;
+  border: 2px solid #27A5F9;
+  box-shadow: 0 0 1px 0px rgba(0, 0, 0, 0.1);
+  -webkit-appearance: none; }
+
+input[type=range]::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  background: #fff;
+  border-radius: 100%;
+  border: 2px solid #27A5F9;
+  box-shadow: 0 0 1px 0px rgba(0, 0, 0, 0.1); }
+
 body {
   font-family: 'proxima-nova', 'Lato', sans-serif; }
 
