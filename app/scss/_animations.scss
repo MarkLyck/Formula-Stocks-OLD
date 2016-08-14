@@ -51,6 +51,14 @@
     opacity: 1;
   }
 }
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
 
 .slide-up {
   animation: 0.75s slideUp;

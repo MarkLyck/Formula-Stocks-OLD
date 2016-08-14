@@ -63,6 +63,12 @@ const Login = React.createClass({
       top: "75px",
       background: "rgba(0,0,0,0.5)",
     }
+    if (this.state.slideOut) {
+      containerStyles = {
+        top: "75px",
+        background: 'rgba(0,0,0,0)'
+      }
+    }
 
     let modalStyles;
     if (this.state.slideOut) {

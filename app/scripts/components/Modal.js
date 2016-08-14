@@ -5,7 +5,7 @@ import _ from 'underscore'
 const Modal = React.createClass({
   closeModal: function(e) {
     if (_.toArray(e.target.classList).indexOf('modal-container') !== -1) {
-      this.props.closeModal()
+      this.props.closeModal(e)
     }
   },
   render: function() {
