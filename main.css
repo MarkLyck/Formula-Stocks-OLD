@@ -472,7 +472,7 @@ textarea {
 
 @keyframes slideUp {
   from {
-    bottom: -100%; }
+    top: 85px; }
   to {
     bottom: 0; } }
 .slide-out {
@@ -483,6 +483,14 @@ textarea {
     transform: translateY(0); }
   to {
     transform: translateY(-200%); } }
+.form-slide-out {
+  animation: 500ms FormSlideOut; }
+
+@keyframes FormSlideOut {
+  from {
+    top: 85px; }
+  to {
+    top: -100px; } }
 .shake {
   animation: 300ms shake; }
 
