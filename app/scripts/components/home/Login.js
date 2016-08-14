@@ -28,9 +28,10 @@ const Login = React.createClass({
   closeModal(e) {
     if (e) {
       if (_.toArray(e.target.classList).indexOf('modal-container') !== -1 || _.toArray(e.target.classList).indexOf('form-modal-container') !== -1 ) {
-        this.setState({slideOut: true})
+        this.setState({slideOut: true, formClasses: 'form-modal login slide-out'})
+
         window.setTimeout(() => {
-          this.setState({slideOut: false})
+          // this.setState({slideOut: false})
           store.settings.history.push('/')
         }, 300)
       }
@@ -63,15 +64,26 @@ const Login = React.createClass({
       background: "rgba(0,0,0,0.5)",
     }
 
+    let modalStyles;
+    if (this.state.slideOut) {
+      containerStyles = {
+        top: "75px",
+        background: 'rgba(0,0,0,0)'
+      }
+      modalStyles = {
+        animation: '300ms FormSlideOut'
+      }
+    }
+
 
     return (
-      <div onClick={this.closeModal} className="modal-container" style={containerStyles}>
+      <div onClick={this.closeModal} className="modal-container fade-in" style={containerStyles}>
         <Transition
           transitionName="bounce-down"
           transitionEnterTimeout={30000}
           transitionLeaveTimeout={30000}>
 
-          <div key="login-modal" onScroll={this.scroll} className={this.state.formClasses} ref="modal">
+          <div key="login-modal" onScroll={this.scroll} style={modalStyles} className={this.state.formClasses} ref="modal">
 
             <form onSubmit={this.login} className={this.state.formClasses}>
               <h3>Login</h3>
