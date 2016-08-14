@@ -1224,6 +1224,7 @@ input[type=range]::-moz-range-thumb {
     height: 100%; }
     .contact-us form .left {
       width: 50%;
+      height: 100%;
       margin-right: 50px;
       display: flex;
       flex-direction: column;
@@ -1232,6 +1233,7 @@ input[type=range]::-moz-range-thumb {
         padding: 20px;
         border: none; }
       .contact-us form .left label p {
+        margin-top: 0;
         color: #fff; }
     .contact-us form .right {
       width: 50%;
