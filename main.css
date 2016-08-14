@@ -873,7 +873,8 @@ header {
     padding: 40px 0;
     text-align: center; }
     .the-results .content .title {
-      color: #fff; }
+      color: #fff;
+      margin-top: 0; }
     .the-results .content .divider {
       background: #fff;
       margin: 0 auto; }
@@ -886,7 +887,7 @@ header {
       text-align: left; }
 
 #result-chart {
-  height: 500px; }
+  height: 70vh; }
   #result-chart .chart-balloon {
     font-family: 'proxima-nova', sans-serif;
     display: flex;
