@@ -169,7 +169,7 @@ const TheResults = React.createClass({
     return (
       <section className="the-results">
         <div className="content">
-          <h2 className="title">The Results</h2>
+          <h2 className="title">Performance</h2>
           <div className="divider"></div>
           <h3 className="subtitle" onClick={this.toggleLogScale}>Log Graph</h3>
           {chart}

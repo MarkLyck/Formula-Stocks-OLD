@@ -6,6 +6,7 @@
     // width: 100%;
     .title {
       color: #fff;
+      margin-top: 0;
     }
     .divider {
       background: #fff;
@@ -25,7 +26,7 @@
 }
 
 #result-chart {
-  height: 500px;
+  height: 70vh;
   .chart-balloon {
     font-family: 'proxima-nova', sans-serif;
     display: flex;

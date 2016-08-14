@@ -2,6 +2,8 @@ import React from 'React'
 
 import store from '../../store'
 
+
+import Header from './Header'
 import AboveAverageReturns from './fiveReasons/AboveAverageReturns'
 import ReachYourGoals from './fiveReasons/ReachYourGoals'
 import InformationalAdvantage from './fiveReasons/InformationalAdvantage'
@@ -31,6 +33,7 @@ const Home = React.createClass({
   render () {
     return (
       <div id="home">
+        <Header/>
         <AboveAverageReturns/>
         <ReachYourGoals/>
         <InformationalAdvantage/>
