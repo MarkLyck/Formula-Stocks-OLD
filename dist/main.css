@@ -432,7 +432,7 @@ textarea {
   color: #27A5F9; }
 
 .bounce-down {
-  animation: .75s slideDown; }
+  animation: .75s BounceDown; }
 
 @keyframes BounceDown {
   0% {
@@ -488,9 +488,11 @@ textarea {
 
 @keyframes FormSlideOut {
   from {
-    top: 85px; }
+    top: 85px;
+    opacity: 1; }
   to {
-    top: -100px; } }
+    top: -100px;
+    opacity: 0; } }
 .shake {
   animation: 300ms shake; }
 
@@ -1343,7 +1345,7 @@ input[type=range]::-moz-range-thumb {
   .contact-us form {
     display: flex;
     width: 80%;
-    height: 100%; }
+    height: 350px; }
     .contact-us form .left {
       width: 50%;
       height: 100%;

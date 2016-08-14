@@ -1,5 +1,5 @@
 .bounce-down {
-  animation: .75s slideDown;
+  animation: .75s BounceDown;
 }
 @keyframes BounceDown {
   0% {
@@ -82,9 +82,11 @@
 @keyframes FormSlideOut {
   from {
     top: 85px;
+    opacity: 1;
   }
   to {
     top: -100px;
+    opacity: 0;
   }
 }
 
