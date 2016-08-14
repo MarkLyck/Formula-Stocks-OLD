@@ -84,6 +84,31 @@
   }
 }
 
+.slide-out-left {
+  animation: 500ms slideOutLeft;
+  transform: translateX(-200%);
+}
+@keyframes slideOutLeft {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-200%);
+  }
+}
+
+.slide-in-right {
+  animation: 500ms slideInRight;
+}
+@keyframes slideInRight {
+  from {
+    transform: translateX(200%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
 .form-slide-out {
   animation: 500ms FormSlideOut;
 }

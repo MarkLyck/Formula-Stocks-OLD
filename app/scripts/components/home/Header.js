@@ -37,10 +37,13 @@ const Header = React.createClass({
 
     let navLinks = (
       <div id="nav-links">
-        <Link to="/login" id="login-btn" className="nav-link"><i className="fa fa-sign-in" aria-hidden="true"></i>Login</Link>
-        <Link to="/signup" id="signup-btn" className="nav-link"><i className="fa fa-user-plus" aria-hidden="true"></i>Signup</Link>
+        <Link to="/login" id="login-btn" className="nav-link">Login</Link>
+        <Link to="/signup" id="signup-btn" className="nav-link">Signup</Link>
       </div>
     )
+
+    //<i className="fa fa-sign-in" aria-hidden="true"></i>
+    //<i className="fa fa-user-plus" aria-hidden="true"></i>
     if (localStorage.authtoken) {
       navLinks = (
         <div id="nav-links">

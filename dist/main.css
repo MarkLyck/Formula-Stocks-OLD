@@ -488,6 +488,23 @@ textarea {
     transform: translateY(0); }
   to {
     transform: translateY(-200%); } }
+.slide-out-left {
+  animation: 500ms slideOutLeft;
+  transform: translateX(-200%); }
+
+@keyframes slideOutLeft {
+  from {
+    transform: translateX(0); }
+  to {
+    transform: translateX(-200%); } }
+.slide-in-right {
+  animation: 500ms slideInRight; }
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(200%); }
+  to {
+    transform: translateX(0); } }
 .form-slide-out {
   animation: 500ms FormSlideOut; }
 
@@ -662,18 +679,6 @@ header {
   .form-modal div {
     position: relative;
     width: 100%; }
-  .form-modal .form-error {
-    background: #da1354;
-    padding-left: 20px;
-    box-sizing: border-box;
-    animation: 100ms showError; }
-    .form-modal .form-error i {
-      margin-right: 5px; }
-@keyframes showError {
-  from {
-    height: 0; }
-  to {
-    height: 60px; } }
   .form-modal .username::before {
     content: '\f0e0';
     font-family: FontAwesome;
@@ -778,6 +783,61 @@ header {
     .signup input[type=submit]:hover {
       background: #0e9bf8;
       cursor: pointer; }
+  .signup .error::before {
+    color: #da1354; }
+
+.form-error {
+  background: #da1354;
+  padding-left: 20px;
+  height: 60px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  color: #fff;
+  animation: 100ms showError; }
+  .form-error i {
+    margin-right: 5px; }
+  .form-error h4 {
+    font-weight: 400; }
+@keyframes showError {
+  from {
+    height: 0; }
+  to {
+    height: 60px; } }
+.select-plan-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff; }
+  .select-plan-form .modal-title {
+    padding: 20px; }
+  .select-plan-form .plans {
+    width: 100%;
+    display: flex;
+    flex-direction: column; }
+    .select-plan-form .plans button {
+      background: #fff;
+      transition: background .3s, color .3s;
+      display: flex;
+      align-items: center;
+      padding: 10px 40px;
+      height: 90px;
+      justify-content: space-between;
+      border-radius: 0; }
+      .select-plan-form .plans button h3:last-child {
+        text-align: right; }
+      .select-plan-form .plans button:hover {
+        background: #27A5F9; }
+        .select-plan-form .plans button:hover h3 {
+          color: #fff; }
+    .select-plan-form .plans .selected {
+      background: #0e9bf8; }
+      .select-plan-form .plans .selected h3 {
+        color: #fff; }
+  .select-plan-form .filled-btn {
+    max-width: 100%;
+    border-radius: 0;
+    height: 90px; }
 
 #what-is-it {
   display: flex;
