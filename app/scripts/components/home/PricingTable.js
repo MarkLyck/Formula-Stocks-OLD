@@ -19,7 +19,7 @@ const PricingTable = React.createClass({
     this.setState({basicStats: store.plans.get('basic').get('stats')})
   },
   render() {
-    console.log(store.plans);
+    // console.log(store.plans);
     return (
       <section className="pricing-table">
         <div className="content">

@@ -3,6 +3,7 @@ header {
   display: flex;
   flex-direction: column;
   overflow: hidden;
+
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#2d3a65+0,18aed6+100 */
   background: #2d3a65; /* Old browsers */
   background: -moz-linear-gradient(-45deg,  #2d3a65 0%, #18aed6 100%); /* FF3.6-15 */
@@ -33,8 +34,11 @@ header {
       align-items: center;
     }
     .right {
-      display: flex;
       height: 100%;
+      #nav-links {
+        display: flex;
+        height: 100%;
+      }
       a {
         display: flex;
         align-items: center;

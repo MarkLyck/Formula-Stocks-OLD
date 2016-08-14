@@ -1,5 +1,5 @@
 .bounce-down {
-  animation: .75s BounceDown;
+  animation: .75s slideDown;
 }
 @keyframes BounceDown {
   0% {
@@ -16,6 +16,27 @@
   }
   100% {
     transform: translateY(0%);
+  }
+}
+
+.form-bounce-down {
+  animation: .5s FormBounceDown;
+}
+@keyframes FormBounceDown {
+  0% {
+    top: -100px;
+  }
+  25%{
+    top: 115px;
+  }
+  50%{
+    top: 70px;
+  }
+  75%{
+    top: 95px;
+  }
+  100% {
+    top: 85px;
   }
 }
 

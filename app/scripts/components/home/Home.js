@@ -50,6 +50,7 @@ const Home = React.createClass({
         <AboutUs/>
         <ContactUs/>
         <Footer/>
+        {this.props.children}
       </div>
     )
   }

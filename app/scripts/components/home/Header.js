@@ -34,15 +34,28 @@ const Header = React.createClass({
     })
   },
   render: function() {
+
+    let navLinks = (
+      <div id="nav-links">
+        <Link to="/login" id="login-btn" className="nav-link"><i className="fa fa-sign-in" aria-hidden="true"></i>Login</Link>
+        <Link to="/signup" id="signup-btn" className="nav-link"><i className="fa fa-user-plus" aria-hidden="true"></i>Signup</Link>
+      </div>
+    )
+    if (localStorage.authtoken) {
+      navLinks = (
+        <div id="nav-links">
+          <a href="#" id="logout-btn" onClick={store.session.logout.bind(store.session)} className="nav-link"><i className="fa fa-sign-out" aria-hidden="true"></i>Logout</a>
+        </div>
+      )
+    }
+
     return (
       <header>
         <nav>
           <div className="content">
             <img id="logo" src="assets/images/logo_horizontal.svg"/>
             <div className="right">
-              <Link to="/" className="nav-link" >Home</Link>
-              <a className="nav-link" to="login">Login</a>
-              <a className="nav-link" >Signup</a>
+              {navLinks}
             </div>
           </div>
         </nav>
