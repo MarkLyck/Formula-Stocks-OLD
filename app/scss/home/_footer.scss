@@ -1,8 +1,21 @@
 footer {
-  padding: 20px 0;
-  background: $dark-background;
-  text-align: center;
-  p {
-    color: $light-text-color;
+  .disclaimer-container {
+    background: lighten($dark-background, 5%);
+    padding: 40px;
+    display: flex;
+    justify-content: center;
+    .disclaimer {
+      width: 80%;
+      color: #fff;
+      margin: 0;
+    }
+  }
+  .copyright {
+    padding: 20px 0;
+    background: $dark-background;
+    text-align: center;
+    p {
+      color: $light-text-color;
+    }
   }
 }
