@@ -7,7 +7,7 @@ import Modal from '../Modal'
 
 const Signup = React.createClass({
   getInitialState: function() {
-    return {formClasses: 'signup bounce-in', error: ''}
+    return {formClasses: 'signup bounce-down', error: ''}
   },
   signup: function(e) {
     e.preventDefault()
