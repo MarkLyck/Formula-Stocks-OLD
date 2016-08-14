@@ -1,0 +1,36 @@
+.newsletter {
+  background: linear-gradient(rgba(#000, .25),rgba(#000, .25)),url('assets/images/WallStreet.jpg');
+  background-size: cover;
+  height: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .title {
+    color: #fff;
+    font-weight: 400;
+    font-size: 2rem;
+    margin-bottom: 25px;
+  }
+  form {
+    display: flex;
+    max-width: 600px;
+    width: 80%;
+    opacity: 0.9;
+    input[type=text] {
+      border: none;
+      width: calc(100% - 100px);
+      padding-left: 20px;
+    }
+    input[type=submit] {
+      border-radius: 0;
+      border: none;
+      background: $primary-color;
+      width: 100px;
+      &:hover {
+        cursor: pointer;
+        background: darken($primary-color, 10%);
+      }
+    }
+  }
+}

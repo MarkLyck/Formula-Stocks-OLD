@@ -11,11 +11,11 @@ const CumulativeInterest = React.createClass({
     self = this
 
     $(this.refs.cagrSlider).on("change", function() {
-      $('#cagrValue').val(this.value + "%" );
+      $('#cagrValue').val('CAGR: ' + this.value + "%" );
       self.setState({cagr: this.value})
     }).trigger("change");
     $(this.refs.investmentSlider).on("change", function() {
-      $('#investmentValue').val('$' + this.value);
+      $('#investmentValue').val('Investment: $' + this.value);
       self.setState({investment: this.value})
     }).trigger("change");
 
@@ -59,7 +59,7 @@ const CumulativeInterest = React.createClass({
       },
 
       "graphs": [ {
-        "balloonText": "[[category]]: <b>[[value]]</b>",
+        "balloonText": "[[category]]<br/> <b>$[[value]]</b>",
         "fillAlphas": 1,
         // "lineAlpha": 0.2,
         lineColor:  "#27A5F9",
