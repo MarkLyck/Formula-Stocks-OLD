@@ -467,6 +467,11 @@ textarea {
     opacity: 0; }
   to {
     opacity: 1; } }
+@keyframes fadeOut {
+  from {
+    opacity: 1; }
+  to {
+    opacity: 0; } }
 .slide-up {
   animation: 0.75s slideUp; }
 
@@ -620,7 +625,8 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 10; }
+  z-index: 10;
+  transition: background .3s; }
   .modal-container .modal {
     background: #fff;
     width: 60%; }
@@ -704,6 +710,72 @@ header {
     border-bottom-left-radius: 3px;
     color: #fff; }
     .form-modal input[type="submit"]:hover {
+      background: #0e9bf8;
+      cursor: pointer; }
+
+.signup {
+  background: #fff;
+  border-radius: 3px;
+  position: relative; }
+  .signup h3 {
+    margin: 0;
+    padding: 20px; }
+  .signup .input-wrapper {
+    position: relative; }
+    .signup .input-wrapper input {
+      padding: 20px;
+      padding-left: 40px;
+      border: none;
+      border-top: 1px solid #e6e6e6;
+      background: #f2f2f2;
+      color: #49494A;
+      width: 100%;
+      box-sizing: border-box; }
+  .signup .name::before {
+    content: '\f007';
+    font-family: FontAwesome;
+    color: #737373;
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    z-index: 2; }
+  .signup .email::before {
+    content: '\f0e0';
+    font-family: FontAwesome;
+    color: #737373;
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    z-index: 2; }
+  .signup .password::before {
+    content: '\f023';
+    font-family: FontAwesome;
+    color: #737373;
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    z-index: 2; }
+  .signup .verify-password::before {
+    content: '\f13e';
+    font-family: FontAwesome;
+    color: #737373;
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    z-index: 2; }
+  .signup input[type=submit] {
+    width: 100%;
+    padding: 20px;
+    background: #27A5F9;
+    color: #fff;
+    border: none;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px; }
+    .signup input[type=submit]:hover {
       background: #0e9bf8;
       cursor: pointer; }
 
