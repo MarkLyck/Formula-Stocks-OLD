@@ -31,8 +31,6 @@ const CumulativeInterest = React.createClass({
 
   },
   calculateData() {
-    console.log(this.state.cagr);
-    console.log(this.state.investment);
     let chartData = []
     let currentValue = this.state.investment
     for(let i=0; i <= this.state.years; i++) {
@@ -42,8 +40,6 @@ const CumulativeInterest = React.createClass({
     return chartData
   },
   render() {
-    console.log(this.calculateData());
-
     var config = {
       type: "serial",
       theme: "light",
@@ -61,7 +57,6 @@ const CumulativeInterest = React.createClass({
       "graphs": [ {
         "balloonText": "[[category]]<br/> <b>$[[value]]</b>",
         "fillAlphas": 1,
-        // "lineAlpha": 0.2,
         lineColor:  "#27A5F9",
         "type": "column",
         "valueField": "value"

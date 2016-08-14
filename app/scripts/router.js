@@ -4,9 +4,9 @@ import {Router, Route, IndexRoute, hashHistory} from 'react-router'
 import store from './store'
 
 import App from './components/App'
-import Home from './components/Home'
-import Login from './components/Login'
-import Signup from './components/Signup'
+import Home from './components/home/Home'
+import Login from './components/home/Login'
+import Signup from './components/home/Signup'
 
 const router = (
   <Router history={store.settings.history}>
