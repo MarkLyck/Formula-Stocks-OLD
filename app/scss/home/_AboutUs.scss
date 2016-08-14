@@ -1,0 +1,46 @@
+.about-us {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 0;
+  .content {
+    margin: 0 auto;
+    width: 80%;
+    .about-fs {
+      padding: 20px 0;
+    }
+    .card-wrapper {
+      display: flex;
+      justify-content: space-between;
+      .profile {
+        width: calc(100% / 4);
+        height: 450px;
+        .top {
+          height: 80%;
+          width: 100%;
+          background-size: cover;
+          border: 1px solid $primary-color;
+        }
+        .bottom {
+          background: $primary-color;
+          height: 20%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          h3 {
+            margin: 0;
+            color: #fff;
+            font-weight: 400;
+            margin-bottom: 10px;
+          }
+          h4 {
+            margin: 0;
+            font-weight: 100;
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
+}

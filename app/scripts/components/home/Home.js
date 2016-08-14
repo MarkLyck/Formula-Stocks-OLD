@@ -15,17 +15,18 @@ import RewardVSRisk from './RewardVSRisk'
 import Quote from './Quote'
 import CumulativeInterest from './CumulativeInterest'
 import Newsletter from './Newsletter'
+import AboutUs from './AboutUs'
+import ContactUs from './ContactUs'
+import Footer from './Footer'
 
 import AmTest from './AmTest'
 
 const Home = React.createClass({
   componentDidMount() {
-
     store.plans.get('basic').getAnnualData()
     store.plans.get('premium').getAnnualData()
     store.plans.get('business').getAnnualData()
     store.market.data.getAnnualData()
-
   },
   render () {
     return (
@@ -43,6 +44,9 @@ const Home = React.createClass({
         <Quote/>
         <CumulativeInterest/>
         <Newsletter/>
+        <AboutUs/>
+        <ContactUs/>
+        <Footer/>
       </div>
     )
   }

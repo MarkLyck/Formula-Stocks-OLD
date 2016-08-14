@@ -16,18 +16,25 @@
     display: flex;
     max-width: 600px;
     width: 80%;
-    opacity: 0.9;
     input[type=text] {
       border: none;
       width: calc(100% - 100px);
       padding-left: 20px;
+      opacity: 0.9;
+      transition: opacity .3s;
+      &:focus {
+        opacity: 1;
+      }
     }
     input[type=submit] {
       border-radius: 0;
       border: none;
       background: $primary-color;
       width: 100px;
+      opacity: 0.9;
+      transition: opacity .3s, background .3s;
       &:hover {
+        opacity: 1;
         cursor: pointer;
         background: darken($primary-color, 10%);
       }

@@ -1,0 +1,60 @@
+.contact-us {
+  padding: 40px 0;
+  background: darken($primary-color, 10%);
+  // background: lighten($dark-background, 5%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .title {
+    color: #fff;
+    margin-bottom: 40px;
+  }
+  form {
+    display: flex;
+    width: 80%;
+    height: 100%;
+    .left {
+      width: 50%;
+      margin-right: 50px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      input[type=text] {
+        padding: 20px;
+        border: none;
+      }
+      label {
+        p {
+          color: #fff;
+        }
+      }
+    }
+    .right {
+      width: 50%;
+      margin-left: 50px;
+      textarea {
+        border: none;
+        margin-bottom: 20px;
+        height: calc(100% - 83px);
+        width: 100%;
+        padding: 20px;
+      }
+      input[type=submit] {
+        background: #fff;
+        color: $primary-color;
+        border: none;
+        border-radius: 0;
+        // padding: 20px;
+        height: 60px;
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+    input {
+      width: 100%;
+    }
+
+
+  }
+}
