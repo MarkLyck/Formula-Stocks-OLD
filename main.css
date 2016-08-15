@@ -1746,6 +1746,11 @@ footer .copyright {
   .side-bar-links .logout:hover button h3 i {
     color: #da1354; }
 
+.portfolio {
+  width: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden; }
+
 body {
   font-family: 'proxima-nova', 'Lato', sans-serif; }
 
