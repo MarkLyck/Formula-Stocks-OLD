@@ -29,9 +29,9 @@ const PaymentForm = React.createClass({
         this.chargeCard(token)
       })
       .catch((e) => {
-        this.setState({error: e, modalClasses: 'get-tickets-container shake'})
+        this.setState({error: e, formClass: 'payment-form shake'})
         window.setTimeout(() => {
-          this.setState({modalClasses: 'get-tickets-container'})
+          this.setState({formClass: 'payment-form'})
         }, 300)
       })
   },
@@ -45,9 +45,9 @@ const PaymentForm = React.createClass({
       })
       .catch((e) => {
         console.log('charge ERROR: ', e);
-        this.setState({error: e, modalClasses: 'get-tickets-container shake'})
+        this.setState({error: e, formClass: 'payment-form shake'})
         window.setTimeout(() => {
-          this.setState({modalClasses: 'get-tickets-container'})
+          this.setState({formClass: 'payment-form'})
         }, 300)
       })
   },
