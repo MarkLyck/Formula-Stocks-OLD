@@ -52,11 +52,9 @@ const PaymentForm = React.createClass({
       cycle = 'annually'
     }
 
-
-    // console.log('charge card running');
-    console.log(this.props.passedProps.plan);
     cc.createCustomer(token, this.props.passedProps.plan, cycle)
       .then(() => {
+
         console.log('SUCCESFUL PAYMENT');
       })
       .catch((e) => {

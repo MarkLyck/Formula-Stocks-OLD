@@ -34,8 +34,6 @@ const Plan = Backbone.Model.extend({
 
       this.set('stats', newStats)
       store.plans.trigger('update')
-
-      console.log(this.get('name'), this.get('stats'));
     })
     .fail((e) => {
       console.error('Failed fetching annual data from server', e)
