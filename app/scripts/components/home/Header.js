@@ -3,6 +3,7 @@ import $ from 'jquery'
 import {Link} from 'react-router'
 
 import Hero from './Hero'
+import store from '../../store'
 
 const Header = React.createClass({
   componentDidMount() {
