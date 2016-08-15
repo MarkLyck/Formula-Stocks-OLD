@@ -103,17 +103,21 @@
 
 .signup {
   background: #fff;
-  border-radius: 3px;
+  // border-radius: 3px;
   position: relative;
   h3 {
     margin: 0;
     padding: 20px;
+    height: 90px;
+    display: flex;
+    align-items: center;
   }
   .input-wrapper {
     position: relative;
     input {
       padding: 20px;
       padding-left: 40px;
+      height: 90px;
       border: none;
       border-top: 1px solid darken(#fff, 10%);
       background: darken(#fff, 5%);
@@ -176,8 +180,9 @@
     background: $primary-color;
     color: #fff;
     border: none;
-    border-bottom-right-radius: 3px;
-    border-bottom-left-radius: 3px;
+    height: 90px;
+    // border-bottom-right-radius: 3px;
+    // border-bottom-left-radius: 3px;
     &:hover {
       background: darken($primary-color, 5%);
       cursor: pointer;

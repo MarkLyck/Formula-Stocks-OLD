@@ -720,16 +720,19 @@ header {
 
 .signup {
   background: #fff;
-  border-radius: 3px;
   position: relative; }
   .signup h3 {
     margin: 0;
-    padding: 20px; }
+    padding: 20px;
+    height: 90px;
+    display: flex;
+    align-items: center; }
   .signup .input-wrapper {
     position: relative; }
     .signup .input-wrapper input {
       padding: 20px;
       padding-left: 40px;
+      height: 90px;
       border: none;
       border-top: 1px solid #e6e6e6;
       background: #f2f2f2;
@@ -778,8 +781,7 @@ header {
     background: #27A5F9;
     color: #fff;
     border: none;
-    border-bottom-right-radius: 3px;
-    border-bottom-left-radius: 3px; }
+    height: 90px; }
     .signup input[type=submit]:hover {
       background: #0e9bf8;
       cursor: pointer; }
