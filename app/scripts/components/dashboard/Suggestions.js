@@ -13,6 +13,11 @@ const Suggestions = React.createClass({
   updateState() {
     this.setState({fetching: false})
   },
+  componentWillReceiveProps(newPlan) {
+
+    store.plans.get(newPlan.plan).on('change', this.updateState)
+    store.plans.get(newPlan.plan).getSuggestions()
+  },
   render() {
     console.log('rendering');
     let suggestions = store.plans.get(this.props.plan).get('suggestions').map((suggestion, i) => {
