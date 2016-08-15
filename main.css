@@ -777,14 +777,15 @@ header {
     z-index: 2; }
   .signup .error::before {
     color: #da1354; }
+  .signup input[type=submit] {
+    height: 90px; }
 
 input[type=submit] {
   width: 100%;
   padding: 20px;
   background: #27A5F9;
   color: #fff;
-  border: none;
-  height: 90px; }
+  border: none; }
   input[type=submit]:hover {
     background: #0e9bf8;
     cursor: pointer; }
