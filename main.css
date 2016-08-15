@@ -1643,6 +1643,8 @@ footer .copyright {
   background: #F9F9F9;
   height: 100vh;
   width: 100vw; }
+  .dashboard .container {
+    height: calc(100% - 75px); }
 
 .dashboard-nav {
   display: flex;
@@ -1683,6 +1685,62 @@ footer .copyright {
         background: #27A5F9;
         color: #fff;
         margin-right: 10px; }
+
+.side-bar {
+  background: #30333B;
+  width: 300px;
+  height: 100%; }
+
+.side-bar-links .side-bar-link {
+  border-bottom: 2px solid #3A3D45;
+  display: flex;
+  flex-direction: column; }
+  .side-bar-links .side-bar-link button {
+    width: 100%;
+    height: 75px;
+    background: none;
+    justify-content: space-between;
+    display: flex; }
+    .side-bar-links .side-bar-link button h3 {
+      padding-left: 40px;
+      color: #ABB3B7;
+      margin: 0; }
+      .side-bar-links .side-bar-link button h3 i {
+        position: absolute;
+        left: 20px; }
+    .side-bar-links .side-bar-link button i {
+      color: #ABB3B7; }
+  .side-bar-links .side-bar-link .dropdown {
+    display: flex;
+    flex-direction: column; }
+    .side-bar-links .side-bar-link .dropdown a {
+      display: flex;
+      align-items: center;
+      height: 50px;
+      width: 100%;
+      padding-left: 60px;
+      color: #95989E; }
+      .side-bar-links .side-bar-link .dropdown a:hover {
+        background: #25272d; }
+  .side-bar-links .side-bar-link:hover button {
+    height: 75px; }
+    .side-bar-links .side-bar-link:hover button h3 {
+      color: #27A5F9; }
+      .side-bar-links .side-bar-link:hover button h3 i {
+        color: #27A5F9; }
+.side-bar-links .selected {
+  height: calc(50px * 4 + 75px);
+  background: #292c33; }
+  .side-bar-links .selected button h3 {
+    color: #27A5F9; }
+    .side-bar-links .selected button h3 i {
+      color: #27A5F9; }
+  .side-bar-links .selected .dropdown a:hover {
+    color: #27A5F9; }
+.side-bar-links .logout:hover button h3 {
+  color: #da1354; }
+  .side-bar-links .logout:hover button h3 i {
+    color: #da1354; }
 
 body {
   font-family: 'proxima-nova', 'Lato', sans-serif; }
