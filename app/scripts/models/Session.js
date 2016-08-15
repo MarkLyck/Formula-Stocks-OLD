@@ -8,34 +8,45 @@ const Session = Backbone.Model.extend({
   urlRoot: `https://baas.kinvey.com/user/kid_rJRC6m9F/login`,
   idAttribute: '_id',
   defaults: {
-    username: '',
+    email: '',
   },
   parse: function(response) {
     if (response) {
       return {
         authtoken: response._kmd.authtoken,
-        username: response.username,
+        email: response.username,
         userId: response._id
       }
     }
   },
   login: function(username, password) {
-    this.save({username: username, password: password},
-    {
-      success: (model, response) => {
-        localStorage.authtoken = response._kmd.authtoken
-        this.unset('password')
-        hashHistory.push('/')
-        console.log(response._kmd.authtoken);
-      },
-      error: function(model, response) {
-        console.log('ERROR: Login failed: ', response);
-      }
+    return new Promise((resolve, reject) => {
+      this.save({username: username, password: password},
+      {
+        success: (model, response) => {
+          localStorage.authtoken = response._kmd.authtoken
+          this.unset('password')
+          this.set('showModal', false)
+          resolve()
+        },
+        error: function(model, response) {
+          console.log('ERROR: Login failed: ', response.responseText);
+          if (response.responseText.indexOf('IncompleteRequestBody') !== -1) {
+            if (username === '') {
+              reject('Email missing')
+            } else {
+              reject('Password missing')
+            }
+          } else if (response.responseText.indexOf('InvalidCredentials') !== -1) {
+            reject('Wrong email or password')
+          }
+        }
+      })
     })
   },
-  signup: function(username, password) {
+  signup: function(email, password) {
     store.session.save({
-      username: username,
+      username: email,
       password: password,
       highscore: this.get('highScore')
     },

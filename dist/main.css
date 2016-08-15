@@ -529,6 +529,20 @@ textarea {
     transform: translateX(5%); }
   100% {
     transform: translateX(0%); } }
+.login-shake {
+  animation: 300ms loginShake; }
+
+@keyframes loginShake {
+  0% {
+    right: 5px; }
+  25% {
+    right: 25px; }
+  50% {
+    right: 5px; }
+  75% {
+    right: 25px; }
+  100% {
+    right: 15px; } }
 header {
   padding-top: 75px;
   display: flex;
@@ -679,7 +693,7 @@ header {
   .form-modal div {
     position: relative;
     width: 100%; }
-  .form-modal .username::before {
+  .form-modal .email::before {
     content: '\f0e0';
     font-family: FontAwesome;
     color: gray;

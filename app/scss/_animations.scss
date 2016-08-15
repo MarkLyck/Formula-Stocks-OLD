@@ -145,3 +145,24 @@
     transform: translateX(0%);
   }
 }
+
+.login-shake {
+  animation: 300ms loginShake;
+}
+@keyframes loginShake {
+  0% {
+    right: 5px;
+  }
+  25%{
+    right: 25px;
+  }
+  50%{
+    right: 5px;
+  }
+  75%{
+    right: 25px;
+  }
+  100% {
+    right: 15px;
+  }
+}

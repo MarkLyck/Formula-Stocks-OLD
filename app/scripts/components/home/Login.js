@@ -11,17 +11,17 @@ const Login = React.createClass({
   },
   login: function(e) {
     e.preventDefault()
-    let username = this.refs.username.value
+    let email = this.refs.email.value
     let password = this.refs.password.value
-    store.session.login(username, password)
+    store.session.login(email, password)
     .then(() => {
-      this.props.closeModal()
+      this.closeModal()
     })
     .catch((errMsg) => {
       console.log('ERROR: ', errMsg);
-      this.setState({formClasses: 'form-modal signup shake', error: errMsg})
+      this.setState({formClasses: 'form-modal login login-shake', error: errMsg})
       window.setTimeout(() => {
-        this.setState({formClasses: 'form-modal signup', error: errMsg})
+        this.setState({formClasses: 'form-modal login', error: errMsg})
       }, 300)
     })
   },
@@ -31,26 +31,24 @@ const Login = React.createClass({
         this.setState({slideOut: true, formClasses: 'form-modal login slide-out'})
 
         window.setTimeout(() => {
-          // this.setState({slideOut: false})
           store.settings.history.push('/')
         }, 300)
       }
     }
   },
   render: function() {
-    console.log('rendering login modal');
     let errorMsg
-    let userClasses = 'username'
+    let emailClasses = 'email'
     let passwordClasses = 'password'
     let verifyPasswordClasses = 'verify-password'
 
     if (this.state.error) {
-      if (this.state.error.indexOf('User') !== -1) {
-        userClasses = 'username error'
+      if (this.state.error.indexOf('Email') !== -1) {
+        emailClasses = 'email error'
       } else if (this.state.error.indexOf('Password') !== -1) {
         passwordClasses = 'password error'
       } else if (this.state.error.indexOf('Wrong') !== -1) {
-        userClasses = 'username error'
+        emailClasses = 'email error'
         passwordClasses = 'password error'
       }
       errorMsg = (
@@ -94,7 +92,7 @@ const Login = React.createClass({
             <form onSubmit={this.login} className={this.state.formClasses}>
               <h3>Login</h3>
               {errorMsg}
-              <div className={userClasses}>
+              <div className={emailClasses}>
                 <input type="text" placeholder="Email" ref="email" autoFocus="true"/>
               </div>
               <div className={passwordClasses}>
