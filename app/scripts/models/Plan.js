@@ -46,7 +46,7 @@ const Plan = Backbone.Model.extend({
       .then((response) => {
         let suggestions = JSON.parse(response)
         this.set('suggestions', suggestions.actionable)
-        console.log(suggestions.actionable);
+        // console.log(suggestions.actionable);
       })
   },
   getPortfolio() {
@@ -54,7 +54,7 @@ const Plan = Backbone.Model.extend({
       .then((response) => {
         let data = JSON.parse(response)
         this.set('portfolio', data.portfolio)
-        console.log(data);
+        // console.log(data);
       })
   },
 })

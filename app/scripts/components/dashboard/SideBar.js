@@ -3,7 +3,14 @@ import {Link} from 'react-router'
 
 const SideBar = React.createClass({
   getInitialState() {
-    return {dropdown: 'suggestions', plan: this.props.plan}
+    let dropdown;
+    console.log(this.props.location);
+    if (this.props.location.indexOf('suggestions') !== -1) {
+      dropdown = 'suggestions'
+    } else if (this.props.location.indexOf('portfolio') !== -1) {
+      dropdown = 'portfolio'
+    }
+    return {dropdown: dropdown, plan: this.props.plan}
   },
   toggleDropdown(dropdown) {
     this.setState({dropdown: dropdown, plan: this.props.plan})
@@ -12,7 +19,7 @@ const SideBar = React.createClass({
     this.setState({plan: props.plan})
   },
   render() {
-    // console.log(this.props.plan);
+    // console.log(this.props);
 
     let suggestionsClass = 'suggestions side-bar-link'
     let portfoliosClass = 'portfolios side-bar-link'
@@ -34,7 +41,7 @@ const SideBar = React.createClass({
           <Link className={fundClass} to="/dashboard/suggestions/fund">Fund</Link>
         </div>
       )
-    } else if (this.state.dropdown === 'portfolios') {
+    } else if (this.state.dropdown === 'portfolio') {
       portfoliosClass = 'portfolios side-bar-link selected'
       portfoliosDropdown = (
         <div className="dropdown">
@@ -55,7 +62,7 @@ const SideBar = React.createClass({
             {suggestionsDropdown}
           </li>
 
-          <li className={portfoliosClass} onClick={this.toggleDropdown.bind(null, 'portfolios')}>
+          <li className={portfoliosClass} onClick={this.toggleDropdown.bind(null, 'portfolio')}>
             <button><h3><i className="fa fa-line-chart" aria-hidden="true"></i>Portfolios</h3> <i className="fa fa-angle-down" aria-hidden="true"></i></button>
             {portfoliosDropdown}
           </li>

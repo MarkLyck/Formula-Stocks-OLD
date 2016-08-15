@@ -5,13 +5,13 @@ import SideBar from './SideBar'
 
 const Dashboard = React.createClass({
   render() {
-    // console.log(this);
+    // console.log(this.props);
     return (
       <div className="dashboard">
         <Nav/>
         <div className="container">
-          <SideBar plan={this.props.params.plan}/>
-          {React.cloneElement(this.props.children, this.props.params)}
+          <SideBar plan={this.props.params.plan} location={this.props.location.pathname}/>
+          {React.cloneElement(this.props.children, {plan: this.props.params.plan, location: this.props.location.pathname})}
         </div>
       </div>
     )
