@@ -135,3 +135,7 @@ What if it was possible to predict some of the next years’ winners in the stoc
 - Mark stocks as bought, and keep track of your stocks.
 - Implement a full portfolio system, integrated with Formula Stocks
 - blog system w/ rich media formatting
+
+### MVP
+Users must be able to subscribe to a paid plan, login / signup / signout.
+They must be able to login to the dashboard, and see a portfolio for the plan they subscribed to, and suggestions for the same plan.
