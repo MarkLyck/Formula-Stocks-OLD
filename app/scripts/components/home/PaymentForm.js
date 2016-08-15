@@ -18,7 +18,8 @@ const PaymentForm = React.createClass({
   },
   checkPayment(e) {
     e.preventDefault()
-    this.setState({validatingPayment: true})
+    if (!this.state.validatingPayment) {
+      this.setState({validatingPayment: true})
 
       const card = {
         number: this.refs.cardNumber.value.replace(/\s+/g, ''),
@@ -43,8 +44,7 @@ const PaymentForm = React.createClass({
             this.setState({formClass: 'payment-form'})
           }, 300)
         })
-
-
+    }
   },
   createCustomer(token) {
     let cycle = 'monthly'
