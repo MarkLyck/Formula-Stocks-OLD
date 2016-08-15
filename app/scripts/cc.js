@@ -73,11 +73,6 @@ let cc = {
   },
   checkPayment: function(card) {
     return new Promise((resolve, reject) => {
-      if (!card.email) {
-        reject('Missing email')
-      } else {
-        store.session.set('email', card.email)
-      }
       Stripe.setPublishableKey('pk_test_c3GciGfzJPBBTd8238EwfTta');
       Stripe.card.createToken({
         number: card.number,

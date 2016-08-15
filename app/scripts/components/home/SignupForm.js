@@ -22,7 +22,6 @@ const SignupForm = React.createClass({
 
     store.session.validateNewUser(user)
     .then(() => {
-      console.log('VALID NAME: ', name);
       store.session.set('name', name)
       store.session.set('email', email)
       store.session.set('password', password)

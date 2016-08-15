@@ -775,18 +775,19 @@ header {
     left: 10px;
     transform: translateY(-50%);
     z-index: 2; }
-  .signup input[type=submit] {
-    width: 100%;
-    padding: 20px;
-    background: #27A5F9;
-    color: #fff;
-    border: none;
-    height: 90px; }
-    .signup input[type=submit]:hover {
-      background: #0e9bf8;
-      cursor: pointer; }
   .signup .error::before {
     color: #da1354; }
+
+input[type=submit] {
+  width: 100%;
+  padding: 20px;
+  background: #27A5F9;
+  color: #fff;
+  border: none;
+  height: 90px; }
+  input[type=submit]:hover {
+    background: #0e9bf8;
+    cursor: pointer; }
 
 .form-error {
   background: #da1354;
@@ -840,6 +841,85 @@ header {
     max-width: 100%;
     border-radius: 0;
     height: 90px; }
+
+.payment-form {
+  background: #fff; }
+  .payment-form h3 {
+    padding: 20px;
+    height: 90px;
+    display: flex;
+    margin: 0;
+    align-items: center;
+    justify-content: center; }
+  .payment-form .input-container {
+    position: relative; }
+    .payment-form .input-container input {
+      padding: 20px;
+      padding-left: 40px;
+      height: 90px;
+      border: none;
+      border-top: 1px solid #e6e6e6;
+      background: #f2f2f2;
+      color: #49494A;
+      width: 100%;
+      box-sizing: border-box; }
+  .payment-form .cc-number::before {
+    content: '\f09d';
+    font-family: FontAwesome;
+    color: #737373;
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    z-index: 2; }
+  .payment-form .wrapper {
+    display: flex;
+    width: 100%; }
+    .payment-form .wrapper .card-expiry-date {
+      width: 50%; }
+      .payment-form .wrapper .card-expiry-date::before {
+        content: '\f273';
+        font-family: FontAwesome;
+        color: #737373;
+        position: absolute;
+        top: 50%;
+        left: 10px;
+        transform: translateY(-50%);
+        z-index: 2; }
+    .payment-form .wrapper .card-cvc {
+      width: 50%; }
+      .payment-form .wrapper .card-cvc::before {
+        content: '\f023';
+        font-family: FontAwesome;
+        color: #737373;
+        position: absolute;
+        top: 50%;
+        left: 10px;
+        transform: translateY(-50%);
+        z-index: 2; }
+  .payment-form .ToC {
+    padding: 20px;
+    display: flex;
+    align-items: center; }
+    .payment-form .ToC .checker {
+      width: 25px;
+      height: 25px;
+      background: #f2f2f2;
+      border: 2px solid #bfbfbf;
+      border-radius: 3px;
+      margin-right: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center; }
+      .payment-form .ToC .checker i {
+        color: #27A5F9; }
+      .payment-form .ToC .checker:hover {
+        cursor: pointer;
+        border: 2px solid #27A5F9; }
+    .payment-form .ToC a {
+      color: #27A5F9; }
+      .payment-form .ToC a:hover {
+        text-decoration: underline; }
 
 #what-is-it {
   display: flex;

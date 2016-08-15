@@ -7,10 +7,11 @@ import Modal from '../Modal'
 
 import SelectPlanForm from './SelectPlanForm'
 import SignupForm from './SignupForm'
+import PaymentForm from './PaymentForm'
 
 const Signup = React.createClass({
   getInitialState: function() {
-    return {modal: 'signup', formClasses: 'signup bounce-down'}
+    return {modal: 'payment', formClasses: 'signup bounce-down'}
   },
   closeModal(e) {
     if (e) {
@@ -43,6 +44,8 @@ const Signup = React.createClass({
     modalContent = <SignupForm goToModal={this.goToModal}/>
   } else if (this.state.modal === 'selectPlan') {
     modalContent = <SelectPlanForm goToModal={this.goToModal}/>
+  } else if (this.state.modal === 'payment') {
+    modalContent = <PaymentForm goToModal={this.goToModal}/>
   }
 
     return (

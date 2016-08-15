@@ -9,7 +9,6 @@ const Modal = React.createClass({
     }
   },
   render: function() {
-    console.log('rendering modal');
     return (
       <div onClick={this.closeModal} className="modal-container" style={this.props.containerStyles}>
         <div onScroll={this.scroll} className="modal" style={this.props.modalStyles} ref="modal">
