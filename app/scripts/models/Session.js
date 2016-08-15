@@ -9,13 +9,19 @@ const Session = Backbone.Model.extend({
   idAttribute: '_id',
   defaults: {
     email: '',
+    name: '',
+    customer: {},
+    trial: {},
   },
   parse: function(response) {
     if (response) {
       return {
         authtoken: response._kmd.authtoken,
         email: response.username,
-        userId: response._id
+        userId: response._id,
+        name: response.name,
+        customer: response.customer,
+        trial: response.trial,
       }
     }
   },
@@ -47,8 +53,7 @@ const Session = Backbone.Model.extend({
   signup: function(email, password) {
     store.session.save({
       username: email,
-      password: password,
-      highscore: this.get('highScore')
+      password: password
     },
     {
       url: `https://baas.kinvey.com/user/${store.settings.appKey}/`,
@@ -74,7 +79,7 @@ const Session = Backbone.Model.extend({
     this.fetch({
       url: `https://baas.kinvey.com/user/${store.settings.appKey}/_me`,
       success: function() {
-
+        console.log('fetched user: ', store.session);
       },
       error: function(response) {
         throw new Error('FETCHING USER FAILED!')
