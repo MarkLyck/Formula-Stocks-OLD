@@ -1722,6 +1722,9 @@ footer .copyright {
       color: #95989E; }
       .side-bar-links .side-bar-link .dropdown a:hover {
         background: #25272d; }
+    .side-bar-links .side-bar-link .dropdown .selected {
+      color: #27A5F9;
+      background: #25272d; }
   .side-bar-links .side-bar-link:hover button {
     height: 75px; }
     .side-bar-links .side-bar-link:hover button h3 {
