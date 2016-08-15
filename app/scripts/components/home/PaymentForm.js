@@ -28,7 +28,7 @@ const PaymentForm = React.createClass({
       cc.checkPayment(card)
         .then((token) => {
           if (this.state.checked) {
-            this.chargeCard(token)
+            this.createCustomer(token)
           } else {
             this.setState({error: 'You must agree to the Terms and Conditions', formClass: 'payment-form shake'})
             window.setTimeout(() => {
@@ -45,16 +45,16 @@ const PaymentForm = React.createClass({
 
 
   },
-  chargeCard(token) {
-    let amount = 100
-    if (this.props.plan === 'business') {
-      amount = 20000
-    } else if (this.props.plan === 'fund') {
-      amount = 120000
+  createCustomer(token) {
+    let cycle = 'monthly'
+    if (this.props.plan === 'business' || this.props.plan === 'fund') {
+      cycle = 'annually'
     }
 
+
     // console.log('charge card running');
-    cc.chargeCard(token, amount)
+    console.log(this.props.passedProps.plan);
+    cc.createCustomer(token, this.props.passedProps.plan, cycle)
       .then(() => {
         console.log('SUCCESFUL PAYMENT');
         console.log(store.session);
@@ -72,6 +72,7 @@ const PaymentForm = React.createClass({
     this.setState({checked: !this.state.checked})
   },
   render() {
+
     let error;
     if (this.state.error) {
       error = (

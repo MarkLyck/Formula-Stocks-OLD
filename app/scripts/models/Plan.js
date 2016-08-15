@@ -6,6 +6,10 @@ import store from '../store'
 const Plan = Backbone.Model.extend({
   defaults: {
     name: '',
+    info: {
+      roundtripTradesPerYear: 0,
+      IITFormulas: 0,
+    },
     stats: {
       cagr: 0,
       WLRatio: 0,
@@ -31,9 +35,7 @@ const Plan = Backbone.Model.extend({
       this.set('stats', newStats)
       store.plans.trigger('update')
 
-      // FIXME Removing this change event will cause components to not update (sometimes)?
-      // this.trigger('change')
-      console.log(this.get('name'), this.get('stats').cagr);
+      console.log(this.get('name'), this.get('stats'));
     })
     .fail((e) => {
       console.error('Failed fetching annual data from server', e)

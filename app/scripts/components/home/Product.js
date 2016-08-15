@@ -12,8 +12,8 @@ const Product = React.createClass({
         <div className="main-stats">
           <p>Buy & Sell recommendations</p>
           <p>Model Portfolio Tracking</p>
-          <p><span className="light-text-color">Avg. round-trip trades per year: </span>39</p>
-          <p><span className="light-text-color">IIT formulas applied: </span>3</p>
+          <p><span className="light-text-color">Avg. round-trip trades per year: </span>{this.props.info.roundtripTradesPerYear}</p>
+          <p><span className="light-text-color">IIT formulas applied: </span>{this.props.info.IITFormulas}</p>
           <p><span className="light-text-color">Historical 45 year CAGR: </span>{this.props.stats.cagr.toFixed(2)}%</p>
           <p><span className="light-text-color">Avg. winning positions: </span>{this.props.stats.WLRatio.toFixed(0)}%</p>
         </div>

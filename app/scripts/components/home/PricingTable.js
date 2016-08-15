@@ -26,10 +26,10 @@ const PricingTable = React.createClass({
           <div className="divider"></div>
           <h3 className="subtitle">Compare the products and find the right solution for you</h3>
           <div className="plans">
-            <Product name="Basic" price="50" stats={store.plans.get('basic').get('stats')} billed="Monthly" signupText="Start Free Month"/>
-            <Product name="Premium" price="100" stats={store.plans.get('premium').get('stats')} billed="Monthly" signupText="Get Started"/>
-            <Product name="Business" price="20,000" stats={store.plans.get('business').get('stats')} billed="Yearly" signupText="Get Started"/>
-            <Product name="Fund" price="120,000" stats={store.plans.get('fund').get('stats')} billed="Yearly" signupText="Get Started"/>
+            <Product name="Basic" price="50" stats={store.plans.get('basic').get('stats')} billed="Monthly" signupText="Start Free Month" info={store.plans.get('basic').get('info')}/>
+            <Product name="Premium" price="100" stats={store.plans.get('premium').get('stats')} billed="Monthly" signupText="Get Started" info={store.plans.get('premium').get('info')}/>
+            <Product name="Business" price="20,000" stats={store.plans.get('business').get('stats')} billed="Yearly" signupText="Get Started" info={store.plans.get('business').get('info')}/>
+            <Product name="Fund" price="120,000" stats={store.plans.get('fund').get('stats')} billed="Yearly" signupText="Get Started" info={store.plans.get('fund').get('info')}/>
           </div>
           <p className="disclaimer">
             The pricing tables are not a representation, warranty or gurantee of future investment performance. Making investments always involve varying degrees of risk.

@@ -11,7 +11,7 @@ import PaymentForm from './PaymentForm'
 
 const Signup = React.createClass({
   getInitialState: function() {
-    return {modal: 'signup', formClasses: 'signup bounce-down'}
+    return {modal: 'signup', formClasses: 'signup bounce-down', passedProps: {}}
   },
   closeModal(e) {
     if (e) {
@@ -23,8 +23,8 @@ const Signup = React.createClass({
       }
     }
   },
-  goToModal(newModal) {
-    this.setState({modal: newModal})
+  goToModal(newModal, passedProps) {
+    this.setState({modal: newModal, passedProps: passedProps})
   },
   render: function() {
     let containerStyles = {animation: '300ms fadeIn'}
@@ -39,14 +39,14 @@ const Signup = React.createClass({
       background: 'none',
     }
 
-  let modalContent;
-  if (this.state.modal === 'signup') {
-    modalContent = <SignupForm goToModal={this.goToModal}/>
-  } else if (this.state.modal === 'selectPlan') {
-    modalContent = <SelectPlanForm goToModal={this.goToModal}/>
-  } else if (this.state.modal === 'payment') {
-    modalContent = <PaymentForm goToModal={this.goToModal}/>
-  }
+    let modalContent;
+    if (this.state.modal === 'signup') {
+      modalContent = <SignupForm goToModal={this.goToModal} passedProps={this.state.passedProps}/>
+    } else if (this.state.modal === 'selectPlan') {
+      modalContent = <SelectPlanForm goToModal={this.goToModal} passedProps={this.state.passedProps}/>
+    } else if (this.state.modal === 'payment') {
+      modalContent = <PaymentForm goToModal={this.goToModal} passedProps={this.state.passedProps}/>
+    }
 
     return (
       <Modal closeModal={this.closeModal} containerStyles={containerStyles} modalStyles={modalStyles}>

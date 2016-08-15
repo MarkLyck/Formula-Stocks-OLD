@@ -162,7 +162,6 @@ const TheResults = React.createClass({
 
       chartCursor: {
 	        valueLineEnabled: true,
-	        // valueLineBalloonEnabled: true,
 	        valueLineAlpha: 0.5,
 	        fullWidth: true,
 	        cursorAlpha: 0.5

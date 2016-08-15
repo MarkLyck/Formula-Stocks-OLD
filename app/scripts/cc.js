@@ -90,22 +90,21 @@ let cc = {
       });
     })
   },
-  chargeCard: function(token, amount) {
+  createCustomer: function(token, planName, cycle) {
     return new Promise((resolve, reject) => {
       $.ajax({
         type: 'POST',
         url: `https://baas.kinvey.com/rpc/${store.settings.appKey}/custom/charge`,
         data: {
-          amount: amount,
-          currency: 'usd',
+          plan: (planName+'-'+cycle),
           source: token,
-          description: `Charge for ${store.session.get('email')}`,
           email: store.session.get('email')
         },
         headers: {
           Authorization: 'Kinvey 9dbd2146-9b76-4c06-85a2-70229ac93cbf.3JRWuuAKqMI2ZuoFJI3Ui3SoD5NquLLXhe+wtBYxH28='
         },
         success: (response) => {
+          console.log('SUCCESS: ', response);
           resolve()
         },
         error: (response) => {

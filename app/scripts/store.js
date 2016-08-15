@@ -22,19 +22,35 @@ let store = {
 
 store.plans.add({
   id: 'basic',
-  name: 'basic'
+  name: 'basic',
+  info: {
+    roundtripTradesPerYear: 39,
+    IITFormulas: 3
+  }
 })
 store.plans.add({
   id: 'premium',
-  name: 'premium'
+  name: 'premium',
+  info: {
+    roundtripTradesPerYear: 44,
+    IITFormulas: 8
+  }
 })
 store.plans.add({
   id: 'business',
-  name: 'business'
+  name: 'business',
+  info: {
+    roundtripTradesPerYear: 20,
+    IITFormulas: 44
+  }
 })
 store.plans.add({
   id: 'fund',
-  name: 'fund'
+  name: 'fund',
+  info: {
+    roundtripTradesPerYear: 63,
+    IITFormulas: 87
+  }
 })
 
 export default store
