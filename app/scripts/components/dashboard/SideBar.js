@@ -3,35 +3,45 @@ import {Link} from 'react-router'
 
 const SideBar = React.createClass({
   getInitialState() {
-    return {dropdown: 'suggestions'}
+    return {dropdown: 'suggestions', plan: this.props.plan}
   },
   toggleDropdown(dropdown) {
-    this.setState({dropdown: dropdown})
+    this.setState({dropdown: dropdown, plan: this.props.plan})
+  },
+  componentWillReceiveProps(props) {
+    this.setState({plan: props.plan})
   },
   render() {
-    let suggestionsClass = 'Suggestions side-bar-link'
-    let portfoliosClass = 'Suggestions side-bar-link'
-    let suggestionsDropdown;
-    let portfoliosDropdown;
+    console.log(this.props.plan);
+
+    let suggestionsClass = 'suggestions side-bar-link'
+    let portfoliosClass = 'portfolios side-bar-link'
+    let suggestionsDropdown, portfoliosDropdown;
+
+    let basicClass, premiumClass, businessClass, fundClass;
+    if(this.state.plan === 'basic') {basicClass = 'selected'}
+    if(this.state.plan === 'premium') {premiumClass = 'selected'}
+    if(this.state.plan === 'business') {businessClass = 'selected'}
+    if(this.state.plan === 'fund') {fundClass = 'selected'}
 
     if (this.state.dropdown === 'suggestions') {
       suggestionsClass = 'Suggestions side-bar-link selected'
       suggestionsDropdown = (
         <div className="dropdown">
-          <Link to="/dashboard/suggestions/basic">Basic</Link>
-          <Link to="/dashboard/suggestions/premium">Premium</Link>
-          <Link to="/dashboard/suggestions/business">Business</Link>
-          <Link to="/dashboard/suggestions/fund">Fund</Link>
+          <Link className={basicClass} to="/dashboard/suggestions/basic">Basic</Link>
+          <Link className={premiumClass} to="/dashboard/suggestions/premium">Premium</Link>
+          <Link className={businessClass} to="/dashboard/suggestions/business">Business</Link>
+          <Link className={fundClass} to="/dashboard/suggestions/fund">Fund</Link>
         </div>
       )
     } else if (this.state.dropdown === 'portfolios') {
       portfoliosClass = 'portfolios side-bar-link selected'
       portfoliosDropdown = (
         <div className="dropdown">
-          <Link to="/dashboard/portfolio/basic">Basic</Link>
-          <Link to="/dashboard/portfolio/premium">Premium</Link>
-          <Link to="/dashboard/portfolio/business">Business</Link>
-          <Link to="/dashboard/portfolio/fund">Fund</Link>
+          <Link className={basicClass}  to="/dashboard/portfolio/basic">Basic</Link>
+          <Link className={premiumClass}  to="/dashboard/portfolio/premium">Premium</Link>
+          <Link className={businessClass}  to="/dashboard/portfolio/business">Business</Link>
+          <Link className={fundClass}  to="/dashboard/portfolio/fund">Fund</Link>
         </div>
       )
     }

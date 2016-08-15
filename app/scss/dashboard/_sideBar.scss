@@ -44,6 +44,10 @@
           background: darken($side-bar-background, 5%);
         }
       }
+      .selected {
+        color: $primary-color;
+        background: darken($side-bar-background, 5%);
+      }
     }
     &:hover {
       button {

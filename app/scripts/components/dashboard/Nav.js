@@ -17,7 +17,6 @@ const Nav  = React.createClass({
     store.session.off('change', this.updateState)
   },
   render() {
-    console.log(store.session.toJSON());
     return (
       <nav className="dashboard-nav">
         <img id="logo" src="assets/images/logo_horizontal.svg"/>
