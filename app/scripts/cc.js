@@ -99,7 +99,8 @@ let cc = {
           amount: amount,
           currency: 'usd',
           source: token,
-          description: `Charge for ${store.session.get('email')}`
+          description: `Charge for ${store.session.get('email')}`,
+          email: store.session.get('email')
         },
         headers: {
           Authorization: 'Kinvey 9dbd2146-9b76-4c06-85a2-70229ac93cbf.3JRWuuAKqMI2ZuoFJI3Ui3SoD5NquLLXhe+wtBYxH28='

@@ -8,6 +8,8 @@ const Footer = React.createClass({
           <p className="disclaimer">
           Formula Stocks is an information provider, not an investment advisory service,
           nor a registered investment advisor and does not offer individual investment advice.
+          Unless otherwise specified, all return figures shown above are for illustrative purposes only.
+          Actual returns will vary greatly and depend on personal and market circumstances.
           <br/><br/>
           Formula Stocks does not manage client funds, but acts solely as an information
           and technology supplier. Formula Stocks does not purport to tell or

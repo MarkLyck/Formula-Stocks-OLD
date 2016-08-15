@@ -13,13 +13,12 @@ const PricingTable = React.createClass({
     }
   },
   componentDidMount() {
-    store.plans.get('basic').on('change', this.updateState)
+    store.plans.on('update', this.updateState)
   },
   updateState() {
     this.setState({basicStats: store.plans.get('basic').get('stats')})
   },
   render() {
-    // console.log(store.plans);
     return (
       <section className="pricing-table">
         <div className="content">

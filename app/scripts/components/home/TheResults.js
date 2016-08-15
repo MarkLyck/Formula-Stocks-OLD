@@ -29,22 +29,25 @@ const TheResults = React.createClass({
 
       let premiumBalance = 0
       let businessBalance = 0
+      // let fundBalance = 0
       let marketBalance = 0
 
       if (premiumData[i]) { premiumBalance = premiumData[i].balance }
       if (businessData[i]) { businessBalance = businessData[i].balance }
+      // if (fundData[i]) { fundBalance = fundData[i].balance }
       if (marketData[i]) { marketBalance = marketData[i] }
 
       return {
         basic: point.balance,
         premium: premiumBalance,
         business: businessBalance,
-        // fund: fundData[i].balance,
+        // fund: fundBalance,
         market: marketBalance,
 
         basicBalloon: formatPrice(point.balance),
         premiumBalloon: formatPrice(premiumBalance),
         businessBalloon: formatPrice(businessBalance),
+        // fundBalloon: formatPrice(fundBalance),
         marketBalloon: formatPrice(marketBalance),
 
         date: `${point.date.year}-${point.date.month}-${point.date.day}`
@@ -130,7 +133,22 @@ const TheResults = React.createClass({
         useLineColorForBulletBorder: true,
         valueField: "business",
         "balloonText": "<div class=\"chart-balloon\"><span class=\"plan-name\">Business</span><span class=\"balloon-value\">[[businessBalloon]]</span></div>",
-      }],
+      },
+      // {
+      //   id: "fund",
+      //   lineColor: "#fff",
+      //
+      //   bullet: "square",
+      //   bulletBorderAlpha: 1,
+      //   bulletColor: "#FFF",
+      //   bulletSize: 5,
+      //   hideBulletsCount: 10,
+      //   lineThickness: 2,
+      //   useLineColorForBulletBorder: true,
+      //   valueField: "fund",
+      //   "balloonText": "<div class=\"chart-balloon\"><span class=\"plan-name\">Fund</span><span class=\"balloon-value\">[[fundBalloon]]</span></div>",
+      // }
+    ],
 
       valueAxes: [{
         logarithmic: this.state.logarithmic,

@@ -115,7 +115,7 @@ const CumulativeInterest = React.createClass({
         <p className="disclaimer">
           The forgoing is for illustration purposes only. It is not a representation, warranty or gurantee of future investment performance.
           Elements of stock investments involve varying degrees of risk. Projected returns assumes that all dividends are reinvested.
-          Market CAGR is set to 10.71% based on S&P 500 performance from 1970 to 2015 and also assumes all dividens are reinvested.
+          Market CAGR is set to 10.71% based on S&P 500 performance from 1970 to 2015 with dividends reinvested.
         </p>
       </section>
     )

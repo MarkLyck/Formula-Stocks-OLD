@@ -1,6 +1,8 @@
 import React from 'react'
 import $ from 'jquery'
 
+import store from '../../../store'
+
 const InformationalAdvantage = React.createClass({
   getInitialState() {
     return ({
@@ -30,10 +32,10 @@ const InformationalAdvantage = React.createClass({
   },
   updateNumbers() {
     let bas,pre,bus,fun,mar = 0
-    this.state.basic < 84 ? bas = (this.state.basic + 1) : bas = 84
-    this.state.premium < 90 ? pre = (this.state.premium + 1) : pre = 90
-    this.state.business < 95 ? bus = (this.state.business + 1) : bus = 95
-    this.state.fund < 87 ? fun = (this.state.fund + 1) : fun = 87
+    this.state.basic < Math.floor(store.plans.get('basic').get('stats').WLRatio) ? bas = (this.state.basic + 1) : bas = Math.floor(store.plans.get('basic').get('stats').WLRatio)
+    this.state.premium < Math.floor(store.plans.get('premium').get('stats').WLRatio) ? pre = (this.state.premium + 1) : pre = Math.floor(store.plans.get('premium').get('stats').WLRatio)
+    this.state.business < Math.floor(store.plans.get('business').get('stats').WLRatio) ? bus = (this.state.business + 1) : bus = Math.floor(store.plans.get('business').get('stats').WLRatio)
+    this.state.fund < Math.floor(store.plans.get('fund').get('stats').WLRatio) ? fun = (this.state.fund + 1) : fun = Math.floor(store.plans.get('fund').get('stats').WLRatio)
     this.state.market < 60 ? mar = (this.state.market + 1) : mar = 60
 
     this.setState({
