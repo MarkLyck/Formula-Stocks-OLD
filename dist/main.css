@@ -920,8 +920,16 @@ input[type=submit] {
       color: #27A5F9; }
       .payment-form .ToC a:hover {
         text-decoration: underline; }
-  .payment-form input[type=submit] {
-    height: 90px; }
+  .payment-form .pay-button {
+    height: 90px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #27A5F9; }
+    .payment-form .pay-button i {
+      font-size: 1.5rem;
+      color: #fff; }
 
 #what-is-it {
   display: flex;

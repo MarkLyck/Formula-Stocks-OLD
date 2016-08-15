@@ -5,7 +5,7 @@ import store from '../../store'
 
 const PaymentForm = React.createClass({
   getInitialState() {
-    return {price: 100, formClass: "payment-form slide-in-right", checked: false}
+    return {price: 100, formClass: "payment-form slide-in-right", checked: false, validatingPayment: false}
   },
   ccFormat() {
     this.refs.cardNumber.value = cc.ccFormat(this.refs.cardNumber.value)
@@ -18,6 +18,7 @@ const PaymentForm = React.createClass({
   },
   checkPayment(e) {
     e.preventDefault()
+    this.setState({validatingPayment: true})
 
       const card = {
         number: this.refs.cardNumber.value.replace(/\s+/g, ''),
@@ -30,14 +31,14 @@ const PaymentForm = React.createClass({
           if (this.state.checked) {
             this.createCustomer(token)
           } else {
-            this.setState({error: 'You must agree to the Terms and Conditions', formClass: 'payment-form shake'})
+            this.setState({error: 'You must agree to the Terms and Conditions', formClass: 'payment-form shake', validatingPayment: false})
             window.setTimeout(() => {
               this.setState({formClass: 'payment-form'})
             }, 300)
           }
         })
         .catch((e) => {
-          this.setState({error: e, formClass: 'payment-form shake'})
+          this.setState({error: e, formClass: 'payment-form shake', validatingPayment: false})
           window.setTimeout(() => {
             this.setState({formClass: 'payment-form'})
           }, 300)
@@ -57,12 +58,10 @@ const PaymentForm = React.createClass({
     cc.createCustomer(token, this.props.passedProps.plan, cycle)
       .then(() => {
         console.log('SUCCESFUL PAYMENT');
-        console.log(store.session);
-        store.session.set('showModal', 'success-payment')
       })
       .catch((e) => {
         console.log('charge ERROR: ', e);
-        this.setState({error: e, formClass: 'payment-form shake'})
+        this.setState({error: e, formClass: 'payment-form shake', validatingPayment: false})
         window.setTimeout(() => {
           this.setState({formClass: 'payment-form'})
         }, 300)
@@ -84,6 +83,11 @@ const PaymentForm = React.createClass({
     let checkbox = <div className="checker" onClick={this.toggleCheckBox}></div>
     if (this.state.checked) {
       checkbox = <div className="checker" onClick={this.toggleCheckBox}><i className="fa fa-check" aria-hidden="true"></i></div>
+    }
+
+    let payButton =   <input className="pay-button" type="submit" value={`Pay $${this.state.price}`}/>
+    if (this.state.validatingPayment) {
+      payButton =   <div className="pay-button"><i className="fa fa-spinner fa-pulse fa-3x fa-fw"></i></div>
     }
 
     return (
@@ -109,7 +113,7 @@ const PaymentForm = React.createClass({
           <p>I've read and agree to the <a>Terms and Conditions</a></p>
         </div>
 
-        <input className="pay-button" type="submit" value={`Pay $${this.state.price}`}/>
+        {payButton}
       </form>
     )
   }
