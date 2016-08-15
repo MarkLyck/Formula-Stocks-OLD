@@ -4,5 +4,6 @@
   width: 100vw;
   .container {
     height: calc(100% - 75px);
+    display: flex;
   }
 }

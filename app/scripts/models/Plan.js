@@ -14,7 +14,8 @@ const Plan = Backbone.Model.extend({
       cagr: 0,
       WLRatio: 0,
     },
-    annualData: []
+    annualData: [],
+    suggestions: []
   },
   getAnnualData() {
     $.ajax(`https://s3-us-west-2.amazonaws.com/aws-fs/public/api/annual_${this.get('name')}.json`)
@@ -38,7 +39,15 @@ const Plan = Backbone.Model.extend({
     .fail((e) => {
       console.error('Failed fetching annual data from server', e)
     })
-  }
+  },
+  getSuggestions() {
+    $.ajax(`https://s3-us-west-2.amazonaws.com/aws-fs/public/api/weekly_${this.get('name')}.json`)
+      .then((response) => {
+        let suggestions = JSON.parse(response)
+        this.set('suggestions', suggestions.actionable)
+        console.log(suggestions.actionable);
+      })
+  },
 })
 
 export default Plan

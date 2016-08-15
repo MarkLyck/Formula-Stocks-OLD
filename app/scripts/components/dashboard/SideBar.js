@@ -12,7 +12,7 @@ const SideBar = React.createClass({
     this.setState({plan: props.plan})
   },
   render() {
-    console.log(this.props.plan);
+    // console.log(this.props.plan);
 
     let suggestionsClass = 'suggestions side-bar-link'
     let portfoliosClass = 'portfolios side-bar-link'

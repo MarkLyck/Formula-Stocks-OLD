@@ -11,7 +11,7 @@ const Dashboard = React.createClass({
         <Nav/>
         <div className="container">
           <SideBar plan={this.props.params.plan}/>
-          {this.props.children}
+          {React.cloneElement(this.props.children, this.props.params)}
         </div>
       </div>
     )
