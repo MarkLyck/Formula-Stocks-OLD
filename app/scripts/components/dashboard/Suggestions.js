@@ -14,7 +14,6 @@ const Suggestions = React.createClass({
     this.setState({fetching: false})
   },
   componentWillReceiveProps(newPlan) {
-
     store.plans.get(newPlan.plan).on('change', this.updateState)
     store.plans.get(newPlan.plan).getSuggestions()
   },

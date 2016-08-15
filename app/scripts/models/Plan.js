@@ -15,7 +15,8 @@ const Plan = Backbone.Model.extend({
       WLRatio: 0,
     },
     annualData: [],
-    suggestions: []
+    suggestions: [],
+    portfolio: []
   },
   getAnnualData() {
     $.ajax(`https://s3-us-west-2.amazonaws.com/aws-fs/public/api/annual_${this.get('name')}.json`)
@@ -46,6 +47,14 @@ const Plan = Backbone.Model.extend({
         let suggestions = JSON.parse(response)
         this.set('suggestions', suggestions.actionable)
         console.log(suggestions.actionable);
+      })
+  },
+  getPortfolio() {
+    $.ajax(`https://s3-us-west-2.amazonaws.com/aws-fs/public/api/monthly_${this.get('name')}.json`)
+      .then((response) => {
+        let data = JSON.parse(response)
+        this.set('portfolio', data.portfolio)
+        console.log(data);
       })
   },
 })
