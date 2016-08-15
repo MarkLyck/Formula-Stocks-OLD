@@ -18,8 +18,8 @@ const router = (
       <Route path="/signup" component={Signup}/>
     </Route>
     <Route path="/dashboard" component={Dashboard}>
-      <Route path="/portfolio/:plan" component={Portfolio}/>
-      <Route path="/suggestions/:plan" component={Suggestions}/>
+      <Route path="portfolio/:plan" component={Portfolio}/>
+      <Route path="suggestions/:plan" component={Suggestions}/>
     </Route>
   </Router>
 )

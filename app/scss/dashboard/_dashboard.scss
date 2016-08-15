@@ -2,4 +2,7 @@
   background: $seconday-background;
   height: 100vh;
   width: 100vw;
+  .container {
+    height: calc(100% - 75px);
+  }
 }
