@@ -11,7 +11,7 @@ import PaymentForm from './PaymentForm'
 
 const Signup = React.createClass({
   getInitialState: function() {
-    return {modal: 'payment', formClasses: 'signup bounce-down'}
+    return {modal: 'signup', formClasses: 'signup bounce-down'}
   },
   closeModal(e) {
     if (e) {

@@ -73,7 +73,7 @@ let cc = {
   },
   checkPayment: function(card) {
     return new Promise((resolve, reject) => {
-      Stripe.setPublishableKey('pk_test_c3GciGfzJPBBTd8238EwfTta');
+      Stripe.setPublishableKey('pk_test_hh5vsZ7wNnMi80XJgzHVanEm');
       Stripe.card.createToken({
         number: card.number,
         cvc: card.cvc,
@@ -90,16 +90,19 @@ let cc = {
       });
     })
   },
-  chargeCard: function(token, quantity) {
+  chargeCard: function(token, amount) {
     return new Promise((resolve, reject) => {
       $.ajax({
         type: 'POST',
         url: `https://baas.kinvey.com/rpc/${store.settings.appKey}/custom/charge`,
         data: {
-          amount: (quantity * 30 * 100),
+          amount: amount,
           currency: 'usd',
           source: token,
           description: `Charge for ${store.session.get('email')}`
+        },
+        headers: {
+          Authorization: 'Kinvey 9dbd2146-9b76-4c06-85a2-70229ac93cbf.3JRWuuAKqMI2ZuoFJI3Ui3SoD5NquLLXhe+wtBYxH28='
         },
         success: (response) => {
           resolve()

@@ -18,26 +18,43 @@ const PaymentForm = React.createClass({
   },
   checkPayment(e) {
     e.preventDefault()
-    const card = {
-      number: this.refs.cardNumber.value.replace(/\s+/g, ''),
-      month: this.refs.cardExpiry.value.split(' / ')[0],
-      year: this.refs.cardExpiry.value.split(' / ')[1],
-      cvc: this.refs.cardCvc.value,
-    }
-    cc.checkPayment(card)
-      .then((token) => {
-        this.chargeCard(token)
-      })
-      .catch((e) => {
-        this.setState({error: e, formClass: 'payment-form shake'})
-        window.setTimeout(() => {
-          this.setState({formClass: 'payment-form'})
-        }, 300)
-      })
+
+      const card = {
+        number: this.refs.cardNumber.value.replace(/\s+/g, ''),
+        month: this.refs.cardExpiry.value.split(' / ')[0],
+        year: this.refs.cardExpiry.value.split(' / ')[1],
+        cvc: this.refs.cardCvc.value,
+      }
+      cc.checkPayment(card)
+        .then((token) => {
+          if (this.state.checked) {
+            this.chargeCard(token)
+          } else {
+            this.setState({error: 'You must agree to the Terms and Conditions', formClass: 'payment-form shake'})
+            window.setTimeout(() => {
+              this.setState({formClass: 'payment-form'})
+            }, 300)
+          }
+        })
+        .catch((e) => {
+          this.setState({error: e, formClass: 'payment-form shake'})
+          window.setTimeout(() => {
+            this.setState({formClass: 'payment-form'})
+          }, 300)
+        })
+
+
   },
   chargeCard(token) {
-    console.log('charge card running');
-    cc.chargeCard(token, this.state.quantity)
+    let amount = 100
+    if (this.props.plan === 'business') {
+      amount = 20000
+    } else if (this.props.plan === 'fund') {
+      amount = 120000
+    }
+
+    // console.log('charge card running');
+    cc.chargeCard(token, amount)
       .then(() => {
         console.log('SUCCESFUL PAYMENT');
         console.log(store.session);

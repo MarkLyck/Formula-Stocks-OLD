@@ -783,8 +783,7 @@ input[type=submit] {
   padding: 20px;
   background: #27A5F9;
   color: #fff;
-  border: none;
-  height: 90px; }
+  border: none; }
   input[type=submit]:hover {
     background: #0e9bf8;
     cursor: pointer; }
@@ -920,6 +919,8 @@ input[type=submit] {
       color: #27A5F9; }
       .payment-form .ToC a:hover {
         text-decoration: underline; }
+  .payment-form input[type=submit] {
+    height: 90px; }
 
 #what-is-it {
   display: flex;

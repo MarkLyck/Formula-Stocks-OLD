@@ -9,6 +9,4 @@ if (localStorage.authtoken) {
   store.session.retrieve()
 }
 
-Stripe.setPublishableKey('pk_test_c3GciGfzJPBBTd8238EwfTta');
-
 ReactDOM.render(router, document.getElementById('container'))
