@@ -1856,6 +1856,26 @@ footer .copyright {
           color: #12D99E;
           margin-right: 15px; }
 
+.suggestions-list {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%; }
+  .suggestions-list li {
+    width: calc(50% - 40px);
+    background: #fff;
+    border: 1px solid #ABB3B7;
+    margin: 20px;
+    border-radius: 3px;
+    display: flex; }
+    .suggestions-list li .left {
+      width: 80%; }
+      .suggestions-list li .left #suggestion-chart {
+        height: 300px; }
+      .suggestions-list li .left h3 {
+        padding-left: 20px; }
+    .suggestions-list li .right {
+      width: 20%; }
+
 body {
   font-family: 'proxima-nova', 'Lato', sans-serif; }
 
