@@ -98,6 +98,7 @@ const Portfolio = React.createClass({
           "position": "left",
           "ignoreAxisWidth":true,
           inside: true,
+          minimum: 0,
       }],
       balloon: {
         color: '#49494A',
