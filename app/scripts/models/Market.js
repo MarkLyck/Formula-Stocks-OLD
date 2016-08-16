@@ -4,6 +4,7 @@ import Backbone from 'backbone'
 const Market = Backbone.Model.extend({
   defaults: {
     annualData: [],
+    portfolioData: [],
     cagr: 10.47
   },
   getAnnualData() {
@@ -24,6 +25,19 @@ const Market = Backbone.Model.extend({
 			}
 
       this.set('annualData', fixedData)
+    })
+    .fail((e) => {
+      console.error('Failed fetching QUANDL DATA', e)
+    })
+  },
+  getPortfolioData() {
+    $.ajax(`https://www.quandl.com/api/v1/datasets/YAHOO/INDEX_GSPC.json?trim_start=2009-01-01&collapse=monthly&column=4&auth_token=6SfHcXos6YBX51kuAq8B`)
+    .then((r) => {
+      let fixedData = r.data.map((point) => {
+        return point[1].toFixed(0)
+      })
+      fixedData = fixedData.reverse()
+      this.set('portfolioData', fixedData)
     })
     .fail((e) => {
       console.error('Failed fetching QUANDL DATA', e)

@@ -2,9 +2,48 @@
   flex: 1;
 }
 
-#portfolio-chart {
-  height: 500px;
+.portfolio-yields {
+  background: #fff;
+  border: 1px solid $side-color;
+  margin: 40px auto;
+  width: calc(100% - 80px);
+  border-radius: 3px;
+  display: flex;
+  .left {
+    h2 {
+      padding-left: 40px;
+    }
+    width: 80%;
+    #portfolio-chart {
+      height: 350px;
+    }
+  }
+  .right {
+    width: 20%;
+    border-left: 2px solid $db-border-color;
+    padding-left: 20px;
+    .stats {
+      h3 {
+        margin-bottom: 10px;
+        font-weight: 400;
+      }
+      .wrapper {
+        display: flex;
+        align-items: center;
+        p {
+          margin: 0;
+          font-weight: 100;
+        }
+        i {
+          color: $primary-color;
+          margin-right: 5px;
+        }
+      }
+    }
+  }
+
 }
+
 
 .holdings {
   background: #fff;
