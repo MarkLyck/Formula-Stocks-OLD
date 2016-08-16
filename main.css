@@ -1868,8 +1868,13 @@ footer .copyright {
     border-radius: 3px;
     display: flex;
     flex-direction: column; }
-    .suggestions-list li h3 {
-      padding-left: 20px; }
+    .suggestions-list li .top {
+      display: flex;
+      justify-content: space-between; }
+      .suggestions-list li .top h3:first-child {
+        padding-left: 20px; }
+      .suggestions-list li .top .action {
+        padding-right: 20px; }
     .suggestions-list li #suggestion-chart {
       height: 300px;
       width: 100%; }
