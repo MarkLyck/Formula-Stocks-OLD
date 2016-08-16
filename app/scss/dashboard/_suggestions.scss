@@ -1,0 +1,30 @@
+.suggestions {
+
+}
+
+.suggestions-list {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  li {
+    width: calc(50% - 40px);
+    background: #fff;
+    border: 1px solid $side-color;
+    margin: 20px;
+    border-radius: 3px;
+    display: flex;
+    .left {
+      width: 80%;
+      #suggestion-chart {
+        height: 300px;
+      }
+      h3 {
+        padding-left: 20px;
+      }
+    }
+    .right {
+      width: 20%;
+    }
+
+  }
+}

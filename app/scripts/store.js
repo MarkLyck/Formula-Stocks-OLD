@@ -9,6 +9,7 @@ let store = {
   session: new Session(),
   settings: {
     history: hashHistory,
+    quandlKey: 'zP2W-4snDLyygfZVpw2v',
     appKey: 'kid_rJRC6m9F',
     appSecret: 'e6688b599fca47e1bf150d99a786132d',
     basicAuth: btoa('kid_rJRC6m9F:e6688b599fca47e1bf150d99a786132d')
@@ -17,7 +18,7 @@ let store = {
   market: {
     data: new Market(),
     cagr: 10.71
-  }
+  },
 }
 
 store.plans.add({

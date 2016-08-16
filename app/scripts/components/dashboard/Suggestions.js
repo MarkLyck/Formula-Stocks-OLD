@@ -1,5 +1,7 @@
 import React from 'react'
 
+import Suggestion from './Suggestion'
+
 import store from '../../store'
 
 const Suggestions = React.createClass({
@@ -20,11 +22,8 @@ const Suggestions = React.createClass({
   render() {
     console.log('rendering');
     let suggestions = store.plans.get(this.props.plan).get('suggestions').map((suggestion, i) => {
-      console.log(suggestion);
       return (
-        <li key={i}>
-          <h3>{suggestion.name}</h3>
-        </li>
+        <Suggestion key={i} suggestion={suggestion}/>
       )
     })
 

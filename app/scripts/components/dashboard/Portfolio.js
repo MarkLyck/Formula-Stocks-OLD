@@ -88,9 +88,9 @@ const Portfolio = React.createClass({
     var config = {
       "type": "serial",
       "dataProvider": fixedData,
-      "theme": "light",    "marginRight": 40,
-      "marginLeft": 40,
-      "autoMarginOffset": 20,
+      "theme": "light",
+      "marginRight": 0,
+      "marginLeft": 0,
       "valueAxes": [{
           "id": "v1",
           unit: '%',

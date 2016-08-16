@@ -47,8 +47,28 @@ const Plan = Backbone.Model.extend({
       .then((response) => {
         let suggestions = JSON.parse(response)
         this.set('suggestions', suggestions.actionable)
-        // console.log(suggestions.actionable);
+        this.getStockInfo()
       })
+  },
+  getStockInfo() {
+    this.get('suggestions').forEach((suggestion, i) => {
+      let query = `https://www.quandl.com/api/v1/datasets/WIKI/${suggestion.ticker}.json?api_key=${store.settings.quandlKey}`
+      $.ajax({
+        url: query,
+      })
+        .then((response) => {
+          // console.log(response)
+          let suggestionToUpdate = this.get('suggestions')[i]
+          suggestionToUpdate.data = response.data
+
+          let newArr = this.get('suggestions').slice(0,i).concat(suggestionToUpdate, this.get('suggestions').slice(i + 1))
+          this.set('suggestions', newArr)
+          this.trigger('change')
+        })
+        .fail((e) => {
+          console.log('No data for: ', suggestion.ticker);
+        })
+    })
   },
   getPortfolio() {
     $.ajax(`https://s3-us-west-2.amazonaws.com/aws-fs/public/api/monthly_${this.get('name')}.json`)
