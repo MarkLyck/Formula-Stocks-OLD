@@ -1866,15 +1866,13 @@ footer .copyright {
     border: 1px solid #ABB3B7;
     margin: 20px;
     border-radius: 3px;
-    display: flex; }
-    .suggestions-list li .left {
-      width: 80%; }
-      .suggestions-list li .left #suggestion-chart {
-        height: 300px; }
-      .suggestions-list li .left h3 {
-        padding-left: 20px; }
-    .suggestions-list li .right {
-      width: 20%; }
+    display: flex;
+    flex-direction: column; }
+    .suggestions-list li h3 {
+      padding-left: 20px; }
+    .suggestions-list li #suggestion-chart {
+      height: 300px;
+      width: 100%; }
 
 body {
   font-family: 'proxima-nova', 'Lato', sans-serif; }

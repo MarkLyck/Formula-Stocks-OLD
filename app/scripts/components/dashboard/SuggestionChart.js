@@ -8,6 +8,12 @@ const SuggestionChart = React.createClass({
 
     let chartData = this.props.data || []
     chartData = chartData.map((point) => {
+      // console.log(point[1]);
+      // console.log(point[2]);
+      // console.log(point[3]);
+      if(point[1] === null) {
+        console.log(this.props.data);
+      }
       return {
         open: Number(point[1].toFixed(2)),
         high: Number(point[2].toFixed(2)),
@@ -15,8 +21,9 @@ const SuggestionChart = React.createClass({
         date: point[0]
       }
     })
-
+    chartData = chartData.slice(0,30)
     chartData = chartData.reverse()
+
 
     // console.log(chartData);
     let color = {
@@ -69,11 +76,11 @@ const SuggestionChart = React.createClass({
 	        // fullWidth: true,
 	        cursorAlpha: 0.5
 	    },
-      "chartScrollbar": {
-        "autoGridCount": true,
-        "graph": "suggestion",
-        "scrollbarHeight": 40
-    },
+    //   "chartScrollbar": {
+    //     "autoGridCount": true,
+    //     "graph": "suggestion",
+    //     "scrollbarHeight": 40
+    // },
       categoryField: "date",
       categoryAxis: {
         parseDates: true,

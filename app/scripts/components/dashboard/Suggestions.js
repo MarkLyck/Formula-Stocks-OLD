@@ -20,7 +20,7 @@ const Suggestions = React.createClass({
     store.plans.get(newPlan.plan).getSuggestions()
   },
   render() {
-    console.log('rendering');
+    // console.log('rendering');
     let suggestions = store.plans.get(this.props.plan).get('suggestions').map((suggestion, i) => {
       return (
         <Suggestion key={i} suggestion={suggestion}/>

@@ -9,9 +9,9 @@ if (localStorage.authtoken) {
   store.session.retrieve()
 }
 
-$.ajax('https://freegeoip.net/json/')
-.then((r) => {
-  console.log(r)
-})
+// $.ajax('https://freegeoip.net/json/')
+// .then((r) => {
+//   console.log(r)
+// })
 
 ReactDOM.render(router, document.getElementById('container'))

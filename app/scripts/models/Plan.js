@@ -50,24 +50,85 @@ const Plan = Backbone.Model.extend({
         this.getStockInfo()
       })
   },
+  parseStockData(data) {
+    return data.filter((point) => {
+      if (point[1] !== null && point[2] !== null && point[3] !== null) {
+        return true
+      }
+    })
+  },
   getStockInfo() {
     this.get('suggestions').forEach((suggestion, i) => {
+
+      suggestion.ticker = suggestion.ticker.replace('.', '_')
+
       let query = `https://www.quandl.com/api/v1/datasets/WIKI/${suggestion.ticker}.json?api_key=${store.settings.quandlKey}`
+
+
+
       $.ajax({
         url: query,
       })
+      .then((response) => {
+        let suggestionToUpdate = this.get('suggestions')[i]
+        suggestionToUpdate.data = this.parseStockData(response.data)
+
+        let newArr = this.get('suggestions').slice(0,i).concat(suggestionToUpdate, this.get('suggestions').slice(i + 1))
+        this.set('suggestions', newArr)
+        this.trigger('change')
+      })
+      .fail((e) => {
+        query = `https://www.quandl.com/api/v1/datasets/GOOG/NASDAQ_${suggestion.ticker}.json?api_key=${store.settings.quandlKey}`
+        $.ajax(query)
         .then((response) => {
-          // console.log(response)
           let suggestionToUpdate = this.get('suggestions')[i]
-          suggestionToUpdate.data = response.data
+          suggestionToUpdate.data = this.parseStockData(response.data)
 
           let newArr = this.get('suggestions').slice(0,i).concat(suggestionToUpdate, this.get('suggestions').slice(i + 1))
           this.set('suggestions', newArr)
           this.trigger('change')
         })
-        .fail((e) => {
-          console.log('No data for: ', suggestion.ticker);
+        .fail((error) => {
+          query = `https://www.quandl.com/api/v1/datasets/GOOG/NYSE_${suggestion.ticker}.json?api_key=${store.settings.quandlKey}`
+          $.ajax(query)
+          .then((response) => {
+            let suggestionToUpdate = this.get('suggestions')[i]
+            suggestionToUpdate.data = this.parseStockData(response.data)
+
+            let newArr = this.get('suggestions').slice(0,i).concat(suggestionToUpdate, this.get('suggestions').slice(i + 1))
+            this.set('suggestions', newArr)
+            this.trigger('change')
+          })
+          .fail(() => {
+            query = `https://www.quandl.com/api/v1/datasets/GOOG/AMEX_${suggestion.ticker}.json?api_key=${store.settings.quandlKey}`
+            $.ajax(query)
+            .then((response) => {
+              let suggestionToUpdate = this.get('suggestions')[i]
+              suggestionToUpdate.data = this.parseStockData(response.data)
+
+              let newArr = this.get('suggestions').slice(0,i).concat(suggestionToUpdate, this.get('suggestions').slice(i + 1))
+              this.set('suggestions', newArr)
+              this.trigger('change')
+            })
+            .fail(() => {
+              query = `https://www.quandl.com/api/v1/datasets/YAHOO/TSX_${suggestion.ticker}.json?api_key=${store.settings.quandlKey}`
+              $.ajax(query)
+              .then((response) => {
+                let suggestionToUpdate = this.get('suggestions')[i]
+                suggestionToUpdate.data = this.parseStockData(response.data)
+
+                let newArr = this.get('suggestions').slice(0,i).concat(suggestionToUpdate, this.get('suggestions').slice(i + 1))
+                this.set('suggestions', newArr)
+                this.trigger('change')
+              })
+              .fail(() => {
+                console.log('no data for: ', suggestion.ticker);
+              })
+            })
+          })
         })
+
+      })
     })
   },
   getPortfolio() {

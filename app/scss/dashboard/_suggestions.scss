@@ -13,18 +13,13 @@
     margin: 20px;
     border-radius: 3px;
     display: flex;
-    .left {
-      width: 80%;
-      #suggestion-chart {
-        height: 300px;
-      }
-      h3 {
-        padding-left: 20px;
-      }
+    flex-direction: column;
+    h3 {
+      padding-left: 20px;
     }
-    .right {
-      width: 20%;
+    #suggestion-chart {
+      height: 300px;
+      width: 100%;
     }
-
   }
 }
