@@ -19,6 +19,9 @@ const Suggestions = React.createClass({
     store.plans.get(newPlan.plan).on('change', this.updateState)
     store.plans.get(newPlan.plan).getSuggestions()
   },
+  componentWillUnmount() {
+    store.plans.get(this.props.plan).off('change', this.updateState)
+  },
   render() {
     // console.log('rendering');
     let suggestions = store.plans.get(this.props.plan).get('suggestions').map((suggestion, i) => {
