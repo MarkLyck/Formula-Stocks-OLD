@@ -1640,12 +1640,14 @@ footer .copyright {
     color: #95989E; }
 
 .dashboard {
-  background: #F9F9F9;
+  background: #f5f5f5;
   height: 100vh;
   width: 100vw; }
   .dashboard .container {
     height: calc(100% - 75px);
     display: flex; }
+    .dashboard .container .content {
+      overflow-y: scroll; }
 
 .dashboard-nav {
   display: flex;
@@ -1660,7 +1662,7 @@ footer .copyright {
       height: 50px;
       padding: 0 10px;
       border-radius: 25px;
-      background: #F9F9F9;
+      background: #f5f5f5;
       color: #95989E;
       display: flex;
       align-items: center;
@@ -1746,8 +1748,10 @@ footer .copyright {
     color: #da1354; }
 
 .portfolio {
-  flex: 1;
-  overflow-y: scroll; }
+  flex: 1; }
+
+#portfolio-chart {
+  height: 500px; }
 
 .holdings {
   background: #fff;
@@ -1761,28 +1765,64 @@ footer .copyright {
     justify-content: space-between;
     border-bottom: 1px solid #ABB3B7; }
 
-.portfolio-table .labels {
-  border-bottom: 1px solid #ABB3B7; }
+.portfolio-table {
+  border-collapse: collapse;
+  width: 100%; }
   .portfolio-table .labels tr {
     width: 100%;
-    border-bottom: 1px solid #ABB3B7; }
+    border-bottom: 1px solid #E8E8E8; }
     .portfolio-table .labels tr th {
-      border-bottom: 1px solid #ABB3B7;
       margin: 0;
       padding: 20px 0;
       padding-right: 25px;
       padding-left: 20px;
       text-align: left;
       font-weight: 100; }
-.portfolio-table tbody tr td {
-  font-weight: 400;
-  padding-left: 20px; }
-.portfolio-table tbody tr .positive {
-  color: #12D99E; }
-  .portfolio-table tbody tr .positive:before {
-    content: "+"; }
-.portfolio-table tbody tr .negative {
-  color: #da1354; }
+  .portfolio-table tbody tr {
+    height: 75px;
+    border-bottom: 1px solid #E8E8E8; }
+    .portfolio-table tbody tr td {
+      font-weight: 400;
+      padding-left: 20px; }
+    .portfolio-table tbody tr .stock-name {
+      display: flex;
+      align-items: center; }
+      .portfolio-table tbody tr .stock-name i {
+        color: #27A5F9;
+        font-size: 2rem;
+        margin-right: 20px; }
+      .portfolio-table tbody tr .stock-name p {
+        font-weight: 400; }
+      .portfolio-table tbody tr .stock-name .ticker {
+        font-weight: 100;
+        padding-left: 20px;
+        position: relative; }
+      .portfolio-table tbody tr .stock-name .ticker::before {
+        content: '';
+        height: 10px;
+        width: 10px;
+        position: absolute;
+        left: 0;
+        border: 2px solid #27A5F9;
+        border-radius: 50%; }
+    .portfolio-table tbody tr .positive {
+      color: #12D99E; }
+      .portfolio-table tbody tr .positive:before {
+        content: "+"; }
+    .portfolio-table tbody tr .negative {
+      color: #da1354; }
+  .portfolio-table .cash {
+    padding-bottom: 20px; }
+    .portfolio-table .cash tr {
+      height: 75px; }
+      .portfolio-table .cash tr .stock-name {
+        display: flex;
+        align-items: center;
+        height: 75px; }
+        .portfolio-table .cash tr .stock-name i {
+          font-size: 2rem;
+          color: #12D99E;
+          margin-right: 15px; }
 
 body {
   font-family: 'proxima-nova', 'Lato', sans-serif; }
