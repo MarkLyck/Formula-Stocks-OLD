@@ -35,20 +35,20 @@ const SideBar = React.createClass({
       suggestionsClass = 'Suggestions side-bar-link selected'
       suggestionsDropdown = (
         <div className="dropdown">
-          <Link className={basicClass} to="/dashboard/suggestions/basic">Basic</Link>
-          <Link className={premiumClass} to="/dashboard/suggestions/premium">Premium</Link>
-          <Link className={businessClass} to="/dashboard/suggestions/business">Business</Link>
-          <Link className={fundClass} to="/dashboard/suggestions/fund">Fund</Link>
+          <Link className={basicClass} to="/dashboard/suggestions/basic">Basic Suggestions</Link>
+          <Link className={premiumClass} to="/dashboard/suggestions/premium">Premium Suggestions</Link>
+          <Link className={businessClass} to="/dashboard/suggestions/business">Business Suggestions</Link>
+          <Link className={fundClass} to="/dashboard/suggestions/fund">Fund Suggestions</Link>
         </div>
       )
     } else if (this.state.dropdown === 'portfolio') {
       portfoliosClass = 'portfolios side-bar-link selected'
       portfoliosDropdown = (
         <div className="dropdown">
-          <Link className={basicClass}  to="/dashboard/portfolio/basic">Basic</Link>
-          <Link className={premiumClass}  to="/dashboard/portfolio/premium">Premium</Link>
-          <Link className={businessClass}  to="/dashboard/portfolio/business">Business</Link>
-          <Link className={fundClass}  to="/dashboard/portfolio/fund">Fund</Link>
+          <Link className={basicClass}  to="/dashboard/portfolio/basic">Basic Portfolio</Link>
+          <Link className={premiumClass}  to="/dashboard/portfolio/premium">Premium Portfolio</Link>
+          <Link className={businessClass}  to="/dashboard/portfolio/business">Business Portfolio</Link>
+          <Link className={fundClass}  to="/dashboard/portfolio/fund">Fund Portfolio</Link>
         </div>
       )
     }

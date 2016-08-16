@@ -16,7 +16,8 @@ const Plan = Backbone.Model.extend({
     },
     annualData: [],
     suggestions: [],
-    portfolio: []
+    portfolio: [],
+    portfolioYields: []
   },
   getAnnualData() {
     $.ajax(`https://s3-us-west-2.amazonaws.com/aws-fs/public/api/annual_${this.get('name')}.json`)
@@ -54,7 +55,7 @@ const Plan = Backbone.Model.extend({
       .then((response) => {
         let data = JSON.parse(response)
         this.set('portfolio', data.portfolio)
-        // console.log(data);
+        this.set('portfolioYields', data.logs)
       })
   },
 })
