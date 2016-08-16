@@ -4,6 +4,12 @@ import _ from 'underscore'
 import store from './store'
 
 let cc = {
+  commafy: function(num){
+    var parts = (''+(num<0?-num:num)).split("."), s=parts[0], L, i=L= s.length, o='';
+    while(i--){ o = (i===0?'':((L-i)%3?'':','))
+                    +s.charAt(i) +o }
+    return (num<0?'-':'') + o + (parts[1] ? '.' + parts[1] : '');
+  },
   ccFormat: function(input) {
     let v = input.replace(/\s+/g, '').replace(/[^0-9]/gi, '')
     let matches = v.match(/\d{4,16}/g);

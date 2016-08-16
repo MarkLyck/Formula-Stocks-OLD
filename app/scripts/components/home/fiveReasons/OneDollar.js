@@ -2,13 +2,7 @@ import React from 'react'
 import $ from 'jquery'
 
 import store from '../../../store'
-
-function commafy(num){
-  var parts = (''+(num<0?-num:num)).split("."), s=parts[0], L, i=L= s.length, o='';
-  while(i--){ o = (i===0?'':((L-i)%3?'':','))
-                  +s.charAt(i) +o }
-  return (num<0?'-':'') + o + (parts[1] ? '.' + parts[1] : '');
-}
+import cc from '../../../cc'
 
 const OneDollar = React.createClass({
   getInitialState() {
@@ -106,7 +100,7 @@ const OneDollar = React.createClass({
               <button onClick={this.updateNumbers.bind(null, 'business')} className={busClass}>Business</button>
               <button onClick={this.updateNumbers.bind(null, 'fund')} className={funClass}>Fund</button>
             </div>
-            <div className="fs bar" style={fsStyle}><p>${commafy(Math.round(this.state.fs))}</p></div>
+            <div className="fs bar" style={fsStyle}><p>${cc.commafy(Math.round(this.state.fs))}</p></div>
             <p className="fs plan-name">{this.state.plan} product</p>
 
             <div className="market-bar-container">

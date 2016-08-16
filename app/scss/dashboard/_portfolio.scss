@@ -1,5 +1,58 @@
 .portfolio {
-  width: 100%;
+  flex: 1;
   overflow-y: scroll;
-  overflow-x: hidden;
+}
+
+.holdings {
+  background: #fff;
+  border: 1px solid $side-color;
+  width: calc(100% - 80px);
+  margin: 40px auto;
+  border-radius: 3px;
+  .top {
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid $side-color;
+  }
+}
+
+.portfolio-table {
+  .labels {
+    border-bottom: 1px solid $side-color;
+    tr {
+      width: 100%;
+      border-bottom: 1px solid $side-color;
+      th {
+        border-bottom: 1px solid $side-color;
+        margin: 0;
+        // background: red;
+        padding: 20px 0;
+        padding-right: 25px;
+        padding-left: 20px;
+        text-align: left;
+        font-weight: 100;
+      }
+    }
+  }
+  tbody {
+    tr {
+      td {
+        font-weight: 400;
+        padding-left: 20px;
+      }
+      // .stock-name {
+      //   padding-left: 20px;
+      // }
+      .positive {
+        color: $action-color;
+        &:before {
+          content: '+'
+        }
+      }
+      .negative {
+        color: $warning-color;
+      }
+    }
+  }
 }
