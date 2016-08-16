@@ -1750,8 +1750,35 @@ footer .copyright {
 .portfolio {
   flex: 1; }
 
-#portfolio-chart {
-  height: 500px; }
+.portfolio-yields {
+  background: #fff;
+  border: 1px solid #ABB3B7;
+  margin: 40px auto;
+  width: calc(100% - 80px);
+  border-radius: 3px;
+  display: flex; }
+  .portfolio-yields .left {
+    width: 80%; }
+    .portfolio-yields .left h2 {
+      padding-left: 40px; }
+    .portfolio-yields .left #portfolio-chart {
+      height: 350px; }
+  .portfolio-yields .right {
+    width: 20%;
+    border-left: 2px solid #E8E8E8;
+    padding-left: 20px; }
+    .portfolio-yields .right .stats h3 {
+      margin-bottom: 10px;
+      font-weight: 400; }
+    .portfolio-yields .right .stats .wrapper {
+      display: flex;
+      align-items: center; }
+      .portfolio-yields .right .stats .wrapper p {
+        margin: 0;
+        font-weight: 100; }
+      .portfolio-yields .right .stats .wrapper i {
+        color: #27A5F9;
+        margin-right: 5px; }
 
 .holdings {
   background: #fff;
