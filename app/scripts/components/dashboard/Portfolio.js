@@ -24,7 +24,10 @@ const Portfolio = React.createClass({
   },
   componentWillUnmount() {
     store.market.data.off('change', this.updateState)
-    store.plans.get(this.props.plan).off('change', this.updateState)
+    store.plans.get('basic').off('change', this.updateState)
+    store.plans.get('premium').off('change', this.updateState)
+    store.plans.get('business').off('change', this.updateState)
+    store.plans.get('fund').off('change', this.updateState)
   },
   render() {
 
