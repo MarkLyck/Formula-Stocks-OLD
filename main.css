@@ -431,6 +431,9 @@ textarea {
 .blue {
   color: #27A5F9; }
 
+.green {
+  color: #12D99E; }
+
 .bounce-down {
   animation: .5s BounceDown; }
 
@@ -1777,8 +1780,10 @@ footer .copyright {
         margin: 0;
         font-weight: 100; }
       .portfolio-yields .right .stats .wrapper i {
-        color: #27A5F9;
+        color: #12D99E;
         margin-right: 5px; }
+    .portfolio-yields .right .fs.stats .wrapper i {
+      color: #27A5F9; }
 
 .holdings {
   background: #fff;
