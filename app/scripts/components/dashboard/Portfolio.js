@@ -45,7 +45,6 @@ const Portfolio = React.createClass({
       if ((stock.latest_price - stock.purchase_price).toFixed(2) < 0) {
         changeClass = 'negative'
       }
-      // console.log(stock);
 
       return (
         <tbody key={i}>
@@ -94,6 +93,7 @@ const Portfolio = React.createClass({
       "autoMarginOffset": 20,
       "valueAxes": [{
           "id": "v1",
+          unit: '%',
           "axisAlpha": 0,
           "position": "left",
           "ignoreAxisWidth":true,
@@ -106,12 +106,28 @@ const Portfolio = React.createClass({
         borderThickness: 1,
       },
       "graphs": [
+          {
+            "id": "portfolio",
+            "bullet": "round",
+            "bulletBorderAlpha": 1,
+            "bulletColor": "#FFFFFF",
+            lineColor: "#27A5F9",
+            "fillAlphas": 0.75,
+            "bulletSize": 5,
+            "hideBulletsCount": 50,
+            "lineThickness": 2,
+            "title": "red line",
+            "useLineColorForBulletBorder": true,
+            "valueField": "fs",
+            "balloonText": "<span style='font-size:18px;'>[[value]]%</span>"
+        },
         {
             "id": "market",
             "bullet": "round",
             "bulletBorderAlpha": 1,
             "bulletColor": "#FFFFFF",
             lineColor: "#49494A",
+            "fillAlphas": 0.75,
             "bulletSize": 5,
             "hideBulletsCount": 50,
             "lineThickness": 2,
@@ -120,20 +136,7 @@ const Portfolio = React.createClass({
             "valueField": "market",
             "balloonText": "<span style='font-size:18px;'>[[value]]%</span>"
         },
-        {
-          "id": "portfolio",
-          "bullet": "round",
-          "bulletBorderAlpha": 1,
-          "bulletColor": "#FFFFFF",
-          lineColor: "#27A5F9",
-          "bulletSize": 5,
-          "hideBulletsCount": 50,
-          "lineThickness": 2,
-          "title": "red line",
-          "useLineColorForBulletBorder": true,
-          "valueField": "fs",
-          "balloonText": "<span style='font-size:18px;'>[[value]]%</span>"
-      }
+
       ],
       chartCursor: {
 	        valueLineEnabled: true,
@@ -159,9 +162,15 @@ const Portfolio = React.createClass({
 
     let portfolioYieldsLength = store.plans.get(this.props.plan).get('portfolioYields').length
     let lastValue = 0;
+    let lastMarketValue = 0;
     if (store.plans.get(this.props.plan).get('portfolioYields')[0]) {
       lastValue = store.plans.get(this.props.plan).get('portfolioYields')[portfolioYieldsLength - 1].balance
     }
+    if (store.market.data.get('portfolioData')[0]) {
+      lastMarketValue = store.market.data.get('portfolioData')[portfolioYieldsLength - 1]
+    }
+
+    console.log(lastMarketValue);
     return (
       <div className="portfolio">
 
@@ -174,7 +183,7 @@ const Portfolio = React.createClass({
 
           <div className="right">
 
-            <div className="stats">
+            <div className="fs stats">
               <h3>{this.props.plan} Formula</h3>
               <div className="wrapper">
                 <i className="fa fa-caret-up" aria-hidden="true"></i>
@@ -186,7 +195,7 @@ const Portfolio = React.createClass({
               <h3>S&P 500</h3>
               <div className="wrapper">
                 <i className="fa fa-caret-up" aria-hidden="true"></i>
-                <p><span className="blue">%</span> since 2009</p>
+                <p><span className="green">{((lastMarketValue / marketStartValue * 100 - 100).toFixed(2))}%</span> since 2009</p>
               </div>
             </div>
 

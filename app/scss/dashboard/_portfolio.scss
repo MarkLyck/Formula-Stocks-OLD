@@ -35,8 +35,15 @@
           font-weight: 100;
         }
         i {
-          color: $primary-color;
+          color: $action-color;
           margin-right: 5px;
+        }
+      }
+    }
+    .fs.stats {
+      .wrapper {
+        i {
+          color: $primary-color;
         }
       }
     }
