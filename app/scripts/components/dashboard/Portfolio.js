@@ -93,14 +93,13 @@ const Portfolio = React.createClass({
       "dataProvider": fixedData,
       "theme": "light",
       "marginRight": 0,
-      "marginLeft": 0,
+      "marginLeft": 60,
       "valueAxes": [{
           "id": "v1",
           unit: '%',
           "axisAlpha": 0,
           "position": "left",
           "ignoreAxisWidth":true,
-          inside: true,
           minimum: 0,
       }],
       balloon: {
@@ -145,12 +144,12 @@ const Portfolio = React.createClass({
       chartCursor: {
 	        valueLineEnabled: true,
 	        valueLineAlpha: 0.5,
-	        fullWidth: true,
 	        cursorAlpha: 0.5
 	    },
       categoryField: "date",
       categoryAxis: {
         parseDates: true,
+        tickLength: 0,
       },
     };
 

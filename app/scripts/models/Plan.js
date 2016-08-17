@@ -47,7 +47,11 @@ const Plan = Backbone.Model.extend({
       .then((response) => {
         let suggestions = JSON.parse(response)
         this.set('suggestions', suggestions.actionable)
-        this.getStockInfo()
+        this.get('suggestions').forEach((suggestion, i) => {
+          this.getStockInfo(suggestion.ticker, i)
+        })
+
+        this.getPortfolio()
       })
   },
   parseStockData(data) {
@@ -57,18 +61,24 @@ const Plan = Backbone.Model.extend({
       }
     })
   },
-  getStockInfo() {
-    this.get('suggestions').forEach((suggestion, i) => {
+  getStockInfo(ticker, i) {
 
-      let ticker = suggestion.ticker.replace('.', '_')
+    ticker = ticker.replace('.', '_')
+    let query = `https://www.quandl.com/api/v1/datasets/WIKI/${ticker}.json?api_key=${store.settings.quandlKey}`
+    $.ajax({
+      url: query,
+    })
+    .then((response) => {
+      let suggestionToUpdate = this.get('suggestions')[i]
+      suggestionToUpdate.data = this.parseStockData(response.data)
 
-      let query = `https://www.quandl.com/api/v1/datasets/WIKI/${ticker}.json?api_key=${store.settings.quandlKey}`
-
-
-
-      $.ajax({
-        url: query,
-      })
+      let newArr = this.get('suggestions').slice(0,i).concat(suggestionToUpdate, this.get('suggestions').slice(i + 1))
+      this.set('suggestions', newArr)
+      this.trigger('change')
+    })
+    .fail((e) => {
+      query = `https://www.quandl.com/api/v1/datasets/GOOG/NASDAQ_${ticker}.json?api_key=${store.settings.quandlKey}`
+      $.ajax(query)
       .then((response) => {
         let suggestionToUpdate = this.get('suggestions')[i]
         suggestionToUpdate.data = this.parseStockData(response.data)
@@ -77,8 +87,8 @@ const Plan = Backbone.Model.extend({
         this.set('suggestions', newArr)
         this.trigger('change')
       })
-      .fail((e) => {
-        query = `https://www.quandl.com/api/v1/datasets/GOOG/NASDAQ_${ticker}.json?api_key=${store.settings.quandlKey}`
+      .fail((error) => {
+        query = `https://www.quandl.com/api/v1/datasets/GOOG/NYSE_${ticker}.json?api_key=${store.settings.quandlKey}`
         $.ajax(query)
         .then((response) => {
           let suggestionToUpdate = this.get('suggestions')[i]
@@ -88,8 +98,8 @@ const Plan = Backbone.Model.extend({
           this.set('suggestions', newArr)
           this.trigger('change')
         })
-        .fail((error) => {
-          query = `https://www.quandl.com/api/v1/datasets/GOOG/NYSE_${ticker}.json?api_key=${store.settings.quandlKey}`
+        .fail(() => {
+          query = `https://www.quandl.com/api/v1/datasets/GOOG/AMEX_${ticker}.json?api_key=${store.settings.quandlKey}`
           $.ajax(query)
           .then((response) => {
             let suggestionToUpdate = this.get('suggestions')[i]
@@ -100,7 +110,7 @@ const Plan = Backbone.Model.extend({
             this.trigger('change')
           })
           .fail(() => {
-            query = `https://www.quandl.com/api/v1/datasets/GOOG/AMEX_${ticker}.json?api_key=${store.settings.quandlKey}`
+            query = `https://www.quandl.com/api/v1/datasets/YAHOO/TSX_${ticker}.json?api_key=${store.settings.quandlKey}`
             $.ajax(query)
             .then((response) => {
               let suggestionToUpdate = this.get('suggestions')[i]
@@ -111,32 +121,27 @@ const Plan = Backbone.Model.extend({
               this.trigger('change')
             })
             .fail(() => {
-              query = `https://www.quandl.com/api/v1/datasets/YAHOO/TSX_${ticker}.json?api_key=${store.settings.quandlKey}`
-              $.ajax(query)
-              .then((response) => {
-                let suggestionToUpdate = this.get('suggestions')[i]
-                suggestionToUpdate.data = this.parseStockData(response.data)
-
-                let newArr = this.get('suggestions').slice(0,i).concat(suggestionToUpdate, this.get('suggestions').slice(i + 1))
-                this.set('suggestions', newArr)
-                this.trigger('change')
-              })
-              .fail(() => {
-                console.log('no data for: ', ticker);
-              })
+              console.log('no data for: ', ticker);
             })
           })
         })
-
       })
     })
   },
   getPortfolio() {
     $.ajax(`https://s3-us-west-2.amazonaws.com/aws-fs/public/api/monthly_${this.get('name')}.json`)
       .then((response) => {
+
         let data = JSON.parse(response)
         this.set('portfolio', data.portfolio)
         this.set('portfolioYields', data.logs)
+
+        data.actionable.forEach((suggestion) => {
+          console.log(suggestion);
+          let newSuggestions = this.get('suggestions').concat(suggestion)
+          this.set('suggestions', newSuggestions)
+          this.getStockInfo(suggestion.ticker, this.get('suggestions').length - 1)
+        })
       })
   },
 })

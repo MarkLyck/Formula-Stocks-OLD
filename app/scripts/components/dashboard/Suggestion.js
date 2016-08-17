@@ -4,10 +4,13 @@ import SuggestionChart from './SuggestionChart'
 
 const Suggestion = React.createClass({
   render() {
-    console.log(this.props.suggestion);
     let lastPrice;
     if (this.props.suggestion.data) {
       lastPrice = this.props.suggestion.data[0][3]
+    }
+    let allocation;
+    if (this.props.suggestion.percentage_weight) {
+      allocation = this.props.suggestion.percentage_weight.toFixed(2)
     }
     return (
       <li className="fade-in">
@@ -25,7 +28,7 @@ const Suggestion = React.createClass({
             <p>Ticker</p>
           </li>
           <li>
-            <h4 className="value">{this.props.suggestion.percentage_weight.toFixed(2)}%</h4>
+            <h4 className="value">{allocation}%</h4>
             <p>Allocation</p>
           </li>
           <li>

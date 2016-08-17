@@ -1,8 +1,21 @@
 import React from 'react'
 
+import store from '../../store'
+
 const SuggestionHeader = React.createClass({
+  getInitialState() {
+    return {
+      stats: store.plans.get(this.props.plan).get('stats'),
+      suggestionsLength: store.plans.get(this.props.plan).get('suggestions').length
+    }
+  },
+  componentWillReceiveProps(newProps) {
+    this.setState({
+      stats: store.plans.get(newProps.plan).get('stats'),
+      suggestionsLength: store.plans.get(newProps.plan).get('suggestions').length
+    })
+  },
   render() {
-    //<img src="assets/icons/chart_icon.svg"/>
     return (
       <section className="suggestion-header">
         <ul>
@@ -31,7 +44,7 @@ const SuggestionHeader = React.createClass({
               <i className="fa fa-list white-color"></i>
             </div>
             <div className="value">
-              <h3 className="white-color">12</h3>
+              <h3 className="white-color">{this.state.suggestionsLength}</h3>
               <p className="white-color">Suggestions</p>
             </div>
           </li>

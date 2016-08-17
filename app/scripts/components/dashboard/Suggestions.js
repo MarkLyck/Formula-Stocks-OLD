@@ -35,7 +35,7 @@ const Suggestions = React.createClass({
 
     return (
       <div className="suggestions">
-        <SuggestionHeader/>
+        <SuggestionHeader plan={this.props.plan}/>
         <ul className="suggestions-list">
           {suggestions}
         </ul>

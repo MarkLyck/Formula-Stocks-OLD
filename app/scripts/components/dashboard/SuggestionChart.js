@@ -27,8 +27,8 @@ const SuggestionChart = React.createClass({
       "dataProvider": chartData,
       "theme": "light",
       "marginRight": 0,
-      "marginLeft": 0,
-      "marginTop": 0,
+      "marginLeft": 60,
+      "marginTop": 25,
       "marginBottom": 25,
       "autoMargins" : false,
       "valueAxes": [{
@@ -38,7 +38,7 @@ const SuggestionChart = React.createClass({
           "axisAlpha": 0,
           "position": "left",
           "ignoreAxisWidth":true,
-          inside: true,
+          // inside: true,
           gridAlpha: 0.05,
       }],
       balloon: {
@@ -67,6 +67,8 @@ const SuggestionChart = React.createClass({
       categoryAxis: {
         parseDates: true,
         gridAlpha: 0,
+        tickLength: 0,
+        axisAlpha: 0,
       },
       "guides": [{
 					"value" : this.props.suggestedPrice + 0.001,
