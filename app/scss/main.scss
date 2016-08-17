@@ -75,7 +75,7 @@ button {
   color: #fff;
   padding: 20px;
   border: none;
-  border-radius: 3px;
+  // border-radius: 3px;
   &:hover {
     cursor: pointer;
   }
@@ -92,7 +92,7 @@ button {
   width: 100%;
   font-weight: 400;
   font-size: 1rem;
-  border-radius: 5px;
+  // border-radius: 5px;
   transition: background .3s;
   &:hover {
     background: darken($action-color, 5%);
@@ -106,7 +106,7 @@ button {
   background: none;
   color: #fff;
   border: 2px solid #fff;
-  border-radius: 5px;
+  // border-radius: 5px;
   display: flex;
   justify-content: center;
   align-items: center;
