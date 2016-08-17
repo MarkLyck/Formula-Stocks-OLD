@@ -8,4 +8,21 @@
       }
     }
   }
+  .right {
+    img {
+      width: 500px;
+      transform: translateY(50%);
+    }
+    .slide-up-mockup-img {
+      animation: 0.75s slideUpMockupImg;
+    }
+    @keyframes slideUpMockupImg {
+      from {
+        transform: translateY(100%);
+      }
+      to {
+        transform: translateY(50%);
+      }
+    }
+  }
 }

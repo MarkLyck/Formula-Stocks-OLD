@@ -24,7 +24,7 @@ const HigherPerformance = React.createClass({
             </div>
           </div>
           <div className="right">
-
+            <img src="assets/images/Ipad.png" className="slide-up-mockup-img"/>
           </div>
         </div>
       </div>

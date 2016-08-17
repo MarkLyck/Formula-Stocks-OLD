@@ -21,7 +21,7 @@ const WhatIsIt = React.createClass({
           </p>
         </div>
         <div className="right">
-          <img className="screenshot" src="assets/images/portfolio-screenshot.jpg"/>
+          <img className="screenshot" src="assets/images/portfolio-screenshot.png"/>
         </div>
       </div>
     )
