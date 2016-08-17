@@ -1673,7 +1673,8 @@ footer .copyright {
   padding: 0 20px;
   justify-content: space-between;
   height: 75px;
-  background: #fff; }
+  background: #fff;
+  border-bottom: 1px solid #E8E8E8; }
   .dashboard-nav .right {
     display: flex; }
     .dashboard-nav .right button, .dashboard-nav .right a {
