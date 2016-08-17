@@ -1928,7 +1928,7 @@ footer .copyright {
     font-size: 0.8rem;
     font-weight: 700; }
 
-@media (max-width: 1100px) {
+@media (max-width: 1200px) {
   .suggestions-list li {
     width: calc(100% - 40px); } }
 .suggestion-header ul {
