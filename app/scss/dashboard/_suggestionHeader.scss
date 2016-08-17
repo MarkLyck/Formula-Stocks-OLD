@@ -1,0 +1,48 @@
+.suggestion-header {
+  ul {
+    margin-top: 20px;
+    display: flex;
+    .panel {
+      width: calc(100% / 4 - 40px);
+      margin: 0 20px;
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+      transition: transform .3s;
+      &:hover {
+        transform: scale(1.05);
+      }
+      .symbol {
+        width: 30%;
+        padding: 50px 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        i {
+          font-size: 25px;
+        }
+      }
+      .value {
+        width: 68%;
+        border-left: 1px solid rgba(255,255,255,.2);
+        padding-left: 10%;
+        h3, p {
+          margin: 0;
+          font-weight: 100;
+        }
+        h3 {
+          font-size: 36px;
+        }
+        p {
+          font-weight: 100;
+          font-size: 14px;
+        }
+      }
+    }
+    .panel.gray-border {
+      .value {
+        border-left: 1px solid #eaeaeb;
+      }
+    }
+  }
+}

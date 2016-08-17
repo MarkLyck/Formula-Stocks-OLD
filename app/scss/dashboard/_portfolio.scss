@@ -4,10 +4,8 @@
 
 .portfolio-yields {
   background: #fff;
-  border: 1px solid $side-color;
   margin: 40px auto;
   width: calc(100% - 80px);
-  border-radius: 3px;
   display: flex;
   .left {
     h2 {
@@ -54,10 +52,10 @@
 
 .holdings {
   background: #fff;
-  border: 1px solid $side-color;
+  // border: 1px solid $side-color;
   width: calc(100% - 80px);
   margin: 40px auto;
-  border-radius: 3px;
+  // border-radius: 3px;
   .top {
     padding: 10px 20px;
     display: flex;

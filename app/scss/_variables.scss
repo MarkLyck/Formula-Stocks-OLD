@@ -9,9 +9,22 @@ $dark-color: #49494A;
 $seconday-background: #F9F9F9;
 $dark-background: #2C323D;
 
-$dashboard-background: #f5f5f5;
-$nav-btn-background: #f5f5f5;
-$side-bar-background: #30333B;
-$side-border-color: #3A3D45;
+$dashboard-background: #F3F3F3;
+$nav-btn-background: #F3F3F3;
+
+// $side-bar-background: #30333B;
+$side-bar-background: #32323A;
+// $side-border-color: #3A3D45;
+$side-border-color: #3C3C43;
+
 $side-color: #ABB3B7;
 $db-border-color: #E8E8E8;
+
+.blue-color { color: $primary-color; }
+.blue { background: $primary-color; }
+
+.white { background: #fff; }
+.white-color { color: #fff; }
+
+.green { background: $action-color; }
+.green-color { color: $action-color; }

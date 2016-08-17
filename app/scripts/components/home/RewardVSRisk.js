@@ -5,7 +5,7 @@ const RewardVSRisk = React.createClass({
     return (
       <section className="split-section reward-vs-risk">
         <div className="content">
-          <h2 className="title">More <span className="blue">Reward</span>, Less <span className="blue">Risk</span></h2>
+          <h2 className="title">More <span className="blue-color">Reward</span>, Less <span className="blue-color">Risk</span></h2>
           <div className="divider"></div>
           <div className="wrapper">
             <div className="left">

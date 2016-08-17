@@ -28,6 +28,7 @@
 @import "dashboard/sideBar";
 @import "dashboard/portfolio";
 @import "dashboard/suggestions";
+@import "dashboard/suggestionHeader";
 
 
 body {
@@ -124,7 +125,7 @@ button {
   }
 }
 
-.outline-btn.blue {
+.outline-btn.blue-color {
   border: 2px solid $primary-color;
   color: $primary-color;
   &:hover {

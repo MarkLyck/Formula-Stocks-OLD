@@ -7,7 +7,7 @@ const OurProducts = React.createClass({
       <section className="our-products bg-gray">
         <div className="content">
           <div className="title-container">
-            <h2>Our <span className="blue">Products</span></h2>
+            <h2>Our <span className="blue-color">Products</span></h2>
             <div className="divider"></div>
           </div>
           <p>
@@ -25,19 +25,19 @@ const OurProducts = React.createClass({
           <div className="icon-container">
             <div className="plan-icon">
               <img src="assets/icons/icon-user.svg"/>
-              <p className="blue">Basic</p>
+              <p className="blue-color">Basic</p>
             </div>
             <div className="plan-icon">
               <img src="assets/icons/icon-briefcase.svg"/>
-              <p className="blue">Premium</p>
+              <p className="blue-color">Premium</p>
             </div>
             <div className="plan-icon">
               <img src="assets/icons/icon-chart.svg"/>
-              <p className="blue">Business</p>
+              <p className="blue-color">Business</p>
             </div>
             <div className="plan-icon">
               <img src="assets/icons/icon-building.svg"/>
-              <p className="blue">Fund</p>
+              <p className="blue-color">Fund</p>
             </div>
           </div>
 
@@ -47,8 +47,8 @@ const OurProducts = React.createClass({
           at the expense of diversification. Our <span className="semibold">Fund</span> product is for institutional capital,
           capable of handling large diversified AUMs, which other products cannot.
            Each product utilizes a different number of Intelligent Investment Technology formulas.
-          You could explore our <a className="blue">product matrix</a> below.
-          Or see our <a className="blue">retail brochure</a> or <a className="blue">business brochure</a>.<br/><br/>
+          You could explore our <a className="blue-color">product matrix</a> below.
+          Or see our <a className="blue-color">retail brochure</a> or <a className="blue-color">business brochure</a>.<br/><br/>
 
           Formula Stocks does not provide personalized investment advice We respect your privacy,
           and receive no financial information in the process.

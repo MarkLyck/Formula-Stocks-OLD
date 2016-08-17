@@ -6,7 +6,7 @@
 }
 .side-bar-links {
   .side-bar-link {
-    border-bottom: 2px solid $side-border-color;
+    border-bottom: 1px solid $side-border-color;
 
     display: flex;
     flex-direction: column;
@@ -19,6 +19,7 @@
       h3 {
         padding-left: 40px;
         color: $side-color;
+        font-size: 1rem;
         margin: 0;
         i {
           position: absolute;
@@ -33,7 +34,6 @@
     .dropdown {
       display: flex;
       flex-direction: column;
-      // padding-left: 40px;
       a {
         display: flex;
         align-items: center;
@@ -41,6 +41,7 @@
         width: 100%;
         padding-left: 60px;
         color: $light-text-color;
+        font-size: 0.9rem;
         &:hover {
           background: darken($side-bar-background, 5%);
         }

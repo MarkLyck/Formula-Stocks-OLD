@@ -9,7 +9,7 @@ const SuggestionChart = React.createClass({
         open: Number(point[1].toFixed(2)),
         high: Number(point[2].toFixed(2)),
         close: Number(point[3].toFixed(2)),
-        date: point[0]
+        date: point[0],
       }
     })
     chartData = chartData.slice(0,30)
@@ -28,6 +28,9 @@ const SuggestionChart = React.createClass({
       "theme": "light",
       "marginRight": 0,
       "marginLeft": 0,
+      "marginTop": 0,
+      "marginBottom": 25,
+      "autoMargins" : false,
       "valueAxes": [{
           "id": "v1",
           unit: '$',
@@ -35,6 +38,7 @@ const SuggestionChart = React.createClass({
           "position": "left",
           "ignoreAxisWidth":true,
           inside: true,
+          gridAlpha: 0.05,
       }],
       balloon: {
         color: '#49494A',
@@ -45,29 +49,29 @@ const SuggestionChart = React.createClass({
       "graphs": [
           {
             "id": "suggestion",
-            "bullet": "round",
-            "bulletBorderAlpha": 1,
-            "bulletColor": "#FFFFFF",
+            // "bullet": "round",
+            // "bulletBorderAlpha": 1,
+            // "bulletColor": "#FFFFFF",
             lineColor: color.negative,
-            "bulletSize": 5,
-            "hideBulletsCount": 50,
+            // "bulletSize": 5,
+            // "hideBulletsCount": 50,
             "lineThickness": 2,
-            "title": "red line",
-            "useLineColorForBulletBorder": true,
+            // "useLineColorForBulletBorder": true,s
             "negativeLineColor": color.positive,
             "negativeBase": this.props.suggestedPrice + 0.001,
             "valueField": "close",
-            "balloonText": "<span style='font-size:18px;'>$[[value]]</span>"
+            "balloonText": `<div class=\"suggestion-balloon\"><p class="ticker">${this.props.ticker}</p> <p>$[[value]]</p></div>`
         }
       ],
       chartCursor: {
 	        valueLineEnabled: true,
 	        valueLineAlpha: 0.5,
-	        cursorAlpha: 0.5
+	        cursorAlpha: 0.1
 	    },
       categoryField: "date",
       categoryAxis: {
         parseDates: true,
+        gridAlpha: 0,
       },
       "guides": [{
 					"value" : this.props.suggestedPrice + 0.001,

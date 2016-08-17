@@ -20,7 +20,7 @@ const HigherPerformance = React.createClass({
             </p>
             <div className="cta">
               <button className="filled-btn">Try it for free!</button>
-              <button className="outline-btn blue">Learn more</button>
+              <button className="outline-btn blue-color">Learn more</button>
             </div>
           </div>
           <div className="right">

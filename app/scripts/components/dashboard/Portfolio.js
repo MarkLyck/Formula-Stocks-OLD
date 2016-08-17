@@ -59,9 +59,9 @@ const Portfolio = React.createClass({
                 <p className="ticker">{stock.ticker}</p>
               </div>
             </td>
-            <td><p className="blue">{stock.percentage_weight.toFixed(2)}%</p></td>
+            <td><p className="blue-color">{stock.percentage_weight.toFixed(2)}%</p></td>
             <td><p className={changeClass}>{(stock.latest_price - stock.purchase_price).toFixed(2)}%</p></td>
-            <td><p className="blue">${stock.purchase_price.toFixed(2)}</p></td>
+            <td><p className="blue-color">${stock.purchase_price.toFixed(2)}</p></td>
             <td><p>${stock.latest_price.toFixed(2)}</p></td>
             <td><p>{cc.commafy(stock.days_owned)}</p></td>
           </tr>
@@ -123,7 +123,7 @@ const Portfolio = React.createClass({
             "title": "red line",
             "useLineColorForBulletBorder": true,
             "valueField": "fs",
-            "balloonText": "<span style='font-size:18px;'>[[value]]%</span>"
+            "balloonText": "<span style='font-size:18px;'>+[[value]]%</span>"
         },
         {
             "id": "market",
@@ -138,7 +138,7 @@ const Portfolio = React.createClass({
             "title": "red line",
             "useLineColorForBulletBorder": true,
             "valueField": "market",
-            "balloonText": "<span style='font-size:18px;'>[[value]]%</span>"
+            "balloonText": "<span style='font-size:18px;'>+[[value]]%</span>"
         },
 
       ],
@@ -191,7 +191,7 @@ const Portfolio = React.createClass({
               <h3>{this.props.plan} Formula</h3>
               <div className="wrapper">
                 <i className="fa fa-caret-up" aria-hidden="true"></i>
-                <p><span className="blue">{((lastValue - startValue) / startValue * 100).toFixed(2)}%</span> since 2009</p>
+                <p><span className="blue-color">{((lastValue - startValue) / startValue * 100).toFixed(2)}%</span> since 2009</p>
               </div>
             </div>
 
@@ -199,7 +199,7 @@ const Portfolio = React.createClass({
               <h3>S&P 500</h3>
               <div className="wrapper">
                 <i className="fa fa-caret-up" aria-hidden="true"></i>
-                <p><span className="green">{((lastMarketValue / marketStartValue * 100 - 100).toFixed(2))}%</span> since 2009</p>
+                <p><span className="green-color">{((lastMarketValue / marketStartValue * 100 - 100).toFixed(2))}%</span> since 2009</p>
               </div>
             </div>
 
@@ -209,7 +209,7 @@ const Portfolio = React.createClass({
         <section className="holdings">
           <div className="top">
             <h2>Holdings</h2>
-            <h2 className="blue">{store.plans.get(this.props.plan).get('portfolio').length - 1} Stocks</h2>
+            <h2 className="blue-color">{store.plans.get(this.props.plan).get('portfolio').length - 1} Stocks</h2>
           </div>
           <table className="portfolio-table">
             <thead className="labels">

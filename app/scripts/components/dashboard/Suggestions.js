@@ -1,6 +1,7 @@
 import React from 'react'
 
 import Suggestion from './Suggestion'
+import SuggestionHeader from './SuggestionHeader'
 
 import store from '../../store'
 
@@ -34,6 +35,7 @@ const Suggestions = React.createClass({
 
     return (
       <div className="suggestions">
+        <SuggestionHeader/>
         <ul className="suggestions-list">
           {suggestions}
         </ul>
