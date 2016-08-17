@@ -1723,14 +1723,14 @@ footer .copyright {
     display: flex; }
     .side-bar-links .side-bar-link button h3 {
       padding-left: 40px;
-      color: #ABB3B7;
+      color: #F3F3F3;
       font-size: 1rem;
       margin: 0; }
       .side-bar-links .side-bar-link button h3 i {
         position: absolute;
         left: 20px; }
     .side-bar-links .side-bar-link button i {
-      color: #ABB3B7; }
+      color: #F3F3F3; }
   .side-bar-links .side-bar-link .dropdown {
     display: flex;
     flex-direction: column; }
@@ -1783,7 +1783,7 @@ footer .copyright {
       height: 350px; }
   .portfolio-yields .right {
     width: 20%;
-    border-left: 2px solid #E8E8E8;
+    border-left: 2px solid #F3F3F3;
     padding-left: 20px; }
     .portfolio-yields .right .stats h3 {
       margin-bottom: 10px;
@@ -1808,14 +1808,14 @@ footer .copyright {
     padding: 10px 20px;
     display: flex;
     justify-content: space-between;
-    border-bottom: 1px solid #ABB3B7; }
+    border-bottom: 1px solid #F3F3F3; }
 
 .portfolio-table {
   border-collapse: collapse;
   width: 100%; }
   .portfolio-table .labels tr {
     width: 100%;
-    border-bottom: 1px solid #E8E8E8; }
+    border-bottom: 1px solid #F3F3F3; }
     .portfolio-table .labels tr th {
       margin: 0;
       padding: 20px 0;
@@ -1825,7 +1825,7 @@ footer .copyright {
       font-weight: 100; }
   .portfolio-table tbody tr {
     height: 75px;
-    border-bottom: 1px solid #E8E8E8; }
+    border-bottom: 1px solid #F3F3F3; }
     .portfolio-table tbody tr td {
       font-weight: 400;
       padding-left: 20px; }
@@ -1890,6 +1890,18 @@ footer .copyright {
     .suggestions-list li #suggestion-chart {
       height: 300px;
       width: 100%; }
+    .suggestions-list li .bottom {
+      display: flex; }
+      .suggestions-list li .bottom li {
+        width: calc(100% / 4); }
+        .suggestions-list li .bottom li p, .suggestions-list li .bottom li h4 {
+          margin: 0;
+          color: #777;
+          font-weight: 100; }
+        .suggestions-list li .bottom li .value {
+          margin-bottom: 5px;
+          color: #323232;
+          font-weight: 400; }
 
 .suggestion-balloon {
   display: flex; }
@@ -1921,7 +1933,6 @@ footer .copyright {
     margin: 0 20px;
     display: flex;
     align-items: center;
-    margin-bottom: 20px;
     transition: transform .3s; }
     .suggestion-header ul .panel:hover {
       transform: scale(1.05); }
