@@ -1878,10 +1878,11 @@ footer .copyright {
 .suggestions-list {
   display: flex;
   flex-wrap: wrap;
-  width: 100%; }
+  width: 100%;
+  padding: 0 10px; }
   .suggestions-list li {
-    width: calc(50% - 40px);
-    margin: 20px;
+    width: calc(50% - 20px);
+    margin: 10px;
     display: flex;
     flex-direction: column; }
     .suggestions-list li .top {
@@ -1935,18 +1936,18 @@ footer .copyright {
 
 @media (max-width: 1200px) {
   .suggestions-list li {
-    width: calc(100% - 40px); } }
+    width: calc(100% - 20px); } }
 .suggestion-header ul {
-  margin-top: 20px;
+  margin-top: 10px;
   display: flex;
-  flex-wrap: wrap; }
+  flex-wrap: wrap;
+  padding: 0 10px; }
   .suggestion-header ul .panel {
-    width: calc(100% / 4 - 40px);
-    margin: 0 20px;
+    width: calc(100% / 4 - 20px);
+    margin: 10px;
     display: flex;
     align-items: center;
-    transition: transform .3s;
-    margin-bottom: 20px; }
+    transition: transform .3s; }
     .suggestion-header ul .panel:hover {
       transform: scale(1.05); }
     .suggestion-header ul .panel .symbol {
@@ -1974,10 +1975,10 @@ footer .copyright {
 
 @media (max-width: 1200px) {
   .suggestion-header ul .panel {
-    width: calc(100% / 2 - 40px); } }
+    width: calc(100% / 2 - 20px); } }
 @media (max-width: 800px) {
   .suggestion-header ul .panel {
-    width: calc(100% - 40px); } }
+    width: calc(100% - 20px); } }
 .my-account-page {
   padding: 40px; }
   .my-account-page .profile-info {
