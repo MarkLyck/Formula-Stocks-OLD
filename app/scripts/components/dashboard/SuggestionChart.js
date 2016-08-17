@@ -34,6 +34,7 @@ const SuggestionChart = React.createClass({
       "valueAxes": [{
           "id": "v1",
           unit: '$',
+          unitPosition: 'left',
           "axisAlpha": 0,
           "position": "left",
           "ignoreAxisWidth":true,
