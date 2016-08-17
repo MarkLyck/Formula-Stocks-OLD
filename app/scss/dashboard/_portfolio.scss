@@ -41,6 +41,9 @@
       }
     }
     .fs.stats {
+      .fs-plan {
+        text-transform: capitalize;
+      }
       .wrapper {
         i {
           color: $primary-color;

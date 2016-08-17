@@ -452,8 +452,8 @@ textarea {
 .light-text-color {
   color: #95989E; }
 
-.green {
-  color: #12D99E; }
+.capitalize {
+  text-transform: capitalize; }
 
 .bounce-down {
   animation: .5s BounceDown; }
@@ -1797,6 +1797,8 @@ footer .copyright {
       .portfolio-yields .right .stats .wrapper i {
         color: #12D99E;
         margin-right: 5px; }
+    .portfolio-yields .right .fs.stats .fs-plan {
+      text-transform: capitalize; }
     .portfolio-yields .right .fs.stats .wrapper i {
       color: #27A5F9; }
 

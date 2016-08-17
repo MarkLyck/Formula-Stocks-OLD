@@ -125,7 +125,7 @@ const Portfolio = React.createClass({
             "title": "red line",
             "useLineColorForBulletBorder": true,
             "valueField": "fs",
-            "balloonText": "<span style='font-size:18px;'>+[[value]]%</span>"
+            "balloonText": `<span class="capitalize" style='font-size:18px;'>${this.props.plan} +[[value]]%</span>`
         },
         {
             "id": "market",
@@ -140,7 +140,7 @@ const Portfolio = React.createClass({
             "title": "red line",
             "useLineColorForBulletBorder": true,
             "valueField": "market",
-            "balloonText": "<span style='font-size:18px;'>+[[value]]%</span>"
+            "balloonText": "<span style='font-size:18px;'>S&P 500 +[[value]]%</span>"
         },
 
       ],
@@ -190,7 +190,7 @@ const Portfolio = React.createClass({
           <div className="right">
 
             <div className="fs stats">
-              <h3>{this.props.plan} Formula</h3>
+              <h3 className="fs-plan">{this.props.plan} Formula</h3>
               <div className="wrapper">
                 <i className="fa fa-caret-up" aria-hidden="true"></i>
                 <p><span className="blue-color">{((lastValue - startValue) / startValue * 100).toFixed(2)}%</span> since 2009</p>
