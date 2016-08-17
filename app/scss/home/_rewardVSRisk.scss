@@ -1,9 +1,12 @@
 .reward-vs-risk {
+  padding-bottom: 40px;
   .content {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 80%;
+    height: 300px;
+    padding-bottom: 40px;
     .title {
       margin-top: 0;
     }
@@ -17,10 +20,8 @@
         height: 100%;
         position: relative;
         img {
-          position: relative;
-          width: 100%;
-          top: 0;
-          bottom: 0;
+          height: 100%;
+          top: 20px;
         }
       }
       .right {

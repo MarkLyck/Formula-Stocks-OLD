@@ -27,7 +27,9 @@ const InformationalAdvantage = React.createClass({
 
     if ($(window).scrollTop() > (hT + hH - wH)) {
       this.updateNumbers()
-      $(window).off('scroll', this.animate)
+      if (Math.floor(store.plans.get('business').get('stats').WLRatio) !== 0) {
+        $(window).off('scroll', this.animate)
+      }
     };
   },
   updateNumbers() {
@@ -46,8 +48,11 @@ const InformationalAdvantage = React.createClass({
       market: mar,
     })
 
+
+
+    console.log(bus, Math.floor(store.plans.get('business').get('stats').WLRatio));
     if (bus < Math.floor(store.plans.get('business').get('stats').WLRatio)) {
-      window.setTimeout(this.updateNumbers,2)
+      window.setTimeout(this.updateNumbers, 2)
     }
   },
   render() {

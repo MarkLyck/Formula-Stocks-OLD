@@ -1401,32 +1401,34 @@ input[type=submit] {
       .brochures .cta button:hover {
         background: #068de7; }
 
-.reward-vs-risk .content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 80%; }
-  .reward-vs-risk .content .title {
-    margin-top: 0; }
-  .reward-vs-risk .content .wrapper {
-    margin-top: 25px;
+.reward-vs-risk {
+  padding-bottom: 40px; }
+  .reward-vs-risk .content {
     display: flex;
-    height: 100%;
-    width: 100%; }
-    .reward-vs-risk .content .wrapper .left {
-      width: 50%;
-      height: 100%;
-      position: relative; }
-      .reward-vs-risk .content .wrapper .left img {
-        position: relative;
-        width: 100%;
-        top: 0;
-        bottom: 0; }
-    .reward-vs-risk .content .wrapper .right {
-      width: 50%;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    height: 300px;
+    padding-bottom: 40px; }
+    .reward-vs-risk .content .title {
+      margin-top: 0; }
+    .reward-vs-risk .content .wrapper {
+      margin-top: 25px;
       display: flex;
-      flex-direction: column;
-      justify-content: space-between; }
+      height: 100%;
+      width: 100%; }
+      .reward-vs-risk .content .wrapper .left {
+        width: 50%;
+        height: 100%;
+        position: relative; }
+        .reward-vs-risk .content .wrapper .left img {
+          height: 100%;
+          top: 20px; }
+      .reward-vs-risk .content .wrapper .right {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between; }
 
 .quote-section {
   background: url("assets/images/Albert_Einstein.jpg");
