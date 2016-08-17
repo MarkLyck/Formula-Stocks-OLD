@@ -34,6 +34,7 @@ const Session = Backbone.Model.extend({
           this.unset('password')
           this.set('showModal', false)
           resolve()
+          store.settings.history.push('/dashboard')
         },
         error: function(model, response) {
           console.log('ERROR: Login failed: ', response.responseText);
@@ -60,7 +61,7 @@ const Session = Backbone.Model.extend({
       success: function(model, response) {
         model.unset('password')
         localStorage.authtoken = response._kmd.authtoken
-        hashHistory.push('/')
+        store.settings.history.push('/dashboard')
       },
       error: function(model, response) {
         console.log('ERROR: ', arguments);

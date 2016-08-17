@@ -19,8 +19,14 @@ const router = (
     </Route>
     <Route path="/dashboard" component={Dashboard}>
       <IndexRoute component={Portfolio}/>
-      <Route path="portfolio/:plan" component={Portfolio}/>
-      <Route path="suggestions/:plan" component={Suggestions}/>
+      <Route path="portfolio" component={Portfolio}>
+        <IndexRoute component={Portfolio}/>
+        <Route path=":plan" component={Portfolio}/>
+      </Route>
+      <Route path="suggestions/" component={Suggestions}>
+        <IndexRoute component={Suggestions}/>
+        <Route path=":plan" component={Suggestions}/>
+      </Route>
     </Route>
   </Router>
 )
