@@ -7,7 +7,11 @@ import unnamedChartComponent from '../../libraries/amcharts3-react';
 
 const Portfolio = React.createClass({
   getInitialState() {
+
     return {fetching: true}
+  },
+  componentWillMount() {
+    // Check if user has an authtoken.
   },
   componentDidMount() {
     store.plans.get(this.props.plan).on('change', this.updateState)
@@ -30,7 +34,6 @@ const Portfolio = React.createClass({
     store.plans.get('fund').off('change', this.updateState)
   },
   render() {
-
     let portfolio = store.plans.get(this.props.plan).get('portfolio').map((stock, i) => {
       if (stock.name === 'CASH') {
 

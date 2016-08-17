@@ -18,6 +18,7 @@ const router = (
       <Route path="/signup" component={Signup}/>
     </Route>
     <Route path="/dashboard" component={Dashboard}>
+      <IndexRoute component={Portfolio}/>
       <Route path="portfolio/:plan" component={Portfolio}/>
       <Route path="suggestions/:plan" component={Suggestions}/>
     </Route>
