@@ -1,6 +1,8 @@
 import React from 'react'
 import {Link} from 'react-router'
 
+import store from '../../store'
+
 const SideBar = React.createClass({
   getInitialState() {
     let dropdown;
@@ -18,9 +20,10 @@ const SideBar = React.createClass({
   componentWillReceiveProps(props) {
     this.setState({plan: props.plan})
   },
+  gotoAccount() {
+    store.settings.history.push('/dashboard/account')
+  },
   render() {
-    // console.log(this.props);
-
     let suggestionsClass = 'suggestions side-bar-link'
     let portfoliosClass = 'portfolios side-bar-link'
     let suggestionsDropdown, portfoliosDropdown;
@@ -68,7 +71,7 @@ const SideBar = React.createClass({
           </li>
 
           <li className="my-account side-bar-link">
-            <button><h3><i className="fa fa-user" aria-hidden="true"></i>My Account</h3></button>
+            <button onClick={this.gotoAccount}><h3><i className="fa fa-user" aria-hidden="true"></i>My Account</h3></button>
           </li>
           <li className="my-account side-bar-link logout">
             <button><h3><i className="fa fa-power-off" aria-hidden="true"></i>Log out</h3></button>

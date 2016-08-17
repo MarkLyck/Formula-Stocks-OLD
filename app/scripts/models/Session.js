@@ -10,8 +10,7 @@ const Session = Backbone.Model.extend({
   defaults: {
     email: '',
     name: '',
-    customer: {},
-    trial: {},
+    stripe: {},
   },
   parse: function(response) {
     if (response) {
@@ -20,8 +19,7 @@ const Session = Backbone.Model.extend({
         email: response.username,
         userId: response._id,
         name: response.name,
-        customer: response.customer,
-        trial: response.trial,
+        stripe: response.stripe,
       }
     }
   },

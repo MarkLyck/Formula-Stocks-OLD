@@ -1,0 +1,10 @@
+.my-account-page {
+  padding: 40px;
+  .cancel-btn {
+    background: $warning-color;
+    max-width: 50%;
+    &:hover {
+      background: darken($warning-color, 5%);
+    }
+  }
+}

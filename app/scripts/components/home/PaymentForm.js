@@ -53,7 +53,8 @@ const PaymentForm = React.createClass({
   },
   createCustomer(token) {
     let cycle = 'monthly'
-    if (this.props.plan === 'business' || this.props.plan === 'fund') {
+    console.log(this.props.passedProps.plan);
+    if (this.props.passedProps.plan=== 'business' || this.props.passedProps.plan === 'fund') {
       cycle = 'annually'
     }
 

@@ -110,29 +110,33 @@ let cc = {
           Authorization: 'Kinvey 9dbd2146-9b76-4c06-85a2-70229ac93cbf.3JRWuuAKqMI2ZuoFJI3Ui3SoD5NquLLXhe+wtBYxH28='
         },
         success: (customer) => {
-          // console.log(customer);
+          console.log(customer);
 
-          let ccInfo = {
-            last4: customer.sources.data[0].last4,
-            brand: customer.sources.data[0].brand,
-            exp_month: customer.sources.data[0].exp_month,
-            exp_year: customer.sources.data[0].exp_year
-          }
-          let trial = {
-            trial_start: customer.subscriptions.data[0].trial_start,
-            trial_end: customer.subscriptions.data[0].trial_end,
-          }
-          let newCustomer = {
-            tax_percent: customer.subscriptions.data[0].tax_percent,
-            id: customer.id,
-            plan: customer.subscriptions.data[0].plan.id,
-            status: customer.subscriptions.data[0].status,
-            active_till: customer.subscriptions.data[0].current_period_end,
-            ccInfo: ccInfo,
-          }
+          // let ccInfo = {
+          //   last4: customer.sources.data[0].last4,
+          //   brand: customer.sources.data[0].brand,
+          //   exp_month: customer.sources.data[0].exp_month,
+          //   exp_year: customer.sources.data[0].exp_year
+          // }
+          // let trial = {
+          //   trial_start: customer.subscriptions.data[0].trial_start,
+          //   trial_end: customer.subscriptions.data[0].trial_end,
+          // }
+          // let newCustomer = {
+          //   tax_percent: customer.subscriptions.data[0].tax_percent,
+          //   id: customer.id,
+          //   plan: customer.subscriptions.data[0].plan.id,
+          //   status: customer.subscriptions.data[0].status,
+          //   active_till: customer.subscriptions.data[0].current_period_end,
+          //   ccInfo: ccInfo,
+          // }
+          // let subscription = {
+          //   id: customer.subscriptions.data[0]
+          // }
 
-          store.session.set('trial', trial)
-          store.session.set('customer', newCustomer)
+          // store.session.set('trial', trial)
+          // store.session.set('customer', newCustomer)
+          store.session.set('stripe', customer)
 
           store.session.signup(store.session.get('email'), store.session.get('password'))
           resolve()
@@ -141,6 +145,24 @@ let cc = {
           reject(JSON.parse(response.responseText).error)
         }
       })
+    })
+  },
+  cancelSubscription() {
+    console.log(store.session.get('stripe').subscriptions.data[0].id);
+    $.ajax({
+      type: 'POST',
+      url: `https://baas.kinvey.com/rpc/${store.settings.appKey}/custom/cancelsub`,
+      data: {
+        subId: store.session.get('stripe').subscriptions.data[0].id,
+        at_period_end: true
+      },
+      success: (customer) => {
+        console.log('successful cancelation: ', customer);
+        store.session.set('stripe', customer)
+      },
+      fail: (e) => {
+        console.error('failed cancelation: ', e)
+      }
     })
   }
 }

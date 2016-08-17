@@ -10,6 +10,7 @@ import Signup from './components/home/Signup'
 import Dashboard from './components/dashboard/Dashboard'
 import Portfolio from './components/dashboard/Portfolio'
 import Suggestions from './components/dashboard/Suggestions'
+import MyAccount from './components/dashboard/MyAccount'
 
 const router = (
   <Router history={store.settings.history}>
@@ -27,6 +28,7 @@ const router = (
         <IndexRoute component={Suggestions}/>
         <Route path=":plan" component={Suggestions}/>
       </Route>
+      <Route path="account" component={MyAccount}/>
     </Route>
   </Router>
 )

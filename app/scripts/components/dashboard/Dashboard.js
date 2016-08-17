@@ -21,13 +21,13 @@ const Dashboard = React.createClass({
     this.setState({fetched: true})
   },
   render() {
-    if (!store.session.get('customer').plan){
+    if (!store.session.get('stripe').subscriptions){
       return null
     }
 
     let plan = this.props.params.plan
     if (!plan) {
-      plan = store.session.get('customer').plan
+      plan = store.session.get('stripe').subscriptions.data[0].plan.id
       plan = plan.slice(0, plan.indexOf('-'))
     }
     return (

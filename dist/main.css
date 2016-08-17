@@ -412,6 +412,12 @@ textarea {
 .green-color {
   color: #12D99E; }
 
+.red {
+  background: #da1354; }
+
+.red-color {
+  color: #da1354; }
+
 @font-face {
   font-family: 'proxima-nova';
   src: url("assets/fonts/proxima-nova/ProximaNova-Regular.otf");
@@ -1966,6 +1972,14 @@ footer .copyright {
 @media (max-width: 800px) {
   .suggestion-header ul .panel {
     width: calc(100% - 40px); } }
+.my-account-page {
+  padding: 40px; }
+  .my-account-page .cancel-btn {
+    background: #da1354;
+    max-width: 50%; }
+    .my-account-page .cancel-btn:hover {
+      background: #c3114b; }
+
 body {
   font-family: 'proxima-nova', 'Lato', sans-serif; }
 

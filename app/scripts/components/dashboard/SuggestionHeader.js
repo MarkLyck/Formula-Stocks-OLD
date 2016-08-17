@@ -58,7 +58,7 @@ const SuggestionHeader = React.createClass({
 
           <li className="panel white gray-border">
             <div className="symbol">
-              <i className="fa fa-money green-color"></i>
+              <i className="fa fa-usd green-color"></i>
             </div>
             <div className="value white">
               <h3 className="green-color">{cashAllocation}%</h3>
