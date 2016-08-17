@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 39.1 (31720) - http://www.bohemiancoding.com/sketch -->
+    <title>statistic_029-bar_chart-report-analytics-data</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="noun_544268_cc" fill="#fff">
+            <g id="statistic_029-bar_chart-report-analytics-data">
+                <g id="Group">
+                    <g>
+                        <g>
+                            <path d="M11,11 L11,23.5016088 C11,23.7768626 10.7850572,24 10.5095568,24 L7.49044323,24 C7.21957891,24 7,23.7783691 7,23.5016088 L7,11 L8,11 L8,23 L10,23 L10,11 L11,11 L11,11 Z" id="Shape" transform="translate(9.000000, 17.500000) scale(1, -1) translate(-9.000000, -17.500000) "></path>
+                            <path d="M17,13 L17,23.5016088 C17,23.7768626 16.7850572,24 16.5095568,24 L13.4904432,24 C13.2195789,24 13,23.7783691 13,23.5016088 L13,13 L14,13 L14,23 L16,23 L16,13 L17,13 L17,13 Z" id="Shape" transform="translate(15.000000, 18.500000) scale(1, -1) translate(-15.000000, -18.500000) "></path>
+                            <path d="M5,17 L5,23.5016088 C5,23.7768626 4.78505719,24 4.50955677,24 L1.49044323,24 C1.21957891,24 1,23.7783691 1,23.5016088 L1,17 L2,17 L2,23 L4,23 L4,17 L5,17 L5,17 Z" id="Shape" transform="translate(3.000000, 20.500000) scale(1, -1) translate(-3.000000, -20.500000) "></path>
+                            <polygon id="Shape" points="8.7461564 5.57546687 13.6902031 8.10588204 21.3126163 2.24590816 20.703129 1.45311225 13.5784685 6.92468174 8.70732542 4.42602106 1 9.06049579 1.51531961 9.91749387 1.94381865 9.65983406"></polygon>
+                            <polygon id="Shape" points="21.704687 1.28824561 21.0789492 5.23899897 20.0912608 5.08256451 20.5605642 2.11949949 17.5974992 1.65019609 17.7539337 0.662507751"></polygon>
+                            <path d="M23,8 L23,23.5016088 C23,23.7768626 22.7850572,24 22.5095568,24 L19.4904432,24 C19.2195789,24 19,23.7783691 19,23.5016088 L19,8 L20,8 L20,23 L22,23 L22,8 L23,8 L23,8 Z" id="Shape" transform="translate(21.000000, 16.000000) scale(1, -1) translate(-21.000000, -16.000000) "></path>
+                            <rect id="Rectangle-path" x="0" y="23" width="24" height="1"></rect>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
