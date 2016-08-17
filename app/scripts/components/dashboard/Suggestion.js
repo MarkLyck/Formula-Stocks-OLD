@@ -15,7 +15,7 @@ const Suggestion = React.createClass({
     let listClass = 'fade-in white'
     let actionClass = ''
     let textColor = ''
-    let SuggestedPriceText = 'Avg. purchase price'
+    let SuggestedPriceText = 'Avg. buy price'
 
     let allocationElement = (
       <li className={actionClass}>
@@ -28,7 +28,7 @@ const Suggestion = React.createClass({
       listClass = 'fade-in blue'
       textColor = 'white-color'
       actionClass = 'sell'
-      SuggestedPriceText = 'Sell price'
+      SuggestedPriceText = 'Avg. sell price'
       allocationElement = <li></li>;
     }
 

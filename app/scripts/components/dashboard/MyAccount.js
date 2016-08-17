@@ -8,6 +8,7 @@ const MyAccount = React.createClass({
     cc.cancelSubscription()
   },
   render() {
+    console.log(store.session.toJSON());
     return (
       <div className="my-account-page">
         <h2 className="name">{store.session.get('name')}</h2>

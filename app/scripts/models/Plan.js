@@ -137,7 +137,6 @@ const Plan = Backbone.Model.extend({
         this.set('portfolioYields', data.logs)
 
         data.actionable.forEach((suggestion) => {
-          console.log(suggestion);
           let newSuggestions = this.get('suggestions').concat(suggestion)
           this.set('suggestions', newSuggestions)
           this.getStockInfo(suggestion.ticker, this.get('suggestions').length - 1)

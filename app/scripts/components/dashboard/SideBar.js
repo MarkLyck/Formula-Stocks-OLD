@@ -6,7 +6,7 @@ import store from '../../store'
 const SideBar = React.createClass({
   getInitialState() {
     let dropdown;
-    console.log(this.props.location);
+    // console.log(this.props.location);
     if (this.props.location.indexOf('suggestions') !== -1) {
       dropdown = 'suggestions'
     } else if (this.props.location.indexOf('portfolio') !== -1) {

@@ -40,7 +40,7 @@ const Portfolio = React.createClass({
         return (
           <tbody key={i} className="cash">
             <tr>
-              <td className="stock-name"><i className="fa fa-money" aria-hidden="true"></i>{stock.name}</td>
+              <td className="stock-name"><i className="fa fa-usd" aria-hidden="true"></i>{stock.name}</td>
               <td>{stock.percentage_weight.toFixed(2)}%</td>
             </tr>
           </tbody>
@@ -82,7 +82,6 @@ const Portfolio = React.createClass({
     }
 
     let fixedData = store.plans.get(this.props.plan).get('portfolioYields').map((point, i) => {
-      // console.log(store.market.data.get('portfolioData')[i]);
       return {
         fs: ((point.balance-startValue) / startValue * 100).toFixed(2),
         market: ((store.market.data.get('portfolioData')[i] - marketStartValue) / marketStartValue * 100).toFixed(2),
@@ -142,7 +141,6 @@ const Portfolio = React.createClass({
             "valueField": "market",
             "balloonText": "<span style='font-size:18px;'>S&P 500 +[[value]]%</span>"
         },
-
       ],
       chartCursor: {
 	        valueLineEnabled: true,
@@ -175,8 +173,6 @@ const Portfolio = React.createClass({
     if (store.market.data.get('portfolioData')[0]) {
       lastMarketValue = store.market.data.get('portfolioData')[portfolioYieldsLength - 1]
     }
-
-    console.log(lastMarketValue);
     return (
       <div className="portfolio">
 
@@ -190,7 +186,7 @@ const Portfolio = React.createClass({
           <div className="right">
 
             <div className="fs stats">
-              <h3 className="fs-plan">{this.props.plan} Formula</h3>
+              <h3 className="fs-plan blue-color">{this.props.plan} Formula</h3>
               <div className="wrapper">
                 <i className="fa fa-caret-up" aria-hidden="true"></i>
                 <p><span className="blue-color">{((lastValue - startValue) / startValue * 100).toFixed(2)}%</span> since 2009</p>

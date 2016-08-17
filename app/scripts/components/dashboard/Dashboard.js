@@ -21,15 +21,22 @@ const Dashboard = React.createClass({
     this.setState({fetched: true})
   },
   render() {
-    if (!store.session.get('stripe').subscriptions){
+    console.log(store.session.toJSON());
+    if (!store.session.get('stripe').subscriptions && !store.session.get('stripe').canceled_at){
+      console.log('returning null');
       return null
     }
 
     let plan = this.props.params.plan
-    if (!plan) {
+    if (!plan && !store.session.get('stripe').canceled_at) {
       plan = store.session.get('stripe').subscriptions.data[0].plan.id
       plan = plan.slice(0, plan.indexOf('-'))
     }
+
+    if (store.session.get('stripe').canceled_at) {
+      plan = 'basic'
+    }
+
     return (
       <div className="dashboard">
         <Nav/>
