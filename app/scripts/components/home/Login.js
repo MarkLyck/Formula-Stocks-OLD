@@ -11,7 +11,7 @@ const Login = React.createClass({
   },
   login: function(e) {
     e.preventDefault()
-    let email = this.refs.email.value
+    let email = this.refs.email.value.toLowerCase()
     let password = this.refs.password.value
     store.session.login(email, password)
     .then(() => {

@@ -20,6 +20,8 @@
     width: 20%;
     border-left: 2px solid $db-border-color;
     padding-left: 20px;
+    // Negative margin is needed to fix AmCharts, bad right margin
+    margin-left: -2px;
     .stats {
       h3 {
         margin-bottom: 10px;

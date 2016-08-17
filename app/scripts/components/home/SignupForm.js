@@ -9,7 +9,7 @@ const SignupForm = React.createClass({
   signup: function(e) {
     e.preventDefault()
     let name = this.refs.name.value
-    let email = this.refs.email.value
+    let email = this.refs.email.value.toLowerCase()
     let password = this.refs.password.value
     let verifyPassword = this.refs.verifyPassword.value
 
