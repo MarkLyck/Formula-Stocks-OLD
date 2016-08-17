@@ -21,8 +21,6 @@ import AboutUs from './AboutUs'
 import ContactUs from './ContactUs'
 import Footer from './Footer'
 
-import AmTest from './AmTest'
-
 const Home = React.createClass({
   componentDidMount() {
     store.plans.get('basic').getAnnualData()
