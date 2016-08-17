@@ -1,15 +1,15 @@
 .suggestion-header {
   ul {
-    margin-top: 20px;
+    margin-top: 10px;
     display: flex;
     flex-wrap: wrap;
+    padding: 0 10px;
     .panel {
-      width: calc(100% / 4 - 40px);
-      margin: 0 20px;
+      width: calc(100% / 4 - 20px);
+      margin: 10px;
       display: flex;
       align-items: center;
       transition: transform .3s;
-      margin-bottom: 20px;
       &:hover {
         transform: scale(1.05);
       }
@@ -53,7 +53,7 @@
   .suggestion-header {
     ul {
       .panel {
-        width: calc(100% / 2 - 40px);
+        width: calc(100% / 2 - 20px);
       }
     }
   }
@@ -63,7 +63,7 @@
   .suggestion-header {
     ul {
       .panel {
-        width: calc(100% - 40px);
+        width: calc(100% - 20px);
       }
     }
   }

@@ -71,7 +71,7 @@ const MyAccount = React.createClass({
         <section className="top">
           <div className="profile-info blue">
             <h2 className="name white-color">{store.session.get('name')}</h2>
-            <h3 className="white-color"><i className="fa fa-flask white-color" aria-hidden="true"></i> {currPlan}</h3>
+            <h3 className="white-color capitalize"><i className="fa fa-flask white-color" aria-hidden="true"></i> {currPlan}</h3>
             <h3 className="email white-color"><i className="fa fa-envelope white-color" aria-hidden="true"></i>{store.session.get('email')}</h3>
           </div>
         </section>

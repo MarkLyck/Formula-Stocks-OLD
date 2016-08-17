@@ -46,7 +46,7 @@ const InformationalAdvantage = React.createClass({
       market: mar,
     })
 
-    if (bus < 95) {
+    if (bus < Math.floor(store.plans.get('business').get('stats').WLRatio)) {
       window.setTimeout(this.updateNumbers,2)
     }
   },
