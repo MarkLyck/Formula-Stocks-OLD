@@ -1220,7 +1220,16 @@ input[type=submit] {
   display: flex; }
   .higher-performance .left .cta button {
     margin-right: 10px; }
-
+.higher-performance .right img {
+  width: 500px;
+  transform: translateY(50%); }
+.higher-performance .right .slide-up-mockup-img {
+  animation: 0.75s slideUpMockupImg; }
+@keyframes slideUpMockupImg {
+  from {
+    transform: translateY(100%); }
+  to {
+    transform: translateY(50%); } }
 .our-products {
   display: flex;
   justify-content: center;
