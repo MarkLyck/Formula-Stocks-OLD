@@ -1978,9 +1978,43 @@ footer .copyright {
     width: calc(100% - 40px); } }
 .my-account-page {
   padding: 40px; }
+  .my-account-page .profile-info {
+    background: #fff;
+    padding: 20px;
+    margin-bottom: 40px; }
+    .my-account-page .profile-info i {
+      margin-right: 10px; }
+  .my-account-page .change-plan-container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    background: #fff; }
+    .my-account-page .change-plan-container h2 {
+      padding: 20px; }
+    .my-account-page .change-plan-container button {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 90px; }
+      .my-account-page .change-plan-container button h3 {
+        margin: 0; }
+      .my-account-page .change-plan-container button:hover {
+        background: #40affa; }
+        .my-account-page .change-plan-container button:hover h3, .my-account-page .change-plan-container button:hover p {
+          color: #fff; }
+    .my-account-page .change-plan-container .selected h3, .my-account-page .change-plan-container .selected p {
+      color: #fff; }
+    .my-account-page .change-plan-container .change-plan {
+      max-width: 100%;
+      height: 90px;
+      display: flex;
+      justify-content: center; }
+      .my-account-page .change-plan-container .change-plan:hover {
+        background: #10c18d; }
   .my-account-page .cancel-btn {
+    margin-top: 100px;
     background: #da1354;
-    max-width: 50%; }
+    max-width: 100%; }
     .my-account-page .cancel-btn:hover {
       background: #c3114b; }
 

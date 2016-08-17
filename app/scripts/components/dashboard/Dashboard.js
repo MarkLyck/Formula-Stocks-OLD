@@ -33,7 +33,7 @@ const Dashboard = React.createClass({
       plan = plan.slice(0, plan.indexOf('-'))
     }
 
-    if (store.session.get('stripe').canceled_at) {
+    if (!plan && store.session.get('stripe').canceled_at) {
       plan = 'basic'
     }
 
