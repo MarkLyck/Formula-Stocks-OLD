@@ -15,23 +15,26 @@ const SuggestionChart = React.createClass({
     chartData = chartData.slice(0,30)
     chartData = chartData.reverse()
 
+    let chartTheme =  'light'
+    let gridOpacity = 0.05
+
     let color = {
-      // positive: '#12D99E',
-      // negative: '#da1354'
       positive: '#27A5F9',
       negative: '#49494A'
     }
     if (this.props.action === 'SELL') {
       color = {
-        negative: '#27A5F9',
+        negative: '#fff',
         positive: '#49494A'
       }
+      chartTheme =  'dark'
+      gridOpacity = 0.25
     }
 
     var config = {
       "type": "serial",
       "dataProvider": chartData,
-      "theme": "light",
+      "theme": chartTheme,
       "marginRight": 0,
       "marginLeft": 60,
       "marginTop": 25,
@@ -44,8 +47,7 @@ const SuggestionChart = React.createClass({
           "axisAlpha": 0,
           "position": "left",
           "ignoreAxisWidth":true,
-          // inside: true,
-          gridAlpha: 0.05,
+          gridAlpha: gridOpacity,
       }],
       balloon: {
         color: '#49494A',
@@ -67,19 +69,18 @@ const SuggestionChart = React.createClass({
       chartCursor: {
 	        valueLineEnabled: true,
 	        valueLineAlpha: 0.5,
-	        cursorAlpha: 0.1
+	        cursorAlpha: 0.5
 	    },
       categoryField: "date",
       categoryAxis: {
         parseDates: true,
         gridAlpha: 0,
-        tickLength: 0,
         axisAlpha: 0,
       },
       "guides": [{
 					"value" : this.props.suggestedPrice + 0.001,
-					"lineColor" : "#27A5F9",
-					"lineAlpha": 0.25,
+					"lineColor" : color.positive,
+					"lineAlpha": 0.4,
 					"lineThickness": 1,
 					"position" : "right"
 			}]

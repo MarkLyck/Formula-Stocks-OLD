@@ -8,7 +8,6 @@
   width: 100%;
   li {
     width: calc(50% - 40px);
-    background: #fff;
     margin: 20px;
     display: flex;
     flex-direction: column;
@@ -19,6 +18,9 @@
       .action {
         color: $primary-color;
         padding-right: 20px;
+      }
+      .sell {
+        color: #fff;
       }
       display: flex;
       justify-content: space-between;
@@ -40,6 +42,14 @@
           margin-bottom: 5px;
           color: #323232;
           font-weight: 400;
+        }
+      }
+      .sell {
+        h4 {
+          color: #fff;
+        }
+        p {
+          color: $db-border-color;
         }
       }
     }
