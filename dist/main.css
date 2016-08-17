@@ -1673,6 +1673,8 @@ footer .copyright {
   height: 75px;
   background: #fff;
   border-bottom: 1px solid #E8E8E8; }
+  .dashboard-nav img {
+    max-width: 250px; }
   .dashboard-nav .right {
     display: flex; }
     .dashboard-nav .right button, .dashboard-nav .right a {

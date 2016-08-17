@@ -6,7 +6,7 @@ import cc from '../../cc'
 const MyAccount = React.createClass({
   getInitialState() {
     let currPlan = 'premium'
-    if (store.session.get('stripe').subscriptions && !store.session.get('stripe').canceled_at) {
+    if (store.session.get('stripe').subscriptions && !store.session.get('stripe').subscriptions.data[0].canceled_at !== null) {
       currPlan = store.session.get('stripe').subscriptions.data[0].plan.id
       currPlan = currPlan.slice(0, currPlan.indexOf('-'))
     }
@@ -21,8 +21,13 @@ const MyAccount = React.createClass({
   changePlan() {
 
   },
-  newSubscribtion() {
-
+  newSubscription() {
+    let cycle = 'monthly'
+    // console.log(this.state.selectedPlan);
+    if (this.state.selectedPlan === 'business' || this.state.selectedPlan === 'fund') {
+      cycle = 'annually'
+    }
+    cc.newSubscription(this.state.selectedPlan, cycle)
   },
   render() {
 
@@ -39,21 +44,22 @@ const MyAccount = React.createClass({
     // console.log(store.session.toJSON());
 
     let currPlan;
-    if (store.session.get('stripe').subscriptions && !store.session.get('stripe').canceled_at) {
+    console.log(store.session.get('stripe').subscriptions.data[0].canceled_at !== null);
+    if (store.session.get('stripe').subscriptions && !store.session.get('stripe').subscriptions.data[0].canceled_at !== null) {
       currPlan = store.session.get('stripe').subscriptions.data[0].plan.id
       currPlan = currPlan.slice(0, currPlan.indexOf('-'))
       currPlan = currPlan + ' Formula'
     }
 
-    if (!currPlan && store.session.get('stripe').canceled_at) {
+    if (store.session.get('stripe').subscriptions.data[0].canceled_at !== null) {
       currPlan = 'Unsubscribed'
     }
 
     let changePlanBtn = <button onClick={this.changePlan} className="change-plan filled-btn">Change plan</button>
     let bottomBtn = <button onClick={this.cancelSubscription} className="filled-btn cancel-btn red">Cancel Subscription</button>
     let changeTitle = 'Change your subscription'
-    if (store.session.get('stripe').canceled_at) {
-      changePlanBtn = <button onClick={this.newSubscribtion} className="change-plan filled-btn">Subscribe to: <span className="capitalize"> {this.state.selectedPlan}</span></button>
+    if (store.session.get('stripe').subscriptions.data[0].canceled_at !== null) {
+      changePlanBtn = <button onClick={this.newSubscription} className="change-plan filled-btn">Subscribe to: <span className="capitalize"> {this.state.selectedPlan}</span></button>
       bottomBtn = undefined;
       changeTitle = 'Select a plan'
     }

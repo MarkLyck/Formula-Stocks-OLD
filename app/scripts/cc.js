@@ -129,13 +129,40 @@ let cc = {
       data: {
         subId: store.session.get('stripe').subscriptions.data[0].id
       },
-      success: (customer) => {
-        console.log('successful cancelation: ', customer);
+      success: (subscription) => {
+
+        let customer = store.session.get('stripe', customer)
+        customer.subscriptions = {data: [subscription]}
         store.session.set('stripe', customer)
+
         store.session.updateUser()
       },
       fail: (e) => {
         console.error('failed cancelation: ', e)
+      }
+    })
+  },
+  newSubscription(planName, cycle) {
+    console.log(store.session.get('stripe').customer);
+    console.log(planName+'-'+cycle),
+    $.ajax({
+      type: 'POST',
+      url: `https://baas.kinvey.com/rpc/${store.settings.appKey}/custom/newsub`,
+      data: {
+        plan: (planName+'-'+cycle),
+        customer: store.session.get('stripe').sources.data[0].customer
+      },
+      success: (subscription) => {
+        console.log('successfully created new subscription: ', subscription);
+
+        let customer = store.session.get('stripe', customer)
+        customer.subscriptions = {data: [subscription]}
+        store.session.set('stripe', customer)
+
+        store.session.updateUser()
+      },
+      fail: (e) => {
+        console.error('failed creating subscription: ', e)
       }
     })
   }
