@@ -15,11 +15,24 @@ const Suggestion = React.createClass({
     let listClass = 'fade-in white'
     let actionClass = ''
     let textColor = ''
+    let SuggestedPriceText = 'Buy price'
+
+    let allocationElement = (
+      <li className={actionClass}>
+        <h4 className="value">{allocation}%</h4>
+        <p>Allocation</p>
+      </li>
+    )
+
     if (this.props.suggestion.action === 'SELL') {
       listClass = 'fade-in blue'
       textColor = 'white-color'
       actionClass = 'sell'
+      SuggestedPriceText = 'Sell price'
+      allocationElement = <li></li>;
     }
+
+
 
     return (
       <li className={listClass}>
@@ -37,17 +50,16 @@ const Suggestion = React.createClass({
             <h4 className="value">{this.props.suggestion.ticker}</h4>
             <p>Ticker</p>
           </li>
-          <li className={actionClass}>
-            <h4 className="value">{allocation}%</h4>
-            <p>Allocation</p>
-          </li>
+
+          {allocationElement}
+
           <li className={actionClass}>
             <h4 className="value">${this.props.suggestion.suggested_price.toFixed(2)}</h4>
             <p>Buy price</p>
           </li>
           <li className={actionClass}>
             <h4 className="value">${lastPrice}</h4>
-            <p>Last Price</p>
+            <p>{SuggestedPriceText}</p>
           </li>
         </ul>
       </li>
