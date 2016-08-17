@@ -12,13 +12,17 @@ const OurProducts = React.createClass({
           </div>
           <p>
           We offer 4 products, each of which gives you access to a secure dashboard.
-          This contains purchase recommendations for common stocks updated weekly,
-          sales recommendations, a model portfolio and advanced information about recommended stocks.<br/><br/>
+          You will be able to track our model portfolio, access our purchase and
+          sales transactions in real-time as they occur,
+          and obtain valuable information about stocks selected for purchase or sale.<br/><br/>
+
 
           You can choose to use this information to buy stocks through your regular broker/bank,
-          either by using recommendations on a regular basis, or by mirroring the model portfolio.<br/><br/>
+          either by using our selections on an ongoing basis, or by mirroring the model portfolio
+          and keep abreast of changes as they regularly occur.<br/><br/>
 
-          Once purchased, you simply wait. Later, a sales recommendation will suggest you to sell the stock.
+          Once you have made your purchases, you simply wait. Later,
+          a sales recommendation will suggest when to sell the stock.
           The average holding period is 2.2 years.
           </p>
 

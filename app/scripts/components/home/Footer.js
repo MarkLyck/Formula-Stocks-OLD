@@ -21,7 +21,7 @@ const Footer = React.createClass({
           <br/><br/>
           Formula Stocks assumes no responsibility or liability for your investment results.
           You understand and acknowledge that there is a high degree of risk involved in
-          investing securities. This service does not constitute an offer, a solicitation
+          investing in securities. This service does not constitute an offer, a solicitation
           to buy a security or to open a brokerage account.
           <br/><br/>
           It should not be assumed that the systems presented in these products will be profitable
