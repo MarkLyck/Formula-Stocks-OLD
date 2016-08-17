@@ -16,8 +16,10 @@ const SuggestionChart = React.createClass({
     chartData = chartData.reverse()
 
     let color = {
-      positive: '#12D99E',
-      negative: '#da1354'
+      // positive: '#12D99E',
+      // negative: '#da1354'
+      positive: '#27A5F9',
+      negative: '#49494A'
     }
 
     var config = {
