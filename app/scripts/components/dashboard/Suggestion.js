@@ -21,7 +21,8 @@ const Suggestion = React.createClass({
         <SuggestionChart
           data={this.props.suggestion.data}
           suggestedPrice={this.props.suggestion.suggested_price}
-          ticker={this.props.suggestion.ticker}/>
+          ticker={this.props.suggestion.ticker}
+          action={this.props.suggestion.action}/>
         <ul className="bottom">
           <li>
             <h4 className="value">{this.props.suggestion.ticker}</h4>

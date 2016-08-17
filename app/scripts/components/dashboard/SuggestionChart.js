@@ -21,6 +21,12 @@ const SuggestionChart = React.createClass({
       positive: '#27A5F9',
       negative: '#49494A'
     }
+    if (this.props.action === 'SELL') {
+      color = {
+        negative: '#27A5F9',
+        positive: '#49494A'
+      }
+    }
 
     var config = {
       "type": "serial",
