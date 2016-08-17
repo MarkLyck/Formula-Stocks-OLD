@@ -1979,7 +1979,6 @@ footer .copyright {
 .my-account-page {
   padding: 40px; }
   .my-account-page .profile-info {
-    background: #fff;
     padding: 20px;
     margin-bottom: 40px; }
     .my-account-page .profile-info i {
@@ -1990,7 +1989,9 @@ footer .copyright {
     margin-bottom: 20px;
     background: #fff; }
     .my-account-page .change-plan-container h2 {
-      padding: 20px; }
+      padding: 40px 20px;
+      margin: 0;
+      border-bottom: 1px solid #F3F3F3; }
     .my-account-page .change-plan-container button {
       display: flex;
       justify-content: space-between;
@@ -2009,6 +2010,8 @@ footer .copyright {
       height: 90px;
       display: flex;
       justify-content: center; }
+      .my-account-page .change-plan-container .change-plan span {
+        margin-left: 5px; }
       .my-account-page .change-plan-container .change-plan:hover {
         background: #10c18d; }
   .my-account-page .cancel-btn {
