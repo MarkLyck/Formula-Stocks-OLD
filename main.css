@@ -1315,7 +1315,6 @@ input[type=submit] {
 
 .plan {
   background: #2C323D;
-  border-radius: 5px;
   width: calc(100% / 4);
   margin: 0 10px;
   transition: transform .3s; }
@@ -1325,9 +1324,7 @@ input[type=submit] {
     background: #27A5F9;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    border-top-right-radius: 5px;
-    border-top-left-radius: 5px; }
+    align-items: center; }
     .plan .top h3 {
       color: #fff;
       font-weight: 400;
@@ -1358,9 +1355,7 @@ input[type=submit] {
   .plan .sign-up {
     max-width: 100%;
     margin: 0;
-    border-radius: 0;
-    border-bottom-right-radius: 5px;
-    border-bottom-left-radius: 5px; }
+    border-radius: 0; }
 
 .plan:first-child {
   margin-left: 0; }
@@ -2004,8 +1999,7 @@ button {
   background: #27A5F9;
   color: #fff;
   padding: 20px;
-  border: none;
-  border-radius: 3px; }
+  border: none; }
   button:hover {
     cursor: pointer; }
 
@@ -2020,7 +2014,6 @@ button {
   width: 100%;
   font-weight: 400;
   font-size: 1rem;
-  border-radius: 5px;
   transition: background .3s; }
   .filled-btn:hover {
     background: #10c18d; }
@@ -2031,7 +2024,6 @@ button {
   background: none;
   color: #fff;
   border: 2px solid #fff;
-  border-radius: 5px;
   display: flex;
   justify-content: center;
   align-items: center;
