@@ -11,12 +11,10 @@ const OneDollar = React.createClass({
   componentDidMount() {
     $(window).on('scroll', this.animate)
     store.plans.on('change', this.resetState)
-    // store.plans.premium.data.on('change', this.resetState)
-    // store.plans.business.data.on('change', this.resetState)
-    // store.plans.fund.data.on('change', this.resetState)
   },
   componentWillUnmount() {
     $(window).off('scroll', this.animate)
+    store.plans.off('change', this.resetState)
   },
   resetState() {
     this.setState({fs: 1, market: 1, plan: 'premium', currYear: 0, fsPercent: 0, spPercent: 0})
@@ -31,34 +29,33 @@ const OneDollar = React.createClass({
       $(window).off('scroll', this.animate)
     };
   },
+
   updateNumbers(plan) {
-    let fs = this.state.fs
-    let sp = this.state.market
-    let year = this.state.currYear
+    let fs = this.state.fs;
+    let sp = this.state.market;
+    let year = this.state.currYear;
 
     if (plan) {
       console.log('CHANGED TO PLAN: ', plan);
-      plan = plan
+      plan = plan;
       fs = 1;
       sp = 1;
       year = 0;
     } else {
-      plan = this.state.plan
+      plan = this.state.plan;
     }
 
+    let multiplier = (store.plans.get(plan).get('stats').cagr / 100 + 1);
 
-    // console.log('plan: ', plan, store.plans.get(plan).get('stats').cagr);
+    fs = fs * multiplier;
+    sp = sp * (store.market.cagr / 100 + 1);
 
-    let multiplier = (store.plans.get(plan).get('stats').cagr / 100 + 1)
-    // if(plan === 'basic') {multiplier = store.plans.basic.data.get('stats').cagr / 100 + 1}
-    // if(plan === 'premium') {multiplier = store.plans.premium.data.get('stats').cagr / 100 + 1}
-    // if(plan === 'business') {multiplier = store.plans.business.data.get('stats').cagr / 100 + 1}
-    // if(plan === 'fund') {multiplier = store.plans.fund.data.get('stats').cagr / 100 + 1}
-
-    fs = fs * multiplier
-    sp = sp * (store.market.cagr / 100 + 1)
-
-    // console.log('plan: ', plan + '| cagr: ' + store.plans.get(plan).get('stats').cagr);
+    if(fs > Math.pow((1 * multiplier), 45)) {
+      fs = Math.pow((1 * multiplier), 45)
+    }
+    if (sp > Math.pow((1 * (store.market.cagr / 100 + 1)), 45)) {
+      sp = Math.pow((1 * (store.market.cagr / 100 + 1)), 45)
+    }
 
     if (multiplier > 1) {
       this.setState({
@@ -69,7 +66,7 @@ const OneDollar = React.createClass({
         fsPercent: year / 45,
         spPercent: sp / Math.pow((1 * multiplier), 45),
         reAnimate: false
-      })
+      });
     }
     if (year < 44) {
       window.setTimeout(this.updateNumbers, 20)

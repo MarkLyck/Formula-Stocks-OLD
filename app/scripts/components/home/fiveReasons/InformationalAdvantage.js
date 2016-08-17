@@ -18,7 +18,7 @@ const InformationalAdvantage = React.createClass({
     $(window).on('scroll', this.animate)
   },
   componentWillUnmount() {
-    $(window).off('scroll', this.animate)
+    $(window).off()
   },
   animate() {
     let hT = $(this.refs.content).offset().top

@@ -15,11 +15,12 @@ const SelectPlanForm = React.createClass({
     this.setState({selectedPlan: plan})
   },
   next() {
-    if (this.state.selectedPlan === 'basic') {
-      store.session.signup(store.session.get('email'), store.session.get('password'))
-    } else {
-      this.props.goToModal('payment', {plan: this.state.selectedPlan})
-    }
+    this.props.goToModal('payment', {plan: this.state.selectedPlan})
+    // if (this.state.selectedPlan === 'basic') {
+    //   store.session.signup(store.session.get('email'), store.session.get('password'))
+    // } else {
+    //   this.props.goToModal('payment', {plan: this.state.selectedPlan})
+    // }
   },
   render() {
     let basicClass = ''
@@ -32,7 +33,8 @@ const SelectPlanForm = React.createClass({
     if(this.state.selectedPlan === 'business') {businessClass = 'selected'}
     if(this.state.selectedPlan === 'fund') {fundClass = 'selected'}
 
-    let submitText = this.state.selectedPlan === 'basic' ? 'Sign up' : 'Next'
+    // let submitText = this.state.selectedPlan === 'basic' ? 'Sign up' : 'Next'
+    let submitText = 'Next'
 
     return (
       <form className={this.state.planFormClasses}>

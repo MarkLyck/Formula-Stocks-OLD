@@ -11,6 +11,10 @@ const TheResults = React.createClass({
     store.plans.on('change', this.drawGraph)
     store.market.data.on('change', this.drawGraph)
   },
+  componentWillUnmount() {
+    store.plans.off('change', this.drawGraph)
+    store.market.data.off('change', this.drawGraph)
+  },
   drawGraph() {
     this.setState({fetched: true})
   },

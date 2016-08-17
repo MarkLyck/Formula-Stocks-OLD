@@ -5,7 +5,12 @@ import store from '../../store'
 
 const PaymentForm = React.createClass({
   getInitialState() {
-    return {price: 100, formClass: "payment-form slide-in-right", checked: false, validatingPayment: false}
+    console.log(this.props.passedProps.plan);
+    let priceText = `Pay $${store.plans.get(this.props.passedProps.plan).get('price')}`
+    if (this.props.passedProps.plan === 'basic') {
+      priceText = 'Start free trial'
+    }
+    return {priceText: priceText, formClass: "payment-form slide-in-right", checked: false, validatingPayment: false}
   },
   ccFormat() {
     this.refs.cardNumber.value = cc.ccFormat(this.refs.cardNumber.value)
@@ -83,7 +88,7 @@ const PaymentForm = React.createClass({
       checkbox = <div className="checker" onClick={this.toggleCheckBox}><i className="fa fa-check" aria-hidden="true"></i></div>
     }
 
-    let payButton =   <input className="pay-button" type="submit" value={`Pay $${this.state.price}`}/>
+    let payButton =   <input className="pay-button" type="submit" value={this.state.priceText}/>
     if (this.state.validatingPayment) {
       payButton =   <div className="pay-button"><i className="fa fa-spinner fa-pulse fa-3x fa-fw"></i></div>
     }

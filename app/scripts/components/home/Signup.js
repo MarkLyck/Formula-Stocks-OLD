@@ -14,6 +14,7 @@ const Signup = React.createClass({
     return {modal: 'signup', formClasses: 'signup bounce-down', passedProps: {}}
   },
   closeModal(e) {
+    console.log('closing modal from signup');
     if (e) {
       if (_.toArray(e.target.classList).indexOf('modal-container') !== -1 || _.toArray(e.target.classList).indexOf('form-modal-container') !== -1 ) {
         this.setState({slideOut: true, formClasses: 'signup slide-out'})
