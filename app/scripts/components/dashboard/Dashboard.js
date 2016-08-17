@@ -17,6 +17,9 @@ const Dashboard = React.createClass({
   componentDidMount() {
     store.session.on('change', this.updateState)
   },
+  componentWillUnmount() {
+    store.session.off('change', this.updateState)
+  },
   updateState() {
     this.setState({fetched: true})
   },

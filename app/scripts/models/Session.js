@@ -11,6 +11,7 @@ const Session = Backbone.Model.extend({
     email: '',
     name: '',
     stripe: {},
+    type: 'user'
   },
   parse: function(response) {
     if (response) {

@@ -33,7 +33,6 @@ const SelectPlanForm = React.createClass({
     if(this.state.selectedPlan === 'business') {businessClass = 'selected'}
     if(this.state.selectedPlan === 'fund') {fundClass = 'selected'}
 
-    // let submitText = this.state.selectedPlan === 'basic' ? 'Sign up' : 'Next'
     let submitText = 'Next'
 
     return (

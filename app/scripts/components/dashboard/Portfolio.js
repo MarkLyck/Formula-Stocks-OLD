@@ -124,7 +124,7 @@ const Portfolio = React.createClass({
             "title": "red line",
             "useLineColorForBulletBorder": true,
             "valueField": "fs",
-            "balloonText": `<span class="capitalize" style='font-size:18px;'>${this.props.plan} +[[value]]%</span>`
+            "balloonText": `<span class="capitalize" style='font-size:18px;'>${this.props.plan}<br/>+[[value]]%</span>`
         },
         {
             "id": "market",
@@ -139,7 +139,7 @@ const Portfolio = React.createClass({
             "title": "red line",
             "useLineColorForBulletBorder": true,
             "valueField": "market",
-            "balloonText": "<span style='font-size:18px;'>S&P 500 +[[value]]%</span>"
+            "balloonText": "<span style='font-size:18px;'>S&P 500<br/>+[[value]]%</span>"
         },
       ],
       chartCursor: {

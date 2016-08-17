@@ -8,12 +8,14 @@ import Product from './Product'
 const PricingTable = React.createClass({
   getInitialState() {
     return {
-      // basicStats: store.plans.basic.data.get('stats')
       basicStats: store.plans.get('basic').get('stats')
     }
   },
   componentDidMount() {
     store.plans.on('update', this.updateState)
+  },
+  componentWillUnmount() {
+    store.plans.off('update', this.updateState)
   },
   updateState() {
     this.setState({basicStats: store.plans.get('basic').get('stats')})
