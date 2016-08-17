@@ -33,7 +33,6 @@ const Suggestion = React.createClass({
     }
 
 
-
     return (
       <li className={listClass}>
         <div className="top">
