@@ -49,14 +49,8 @@ const SuggestionChart = React.createClass({
       "graphs": [
           {
             "id": "suggestion",
-            // "bullet": "round",
-            // "bulletBorderAlpha": 1,
-            // "bulletColor": "#FFFFFF",
             lineColor: color.negative,
-            // "bulletSize": 5,
-            // "hideBulletsCount": 50,
             "lineThickness": 2,
-            // "useLineColorForBulletBorder": true,s
             "negativeLineColor": color.positive,
             "negativeBase": this.props.suggestedPrice + 0.001,
             "valueField": "close",
@@ -76,7 +70,7 @@ const SuggestionChart = React.createClass({
       "guides": [{
 					"value" : this.props.suggestedPrice + 0.001,
 					"lineColor" : "#27A5F9",
-					"lineAlpha": 1,
+					"lineAlpha": 0.25,
 					"lineThickness": 1,
 					"position" : "right"
 			}]

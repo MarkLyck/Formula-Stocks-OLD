@@ -9,9 +9,7 @@
   li {
     width: calc(50% - 40px);
     background: #fff;
-    // border: 1px solid $side-color;
     margin: 20px;
-    // border-radius: 3px;
     display: flex;
     flex-direction: column;
     .top {
@@ -28,6 +26,22 @@
     #suggestion-chart {
       height: 300px;
       width: 100%;
+    }
+    .bottom {
+      display: flex;
+      li {
+        width: calc(100% / 4);
+        p,h4 {
+          margin: 0;
+          color: #777;
+          font-weight: 100;
+        }
+        .value {
+          margin-bottom: 5px;
+          color: #323232;
+          font-weight: 400;
+        }
+      }
     }
   }
 }

@@ -60,9 +60,9 @@ const Plan = Backbone.Model.extend({
   getStockInfo() {
     this.get('suggestions').forEach((suggestion, i) => {
 
-      suggestion.ticker = suggestion.ticker.replace('.', '_')
+      let ticker = suggestion.ticker.replace('.', '_')
 
-      let query = `https://www.quandl.com/api/v1/datasets/WIKI/${suggestion.ticker}.json?api_key=${store.settings.quandlKey}`
+      let query = `https://www.quandl.com/api/v1/datasets/WIKI/${ticker}.json?api_key=${store.settings.quandlKey}`
 
 
 
@@ -78,7 +78,7 @@ const Plan = Backbone.Model.extend({
         this.trigger('change')
       })
       .fail((e) => {
-        query = `https://www.quandl.com/api/v1/datasets/GOOG/NASDAQ_${suggestion.ticker}.json?api_key=${store.settings.quandlKey}`
+        query = `https://www.quandl.com/api/v1/datasets/GOOG/NASDAQ_${ticker}.json?api_key=${store.settings.quandlKey}`
         $.ajax(query)
         .then((response) => {
           let suggestionToUpdate = this.get('suggestions')[i]
@@ -89,7 +89,7 @@ const Plan = Backbone.Model.extend({
           this.trigger('change')
         })
         .fail((error) => {
-          query = `https://www.quandl.com/api/v1/datasets/GOOG/NYSE_${suggestion.ticker}.json?api_key=${store.settings.quandlKey}`
+          query = `https://www.quandl.com/api/v1/datasets/GOOG/NYSE_${ticker}.json?api_key=${store.settings.quandlKey}`
           $.ajax(query)
           .then((response) => {
             let suggestionToUpdate = this.get('suggestions')[i]
@@ -100,7 +100,7 @@ const Plan = Backbone.Model.extend({
             this.trigger('change')
           })
           .fail(() => {
-            query = `https://www.quandl.com/api/v1/datasets/GOOG/AMEX_${suggestion.ticker}.json?api_key=${store.settings.quandlKey}`
+            query = `https://www.quandl.com/api/v1/datasets/GOOG/AMEX_${ticker}.json?api_key=${store.settings.quandlKey}`
             $.ajax(query)
             .then((response) => {
               let suggestionToUpdate = this.get('suggestions')[i]
@@ -111,7 +111,7 @@ const Plan = Backbone.Model.extend({
               this.trigger('change')
             })
             .fail(() => {
-              query = `https://www.quandl.com/api/v1/datasets/YAHOO/TSX_${suggestion.ticker}.json?api_key=${store.settings.quandlKey}`
+              query = `https://www.quandl.com/api/v1/datasets/YAHOO/TSX_${ticker}.json?api_key=${store.settings.quandlKey}`
               $.ajax(query)
               .then((response) => {
                 let suggestionToUpdate = this.get('suggestions')[i]
@@ -122,7 +122,7 @@ const Plan = Backbone.Model.extend({
                 this.trigger('change')
               })
               .fail(() => {
-                console.log('no data for: ', suggestion.ticker);
+                console.log('no data for: ', ticker);
               })
             })
           })
