@@ -1927,13 +1927,15 @@ footer .copyright {
     width: calc(100% - 40px); } }
 .suggestion-header ul {
   margin-top: 20px;
-  display: flex; }
+  display: flex;
+  flex-wrap: wrap; }
   .suggestion-header ul .panel {
     width: calc(100% / 4 - 40px);
     margin: 0 20px;
     display: flex;
     align-items: center;
-    transition: transform .3s; }
+    transition: transform .3s;
+    margin-bottom: 20px; }
     .suggestion-header ul .panel:hover {
       transform: scale(1.05); }
     .suggestion-header ul .panel .symbol {
@@ -1959,6 +1961,12 @@ footer .copyright {
   .suggestion-header ul .panel.gray-border .value {
     border-left: 1px solid #eaeaeb; }
 
+@media (max-width: 1200px) {
+  .suggestion-header ul .panel {
+    width: calc(100% / 2 - 40px); } }
+@media (max-width: 800px) {
+  .suggestion-header ul .panel {
+    width: calc(100% - 40px); } }
 body {
   font-family: 'proxima-nova', 'Lato', sans-serif; }
 
