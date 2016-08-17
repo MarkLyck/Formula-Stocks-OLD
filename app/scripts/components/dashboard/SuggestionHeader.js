@@ -16,6 +16,11 @@ const SuggestionHeader = React.createClass({
     })
   },
   render() {
+    let portfolio = store.plans.get(this.props.plan).get('portfolio')
+    let cashAllocation;
+    if (portfolio[0]) {
+      cashAllocation = portfolio[portfolio.length - 1].percentage_weight.toFixed(2)
+    }
     return (
       <section className="suggestion-header">
         <ul>
@@ -24,7 +29,7 @@ const SuggestionHeader = React.createClass({
               <i className="fa fa-line-chart white-color"></i>
             </div>
             <div className="value">
-              <h3 className="white-color">19.58%</h3>
+              <h3 className="white-color">{this.state.stats.cagr.toFixed(2)}%</h3>
               <p className="white-color">CAGR</p>
             </div>
           </li>
@@ -34,7 +39,7 @@ const SuggestionHeader = React.createClass({
               <i className="fa fa-pie-chart blue-color"></i>
             </div>
             <div className="value">
-              <h3 className="blue-color">82.67%</h3>
+              <h3 className="blue-color">{this.state.stats.WLRatio.toFixed(2)}%</h3>
               <p className="blue-color">Profitable Stocks</p>
             </div>
           </li>
@@ -56,7 +61,7 @@ const SuggestionHeader = React.createClass({
               <i className="fa fa-money green-color"></i>
             </div>
             <div className="value white">
-              <h3 className="green-color">19.58%</h3>
+              <h3 className="green-color">{cashAllocation}%</h3>
               <p className="green-color">Percent in Cash</p>
             </div>
           </li>

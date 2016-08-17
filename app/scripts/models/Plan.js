@@ -50,8 +50,8 @@ const Plan = Backbone.Model.extend({
         this.get('suggestions').forEach((suggestion, i) => {
           this.getStockInfo(suggestion.ticker, i)
         })
-
         this.getPortfolio()
+        this.getAnnualData()
       })
   },
   parseStockData(data) {
