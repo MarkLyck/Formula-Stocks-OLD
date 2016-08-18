@@ -19,11 +19,14 @@ const MyAccount = React.createClass({
     this.setState({selectedPlan: plan})
   },
   changePlan() {
-
+    let cycle = 'monthly'
+    if (this.state.selectedPlan === 'business' || this.state.selectedPlan === 'fund') {
+      cycle = 'annually'
+    }
+    cc.updateSubscription(this.state.selectedPlan, cycle)
   },
   newSubscription() {
     let cycle = 'monthly'
-    // console.log(this.state.selectedPlan);
     if (this.state.selectedPlan === 'business' || this.state.selectedPlan === 'fund') {
       cycle = 'annually'
     }

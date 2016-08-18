@@ -138,7 +138,7 @@ let cc = {
       },
       success: (subscription) => {
 
-        let customer = store.session.get('stripe', customer)
+        let customer = store.session.get('stripe')
         customer.subscriptions = {data: [subscription]}
         store.session.set('stripe', customer)
 
@@ -148,6 +148,39 @@ let cc = {
         console.error('failed cancelation: ', e)
       }
     })
+  },
+  updateSubscription(planName, cycle) {
+    console.log(planName, cycle);
+    console.log(store.session.get('stripe').subscriptions.data[0].plan.metadata.plan_name);
+    if (planName !== store.session.get('stripe').subscriptions.data[0].plan.metadata.plan_name) {
+      $.ajax({
+        type: 'POST',
+        url: `https://baas.kinvey.com/rpc/${store.settings.appKey}/custom/updatesub`,
+        data: {
+          plan: (planName+'-'+cycle),
+          subId: store.session.get('stripe').subscriptions.data[0].id
+        },
+        success: (subscription) => {
+          console.log('successfully changed subscription: ', subscription);
+
+          let customer = store.session.get('stripe')
+          customer.subscriptions = {data: [subscription]}
+          store.session.set('stripe', customer)
+
+          let type = 0
+          if (planName === 'basic')         { type = 1 }
+          else if (planName === 'premium')  { type = 2 }
+          else if (planName === 'business') { type = 3 }
+          else if (planName === 'fund')     { type = 4 }
+          store.session.set('type', type)
+
+          store.session.updateUser()
+        },
+        fail: (e) => {
+          console.error('failed changing subscription: ', e)
+        }
+      })
+    }
   },
   newSubscription(planName, cycle) {
     console.log(store.session.get('stripe').customer);
@@ -162,9 +195,16 @@ let cc = {
       success: (subscription) => {
         console.log('successfully created new subscription: ', subscription);
 
-        let customer = store.session.get('stripe', customer)
+        let customer = store.session.get('stripe')
         customer.subscriptions = {data: [subscription]}
         store.session.set('stripe', customer)
+
+        let type = 0
+        if (planName === 'basic')         { type = 1 }
+        else if (planName === 'premium')  { type = 2 }
+        else if (planName === 'business') { type = 3 }
+        else if (planName === 'fund')     { type = 4 }
+        store.session.set('type', type)
 
         store.session.updateUser()
       },
