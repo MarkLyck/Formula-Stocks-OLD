@@ -22,8 +22,8 @@
     width: 200px;
     border-left: 2px solid $db-border-color;
     padding-left: 20px;
-    
-    // Negative margin is needed to fix AmCharts, bad right margin
+
+    // Negative margin is needed to fix AmChart's, bad right margins
     margin-left: -2px;
     .stats {
       h3 {
@@ -60,16 +60,20 @@
 
 .holdings {
   background: #fff;
-  // border: 1px solid $side-color;
   width: calc(100% - 80px);
   margin: 40px auto;
-  // border-radius: 3px;
   .top {
     padding: 10px 20px;
     display: flex;
     justify-content: space-between;
     border-bottom: 1px solid $side-color;
   }
+}
+
+.no-permissions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .portfolio-table {

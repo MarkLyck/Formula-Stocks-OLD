@@ -1,9 +1,11 @@
 import React from 'react'
+import {Link} from 'react-router'
 
 import store from '../../store'
 import cc from '../../cc'
 
 import unnamedChartComponent from '../../libraries/amcharts3-react';
+import PortfolioGraph from './PortfolioGraph';
 
 const Portfolio = React.createClass({
   getInitialState() {
@@ -30,10 +32,10 @@ const Portfolio = React.createClass({
     store.plans.get('fund').off('change', this.updateState)
   },
   render() {
-    let portfolio;
 
+    let holdings;
     if(store.session.isAllowedToView(this.props.plan)) {
-
+      let portfolio;
       portfolio = store.plans.get(this.props.plan).get('portfolio').map((stock, i) => {
         if (stock.name === 'CASH') {
 
@@ -71,6 +73,36 @@ const Portfolio = React.createClass({
         </tbody>
       )
     })
+
+    holdings = (
+      <section className="holdings">
+        <div className="top">
+          <h2>Holdings</h2>
+          <h2 className="blue-color">{store.plans.get(this.props.plan).get('portfolio').length - 1} Stocks</h2>
+        </div>
+        <table className="portfolio-table">
+          <thead className="labels">
+            <tr>
+              <th>Name</th>
+              <th>Allocation</th>
+              <th>Change</th>
+              <th>Bought at</th>
+              <th>Last price</th>
+              <th>Days owned</th>
+            </tr>
+          </thead>
+
+          {portfolio}
+        </table>
+      </section>
+    )
+  } else {
+    holdings = (
+      <section className="no-permissions">
+        <h3>Upgrade to the <span className="capitalize blue-color ">{this.props.plan} formula</span> to see this portfolio</h3>
+        <Link to="/dashboard/account" className="filled-btn">Upgrade your plan</Link>
+      </section>
+    )
   }
 
     let startValue;
@@ -82,89 +114,6 @@ const Portfolio = React.createClass({
       marketStartValue = store.market.data.get('portfolioData')[0]
     }
 
-    let fixedData = store.plans.get(this.props.plan).get('portfolioYields').map((point, i) => {
-      return {
-        fs: ((point.balance-startValue) / startValue * 100).toFixed(2),
-        market: ((store.market.data.get('portfolioData')[i] - marketStartValue) / marketStartValue * 100).toFixed(2),
-        date:  `${point.date.year}-${point.date.month}-${point.date.day}`
-      }
-    })
-
-    var chartData = store.plans.get(this.props.plan).get('portfolioYields')
-    var config = {
-      "type": "serial",
-      "dataProvider": fixedData,
-      "theme": "light",
-      "marginRight": 0,
-      "marginLeft": 60,
-      "valueAxes": [{
-          "id": "v1",
-          unit: '%',
-          "axisAlpha": 0,
-          "position": "left",
-          "ignoreAxisWidth":true,
-          minimum: 0,
-      }],
-      balloon: {
-        color: '#49494A',
-        fillAlpha: 1,
-        borderColor: '#27A5F9',
-        borderThickness: 1,
-      },
-      "graphs": [
-          {
-            "id": "portfolio",
-            "bullet": "round",
-            "bulletBorderAlpha": 1,
-            "bulletColor": "#FFFFFF",
-            lineColor: "#27A5F9",
-            "fillAlphas": 0.75,
-            "bulletSize": 5,
-            "hideBulletsCount": 50,
-            "lineThickness": 2,
-            "title": "red line",
-            "useLineColorForBulletBorder": true,
-            "valueField": "fs",
-            "balloonText": `<span class="capitalize" style='font-size:18px;'>${this.props.plan}<br/>+[[value]]%</span>`
-        },
-        {
-            "id": "market",
-            "bullet": "round",
-            "bulletBorderAlpha": 1,
-            "bulletColor": "#FFFFFF",
-            lineColor: "#49494A",
-            "fillAlphas": 0.75,
-            "bulletSize": 5,
-            "hideBulletsCount": 50,
-            "lineThickness": 2,
-            "title": "red line",
-            "useLineColorForBulletBorder": true,
-            "valueField": "market",
-            "balloonText": "<span style='font-size:18px;'>S&P 500<br/>+[[value]]%</span>"
-        },
-      ],
-      chartCursor: {
-	        valueLineEnabled: true,
-	        valueLineAlpha: 0.5,
-	        cursorAlpha: 0.5
-	    },
-      categoryField: "date",
-      categoryAxis: {
-        parseDates: true,
-        tickLength: 0,
-      },
-    };
-
-
-
-
-
-    let chart = (
-      <div id="portfolio-chart">
-        {React.createElement(AmCharts.React, config)}
-      </div>
-    )
-
     let portfolioYieldsLength = store.plans.get(this.props.plan).get('portfolioYields').length
     let lastValue = 0;
     let lastMarketValue = 0;
@@ -174,6 +123,7 @@ const Portfolio = React.createClass({
     if (store.market.data.get('portfolioData')[0]) {
       lastMarketValue = store.market.data.get('portfolioData')[portfolioYieldsLength - 1]
     }
+
     return (
       <div className="portfolio">
 
@@ -181,7 +131,7 @@ const Portfolio = React.createClass({
 
           <div className="left">
             <h2>Portfolio Yields</h2>
-            {chart}
+            <PortfolioGraph plan={this.props.plan}/>
           </div>
 
           <div className="right">
@@ -204,28 +154,8 @@ const Portfolio = React.createClass({
 
           </div>
         </section>
+        {holdings}
 
-        <section className="holdings">
-          <div className="top">
-            <h2>Holdings</h2>
-            <h2 className="blue-color">{store.plans.get(this.props.plan).get('portfolio').length - 1} Stocks</h2>
-          </div>
-          <table className="portfolio-table">
-            <thead className="labels">
-              <tr>
-                <th>Name</th>
-                <th>Allocation</th>
-                <th>Change</th>
-                <th>Bought at</th>
-                <th>Last price</th>
-                <th>Days owned</th>
-
-              </tr>
-            </thead>
-
-            {portfolio}
-          </table>
-        </section>
       </div>
     )
   }
