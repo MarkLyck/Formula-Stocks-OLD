@@ -1,6 +1,11 @@
 import React from 'react'
 
+import store from '../../../store'
+
 const HigherPerformance = React.createClass({
+  tryIt() {
+    store.settings.history.push('/signup')
+  },
   render() {
     return (
       <div className="bg-white split-section higher-performance">
@@ -19,7 +24,7 @@ const HigherPerformance = React.createClass({
                 Higher performance at a lower cost. What’s not to like?
             </p>
             <div className="cta">
-              <button className="filled-btn">Try it for free!</button>
+              <button className="filled-btn" onClick={this.tryIt}>Try it for free!</button>
               <button className="outline-btn blue-color">Learn more</button>
             </div>
           </div>

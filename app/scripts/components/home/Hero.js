@@ -1,8 +1,12 @@
 import React from 'react'
 
 import WhatIsIt from './WhatIsIt'
+import store from '../../store'
 
 const Hero = React.createClass({
+  tryIt() {
+    store.settings.history.push('/signup')
+  },
   render() {
     return (
       <div id="hero">
@@ -12,7 +16,7 @@ const Hero = React.createClass({
             <h2>What if it was possible to identify some of next years' winners in the markets today with up to a 82-92% average success rate?</h2>
           </div>
           <div className="CTA fade-in">
-            <button className="filled-btn">Try it for free!</button>
+            <button className="filled-btn" onClick={this.tryIt}>Try it for free!</button>
             <a className="outline-btn">Learn More</a>
           </div>
         </div>

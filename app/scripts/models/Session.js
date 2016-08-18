@@ -11,7 +11,7 @@ const Session = Backbone.Model.extend({
     email: '',
     name: '',
     stripe: {},
-    type: 'user'
+    type: 0
   },
   parse: function(response) {
     if (response) {
@@ -21,6 +21,8 @@ const Session = Backbone.Model.extend({
         userId: response._id,
         name: response.name,
         stripe: response.stripe,
+        type: response.type
+        // plan: response.stripe.subscriptions.data[0].plan.
       }
     }
   },
@@ -130,6 +132,21 @@ const Session = Backbone.Model.extend({
       return 'no match'
     } else {
       return true
+    }
+  },
+  isAllowedToView(plan) {
+    let type = 5
+    if (plan === 'basic')         { type = 1 }
+    else if (plan === 'premium')  { type = 2 }
+    else if (plan === 'business') { type = 3 }
+    else if (plan === 'fund')     { type = 4 }
+
+    if (this.get('type') === 4 && type !== 4) {
+      return false
+    } else if (this.get('type') >= type) {
+      return true
+    } else {
+      return false
     }
   }
 })

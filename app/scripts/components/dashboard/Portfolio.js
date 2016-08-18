@@ -7,11 +7,7 @@ import unnamedChartComponent from '../../libraries/amcharts3-react';
 
 const Portfolio = React.createClass({
   getInitialState() {
-
     return {fetching: true}
-  },
-  componentWillMount() {
-    // Check if user has an authtoken.
   },
   componentDidMount() {
     store.plans.get(this.props.plan).on('change', this.updateState)
@@ -34,18 +30,22 @@ const Portfolio = React.createClass({
     store.plans.get('fund').off('change', this.updateState)
   },
   render() {
-    let portfolio = store.plans.get(this.props.plan).get('portfolio').map((stock, i) => {
-      if (stock.name === 'CASH') {
+    let portfolio;
 
-        return (
-          <tbody key={i} className="cash">
-            <tr>
-              <td className="stock-name"><i className="fa fa-usd" aria-hidden="true"></i>{stock.name}</td>
-              <td>{stock.percentage_weight.toFixed(2)}%</td>
-            </tr>
-          </tbody>
-        )
-      }
+    if(store.session.isAllowedToView(this.props.plan)) {
+
+      portfolio = store.plans.get(this.props.plan).get('portfolio').map((stock, i) => {
+        if (stock.name === 'CASH') {
+
+          return (
+            <tbody key={i} className="cash">
+              <tr>
+                <td className="stock-name"><i className="fa fa-usd" aria-hidden="true"></i>{stock.name}</td>
+                <td>{stock.percentage_weight.toFixed(2)}%</td>
+              </tr>
+            </tbody>
+          )
+        }
 
       let changeClass = 'positive'
       if ((stock.latest_price - stock.purchase_price).toFixed(2) < 0) {
@@ -71,6 +71,7 @@ const Portfolio = React.createClass({
         </tbody>
       )
     })
+  }
 
     let startValue;
     let marketStartValue;
