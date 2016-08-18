@@ -12,6 +12,9 @@ import Portfolio from './components/dashboard/Portfolio'
 import Suggestions from './components/dashboard/Suggestions'
 import MyAccount from './components/dashboard/MyAccount'
 
+import AdminPanel from './components/dashboard/AdminPanel'
+import AdminAPI from './components/dashboard/AdminAPI'
+
 const router = (
   <Router history={store.settings.history}>
     <Route path="/" component={Home}>
@@ -29,6 +32,8 @@ const router = (
         <Route path=":plan" component={Suggestions}/>
       </Route>
       <Route path="account" component={MyAccount}/>
+      <Route path="admin" component={AdminPanel}/>
+      <Route path="admin/api" component={AdminAPI}/>
     </Route>
   </Router>
 )

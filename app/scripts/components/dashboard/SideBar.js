@@ -25,12 +25,19 @@ const SideBar = React.createClass({
     this.setState({plan: props.plan})
   },
   gotoAccount() {
+    this.setState({selected: 'account', plan: ''})
     store.settings.history.push('/dashboard/account')
+  },
+  gotoAdmin() {
+    this.setState({selected: 'admin', plan: ''})
+    store.settings.history.push('/dashboard/admin')
   },
   render() {
     let suggestionsClass = 'suggestions side-bar-link'
     let portfoliosClass = 'portfolios side-bar-link'
-    let suggestionsDropdown, portfoliosDropdown;
+    let myAccountClass = 'myaccount side-bar-link'
+    let adminClass = 'admin side-bar-link'
+    let suggestionsDropdown, portfoliosDropdown, adminDropdown;
 
     let SbasicClass, SpremiumClass, SbusinessClass, SfundClass;
     let PbasicClass, PpremiumClass, PbusinessClass, PfundClass;
@@ -68,6 +75,36 @@ const SideBar = React.createClass({
           <Link className={PfundClass}  to="/dashboard/portfolio/fund">Fund Portfolio</Link>
         </div>
       )
+    } else if (this.state.selected === 'account') {
+      myAccountClass = 'myaccount side-bar-link selected'
+    }
+
+    let admin;
+    if (store.session.get('type') === 5) {
+      let adminPanelClass, adminAPIClass;
+
+      if (this.state.selected === 'admin') {
+        adminClass = 'admin side-bar-link selected'
+
+        if (this.props.location.indexOf('admin') !== -1) {
+          if (this.props.location.indexOf('api') !== -1) {adminAPIClass = 'selected'}
+          else if (this.props.location === '/dashboard/admin') {adminPanelClass = 'selected'}
+        }
+
+        adminDropdown = (
+          <div className="dropdown">
+            <Link className={adminPanelClass} to="/dashboard/admin">Panel</Link>
+            <Link className={adminAPIClass}  to="/dashboard/admin/api">JSON</Link>
+          </div>
+        )
+      }
+
+      admin = (
+        <li className={adminClass}>
+          <button onClick={this.toggleDropdown.bind(null, 'admin')}><h3><i className="fa fa-tachometer" aria-hidden="true"></i>Admin</h3><i className="fa fa-angle-down" aria-hidden="true"></i></button>
+          {adminDropdown}
+        </li>
+      )
     }
 
     return (
@@ -84,9 +121,12 @@ const SideBar = React.createClass({
             {portfoliosDropdown}
           </li>
 
-          <li className="my-account side-bar-link">
+          <li className={myAccountClass}>
             <button onClick={this.gotoAccount}><h3><i className="fa fa-user" aria-hidden="true"></i>My Account</h3></button>
           </li>
+
+          {admin}
+
           <li className="my-account side-bar-link logout">
             <button><h3><i className="fa fa-power-off" aria-hidden="true"></i>Log out</h3></button>
           </li>

@@ -11,7 +11,8 @@ const SelectPlanForm = React.createClass({
       this.setState({selectedPlan: this.props.plan})
     }
   },
-  selectPlan(plan) {
+  selectPlan(plan, e) {
+    e.preventDefault()
     this.setState({selectedPlan: plan})
   },
   next() {

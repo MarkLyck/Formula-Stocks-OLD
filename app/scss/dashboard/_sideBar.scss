@@ -1,8 +1,6 @@
 .side-bar {
   background: $side-bar-background;
   width: 300px;
-  // height: 100%;
-  // height: calc(100vh - 75px);
 }
 .side-bar-links {
   .side-bar-link {
@@ -54,32 +52,19 @@
     &:hover {
       button {
         height: 75px;
-        h3 {
+        h3, i {
           color: $primary-color;
-          i {
-            color: $primary-color;
-          }
         }
       }
     }
   }
   .selected {
-    height: calc(50px * 4 + 75px);
     background: darken($side-bar-background, 3%);
     button {
-      h3 {
-        color: $primary-color;
-        i {
-          color: $primary-color;
-        }
-      }
-    }
-    .dropdown {
-      a:hover {
+      h3, i {
         color: $primary-color;
       }
     }
-
   }
   .logout:hover {
     button {
