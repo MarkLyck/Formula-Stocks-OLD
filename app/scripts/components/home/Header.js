@@ -46,7 +46,7 @@ const Header = React.createClass({
     if (localStorage.authtoken) {
       navLinks = (
         <div id="nav-links">
-          <Link to="/dashboard">Dashboard</Link>
+          <Link to="/dashboard" className="nav-link">Dashboard</Link>
           <a href="#" id="logout-btn" onClick={store.session.logout.bind(store.session)} className="nav-link">Logout</a>
         </div>
       )
