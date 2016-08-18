@@ -24,9 +24,7 @@ const Dashboard = React.createClass({
     this.setState({fetched: true})
   },
   render() {
-    console.log(store.session.toJSON());
-    if (!store.session.get('stripe').subscriptions && !store.session.get('stripe').canceled_at && store.session.get('stripe').canceled_at !== null){
-      console.log('returning null');
+    if (!store.session.get('stripe').subscriptions){
       return null
     }
 
