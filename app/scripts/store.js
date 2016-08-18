@@ -8,6 +8,7 @@ import Market from './models/Market'
 let store = {
   session: new Session(),
   settings: {
+    anomToken: '8c66d956-de91-4cf8-83ab-fe8545866571.h9Ps7jZMlx+3WjjInLAfr9+MGz1aE2GN6OlUly6F6z4=',
     history: hashHistory,
     quandlKey: 'zP2W-4snDLyygfZVpw2v',
     appKey: 'kid_rJRC6m9F',
@@ -24,37 +25,21 @@ let store = {
 store.plans.add({
   id: 'basic',
   name: 'basic',
-  info: {
-    roundtripTradesPerYear: 39,
-    IITFormulas: 3
-  },
   price: 50
 })
 store.plans.add({
   id: 'premium',
   name: 'premium',
-  info: {
-    roundtripTradesPerYear: 44,
-    IITFormulas: 8
-  },
   price: 100
 })
 store.plans.add({
   id: 'business',
   name: 'business',
-  info: {
-    roundtripTradesPerYear: 20,
-    IITFormulas: 44
-  },
   price: 20000
 })
 store.plans.add({
   id: 'fund',
   name: 'fund',
-  info: {
-    roundtripTradesPerYear: 63,
-    IITFormulas: 87
-  },
   price: 120000
 })
 

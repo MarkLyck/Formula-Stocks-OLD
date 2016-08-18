@@ -6,6 +6,7 @@ const SuggestionHeader = React.createClass({
   getInitialState() {
     return {
       stats: store.plans.get(this.props.plan).get('stats'),
+      // suggestionsLength: store.plans.get(this.props.plan).get('buySuggestions').length + store.plans.get(this.props.plan).get('sellSuggestions').length
       suggestionsLength: store.plans.get(this.props.plan).get('suggestions').length
     }
   },
@@ -29,7 +30,7 @@ const SuggestionHeader = React.createClass({
               <i className="fa fa-line-chart white-color"></i>
             </div>
             <div className="value">
-              <h3 className="white-color">{this.state.stats.cagr.toFixed(2)}%</h3>
+              <h3 className="white-color">{this.state.stats.CAGR.toFixed(2)}%</h3>
               <p className="white-color">CAGR</p>
             </div>
           </li>

@@ -6,6 +6,7 @@ import store from '../../../store'
 const InformationalAdvantage = React.createClass({
   getInitialState() {
     return ({
+      fetched: false,
       animate: false,
       basic: 0,
       premium: 0,
@@ -15,10 +16,15 @@ const InformationalAdvantage = React.createClass({
     })
   },
   componentDidMount() {
+    // store.plans.on('update', this.updateState)
     $(window).on('scroll', this.animate)
   },
   componentWillUnmount() {
+    // store.plans.off('update', this.updateState)
     $(window).off()
+  },
+  updateState() {
+    this.setState({fetched: true})
   },
   animate() {
     let hT = $(this.refs.content).offset().top

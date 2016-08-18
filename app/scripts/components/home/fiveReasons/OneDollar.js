@@ -45,7 +45,7 @@ const OneDollar = React.createClass({
       plan = this.state.plan;
     }
 
-    let multiplier = (store.plans.get(plan).get('stats').cagr / 100 + 1);
+    let multiplier = (store.plans.get(plan).get('stats').CAGR / 100 + 1);
 
     fs = fs * multiplier;
     sp = sp * (store.market.cagr / 100 + 1);

@@ -1,3 +1,4 @@
+import _ from 'underscore'
 import React from 'react'
 import {Link} from 'react-router'
 
@@ -12,14 +13,12 @@ const Suggestions = React.createClass({
   },
   componentDidMount() {
     store.plans.get(this.props.plan).on('change', this.updateState)
-    store.plans.get(this.props.plan).getSuggestions()
   },
   updateState() {
     this.setState({fetching: false})
   },
   componentWillReceiveProps(newPlan) {
     store.plans.get(newPlan.plan).on('change', this.updateState)
-    store.plans.get(newPlan.plan).getSuggestions()
   },
   componentWillUnmount() {
     store.plans.get('basic').off('change', this.updateState)
@@ -28,12 +27,12 @@ const Suggestions = React.createClass({
     store.plans.get('fund').off('change', this.updateState)
   },
   render() {
-
     let suggestionsList;
     if(store.session.isAllowedToView(this.props.plan)) {
       let suggestions = store.plans.get(this.props.plan).get('suggestions').map((suggestion, i) => {
+        // store.plans.get(this.props.plan).getStockInfo(suggestion.ticker, i);
         return (
-          <Suggestion key={i} suggestion={suggestion}/>
+          <Suggestion key={i} suggestion={suggestion} i={i} planName={this.props.plan}/>
         )
       })
       suggestionsList = (

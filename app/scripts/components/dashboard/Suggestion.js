@@ -1,8 +1,23 @@
 import React from 'react'
 
 import SuggestionChart from './SuggestionChart'
+import store from '../../store'
 
 const Suggestion = React.createClass({
+  getInitialState() {
+    return {fetched: false, fetching: false}
+  },
+  componentDidMount() {
+    this.setState({fetching: true})
+    store.plans.get(this.props.planName).getStockInfo(this.props.suggestion.ticker, this.props.i);
+  },
+  componentWillReceiveProps(newProps) {
+    console.log(this.props);
+    if (newProps.planName !== this.props.planName) {
+      console.log('new props');
+      store.plans.get(newProps.planName).getStockInfo(newProps.suggestion.ticker, newProps.i);
+    }
+  },
   render() {
     let lastPrice;
     if (this.props.suggestion.data) {

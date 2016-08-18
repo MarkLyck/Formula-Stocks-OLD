@@ -107,7 +107,7 @@ let cc = {
           email: store.session.get('email')
         },
         headers: {
-          Authorization: 'Kinvey 9dbd2146-9b76-4c06-85a2-70229ac93cbf.3JRWuuAKqMI2ZuoFJI3Ui3SoD5NquLLXhe+wtBYxH28='
+          Authorization: `Kinvey ${store.settings.anomToken}`
         },
         success: (customer) => {
           store.session.set('stripe', customer)

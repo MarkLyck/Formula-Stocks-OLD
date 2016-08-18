@@ -14,7 +14,7 @@ const Portfolio = React.createClass({
   componentDidMount() {
     store.plans.get(this.props.plan).on('change', this.updateState)
     store.market.data.on('change', this.updateState)
-    store.plans.get(this.props.plan).getPortfolio()
+    // store.plans.get(this.props.plan).getPortfolio()
     store.market.data.getPortfolioData()
   },
   updateState() {
@@ -22,7 +22,7 @@ const Portfolio = React.createClass({
   },
   componentWillReceiveProps(newPlan) {
     store.plans.get(newPlan.plan).on('change', this.updateState)
-    store.plans.get(newPlan.plan).getPortfolio()
+    // store.plans.get(newPlan.plan).getPortfolio()
   },
   componentWillUnmount() {
     store.market.data.off('change', this.updateState)
