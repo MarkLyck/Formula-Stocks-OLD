@@ -50,7 +50,7 @@ const InformationalAdvantage = React.createClass({
 
 
 
-    console.log(bus, Math.floor(store.plans.get('business').get('stats').WLRatio));
+    // console.log(bus, Math.floor(store.plans.get('business').get('stats').WLRatio));
     if (bus < Math.floor(store.plans.get('business').get('stats').WLRatio)) {
       window.setTimeout(this.updateNumbers, 2)
     }

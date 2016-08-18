@@ -42,7 +42,6 @@ const CumulativeInterest = React.createClass({
       currentMarketValue = currentMarketValue * (store.market.cagr / 100 + 1)
       chartData.push({value: currentValue.toFixed(0), market: currentMarketValue.toFixed(2), year: i + 1})
     }
-    console.log(chartData);
     return chartData
   },
   render() {

@@ -87,3 +87,14 @@ input[type=range]::-moz-range-thumb {
   border: 2px solid $primary-color;
   box-shadow: 0 0 1px 0px rgba(0,0,0,0.1);
 }
+
+.amcharts-graph-column-front {
+  -webkit-transition: all .2s .2s ease-out;
+  transition: all .2s .2s ease-out;
+}
+.amcharts-graph-column-front:hover {
+  fill: darken($primary-color, 10%);
+  stroke: darken($primary-color, 10%);
+  -webkit-transition: all .2s ease-out;
+  transition: all .2s ease-out;
+}

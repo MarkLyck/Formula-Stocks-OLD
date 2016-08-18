@@ -1,4 +1,5 @@
 import $ from 'jquery'
+import React from 'react'
 import ReactDOM from 'react-dom'
 import router from './router'
 import store from './store'
@@ -13,5 +14,9 @@ if (localStorage.authtoken) {
 // .then((r) => {
 //   console.log(r)
 // })
+
+
+
+
 
 ReactDOM.render(router, document.getElementById('container'))
