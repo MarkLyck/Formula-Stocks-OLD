@@ -162,6 +162,7 @@ const TheResults = React.createClass({
         minorGridEnabled: true,
         dashLength: 0,
         inside: true,
+        // maximum: 15000000000,
 			}],
 
       chartCursor: {

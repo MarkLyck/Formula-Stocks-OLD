@@ -1,6 +1,8 @@
 import React from 'react'
 import $ from 'jquery'
 
+import store from '../../store'
+
 const CumulativeInterest = React.createClass({
   getInitialState() {
     return {cagr: 25, investment: 10000, years: 20}
@@ -31,12 +33,16 @@ const CumulativeInterest = React.createClass({
 
   },
   calculateData() {
-    let chartData = []
+
     let currentValue = this.state.investment
-    for(let i=0; i <= this.state.years; i++) {
+    let currentMarketValue = this.state.investment
+    let chartData = [{value: currentValue, market: currentMarketValue, year: 0}]
+    for(let i=0; i < this.state.years; i++) {
       currentValue = currentValue * (this.state.cagr / 100 + 1)
-      chartData.push({value: currentValue.toFixed(0), year: i})
+      currentMarketValue = currentMarketValue * (store.market.cagr / 100 + 1)
+      chartData.push({value: currentValue.toFixed(0), market: currentMarketValue.toFixed(2), year: i + 1})
     }
+    console.log(chartData);
     return chartData
   },
   render() {
@@ -44,7 +50,7 @@ const CumulativeInterest = React.createClass({
       type: "serial",
       theme: "light",
       addClassNames: true,
-
+      "startDuration": 0.75,
       "dataProvider": this.calculateData(),
 
       balloon: {
@@ -54,18 +60,32 @@ const CumulativeInterest = React.createClass({
         borderThickness: 1,
       },
 
-      "graphs": [ {
-        "balloonText": "[[category]]<br/> <b>$[[value]]</b>",
-        "fillAlphas": 1,
-        lineColor:  "#27A5F9",
-        "type": "column",
-        "valueField": "value"
-      } ],
+      "graphs": [
+        {
+          id: "cumulative",
+          "balloonText": `${this.state.cagr}% cagr <br/>Year [[category]]<br/> <b>$[[value]]</b>`,
+          "fillAlphas": 1,
+          lineColor:  "#27A5F9",
+          "type": "column",
+          "valueField": "value"
+        },
+        {
+          id: "market",
+          "balloonText": "S&P 500 <br/>Year [[category]]<br/> <b>$[[value]]</b>",
+          "fillAlphas": 1,
+          lineColor:  "#555",
+          "type": "column",
+          "valueField": "market"
+        }
+      ],
 
       "valueAxes": [{
         "gridColor": "#FFFFFF",
         "gridAlpha": 0.2,
-        "dashLength": 0
+        "dashLength": 0,
+        unit: '$',
+        unitPosition: 'left',
+        "stackType": "3d",
       }],
 
       "chartCursor": {
@@ -78,8 +98,6 @@ const CumulativeInterest = React.createClass({
       "categoryAxis": {
         "gridPosition": "start",
         "gridAlpha": 0,
-        "tickPosition": "start",
-        "tickLength": 20
       },
     };
 
@@ -98,7 +116,7 @@ const CumulativeInterest = React.createClass({
           <div className="left">
 
           <div className="slider">
-            <input type = "range" min="0" max="40" step="1" ref="cagrSlider"/>
+            <input type = "range" min="0" max="35" step="1" ref="cagrSlider"/>
             <output id="cagrValue">50</output>
           </div>
 
