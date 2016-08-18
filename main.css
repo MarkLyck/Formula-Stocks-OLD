@@ -2046,6 +2046,10 @@ footer .copyright {
     .my-account-page .cancel-btn:hover {
       background: #c3114b; }
 
+.dropzone {
+  width: 500px;
+  height: 500px; }
+
 body {
   font-family: 'proxima-nova', 'Lato', sans-serif; }
 
