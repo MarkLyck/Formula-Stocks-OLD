@@ -5,17 +5,21 @@ import store from '../../store'
 
 const SideBar = React.createClass({
   getInitialState() {
-    let dropdown;
-    // console.log(this.props.location);
+    let selected;
     if (this.props.location.indexOf('suggestions') !== -1) {
-      dropdown = 'suggestions'
-    } else if (this.props.location.indexOf('portfolio') !== -1) {
-      dropdown = 'portfolio'
+      selected = 'suggestions'
+    } else if (this.props.location.indexOf('portfolio') !== -1 || this.props.location === '/dashboard') {
+      selected = 'portfolio'
+    } else if (this.props.location.indexOf('account') !== -1) {
+      selected = 'account'
+    } else if (this.props.location.indexOf('admin') !== -1) {
+      selected = 'admin'
     }
-    return {dropdown: dropdown, plan: this.props.plan}
+
+    return {plan: this.props.plan, selected: selected}
   },
   toggleDropdown(dropdown) {
-    this.setState({dropdown: dropdown, plan: this.props.plan})
+    this.setState({selected: dropdown, plan: this.props.plan})
   },
   componentWillReceiveProps(props) {
     this.setState({plan: props.plan})
@@ -28,30 +32,40 @@ const SideBar = React.createClass({
     let portfoliosClass = 'portfolios side-bar-link'
     let suggestionsDropdown, portfoliosDropdown;
 
-    let basicClass, premiumClass, businessClass, fundClass;
-    if(this.state.plan === 'basic') {basicClass = 'selected'}
-    if(this.state.plan === 'premium') {premiumClass = 'selected'}
-    if(this.state.plan === 'business') {businessClass = 'selected'}
-    if(this.state.plan === 'fund') {fundClass = 'selected'}
+    let SbasicClass, SpremiumClass, SbusinessClass, SfundClass;
+    let PbasicClass, PpremiumClass, PbusinessClass, PfundClass;
 
-    if (this.state.dropdown === 'suggestions') {
-      suggestionsClass = 'Suggestions side-bar-link selected'
+    if (this.state.selected === 'suggestions') {
+      if (this.props.location.indexOf('suggestions') !== -1) {
+        if(this.state.plan === 'basic') {SbasicClass = 'selected'}
+        else if(this.state.plan === 'premium') {SpremiumClass = 'selected'}
+        else if(this.state.plan === 'business') {SbusinessClass = 'selected'}
+        else if(this.state.plan === 'fund') {SfundClass = 'selected'}
+      }
+      suggestionsClass = 'suggestions side-bar-link selected'
       suggestionsDropdown = (
         <div className="dropdown">
-          <Link className={basicClass} to="/dashboard/suggestions/basic">Basic Suggestions</Link>
-          <Link className={premiumClass} to="/dashboard/suggestions/premium">Premium Suggestions</Link>
-          <Link className={businessClass} to="/dashboard/suggestions/business">Business Suggestions</Link>
-          <Link className={fundClass} to="/dashboard/suggestions/fund">Fund Suggestions</Link>
+          <Link className={SbasicClass} to="/dashboard/suggestions/basic">Basic Suggestions</Link>
+          <Link className={SpremiumClass} to="/dashboard/suggestions/premium">Premium Suggestions</Link>
+          <Link className={SbusinessClass} to="/dashboard/suggestions/business">Business Suggestions</Link>
+          <Link className={SfundClass} to="/dashboard/suggestions/fund">Fund Suggestions</Link>
         </div>
       )
-    } else if (this.state.dropdown === 'portfolio') {
+    } else if (this.state.selected === 'portfolio') {
+      if (this.props.location.indexOf('portfolio') !== -1 || this.props.location === '/dashboard') {
+        if(this.state.plan === 'basic') {PbasicClass = 'selected'}
+        else if(this.state.plan === 'premium') {PpremiumClass = 'selected'}
+        else if(this.state.plan === 'business') {PbusinessClass = 'selected'}
+        else if(this.state.plan === 'fund') {PfundClass = 'selected'}
+      }
+
       portfoliosClass = 'portfolios side-bar-link selected'
       portfoliosDropdown = (
         <div className="dropdown">
-          <Link className={basicClass}  to="/dashboard/portfolio/basic">Basic Portfolio</Link>
-          <Link className={premiumClass}  to="/dashboard/portfolio/premium">Premium Portfolio</Link>
-          <Link className={businessClass}  to="/dashboard/portfolio/business">Business Portfolio</Link>
-          <Link className={fundClass}  to="/dashboard/portfolio/fund">Fund Portfolio</Link>
+          <Link className={PbasicClass}  to="/dashboard/portfolio/basic">Basic Portfolio</Link>
+          <Link className={PpremiumClass}  to="/dashboard/portfolio/premium">Premium Portfolio</Link>
+          <Link className={PbusinessClass}  to="/dashboard/portfolio/business">Business Portfolio</Link>
+          <Link className={PfundClass}  to="/dashboard/portfolio/fund">Fund Portfolio</Link>
         </div>
       )
     }

@@ -26,7 +26,6 @@ const SignupForm = React.createClass({
       store.session.set('email', email)
       store.session.set('password', password)
       this.props.goToModal('selectPlan')
-      // this.setState({formClasses: 'signup slide-out-left', error: ''})
     })
     .catch((errMsg) => {
       this.setState({formClasses: 'signup shake', error: errMsg})
