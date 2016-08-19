@@ -46,7 +46,7 @@ const PricingTable = React.createClass({
             <Product showModal={this.showModal} name="Fund" price="120,000" stats={store.plans.get('fund').get('stats')} billed="Yearly" signupText="Get Started" info={store.plans.get('fund').get('info')}/>
           </div>
           <p className="disclaimer">
-            Information in pricing tables does represent, warrant or guarantee any specific level of future investment performance.
+            Information in pricing tables does not represent, warrant or guarantee any specific level of future investment performance.
             Historical numbers are based on backtested performance from 1975 - 2009, whereas data from 2009 - 2016 reflects actual investment results.
             Investing always involve varying degrees of risk.
           </p>

@@ -28,14 +28,14 @@ const ProductModal = React.createClass({
         </div>
         <div className="right">
           <div>
-            <p><span className="light-text-color">Avg. gain per position:</span> 102.37%</p>
-            <p><span className="light-text-color">Avg. loss per position:</span> 16.47%</p>
-            <p><span className="light-text-color">Max drawdown in 45 years:</span> 40.88%</p>
-            <p><span className="light-text-color">Max drawdown in 36 months:</span> 7.03%</p>
-            <p><span className="light-text-color">IRR Arithmetic mean:</span> 108.01%</p>
-            <p><span className="light-text-color">IRR Geometric mean:</span> 48.66%</p>
-            <p><span className="light-text-color">Sortino ratio:</span> 6.728</p>
-            <p><span className="light-text-color">Gain-to-pain ratio:</span> 2.886</p>
+            <p><span className="light-text-color">Avg. gain per position: </span>{this.state.plan.info.avgGainPerPosition}%</p>
+            <p><span className="light-text-color">Avg. loss per position: </span>{this.state.plan.info.avgLossPerPosition}%</p>
+            <p><span className="light-text-color">Max drawdown in 45 years: </span>{this.state.plan.info.maxDrawdown45y}%</p>
+            <p><span className="light-text-color">Max drawdown in 36 months: </span>{this.state.plan.info.maxDrawdown36m}%</p>
+            <p><span className="light-text-color">IRR Arithmetic mean: </span>{this.state.plan.info.IRRArithmeticMean}%</p>
+            <p><span className="light-text-color">IRR Geometric mean: </span>{this.state.plan.info.IRRGeometricMean}%</p>
+            <p><span className="light-text-color">Sortino ratio: </span>{this.state.plan.info.sortinoRatio}</p>
+            <p><span className="light-text-color">Gain-to-pain ratio: </span>{this.state.plan.info.gainToPainRatio}</p>
           </div>
         </div>
       </div>

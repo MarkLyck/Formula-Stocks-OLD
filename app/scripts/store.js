@@ -27,32 +27,68 @@ store.plans.add({
   name: 'basic',
   price: 50,
   info: {
-    roundtripTradesPerYear: 1,
-    IITFormulas: 1,
-    avgGainPerPosition: 1,
-    avgLossPerPosition: 1,
-    maxDrawdown45y: 1,
-    maxDrawdown36m: 1,
-    IRRArithmeticMean: 1,
-    IRRGeometricMean: 1,
-    sortinoRatio: 1,
-    gainToPainRatio: 1,
+    roundtripTradesPerYear: 39,
+    IITFormulas: 3,
+    avgGainPerPosition: 65.97,
+    avgLossPerPosition: 18.32,
+    maxDrawdown45y: 50.07,
+    maxDrawdown36m: 36.04,
+    IRRArithmeticMean: 52.61,
+    IRRGeometricMean: 27.18,
+    sortinoRatio: 2.4812,
+    gainToPainRatio: 1.1493,
   }
 })
 store.plans.add({
   id: 'premium',
   name: 'premium',
-  price: 100
+  price: 100,
+  info: {
+    roundtripTradesPerYear: 44,
+    IITFormulas: 8,
+    avgGainPerPosition: 77.49,
+    avgLossPerPosition: 17.03,
+    maxDrawdown45y: 52.33,
+    maxDrawdown36m: 21.51,
+    IRRArithmeticMean: 68.60,
+    IRRGeometricMean: 35.14,
+    sortinoRatio: 4.3393,
+    gainToPainRatio: 1.502,
+  }
 })
 store.plans.add({
   id: 'business',
   name: 'business',
-  price: 20000
+  price: 20000,
+  info: {
+    roundtripTradesPerYear: 20,
+    IITFormulas: 44,
+    avgGainPerPosition: 102.37,
+    avgLossPerPosition: 16.47,
+    maxDrawdown45y: 40.88,
+    maxDrawdown36m: 7.03,
+    IRRArithmeticMean: 108.01,
+    IRRGeometricMean: 48.66,
+    sortinoRatio: 6.728,
+    gainToPainRatio: 2.886,
+  }
 })
 store.plans.add({
   id: 'fund',
   name: 'fund',
-  price: 120000
+  price: 120000,
+  info: {
+    roundtripTradesPerYear: 63,
+    IITFormulas: 87,
+    avgGainPerPosition: 66.097,
+    avgLossPerPosition: 16.85,
+    maxDrawdown45y: 45.00,
+    maxDrawdown36m: 22.976,
+    IRRArithmeticMean: 67.96,
+    IRRGeometricMean: 33.27,
+    sortinoRatio: 4.4814,
+    gainToPainRatio: 1.9302,
+  }
 })
 
 export default store
