@@ -32,6 +32,9 @@ const SideBar = React.createClass({
     this.setState({selected: 'admin', plan: ''})
     store.settings.history.push('/dashboard/admin')
   },
+  logout() {
+    store.session.logout()
+  },
   render() {
     let suggestionsClass = 'suggestions side-bar-link'
     let portfoliosClass = 'portfolios side-bar-link'
@@ -128,7 +131,7 @@ const SideBar = React.createClass({
           {admin}
 
           <li className="my-account side-bar-link logout">
-            <button><h3><i className="fa fa-power-off" aria-hidden="true"></i>Log out</h3></button>
+            <button onClick={this.logout}><h3><i className="fa fa-power-off" aria-hidden="true"></i>Log out</h3></button>
           </li>
 
         </ul>

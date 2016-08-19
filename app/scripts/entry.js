@@ -5,6 +5,8 @@ import ReactDOM from 'react-dom'
 import router from './router'
 import store from './store'
 
+import Visit from './models/Visit'
+
 
 if (localStorage.authtoken) {
   store.session.set('authtoken', localStorage.authtoken)
@@ -12,6 +14,8 @@ if (localStorage.authtoken) {
 } else {
   store.session.set('authtoken', store.settings.anomToken)
   store.session.retrieve()
+  let visit = new Visit()
+  visit.getData()
 }
 
 store.plans.fetch({
@@ -22,11 +26,6 @@ store.plans.fetch({
     console.error('error: ', e);
   }
 })
-
-// $.ajax('https://freegeoip.net/json/')
-// .then((r) => {
-//   console.log(r)
-// })
 
 
 

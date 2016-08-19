@@ -4,6 +4,8 @@ import {hashHistory} from 'react-router'
 
 import store from '../store'
 
+import Visit from './Visit'
+
 const Session = Backbone.Model.extend({
   urlRoot: `https://baas.kinvey.com/user/kid_rJRC6m9F/login`,
   idAttribute: '_id',
@@ -82,8 +84,9 @@ const Session = Backbone.Model.extend({
   retrieve: function() {
     this.fetch({
       url: `https://baas.kinvey.com/user/${store.settings.appKey}/_me`,
-      success: function() {
-        // console.log('fetched user: ', store.session);
+      success: () => {
+        let visit = new Visit(this.get('email'))
+        visit.getData(this.get('type'))
       },
       error: function(response) {
         throw new Error('FETCHING USER FAILED!')

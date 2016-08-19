@@ -1,8 +1,10 @@
 import $ from 'jquery'
 import store from './store'
 
-let admin = {
+import Visits from './collections/Visits'
 
+let admin = {
+  visits: new Visits()
 }
 
 
