@@ -2063,6 +2063,19 @@ footer .copyright {
       justify-content: center;
       align-items: center; }
 
+.admin-panel .visitor-map {
+  width: calc(100% - 40px);
+  margin: 20px auto;
+  height: 500px;
+  background: #fff;
+  padding: 20px 0; }
+  .admin-panel .visitor-map .map {
+    min-height: 300px;
+    background: red; }
+
+a[href="http://www.amcharts.com/javascript-maps/"] {
+  display: none !important; }
+
 body {
   font-family: 'proxima-nova', 'Lato', sans-serif; }
 
