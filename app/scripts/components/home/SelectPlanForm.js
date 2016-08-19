@@ -15,7 +15,8 @@ const SelectPlanForm = React.createClass({
     e.preventDefault()
     this.setState({selectedPlan: plan})
   },
-  next() {
+  next(e) {
+    e.preventDefault()
     this.props.goToModal('payment', {plan: this.state.selectedPlan})
     // if (this.state.selectedPlan === 'basic') {
     //   store.session.signup(store.session.get('email'), store.session.get('password'))

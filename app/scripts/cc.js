@@ -79,21 +79,29 @@ let cc = {
   },
   checkPayment: function(card) {
     return new Promise((resolve, reject) => {
-      Stripe.setPublishableKey('pk_test_hh5vsZ7wNnMi80XJgzHVanEm');
-      Stripe.card.createToken({
-        number: card.number,
-        cvc: card.cvc,
-        exp_month: card.month,
-        exp_year: card.year
-      }, (status, response) => {
-        if (status === 200) {
-          resolve(response.id)
-        } else if (response.error.message.indexOf('required param: exp_year') !== -1) {
-          reject('Missing expiry year')
-        } else {
-          reject(response.error.message)
-        }
-      });
+      console.log(String(card.number).split('').length);
+      if (String(card.number).split('').length < 16) {
+        console.log('less than 16');
+        reject('Card number invalid')
+      } else {
+        Stripe.setPublishableKey('pk_test_hh5vsZ7wNnMi80XJgzHVanEm');
+        Stripe.card.createToken({
+          number: card.number,
+          cvc: card.cvc,
+          exp_month: card.month,
+          exp_year: card.year
+        }, (status, response) => {
+          if (status === 200) {
+            resolve(response.id)
+            console.log(response);
+          } else if (response.error.message.indexOf('required param: exp_year') !== -1) {
+            reject('Missing expiry year')
+          } else {
+            console.log(response.error.message);
+            reject(response.error.message)
+          }
+        });
+      }
     })
   },
   createCustomer: function(token, planName, cycle) {
@@ -106,10 +114,11 @@ let cc = {
           source: token,
           email: store.session.get('email')
         },
-        headers: {
-          Authorization: `Kinvey ${store.settings.anomToken}`
-        },
+        // headers: {
+        //   Authorization: `Kinvey ${store.settings.anomToken}`
+        // },
         success: (customer) => {
+          console.log(customer);
           store.session.set('stripe', customer)
 
           let type = 0

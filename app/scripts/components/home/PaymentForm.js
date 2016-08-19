@@ -64,7 +64,7 @@ const PaymentForm = React.createClass({
       })
       .catch((e) => {
         console.log('charge ERROR: ', e);
-        this.setState({error: e, formClass: 'payment-form shake', validatingPayment: false})
+        this.setState({error: String(e), formClass: 'payment-form shake', validatingPayment: false})
         window.setTimeout(() => {
           this.setState({formClass: 'payment-form'})
         }, 300)
