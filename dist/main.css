@@ -1279,7 +1279,7 @@ input[type=submit] {
       text-align: left; }
 
 #result-chart {
-  height: 70vh; }
+  height: 65vh; }
   #result-chart .chart-balloon {
     font-family: 'proxima-nova', sans-serif;
     display: flex;

@@ -114,9 +114,6 @@ let cc = {
           source: token,
           email: store.session.get('email')
         },
-        // headers: {
-        //   Authorization: `Kinvey ${store.settings.anomToken}`
-        // },
         success: (customer) => {
           console.log(customer);
           store.session.set('stripe', customer)
@@ -132,6 +129,7 @@ let cc = {
           resolve()
         },
         error: (response) => {
+          console.error(response);
           reject(JSON.parse(response.responseText).error)
         }
       })

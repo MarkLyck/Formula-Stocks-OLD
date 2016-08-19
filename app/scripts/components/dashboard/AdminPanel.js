@@ -11,6 +11,9 @@ const AdminPanel = React.createClass({
     admin.visits.on('change update', this.updateState)
     admin.visits.fetch()
   },
+  componentWillUnmount() {
+    admin.visits.off('change update', this.updateState)
+  },
   updateState() {
     console.log('update');
     console.log(admin.visits);
