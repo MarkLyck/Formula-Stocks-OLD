@@ -24,7 +24,7 @@ const Dashboard = React.createClass({
     this.setState({fetched: true})
   },
   render() {
-    if (!store.session.get('stripe').subscriptions){
+    if (!store.session.get('stripe').subscriptions) {
       return null
     }
 

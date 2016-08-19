@@ -34,8 +34,9 @@ const PricingTable = React.createClass({
             <Product name="Fund" price="120,000" stats={store.plans.get('fund').get('stats')} billed="Yearly" signupText="Get Started" info={store.plans.get('fund').get('info')}/>
           </div>
           <p className="disclaimer">
-            The pricing tables are not a representation, warranty or gurantee of future investment performance. Making investments always involve varying degrees of risk.
-            The above numbers are based on historical data from 1975 - 2009, and data from 2009 - 2016 which reflects actual investment results.
+            Information in pricing tables does represent, warrant or guarantee any specific level of future investment performance.
+            Historical numbers are based on backtested performance from 1975 - 2009, whereas data from 2009 - 2016 reflects actual investment results.
+            Investing always involve varying degrees of risk.
           </p>
         </div>
       </section>

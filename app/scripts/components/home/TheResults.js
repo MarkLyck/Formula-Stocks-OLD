@@ -198,7 +198,7 @@ const TheResults = React.createClass({
           <h2 className="second title">Formula Stocks vs S&P 500</h2>
           <p>
             Log scale graph of Formula Stocks products (white) versus S&P500 (gray).
-            The observed outperformance is the resulf of cumulatively 9,800 buy & sell recommendations.
+            The observed outperformance is the result of cumulatively 9,800 buy & sell recommendations.
             To date the winners of the future have been identified with an accuracy of 84%, 90%, and 95%,
             respectively*. Random stocks measured by the same yardstick win ~60% of the time.
             The difference is very significant.<br/><br/>

@@ -54,10 +54,9 @@ const OurProducts = React.createClass({
           You could explore our <a className="blue-color">product matrix</a> below.
           Or see our <a className="blue-color">retail brochure</a> or <a className="blue-color">business brochure</a>.<br/><br/>
 
-          Formula Stocks does not provide personalized investment advice We respect your privacy,
+          <span className="disclaimer">Formula Stocks does not provide personalized investment advice We respect your privacy,
           and receive no financial information in the process.
-          We do not manage money nor recommend any products or
-          stocks with which we have any affiliation.
+          We do not manage money nor recommend any stocks with which we have any affiliation.</span>
           </p>
         </div>
       </section>

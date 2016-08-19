@@ -13,13 +13,18 @@ const RewardVSRisk = React.createClass({
             </div>
             <div className="right">
               <p>
-                Achieving a higher level of return is, of course, easy if it means accepting higher risk.
-                One simply uses leverage, this amplifying both risk and reward.
-                But our methods generally do the exact opposite.
-                They deliver above-average returns at a below average risk - an absolute rarity.
+              Achieving a higher level of return is, of course, easy if it means accepting higher risk.
+              One simply uses leverage, thus amplifying both risk and reward.<br/><br/>
+
+              But our methods generally do the exact opposite.
+              They deliver above-average returns at a below average risk - an absolute rarity.
               </p>
               <p className="disclaimer">
-                Omega function. Higher levels indicate higher returns,
+                One of the best and most modern risk/reward
+                benchmarks, is the Omega function,
+                depicted on the left.<br/><br/>
+
+                Higher levels indicate higher returns,
                 and steeper slopes indicate lower risk.
                 This yearly return distribution is significantly supperior to DIJA at all tresholds
                 and for all products. Depicted: Yearly Omega Function

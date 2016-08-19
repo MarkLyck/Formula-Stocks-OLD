@@ -79,26 +79,40 @@ const InformationalAdvantage = React.createClass({
       height: `calc(${this.state.market}% + 45px)`
     }
 
+    // Formula Stocks uses state-of-the-art technology to compile and
+    // analyze an enormous amount of information, creating a new unique
+    // edge for outperforming the market. And, above all, we make it
+    // available only to a small number of members, giving them an
+    // advantage available nowhere else.<br/><br/>
+    //
+    // This scientifically based approach on stock selection has predicted
+    // winners with an 84%, 87%, 90% and 97% success rate in the past.<br/><br/>
+    //
+    // This contrasts strongly to the ≈60% win ratio of typical
+    // investments in the market.<br/><br/>
+    //
+    // To the right you see four different Formula Stocks products and their
+    // win ratio performance relative to the market.
+
     return (
       <div className="bg-white split-section informational-advantage">
         <div className="content" ref='content'>
           <div className="left">
             <h2 className="title">An informational advantage</h2>
             <p>
-              Formula Stocks uses state-of-the-art technology to compile and
-              analyze an enormous amount of information, creating a new unique
-              edge for outperforming the market. And, above all, we make it
-              available only to a small number of members, giving them an
-              advantage available nowhere else.<br/><br/>
+              Formula Stocks develops proprietary state-of-the-art technology
+              to compile and analyze enormous amounts of information,
+              creating a new unique edge for outperforming the market.
+              Above all, we make it available only to members,
+              giving them an exclusive advantage available nowhere else.<br/><br/>
 
-              This scientifically based approach on stock selection has predicted
-              winners with an 84%, 87%, 90% and 97% success rate in the past.<br/><br/>
+              This scientifically based approach to stock selection has predicted winners with an
+              84%, 88%, 89% and 92% success rate in the past.<br/><br/>
 
-              This contrasts strongly to the ≈60% win ratio of typical
-              investments in the market.<br/><br/>
+              This contrasts strongly to the ≈60% success rates of typical investments in the market.<br/><br/>
 
-              To the right you see four different Formula Stocks products and their
-              win ratio performance relative to the market.
+              To the right you see four different Formula Stocks products and their ratio
+              of winners to losers, relative to the broader market.
             </p>
           </div>
           <div className="right">
