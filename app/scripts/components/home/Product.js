@@ -10,6 +10,7 @@ const Product = React.createClass({
     this.props.showModal(this.props.name)
   },
   render() {
+    let extraInfo = this.props.name === 'Premium' ? <p>Includes Basic</p> : this.props.name === 'Business' ? <p>Includes Basic & Premium</p> : this.props.name === 'Fund' ? <p>AUM Capacity: $500 Billion</p> : undefined
     return (
       <div className="plan">
         <div className="top">
@@ -18,6 +19,7 @@ const Product = React.createClass({
           <p className="billed">Billed {this.props.billed}</p>
         </div>
         <div className="main-stats">
+          {extraInfo}
           <p>Buy & Sell recommendations</p>
           <p>Model Portfolio Tracking</p>
           <p><span className="light-text-color">Avg. round-trip trades per year: </span>{this.props.info.roundtripTradesPerYear}</p>

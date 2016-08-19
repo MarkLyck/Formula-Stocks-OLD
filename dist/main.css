@@ -1322,6 +1322,7 @@ input[type=submit] {
       width: 100%;
       display: flex;
       justify-content: space-between;
+      align-items: flex-end;
       margin-top: 40px; }
     .pricing-table .content .disclaimer {
       margin-top: 25px;
@@ -1331,6 +1332,7 @@ input[type=submit] {
 .plan {
   background: #2C323D;
   width: calc(100% / 4);
+  height: 100%;
   margin: 0 10px;
   transition: transform .3s; }
   .plan:hover {
@@ -1359,7 +1361,8 @@ input[type=submit] {
     .plan .main-stats p {
       color: #fff;
       font-weight: 100;
-      font-size: 1rem; }
+      font-size: 1rem;
+      margin: 15px 0; }
   .plan .more-info {
     background: rgba(255, 255, 255, 0.15);
     max-width: 100%;
