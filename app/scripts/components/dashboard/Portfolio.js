@@ -65,7 +65,7 @@ const Portfolio = React.createClass({
               </div>
             </td>
             <td><p className="blue-color">{stock.percentage_weight.toFixed(2)}%</p></td>
-            <td><p className={changeClass}>{((stock.latest_price - stock.purchase_price)*100/stock.latest_price).toFixed(2)}%</p></td>
+            <td><p className={changeClass}>{((stock.latest_price - stock.purchase_price) * 100 / stock.purchase_price).toFixed(2)}%</p></td>
             <td><p className="blue-color">${stock.purchase_price.toFixed(2)}</p></td>
             <td><p>${stock.latest_price.toFixed(2)}</p></td>
             <td><p>{cc.commafy(stock.days_owned)}</p></td>
