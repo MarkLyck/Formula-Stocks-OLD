@@ -1378,6 +1378,20 @@ input[type=submit] {
 .plan:last-child {
   margin-right: 0; }
 
+.product-modal {
+  display: flex; }
+  .product-modal .left {
+    width: 50%;
+    padding: 20px; }
+  .product-modal .right {
+    width: 50%;
+    background: #2C323D;
+    padding: 20px; }
+    .product-modal .right p {
+      color: #fff;
+      font-weight: 100;
+      font-size: 1rem; }
+
 .brochures {
   background: linear-gradient(rgba(6, 141, 231, 0.2), rgba(6, 141, 231, 0.2)), url("assets/images/NY_Skyline.jpg");
   background-size: cover;

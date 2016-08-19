@@ -25,7 +25,19 @@ let store = {
 store.plans.add({
   id: 'basic',
   name: 'basic',
-  price: 50
+  price: 50,
+  info: {
+    roundtripTradesPerYear: 1,
+    IITFormulas: 1,
+    avgGainPerPosition: 1,
+    avgLossPerPosition: 1,
+    maxDrawdown45y: 1,
+    maxDrawdown36m: 1,
+    IRRArithmeticMean: 1,
+    IRRGeometricMean: 1,
+    sortinoRatio: 1,
+    gainToPainRatio: 1,
+  }
 })
 store.plans.add({
   id: 'premium',

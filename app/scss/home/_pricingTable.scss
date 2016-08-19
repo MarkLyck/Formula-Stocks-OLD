@@ -54,7 +54,6 @@
   .main-stats {
     display: flex;
     flex-direction: column;
-    // align-items: center;
     padding-left: 20px;
     p {
       color: #fff;
@@ -75,8 +74,6 @@
     max-width: 100%;
     margin: 0;
     border-radius: 0;
-    // border-bottom-right-radius: 5px;
-    // border-bottom-left-radius: 5px;
   }
 }
 .plan:first-child{
@@ -84,4 +81,24 @@
 }
 .plan:last-child{
   margin-right: 0;
+}
+
+
+.product-modal {
+  display: flex;
+
+  .left {
+    width: 50%;
+    padding: 20px;
+  }
+  .right {
+    width: 50%;
+    background: #2C323D;
+    padding: 20px;
+    p {
+      color: #fff;
+      font-weight: 100;
+      font-size: 1rem;
+    }
+  }
 }
