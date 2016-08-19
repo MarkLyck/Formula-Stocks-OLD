@@ -9,6 +9,7 @@
       display: flex;
       justify-content: space-between;
       align-items: flex-end;
+      flex-wrap: wrap;
       margin-top: 40px;
     }
     .disclaimer {
@@ -21,9 +22,9 @@
 
 .plan {
   background: $dark-background;
-  width: calc(100% / 4);
+  width: calc(100% / 4 - 12.5px);
   height: 100%;
-  margin: 0 10px;
+  margin: 0 7.5px;
   transition: transform .3s;
   &:hover {
     transform: scale(1.05) translateY(-2.5%);
@@ -100,4 +101,30 @@
       font-size: 1rem;
     }
   }
+}
+
+@media (max-width: 1200px) {
+  .plan {
+    width: calc(100% / 2 - 20px);
+    margin-bottom: 40px;
+  }
+  .plan:nth-child(2) {
+    margin-right: 0;
+  }
+  .plan:nth-child(3) {
+    margin-left: 0;
+  }
+}
+@media (max-width: 760px) {
+  .plan {
+    width: calc(100%);
+    margin: 0 0 40px 0;
+    // margin-bottom: 40px;
+  }
+  // .plan:nth-child(2) {
+  //   margin-right: 0;
+  // }
+  // .plan:nth-child(3) {
+  //   margin-left: 0;
+  // }
 }
