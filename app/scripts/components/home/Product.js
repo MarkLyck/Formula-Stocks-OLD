@@ -6,6 +6,9 @@ const Product = React.createClass({
   signup() {
     store.settings.history.push('/signup')
   },
+  showModal() {
+    this.props.showModal(this.props.name)
+  },
   render() {
     return (
       <div className="plan">
@@ -22,7 +25,7 @@ const Product = React.createClass({
           <p><span className="light-text-color">Historical 45 year CAGR: </span>{this.props.stats.CAGR.toFixed(2)}%</p>
           <p><span className="light-text-color">Avg. winning positions: </span>{this.props.stats.WLRatio.toFixed(0)}%</p>
         </div>
-        <button className="more-info filled-btn">More info</button>
+        <button onClick={this.showModal} className="more-info filled-btn">More info</button>
         <button className="sign-up filled-btn" onClick={this.signup}>{this.props.signupText}</button>
       </div>
     )

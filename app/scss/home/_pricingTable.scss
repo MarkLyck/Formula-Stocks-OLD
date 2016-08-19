@@ -54,7 +54,8 @@
   .main-stats {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    // align-items: center;
+    padding-left: 20px;
     p {
       color: #fff;
       font-weight: 100;
