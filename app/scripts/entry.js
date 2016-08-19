@@ -14,8 +14,6 @@ if (localStorage.authtoken) {
   store.session.retrieve()
 }
 
-console.log('should fetch?');
-
 store.plans.fetch({
   success: (r) => {
     console.log(r);

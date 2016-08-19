@@ -2046,9 +2046,22 @@ footer .copyright {
     .my-account-page .cancel-btn:hover {
       background: #c3114b; }
 
-.dropzone {
-  width: 500px;
-  height: 500px; }
+.admin-api .wrapper {
+  width: calc(100% - 40px);
+  margin: 20px auto;
+  padding: 20px; }
+  .admin-api .wrapper .dropzone {
+    width: 100%;
+    height: 350px;
+    border: 2px dashed #27A5F9;
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+    .admin-api .wrapper .dropzone div {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center; }
 
 body {
   font-family: 'proxima-nova', 'Lato', sans-serif; }
