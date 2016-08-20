@@ -84,7 +84,7 @@ const SideBar = React.createClass({
 
     let admin;
     if (store.session.get('type') === 5) {
-      let adminPanelClass, adminAPIClass;
+      let adminPanelClass, adminAPIClass, newArticleClass;
 
       if (this.state.selected === 'admin') {
         adminClass = 'admin side-bar-link selected'
@@ -92,12 +92,14 @@ const SideBar = React.createClass({
         if (this.props.location.indexOf('admin') !== -1) {
           if (this.props.location.indexOf('api') !== -1) {adminAPIClass = 'selected'}
           else if (this.props.location === '/dashboard/admin') {adminPanelClass = 'selected'}
+          else if (this.props.location === '/dashboard/admin/newarticle') {newArticleClass = 'selected'}
         }
 
         adminDropdown = (
           <div className="dropdown">
             <Link className={adminPanelClass} to="/dashboard/admin">Panel</Link>
             <Link className={adminAPIClass}  to="/dashboard/admin/api">JSON</Link>
+            <Link className={newArticleClass}  to="/dashboard/admin/newarticle">New Article</Link>
           </div>
         )
       }

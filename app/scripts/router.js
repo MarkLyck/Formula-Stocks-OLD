@@ -14,6 +14,7 @@ import MyAccount from './components/dashboard/MyAccount'
 
 import AdminPanel from './components/dashboard/AdminPanel'
 import AdminAPI from './components/dashboard/AdminAPI'
+import NewArticle from './components/dashboard/NewArticle'
 
 const router = (
   <Router history={store.settings.history}>
@@ -34,6 +35,7 @@ const router = (
       <Route path="account" component={MyAccount}/>
       <Route path="admin" component={AdminPanel}/>
       <Route path="admin/api" component={AdminAPI}/>
+      <Route path="admin/newarticle" component={NewArticle}/>
     </Route>
   </Router>
 )

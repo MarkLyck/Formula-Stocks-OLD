@@ -2113,6 +2113,48 @@ footer .copyright {
 a[href="http://www.amcharts.com/javascript-maps/"] {
   display: none !important; }
 
+.new-article .editor {
+  background: #fff;
+  width: calc(100% - 40px);
+  margin: 20px auto;
+  background: #fff;
+  border: 1px solid #ddd;
+  font-family: 'Georgia', serif;
+  font-size: 14px;
+  padding: 15px; }
+  .new-article .editor .RichEditor-controls {
+    font-family: 'Helvetica', sans-serif;
+    font-size: 14px;
+    margin-bottom: 5px; }
+    .new-article .editor .RichEditor-controls .RichEditor-styleButton {
+      color: #999;
+      cursor: pointer;
+      margin-right: 16px;
+      padding: 2px 0;
+      display: inline-block; }
+    .new-article .editor .RichEditor-controls .RichEditor-activeButton {
+      color: #27A5F9; }
+  .new-article .editor .RichEditor-editor {
+    border-top: 1px solid #ddd;
+    cursor: text;
+    font-size: 16px;
+    margin-top: 10px;
+    margin: 0 -15px -15px;
+    padding: 15px; }
+    .new-article .editor .RichEditor-editor .public-DraftEditorPlaceholder-root {
+      margin: 0 -15px -15px;
+      padding-left: 15px;
+      color: #9197a3;
+      position: absolute;
+      z-index: 0; }
+    .new-article .editor .RichEditor-editor .RichEditor-blockquote {
+      border-left: 5px solid #eee;
+      color: #666;
+      font-family: 'Hoefler Text', 'Georgia', serif;
+      font-style: italic;
+      margin: 16px 0;
+      padding: 10px 20px; }
+
 body {
   font-family: 'proxima-nova', 'Lato', sans-serif; }
 
