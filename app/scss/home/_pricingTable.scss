@@ -26,6 +26,9 @@
   height: 100%;
   margin: 0 7.5px;
   transition: transform .3s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   &:hover {
     transform: scale(1.05) translateY(-2.5%);
   }
@@ -34,6 +37,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
     h3 {
       color: #fff;
       font-weight: 400;
@@ -51,7 +55,7 @@
     }
   }
   .main-stats {
-    display: flex;
+    display: inline-flex;
     flex-direction: column;
     padding-left: 20px;
     p {

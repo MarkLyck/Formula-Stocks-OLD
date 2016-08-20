@@ -24,7 +24,6 @@ const Session = Backbone.Model.extend({
         name: response.name,
         stripe: response.stripe,
         type: response.type
-        // plan: response.stripe.subscriptions.data[0].plan.
       }
     }
   },
