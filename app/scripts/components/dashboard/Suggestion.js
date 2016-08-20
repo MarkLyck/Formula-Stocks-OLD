@@ -12,7 +12,6 @@ const Suggestion = React.createClass({
     store.plans.get(this.props.planName).getStockInfo(this.props.suggestion.ticker, this.props.i);
   },
   componentWillReceiveProps(newProps) {
-    console.log(this.props);
     if (newProps.planName !== this.props.planName) {
       console.log('new props');
       store.plans.get(newProps.planName).getStockInfo(newProps.suggestion.ticker, newProps.i);
