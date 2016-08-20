@@ -1953,7 +1953,8 @@ footer .copyright {
       height: 300px;
       width: 100%; }
     .suggestions-list li .bottom {
-      display: flex; }
+      display: flex;
+      padding: 10px 10px; }
       .suggestions-list li .bottom li {
         width: calc(100% / 4); }
         .suggestions-list li .bottom li p, .suggestions-list li .bottom li h4 {
