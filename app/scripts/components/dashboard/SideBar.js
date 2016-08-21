@@ -114,7 +114,7 @@ const SideBar = React.createClass({
 
       admin = (
         <li className={adminClass}>
-          <button onClick={this.toggleDropdown.bind(null, 'admin')}><h3><i className="fa fa-tachometer" aria-hidden="true"></i>Admin</h3><i className="fa fa-angle-down" aria-hidden="true"></i></button>
+          <button className="admin-btn" onClick={this.toggleDropdown.bind(null, 'admin')}><h3><i className="fa fa-tachometer" aria-hidden="true"></i></h3><i className="fa fa-angle-down" aria-hidden="true"></i></button>
           {adminDropdown}
         </li>
       )
@@ -125,27 +125,27 @@ const SideBar = React.createClass({
         <ul className="side-bar-links">
 
           <li className={suggestionsClass} onClick={this.toggleDropdown.bind(null, 'suggestions')}>
-            <button><h3><i className="fa fa-flask" aria-hidden="true"></i>Suggestions</h3> <i className="fa fa-angle-down" aria-hidden="true"></i></button>
+            <button className="suggestions-btn"><h3><i className="fa fa-flask" aria-hidden="true"></i></h3> <i className="fa fa-angle-down" aria-hidden="true"></i></button>
             {suggestionsDropdown}
           </li>
 
           <li className={portfoliosClass} onClick={this.toggleDropdown.bind(null, 'portfolio')}>
-            <button><h3><i className="fa fa-line-chart" aria-hidden="true"></i>Portfolios</h3> <i className="fa fa-angle-down" aria-hidden="true"></i></button>
+            <button className="portfolios-btn"><h3><i className="fa fa-line-chart" aria-hidden="true"></i></h3> <i className="fa fa-angle-down" aria-hidden="true"></i></button>
             {portfoliosDropdown}
           </li>
 
           <li className={articlesClass}>
-            <button onClick={this.gotoArticles}><h3><i className="fa fa-newspaper-o" aria-hidden="true"></i>Articles</h3></button>
+            <button className="articles-btn" onClick={this.gotoArticles}><h3><i className="fa fa-newspaper-o" aria-hidden="true"></i></h3></button>
           </li>
 
           <li className={myAccountClass}>
-            <button onClick={this.gotoAccount}><h3><i className="fa fa-user" aria-hidden="true"></i>My Account</h3></button>
+            <button className="my-account-btn" onClick={this.gotoAccount}><h3><i className="fa fa-user" aria-hidden="true"></i></h3></button>
           </li>
 
           {admin}
 
           <li className="my-account side-bar-link logout">
-            <button onClick={this.logout}><h3><i className="fa fa-power-off" aria-hidden="true"></i>Log out</h3></button>
+            <button className="logout-btn" onClick={this.logout}><h3><i className="fa fa-power-off" aria-hidden="true"></i></h3></button>
           </li>
 
         </ul>

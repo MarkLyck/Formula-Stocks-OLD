@@ -43,7 +43,7 @@ const Dashboard = React.createClass({
         <Nav/>
         <div className="container">
           <SideBar plan={plan} location={this.props.location.pathname}/>
-          <div className="content">
+          <div className="db-content">
             {React.cloneElement(this.props.children, {plan: plan, location: this.props.location.pathname})}
           </div>
         </div>

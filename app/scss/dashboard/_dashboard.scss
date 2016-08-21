@@ -5,7 +5,8 @@
   .container {
     height: calc(100% - 75px);
     display: flex;
-    .content {
+    .db-content {
+      width: 100%;
       overflow-y: scroll;
     }
   }
