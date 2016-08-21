@@ -10,6 +10,11 @@
       padding: 20px;
       width: calc(100% / 3 - 40px);
       font-family: 'Georgia', serif;
+      h3 {
+        margin: 0;
+        padding: 20px 0;
+        border-bottom: 2px solid $db-border-color;
+      }
       &:hover {
         cursor: pointer;
       }
@@ -43,7 +48,6 @@
         font-size: 2rem;
       }
       &:hover {
-        // background: none;
         i {
           color: $warning-color;
         }

@@ -35,6 +35,7 @@ const Articles = React.createClass({
     || _.toArray(e.target.classList).indexOf('close-btn') > -1
     || _.toArray(e.target.classList).indexOf('fa-times') > -1) {
       this.setState({modal: false})
+      store.settings.history.push(`/dashboard/articles`)
     }
   },
   render() {

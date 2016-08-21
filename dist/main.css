@@ -2095,6 +2095,10 @@ footer .copyright {
       padding: 20px;
       width: calc(100% / 3 - 40px);
       font-family: 'Georgia', serif; }
+      .articles ul .article-preview h3 {
+        margin: 0;
+        padding: 20px 0;
+        border-bottom: 2px solid #F3F3F3; }
       .articles ul .article-preview:hover {
         cursor: pointer; }
 
