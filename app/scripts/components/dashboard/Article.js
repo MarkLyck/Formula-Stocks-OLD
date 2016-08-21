@@ -1,17 +1,17 @@
 import React from 'react'
 
+import {stateToHTML} from 'draft-js-export-html';
+import {convertFromRaw, convertToRaw} from 'draft-js'
+import ReactHtmlParser from 'react-html-parser';
+
 import store from '../../store'
 
 const Article = React.createClass({
   getInitialState() {
-    console.log(this.props.id);
-    console.log(store.articles.data);
-
-    return {article: store.articles.data.get(this.props.id)}
+    return {article: store.articles.data.get(this.props.id).toJSON()}
   },
   updateState() {
-    console.log('updating state: ', store.articles.data.get(this.props.id));
-    this.setState({article: store.articles.data.get(this.props.id)})
+    this.setState({article: store.articles.data.get(this.props.id).toJSON()})
   },
   componentDidMount() {
     store.articles.data.fetch({success: this.updateState})
@@ -21,11 +21,19 @@ const Article = React.createClass({
     store.articles.data.off('update', this.updateState)
   },
   render() {
-    console.log(this.state.article);
-    console.log(store.articles.data.get(this.props.id));
+    let article;
+    if (this.state.article) {
+      var rawData = this.state.article.content
+      var contentState = convertFromRaw(rawData)
+      let articleHtml = stateToHTML(contentState)
+      article = ReactHtmlParser(articleHtml)
+    }
     return (
       <div className="article">
-
+        <h2 className="title">{this.state.article.title}</h2>
+        <div className="article-content">
+          {article}
+        </div>
       </div>
     )
   }

@@ -2083,16 +2083,56 @@ footer .copyright {
     .my-account-page .cancel-btn:hover {
       background: #c3114b; }
 
-.articles ul {
+.articles {
+  position: relative;
+  min-height: 100%; }
+  .articles ul {
+    display: flex;
+    flex-wrap: wrap; }
+    .articles ul .article-preview {
+      background: #fff;
+      margin: 20px;
+      padding: 20px;
+      width: calc(100% / 3 - 40px);
+      font-family: 'Georgia', serif; }
+      .articles ul .article-preview:hover {
+        cursor: pointer; }
+
+.article-modal-container {
+  background: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  min-height: 100%;
+  width: 100%;
+  top: 0;
   display: flex;
-  flex-wrap: wrap; }
-  .articles ul .article {
+  justify-content: center; }
+  .article-modal-container .article-modal {
     background: #fff;
-    margin: 20px;
-    padding: 20px;
-    width: calc(100% / 3 - 40px); }
-    .articles ul .article:hover {
-      cursor: pointer; }
+    margin: 40px 0 40px 0;
+    width: 80%;
+    position: relative; }
+    .article-modal-container .article-modal .close-btn {
+      position: absolute;
+      right: 0;
+      top: 0;
+      background: none;
+      color: #49494A;
+      width: 65px;
+      height: 65px;
+      padding: 0; }
+      .article-modal-container .article-modal .close-btn i {
+        font-size: 2rem; }
+      .article-modal-container .article-modal .close-btn:hover i {
+        color: #da1354; }
+
+.article .title {
+  padding: 30px 40px;
+  margin: 0;
+  font-family: 'Georgia', serif;
+  border-bottom: 1px solid #F3F3F3; }
+.article .article-content {
+  padding: 20px 40px;
+  font-family: 'Georgia', serif; }
 
 .admin-api .wrapper {
   width: calc(100% - 40px);

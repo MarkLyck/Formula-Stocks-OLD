@@ -1,6 +1,7 @@
 import React from 'react'
+import _ from 'underscore'
 import {stateToHTML} from 'draft-js-export-html';
-import {Editor, EditorState, ContentState, RichUtils, convertFromRaw, convertToRaw} from 'draft-js'
+import {convertFromRaw, convertToRaw} from 'draft-js'
 import ReactHtmlParser from 'react-html-parser';
 
 
@@ -29,16 +30,23 @@ const Articles = React.createClass({
     this.setState({modal: id})
     store.settings.history.push(`/dashboard/articles/${id}`)
   },
-  closeModal() {
-    this.setState({modal: false})
+  closeModal(e) {
+    if (_.toArray(e.target.classList).indexOf('article-modal-container') > -1
+    || _.toArray(e.target.classList).indexOf('close-btn') > -1
+    || _.toArray(e.target.classList).indexOf('fa-times') > -1) {
+      this.setState({modal: false})
+    }
   },
   render() {
     let modal;
     if (this.state.modal) {
       modal = (
-      <Modal closeModal={this.closeModal}>
-        <Article id={this.props.params.article}/>
-      </Modal>)
+      <div className="article-modal-container" onClick={this.closeModal}>
+        <div className="article-modal">
+          <button onClick={this.closeModal} className="close-btn"><i className="fa fa-times" aria-hidden="true"></i></button>
+          <Article id={this.props.params.article}/>
+        </div>
+      </div>)
     }
 
     let articles = this.state.articles.map((article, i) => {
@@ -47,14 +55,12 @@ const Articles = React.createClass({
       let previewText = stateToHTML(contentState)
       let endIndex = previewText.indexOf('/')
       previewText = previewText.slice(3, endIndex - 1)
-      previewText = previewText.slice(0, 100)
+      previewText = previewText.slice(0, 150)
 
       return (
-        <li key={i} className="article" onClick={this.gotoArticle.bind(null, article._id)}>
+        <li key={i} className="article-preview" onClick={this.gotoArticle.bind(null, article._id)}>
           <h3>{article.title}</h3>
           <p>{previewText}...</p>
-          {//ReactHtmlParser(stateToHTML(contentState))
-          }
         </li>
       )
     })
