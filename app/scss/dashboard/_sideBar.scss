@@ -99,11 +99,12 @@
 @media (max-width: 600px) {
   .side-bar {
     background: $side-bar-background;
-    width: 60px;
+    width: 75px;
   }
   .side-bar-links {
     .side-bar-link {
       justify-content: center;
+      position: relative;
       button {
         h3 {
           i {
@@ -112,6 +113,18 @@
             left: 50%;
             transform: translate(-50%, -50%);
           }
+        }
+      }
+      .dropdown {
+        position: absolute;
+        background: darken($side-bar-background, 3%);
+        left: 75px;
+        top: 0;
+        z-index: 10;
+        width: 180px;
+        a {
+          padding: 20px;
+          height: 75px;
         }
       }
     }
