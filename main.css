@@ -1852,15 +1852,26 @@ footer .copyright {
 @media (max-width: 600px) {
   .side-bar {
     background: #32323A;
-    width: 60px; }
+    width: 75px; }
 
   .side-bar-links .side-bar-link {
-    justify-content: center; }
+    justify-content: center;
+    position: relative; }
     .side-bar-links .side-bar-link button h3 i {
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%); }
+    .side-bar-links .side-bar-link .dropdown {
+      position: absolute;
+      background: #2b2b32;
+      left: 75px;
+      top: 0;
+      z-index: 10;
+      width: 180px; }
+      .side-bar-links .side-bar-link .dropdown a {
+        padding: 20px;
+        height: 75px; }
 
   .suggestions-btn::before {
     content: ''; }
