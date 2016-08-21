@@ -1,4 +1,5 @@
 import React from 'react'
+import _ from 'underscore'
 import {Link} from 'react-router'
 
 import store from '../../store'
@@ -18,8 +19,15 @@ const SideBar = React.createClass({
 
     return {plan: this.props.plan, selected: selected}
   },
-  toggleDropdown(dropdown) {
-    this.setState({selected: dropdown, plan: this.props.plan})
+  toggleDropdown(dropdown, e) {
+    console.log(e.target.classList);
+    if (_.toArray(e.target.classList).indexOf('dropdown-link') === -1) {
+      if (this.state.selected !== dropdown) {
+        this.setState({selected: dropdown, plan: this.props.plan})
+      } else {
+        this.setState({selected: undefined})
+      }
+    }
   },
   componentWillReceiveProps(props) {
     this.setState({plan: props.plan})
@@ -60,10 +68,10 @@ const SideBar = React.createClass({
       suggestionsClass = 'suggestions side-bar-link selected'
       suggestionsDropdown = (
         <div className="dropdown">
-          <Link className={SbasicClass} to="/dashboard/suggestions/basic">Basic Suggestions</Link>
-          <Link className={SpremiumClass} to="/dashboard/suggestions/premium">Premium Suggestions</Link>
-          <Link className={SbusinessClass} to="/dashboard/suggestions/business">Business Suggestions</Link>
-          <Link className={SfundClass} to="/dashboard/suggestions/fund">Fund Suggestions</Link>
+          <Link className={'dropdown-link ' + SbasicClass} to="/dashboard/suggestions/basic">Basic Suggestions</Link>
+          <Link className={'dropdown-link ' + SpremiumClass} to="/dashboard/suggestions/premium">Premium Suggestions</Link>
+          <Link className={'dropdown-link ' + SbusinessClass} to="/dashboard/suggestions/business">Business Suggestions</Link>
+          <Link className={'dropdown-link ' + SfundClass} to="/dashboard/suggestions/fund">Fund Suggestions</Link>
         </div>
       )
     } else if (this.state.selected === 'portfolio') {
@@ -77,10 +85,10 @@ const SideBar = React.createClass({
       portfoliosClass = 'portfolios side-bar-link selected'
       portfoliosDropdown = (
         <div className="dropdown">
-          <Link className={PbasicClass}  to="/dashboard/portfolio/basic">Basic Portfolio</Link>
-          <Link className={PpremiumClass}  to="/dashboard/portfolio/premium">Premium Portfolio</Link>
-          <Link className={PbusinessClass}  to="/dashboard/portfolio/business">Business Portfolio</Link>
-          <Link className={PfundClass}  to="/dashboard/portfolio/fund">Fund Portfolio</Link>
+          <Link className={'dropdown-link ' + PbasicClass} to="/dashboard/portfolio/basic">Basic Portfolio</Link>
+          <Link className={'dropdown-link ' + PpremiumClass} to="/dashboard/portfolio/premium">Premium Portfolio</Link>
+          <Link className={'dropdown-link ' + PbusinessClass} to="/dashboard/portfolio/business">Business Portfolio</Link>
+          <Link className={'dropdown-link ' + PfundClass} to="/dashboard/portfolio/fund">Fund Portfolio</Link>
         </div>
       )
     } else if (this.state.selected === 'account') {
@@ -105,9 +113,9 @@ const SideBar = React.createClass({
 
         adminDropdown = (
           <div className="dropdown">
-            <Link className={adminPanelClass} to="/dashboard/admin">Panel</Link>
-            <Link className={adminAPIClass}  to="/dashboard/admin/api">JSON</Link>
-            <Link className={newArticleClass}  to="/dashboard/admin/newarticle">New Article</Link>
+            <Link className={'dropdown-link ' + adminPanelClass} to="/dashboard/admin">Panel</Link>
+            <Link className={'dropdown-link ' + adminAPIClass}  to="/dashboard/admin/api">JSON</Link>
+            <Link className={'dropdown-link ' + newArticleClass}  to="/dashboard/admin/newarticle">New Article</Link>
           </div>
         )
       }
