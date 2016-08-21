@@ -12,7 +12,8 @@
     flex-direction: column;
     width: calc(100% - 200px);
     h2 {
-      padding-left: 40px;
+      padding-left: 20px;
+      margin: 20px 0 10px 0;
     }
     #portfolio-chart {
       height: 350px;
@@ -153,5 +154,17 @@
       }
     }
     padding-bottom: 20px;
+  }
+}
+
+@media (max-width: 1000px) {
+  .portfolio-yields {
+    .left {
+      width: 100%;
+    }
+    .right {
+      display: none;
+      // width: 200px;
+    }
   }
 }

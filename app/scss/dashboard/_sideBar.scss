@@ -60,6 +60,20 @@
         background: darken($side-bar-background, 5%);
       }
     }
+    .plan-dd.dropdown {
+      animation: .3s expandVertPlans;
+    }
+    @keyframes expandVertPlans {
+      from { height: 0; }
+      to { height: calc(4 * 50px); }
+    }
+    .admin-dd.dropdown {
+      animation: .3s expandVertAdmin;
+    }
+    @keyframes expandVertAdmin {
+      from { height: 0; }
+      to { height: calc(3 * 50px); }
+    }
     &:hover {
       button {
         height: 75px;
@@ -113,6 +127,9 @@
             left: 50%;
             transform: translate(-50%, -50%);
           }
+        }
+        .fa-angle-down {
+          display: none;
         }
       }
       .dropdown {
