@@ -20,7 +20,7 @@ if (localStorage.authtoken) {
 
 store.plans.fetch({
   success: (r) => {
-    console.log(r);
+    // console.log(r);
   },
   error: (e) => {
     console.error('error: ', e);

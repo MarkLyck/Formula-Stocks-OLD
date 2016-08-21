@@ -1,0 +1,15 @@
+.articles {
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    .article {
+      background: #fff;
+      margin: 20px;
+      padding: 20px;
+      width: calc(100% / 3 - 40px);
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+}

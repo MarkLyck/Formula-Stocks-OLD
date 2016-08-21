@@ -5,6 +5,8 @@ import Plan from './models/Plan'
 import Plans from './collections/Plans'
 import Market from './models/Market'
 
+import Articles from './collections/Articles'
+
 let store = {
   session: new Session(),
   settings: {
@@ -20,6 +22,10 @@ let store = {
     data: new Market(),
     cagr: 10.71
   },
+  articles: {
+    fetching: false,
+    data: new Articles()
+  }
 }
 
 store.plans.add({

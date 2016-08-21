@@ -6,19 +6,75 @@
     font-family: 'Georgia', serif;
     font-size: 14px;
     padding: 15px;
-    .RichEditor-controls {
-      font-family: 'Helvetica', sans-serif;
-      font-size: 14px;
-      margin-bottom: 5px;
-      .RichEditor-styleButton {
-        color: $light-text-color;
-        cursor: pointer;
-        margin-right: 16px;
-        padding: 2px 0;
-        display: inline-block;
-      }
-      .RichEditor-activeButton {
-        color: $primary-color;
+    .article-title {
+      width: 100%;
+      border: none;
+      padding: 20px 20px 20px 10px;
+      font-size: 2rem;
+      color: $text-color;
+    }
+    .submit-article {
+      width: 100%;
+      max-width: 100%;
+      margin-top: 50px;
+    }
+    .controls {
+      display: flex;
+
+      .RichEditor-controls {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        font-family: 'Helvetica', sans-serif;
+        font-size: 14px;
+        margin-bottom: 5px;
+        padding: 20px;
+        .RichEditor-styleButton {
+          display: flex;
+          flex: 1;
+          color: $light-text-color;
+          cursor: pointer;
+          margin-right: 16px;
+          padding: 2px 0;
+          // display: inline-block;
+          &:hover {
+            color: $text-color;
+          }
+        }
+        .h1::before, .h2::before {
+          content: '\f1dc';
+          font-family: 'FontAwesome';
+        }
+        .block-quote::before {
+          content: '\f10d';
+          font-family: 'FontAwesome';
+        }
+        .UL::before {
+          content: '\f0ca';
+          font-family: 'FontAwesome';
+        }
+        .OL::before {
+          content: '\f0cb';
+          font-family: 'FontAwesome';
+        }
+        .bold-text::before {
+          content: '\f032';
+          font-family: 'FontAwesome';
+        }
+        .italic-text::before {
+          content: '\f033';
+          font-family: 'FontAwesome';
+        }
+        .underline-text::before {
+          content: '\f0cd';
+          font-family: 'FontAwesome';
+        }
+        .RichEditor-activeButton {
+          color: $primary-color;
+          &:hover {
+            color: $primary-color;
+          }
+        }
       }
     }
     .RichEditor-editor {
@@ -27,10 +83,11 @@
       font-size: 16px;
       margin-top: 10px;
       margin: 0 -15px -15px;
-      padding: 15px;
+      padding: 20px;
+      min-height: 350px;
       .public-DraftEditorPlaceholder-root {
         margin: 0 -15px -15px;
-        padding-left: 15px;
+        padding-left: 20px;
         color: #9197a3;
         position: absolute;
         z-index: 0;

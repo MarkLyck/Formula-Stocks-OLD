@@ -32,6 +32,10 @@ const SideBar = React.createClass({
     this.setState({selected: 'admin', plan: ''})
     store.settings.history.push('/dashboard/admin')
   },
+  gotoArticles() {
+    this.setState({selected: 'articles', plan: ''})
+    store.settings.history.push('/dashboard/articles')
+  },
   logout() {
     store.session.logout()
   },
@@ -40,6 +44,7 @@ const SideBar = React.createClass({
     let portfoliosClass = 'portfolios side-bar-link'
     let myAccountClass = 'myaccount side-bar-link'
     let adminClass = 'admin side-bar-link'
+    let articlesClass = 'articles side-bar-link'
     let suggestionsDropdown, portfoliosDropdown, adminDropdown;
 
     let SbasicClass, SpremiumClass, SbusinessClass, SfundClass;
@@ -81,6 +86,9 @@ const SideBar = React.createClass({
     } else if (this.state.selected === 'account') {
       myAccountClass = 'myaccount side-bar-link selected'
     }
+    else if (this.state.selected === 'articles'|| this.props.location.indexOf('articles') > -1) {
+     articlesClass = 'articles side-bar-link selected'
+   }
 
     let admin;
     if (store.session.get('type') === 5) {
@@ -124,6 +132,10 @@ const SideBar = React.createClass({
           <li className={portfoliosClass} onClick={this.toggleDropdown.bind(null, 'portfolio')}>
             <button><h3><i className="fa fa-line-chart" aria-hidden="true"></i>Portfolios</h3> <i className="fa fa-angle-down" aria-hidden="true"></i></button>
             {portfoliosDropdown}
+          </li>
+
+          <li className={articlesClass}>
+            <button onClick={this.gotoArticles}><h3><i className="fa fa-newspaper-o" aria-hidden="true"></i>Articles</h3></button>
           </li>
 
           <li className={myAccountClass}>

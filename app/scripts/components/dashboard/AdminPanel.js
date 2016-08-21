@@ -46,6 +46,7 @@ const AdminPanel = React.createClass({
     // let max = 1;
     // let min = 15;
 
+
     let images = this.state.visitors.map((visitor) => {
 
       // if (visitor.amount > max) {
@@ -69,7 +70,7 @@ const AdminPanel = React.createClass({
         "longitude": visitor.location.longitude,
         "latitude": visitor.location.latitude,
         "title": `${visitor.location.country_name}<br/>${visitor.location.city}<br/>`,
-        "value": visitor.amount
+        // "value": visitor.amount
       });
     })
 

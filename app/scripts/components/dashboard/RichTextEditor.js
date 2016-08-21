@@ -1,5 +1,7 @@
 import React from 'react'
-import {Editor, EditorState, RichUtils} from 'draft-js'
+import {Editor, EditorState, RichUtils, convertFromRaw, convertToRaw} from 'draft-js'
+
+import store from '../../store'
 
 class RichEditor extends React.Component {
   constructor(props) {
@@ -42,6 +44,15 @@ class RichEditor extends React.Component {
     );
   }
 
+  submitArticle(editorState) {
+    let content = convertToRaw(editorState.getCurrentContent())
+    store.articles.data.create({
+      content: content,
+      title: this.refs.title.value
+    })
+  }
+
+
   render() {
     const {editorState} = this.state;
 
@@ -54,17 +65,27 @@ class RichEditor extends React.Component {
         className += ' RichEditor-hidePlaceholder';
       }
     }
+    // <InlineStyleControls
+    //   editorState={editorState}
+    //   onToggle={this.toggleInlineStyle}
+    // />
 
     return (
       <div className="RichEditor-root">
-        <BlockStyleControls
-          editorState={editorState}
-          onToggle={this.toggleBlockType}
-        />
-        <InlineStyleControls
-          editorState={editorState}
-          onToggle={this.toggleInlineStyle}
-        />
+
+        <div className="controls">
+          <BlockStyleControls
+            editorState={editorState}
+            onToggle={this.toggleBlockType}
+          />
+          <InlineStyleControls
+            editorState={editorState}
+            onToggle={this.toggleInlineStyle}
+          />
+        </div>
+
+        <input type="text" className="article-title" placeholder="Title" ref="title"/>
+
         <div className={className} onClick={this.focus}>
           <Editor
             blockStyleFn={getBlockStyle}
@@ -77,6 +98,7 @@ class RichEditor extends React.Component {
             spellCheck={true}
           />
         </div>
+        <button className="filled-btn submit-article" onClick={this.submitArticle.bind(this, editorState)}>Submit</button>
       </div>
     );
   }
@@ -109,9 +131,9 @@ class StyleButton extends React.Component {
   }
 
   render() {
-    let className = 'RichEditor-styleButton';
+    let className = 'RichEditor-styleButton ' + this.props.classes;
     if (this.props.active) {
-      className += ' RichEditor-activeButton';
+      className += ' RichEditor-activeButton ' + this.props.classes;
     }
 
     return (
@@ -122,16 +144,24 @@ class StyleButton extends React.Component {
   }
 }
 
+var INLINE_STYLES = [
+  {label: '', style: 'BOLD', className: 'bold-text'},
+  {label: '', style: 'ITALIC', className: 'italic-text'},
+  {label: '', style: 'UNDERLINE', className: 'underline-text'},
+  // {label: 'Monospace', style: 'CODE', className: 'monospace-text'},
+];
+
 const BLOCK_TYPES = [
-  {label: 'H1', style: 'header-one'},
-  {label: 'H2', style: 'header-two'},
-  {label: 'Blockquote', style: 'blockquote'},
-  {label: 'UL', style: 'unordered-list-item'},
-  {label: 'OL', style: 'ordered-list-item'},
+  {label: '1', style: 'header-one', className: 'h1'},
+  {label: '2', style: 'header-two', className: 'h2'},
+  {label: '', style: 'blockquote', className: 'block-quote'},
+  {label: '', style: 'unordered-list-item', className: 'UL'},
+  {label: '', style: 'ordered-list-item', className: 'OL'},
   // {label: 'Code Block', style: 'code-block'},
 ];
 
 const BlockStyleControls = (props) => {
+  var currentStyle = props.editorState.getCurrentInlineStyle();
   const {editorState} = props;
   const selection = editorState.getSelection();
   const blockType = editorState
@@ -141,12 +171,14 @@ const BlockStyleControls = (props) => {
 
   return (
     <div className="RichEditor-controls">
+
       {BLOCK_TYPES.map((type, i) =>
         <StyleButton
           active={type.style === blockType}
           label={type.label}
           onToggle={props.onToggle}
           style={type.style}
+          classes={type.className}
           key={i}
         />
       )}
@@ -154,12 +186,7 @@ const BlockStyleControls = (props) => {
   );
 };
 
-var INLINE_STYLES = [
-  {label: 'Bold', style: 'BOLD'},
-  {label: 'Italic', style: 'ITALIC'},
-  {label: 'Underline', style: 'UNDERLINE'},
-  {label: 'Monospace', style: 'CODE'},
-];
+
 
 const InlineStyleControls = (props) => {
   var currentStyle = props.editorState.getCurrentInlineStyle();
@@ -171,6 +198,7 @@ const InlineStyleControls = (props) => {
           label={type.label}
           onToggle={props.onToggle}
           style={type.style}
+          classes={type.className}
           key={i}
         />
       )}

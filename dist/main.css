@@ -2083,6 +2083,17 @@ footer .copyright {
     .my-account-page .cancel-btn:hover {
       background: #c3114b; }
 
+.articles ul {
+  display: flex;
+  flex-wrap: wrap; }
+  .articles ul .article {
+    background: #fff;
+    margin: 20px;
+    padding: 20px;
+    width: calc(100% / 3 - 40px); }
+    .articles ul .article:hover {
+      cursor: pointer; }
+
 .admin-api .wrapper {
   width: calc(100% - 40px);
   margin: 20px auto;
@@ -2120,28 +2131,71 @@ a[href="http://www.amcharts.com/javascript-maps/"] {
   font-family: 'Georgia', serif;
   font-size: 14px;
   padding: 15px; }
-  .new-article .editor .RichEditor-controls {
-    font-family: 'Helvetica', sans-serif;
-    font-size: 14px;
-    margin-bottom: 5px; }
-    .new-article .editor .RichEditor-controls .RichEditor-styleButton {
-      color: #95989E;
-      cursor: pointer;
-      margin-right: 16px;
-      padding: 2px 0;
-      display: inline-block; }
-    .new-article .editor .RichEditor-controls .RichEditor-activeButton {
-      color: #27A5F9; }
+  .new-article .editor .article-title {
+    width: 100%;
+    border: none;
+    padding: 20px 20px 20px 10px;
+    font-size: 2rem;
+    color: #49494A; }
+  .new-article .editor .submit-article {
+    width: 100%;
+    max-width: 100%;
+    margin-top: 50px; }
+  .new-article .editor .controls {
+    display: flex; }
+    .new-article .editor .controls .RichEditor-controls {
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+      font-family: 'Helvetica', sans-serif;
+      font-size: 14px;
+      margin-bottom: 5px;
+      padding: 20px; }
+      .new-article .editor .controls .RichEditor-controls .RichEditor-styleButton {
+        display: flex;
+        flex: 1;
+        color: #95989E;
+        cursor: pointer;
+        margin-right: 16px;
+        padding: 2px 0; }
+        .new-article .editor .controls .RichEditor-controls .RichEditor-styleButton:hover {
+          color: #49494A; }
+      .new-article .editor .controls .RichEditor-controls .h1::before, .new-article .editor .controls .RichEditor-controls .h2::before {
+        content: '\f1dc';
+        font-family: 'FontAwesome'; }
+      .new-article .editor .controls .RichEditor-controls .block-quote::before {
+        content: '\f10d';
+        font-family: 'FontAwesome'; }
+      .new-article .editor .controls .RichEditor-controls .UL::before {
+        content: '\f0ca';
+        font-family: 'FontAwesome'; }
+      .new-article .editor .controls .RichEditor-controls .OL::before {
+        content: '\f0cb';
+        font-family: 'FontAwesome'; }
+      .new-article .editor .controls .RichEditor-controls .bold-text::before {
+        content: '\f032';
+        font-family: 'FontAwesome'; }
+      .new-article .editor .controls .RichEditor-controls .italic-text::before {
+        content: '\f033';
+        font-family: 'FontAwesome'; }
+      .new-article .editor .controls .RichEditor-controls .underline-text::before {
+        content: '\f0cd';
+        font-family: 'FontAwesome'; }
+      .new-article .editor .controls .RichEditor-controls .RichEditor-activeButton {
+        color: #27A5F9; }
+        .new-article .editor .controls .RichEditor-controls .RichEditor-activeButton:hover {
+          color: #27A5F9; }
   .new-article .editor .RichEditor-editor {
     border-top: 1px solid #ddd;
     cursor: text;
     font-size: 16px;
     margin-top: 10px;
     margin: 0 -15px -15px;
-    padding: 15px; }
+    padding: 20px;
+    min-height: 350px; }
     .new-article .editor .RichEditor-editor .public-DraftEditorPlaceholder-root {
       margin: 0 -15px -15px;
-      padding-left: 15px;
+      padding-left: 20px;
       color: #9197a3;
       position: absolute;
       z-index: 0; }
