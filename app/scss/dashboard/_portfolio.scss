@@ -95,6 +95,12 @@
     }
   }
   tbody {
+    &:hover {
+      cursor: pointer;
+      .stock-name-tag {
+        color: $primary-color;
+      }
+    }
     tr {
       height: 75px;
       border-bottom: 1px solid $db-border-color;

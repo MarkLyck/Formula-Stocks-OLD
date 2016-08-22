@@ -25,7 +25,7 @@ const PortfolioItem = React.createClass({
             <td className="stock-name">
               <i className="fa fa-flask" aria-hidden="true"></i>
               <div className="wrapper">
-                <p>{stock.name}</p>
+                <p className="stock-name-tag">{stock.name}</p>
                 <p className="ticker">{stock.ticker}</p>
               </div>
             </td>
@@ -44,7 +44,7 @@ const PortfolioItem = React.createClass({
             <td className="stock-name">
               <i className="fa fa-flask" aria-hidden="true"></i>
               <div className="wrapper">
-                <p>{stock.name}</p>
+                <p className="stock-name-tag">{stock.name}</p>
                 <p className="ticker">{stock.ticker}</p>
               </div>
             </td>

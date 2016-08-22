@@ -1986,6 +1986,10 @@ footer .copyright {
       padding-left: 20px;
       text-align: left;
       font-weight: 100; }
+  .portfolio-table tbody:hover {
+    cursor: pointer; }
+    .portfolio-table tbody:hover .stock-name-tag {
+      color: #27A5F9; }
   .portfolio-table tbody tr {
     height: 75px;
     border-bottom: 1px solid #F3F3F3; }
