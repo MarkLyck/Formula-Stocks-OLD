@@ -2282,6 +2282,30 @@ footer .copyright {
 a[href="http://www.amcharts.com/javascript-maps/"] {
   display: none !important; }
 
+.new-article .dropzone {
+  display: flex;
+  width: calc(100% - 40px);
+  margin: 20px auto;
+  border: 2px dashed #27A5F9;
+  justify-content: center;
+  padding: 40px; }
+  .new-article .dropzone:hover {
+    cursor: pointer; }
+  .new-article .dropzone div {
+    display: flex;
+    flex-direction: column;
+    align-items: center; }
+    .new-article .dropzone div i {
+      color: #27A5F9;
+      font-size: 4rem; }
+.new-article .image-preview {
+  height: 0;
+  width: calc(100% - 40px);
+  margin: 0 auto;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  transition: height .3s; }
 .new-article .editor {
   background: #fff;
   width: calc(100% - 40px);
@@ -2351,6 +2375,8 @@ a[href="http://www.amcharts.com/javascript-maps/"] {
     margin: 0 -15px -15px;
     padding: 20px;
     min-height: 350px; }
+    .new-article .editor .RichEditor-editor .DraftEditor-root {
+      position: relative; }
     .new-article .editor .RichEditor-editor .public-DraftEditorPlaceholder-root {
       margin: 0 -15px -15px;
       padding-left: 20px;
