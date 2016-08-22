@@ -4,14 +4,14 @@ import store from '../../store'
 
 const PortfolioItemGraph = React.createClass({
   getInitialState() {
-    return {data: []}
+    return {data: this.props.data}
   },
   componentDidMount() {
     console.log(this.props.plan);
-    store.plans.get(this.props.plan).getStockInfo(this.props.stock.ticker, 0, true).then((response) => {
-      console.log(response);
-      this.setState({data: response.data})
-    })
+    // store.plans.get(this.props.plan).getStockInfo(this.props.stock.ticker, 0, true).then((response) => {
+    //   console.log(response);
+    //   this.setState({data: response.data})
+    // })
     // getStockInfo(this.props.stock.ticker)
   },
   render() {

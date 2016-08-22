@@ -76,6 +76,7 @@ const Plan = Backbone.Model.extend({
         url: query,
       })
       .then((response) => {
+        // console.log(portfolioStock);
         if (!portfolioStock) {
           let suggestionToUpdate = this.get('suggestions')[i]
           suggestionToUpdate.data = this.parseStockData(response.data)
@@ -85,6 +86,12 @@ const Plan = Backbone.Model.extend({
           this.trigger('change')
           resolve()
         } else {
+          let portfolioToUpdate = this.get('portfolio')[i]
+          portfolioToUpdate.data = this.parseStockData(response.data)
+          let newArr = this.get('portfolio').slice(0,i).concat(portfolioToUpdate, this.get('portfolio').slice(i + 1))
+          this.set('portfolio', newArr)
+          this.trigger('change')
+
           resolve(response)
         }
       })
@@ -101,6 +108,12 @@ const Plan = Backbone.Model.extend({
             this.trigger('change')
             resolve()
           } else {
+            let portfolioToUpdate = this.get('portfolio')[i]
+            portfolioToUpdate.data = this.parseStockData(response.data)
+            let newArr = this.get('portfolio').slice(0,i).concat(portfolioToUpdate, this.get('portfolio').slice(i + 1))
+            this.set('portfolio', newArr)
+            this.trigger('change')
+
             resolve(response)
           }
         })
@@ -117,6 +130,12 @@ const Plan = Backbone.Model.extend({
               this.trigger('change')
               resolve()
             } else {
+              let portfolioToUpdate = this.get('portfolio')[i]
+              portfolioToUpdate.data = this.parseStockData(response.data)
+              let newArr = this.get('portfolio').slice(0,i).concat(portfolioToUpdate, this.get('portfolio').slice(i + 1))
+              this.set('portfolio', newArr)
+              this.trigger('change')
+
               resolve(response)
             }
           })
@@ -133,6 +152,12 @@ const Plan = Backbone.Model.extend({
                 this.trigger('change')
                 resolve()
               } else {
+                let portfolioToUpdate = this.get('portfolio')[i]
+                portfolioToUpdate.data = this.parseStockData(response.data)
+                let newArr = this.get('portfolio').slice(0,i).concat(portfolioToUpdate, this.get('portfolio').slice(i + 1))
+                this.set('portfolio', newArr)
+                this.trigger('change')
+
                 resolve(response)
               }
             })
@@ -149,6 +174,12 @@ const Plan = Backbone.Model.extend({
                   this.trigger('change')
                   resolve()
                 } else {
+                  let portfolioToUpdate = this.get('portfolio')[i]
+                  portfolioToUpdate.data = this.parseStockData(response.data)
+                  let newArr = this.get('portfolio').slice(0,i).concat(portfolioToUpdate, this.get('portfolio').slice(i + 1))
+                  this.set('portfolio', newArr)
+                  this.trigger('change')
+
                   resolve(response)
                 }
               })

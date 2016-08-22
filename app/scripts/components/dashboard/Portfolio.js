@@ -6,7 +6,7 @@ import cc from '../../cc'
 
 import unnamedChartComponent from '../../libraries/amcharts3-react';
 import PortfolioGraph from './PortfolioGraph';
-import PortfolioItemGraph from './PortfolioItemGraph'
+import PortfolioItem from './PortfolioItem'
 
 const Portfolio = React.createClass({
   getInitialState() {
@@ -15,7 +15,6 @@ const Portfolio = React.createClass({
   componentDidMount() {
     store.plans.get(this.props.plan).on('change', this.updateState)
     store.market.data.on('change', this.updateState)
-    // store.plans.get(this.props.plan).getPortfolio()
     store.market.data.getPortfolioData()
   },
   updateState() {
@@ -23,7 +22,6 @@ const Portfolio = React.createClass({
   },
   componentWillReceiveProps(newPlan) {
     store.plans.get(newPlan.plan).on('change', this.updateState)
-    // store.plans.get(newPlan.plan).getPortfolio()
   },
   componentWillUnmount() {
     store.market.data.off('change', this.updateState)
@@ -58,51 +56,10 @@ const Portfolio = React.createClass({
         changeClass = 'negative'
       }
       if (this.state.selectedStock !== stock.ticker) {
-        return (
-          <tbody key={i} onClick={this.expandStock.bind(null, stock)}>
-            <tr>
-              <td className="stock-name">
-                <i className="fa fa-flask" aria-hidden="true"></i>
-                <div className="wrapper">
-                  <p>{stock.name}</p>
-                  <p className="ticker">{stock.ticker}</p>
-                </div>
-              </td>
-              <td><p className="blue-color">{stock.percentage_weight.toFixed(2)}%</p></td>
-              <td><p className={changeClass}>{((stock.latest_price - stock.purchase_price) * 100 / stock.purchase_price).toFixed(2)}%</p></td>
-              <td><p className="blue-color">${stock.purchase_price.toFixed(2)}</p></td>
-              <td><p>${stock.latest_price.toFixed(2)}</p></td>
-              <td><p>{cc.commafy(stock.days_owned)}</p></td>
-            </tr>
-          </tbody>
-        )
+        return (<PortfolioItem stock={stock} plan={this.props.plan} key={i} expandStock={this.expandStock} changeClass={changeClass} number={i}/>)
       } else {
-        return (
-          <tbody key={i} onClick={this.expandStock.bind(null, stock)}>
-            <tr>
-              <td className="stock-name">
-                <i className="fa fa-flask" aria-hidden="true"></i>
-                <div className="wrapper">
-                  <p>{stock.name}</p>
-                  <p className="ticker">{stock.ticker}</p>
-                </div>
-              </td>
-              <td><p className="blue-color">{stock.percentage_weight.toFixed(2)}%</p></td>
-              <td><p className={changeClass}>{((stock.latest_price - stock.purchase_price) * 100 / stock.purchase_price).toFixed(2)}%</p></td>
-              <td><p className="blue-color">${stock.purchase_price.toFixed(2)}</p></td>
-              <td><p>${stock.latest_price.toFixed(2)}</p></td>
-              <td><p>{cc.commafy(stock.days_owned)}</p></td>
-            </tr>
-            <tr>
-              <td colSpan="6">
-                <p>graph here</p>
-                <PortfolioItemGraph stock={stock} plan={this.props.plan}/>
-              </td>
-            </tr>
-          </tbody>
-        )
+        return (<PortfolioItem stock={stock} plan={this.props.plan} graph={true} key={i} expandStock={this.expandStock} changeClass={changeClass} number={i}/>)
       }
-
     })
 
     holdings = (
