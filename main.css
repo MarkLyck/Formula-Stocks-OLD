@@ -1863,7 +1863,7 @@ footer .copyright {
 .logout-btn::before {
   content: 'Log out'; }
 
-@media (max-width: 600px) {
+@media (max-width: 800px) {
   .side-bar {
     background: #32323A;
     width: 75px; }
@@ -1888,7 +1888,20 @@ footer .copyright {
       .side-bar-links .side-bar-link .dropdown a {
         padding: 20px;
         height: 75px; }
-
+    .side-bar-links .side-bar-link .plan-dd.dropdown {
+      animation: .3s expandVertPlansMobile; }
+  @keyframes expandVertPlansMobile {
+    from {
+      height: 0; }
+    to {
+      height: calc(4 * 75px); } }
+    .side-bar-links .side-bar-link .admin-dd.dropdown {
+      animation: .3s expandVertAdminMobile; }
+  @keyframes expandVertAdminMobile {
+    from {
+      height: 0; }
+    to {
+      height: calc(3 * 75px); } }
   .suggestions-btn::before {
     content: ''; }
 
