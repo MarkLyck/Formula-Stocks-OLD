@@ -15,7 +15,7 @@ const PortfolioItemGraph = React.createClass({
     // getStockInfo(this.props.stock.ticker)
   },
   render() {
-    console.log(this.props.stock);
+    // console.log(this.props.stock);
     let chartData = this.state.data
     // console.log(chartData);
     chartData = chartData.map((point) => {

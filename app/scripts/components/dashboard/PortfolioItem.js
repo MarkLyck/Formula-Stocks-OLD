@@ -9,7 +9,7 @@ const PortfolioItem = React.createClass({
     return {data: [], lastPrice: this.props.stock.latest_price}
   },
   componentDidMount() {
-    console.log(store.plans.get(this.props.plan).get('portfolio'));
+    // console.log(s.tore.plans.get(this.props.plan).get('portfolio'));
     store.plans.get(this.props.plan).getStockInfo(this.props.stock.ticker, this.props.number, true)
     .then((r) => {
       // console.log(r);
@@ -21,7 +21,7 @@ const PortfolioItem = React.createClass({
     if (!this.props.graph) {
       return (
         <tbody onClick={this.props.expandStock.bind(null, stock)}>
-          <tr>
+          <tr className="stock-table-row">
             <td className="stock-name">
               <i className="fa fa-flask" aria-hidden="true"></i>
               <div className="wrapper">
@@ -29,11 +29,11 @@ const PortfolioItem = React.createClass({
                 <p className="ticker">{stock.ticker}</p>
               </div>
             </td>
-            <td><p className="blue-color">{stock.percentage_weight.toFixed(2)}%</p></td>
-            <td><p className={this.props.changeClass}>{((this.state.lastPrice - stock.purchase_price) * 100 / stock.purchase_price).toFixed(2)}%</p></td>
-            <td><p className="blue-color">${stock.purchase_price.toFixed(2)}</p></td>
-            <td><p>${this.state.lastPrice.toFixed(2)}</p></td>
-            <td><p>{cc.commafy(stock.days_owned)}</p></td>
+            <td className="portfolio-td"><p className="blue-color">{stock.percentage_weight.toFixed(2)}%</p></td>
+            <td className="portfolio-td"><p className={this.props.changeClass}>{((this.state.lastPrice - stock.purchase_price) * 100 / stock.purchase_price).toFixed(2)}%</p></td>
+            <td className="portfolio-td"><p className="blue-color">${stock.purchase_price.toFixed(2)}</p></td>
+            <td className="portfolio-td"><p className="class-checker">${this.state.lastPrice.toFixed(2)}</p></td>
+            <td className="portfolio-td"><p className="class-checker">{cc.commafy(stock.days_owned)}</p></td>
           </tr>
         </tbody>
       )
@@ -48,11 +48,11 @@ const PortfolioItem = React.createClass({
                 <p className="ticker">{stock.ticker}</p>
               </div>
             </td>
-            <td><p className="blue-color">{stock.percentage_weight.toFixed(2)}%</p></td>
-            <td><p className={this.props.changeClass}>{((this.state.lastPrice - stock.purchase_price) * 100 / stock.purchase_price).toFixed(2)}%</p></td>
-            <td><p className="blue-color">${stock.purchase_price.toFixed(2)}</p></td>
-            <td><p>${this.state.lastPrice.toFixed(2)}</p></td>
-            <td><p>{cc.commafy(stock.days_owned)}</p></td>
+            <td className="portfolio-td"><p className="blue-color">{stock.percentage_weight.toFixed(2)}%</p></td>
+            <td className="portfolio-td"><p className={this.props.changeClass}>{((this.state.lastPrice - stock.purchase_price) * 100 / stock.purchase_price).toFixed(2)}%</p></td>
+            <td className="portfolio-td"><p className="blue-color">${stock.purchase_price.toFixed(2)}</p></td>
+            <td className="portfolio-td"><p className="class-checker">${this.state.lastPrice.toFixed(2)}</p></td>
+            <td className="portfolio-td"><p className="class-checker">{cc.commafy(stock.days_owned)}</p></td>
           </tr>
           <tr>
             <td colSpan="6">
