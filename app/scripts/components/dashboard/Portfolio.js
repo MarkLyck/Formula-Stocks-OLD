@@ -31,7 +31,12 @@ const Portfolio = React.createClass({
     store.plans.get('fund').off('change', this.updateState)
   },
   expandStock(stock) {
-    this.setState({selectedStock: stock.ticker})
+    if (this.state.selectedStock !== stock.ticker) {
+      this.setState({selectedStock: stock.ticker})
+    } else {
+      this.setState({selectedStock: ''})
+    }
+
   },
   render() {
 
