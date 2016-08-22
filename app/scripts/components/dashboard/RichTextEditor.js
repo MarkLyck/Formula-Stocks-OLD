@@ -48,7 +48,8 @@ class RichEditor extends React.Component {
     let content = convertToRaw(editorState.getCurrentContent())
     store.articles.data.create({
       content: content,
-      title: this.refs.title.value
+      title: this.refs.title.value,
+      image: this.props.image
     })
   }
 
@@ -65,10 +66,6 @@ class RichEditor extends React.Component {
         className += ' RichEditor-hidePlaceholder';
       }
     }
-    // <InlineStyleControls
-    //   editorState={editorState}
-    //   onToggle={this.toggleInlineStyle}
-    // />
 
     return (
       <div className="RichEditor-root">

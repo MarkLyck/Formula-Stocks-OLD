@@ -110,7 +110,7 @@
 .admin-btn::before { content: 'Admin'; }
 .logout-btn::before { content: 'Log out'; }
 
-@media (max-width: 600px) {
+@media (max-width: 800px) {
   .side-bar {
     background: $side-bar-background;
     width: 75px;
@@ -143,6 +143,20 @@
           padding: 20px;
           height: 75px;
         }
+      }
+      .plan-dd.dropdown {
+        animation: .3s expandVertPlansMobile;
+      }
+      @keyframes expandVertPlansMobile {
+        from { height: 0; }
+        to { height: calc(4 * 75px); }
+      }
+      .admin-dd.dropdown {
+        animation: .3s expandVertAdminMobile;
+      }
+      @keyframes expandVertAdminMobile {
+        from { height: 0; }
+        to { height: calc(3 * 75px); }
       }
     }
   }

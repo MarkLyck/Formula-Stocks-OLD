@@ -46,7 +46,7 @@ const Plan = Backbone.Model.extend({
       } else if (fileArr[i].name.indexOf('annual') > -1) {
         this.set('annualData', data.logs)
         let newStats = data.statistics
-        newStats.WLRatio = (100 - data.statistics.negatives/data.statistics.positives * 100)
+        newStats.WLRatio = (100 - data.statistics.negatives/(data.statistics.positives + data.statistics.negatives) * 100)
         let oldStats = this.get('stats')
         let stats = _.extend({}, oldStats, newStats)
         this.set('stats', stats)

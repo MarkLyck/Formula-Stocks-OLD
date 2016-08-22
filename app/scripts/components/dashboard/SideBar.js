@@ -21,14 +21,17 @@ const SideBar = React.createClass({
     return {plan: this.props.plan, selected: selected}
   },
   toggleDropdown(dropdown, e) {
+    console.log('toggline dropdown');
     if (_.toArray(e.target.classList).indexOf('dropdown-link') === -1) {
+      console.log('if ran');
       if (this.state.selected !== dropdown) {
         this.setState({selected: dropdown, plan: this.props.plan})
       } else {
         this.setState({selected: undefined})
       }
-    } else if ($(window).width() < 600){
-      this.setState({selected: undefined})
+    } else if ($(window).width() < 600) {
+      console.log('else ran');
+      this.setState({selected: ''})
     }
   },
   componentWillReceiveProps(props) {
@@ -123,8 +126,8 @@ const SideBar = React.createClass({
       }
 
       admin = (
-        <li className={adminClass}>
-          <button className="admin-btn" onClick={this.toggleDropdown.bind(null, 'admin')}><h3><i className="fa fa-tachometer" aria-hidden="true"></i></h3><i className="fa fa-angle-down" aria-hidden="true"></i></button>
+        <li className={adminClass} onClick={this.toggleDropdown.bind(null, 'admin')}>
+          <button className="admin-btn"><h3><i className="fa fa-tachometer" aria-hidden="true"></i></h3><i className="fa fa-angle-down" aria-hidden="true"></i></button>
           {adminDropdown}
         </li>
       )

@@ -10,7 +10,7 @@ const Product = React.createClass({
     this.props.showModal(this.props.name)
   },
   render() {
-    let extraInfo = this.props.name === 'Premium' ? <p>Includes Basic</p> : this.props.name === 'Business' ? <p>Includes Basic & Premium</p> : this.props.name === 'Fund' ? <p>AUM Capacity: $500 Billion</p> : undefined
+    let extraInfo = this.props.name === 'Premium' ? <p>Includes Basic</p> : this.props.name === 'Business' ? <p>Includes Basic & Premium</p> : this.props.name === 'Fund' ? <p>AUM Capacity: Unlimited</p> : undefined
     return (
       <div className="plan">
         <div className="top">
@@ -25,7 +25,7 @@ const Product = React.createClass({
           <p><span className="light-text-color">Avg. round-trip trades per year: </span>{this.props.info.roundtripTradesPerYear}</p>
           <p><span className="light-text-color">IIT formulas applied: </span>{this.props.info.IITFormulas}</p>
           <p><span className="light-text-color">Historical 45 year CAGR: </span>{this.props.stats.CAGR.toFixed(2)}%</p>
-          <p><span className="light-text-color">Avg. winning positions: </span>{this.props.stats.WLRatio.toFixed(0)}%</p>
+          <p><span className="light-text-color">Avg. winning positions: </span>{this.props.stats.WLRatio.toFixed(2)}%</p>
         </div>
         <button onClick={this.showModal} className="more-info filled-btn">More info</button>
         <button className="sign-up filled-btn" onClick={this.signup}>{this.props.signupText}</button>
