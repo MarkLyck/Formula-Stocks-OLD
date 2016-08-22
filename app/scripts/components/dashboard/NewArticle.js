@@ -22,15 +22,24 @@ const NewArticle = React.createClass({
     reader.readAsDataURL(file);
   },
   render() {
+    let imgContainerStyles;
+
+    if (this.state.image) {
+      imgContainerStyles = {
+        height: '400px',
+        backgroundImage: `url("${this.state.image}")`
+      }
+    }
     return (
     <div className="new-article">
-      <img src={this.state.image}/>
+
       <Dropzone className="dropzone" onDrop={this.onDrop} multiple={false} accept="image/*">
         <div>
-          <h3>Drag and drop JSON files here</h3>
-          <img src="assets/icons/json_icon.svg"/>
+          <h3>Drag and drop an image here</h3>
+          <i className="fa fa-picture-o" aria-hidden="true"></i>
         </div>
       </Dropzone>
+      <div className="image-preview" style={imgContainerStyles}></div>
       <div className="editor">
         <RichTextEditor image={this.state.image}/>
       </div>

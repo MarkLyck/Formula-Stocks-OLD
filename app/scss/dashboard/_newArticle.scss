@@ -1,4 +1,33 @@
 .new-article {
+  .dropzone {
+    display: flex;
+    width: calc(100% - 40px);
+    margin: 20px auto;
+    border: 2px dashed $primary-color;
+    justify-content: center;
+    padding: 40px;
+    &:hover {
+      cursor: pointer;
+    }
+    div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      i {
+        color: $primary-color;
+        font-size: 4rem;
+      }
+    }
+  }
+  .image-preview {
+    height: 0;
+    width: calc(100% - 40px);
+    margin: 0 auto;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    transition: height .3s;
+  }
   .editor {
     background: #fff;
     width: calc(100% - 40px);
@@ -85,6 +114,9 @@
       margin: 0 -15px -15px;
       padding: 20px;
       min-height: 350px;
+      .DraftEditor-root {
+        position: relative;
+      }
       .public-DraftEditorPlaceholder-root {
         margin: 0 -15px -15px;
         padding-left: 20px;
