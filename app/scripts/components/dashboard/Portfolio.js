@@ -6,10 +6,11 @@ import cc from '../../cc'
 
 import unnamedChartComponent from '../../libraries/amcharts3-react';
 import PortfolioGraph from './PortfolioGraph';
+import PortfolioItemGraph from './PortfolioItemGraph'
 
 const Portfolio = React.createClass({
   getInitialState() {
-    return {fetching: true}
+    return {fetching: true, selectedStock: ''}
   },
   componentDidMount() {
     store.plans.get(this.props.plan).on('change', this.updateState)
@@ -30,6 +31,9 @@ const Portfolio = React.createClass({
     store.plans.get('premium').off('change', this.updateState)
     store.plans.get('business').off('change', this.updateState)
     store.plans.get('fund').off('change', this.updateState)
+  },
+  expandStock(stock) {
+    this.setState({selectedStock: stock.ticker})
   },
   render() {
 
@@ -53,25 +57,52 @@ const Portfolio = React.createClass({
       if ((stock.latest_price - stock.purchase_price).toFixed(2) < 0) {
         changeClass = 'negative'
       }
+      if (this.state.selectedStock !== stock.ticker) {
+        return (
+          <tbody key={i} onClick={this.expandStock.bind(null, stock)}>
+            <tr>
+              <td className="stock-name">
+                <i className="fa fa-flask" aria-hidden="true"></i>
+                <div className="wrapper">
+                  <p>{stock.name}</p>
+                  <p className="ticker">{stock.ticker}</p>
+                </div>
+              </td>
+              <td><p className="blue-color">{stock.percentage_weight.toFixed(2)}%</p></td>
+              <td><p className={changeClass}>{((stock.latest_price - stock.purchase_price) * 100 / stock.purchase_price).toFixed(2)}%</p></td>
+              <td><p className="blue-color">${stock.purchase_price.toFixed(2)}</p></td>
+              <td><p>${stock.latest_price.toFixed(2)}</p></td>
+              <td><p>{cc.commafy(stock.days_owned)}</p></td>
+            </tr>
+          </tbody>
+        )
+      } else {
+        return (
+          <tbody key={i} onClick={this.expandStock.bind(null, stock)}>
+            <tr>
+              <td className="stock-name">
+                <i className="fa fa-flask" aria-hidden="true"></i>
+                <div className="wrapper">
+                  <p>{stock.name}</p>
+                  <p className="ticker">{stock.ticker}</p>
+                </div>
+              </td>
+              <td><p className="blue-color">{stock.percentage_weight.toFixed(2)}%</p></td>
+              <td><p className={changeClass}>{((stock.latest_price - stock.purchase_price) * 100 / stock.purchase_price).toFixed(2)}%</p></td>
+              <td><p className="blue-color">${stock.purchase_price.toFixed(2)}</p></td>
+              <td><p>${stock.latest_price.toFixed(2)}</p></td>
+              <td><p>{cc.commafy(stock.days_owned)}</p></td>
+            </tr>
+            <tr>
+              <td colSpan="6">
+                <p>graph here</p>
+                <PortfolioItemGraph stock={stock} plan={this.props.plan}/>
+              </td>
+            </tr>
+          </tbody>
+        )
+      }
 
-      return (
-        <tbody key={i}>
-          <tr>
-            <td className="stock-name">
-              <i className="fa fa-flask" aria-hidden="true"></i>
-              <div className="wrapper">
-                <p>{stock.name}</p>
-                <p className="ticker">{stock.ticker}</p>
-              </div>
-            </td>
-            <td><p className="blue-color">{stock.percentage_weight.toFixed(2)}%</p></td>
-            <td><p className={changeClass}>{((stock.latest_price - stock.purchase_price) * 100 / stock.purchase_price).toFixed(2)}%</p></td>
-            <td><p className="blue-color">${stock.purchase_price.toFixed(2)}</p></td>
-            <td><p>${stock.latest_price.toFixed(2)}</p></td>
-            <td><p>{cc.commafy(stock.days_owned)}</p></td>
-          </tr>
-        </tbody>
-      )
     })
 
     holdings = (
@@ -91,7 +122,6 @@ const Portfolio = React.createClass({
               <th>Days owned</th>
             </tr>
           </thead>
-
           {portfolio}
         </table>
       </section>

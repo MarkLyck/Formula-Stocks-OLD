@@ -2032,6 +2032,9 @@ footer .copyright {
           color: #12D99E;
           margin-right: 30px; }
 
+#portfolio-item-chart {
+  height: 300px; }
+
 @media (max-width: 1000px) {
   .portfolio-yields .left {
     width: 100%; }
