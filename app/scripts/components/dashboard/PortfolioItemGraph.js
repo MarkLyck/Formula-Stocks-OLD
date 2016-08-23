@@ -3,34 +3,15 @@ import React from 'react'
 import store from '../../store'
 
 const PortfolioItemGraph = React.createClass({
-  getInitialState() {
-    return {data: this.props.data}
-  },
-  componentDidMount() {
-    console.log(this.props.plan);
-    // store.plans.get(this.props.plan).getStockInfo(this.props.stock.ticker, 0, true).then((response) => {
-    //   console.log(response);
-    //   this.setState({data: response.data})
-    // })
-    // getStockInfo(this.props.stock.ticker)
-  },
   render() {
-    // console.log(this.props.stock);
-    let chartData = this.state.data
-    // console.log(chartData);
+    let chartData = this.props.data
     chartData = chartData.map((point) => {
-      // console.log(point[4]);
       if (point[4] && point[0]){
         return {
-          // open: Number(point[1].toFixed(2)),
-          // high: Number(point[2].toFixed(2)),
           close: Number(point[4].toFixed(2)),
           date: point[0],
         }
-      } else {
-        console.log(point);
       }
-
     })
     chartData = chartData.slice(0,this.props.stock.days_owned)
     chartData = chartData.reverse()
