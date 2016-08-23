@@ -10,7 +10,10 @@ const PaymentForm = React.createClass({
     if (this.props.passedProps.plan === 'basic') {
       priceText = 'Start free trial'
     }
-    return {priceText: priceText, formClass: "payment-form slide-in-right", checked: false, validatingPayment: false}
+    return {priceText: priceText, formClass: `payment-form ${this.props.formAnimation}`, checked: false, validatingPayment: false}
+  },
+  componentWillReceiveProps(newProps) {
+    this.setState({formClass: `payment-form ${newProps.formAnimation}`})
   },
   ccFormat() {
     this.refs.cardNumber.value = cc.ccFormat(this.refs.cardNumber.value)

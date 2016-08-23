@@ -4,7 +4,10 @@ import store from '../../store'
 
 const SelectPlanForm = React.createClass({
   getInitialState() {
-    return {planFormClasses: 'select-plan-form slide-in-right', selectedPlan: 'premium'}
+    return {planFormClasses: `select-plan-form ${this.props.formAnimation}`, selectedPlan: 'premium'}
+  },
+  componentWillReceiveProps(newProps) {
+    this.setState({planFormClasses: `select-plan-form ${newProps.formAnimation}`})
   },
   componentDidMount() {
     if (this.props.plan) {
