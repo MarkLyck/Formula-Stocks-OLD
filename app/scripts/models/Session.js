@@ -13,6 +13,7 @@ const Session = Backbone.Model.extend({
     email: '',
     name: '',
     stripe: {},
+    location: {},
     type: 0
   },
   parse: function(response) {
@@ -84,7 +85,7 @@ const Session = Backbone.Model.extend({
     this.fetch({
       url: `https://baas.kinvey.com/user/${store.settings.appKey}/_me`,
       success: () => {
-        let visit = new Visit(this.get('email'))
+        let visit = new Visit()
         visit.getData(this.get('type'))
       },
       error: function(response) {

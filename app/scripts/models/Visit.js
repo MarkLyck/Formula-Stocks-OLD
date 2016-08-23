@@ -1,6 +1,7 @@
 import Backbone from 'backbone'
-
 import $ from 'jquery'
+
+import store from '../store'
 
 const Visit = Backbone.Model.extend({
   url: `https://baas.kinvey.com/appdata/kid_rJRC6m9F/visits`,
@@ -9,13 +10,13 @@ const Visit = Backbone.Model.extend({
     location: {},
     browser: '',
     type: -1,
-
   },
   getData(type) {
     $.ajax('https://freegeoip.net/json/')
     .then((r) => {
       this.set('location', r)
       this.set('type', type || -1)
+      store.session.set('location', r)
       if (!localStorage.getItem('visitorID')) {
         this.save(null, {
           url: `https://baas.kinvey.com/appdata/kid_rJRC6m9F/visits`,
@@ -34,13 +35,13 @@ const Visit = Backbone.Model.extend({
           url: `https://baas.kinvey.com/appdata/kid_rJRC6m9F/visits/${localStorage.visitorID}`,
           type: 'PUT',
           success: (r) => {
-            // console.log('updated visit: ', r);
+            console.log('updated visit: ', r);
           },
           error: (e) => {
             console.error('failed putting visit: ', e)
           }
         })
-        // console.log('already visited');
+        console.log('already visited');
       }
 
     })

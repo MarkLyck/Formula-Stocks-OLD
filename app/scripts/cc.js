@@ -2,6 +2,7 @@ import $ from 'jquery'
 import _ from 'underscore'
 
 import store from './store'
+import countries from './data/countries'
 
 let cc = {
   commafy: function(num){
@@ -9,6 +10,29 @@ let cc = {
     while(i--){ o = (i===0?'':((L-i)%3?'':','))
                     +s.charAt(i) +o }
     return (num<0?'-':'') + o + (parts[1] ? '.' + parts[1] : '');
+  },
+  validateLocation(location) {
+    return new Promise((resolve, reject) => {
+      if (!location.country_code || !location.country_name) {
+        reject('Missing country')
+      } else if (!location.addressLine1) {
+        reject('Missing address')
+      } else {
+        resolve()
+      }
+    })
+  },
+  calculateTax(countryCode) {
+    console.log(countryCode);
+    return new Promise((resolve, reject) => {
+      let country = _.where(countries, {value: countryCode})
+      if (country[0].taxPercent) {
+        resolve(country[0].taxPercent)
+      } else {
+        resolve(0)
+      }
+    })
+
   },
   ccFormat: function(input) {
     let v = input.replace(/\s+/g, '').replace(/[^0-9]/gi, '')
@@ -104,15 +128,16 @@ let cc = {
       }
     })
   },
-  createCustomer: function(token, planName, cycle) {
+  createCustomer: function(token, planName, cycle, taxPercent) {
     return new Promise((resolve, reject) => {
       $.ajax({
         type: 'POST',
         url: `https://baas.kinvey.com/rpc/${store.settings.appKey}/custom/charge`,
         data: {
-          plan: (planName+'-'+cycle),
+          plan: (planName+'-'+cycle.trim()),
           source: token,
-          email: store.session.get('email')
+          email: store.session.get('email'),
+          tax_percent: taxPercent
         },
         success: (customer) => {
           console.log(customer);

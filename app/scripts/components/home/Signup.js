@@ -38,6 +38,13 @@ const Signup = React.createClass({
       maxWidth: '400px',
       background: 'none',
     }
+    if (this.state.modal === 'payment') {
+      modalStyles = {
+        width: '60%',
+        maxWidth: '700px',
+        background: 'none',
+      }
+    }
 
     let modalContent;
     if (this.state.modal === 'signup') {

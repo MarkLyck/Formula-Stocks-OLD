@@ -14,8 +14,8 @@ if (localStorage.authtoken) {
 } else {
   store.session.set('authtoken', store.settings.anomToken)
   store.session.retrieve()
-  let visit = new Visit()
-  visit.getData()
+  // let visit = new Visit()
+  // visit.getData()
 }
 
 store.plans.fetch({
