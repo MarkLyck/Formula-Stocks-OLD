@@ -11,13 +11,12 @@ import PaymentForm from './PaymentForm'
 
 const Signup = React.createClass({
   getInitialState: function() {
-    return {modal: 'signup', formClasses: 'signup bounce-down', passedProps: {}}
+    return {modal: 'signup', formAnimation: 'bounce-down', passedProps: {}}
   },
   closeModal(e) {
-    console.log('closing modal from signup');
     if (e) {
       if (_.toArray(e.target.classList).indexOf('modal-container') !== -1 || _.toArray(e.target.classList).indexOf('form-modal-container') !== -1 ) {
-        this.setState({slideOut: true, formClasses: 'signup slide-out'})
+        this.setState({slideOut: true, formAnimation: 'slide-out'})
         window.setTimeout(() => {
           store.settings.history.push('/')
         }, 300)
@@ -25,7 +24,7 @@ const Signup = React.createClass({
     }
   },
   goToModal(newModal, passedProps) {
-    this.setState({modal: newModal, passedProps: passedProps})
+    this.setState({modal: newModal, passedProps: passedProps, formAnimation: 'slide-in-right'})
   },
   render: function() {
     let containerStyles = {animation: '300ms fadeIn'}
@@ -42,11 +41,11 @@ const Signup = React.createClass({
 
     let modalContent;
     if (this.state.modal === 'signup') {
-      modalContent = <SignupForm goToModal={this.goToModal} passedProps={this.state.passedProps}/>
+      modalContent = <SignupForm goToModal={this.goToModal} passedProps={this.state.passedProps} formAnimation={this.state.formAnimation}/>
     } else if (this.state.modal === 'selectPlan') {
-      modalContent = <SelectPlanForm goToModal={this.goToModal} passedProps={this.state.passedProps}/>
+      modalContent = <SelectPlanForm goToModal={this.goToModal} passedProps={this.state.passedProps} formAnimation={this.state.formAnimation}/>
     } else if (this.state.modal === 'payment') {
-      modalContent = <PaymentForm goToModal={this.goToModal} passedProps={this.state.passedProps}/>
+      modalContent = <PaymentForm goToModal={this.goToModal} passedProps={this.state.passedProps} formAnimation={this.state.formAnimation}/>
     }
 
     return (

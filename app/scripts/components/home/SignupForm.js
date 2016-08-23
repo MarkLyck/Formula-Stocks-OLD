@@ -4,7 +4,10 @@ import store from '../../store'
 
 const SignupForm = React.createClass({
   getInitialState: function() {
-    return {formClasses: 'signup bounce-down', error: ''}
+    return {formClasses: `signup ${this.props.formAnimation}`, error: ''}
+  },
+  componentWillReceiveProps(newProps) {
+    this.setState({formClasses: `signup ${newProps.formAnimation}`})
   },
   signup: function(e) {
     e.preventDefault()
@@ -35,7 +38,7 @@ const SignupForm = React.createClass({
     })
   },
   render() {
-
+    console.log(this.state.formClasses);
     let errorMsg
     let nameClasses = 'name input-wrapper'
     let emailClasses = 'email input-wrapper'
