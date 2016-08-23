@@ -6,17 +6,38 @@ import cc from '../../cc'
 
 const PortfolioItem = React.createClass({
   getInitialState() {
-    return {data: [], lastPrice: this.props.stock.latest_price}
+
+    let promise = {}
+    let data = []
+
+    if (!store.plans.get(this.props.plan).get('portfolio')[this.props.number].data) {
+      promise = store.plans.get(this.props.plan).getStockInfo(this.props.stock.ticker, this.props.number, true)
+    } else {
+      data = store.plans.get(this.props.plan).get('portfolio')[this.props.number].data
+    }
+
+    return {
+      data: data,
+      lastPrice: this.props.stock.latest_price,
+      promise: promise}
   },
   componentDidMount() {
     if (!store.plans.get(this.props.plan).get('portfolio')[this.props.number].data) {
-      store.plans.get(this.props.plan).getStockInfo(this.props.stock.ticker, this.props.number, true)
-      .then((r) => {
+      this.state.promise.promise
+      .then(r => {
         this.setState({data: r.data, lastPrice: r.data[0][4]})
       })
-    } else {
-      this.setState({data: store.plans.get(this.props.plan).get('portfolio')[this.props.number].data})
+      .catch(e => {
+        // console.log(e);
+      })
     }
+  },
+  componentWillUnmount() {
+    // console.log(typeof(this.state.promise.cancel));
+    if (typeof this.state.promise.cancel === 'function') {
+      this.state.promise.cancel()
+    }
+
   },
   render() {
     let stock = this.props.stock

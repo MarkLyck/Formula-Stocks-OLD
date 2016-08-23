@@ -69,7 +69,9 @@ const Plan = Backbone.Model.extend({
     })
   },
   getStockInfo(ticker, i, portfolioStock) {
-    return new Promise((resolve, reject) => {
+    let hasCanceled_ = false;
+    let promise = new Promise((resolve, reject) => {
+
       ticker = ticker.replace('.', '_')
       let query = `https://www.quandl.com/api/v1/datasets/WIKI/${ticker}.json?api_key=${store.settings.quandlKey}`
       $.ajax({
@@ -84,15 +86,16 @@ const Plan = Backbone.Model.extend({
           let newArr = this.get('suggestions').slice(0,i).concat(suggestionToUpdate, this.get('suggestions').slice(i + 1))
           this.set('suggestions', newArr)
           this.trigger('change')
-          resolve()
+          // resolve()
+          hasCanceled_ ? reject({isCancelled: true}) : resolve()
         } else {
           let portfolioToUpdate = this.get('portfolio')[i]
           portfolioToUpdate.data = this.parseStockData(response.data)
           let newArr = this.get('portfolio').slice(0,i).concat(portfolioToUpdate, this.get('portfolio').slice(i + 1))
           this.set('portfolio', newArr)
           this.trigger('change')
-
-          resolve(response)
+          hasCanceled_ ? reject({isCancelled: true}) : resolve(response)
+          // resolve(response)
         }
       })
       .fail((e) => {
@@ -106,7 +109,8 @@ const Plan = Backbone.Model.extend({
             let newArr = this.get('suggestions').slice(0,i).concat(suggestionToUpdate, this.get('suggestions').slice(i + 1))
             this.set('suggestions', newArr)
             this.trigger('change')
-            resolve()
+            // resolve()
+            hasCanceled_ ? reject({isCancelled: true}) : resolve()
           } else {
             let portfolioToUpdate = this.get('portfolio')[i]
             portfolioToUpdate.data = this.parseStockData(response.data)
@@ -114,7 +118,8 @@ const Plan = Backbone.Model.extend({
             this.set('portfolio', newArr)
             this.trigger('change')
 
-            resolve(response)
+            // resolve(response)
+            hasCanceled_ ? reject({isCancelled: true}) : resolve(response)
           }
         })
         .fail((error) => {
@@ -128,7 +133,8 @@ const Plan = Backbone.Model.extend({
               let newArr = this.get('suggestions').slice(0,i).concat(suggestionToUpdate, this.get('suggestions').slice(i + 1))
               this.set('suggestions', newArr)
               this.trigger('change')
-              resolve()
+              // resolve()
+              hasCanceled_ ? reject({isCancelled: true}) : resolve(response)
             } else {
               let portfolioToUpdate = this.get('portfolio')[i]
               portfolioToUpdate.data = this.parseStockData(response.data)
@@ -136,7 +142,8 @@ const Plan = Backbone.Model.extend({
               this.set('portfolio', newArr)
               this.trigger('change')
 
-              resolve(response)
+              // resolve(response)
+              hasCanceled_ ? reject({isCancelled: true}) : resolve(response)
             }
           })
           .fail(() => {
@@ -150,7 +157,8 @@ const Plan = Backbone.Model.extend({
                 let newArr = this.get('suggestions').slice(0,i).concat(suggestionToUpdate, this.get('suggestions').slice(i + 1))
                 this.set('suggestions', newArr)
                 this.trigger('change')
-                resolve()
+                // resolve()
+                hasCanceled_ ? reject({isCancelled: true}) : resolve(response)
               } else {
                 let portfolioToUpdate = this.get('portfolio')[i]
                 portfolioToUpdate.data = this.parseStockData(response.data)
@@ -158,7 +166,8 @@ const Plan = Backbone.Model.extend({
                 this.set('portfolio', newArr)
                 this.trigger('change')
 
-                resolve(response)
+                // resolve(response)
+                hasCanceled_ ? reject({isCancelled: true}) : resolve(response)
               }
             })
             .fail(() => {
@@ -172,7 +181,8 @@ const Plan = Backbone.Model.extend({
                   let newArr = this.get('suggestions').slice(0,i).concat(suggestionToUpdate, this.get('suggestions').slice(i + 1))
                   this.set('suggestions', newArr)
                   this.trigger('change')
-                  resolve()
+                  // resolve()
+                  hasCanceled_ ? reject({isCancelled: true}) : resolve(response)
                 } else {
                   let portfolioToUpdate = this.get('portfolio')[i]
                   portfolioToUpdate.data = this.parseStockData(response.data)
@@ -180,18 +190,28 @@ const Plan = Backbone.Model.extend({
                   this.set('portfolio', newArr)
                   this.trigger('change')
 
-                  resolve(response)
+                  // resolve(response)
+                  hasCanceled_ ? reject({isCancelled: true}) : resolve(response)
                 }
               })
               .fail(() => {
-                console.log('no data for: ', ticker);
-                reject('no data for: ', ticker)
+                // console.log('no data for: ', ticker);
+                hasCanceled_ ? reject({isCancelled: true}) : reject('no data for: ', ticker)
+                // reject('no data for: ', ticker)
               })
             })
           })
         })
       })
     })
+
+    return {
+      promise: promise,
+      cancel() {
+        hasCanceled_ = true;
+      }
+    }
+
   },
 
 })
