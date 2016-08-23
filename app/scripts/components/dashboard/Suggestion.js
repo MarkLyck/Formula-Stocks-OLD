@@ -9,12 +9,15 @@ const Suggestion = React.createClass({
   },
   componentDidMount() {
     this.setState({fetching: true})
-    store.plans.get(this.props.planName).getStockInfo(this.props.suggestion.ticker, this.props.i);
+    if(!store.plans.get(this.props.planName).get('suggestions')[this.props.i].data) {
+      store.plans.get(this.props.planName).getStockInfo(this.props.suggestion.ticker, this.props.i);
+    }
   },
   componentWillReceiveProps(newProps) {
     if (newProps.planName !== this.props.planName) {
-      console.log('new props');
-      store.plans.get(newProps.planName).getStockInfo(newProps.suggestion.ticker, newProps.i);
+      if(!store.plans.get(newProps.planName).get('suggestions')[newProps.i].data) {
+        store.plans.get(newProps.planName).getStockInfo(newProps.suggestion.ticker, newProps.i);
+      }
     }
   },
   render() {

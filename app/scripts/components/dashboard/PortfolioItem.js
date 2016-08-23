@@ -9,12 +9,14 @@ const PortfolioItem = React.createClass({
     return {data: [], lastPrice: this.props.stock.latest_price}
   },
   componentDidMount() {
-    // console.log(s.tore.plans.get(this.props.plan).get('portfolio'));
-    store.plans.get(this.props.plan).getStockInfo(this.props.stock.ticker, this.props.number, true)
-    .then((r) => {
-      // console.log(r);
-      this.setState({data: r.data, lastPrice: r.data[0][4]})
-    })
+    if (!store.plans.get(this.props.plan).get('portfolio')[this.props.number].data) {
+      store.plans.get(this.props.plan).getStockInfo(this.props.stock.ticker, this.props.number, true)
+      .then((r) => {
+        this.setState({data: r.data, lastPrice: r.data[0][4]})
+      })
+    } else {
+      this.setState({data: store.plans.get(this.props.plan).get('portfolio')[this.props.number].data})
+    }
   },
   render() {
     let stock = this.props.stock
