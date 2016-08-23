@@ -1,25 +1,38 @@
 import React from 'react'
+import $ from 'jquery'
 import store from '../../store'
 
 import unnamedChartComponent from '../../libraries/amcharts3-react';
 
 const TheResults = React.createClass({
   getInitialState() {
-    return {fetched: false, logarithmic:true}
+    return {fetched: false, logarithmic:true, chartClass: ''}
   },
   componentDidMount() {
+    // $(window).on('scroll', this.animate)
     store.plans.on('change', this.drawGraph)
     store.market.data.on('change', this.drawGraph)
   },
   componentWillUnmount() {
+    // $(window).off('scroll', this.animate)
     store.plans.off('change', this.drawGraph)
     store.market.data.off('change', this.drawGraph)
   },
+  // animate() {
+  //   let hT = $(this.refs.subtitle).offset().top
+  //   let hH = $(this.refs.subtitle).outerHeight() + 250
+  //   let wH = $(window).height()
+  //
+  //   if ($(window).scrollTop() > (hT + hH - wH)) {
+  //     this.setState({chartClass: 'animate-chart'})
+  //     $(window).off('scroll', this.animate)
+  //   };
+  // },
   drawGraph() {
     this.setState({fetched: true})
   },
   toggleLogScale() {
-    // this.setState({logarithmic: !this.state.logarithmic})
+    this.setState({logarithmic: !this.state.logarithmic})
   },
   render() {
     let basicData = store.plans.get('basic').get('annualData')
@@ -62,12 +75,12 @@ const TheResults = React.createClass({
   		while(/(\d+)(\d{3})/.test(value.toString())) {
   			value = value.toString().replace(/(\d+)(\d{3})/, '$1'+','+'$2');
   		}
-  		var price = '$' + value;
+  		let price = '$' + value;
   		return price;
   	}
 
-    var chartData = fixedData;
-    var config = {
+    let chartData = fixedData;
+    let config = {
       type: "serial",
       theme: "dark",
       addClassNames: true,
@@ -153,7 +166,6 @@ const TheResults = React.createClass({
       //   "balloonText": "<div class=\"chart-balloon\"><span class=\"plan-name\">Fund</span><span class=\"balloon-value\">[[fundBalloon]]</span></div>",
       // }
     ],
-
       valueAxes: [{
         logarithmic: this.state.logarithmic,
         unit: '$',
@@ -162,7 +174,6 @@ const TheResults = React.createClass({
         minorGridEnabled: true,
         dashLength: 0,
         inside: true,
-        // maximum: 15000000000,
 			}],
 
       chartCursor: {
@@ -178,22 +189,19 @@ const TheResults = React.createClass({
       },
     };
 
+      let chart = (
+        <div id="result-chart" className={this.state.chartClass}>
+          {React.createElement(AmCharts.React, config)}
+        </div>
+      )
 
-
-
-
-    let chart = (
-      <div id="result-chart">
-        {React.createElement(AmCharts.React, config)}
-      </div>
-    )
 
     return (
       <section className="the-results">
-        <div className="content">
+        <div className="content" ref="content">
           <h2 className="title">Performance</h2>
           <div className="divider"></div>
-          <h3 className="subtitle" onClick={this.toggleLogScale}>Log Graph</h3>
+          <h3 className="subtitle" onClick={this.toggleLogScale} ref="subtitle">Log Graph</h3>
           {chart}
           <h2 className="second title">Formula Stocks vs S&P 500</h2>
           <p>
