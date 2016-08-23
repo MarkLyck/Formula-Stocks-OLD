@@ -31,8 +31,9 @@ const Suggestions = React.createClass({
     if(store.session.isAllowedToView(this.props.plan)) {
       let suggestions = store.plans.get(this.props.plan).get('suggestions').map((suggestion, i) => {
         // store.plans.get(this.props.plan).getStockInfo(suggestion.ticker, i);
+        console.log(suggestion);
         return (
-          <Suggestion key={i} suggestion={suggestion} i={i} planName={this.props.plan}/>
+          <Suggestion key={suggestion.ticker} suggestion={suggestion} i={i} planName={this.props.plan}/>
         )
       })
       suggestionsList = (
