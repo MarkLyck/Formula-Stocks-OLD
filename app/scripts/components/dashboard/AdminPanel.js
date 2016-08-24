@@ -2,6 +2,7 @@ import _ from 'underscore'
 import React from 'react'
 
 import admin from '../../admin'
+import AdminPanelHeader from './AdminPanelHeader'
 
 const AdminPanel = React.createClass({
   getInitialState() {
@@ -94,12 +95,12 @@ const AdminPanel = React.createClass({
         "enabled": true
       }
     })
-
-    // console.log(map);
+//          <h2>Unique visitors</h2>
     return (
       <div className="admin-panel">
+        <AdminPanelHeader/>
         <div className="unqiue-visiotrs">
-          <h2>Unique visitors</h2>
+
           <div className="visitor-map">
             {map}
           </div>

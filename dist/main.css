@@ -2777,7 +2777,7 @@ footer .copyright {
     padding: 20px; }
   .admin-panel .unqiue-visiotrs .visitor-map {
     height: 500px;
-    padding-bottom: 20px; }
+    padding: 20px 0; }
     .admin-panel .unqiue-visiotrs .visitor-map .map {
       min-height: 300px;
       background: red; }
