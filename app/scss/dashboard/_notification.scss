@@ -1,0 +1,18 @@
+.notification {
+  background: $action-color;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  p {
+    font-weight: 100;
+    margin: 0;
+    color: #fff;
+    padding-left: 20px;
+  }
+  .dismiss {
+    background: none;
+  }
+}
+.notification.error {
+  background: $warning-color;
+}

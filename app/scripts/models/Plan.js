@@ -52,7 +52,20 @@ const Plan = Backbone.Model.extend({
         this.set('stats', stats)
       }
       console.log('saving file');
-      this.save()
+      this.save(null, {
+        success: function() {
+          store.session.set('notification', {
+            text: `Succesfually saved file: ${fileArr[i].name}`,
+            type: 'success'
+          })
+        },
+        error: function() {
+          store.session.set('notification', {
+            text: `Failed saved file: ${fileArr[i].name}`,
+            type: 'error'
+          })
+        }
+      })
     }
 
     fileArr.forEach((file, i) => {

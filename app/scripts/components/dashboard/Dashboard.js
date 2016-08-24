@@ -6,6 +6,7 @@ import Nav from './Nav'
 import SideBar from './SideBar'
 
 import Breadcrumbs from './Breadcrumbs'
+import Notification from './Notification'
 
 const Dashboard = React.createClass({
   getInitialState() {
@@ -40,12 +41,18 @@ const Dashboard = React.createClass({
       plan = 'basic'
     }
 
+    let notification;
+    if (store.session.get('notification')) {
+      notification = <Notification text={store.session.get('notification').text} type={store.session.get('notification').type}/>
+    }
+
     return (
       <div className="dashboard">
         <Nav/>
         <div className="container">
           <SideBar plan={plan} location={this.props.location.pathname}/>
           <div className="db-content">
+            {notification}
             <Breadcrumbs location={this.props.location.pathname} plan={plan}/>
             {React.cloneElement(this.props.children, {plan: plan, location: this.props.location.pathname})}
           </div>

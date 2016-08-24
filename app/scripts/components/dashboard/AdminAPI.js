@@ -29,7 +29,11 @@ const AdminAPI = React.createClass({
     })
 
     if (badFiles.length > 0) {
-      console.error('Bad file name! ', badFiles)
+      // console.error('Bad file name! ', badFiles)
+      store.session.set('notification', {
+        text: `Bad file name: ${badFiles[0].name}`,
+        type: 'error'
+      })
       return null
     } else {
       let basicFiles = files.filter((file) => { if (file.name.indexOf('basic') > -1) { return true } })
