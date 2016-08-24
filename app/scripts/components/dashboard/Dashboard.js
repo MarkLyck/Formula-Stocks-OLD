@@ -5,6 +5,8 @@ import store from '../../store'
 import Nav from './Nav'
 import SideBar from './SideBar'
 
+import Breadcrumbs from './Breadcrumbs'
+
 const Dashboard = React.createClass({
   getInitialState() {
     return {fetched: false}
@@ -44,6 +46,7 @@ const Dashboard = React.createClass({
         <div className="container">
           <SideBar plan={plan} location={this.props.location.pathname}/>
           <div className="db-content">
+            <Breadcrumbs location={this.props.location.pathname} plan={plan}/>
             {React.cloneElement(this.props.children, {plan: plan, location: this.props.location.pathname})}
           </div>
         </div>
