@@ -6,28 +6,28 @@ import unnamedChartComponent from '../../libraries/amcharts3-react';
 
 const TheResults = React.createClass({
   getInitialState() {
-    return {fetched: false, logarithmic:true, chartClass: ''}
+    return {fetched: false, logarithmic:true, animate: false}
   },
   componentDidMount() {
-    // $(window).on('scroll', this.animate)
+    $(window).on('scroll', this.animate)
     store.plans.on('change', this.drawGraph)
     store.market.data.on('change', this.drawGraph)
   },
   componentWillUnmount() {
-    // $(window).off('scroll', this.animate)
+    $(window).off('scroll', this.animate)
     store.plans.off('change', this.drawGraph)
     store.market.data.off('change', this.drawGraph)
   },
-  // animate() {
-  //   let hT = $(this.refs.subtitle).offset().top
-  //   let hH = $(this.refs.subtitle).outerHeight() + 250
-  //   let wH = $(window).height()
-  //
-  //   if ($(window).scrollTop() > (hT + hH - wH)) {
-  //     this.setState({chartClass: 'animate-chart'})
-  //     $(window).off('scroll', this.animate)
-  //   };
-  // },
+  animate() {
+    let hT = $(this.refs.subtitle).offset().top
+    let hH = $(this.refs.subtitle).outerHeight() + 250
+    let wH = $(window).height()
+
+    if ($(window).scrollTop() > (hT + hH - wH)) {
+      this.setState({animate: true})
+      $(window).off('scroll', this.animate)
+    };
+  },
   drawGraph() {
     this.setState({fetched: true})
   },
@@ -79,7 +79,13 @@ const TheResults = React.createClass({
   		return price;
   	}
 
-    let chartData = fixedData;
+    // console.log(this.state.logarithmic);
+    let chartData = []
+    if (this.state.animate) {
+      chartData = fixedData;
+    }
+
+
     let config = {
       type: "serial",
       theme: "dark",
@@ -167,7 +173,7 @@ const TheResults = React.createClass({
       // }
     ],
       valueAxes: [{
-        logarithmic: this.state.logarithmic,
+        logarithmic: true,
         unit: '$',
         unitPosition: 'left',
         gridAlpha: 0.15,
@@ -188,6 +194,7 @@ const TheResults = React.createClass({
         parseDates: true,
       },
     };
+
 
       let chart = (
         <div id="result-chart" className={this.state.chartClass}>

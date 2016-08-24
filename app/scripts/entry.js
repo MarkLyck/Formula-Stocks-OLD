@@ -8,10 +8,12 @@ import store from './store'
 import Visit from './models/Visit'
 
 
-if (localStorage.authtoken) {
+if (localStorage.getItem('authtoken')) {
+  // console.log('setting authtoken on store');
   store.session.set('authtoken', localStorage.authtoken)
   store.session.retrieve()
 } else {
+  // console.log('setting anon token');
   store.session.set('authtoken', store.settings.anomToken)
   store.session.retrieve()
   // let visit = new Visit()
