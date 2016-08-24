@@ -1521,13 +1521,13 @@ input[type=range]::-moz-range-thumb {
     display: flex;
     max-width: 600px;
     width: 80%; }
-    .newsletter form input[type=text] {
+    .newsletter form input[type=email] {
       border: none;
       width: calc(100% - 100px);
       padding-left: 20px;
       opacity: 0.9;
       transition: opacity .3s; }
-      .newsletter form input[type=text]:focus {
+      .newsletter form input[type=email]:focus {
         opacity: 1; }
     .newsletter form input[type=submit] {
       border-radius: 0;

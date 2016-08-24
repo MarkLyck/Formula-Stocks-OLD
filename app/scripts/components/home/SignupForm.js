@@ -71,7 +71,7 @@ const SignupForm = React.createClass({
           <input type="text" placeholder="Name" ref="name" autoFocus="true"/>
         </div>
         <div className={emailClasses}>
-          <input type="text" placeholder="Email" ref="email"/>
+          <input type="email" placeholder="Email" ref="email"/>
         </div>
         <div className={passwordClasses}>
           <input type="password" placeholder="Password" ref="password"/>
