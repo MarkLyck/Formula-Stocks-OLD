@@ -5,20 +5,30 @@ import store from '../../store'
 
 const CumulativeInterest = React.createClass({
   getInitialState() {
-    return {cagr: 25, investment: 10000, years: 20}
+    return {cagr: 25, investment: 10000, years: 20, animate: false, startDuration: 0.75}
   },
   componentDidMount: function() {
+    $(window).on('scroll', this.animate)
     this.refs.cagrSlider.value = 25
     this.refs.investmentSlider.value = 1000
     self = this
 
     $(this.refs.cagrSlider).on("change", function() {
       $('#cagrValue').val('CAGR: ' + this.value + "%" );
-      self.setState({cagr: this.value})
+      if (self.state.animate) {
+        self.setState({investment: this.value, startDuration: 0})
+      } else {
+        self.setState({investment: this.value})
+      }
     }).trigger("change");
     $(this.refs.investmentSlider).on("change", function() {
       $('#investmentValue').val('Investment: $' + this.value);
-      self.setState({investment: this.value})
+      if (self.state.animate) {
+        self.setState({investment: this.value, startDuration: 0})
+      } else {
+        self.setState({investment: this.value})
+      }
+
     }).trigger("change");
 
     $('input[type=range]').on('input', function(e){
@@ -32,6 +42,16 @@ const CumulativeInterest = React.createClass({
     }).trigger('input');
 
   },
+  animate() {
+    let hT = $(this.refs.chart).offset().top
+    let hH = $(this.refs.chart).outerHeight()
+    let wH = $(window).height()
+
+    if ($(window).scrollTop() > (hT + hH - wH)) {
+      this.setState({animate: true})
+      $(window).off('scroll', this.animate)
+    };
+  },
   calculateData() {
 
     let currentValue = this.state.investment
@@ -42,14 +62,18 @@ const CumulativeInterest = React.createClass({
       currentMarketValue = currentMarketValue * (store.market.cagr / 100 + 1)
       chartData.push({value: currentValue.toFixed(0), market: currentMarketValue.toFixed(2), year: i + 1})
     }
-    return chartData
+    if (this.state.animate) {
+      return chartData
+    } else {
+      return []
+    }
   },
   render() {
     var config = {
       type: "serial",
       theme: "light",
       addClassNames: true,
-      "startDuration": 0.75,
+      "startDuration": this.state.startDuration,
       "dataProvider": this.calculateData(),
 
       balloon: {
@@ -101,7 +125,7 @@ const CumulativeInterest = React.createClass({
     };
 
     let chart = (
-      <div id="bar-chart">
+      <div id="bar-chart" ref="chart">
         {React.createElement(AmCharts.React, config)}
       </div>
     )
