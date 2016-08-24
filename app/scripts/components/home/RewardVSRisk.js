@@ -25,7 +25,7 @@ const RewardVSRisk = React.createClass({
 
                 Higher levels indicate higher returns,
                 and steeper slopes indicate lower risk.
-                The yearly return distribution is significantly superior to DIJA at all tresholds
+                The yearly return distribution is significantly superior to DJIA at all tresholds
                 and for all products. Depicted: Yearly Omega Function
               </p>
             </div>

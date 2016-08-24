@@ -1,6 +1,14 @@
 import React from 'react'
 
+import store from '../../store'
+
 const Footer = React.createClass({
+  showTerms() {
+    store.session.set('showModal', 'terms')
+  },
+  showPrivacy() {
+    store.session.set('showModal', 'privacy')
+  },
   render() {
     return (
       <footer>
@@ -53,6 +61,7 @@ const Footer = React.createClass({
             and any result and statistic is therefore subject to change without notice.
             Formula Stocks employees may or may not own equities mentioned in the service.
           </p>
+          <p className="white-color disclaimer agreement">By visiting this site, you agree to our <a className="blue-color" onClick={this.showTerms}>Terms and Conditions</a> & <a className="blue-color" onClick={this.showPrivacy}>Privacy Policy</a></p>
         </div>
         <div className="copyright">
           <p>© Formula Stocks 2016 - All rights reserved.</p>

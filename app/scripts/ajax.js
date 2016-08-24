@@ -4,7 +4,6 @@ import store from './store'
 $(document).ajaxSend(function(e, xhrAjax, jqueryAjax) {
   if (jqueryAjax.url.indexOf('kinvey') !== -1 && jqueryAjax.url.indexOf('blob') === -1) {
     if (store.session.get('authtoken')) {
-        // console.log('request url: ', jqueryAjax.url, store.session.get('authtoken') + ' | ' + localStorage.authtoken);
         if (jqueryAjax.url.indexOf('user') > -1
           && jqueryAjax.type === 'POST'
           && jqueryAjax.url.indexOf('custom') === -1

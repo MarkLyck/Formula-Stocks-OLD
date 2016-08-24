@@ -3,11 +3,19 @@ footer {
     background: lighten($dark-background, 5%);
     padding: 40px;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     .disclaimer {
       width: 80%;
       color: #fff;
       margin: 0;
+    }
+    .agreement {
+      text-align: center;
+      margin-top: 10px;
+      a:hover {
+        text-decoration: underline;
+      }
     }
   }
   .copyright {

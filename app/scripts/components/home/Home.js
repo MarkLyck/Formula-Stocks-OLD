@@ -21,13 +21,52 @@ import AboutUs from './AboutUs'
 import ContactUs from './ContactUs'
 import Footer from './Footer'
 
+import Modal from '../Modal'
+import TermsAndConditions from '../global/TermsAndConditions'
+import PrivacyPolicy from '../global/PrivacyPolicy'
+
 const Home = React.createClass({
+  getInitialState() {
+    return {showModal: false}
+  },
   componentDidMount() {
     store.market.data.getAnnualData()
+    store.session.on('change', this.updateState)
+  },
+  updateState() {
+    this.setState({showModal: store.session.get('showModal')})
+  },
+  closeModal() {
+    console.log('closing modal');
+    store.session.set('showModal', false)
   },
   render () {
+    let modal;
+
+    if(this.state.showModal) {
+      let modalStyles = {
+        width: '80%',
+        top: '100px',
+        bottom: '40px',
+        padding: '40px',
+        position: 'absolute',
+        overflowY: 'scroll',
+      }
+      if (this.state.showModal === 'terms') {
+        modal = (<Modal modalStyles={modalStyles} closeModal={this.closeModal}>
+          <TermsAndConditions/>
+        </Modal>)
+      } else if (this.state.showModal === 'privacy') {
+        modal = (<Modal modalStyles={modalStyles} closeModal={this.closeModal}>
+          <PrivacyPolicy/>
+        </Modal>)
+      }
+
+    }
+
     return (
       <div id="home">
+        {modal}
         <Header/>
         <AboveAverageReturns/>
         <ReachYourGoals/>
