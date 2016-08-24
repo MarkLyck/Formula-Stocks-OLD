@@ -2371,6 +2371,18 @@ footer .copyright {
 
   .logout-btn::before {
     content: ''; } }
+.breadcrumbs {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  width: calc(100% - 40px); }
+  .breadcrumbs p {
+    margin: 0;
+    margin-top: 15px; }
+  .breadcrumbs i {
+    font-size: 0.75rem;
+    margin: 0 5px; }
+
 .portfolio {
   flex: 1; }
 
