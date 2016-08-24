@@ -55,7 +55,7 @@ const Plan = Backbone.Model.extend({
       this.save(null, {
         success: function() {
           store.session.set('notification', {
-            text: `Succesfually saved file: ${fileArr[i].name}`,
+            text: `Succesfully saved file: ${fileArr[i].name}`,
             type: 'success'
           })
         },
