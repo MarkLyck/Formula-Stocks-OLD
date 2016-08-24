@@ -66,7 +66,7 @@ const Suggestion = React.createClass({
     if (this.state.fetching) {
       chartArea = (
         <div className="fetching-data">
-          <i className={`fa fa-spinner fa-pulse fa-3x fa-fw ${loadingColor}`}></i>
+          <i className={`fa fa-circle-o-notch fa-spin fa-3x fa-fw ${loadingColor}`}></i>
           <p className={loadingColor}>Loading data</p>
         </div>)
     } else if (this.state.failed) {
