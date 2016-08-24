@@ -44,6 +44,9 @@ const Home = React.createClass({
     let modal;
 
     if(this.state.showModal) {
+      let containerStyles = {
+        zIndex: '200'
+      }
       let modalStyles = {
         width: '80%',
         top: '100px',
@@ -53,11 +56,11 @@ const Home = React.createClass({
         overflowY: 'scroll',
       }
       if (this.state.showModal === 'terms') {
-        modal = (<Modal modalStyles={modalStyles} closeModal={this.closeModal}>
+        modal = (<Modal modalStyles={modalStyles} closeModal={this.closeModal} containerStyles={containerStyles}>
           <TermsAndConditions/>
         </Modal>)
       } else if (this.state.showModal === 'privacy') {
-        modal = (<Modal modalStyles={modalStyles} closeModal={this.closeModal}>
+        modal = (<Modal modalStyles={modalStyles} closeModal={this.closeModal} containerStyles={containerStyles}>
           <PrivacyPolicy/>
         </Modal>)
       }

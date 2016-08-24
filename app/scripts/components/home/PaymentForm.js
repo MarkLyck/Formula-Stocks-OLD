@@ -134,6 +134,9 @@ const PaymentForm = React.createClass({
     })
     this.calculateTax(country.value)
   },
+  showTerms() {
+    store.session.set('showModal', 'terms')
+  },
   render() {
 
     let error;
@@ -204,7 +207,7 @@ const PaymentForm = React.createClass({
 
             <div className="ToC">
               {checkbox}
-              <p>I've read and agree to the <a>Terms and Conditions</a></p>
+              <p>I've read and agree to the <a onClick={this.showTerms}>Terms and Conditions</a></p>
             </div>
             {payButton}
           </div>
