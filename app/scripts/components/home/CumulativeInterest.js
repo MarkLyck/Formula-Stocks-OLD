@@ -126,6 +126,10 @@ const CumulativeInterest = React.createClass({
 
           </div>
           <div className="right">
+            <div className="chart-indicators">
+              <div className="chart-indicator blue-color">CAGR: {this.state.cagr}%</div>
+              <div className="chart-indicator black">S&P 500</div>
+            </div>
             {chart}
           </div>
         </div>

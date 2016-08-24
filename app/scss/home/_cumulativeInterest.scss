@@ -22,6 +22,33 @@
   }
   .right {
     height: 100%;
+    position: relative;
+    .chart-indicators {
+      position: absolute;
+      top: 25px;
+      left: 100px;
+      .chart-indicator {
+        background: none;
+        padding-left: 25px;
+        position: relative;
+        margin-bottom: 10px;
+        &::before {
+          content: '';
+          width: 15px;
+          height: 15px;
+          left: 0;
+          top: 50%;
+          transform: translateY(-50%);
+          background: $primary-color;
+          position: absolute;
+          z-index: 2;
+        }
+      }
+      .black::before {
+        background: $text-color;
+      }
+    }
+
     #bar-chart {
       height: 100%;
     }

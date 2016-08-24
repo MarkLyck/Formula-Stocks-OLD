@@ -1415,7 +1415,29 @@ input[type=submit] {
       padding-top: 10px;
       margin-left: 10px; }
   .cumulative-interest .right {
-    height: 100%; }
+    height: 100%;
+    position: relative; }
+    .cumulative-interest .right .chart-indicators {
+      position: absolute;
+      top: 25px;
+      left: 100px; }
+      .cumulative-interest .right .chart-indicators .chart-indicator {
+        background: none;
+        padding-left: 25px;
+        position: relative;
+        margin-bottom: 10px; }
+        .cumulative-interest .right .chart-indicators .chart-indicator::before {
+          content: '';
+          width: 15px;
+          height: 15px;
+          left: 0;
+          top: 50%;
+          transform: translateY(-50%);
+          background: #27A5F9;
+          position: absolute;
+          z-index: 2; }
+      .cumulative-interest .right .chart-indicators .black::before {
+        background: #49494A; }
     .cumulative-interest .right #bar-chart {
       height: 100%; }
   .cumulative-interest .disclaimer {

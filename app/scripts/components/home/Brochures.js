@@ -4,7 +4,6 @@ import store from '../../store'
 
 const Brochures = React.createClass({
   downloadBrochure(name) {
-    // store.settings.history.push('/assets/downloads/retail.pdf')
     window.open(`/assets/downloads/${name}.pdf`)
   },
   render() {
