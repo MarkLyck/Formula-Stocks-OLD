@@ -2378,7 +2378,9 @@ footer .copyright {
   width: calc(100% - 40px); }
   .breadcrumbs p {
     margin: 0;
-    margin-top: 15px; }
+    margin-top: 15px;
+    color: #95989E;
+    font-weight: 100; }
   .breadcrumbs i {
     font-size: 0.75rem;
     margin: 0 5px; }
@@ -2388,8 +2390,8 @@ footer .copyright {
 
 .portfolio-yields {
   background: #fff;
-  margin: 40px auto;
-  width: calc(100% - 80px);
+  margin: 20px auto;
+  width: calc(100% - 40px);
   display: flex; }
   .portfolio-yields .left {
     display: flex;
@@ -2424,8 +2426,8 @@ footer .copyright {
 
 .holdings {
   background: #fff;
-  width: calc(100% - 80px);
-  margin: 40px auto; }
+  width: calc(100% - 40px);
+  margin: 20px auto; }
   .holdings .top {
     padding: 10px 20px;
     display: flex;

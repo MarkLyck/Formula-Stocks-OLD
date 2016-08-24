@@ -32,24 +32,19 @@ const Breadcrumbs = React.createClass({
       return null
     }
 
-    let lastUpdated
-
+    let lastUpdated;
     if (page === 'Suggestions' && store.plans.get(planName).get('suggestions')[0]) {
       let date = store.plans.get(planName).get('suggestions')[0].date
-
-      lastUpdated = moment(date.year + date.month + date.date, 'YYYYMMDD').format('MMMM, Do')
-      console.log('LU: ', lastUpdated);
+      lastUpdated = moment(date.year + date.month + date.date, 'YYYYMMDD').format('MMMM D, YYYY')
     } else if (page === 'Portfolio' && store.plans.get(planName).get('portfolio')[0]){
       let date = store.plans.get(planName).get('portfolio')[0].date
-
-      lastUpdated = moment(date.year + date.month + date.date, 'YYYYMMDD').format('MMMM D')
-      console.log('LU: ', lastUpdated);
+      lastUpdated = moment(date.year + date.month + date.date, 'YYYYMMDD').format('MMMM D, YYYY')
     }
 
     return (
       <div className="breadcrumbs">
         <p>{page} <i className="fa fa-chevron-right" aria-hidden="true"></i> <span className="blue-color capitalize">{planName}</span></p>
-        <p>Last updated: {lastUpdated}</p>
+        <p>Last updated: <span>{lastUpdated}</span></p>
       </div>
     )
   }
