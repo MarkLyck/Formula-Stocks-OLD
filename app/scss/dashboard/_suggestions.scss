@@ -27,6 +27,17 @@
       display: flex;
       justify-content: space-between;
     }
+    .fetching-data {
+      height: 300px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      // i, p {
+      //   color: $primary-color;
+      // }
+    }
     #suggestion-chart {
       height: 300px;
       width: 100%;

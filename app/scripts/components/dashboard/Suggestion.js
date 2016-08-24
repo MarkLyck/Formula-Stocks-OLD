@@ -5,12 +5,21 @@ import store from '../../store'
 
 const Suggestion = React.createClass({
   getInitialState() {
-    return {fetched: false, fetching: false}
+    return {fetched: false, fetching: false, failed: false}
   },
   componentDidMount() {
-    this.setState({fetching: true})
     if(!store.plans.get(this.props.planName).get('suggestions')[this.props.i].data) {
-      store.plans.get(this.props.planName).getStockInfo(this.props.suggestion.ticker, this.props.i);
+      this.setState({fetching: true})
+      store.plans.get(this.props.planName).getStockInfo(this.props.suggestion.ticker, this.props.i)
+      .promise.then(() => {
+        console.log('finished getting data');
+        this.setState({fetched: true, fetching: false})
+      })
+      .catch(() => {
+        this.setState({fetched: false, fetching: false, failed: true})
+      })
+    } else {
+      this.setState({fetched: true, fetching: false})
     }
   },
   componentWillReceiveProps(newProps) {
@@ -49,6 +58,32 @@ const Suggestion = React.createClass({
       allocationElement = <li></li>;
     }
 
+    let chartArea;
+    let loadingColor = 'blue-color'
+    if (this.props.suggestion.action === 'SELL') {
+      loadingColor = 'white-color'
+    }
+    if (this.state.fetching) {
+      chartArea = (
+        <div className="fetching-data">
+          <i className={`fa fa-spinner fa-pulse fa-3x fa-fw ${loadingColor}`}></i>
+          <p className={loadingColor}>Loading data</p>
+        </div>)
+    } else if (this.state.failed) {
+      chartArea = (
+        <div className="fetching-data">
+          <p className="red-color">Failed loading data</p>
+        </div>)
+    } else if (this.state.fetched) {
+      chartArea = (
+        <SuggestionChart
+          data={this.props.suggestion.data}
+          suggestedPrice={this.props.suggestion.suggested_price}
+          ticker={this.props.suggestion.ticker}
+          action={this.props.suggestion.action}/>
+      )
+    }
+
 
     return (
       <li className={listClass}>
@@ -56,11 +91,9 @@ const Suggestion = React.createClass({
           <h3 className={textColor}>{this.props.suggestion.name}</h3>
           <h3 className={`action ${actionClass}`}>{this.props.suggestion.action}</h3>
         </div>
-        <SuggestionChart
-          data={this.props.suggestion.data}
-          suggestedPrice={this.props.suggestion.suggested_price}
-          ticker={this.props.suggestion.ticker}
-          action={this.props.suggestion.action}/>
+
+        {chartArea}
+
         <ul className="bottom">
           <li className={actionClass}>
             <h4 className="value">{this.props.suggestion.ticker}</h4>
