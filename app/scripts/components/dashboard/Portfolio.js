@@ -116,6 +116,12 @@ const Portfolio = React.createClass({
       lastMarketValue = store.market.data.get('portfolioData')[portfolioYieldsLength - 1]
     }
 
+    let FSPercent = <i className="fa fa-circle-o-notch fa-spin fa-3x fa-fw Spinner"></i>
+    if (lastValue && startValue) {FSPercent = ((lastValue - startValue) / startValue * 100).toFixed(2)}
+
+    let SP500Percent = <i className="fa fa-circle-o-notch fa-spin fa-3x fa-fw Spinner"></i>
+    if (lastMarketValue && marketStartValue) { SP500Percent = ((lastMarketValue / marketStartValue * 100 - 100).toFixed(2)) }
+
     return (
       <div className="portfolio">
 
@@ -132,7 +138,7 @@ const Portfolio = React.createClass({
               <h3 className="fs-plan blue-color">{this.props.plan} Formula</h3>
               <div className="wrapper">
                 <i className="fa fa-caret-up" aria-hidden="true"></i>
-                <p><span className="blue-color">{((lastValue - startValue) / startValue * 100).toFixed(2)}%</span> since 2009</p>
+                <p><span className="blue-color">{FSPercent}%</span> since 2009</p>
               </div>
             </div>
 
@@ -140,7 +146,7 @@ const Portfolio = React.createClass({
               <h3>S&P 500</h3>
               <div className="wrapper">
                 <i className="fa fa-caret-up" aria-hidden="true"></i>
-                <p><span className="green-color">{((lastMarketValue / marketStartValue * 100 - 100).toFixed(2))}%</span> since 2009</p>
+                <p><span className="green-color">{SP500Percent}%</span> since 2009</p>
               </div>
             </div>
 
