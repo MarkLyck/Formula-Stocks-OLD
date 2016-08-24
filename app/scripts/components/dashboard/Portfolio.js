@@ -60,14 +60,10 @@ const Portfolio = React.createClass({
           )
         }
 
-      let changeClass = 'positive'
-      if ((stock.latest_price - stock.purchase_price).toFixed(2) < 0) {
-        changeClass = 'negative'
-      }
       if (this.state.selectedStock !== stock.ticker) {
-        return (<PortfolioItem stock={stock} plan={this.props.plan} key={stock.ticker} expandStock={this.expandStock} changeClass={changeClass} number={i}/>)
+        return (<PortfolioItem stock={stock} plan={this.props.plan} key={stock.ticker} expandStock={this.expandStock} number={i}/>)
       } else {
-        return (<PortfolioItem stock={stock} plan={this.props.plan} graph={true} key={stock.ticker} expandStock={this.expandStock} changeClass={changeClass} number={i}/>)
+        return (<PortfolioItem stock={stock} plan={this.props.plan} graph={true} key={stock.ticker} expandStock={this.expandStock} number={i}/>)
       }
     })
 
