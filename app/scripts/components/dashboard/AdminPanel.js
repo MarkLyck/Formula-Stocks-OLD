@@ -98,8 +98,11 @@ const AdminPanel = React.createClass({
     // console.log(map);
     return (
       <div className="admin-panel">
-        <div className="visitor-map">
-          {map}
+        <div className="unqiue-visiotrs">
+          <h2>Unique visitors</h2>
+          <div className="visitor-map">
+            {map}
+          </div>
         </div>
       </div>
     )
