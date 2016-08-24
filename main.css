@@ -2177,6 +2177,22 @@ footer .copyright {
       width: 100%;
       overflow-y: scroll; }
 
+.notification {
+  background: #12D99E;
+  display: flex;
+  justify-content: space-between;
+  align-items: center; }
+  .notification p {
+    font-weight: 100;
+    margin: 0;
+    color: #fff;
+    padding-left: 20px; }
+  .notification .dismiss {
+    background: none; }
+
+.notification.error {
+  background: #da1354; }
+
 .dashboard-nav {
   display: flex;
   align-items: center;
