@@ -16,7 +16,6 @@
         justify-content: center;
         .left {
           width: calc(100% / 4);
-          // background: green;
           background-size: cover;
           background-repeat: no-repeat;
           background-position: center;
@@ -25,9 +24,6 @@
           border-right: 1px solid $light-text-color;
 
           height: 350px;
-          // img {
-          //   display: flex;
-          // }
         }
         .right {
           width: calc(100% / 4 * 2);
@@ -37,7 +33,6 @@
           p {
             line-height: 1.75;
           }
-          // background: red;
         }
       }
       .button-wrapper {
