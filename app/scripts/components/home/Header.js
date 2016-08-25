@@ -41,16 +41,16 @@ const Header = React.createClass({
 
     let navLinks = (
       <div id="nav-links">
-        <Link to="/login" id="login-btn" className="nav-link">Login</Link>
-        <Link to="/signup" id="signup-btn" className="nav-link">Signup</Link>
+        <Link to="/login" id="login-btn" className="nav-link"><i className="fa fa-sign-in" aria-hidden="true"></i> Login</Link>
+        <Link to="/signup" id="signup-btn" className="nav-link"><i className="fa fa-user-plus" aria-hidden="true"></i> Signup</Link>
       </div>
     )
 
     if (localStorage.authtoken) {
       navLinks = (
         <div id="nav-links">
-          <Link to="/dashboard" className="nav-link">Dashboard</Link>
-          <a href="#" id="logout-btn" onClick={store.session.logout.bind(store.session)} className="nav-link">Logout</a>
+          <Link to="/dashboard" className="nav-link"><i className="fa fa-tachometer" aria-hidden="true"></i> Dashboard</Link>
+          <a href="#" id="logout-btn" onClick={store.session.logout.bind(store.session)} className="nav-link"><i className="fa fa-sign-out" aria-hidden="true"></i>Logout</a>
         </div>
       )
     }

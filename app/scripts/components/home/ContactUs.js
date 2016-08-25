@@ -47,7 +47,7 @@ const ContactUs = React.createClass({
   render() {
     let Element = Scroll.Element
     //          <input className="filled-btn" type="submit" className="submit" value="Send"/>
-    let sendBtn = <button className="filled-btn submit">Send</button>
+    let sendBtn = <button className="filled-btn submit"><i className="fa fa-paper-plane" aria-hidden="true"></i>Send</button>
     // let sendBtn = <button className="filled-btn submit"><i className="fa fa-spinner fa-pulse fa-2x fa-fw blue-color"></i></button>
 
     if (this.state.sending) {
