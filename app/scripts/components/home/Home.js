@@ -45,7 +45,7 @@ const Home = React.createClass({
 
     if(this.state.showModal) {
       let containerStyles = {
-        zIndex: '200'
+        zIndex: '20'
       }
       let modalStyles = {
         width: '80%',

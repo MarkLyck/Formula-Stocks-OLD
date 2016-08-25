@@ -1,11 +1,18 @@
 import React from 'react'
+import Scroll from 'react-scroll'
 
 import WhatIsIt from './WhatIsIt'
 import store from '../../store'
 
+let Link = Scroll.Link;
+let Element    = Scroll.Element;
+
 const Hero = React.createClass({
   tryIt() {
     store.settings.history.push('/signup')
+  },
+  learnMore() {
+
   },
   render() {
     return (
@@ -17,12 +24,16 @@ const Hero = React.createClass({
           </div>
           <div className="CTA fade-in">
             <button className="filled-btn" onClick={this.tryIt}>Try it for free!</button>
-            <a className="outline-btn">Learn More</a>
+            <Link className="outline-btn" to="whatIsIt" smooth={true} offset={100} duration={500}>Learn More</Link>
           </div>
         </div>
-        <div id="hero-chart" className="slide-up">
-          <WhatIsIt/>
-        </div>
+
+          <div id="hero-chart" className="slide-up">
+            <Element name="whatIsIt">
+              <WhatIsIt/>
+            </Element>
+          </div>
+
       </div>
     )
   }
