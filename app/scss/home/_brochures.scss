@@ -1,5 +1,6 @@
 .brochures {
-  background: linear-gradient(rgba(darken($primary-color, 10%), .2),rgba(darken($primary-color, 10%), .2)),url('assets/images/NY_Skyline.jpg');
+  // background: linear-gradient(rgba(darken($primary-color, 10%), .2),rgba(darken($primary-color, 10%), .2)),url('assets/images/NY_Skyline.jpg');
+  background-image: url('assets/images/NY_Skyline.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   padding: 50px 0 75px 0;

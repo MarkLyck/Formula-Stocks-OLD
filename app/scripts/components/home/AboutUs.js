@@ -16,13 +16,30 @@ const AboutUs = React.createClass({
   // </div>
   render() {
 
-    let classThomas, classMark, classMarie;
+    let classThomas, classMark, classMarie, bio;
     if (this.state.selectedEmployee === 'Thomas') {
       classThomas = 'selected'
+      bio = `Thomas Lyck is the founder of 8 businesses between 1990 until today.
+      Some of the more well known include the system which created all building instruction booklets
+      for LEGO products for over a decade, and many pioneering Computer Graphics solutions for the
+      movie industry in the early 1990s. Besides being CEO and an accomplished investor,
+      Thomas is a specialist in parallel supercomputing, complex data, and artificial intelligence,
+      and has recently spent a decade developing the advanced technology behind Formula Stocks.`
     } else if (this.state.selectedEmployee === 'Mark') {
       classMark = 'selected'
+      bio = <p>It is possible to beat the market. Our portfolio service is the product of a decade's worth
+       of advanced equity research. We know how to gain an edge over the market, and we want to share
+       our results with you.<br/><br/>
+       Mark Lyck is an entrepreneur that has brought his experience and edge to Formula Stocks through
+       collaboration with Thomas. With a background in Business Administration,
+       he makes the vision of bringing world-class portfolios to "the winning team" a reality.</p>
     } else if (this.state.selectedEmployee === 'Marie') {
       classMarie = 'selected'
+      bio = `Marie works with documentation, localization, and assists with research and quality control.
+      A Ph.D., graduate of Royal Holloway, London, and Aarhus University, Aarhus,
+      Marie's focus areas has been post-modern literature, research, as well as complexity theory.
+      She is a language expert, and outstanding in terms of ensuring that the highest possible
+      standards are always methodically applied.`
     }
 
     return (
@@ -43,12 +60,7 @@ const AboutUs = React.createClass({
               </div>
               <div className="right">
                 <p>
-                  Lorem ipsum dolor sit amet, ullamcorper neque in quam, id a quam adipiscing vel a.
-                  Maecenas quisque sem sed cum a varius, et etiam et scelerisque aenean est,
-                  dapibus amet tortor vulputate fringilla, ac commodo. Quam morbi, urna accumsan wisi,
-                  justo odio, ut sed at sed wisi purus, luctus justo. Ut commodo volutpat,
-                  ac eu sit ut sapien erat, et pellentesque harum do a tellus, lacus sed non.
-                  Orci viverra scelerisque nullam viverra, velit eget dictumst sed, odio lorem,
+                  {bio}
                 </p>
               </div>
             </div>
