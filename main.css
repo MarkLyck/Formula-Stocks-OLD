@@ -621,9 +621,12 @@ header {
         align-items: center;
         justify-content: center;
         height: 100%;
-        width: 100px;
+        min-width: 100px;
+        padding: 0 20px;
         color: #fff;
         transition: color .3s; }
+        header nav .right a i {
+          margin-right: 5px; }
         header nav .right a:hover {
           color: #27A5F9 !important; }
 
@@ -2566,6 +2569,31 @@ footer .copyright {
   .portfolio-yields .left {
     width: 100%; }
   .portfolio-yields .right {
+    display: none; } }
+@media (max-width: 950px) {
+  .portfolio-table .labels tr th:last-child {
+    display: none; }
+  .portfolio-table tbody tr td:last-child {
+    display: none; } }
+@media (max-width: 850px) {
+  .portfolio-table .labels tr th:last-child, .portfolio-table .labels tr th:nth-child(5) {
+    display: none; }
+  .portfolio-table tbody tr td:last-child, .portfolio-table tbody tr td:nth-child(5) {
+    display: none; } }
+@media (max-width: 650px) {
+  .portfolio-table .labels tr th:last-child, .portfolio-table .labels tr th:nth-child(4), .portfolio-table .labels tr th:nth-child(5) {
+    display: none; }
+  .portfolio-table tbody tr td:last-child, .portfolio-table tbody tr td:nth-child(4), .portfolio-table tbody tr td:nth-child(5) {
+    display: none; } }
+@media (max-width: 525px) {
+  .portfolio-table .labels tr th:last-child, .portfolio-table .labels tr th:nth-child(2), .portfolio-table .labels tr th:nth-child(4), .portfolio-table .labels tr th:nth-child(5) {
+    display: none; }
+  .portfolio-table tbody tr td:last-child, .portfolio-table tbody tr td:nth-child(2), .portfolio-table tbody tr td:nth-child(4), .portfolio-table tbody tr td:nth-child(5) {
+    display: none; } }
+@media (max-width: 400px) {
+  .portfolio-table .labels tr th:last-child, .portfolio-table .labels tr th:nth-child(2), .portfolio-table .labels tr th:nth-child(3), .portfolio-table .labels tr th:nth-child(4), .portfolio-table .labels tr th:nth-child(5) {
+    display: none; }
+  .portfolio-table tbody tr td:last-child, .portfolio-table tbody tr td:nth-child(2), .portfolio-table tbody tr td:nth-child(3), .portfolio-table tbody tr td:nth-child(4), .portfolio-table tbody tr td:nth-child(5) {
     display: none; } }
 .suggestions-list {
   display: flex;
