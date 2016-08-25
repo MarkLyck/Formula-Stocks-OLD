@@ -599,11 +599,17 @@ header {
       display: flex;
       justify-content: space-between;
       align-items: center; }
-    header nav #logo {
-      width: auto;
-      font-size: 2rem;
+    header nav .left {
+      height: 100%;
       display: flex;
       align-items: center; }
+      header nav .left:hover {
+        cursor: pointer; }
+      header nav .left #logo {
+        width: auto;
+        font-size: 2rem;
+        display: flex;
+        align-items: center; }
     header nav .right {
       display: flex;
       height: 100%; }
