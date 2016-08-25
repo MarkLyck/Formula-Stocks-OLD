@@ -1633,18 +1633,26 @@ input[type=range]::-moz-range-thumb {
         height: calc(100% - 83px);
         width: 100%;
         padding: 20px; }
-      .contact-us form .right input[type=submit] {
+      .contact-us form .right .submit {
         background: #fff;
+        max-width: 100%;
         color: #27A5F9;
         border: none;
         border-radius: 0;
         height: 60px;
-        transition: background .2s, color .2s; }
-        .contact-us form .right input[type=submit]:hover {
+        transition: background .2s, color .2s;
+        padding: 0; }
+        .contact-us form .right .submit i {
+          margin-right: 10px; }
+        .contact-us form .right .submit:hover {
           cursor: pointer;
           background: #12D99E;
           color: #fff; }
-        .contact-us form .right input[type=submit]:active {
+          .contact-us form .right .submit:hover i {
+            color: #fff; }
+          .contact-us form .right .submit:hover p {
+            color: #fff; }
+        .contact-us form .right .submit:active {
           background: #10c18d; }
     .contact-us form input {
       width: 100%; }

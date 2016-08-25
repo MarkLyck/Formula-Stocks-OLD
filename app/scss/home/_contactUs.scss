@@ -41,17 +41,28 @@
         width: 100%;
         padding: 20px;
       }
-      input[type=submit] {
+      .submit {
         background: #fff;
+        max-width: 100%;
         color: $primary-color;
         border: none;
         border-radius: 0;
         height: 60px;
         transition: background .2s, color .2s;
+        padding: 0;
+        i {
+          margin-right: 10px;
+        }
         &:hover {
           cursor: pointer;
           background: $action-color;
           color: #fff;
+          i {
+            color: #fff;
+          }
+          p {
+            color: #fff;
+          }
         }
         &:active {
           background: darken($action-color, 5%);
