@@ -112,7 +112,18 @@ const Session = Backbone.Model.extend({
       } else if (this.validatePasswords(user.password, user.verifyPassword) === 'no match') {
         reject('Passwords doesn\'t match')
       } else {
-        resolve()
+        this.checkForDuplicates(user.email)
+          .then((response) => {
+            if (response.length === 0) {
+              resolve()
+            } else {
+              reject('A user with this email already exists')
+            }
+          })
+          .fail(() => {
+            reject('Couldn\'t connect to server')
+          })
+
       }
     })
   },
@@ -126,6 +137,9 @@ const Session = Backbone.Model.extend({
   validateEmail: function(email) {
     var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(email);
+  },
+  checkForDuplicates: function(email) {
+    return $.ajax(`https://baas.kinvey.com/user/kid_rJRC6m9F/?query={"email":"${email}"}`)
   },
   validatePasswords: function(pass, verifyPass) {
     if (pass.length === 0) {
