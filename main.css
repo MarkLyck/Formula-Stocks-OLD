@@ -2223,7 +2223,8 @@ footer .copyright {
   background: #12D99E;
   display: flex;
   justify-content: space-between;
-  align-items: center; }
+  align-items: center;
+  height: 75px; }
   .notification p {
     font-weight: 100;
     margin: 0;
