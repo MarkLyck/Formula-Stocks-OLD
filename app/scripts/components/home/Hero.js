@@ -4,9 +4,6 @@ import Scroll from 'react-scroll'
 import WhatIsIt from './WhatIsIt'
 import store from '../../store'
 
-let Link = Scroll.Link;
-let Element    = Scroll.Element;
-
 const Hero = React.createClass({
   tryIt() {
     store.settings.history.push('/signup')
@@ -15,6 +12,8 @@ const Hero = React.createClass({
 
   },
   render() {
+    let Link = Scroll.Link;
+    let Element = Scroll.Element;
     return (
       <div id="hero">
         <div className="content">

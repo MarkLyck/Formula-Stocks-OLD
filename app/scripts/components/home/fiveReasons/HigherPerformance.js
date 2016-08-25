@@ -1,12 +1,17 @@
 import React from 'react'
+import Scroll from 'react-scroll'
 
 import store from '../../../store'
+
+
 
 const HigherPerformance = React.createClass({
   tryIt() {
     store.settings.history.push('/signup')
   },
   render() {
+    let Link = Scroll.Link;
+
     return (
       <div className="bg-white split-section higher-performance">
         <div className="content">
@@ -25,7 +30,7 @@ const HigherPerformance = React.createClass({
             </p>
             <div className="cta">
               <button className="filled-btn" onClick={this.tryIt}>Try it for free!</button>
-              <button className="outline-btn blue-color">Learn more</button>
+              <Link className="outline-btn blue-color" to="ourProducts" smooth={true} offset={-100} duration={500}>Learn more</Link>
             </div>
           </div>
           <div className="right">

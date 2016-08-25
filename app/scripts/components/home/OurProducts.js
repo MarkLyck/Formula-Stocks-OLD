@@ -1,11 +1,14 @@
 import React from 'react'
+import Scroll from 'react-scroll'
 
 
 const OurProducts = React.createClass({
   render() {
+    let Element = Scroll.Element;
     return (
       <section className="our-products bg-gray">
         <div className="content">
+          <Element name="ourProducts"></Element>
           <div className="title-container">
             <h2>Our <span className="blue-color">Products</span></h2>
             <div className="divider"></div>
