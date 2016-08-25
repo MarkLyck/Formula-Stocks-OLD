@@ -1,6 +1,7 @@
 import React from 'react'
 import $ from 'jquery'
 import {Link} from 'react-router'
+import Scroll from 'react-scroll'
 
 import Hero from './Hero'
 import store from '../../store'
@@ -35,6 +36,7 @@ const Header = React.createClass({
     })
   },
   render: function() {
+    let ScrollLink = Scroll.Link
 
     let navLinks = (
       <div id="nav-links">
@@ -58,6 +60,7 @@ const Header = React.createClass({
           <div className="content">
             <img id="logo" src="assets/images/logo_horizontal.svg"/>
             <div className="right">
+              <ScrollLink className="nav-link" to="pricing" smooth={true} offset={-100} duration={1000}>Pricing</ScrollLink>
               {navLinks}
             </div>
           </div>

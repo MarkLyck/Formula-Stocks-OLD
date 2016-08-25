@@ -1,4 +1,5 @@
 import React from 'react'
+import Scroll from 'react-scroll'
 import store from '../../store'
 
 import Product from './Product'
@@ -28,6 +29,7 @@ const PricingTable = React.createClass({
     this.setState({modal: false})
   },
   render() {
+    let Element = Scroll.Element
     let modal;
     if (this.state.modal) {
       modal = (<Modal closeModal={this.closeModal}><ProductModal planName={this.state.modal}/></Modal>)
@@ -35,6 +37,7 @@ const PricingTable = React.createClass({
 
     return (
       <section className="pricing-table">
+        <Element name="pricing"/>
         <div className="content">
           <h2 className="title">Features & Pricing</h2>
           <div className="divider"></div>
