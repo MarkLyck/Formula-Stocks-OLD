@@ -79,7 +79,7 @@ const Portfolio = React.createClass({
               <th>Name</th>
               <th>Allocation</th>
               <th>Change</th>
-              <th>Bought at</th>
+              <th>Bought at avg.</th>
               <th>Last price</th>
               <th>Days owned</th>
             </tr>

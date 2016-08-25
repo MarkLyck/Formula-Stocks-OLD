@@ -15,7 +15,7 @@ const MyAccount = React.createClass({
       currPlan = store.session.get('stripe').subscriptions.data[0].plan.id
       currPlan = currPlan.slice(0, currPlan.indexOf('-'))
     }
-    return {selectedPlan: false, showModal: false}
+    return {selectedPlan: false, showModal: false, charging: false}
   },
   cancelSubscription() {
     cc.cancelSubscription()
@@ -24,11 +24,26 @@ const MyAccount = React.createClass({
     this.setState({selectedPlan: plan})
   },
   changePlan() {
+    this.setState({charging: true})
     let cycle = 'monthly'
     if (this.state.selectedPlan === 'business' || this.state.selectedPlan === 'fund') {
       cycle = 'annually'
     }
     cc.updateSubscription(this.state.selectedPlan, cycle)
+      .then(() => {
+        store.session.set('notification', {
+          text: `You are now subscribed to the ${this.state.selectedPlan} Formula`,
+          type: 'notification'
+        })
+        this.setState({charging: false, showModal: false})
+      })
+      .catch(() => {
+        store.session.set('notification', {
+          text: `Failed to change plan`,
+          type: 'error'
+        })
+        this.setState({charging: false, showModal: false})
+      })
   },
   showConfirmationModal() {
     if (this.state.selectedPlan) {
@@ -57,10 +72,8 @@ const MyAccount = React.createClass({
     else if(this.state.selectedPlan === 'business') {businessClass = 'blue selected'}
     else if(this.state.selectedPlan === 'fund') {fundClass = 'blue selected'}
 
-    // console.log(store.session.toJSON());
 
     let currPlan;
-    // console.log(store.session.get('stripe').subscriptions.data[0].canceled_at !== null);
     if (store.session.get('stripe').subscriptions && !store.session.get('stripe').subscriptions.data[0].canceled_at !== null) {
       currPlan = store.session.get('stripe').subscriptions.data[0].plan.id
       currPlan = currPlan.slice(0, currPlan.indexOf('-'))
@@ -102,11 +115,15 @@ const MyAccount = React.createClass({
       let modalStyles = {
         maxWidth: '400px',
       }
-      console.log(store.session.get('type'));
-      console.log(store.plans.get(this.state.selectedPlan).get('type'));
+
       let chargeText = <p>We will charge <span className="bold">${cc.commafy(price)}</span> to the card on file.</p>
       if(store.plans.get(this.state.selectedPlan).get('type') < store.session.get('type')) {
         chargeText = <p>on your next billing date we will charge <span className="bold">${cc.commafy(price)}</span> to the card on file.</p>
+      }
+
+      let chargeBtn = <button className="filled-btn" onClick={this.changePlan}>Subscribe for ${cc.commafy(price)} {cycle}</button>
+      if (this.state.charging) {
+        chargeBtn = <button className="filled-btn"><i className="fa fa-spinner fa-pulse fa-2x fa-fw white-color"></i></button>
       }
 
       modal = (
@@ -115,7 +132,7 @@ const MyAccount = React.createClass({
             <h2>Confirm plan change</h2>
             {chargeText}
             <p className="card-on-file"><i className="fa fa-credit-card-alt" aria-hidden="true"></i>{store.session.get('stripe').sources.data[0].last4}</p>
-            <button className="filled-btn">Subscribe for ${cc.commafy(price)} {cycle}</button>
+            {chargeBtn}
           </div>
         </Modal>
       )
