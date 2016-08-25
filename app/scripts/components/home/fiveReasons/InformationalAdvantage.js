@@ -107,7 +107,11 @@ const InformationalAdvantage = React.createClass({
               giving them an exclusive advantage available nowhere else.<br/><br/>
 
               This scientifically based approach to stock selection has predicted winners with an
-              84%, 88%, 89% and 92% success rate in the past.<br/><br/>
+               {' ' + Math.floor(store.plans.get('basic').get('stats').WLRatio)}%,
+               {' ' + Math.floor(store.plans.get('premium').get('stats').WLRatio)}%,
+               {' ' + Math.floor(store.plans.get('fund').get('stats').WLRatio)}% and
+               {' ' + Math.floor(store.plans.get('business').get('stats').WLRatio)}%
+               success rate in the past.<br/><br/>
 
               This contrasts strongly to the ≈60% success rates of typical investments in the market.<br/><br/>
 
