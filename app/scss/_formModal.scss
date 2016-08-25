@@ -11,13 +11,15 @@
   flex-direction: column;
   top: 85px;
   right: 15px;
-  background: #fff;
+  // background: #fff;
   color: #fff;
   // border-radius: 3px;
   width: 300px;
   z-index: 5;
   h3 {
-    padding: 0 20px;
+    padding: 20px;
+    margin: 0;
+    background: #fff;
   }
   input {
     padding: 20px;
