@@ -31,8 +31,9 @@ const AboutUs = React.createClass({
        of advanced equity research. We know how to gain an edge over the market, and we want to share
        our results with you.<br/><br/>
        Mark Lyck is an entrepreneur that has brought his experience and edge to Formula Stocks through
-       collaboration with Thomas. With a background in Business Administration,
-       he makes the vision of bringing world-class portfolios to "the winning team" a reality.</p>
+       collaboration with Thomas. With a background in Business Administration and
+       web-based user interface design, he makes complex technology easily accessible for everyone,
+       in a user-friendly manner.</p>
     } else if (this.state.selectedEmployee === 'Marie') {
       classMarie = 'selected'
       bio = `Marie works with documentation, localization, and assists with research and quality control.
