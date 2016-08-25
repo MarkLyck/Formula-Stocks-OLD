@@ -605,6 +605,7 @@ header {
       display: flex;
       align-items: center; }
     header nav .right {
+      display: flex;
       height: 100%; }
       header nav .right #nav-links {
         display: flex;
@@ -1551,32 +1552,48 @@ input[type=range]::-moz-range-thumb {
     width: 80%; }
     .about-us .content .about-fs {
       padding: 20px 0; }
-    .about-us .content .card-wrapper {
-      display: flex;
-      justify-content: space-between; }
-      .about-us .content .card-wrapper .profile {
-        width: calc(100% / 4);
-        height: 450px; }
-        .about-us .content .card-wrapper .profile .top {
-          height: 80%;
-          width: 100%;
+    .about-us .content .employees {
+      margin: 0 auto; }
+      .about-us .content .employees .top-section {
+        display: flex;
+        justify-content: center; }
+        .about-us .content .employees .top-section .left {
+          width: calc(100% / 4);
           background-size: cover;
-          border: 1px solid #27A5F9; }
-        .about-us .content .card-wrapper .profile .bottom {
+          background-repeat: no-repeat;
+          background-position: center;
+          border-top: 1px solid #95989E;
+          border-left: 1px solid #95989E;
+          border-right: 1px solid #95989E;
+          height: 350px; }
+        .about-us .content .employees .top-section .right {
+          width: calc(100% / 4 * 2);
+          padding: 40px;
+          border-top: 1px solid #95989E;
+          border-right: 1px solid #95989E; }
+          .about-us .content .employees .top-section .right p {
+            line-height: 1.75; }
+      .about-us .content .employees .button-wrapper {
+        width: 100%;
+        display: flex;
+        justify-content: center; }
+        .about-us .content .employees .button-wrapper button {
+          width: calc(100% / 4);
+          max-width: 100%;
+          background: none;
+          border: 1px solid #95989E; }
+          .about-us .content .employees .button-wrapper button:hover h3, .about-us .content .employees .button-wrapper button:hover p {
+            color: #27A5F9; }
+        .about-us .content .employees .button-wrapper button:first-child {
+          border-right: none; }
+        .about-us .content .employees .button-wrapper button:last-child {
+          border-left: none; }
+        .about-us .content .employees .button-wrapper .selected {
           background: #27A5F9;
-          height: 20%;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center; }
-          .about-us .content .card-wrapper .profile .bottom h3 {
-            margin: 0;
-            color: #fff;
-            font-weight: 400;
-            margin-bottom: 10px; }
-          .about-us .content .card-wrapper .profile .bottom h4 {
-            margin: 0;
-            font-weight: 100;
+          border-color: #27A5F9; }
+          .about-us .content .employees .button-wrapper .selected h3, .about-us .content .employees .button-wrapper .selected p {
+            color: #fff; }
+          .about-us .content .employees .button-wrapper .selected:hover h3, .about-us .content .employees .button-wrapper .selected:hover p {
             color: #fff; }
 
 .contact-us {
