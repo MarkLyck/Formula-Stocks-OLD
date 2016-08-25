@@ -40,9 +40,9 @@ const MyAccount = React.createClass({
     let fundClass = 'white'
 
     if(this.state.selectedPlan === 'basic') {basicClass = 'blue selected'}
-    if(this.state.selectedPlan === 'premium') {premiumClass = 'blue selected'}
-    if(this.state.selectedPlan === 'business') {businessClass = 'blue selected'}
-    if(this.state.selectedPlan === 'fund') {fundClass = 'blue selected'}
+    else if(this.state.selectedPlan === 'premium') {premiumClass = 'blue selected'}
+    else if(this.state.selectedPlan === 'business') {businessClass = 'blue selected'}
+    else if(this.state.selectedPlan === 'fund') {fundClass = 'blue selected'}
 
     // console.log(store.session.toJSON());
 
@@ -58,6 +58,10 @@ const MyAccount = React.createClass({
       currPlan = 'Unsubscribed'
     }
 
+    console.log(currPlan);
+
+
+
     let changePlanBtn = <button onClick={this.changePlan} className="change-plan filled-btn">Change plan</button>
     let bottomBtn = <button onClick={this.cancelSubscription} className="filled-btn cancel-btn red">Cancel Subscription</button>
     let changeTitle = 'Change your subscription'
@@ -66,6 +70,14 @@ const MyAccount = React.createClass({
       bottomBtn = undefined;
       changeTitle = 'Select a plan'
     }
+    let basicDisabled, premiumDisabled, businessDisabled, fundDisabled = false;
+
+    if(currPlan === 'basic Formula') {basicClass = 'blue current'; basicDisabled = true}
+    else if(currPlan === 'premium Formula') {premiumClass = 'blue current'; premiumDisabled = true}
+    else if(currPlan === 'business Formula') {businessClass = 'blue current'; businessDisabled = true}
+    else if(currPlan === 'fund Formula') {fundClass = 'blue current'; fundDisabled = true}
+
+
 
 
 
@@ -81,10 +93,11 @@ const MyAccount = React.createClass({
 
         <div className="change-plan-container">
           <h2>{changeTitle}</h2>
-          <button className={basicClass} onClick={this.selectPlan.bind(null, 'basic')}><h3 className="plan-name">Basic</h3><h3 className="price">$50<br/><span className="disclaimer">monthly</span></h3></button>
-          <button className={premiumClass} onClick={this.selectPlan.bind(null, 'premium')}><h3 className="plan-name">Premium</h3><h3 className="price">$100<br/><span className="disclaimer">monthly</span></h3></button>
-          <button className={businessClass} onClick={this.selectPlan.bind(null, 'business')}><h3 className="plan-name">Business</h3><h3 className="price">$20,000<br/><span className="disclaimer">annually</span></h3></button>
-          <button className={fundClass} onClick={this.selectPlan.bind(null, 'fund')}><h3 className="plan-name">Fund</h3><h3 className="price">$120,000<br/><span className="disclaimer">annually</span></h3></button>
+          <button className={basicClass} disabled={basicDisabled} onClick={this.selectPlan.bind(null, 'basic')}><h3 className="plan-name">Basic</h3><h3 className="price">$50<br/><span className="disclaimer">monthly</span></h3></button>
+          <button className={premiumClass} disabled={premiumDisabled} onClick={this.selectPlan.bind(null, 'premium')}><h3 className="plan-name">Premium</h3><h3 className="price">$100<br/><span className="disclaimer">monthly</span></h3></button>
+          <button className={businessClass} disabled={businessDisabled} onClick={this.selectPlan.bind(null, 'business')}><h3 className="plan-name">Business</h3><h3 className="price">$20,000<br/><span className="disclaimer">annually</span></h3></button>
+          <button className={fundClass} disabled={fundDisabled} onClick={this.selectPlan.bind(null, 'fund')}><h3 className="plan-name">Fund</h3><h3 className="price">$120,000<br/><span className="disclaimer">annually</span></h3></button>
+
           {changePlanBtn}
         </div>
 
