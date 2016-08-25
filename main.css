@@ -705,12 +705,13 @@ header {
   flex-direction: column;
   top: 85px;
   right: 15px;
-  background: #fff;
   color: #fff;
   width: 300px;
   z-index: 5; }
   .form-modal h3 {
-    padding: 0 20px; }
+    padding: 20px;
+    margin: 0;
+    background: #fff; }
   .form-modal input {
     padding: 20px;
     padding-left: 35px;
