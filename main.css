@@ -1327,7 +1327,7 @@ input[type=submit] {
     width: calc(100%);
     margin: 0 0 40px 0; } }
 .brochures {
-  background: linear-gradient(rgba(6, 141, 231, 0.2), rgba(6, 141, 231, 0.2)), url("assets/images/NY_Skyline.jpg");
+  background-image: url("assets/images/NY_Skyline.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   padding: 50px 0 75px 0;
@@ -1572,7 +1572,8 @@ input[type=range]::-moz-range-thumb {
           border-top: 1px solid #95989E;
           border-right: 1px solid #95989E; }
           .about-us .content .employees .top-section .right p {
-            line-height: 1.75; }
+            line-height: 1.75;
+            margin: 0; }
       .about-us .content .employees .button-wrapper {
         width: 100%;
         display: flex;
