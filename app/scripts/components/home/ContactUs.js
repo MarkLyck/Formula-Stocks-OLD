@@ -1,5 +1,6 @@
 import React from 'react'
 import $ from 'jquery'
+import Scroll from 'react-scroll'
 
 import store from '../../store'
 
@@ -44,6 +45,7 @@ const ContactUs = React.createClass({
     this.setState({sending: false, error: false})
   },
   render() {
+    let Element = Scroll.Element
     //          <input className="filled-btn" type="submit" className="submit" value="Send"/>
     let sendBtn = <button className="filled-btn submit">Send</button>
     // let sendBtn = <button className="filled-btn submit"><i className="fa fa-spinner fa-pulse fa-2x fa-fw blue-color"></i></button>
@@ -58,6 +60,7 @@ const ContactUs = React.createClass({
 
     return (
       <section className="contact-us">
+        <Element name="contactUs"/>
         <h2 className="title">Let's talk!</h2>
         <form onSubmit={this.contactUs}>
           <div className="left">

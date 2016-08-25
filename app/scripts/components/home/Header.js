@@ -63,7 +63,9 @@ const Header = React.createClass({
               <img id="logo" src="assets/images/logo_horizontal.svg"/>
             </div>
             <div className="right">
+              <ScrollLink className="nav-link" to="ourProducts" smooth={true} offset={-100} duration={1000}>Products</ScrollLink>
               <ScrollLink className="nav-link" to="pricing" smooth={true} offset={-100} duration={1000}>Pricing</ScrollLink>
+              <ScrollLink className="nav-link" to="contactUs" smooth={true} offset={-100} duration={1000}>Contact Us</ScrollLink>
               {navLinks}
             </div>
           </div>
