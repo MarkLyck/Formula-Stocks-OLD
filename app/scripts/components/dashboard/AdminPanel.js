@@ -16,8 +16,6 @@ const AdminPanel = React.createClass({
     admin.visits.off('change update', this.updateState)
   },
   updateState() {
-    console.log('update');
-    console.log(admin.visits);
     this.setState({visitors: admin.visits.toJSON()})
   },
   render() {
@@ -58,7 +56,7 @@ const AdminPanel = React.createClass({
       //   size = 5
       // }
 
-      console.log(visitor);
+      // console.log(visitor);
       let color = (visitor.type > 0 && visitor.type < 5) ? '#27A5F9' : visitor.type === 5 ? '#da1354' : '#12D99E'
 
       return({
