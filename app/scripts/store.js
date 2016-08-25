@@ -32,6 +32,7 @@ store.plans.add({
   id: 'basic',
   name: 'basic',
   price: 50,
+  type: 1,
   info: {
     roundtripTradesPerYear: 39,
     IITFormulas: 3,
@@ -49,6 +50,7 @@ store.plans.add({
   id: 'premium',
   name: 'premium',
   price: 100,
+  type: 2,
   info: {
     roundtripTradesPerYear: 44,
     IITFormulas: 8,
@@ -66,6 +68,7 @@ store.plans.add({
   id: 'business',
   name: 'business',
   price: 20000,
+  type: 3,
   info: {
     roundtripTradesPerYear: 20,
     IITFormulas: 44,
@@ -83,6 +86,7 @@ store.plans.add({
   id: 'fund',
   name: 'fund',
   price: 120000,
+  type: 4,
   info: {
     roundtripTradesPerYear: 63,
     IITFormulas: 87,
@@ -94,7 +98,7 @@ store.plans.add({
     IRRGeometricMean: 33.27,
     sortinoRatio: 4.4814,
     gainToPainRatio: 1.9302,
-  }
+  },
 })
 
 export default store

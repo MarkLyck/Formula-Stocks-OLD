@@ -3,6 +3,8 @@ import React from 'react'
 import store from '../../store'
 import cc from '../../cc'
 
+import Modal from '../Modal'
+
 const MyAccount = React.createClass({
   getInitialState() {
     let currPlan = 'premium'
@@ -10,7 +12,7 @@ const MyAccount = React.createClass({
       currPlan = store.session.get('stripe').subscriptions.data[0].plan.id
       currPlan = currPlan.slice(0, currPlan.indexOf('-'))
     }
-    return {selectedPlan: currPlan}
+    return {selectedPlan: false, showModal: false}
   },
   cancelSubscription() {
     cc.cancelSubscription()
@@ -24,6 +26,14 @@ const MyAccount = React.createClass({
       cycle = 'annually'
     }
     cc.updateSubscription(this.state.selectedPlan, cycle)
+  },
+  showConfirmationModal() {
+    if (this.state.selectedPlan) {
+      this.setState({showModal: 'confirmation'})
+    }
+  },
+  closeModal() {
+    this.setState({showModal: false})
   },
   newSubscription() {
     let cycle = 'monthly'
@@ -47,7 +57,7 @@ const MyAccount = React.createClass({
     // console.log(store.session.toJSON());
 
     let currPlan;
-    console.log(store.session.get('stripe').subscriptions.data[0].canceled_at !== null);
+    // console.log(store.session.get('stripe').subscriptions.data[0].canceled_at !== null);
     if (store.session.get('stripe').subscriptions && !store.session.get('stripe').subscriptions.data[0].canceled_at !== null) {
       currPlan = store.session.get('stripe').subscriptions.data[0].plan.id
       currPlan = currPlan.slice(0, currPlan.indexOf('-'))
@@ -58,11 +68,8 @@ const MyAccount = React.createClass({
       currPlan = 'Unsubscribed'
     }
 
-    console.log(currPlan);
+    let changePlanBtn = <button onClick={this.showConfirmationModal} className="change-plan filled-btn">Next</button>
 
-
-
-    let changePlanBtn = <button onClick={this.changePlan} className="change-plan filled-btn">Change plan</button>
     let bottomBtn = <button onClick={this.cancelSubscription} className="filled-btn cancel-btn red">Cancel Subscription</button>
     let changeTitle = 'Change your subscription'
     if (store.session.get('stripe').subscriptions.data[0].canceled_at !== null) {
@@ -78,6 +85,33 @@ const MyAccount = React.createClass({
     else if(currPlan === 'fund Formula') {fundClass = 'blue current'; fundDisabled = true}
 
 
+    console.log(store.session.get('stripe'));
+    let modal;
+    if (this.state.showModal) {
+
+      let cycle = 'monthly'
+      let price;
+      if     (this.state.selectedPlan === 'basic') {price = 50}
+      else if(this.state.selectedPlan === 'premium') {price = 100}
+      else if(this.state.selectedPlan === 'business') {price = 20000; cycle="annually"}
+      else if(this.state.selectedPlan === 'fund') {price = 120000; cycle="annually"}
+
+      let modalStyles = {
+        maxWidth: '400px'
+      }
+      let chargeText = <p>We will charge ${cc.commafy(price)} to the card ending in: {store.session.get('stripe').sources.data[0].last4}</p>
+      if (store.plans.get(this.state.selectedPlan))
+
+      modal = (
+        <Modal closeModal={this.closeModal} modalStyles={modalStyles}>
+          <div className="change-plan-confirmation">
+            <h2>Confirm plan change</h2>
+            {chargeText}
+            <button className="filled-btn">Subscribe for ${cc.commafy(price)} {cycle}</button>
+          </div>
+        </Modal>
+      )
+    }
 
 
 
@@ -102,6 +136,7 @@ const MyAccount = React.createClass({
         </div>
 
         {bottomBtn}
+        {modal}
       </div>
     )
   }

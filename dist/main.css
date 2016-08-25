@@ -2767,6 +2767,21 @@ footer .copyright {
     .my-account-page .cancel-btn:hover {
       background: #c3114b; }
 
+.change-plan-confirmation {
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+  .change-plan-confirmation h2 {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    height: 90px; }
+  .change-plan-confirmation p {
+    margin: 40px 0; }
+  .change-plan-confirmation button {
+    height: 90px;
+    max-width: 100%; }
+
 .articles {
   position: relative;
   min-height: 100%; }
