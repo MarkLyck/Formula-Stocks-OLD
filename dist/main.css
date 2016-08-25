@@ -2777,7 +2777,9 @@ footer .copyright {
     margin: 0;
     height: 90px; }
   .change-plan-confirmation p {
-    margin: 40px 0; }
+    margin: 20px 20px; }
+    .change-plan-confirmation p i {
+      margin-right: 10px; }
   .change-plan-confirmation button {
     height: 90px;
     max-width: 100%; }

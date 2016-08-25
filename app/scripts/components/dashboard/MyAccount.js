@@ -1,9 +1,12 @@
 import React from 'react'
+import moment from 'moment'
 
 import store from '../../store'
 import cc from '../../cc'
 
 import Modal from '../Modal'
+
+
 
 const MyAccount = React.createClass({
   getInitialState() {
@@ -97,16 +100,21 @@ const MyAccount = React.createClass({
       else if(this.state.selectedPlan === 'fund') {price = 120000; cycle="annually"}
 
       let modalStyles = {
-        maxWidth: '400px'
+        maxWidth: '400px',
       }
-      let chargeText = <p>We will charge ${cc.commafy(price)} to the card ending in: {store.session.get('stripe').sources.data[0].last4}</p>
-      if (store.plans.get(this.state.selectedPlan))
+      console.log(store.session.get('type'));
+      console.log(store.plans.get(this.state.selectedPlan).get('type'));
+      let chargeText = <p>We will charge <span className="bold">${cc.commafy(price)}</span> to the card on file.</p>
+      if(store.plans.get(this.state.selectedPlan).get('type') < store.session.get('type')) {
+        chargeText = <p>on your next billing date we will charge <span className="bold">${cc.commafy(price)}</span> to the card on file.</p>
+      }
 
       modal = (
         <Modal closeModal={this.closeModal} modalStyles={modalStyles}>
           <div className="change-plan-confirmation">
             <h2>Confirm plan change</h2>
             {chargeText}
+            <p className="card-on-file"><i className="fa fa-credit-card-alt" aria-hidden="true"></i>{store.session.get('stripe').sources.data[0].last4}</p>
             <button className="filled-btn">Subscribe for ${cc.commafy(price)} {cycle}</button>
           </div>
         </Modal>
@@ -114,7 +122,8 @@ const MyAccount = React.createClass({
     }
 
 
-
+    console.log(store.session.get('stripe').subscriptions.data[0].current_period_end);
+    console.log(moment.unix(store.session.get('stripe').subscriptions.data[0].current_period_end).format('DD MMMM YYYY'));
     return (
       <div className="my-account-page">
         <section className="top">
@@ -122,6 +131,7 @@ const MyAccount = React.createClass({
             <h2 className="name white-color">{store.session.get('name')}</h2>
             <h3 className="white-color capitalize"><i className="fa fa-flask white-color" aria-hidden="true"></i> {currPlan}</h3>
             <h3 className="email white-color"><i className="fa fa-envelope white-color" aria-hidden="true"></i>{store.session.get('email')}</h3>
+            <h3 className="billing-date white-color"><i className="fa fa-calendar white-color" aria-hidden="true"></i>Next billing date: {moment.unix(store.session.get('stripe').subscriptions.data[0].current_period_end).format('MMMM Do YYYY')}</h3>
           </div>
         </section>
 
