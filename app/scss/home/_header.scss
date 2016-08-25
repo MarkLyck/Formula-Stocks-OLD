@@ -27,12 +27,21 @@ header {
       justify-content: space-between;
       align-items: center;
     }
-    #logo {
-      width: auto;
-      font-size: 2rem;
+    .left {
+      height: 100%;
       display: flex;
       align-items: center;
+      &:hover {
+        cursor: pointer;
+      }
+      #logo {
+        width: auto;
+        font-size: 2rem;
+        display: flex;
+        align-items: center;
+      }
     }
+
     .right {
       display: flex;
       height: 100%;

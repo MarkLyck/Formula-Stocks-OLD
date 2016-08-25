@@ -37,6 +37,7 @@ const Header = React.createClass({
   },
   render: function() {
     let ScrollLink = Scroll.Link
+    let scroll = Scroll.animateScroll
 
     let navLinks = (
       <div id="nav-links">
@@ -58,7 +59,9 @@ const Header = React.createClass({
       <header>
         <nav>
           <div className="content">
-            <img id="logo" src="assets/images/logo_horizontal.svg"/>
+            <div className="left" onClick={() => {scroll.scrollToTop()}}>
+              <img id="logo" src="assets/images/logo_horizontal.svg"/>
+            </div>
             <div className="right">
               <ScrollLink className="nav-link" to="pricing" smooth={true} offset={-100} duration={1000}>Pricing</ScrollLink>
               {navLinks}
