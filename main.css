@@ -2737,6 +2737,20 @@ footer .copyright {
           color: #fff; }
     .my-account-page .change-plan-container .selected h3, .my-account-page .change-plan-container .selected p {
       color: #fff; }
+    .my-account-page .change-plan-container .current {
+      background: #fff; }
+      .my-account-page .change-plan-container .current h3, .my-account-page .change-plan-container .current p {
+        color: #95989E; }
+      .my-account-page .change-plan-container .current .price {
+        display: none; }
+      .my-account-page .change-plan-container .current::after {
+        content: 'Current';
+        color: #95989E; }
+      .my-account-page .change-plan-container .current:hover {
+        background: #fff;
+        cursor: auto; }
+        .my-account-page .change-plan-container .current:hover h3, .my-account-page .change-plan-container .current:hover p {
+          color: #95989E; }
     .my-account-page .change-plan-container .change-plan {
       max-width: 100%;
       height: 90px;
