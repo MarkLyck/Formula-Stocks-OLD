@@ -1102,8 +1102,18 @@ input[type=submit] {
   color: #49494A; }
   .one-dollar .left .plans button:hover {
     color: #27A5F9; }
+    .one-dollar .left .plans button:hover div {
+      height: 2px;
+      width: 100%;
+      margin-top: 5px;
+      background: #27A5F9; }
 .one-dollar .left .plans .selected {
   color: #27A5F9; }
+  .one-dollar .left .plans .selected div {
+    height: 2px;
+    width: 100%;
+    margin-top: 5px;
+    background: #27A5F9; }
 .one-dollar .left .bar {
   display: flex;
   justify-content: flex-end;

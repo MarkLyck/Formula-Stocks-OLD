@@ -92,10 +92,10 @@ const OneDollar = React.createClass({
         <div className="content" ref='content'>
           <div className="left">
             <div className="plans">
-              <button onClick={this.updateNumbers.bind(null, 'basic')} className={basClass}>Basic</button>
-              <button onClick={this.updateNumbers.bind(null, 'premium')} className={preClass}>Premium</button>
-              <button onClick={this.updateNumbers.bind(null, 'business')} className={busClass}>Business</button>
-              <button onClick={this.updateNumbers.bind(null, 'fund')} className={funClass}>Fund</button>
+              <button onClick={this.updateNumbers.bind(null, 'basic')} className={basClass}>Basic<div></div></button>
+              <button onClick={this.updateNumbers.bind(null, 'premium')} className={preClass}>Premium<div></div></button>
+              <button onClick={this.updateNumbers.bind(null, 'business')} className={busClass}>Business<div></div></button>
+              <button onClick={this.updateNumbers.bind(null, 'fund')} className={funClass}>Fund<div></div></button>
             </div>
             <div className="fs bar" style={fsStyle}><p>${cc.commafy(Math.round(this.state.fs))}</p></div>
             <p className="fs plan-name">{this.state.plan} product</p>
