@@ -33,7 +33,7 @@ const Session = Backbone.Model.extend({
       this.save({username: username, password: password},
       {
         success: (model, response) => {
-          console.log(response._kmd.authtoken);
+          // console.log(response._kmd.authtoken);
           localStorage.authtoken = response._kmd.authtoken
           this.unset('password')
           this.set('showModal', false)
@@ -80,6 +80,7 @@ const Session = Backbone.Model.extend({
     localStorage.removeItem('authtoken')
     this.clear()
     store.settings.history.push('/')
+    this.set('authtoken', store.settings.anomToken)
   },
   retrieve: function() {
     this.fetch({
