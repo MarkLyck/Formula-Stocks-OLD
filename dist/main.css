@@ -2644,6 +2644,8 @@ footer .copyright {
         color: #fff; }
       .suggestions-list li .bottom .sell p {
         color: #F3F3F3; }
+    .suggestions-list li .more-info.sell {
+      display: none; }
 
 .suggestion-balloon {
   display: flex; }

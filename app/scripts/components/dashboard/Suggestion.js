@@ -111,6 +111,7 @@ const Suggestion = React.createClass({
             <p>Last price</p>
           </li>
         </ul>
+        <button className={`more-info ${actionClass}`}>More info</button>
       </li>
     )
   }

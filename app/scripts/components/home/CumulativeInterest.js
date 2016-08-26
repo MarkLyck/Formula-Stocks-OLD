@@ -16,9 +16,9 @@ const CumulativeInterest = React.createClass({
     $(this.refs.cagrSlider).on("change", function() {
       $('#cagrValue').val('CAGR: ' + this.value + "%" );
       if (self.state.animate) {
-        self.setState({investment: this.value, startDuration: 0})
+        self.setState({cagr: this.value, startDuration: 0})
       } else {
-        self.setState({investment: this.value})
+        self.setState({cagr: this.value})
       }
     }).trigger("change");
     $(this.refs.investmentSlider).on("change", function() {
@@ -28,7 +28,6 @@ const CumulativeInterest = React.createClass({
       } else {
         self.setState({investment: this.value})
       }
-
     }).trigger("change");
 
     $('input[type=range]').on('input', function(e){
@@ -56,7 +55,9 @@ const CumulativeInterest = React.createClass({
 
     let currentValue = this.state.investment
     let currentMarketValue = this.state.investment
+
     let chartData = [{value: currentValue, market: currentMarketValue, year: 0}]
+
     for(let i=0; i < this.state.years; i++) {
       currentValue = currentValue * (this.state.cagr / 100 + 1)
       currentMarketValue = currentMarketValue * (store.market.cagr / 100 + 1)
@@ -161,7 +162,7 @@ const CumulativeInterest = React.createClass({
           The foregoing is for illustration purposes only. It does not represent,
           warrant or guarantee any level of future investment performance.
           It is a standard compound interest calculator, which visualizes any specified level of
-          return relative to the market return. Market CAGR is indicated at 10.71% based on 
+          return relative to the market return. Market CAGR is indicated at 10.71% based on
           S&P 500 performance from 1970 to 2015 with dividends reinvested.
         </p>
       </section>
