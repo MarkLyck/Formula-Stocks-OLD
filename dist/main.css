@@ -1144,9 +1144,10 @@ input[type=submit] {
     margin-right: 10px; }
 .higher-performance .right img {
   width: 500px;
-  transform: translateY(50%); }
+  transform: translateY(100%); }
 .higher-performance .right .slide-up-mockup-img {
-  animation: 0.75s slideUpMockupImg; }
+  animation: 0.75s slideUpMockupImg;
+  transform: translateY(50%); }
 @keyframes slideUpMockupImg {
   from {
     transform: translateY(100%); }

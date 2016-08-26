@@ -11,10 +11,11 @@
   .right {
     img {
       width: 500px;
-      transform: translateY(50%);
+      transform: translateY(100%);
     }
     .slide-up-mockup-img {
       animation: 0.75s slideUpMockupImg;
+      transform: translateY(50%);
     }
     @keyframes slideUpMockupImg {
       from {

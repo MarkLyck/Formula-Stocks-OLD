@@ -1,4 +1,5 @@
 import React from 'react'
+import $ from 'jquery'
 import Scroll from 'react-scroll'
 
 import store from '../../../store'
@@ -6,15 +7,41 @@ import store from '../../../store'
 
 
 const HigherPerformance = React.createClass({
+  getInitialState() {
+    return {animate: false}
+  },
+  componentDidMount() {
+    $(window).on('scroll', this.animate)
+  },
+  componentWillUnmount() {
+    $(window).off('scroll', this.animate)
+  },
+  animate() {
+
+    let hT = $(this.refs.content).offset().top
+    let hH = $(this.refs.content).outerHeight()
+    let wH = $(window).height()
+
+    if ($(window).scrollTop() > (hT + hH - wH)) {
+      console.log('animate');
+      this.setState({animate: true})
+      $(window).off('scroll', this.animate)
+    };
+  },
   tryIt() {
     store.settings.history.push('/signup')
   },
   render() {
     let Link = Scroll.Link;
 
+    let imgClass;
+    if (this.state.animate) {
+      imgClass = 'slide-up-mockup-img'
+    }
+
     return (
       <div className="bg-white split-section higher-performance">
-        <div className="content">
+        <div className="content" ref="content">
           <div className="left">
             <h2 className="title">Higher performance at lower cost</h2>
             <p>
@@ -34,7 +61,7 @@ const HigherPerformance = React.createClass({
             </div>
           </div>
           <div className="right">
-            <img src="assets/images/Ipad.png" className="slide-up-mockup-img"/>
+            <img src="assets/images/Ipad.png" className={imgClass}/>
           </div>
         </div>
       </div>
