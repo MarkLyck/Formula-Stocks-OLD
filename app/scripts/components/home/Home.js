@@ -33,6 +33,9 @@ const Home = React.createClass({
     store.market.data.getAnnualData()
     store.session.on('change', this.updateState)
   },
+  componentWillUnmount() {
+    store.session.off('change', this.updateState)
+  },
   updateState() {
     this.setState({showModal: store.session.get('showModal')})
   },
