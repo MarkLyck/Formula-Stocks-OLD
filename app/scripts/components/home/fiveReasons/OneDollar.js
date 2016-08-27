@@ -98,7 +98,7 @@ const OneDollar = React.createClass({
               <button onClick={this.updateNumbers.bind(null, 'fund')} className={funClass}>Fund<div></div></button>
             </div>
             <div className="fs bar" style={fsStyle}><p>${cc.commafy(Math.round(this.state.fs))}</p></div>
-            <p className="fs plan-name">{this.state.plan} product</p>
+            <p className="fs plan-name capitalize">{this.state.plan} product</p>
 
             <div className="market-bar-container">
               <div className="market bar" style={spStyle}></div><p>${Math.round(this.state.market)}</p>
@@ -108,11 +108,11 @@ const OneDollar = React.createClass({
           <div className="right">
             <h2 className="title">$1 and 45 years</h2>
             <p>
-              This is how much 1 dollar could have grown over 45 years.
+              This is how much 1 dollar could have grown over 45 years,
               If you had invested it either in the market (S&P 500)
-              or a Formula Stocks strategy*
+              or a Formula Stocks strategy.*
             </p>
-            <p className="disclaimer">(*) in a tax free account, excluding trading costs & slippage</p>
+            <p className="disclaimer">(*) in a tax-free account, excluding trading costs and slippage</p>
           </div>
           </div>
       </div>

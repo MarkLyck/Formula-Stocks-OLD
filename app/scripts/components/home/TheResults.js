@@ -208,11 +208,11 @@ const TheResults = React.createClass({
         <div className="content" ref="content">
           <h2 className="title">Performance</h2>
           <div className="divider"></div>
-          <h3 className="subtitle" onClick={this.toggleLogScale} ref="subtitle">Log Graph</h3>
+          <h3 className="subtitle" onClick={this.toggleLogScale} ref="subtitle">Log graph</h3>
           {chart}
-          <h2 className="second title">Formula Stocks vs S&P 500</h2>
+          <h2 className="second title">Formula Stocks vs. S&P 500</h2>
           <p>
-            Log scale graph of Formula Stocks products (white) versus S&P500 (gray).
+            Log scale graph of Formula Stocks products (white) versus S&P 500 (gray).
             The observed outperformance is the result of cumulatively 9,800 buy & sell recommendations.
             To date the winners of the future have been identified with an accuracy of 84%, 90%, and 92%,
             respectively*. Random stocks measured by the same yardstick win ~60% of the time.

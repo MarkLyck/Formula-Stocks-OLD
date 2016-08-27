@@ -43,7 +43,7 @@ const HigherPerformance = React.createClass({
       <div className="bg-white split-section higher-performance">
         <div className="content" ref="content">
           <div className="left">
-            <h2 className="title">Higher performance at lower cost</h2>
+            <h2 className="title">Higher performance at a lower cost</h2>
             <p>
                 Formula Stocks offers an informational advantage
                 in the form of a capital allocation strategy and easy-to-use

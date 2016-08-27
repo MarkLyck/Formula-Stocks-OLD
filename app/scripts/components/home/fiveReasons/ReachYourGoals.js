@@ -39,7 +39,7 @@ const ReachYourGoals = React.createClass({
               comfortably, or simply make your savings grow - you’ll also
               need a strategy.<br/><br/>
 
-              A strategy, which will help you systematically buy low,
+              A strategy, which will help you systematically buy low
               and sell high. Formula Stocks makes that easy.
             </p>
           </div>

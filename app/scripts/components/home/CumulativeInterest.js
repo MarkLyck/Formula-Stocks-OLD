@@ -133,7 +133,7 @@ const CumulativeInterest = React.createClass({
 
     return (
       <section className="cumulative-interest split-section">
-        <h2>Cumulative <span className="blue-color">Interest</span> Calculator</h2>
+        <h2>Cumulative <span className="blue-color">interest</span> calculator</h2>
         <div className="divider"></div>
 
         <div className="content">

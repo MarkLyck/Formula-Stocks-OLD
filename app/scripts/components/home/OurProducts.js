@@ -14,7 +14,7 @@ const OurProducts = React.createClass({
             <div className="divider"></div>
           </div>
           <p>
-          We offer 4 products, each of which gives you access to a secure dashboard.
+          We offer four products, each of which gives you access to a secure dashboard.
           You will be able to track our model portfolio, access our purchase and
           sales transactions in real-time as they occur,
           and obtain valuable information about stocks selected for purchase or sale.<br/><br/>
@@ -22,7 +22,7 @@ const OurProducts = React.createClass({
 
           You can choose to use this information to buy stocks through your regular broker/bank,
           either by using our selections on an ongoing basis, or by mirroring the model portfolio
-          and keep abreast of changes as they regularly occur.<br/><br/>
+          and keeping abreast of changes as they regularly occur.<br/><br/>
 
           Once you have made your purchases, you simply wait. Later,
           a sales recommendation will suggest when to sell the stock.
@@ -50,16 +50,16 @@ const OurProducts = React.createClass({
 
           <p>
           <span className="semibold">Basic</span> and <span className="semibold">Premium</span> are both diversified retail products with excellent value propositions.
-          <span className="semibold"> Business</span> is designed for CEOs, accredited investores, and enterprising investores with focus on performance and margin of safety,
+          <span className="semibold"> Business</span> is designed for CEOs, accredited investors, and enterprising investors focusing on performance and margin of safety,
           at the expense of diversification. Our <span className="semibold">Fund</span> product is for institutional capital,
           capable of handling large diversified AUMs, which other products cannot.
            Each product utilizes a different number of Intelligent Investment Technology formulas.
-          You could explore our <a className="blue-color">product matrix</a> below.
+          You can explore our <a className="blue-color">product matrix</a> below.
           Or see our <a className="blue-color">retail brochure</a> or <a className="blue-color">business brochure</a>.<br/><br/>
 
-          <span className="disclaimer">Formula Stocks does not provide personalized investment advice. We respect your privacy,
+          <span className="disclaimer">Formula Stocks does not provide personalized investment advice. We respect your privacy
           and receive no financial information in the process.
-          We do not manage money nor recommend any stocks with which we have any affiliation.</span>
+          We do not manage money or recommend stocks with which we have any affiliation.</span>
           </p>
         </div>
       </section>

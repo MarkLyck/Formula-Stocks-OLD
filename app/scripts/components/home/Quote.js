@@ -6,7 +6,7 @@ const Quote = React.createClass({
       <section className="quote-section">
         <div className="content">
           <h2 className="quote">“Compound interest is the eighth wonder of the world.<br/>
-              He who understands it - Earns it. He who doesn’t - Pays it.”
+              He who understands it - earns it. He who doesn’t - pays it.”
           </h2>
           <p className="disclaimer">- Albert Einstein</p>
         </div>
