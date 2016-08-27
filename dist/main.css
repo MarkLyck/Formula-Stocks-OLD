@@ -693,6 +693,7 @@ header {
   z-index: 10;
   transition: background .3s; }
   .modal-container .modal {
+    margin: 0 auto;
     background: #fff;
     width: 60%; }
 
