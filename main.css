@@ -889,6 +889,17 @@ input[type=submit] {
     border-radius: 0;
     height: 90px; }
 
+.page-not-found {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; }
+  .page-not-found img {
+    width: 50%;
+    margin-bottom: 20px; }
+
 #what-is-it {
   display: flex;
   justify-content: space-between;
