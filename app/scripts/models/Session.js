@@ -81,6 +81,10 @@ const Session = Backbone.Model.extend({
     this.clear()
     store.settings.history.push('/')
     this.set('authtoken', store.settings.anomToken)
+    this.set('location', {})
+    this.set('type', 0)
+    this.set('email', '')
+    this.set('stripe', {})
   },
   retrieve: function() {
     this.fetch({

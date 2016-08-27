@@ -18,6 +18,8 @@ import AdminPanel from './components/dashboard/AdminPanel'
 import AdminAPI from './components/dashboard/AdminAPI'
 import NewArticle from './components/dashboard/NewArticle'
 
+import NotFoundPage from './components/404'
+
 
 const router = (
   <Router history={store.settings.history}>
@@ -44,6 +46,7 @@ const router = (
       <Route path="admin/api" component={AdminAPI}/>
       <Route path="admin/newarticle" component={NewArticle}/>
     </Route>
+    <Route path="/*" component={NotFoundPage}/>
   </Router>
 )
 
