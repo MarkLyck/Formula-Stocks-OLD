@@ -21,11 +21,6 @@ const SelectPlanForm = React.createClass({
   next(e) {
     e.preventDefault()
     this.props.goToModal('payment', {plan: this.state.selectedPlan})
-    // if (this.state.selectedPlan === 'basic') {
-    //   store.session.signup(store.session.get('email'), store.session.get('password'))
-    // } else {
-    //   this.props.goToModal('payment', {plan: this.state.selectedPlan})
-    // }
   },
   render() {
     let basicClass = ''
@@ -38,8 +33,6 @@ const SelectPlanForm = React.createClass({
     if(this.state.selectedPlan === 'business') {businessClass = 'selected'}
     if(this.state.selectedPlan === 'fund') {fundClass = 'selected'}
 
-    let submitText = 'Next'
-
     return (
       <form className={this.state.planFormClasses}>
         <h3 className="modal-title">Select a Plan</h3>
@@ -49,7 +42,7 @@ const SelectPlanForm = React.createClass({
           <button className={businessClass} onClick={this.selectPlan.bind(null, 'business')}><h3 className="plan-name">Business</h3><h3 className="price">$20,000<br/><span className="disclaimer">annually</span></h3></button>
           <button className={fundClass} onClick={this.selectPlan.bind(null, 'fund')}><h3 className="plan-name">Fund</h3><h3 className="price">$120,000<br/><span className="disclaimer">annually</span></h3></button>
         </div>
-        <button onClick={this.next} className="filled-btn">{submitText}</button>
+        <button onClick={this.next} className="filled-btn">Next</button>
       </form>
     )
   }

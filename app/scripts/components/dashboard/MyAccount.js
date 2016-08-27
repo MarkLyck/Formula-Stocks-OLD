@@ -14,8 +14,10 @@ const MyAccount = React.createClass({
     if (store.session.get('stripe').subscriptions && !store.session.get('stripe').subscriptions.data[0].canceled_at !== null) {
       currPlan = store.session.get('stripe').subscriptions.data[0].plan.id
       currPlan = currPlan.slice(0, currPlan.indexOf('-'))
+    } else {
+      currPlan = 'unsubscribed'
     }
-    return {selectedPlan: false, showModal: false, charging: false}
+    return {selectedPlan: false, showModal: false, charging: false, currPlan: currPlan}
   },
   cancelSubscription() {
     cc.cancelSubscription()
@@ -29,21 +31,40 @@ const MyAccount = React.createClass({
     if (this.state.selectedPlan === 'business' || this.state.selectedPlan === 'fund') {
       cycle = 'annually'
     }
-    cc.updateSubscription(this.state.selectedPlan, cycle)
-      .then(() => {
-        store.session.set('notification', {
-          text: `You are now subscribed to the ${this.state.selectedPlan} Formula`,
-          type: 'notification'
+    if (this.state.currPlan !== 'unsubscribed') {
+      cc.updateSubscription(this.state.selectedPlan, cycle)
+        .then(() => {
+          store.session.set('notification', {
+            text: `You are now subscribed to the ${this.state.selectedPlan} Formula`,
+            type: 'notification'
+          })
+          this.setState({charging: false, showModal: false})
         })
-        this.setState({charging: false, showModal: false})
-      })
-      .catch(() => {
-        store.session.set('notification', {
-          text: `Failed to change plan`,
-          type: 'error'
+        .catch(() => {
+          store.session.set('notification', {
+            text: `Failed to change plan`,
+            type: 'error'
+          })
+          this.setState({charging: false, showModal: false})
         })
-        this.setState({charging: false, showModal: false})
-      })
+    } else {
+      cc.newSubscription(this.state.selectedPlan, cycle)
+        .then(() => {
+          store.session.set('notification', {
+            text: `You are now subscribed to the ${this.state.selectedPlan} Formula`,
+            type: 'notification'
+          })
+          this.setState({charging: false, showModal: false})
+        })
+        .catch(() => {
+          store.session.set('notification', {
+            text: `Failed to subscribe to the ${this.state.selectedPlan} Formula`,
+            type: 'error'
+          })
+          this.setState({charging: false, showModal: false})
+        })
+    }
+
   },
   showConfirmationModal() {
     if (this.state.selectedPlan) {
@@ -89,7 +110,7 @@ const MyAccount = React.createClass({
     let bottomBtn = <button onClick={this.cancelSubscription} className="filled-btn cancel-btn red">Cancel Subscription</button>
     let changeTitle = 'Change your subscription'
     if (store.session.get('stripe').subscriptions.data[0].canceled_at !== null) {
-      changePlanBtn = <button onClick={this.newSubscription} className="change-plan filled-btn">Subscribe to: <span className="capitalize"> {this.state.selectedPlan}</span></button>
+      changePlanBtn = <button onClick={this.showConfirmationModal} className="change-plan filled-btn">Subscribe to: <span className="capitalize"> {this.state.selectedPlan}</span></button>
       bottomBtn = undefined;
       changeTitle = 'Select a plan'
     }

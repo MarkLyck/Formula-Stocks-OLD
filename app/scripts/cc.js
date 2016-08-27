@@ -219,35 +219,41 @@ let cc = {
     })
   },
   newSubscription(planName, cycle) {
-    console.log(store.session.get('stripe').customer);
-    console.log(planName+'-'+cycle),
-    $.ajax({
-      type: 'POST',
-      url: `https://baas.kinvey.com/rpc/${store.settings.appKey}/custom/newsub`,
-      data: {
-        plan: (planName+'-'+cycle),
-        customer: store.session.get('stripe').sources.data[0].customer
-      },
-      success: (subscription) => {
-        console.log('successfully created new subscription: ', subscription);
+    // console.log(store.session.get('stripe').customer);
+    // console.log(planName+'-'+cycle),
+    console.log('creating a new subscription');
+    return new Promise((resolve, reject) => {
+      $.ajax({
+        type: 'POST',
+        url: `https://baas.kinvey.com/rpc/${store.settings.appKey}/custom/newsub`,
+        data: {
+          plan: (planName+'-'+cycle),
+          customer: store.session.get('stripe').sources.data[0].customer
+        },
+        success: (subscription) => {
+          console.log('successfully created new subscription: ', subscription);
 
-        let customer = store.session.get('stripe')
-        customer.subscriptions = {data: [subscription]}
-        store.session.set('stripe', customer)
+          let customer = store.session.get('stripe')
+          customer.subscriptions = {data: [subscription]}
+          store.session.set('stripe', customer)
 
-        let type = 0
-        if (planName === 'basic')         { type = 1 }
-        else if (planName === 'premium')  { type = 2 }
-        else if (planName === 'business') { type = 3 }
-        else if (planName === 'fund')     { type = 4 }
-        store.session.set('type', type)
+          let type = 0
+          if (planName === 'basic')         { type = 1 }
+          else if (planName === 'premium')  { type = 2 }
+          else if (planName === 'business') { type = 3 }
+          else if (planName === 'fund')     { type = 4 }
+          store.session.set('type', type)
 
-        store.session.updateUser()
-      },
-      fail: (e) => {
-        console.error('failed creating subscription: ', e)
-      }
+          store.session.updateUser()
+          resolve()
+        },
+        fail: (e) => {
+          console.error('failed creating subscription: ', e)
+          reject()
+        }
+      })
     })
+
   }
 }
 
