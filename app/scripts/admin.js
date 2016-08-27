@@ -13,8 +13,6 @@ let admin = {
     return new Promise((resolve, reject) => {
       this.file = file
       this.model = model
-      // console.log('Model in uploadImage: ', model);
-      // console.log('file in uploadImage: ', this.file);
       this.postToKinveyFile()
         .then(this.putToGoogle.bind(this, file))
         .then(this.putToKinveyCollection.bind(this, model))
@@ -26,7 +24,6 @@ let admin = {
     })
   },
   postToKinveyFile() {
-    // console.log('file in postToKinveyFile: ', this.file);
     return $.ajax({
       url: `https://baas.kinvey.com/blob/kid_rJRC6m9F`,
       type: 'POST',
@@ -43,8 +40,6 @@ let admin = {
   },
   putToGoogle(file, kinveyFile) {
     this.fileID = kinveyFile._id;
-    // console.log('kinveyFile: ', kinveyFile);
-    // console.log('file in putToGoogle: ', file);
     return $.ajax({
       url: kinveyFile._uploadURL,
       type: 'PUT',
@@ -73,8 +68,6 @@ let admin = {
     })
   },
   getFromKinveyCollection(article) {
-    // console.log(r);
-    // console.log('in getFrom Kinvey collection');
     return $.ajax(`https://baas.kinvey.com/appdata/kid_rJRC6m9F/articles/${article._id}`)
   }
 }

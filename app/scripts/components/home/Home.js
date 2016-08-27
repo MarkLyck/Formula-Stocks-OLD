@@ -54,6 +54,8 @@ const Home = React.createClass({
         width: '80%',
         top: '100px',
         bottom: '40px',
+        left: '50%',
+        transform: 'translateX(-50%)',
         padding: '40px',
         position: 'absolute',
         overflowY: 'scroll',

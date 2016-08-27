@@ -3,6 +3,9 @@ import React from 'react'
 
 const TermsAndConditions = React.createClass({
   render() {
+    let styles = {
+      
+    }
     return (
       <div className="terms-and-conditions">
           <h2>Terms and Conditions</h2>
