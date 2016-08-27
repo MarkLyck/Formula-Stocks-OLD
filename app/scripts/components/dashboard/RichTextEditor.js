@@ -2,6 +2,7 @@ import React from 'react'
 import {Editor, EditorState, RichUtils, convertFromRaw, convertToRaw} from 'draft-js'
 
 import store from '../../store'
+import admin from '../../admin'
 
 class RichEditor extends React.Component {
   constructor(props) {
@@ -46,10 +47,16 @@ class RichEditor extends React.Component {
 
   submitArticle(editorState) {
     let content = convertToRaw(editorState.getCurrentContent())
+
     store.articles.data.create({
       content: content,
       title: this.refs.title.value,
-      image: this.props.image
+      // image: this.props.image
+    }, {
+      success: (response) => {
+        // console.log(this.props);
+        admin.uploadImage(this.props.uploadedFile, response)
+      }
     })
   }
 

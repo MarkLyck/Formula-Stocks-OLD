@@ -41,7 +41,7 @@ const NewArticle = React.createClass({
       </Dropzone>
       <div className="image-preview" style={imgContainerStyles}></div>
       <div className="editor">
-        <RichTextEditor image={this.state.image}/>
+        <RichTextEditor uploadedFile={this.state.uploadedFile}/>
       </div>
     </div>
   )
