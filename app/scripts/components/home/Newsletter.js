@@ -21,7 +21,7 @@ const NewsLetter = React.createClass({
         <h2 className="title">Subscribe to our newsletter and stay updated</h2>
         <form onSubmit={this.signUpForNewsletter}>
           <input type="email" placeholder="Enter your email address" ref="email"/>
-          <input type ="submit" className="filled-btn"/>
+          <input type ="submit" className="filled-btn" value="submit"/>
         </form>
       </section>
     )
