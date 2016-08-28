@@ -11,6 +11,7 @@
     flex-direction: column;
     button::before {
       padding-left: 40px;
+      float: left;
       color: $side-color;
       font-size: 1rem;
       margin: 0;

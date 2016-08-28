@@ -2337,6 +2337,7 @@ footer .copyright {
   flex-direction: column; }
   .side-bar-links .side-bar-link button::before {
     padding-left: 40px;
+    float: left;
     color: #F3F3F3;
     font-size: 1rem;
     margin: 0;
