@@ -12,7 +12,6 @@ const Suggestion = React.createClass({
       this.setState({fetching: true})
       store.plans.get(this.props.planName).getStockInfo(this.props.suggestion.ticker, this.props.i)
       .promise.then(() => {
-        console.log('finished getting data');
         this.setState({fetched: true, fetching: false})
       })
       .catch(() => {

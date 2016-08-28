@@ -25,6 +25,7 @@ const Plan = Backbone.Model.extend({
     let receivedJSON = (i, e) => {
       let lines = e.target.result;
       var data = JSON.parse(lines);
+      console.log(data);
       if (fileArr[i].name.indexOf('weekly') > -1) {
         let newSuggestions = this.get('suggestions').filter((sug) => {
           if (sug.action === "SELL") {
@@ -32,6 +33,13 @@ const Plan = Backbone.Model.extend({
           }
         })
         newSuggestions = _.union(data.actionable, newSuggestions)
+        newSuggestions = newSuggestions.map((suggestion) => {
+          console.log(suggestion.data);
+          delete suggestion.data;
+          console.log(suggestion.data);
+          return suggestion
+        })
+
         this.set('suggestions', newSuggestions)
       } else if (fileArr[i].name.indexOf('monthly') > -1) {
         let newSuggestions = this.get('suggestions').filter((sug) => {
@@ -40,8 +48,20 @@ const Plan = Backbone.Model.extend({
           }
         })
         newSuggestions = _.union(newSuggestions, data.actionable)
+        newSuggestions = newSuggestions.map((suggestion) => {
+          delete suggestion.data;
+          return suggestion
+        })
+
+        let fixedPortfolio = data.portfolio.map((stock) => {
+          console.log(stock.data);
+          delete stock.data;
+          console.log(stock.data);
+          return stock
+        })
+
         this.set('suggestions', newSuggestions)
-        this.set('portfolio', data.portfolio)
+        this.set('portfolio', fixedPortfolio)
         this.set('portfolioYields', data.logs)
       } else if (fileArr[i].name.indexOf('annual') > -1) {
         this.set('annualData', data.logs)
@@ -51,7 +71,7 @@ const Plan = Backbone.Model.extend({
         let stats = _.extend({}, oldStats, newStats)
         this.set('stats', stats)
       }
-      console.log('saving file');
+      console.log('saving file: ', this);
       this.save(null, {
         success: function() {
           store.session.set('notification', {

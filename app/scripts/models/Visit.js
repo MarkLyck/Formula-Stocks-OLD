@@ -22,7 +22,7 @@ const Visit = Backbone.Model.extend({
           url: `https://baas.kinvey.com/appdata/kid_rJRC6m9F/visits`,
           type: 'POST',
           success: (r) => {
-            console.log('response: ', r);
+            // console.log('response: ', r);
             localStorage.visitorID = r.get('_id')
           },
           error: (e) => {
@@ -35,7 +35,7 @@ const Visit = Backbone.Model.extend({
           url: `https://baas.kinvey.com/appdata/kid_rJRC6m9F/visits/${localStorage.visitorID}`,
           type: 'PUT',
           success: (r) => {
-            console.log('updated visit: ', r);
+            // console.log('updated visit: ', r);
           },
           error: (e) => {
             console.error('failed putting visit: ', e)

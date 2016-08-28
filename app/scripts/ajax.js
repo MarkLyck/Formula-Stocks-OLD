@@ -2,7 +2,7 @@ import $ from 'jquery'
 import store from './store'
 
 $(document).ajaxSend(function(e, xhrAjax, jqueryAjax) {
-  console.log(jqueryAjax.url);
+  // console.log(jqueryAjax.url);
   if (jqueryAjax.url.indexOf('kinvey') !== -1 && jqueryAjax.url.indexOf('blob') === -1) {
     if (store.session.get('authtoken')) {
         if (jqueryAjax.url.indexOf('user') > -1

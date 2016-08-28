@@ -22,14 +22,12 @@ const SideBar = React.createClass({
   },
   toggleDropdown(dropdown, e) {
     if (_.toArray(e.target.classList).indexOf('dropdown-link') === -1) {
-      console.log('if ran');
       if (this.state.selected !== dropdown) {
         this.setState({selected: dropdown, plan: this.props.plan})
       } else {
         this.setState({selected: undefined})
       }
     } else if ($(window).width() < 600) {
-      console.log('else ran');
       this.setState({selected: ''})
     }
   },
