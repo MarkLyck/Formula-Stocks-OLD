@@ -25,62 +25,66 @@ const Plan = Backbone.Model.extend({
     let receivedJSON = (i, e) => {
       let lines = e.target.result;
       var data = JSON.parse(lines);
-      console.log(data);
       if (fileArr[i].name.indexOf('weekly') > -1) {
-        let newSuggestions = this.get('suggestions').filter((sug) => {
-          if (sug.action === "SELL") {
-            return true
-          }
-        })
+        let newSuggestions = this.get('suggestions')
+          .filter((sug) => {
+            if (sug.action === "SELL") {
+              return true
+            }
+          })
+          .map((sug) => {
+            delete sug.data;
+            return sug
+          })
+
         newSuggestions = _.union(data.actionable, newSuggestions)
+
         newSuggestions = newSuggestions.map((suggestion) => {
           let fixedSuggestion = suggestion
-          // console.log(fixedSuggestion.data);
-          if (fixedSuggestion.data) {
-            console.log('--- data before');
-          }
           delete fixedSuggestion.data;
-          // console.log(fixedSuggestion.data);
-          if (fixedSuggestion.data) {
-            console.error('HAS DATA!!!: ', fixedSuggestion);
-          }
           return fixedSuggestion
+        })
+
+        newSuggestions.forEach((sug) => {
+          if (sug.data) {
+            console.error('has data: ', sug);
+          }
         })
 
         this.set('suggestions', newSuggestions)
       } else if (fileArr[i].name.indexOf('monthly') > -1) {
-        let newSuggestions = this.get('suggestions').filter((sug) => {
-          if (sug.action === "BUY") {
-            return true
-          }
-        })
+        let newSuggestions = this.get('suggestions')
+          .filter((sug) => {
+            if (sug.action === "BUY") {
+              return true
+            }
+          }).map((sug) => {
+            delete sug.data;
+            return sug
+          })
+
         newSuggestions = _.union(newSuggestions, data.actionable)
         newSuggestions = newSuggestions.map((suggestion) => {
           let fixedSuggestion = suggestion
-          // console.log(fixedSuggestion.data);
-          if (fixedSuggestion.data) {
-            console.log('--- data before');
-          }
           delete fixedSuggestion.data;
-          // console.log(fixedSuggestion.data);
-          if (fixedSuggestion.data) {
-            console.error('HAS DATA!!!: ', fixedSuggestion);
-          }
           return fixedSuggestion
         })
 
         let fixedPortfolio = data.portfolio.map((stock) => {
           let fixedStock = stock
-          if (fixedStock.data) {
-            console.log('--- data before');
-          }
-          // console.log(fixedStock.data);
           delete fixedStock.data;
-          // console.log(fixedStock.data);
-          if (fixedStock.data) {
-            console.error('HAS DATA!!!: ', fixedStock);
-          }
           return fixedStock
+        })
+
+        newSuggestions.forEach((sug) => {
+          if (sug.data) {
+            console.error('has data: ', sug);
+          }
+        })
+        fixedPortfolio.forEach((stock) => {
+          if (stock.data) {
+            console.error('has data: ', stock);
+          }
         })
 
         this.set('suggestions', newSuggestions)
@@ -89,14 +93,14 @@ const Plan = Backbone.Model.extend({
       } else if (fileArr[i].name.indexOf('annual') > -1) {
         this.set('annualData', data.logs)
         let newStats = data.statistics
-        newStats.WLRatio = (100 - data.statistics.negatives/(data.statistics.positives + data.statistics.negatives) * 100)
+        newStats.WLRatio = (100 - data.statistics.negatives / (data.statistics.positives + data.statistics.negatives) * 100)
         let oldStats = this.get('stats')
         let stats = _.extend({}, oldStats, newStats)
         this.set('stats', stats)
       }
-      console.log('saving file: ', this);
+      console.log('saving file...');
       this.save(null, {
-        success: function() {
+        success: function(m, r) {
           store.session.set('notification', {
             text: `Succesfully saved file: ${fileArr[i].name}`,
             type: 'success'
@@ -104,7 +108,7 @@ const Plan = Backbone.Model.extend({
         },
         error: function(model, error) {
           store.session.set('notification', {
-            text: `Failed saved file: ${fileArr[i].name} Err: ${error.error}`,
+            text: `Failed saved file: ${fileArr[i].name} Err: ${error.error || error.responseText}`,
             type: 'error'
           })
           console.error('Failed saving file: ', error)
