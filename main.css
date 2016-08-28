@@ -2715,6 +2715,9 @@ footer .copyright {
 .advanced-data-modal {
   overflow-y: scroll;
   max-height: 80%; }
+  .advanced-data-modal #suggestion-chart {
+    margin: 0 20px 0 0;
+    width: calc(100% - 20px) !important; }
   .advanced-data-modal .advanced-data-list {
     margin-top: 20px; }
     .advanced-data-modal .advanced-data-list li {
