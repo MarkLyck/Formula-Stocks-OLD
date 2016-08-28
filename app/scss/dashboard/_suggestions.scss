@@ -97,6 +97,26 @@
   }
 }
 
+.advanced-data-modal {
+  overflow-y: scroll;
+  max-height: 80%;
+  .advanced-data-list {
+    margin-top: 20px;
+    li {
+      display: flex;
+      justify-content: space-between;
+      flex-direction: row;
+      width: 100%;
+      margin: 0;
+      padding: 0 20px;
+      // border-top: 1px solid $light-text-color;
+    }
+    li:nth-child(even) {
+      background: $dashboard-background;
+    }
+  }
+}
+
 
 @media (max-width: 1200px) {
   .suggestions-list {

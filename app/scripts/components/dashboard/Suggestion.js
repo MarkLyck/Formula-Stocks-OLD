@@ -1,11 +1,13 @@
 import React from 'react'
 
+import _ from 'underscore'
+
 import SuggestionChart from './SuggestionChart'
 import store from '../../store'
 
 const Suggestion = React.createClass({
   getInitialState() {
-    return {fetched: false, fetching: false, failed: false}
+    return {fetched: false, fetching: false, failed: false, showModal: false}
   },
   componentDidMount() {
     if(!store.plans.get(this.props.planName).get('suggestions')[this.props.i].data) {
@@ -26,6 +28,14 @@ const Suggestion = React.createClass({
       if(!store.plans.get(newProps.planName).get('suggestions')[newProps.i].data) {
         store.plans.get(newProps.planName).getStockInfo(newProps.suggestion.ticker, newProps.i);
       }
+    }
+  },
+  moreInfo() {
+    this.setState({showModal: true})
+  },
+  closeModal(e) {
+    if (_.toArray(e.target.classList).indexOf('db-modal-container') !== -1) {
+      this.setState({showModal: false})
     }
   },
   render() {
@@ -79,7 +89,39 @@ const Suggestion = React.createClass({
           data={this.props.suggestion.data}
           suggestedPrice={this.props.suggestion.suggested_price}
           ticker={this.props.suggestion.ticker}
-          action={this.props.suggestion.action}/>
+          action={this.props.suggestion.action}
+          allData={this.state.showModal}/>
+      )
+    }
+
+    let modal;
+    if (this.state.showModal) {
+      let advancedData = this.props.suggestion.advanced_data.map((dataPoint, i) => {
+        console.log(dataPoint);
+        let value = dataPoint.value
+        if (dataPoint.unit === 'percent') {
+          value = value + '%'
+        }
+        return (
+          <li key={i}>
+            <h3>{dataPoint.display_name}</h3>
+            <h3>{value}</h3>
+          </li>
+        )
+      })
+      modal = (
+        <div className="db-modal-container" onClick={this.closeModal}>
+          <div className="db-modal advanced-data-modal">
+            <div className="top">
+              <h3 className={textColor}>{this.props.suggestion.name}</h3>
+              <h3 className={`action ${actionClass}`}>{this.props.suggestion.action}</h3>
+            </div>
+            {chartArea}
+            <ul className="advanced-data-list">
+              {advancedData}
+            </ul>
+          </div>
+        </div>
       )
     }
 
@@ -110,7 +152,8 @@ const Suggestion = React.createClass({
             <p>Last price</p>
           </li>
         </ul>
-        <button className={`more-info ${actionClass}`}>More info</button>
+        <button className={`more-info ${actionClass}`} onClick={this.moreInfo}>More info</button>
+        {modal}
       </li>
     )
   }

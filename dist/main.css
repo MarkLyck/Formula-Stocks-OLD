@@ -703,6 +703,21 @@ header {
     background: #fff;
     width: 60%; }
 
+.db-modal-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10; }
+  .db-modal-container .db-modal {
+    background: #fff;
+    width: 60%; }
+
 .form-modal-container {
   width: 100%;
   height: 100%;
@@ -2247,7 +2262,8 @@ footer .copyright {
     display: flex; }
     .dashboard .container .db-content {
       width: 100%;
-      overflow-y: scroll; }
+      overflow-y: scroll;
+      position: relative; }
 
 .notification {
   background: #12D99E;
@@ -2695,6 +2711,21 @@ footer .copyright {
   .suggestion-balloon p {
     font-size: 0.8rem;
     font-weight: 700; }
+
+.advanced-data-modal {
+  overflow-y: scroll;
+  max-height: 80%; }
+  .advanced-data-modal .advanced-data-list {
+    margin-top: 20px; }
+    .advanced-data-modal .advanced-data-list li {
+      display: flex;
+      justify-content: space-between;
+      flex-direction: row;
+      width: 100%;
+      margin: 0;
+      padding: 0 20px; }
+    .advanced-data-modal .advanced-data-list li:nth-child(even) {
+      background: #F3F3F3; }
 
 @media (max-width: 1200px) {
   .suggestions-list li {

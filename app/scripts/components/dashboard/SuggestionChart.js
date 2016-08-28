@@ -12,7 +12,9 @@ const SuggestionChart = React.createClass({
         date: point[0],
       }
     })
-    chartData = chartData.slice(0,30)
+    if (!this.props.allData) {
+      chartData = chartData.slice(0,30)
+    }
     chartData = chartData.reverse()
 
     let chartTheme =  'light'
