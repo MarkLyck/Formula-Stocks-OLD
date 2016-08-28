@@ -34,10 +34,17 @@ const Plan = Backbone.Model.extend({
         })
         newSuggestions = _.union(data.actionable, newSuggestions)
         newSuggestions = newSuggestions.map((suggestion) => {
-          console.log(suggestion.data);
-          delete suggestion.data;
-          console.log(suggestion.data);
-          return suggestion
+          let fixedSuggestion = suggestion
+          // console.log(fixedSuggestion.data);
+          if (fixedSuggestion.data) {
+            console.log('--- data before');
+          }
+          delete fixedSuggestion.data;
+          // console.log(fixedSuggestion.data);
+          if (fixedSuggestion.data) {
+            console.error('HAS DATA!!!: ', fixedSuggestion);
+          }
+          return fixedSuggestion
         })
 
         this.set('suggestions', newSuggestions)
@@ -49,15 +56,31 @@ const Plan = Backbone.Model.extend({
         })
         newSuggestions = _.union(newSuggestions, data.actionable)
         newSuggestions = newSuggestions.map((suggestion) => {
-          delete suggestion.data;
-          return suggestion
+          let fixedSuggestion = suggestion
+          // console.log(fixedSuggestion.data);
+          if (fixedSuggestion.data) {
+            console.log('--- data before');
+          }
+          delete fixedSuggestion.data;
+          // console.log(fixedSuggestion.data);
+          if (fixedSuggestion.data) {
+            console.error('HAS DATA!!!: ', fixedSuggestion);
+          }
+          return fixedSuggestion
         })
 
         let fixedPortfolio = data.portfolio.map((stock) => {
-          console.log(stock.data);
-          delete stock.data;
-          console.log(stock.data);
-          return stock
+          let fixedStock = stock
+          if (fixedStock.data) {
+            console.log('--- data before');
+          }
+          // console.log(fixedStock.data);
+          delete fixedStock.data;
+          // console.log(fixedStock.data);
+          if (fixedStock.data) {
+            console.error('HAS DATA!!!: ', fixedStock);
+          }
+          return fixedStock
         })
 
         this.set('suggestions', newSuggestions)
@@ -79,11 +102,12 @@ const Plan = Backbone.Model.extend({
             type: 'success'
           })
         },
-        error: function() {
+        error: function(model, error) {
           store.session.set('notification', {
-            text: `Failed saved file: ${fileArr[i].name}`,
+            text: `Failed saved file: ${fileArr[i].name} Err: ${error.error}`,
             type: 'error'
           })
+          console.error('Failed saving file: ', error)
         }
       })
     }
