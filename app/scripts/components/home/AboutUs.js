@@ -19,7 +19,7 @@ const AboutUs = React.createClass({
     let classThomas, classMark, classMarie, bio;
     if (this.state.selectedEmployee === 'Thomas') {
       classThomas = 'selected'
-      bio = `Thomas Lyck is the founder of 8 businesses between 1990 until today.
+      bio = `Thomas Lyck is the founder of 8 businesses since 1990 until today.
       Some of the more well known include the system which created all building instruction booklets
       for LEGO products for over a decade, and many pioneering Computer Graphics solutions for the
       movie industry in the early 1990s. Besides being CEO and an accomplished investor,
