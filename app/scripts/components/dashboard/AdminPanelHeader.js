@@ -5,20 +5,28 @@ import admin from '../../admin'
 
 const AdminPanelHeader = React.createClass({
   getInitialState() {
-    return {fetched: false, visitors: admin.visits.toJSON()}
+    return {
+      fetched: false,
+      visitors: admin.visits.toJSON(),
+      newsletterSubs: admin.newsletterSubs.toJSON()
+    }
   },
   componentDidMount() {
-    admin.visits.on('change update', this.updateState)
+    admin.visits.on('update', this.updateState)
+    admin.newsletterSubs.on('update', this.updateState)
     admin.visits.fetch()
+    admin.newsletterSubs.fetch()
   },
   componentWillUnmount() {
     admin.visits.off('change update', this.updateState)
   },
   updateState() {
-    console.log(admin.visits.toJSON());
+    // console.log(admin.visits.toJSON());
     this.setState({visitors: admin.visits.toJSON()})
+    this.setState({newsletterSubs: admin.newsletterSubs.toJSON()})
   },
   render() {
+    console.log(this.state.newsletterSubs);
     let subscribers = this.state.visitors.filter((visitor) => {
       if (visitor.type > 0 && visitor.type < 5) {
         return true
@@ -72,14 +80,13 @@ const AdminPanelHeader = React.createClass({
           </li>
 
 
-
           <li className="panel white gray-border">
             <div className="symbol">
-              <i className="fa fa-pie-chart green-color"></i>
+              <i className="fa fa-paper-plane green-color"></i>
             </div>
             <div className="value white">
-              <h3 className="green-color">{conversionRate}%</h3>
-              <p className="green-color">Conversion Rate</p>
+              <h3 className="green-color">{this.state.newsletterSubs.length}</h3>
+              <p className="green-color">Newsletter subs.</p>
             </div>
           </li>
 

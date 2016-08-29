@@ -19,12 +19,14 @@ const AboutUs = React.createClass({
     let classThomas, classMark, classMarie, bio;
     if (this.state.selectedEmployee === 'Thomas') {
       classThomas = 'selected'
-      bio = `Thomas Lyck is the founder of 8 businesses since 1990 until today.
-      Some of the more well known include the system which created all building instruction booklets
-      for LEGO products for over a decade, and many pioneering Computer Graphics solutions for the
-      movie industry in the early 1990s. Besides being CEO and an accomplished investor,
-      Thomas is a specialist in parallel supercomputing, complex data, and artificial intelligence,
-      and has recently spent a decade developing the advanced technology behind Formula Stocks.`
+      bio = `Thomas Lyck is the founder of 8 businesses since 1990.
+      Some of the more well known include the system which created the building instructions for all
+      LEGO products in over a decade, and many pioneering Computer Graphics solutions for the movie
+      industry in the early 1990s enabling the analog to digital industry transition. Besides being
+      CEO and an accomplished investor, Thomas is a specialist in parallel supercomputing, complex data,
+      and artificial intelligence, and has recently spent a decade developing the advanced technology
+      behind Formula Stocks.
+`
     } else if (this.state.selectedEmployee === 'Mark') {
       classMark = 'selected'
       bio = <p>It is possible to beat the market. Our portfolio service is the product of a decade's worth

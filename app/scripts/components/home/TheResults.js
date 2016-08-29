@@ -85,18 +85,19 @@ const TheResults = React.createClass({
       chartData = fixedData;
     }
 
-
+    console.log(chartData);
     let config = {
       type: "serial",
       theme: "dark",
       addClassNames: true,
+
 
       dataProvider: chartData,
 
       balloon: {
         color: '#49494A',
         fillAlpha: 1,
-        borderColor: '#FFF',
+        borderColor: '#FFFFFF',
         borderThickness: 0,
       },
 
@@ -107,7 +108,7 @@ const TheResults = React.createClass({
 
           bullet: "square",
           bulletBorderAlpha: 1,
-          bulletColor: "#FFF",
+          bulletColor: "#FFFFFF",
           bulletSize: 5,
           hideBulletsCount: 10,
           lineThickness: 2,
@@ -117,11 +118,11 @@ const TheResults = React.createClass({
         },
         {
         id: "basic",
-        lineColor: "#fff",
+        lineColor: "#FFFFFF",
 
         bullet: "square",
         bulletBorderAlpha: 1,
-        bulletColor: "#FFF",
+        bulletColor: "#FFFFFF",
         bulletSize: 5,
         hideBulletsCount: 10,
         lineThickness: 2,
@@ -131,11 +132,11 @@ const TheResults = React.createClass({
       },
       {
         id: "premium",
-        lineColor: "#fff",
+        lineColor: "#FFFFFF",
 
         bullet: "square",
         bulletBorderAlpha: 1,
-        bulletColor: "#FFF",
+        bulletColor: "#FFFFFF",
         bulletSize: 5,
         hideBulletsCount: 10,
         lineThickness: 2,
@@ -145,11 +146,11 @@ const TheResults = React.createClass({
       },
       {
         id: "business",
-        lineColor: "#fff",
+        lineColor: "#FFFFFF",
 
         bullet: "square",
         bulletBorderAlpha: 1,
-        bulletColor: "#FFF",
+        bulletColor: "#FFFFFF",
         bulletSize: 5,
         hideBulletsCount: 10,
         lineThickness: 2,
@@ -190,8 +191,9 @@ const TheResults = React.createClass({
 	    },
 
       categoryField: "date",
+      dataDateFormat: "YYYY-MM-DD",
       categoryAxis: {
-        parseDates: true,
+        // parseDates: true,
       },
     };
 

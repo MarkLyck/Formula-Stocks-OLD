@@ -580,9 +580,7 @@ header {
   background: -webkit-linear-gradient(-45deg, #2d3a65 0%, #18aed6 100%);
   /* Chrome10-25,Safari5.1-6 */
   background: linear-gradient(135deg, #2d3a65 0%, #18aed6 100%);
-  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2d3a65', endColorstr='#18aed6',GradientType=1 );
-  /* IE6-9 fallback on horizontal gradient */ }
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */ }
   header nav {
     height: 75px;
     width: 100%;
@@ -3019,20 +3017,13 @@ footer .copyright {
       margin: 0;
       border-bottom: 1px solid #F3F3F3; }
     .my-account-page .change-plan-container button {
-      display: -webkit-box;
-      display: -ms-flexbox;
-      display: flex;
-      -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-      justify-content: space-between;
-      -webkit-box-align: center;
-      -ms-flex-align: center;
-      align-items: center;
       height: 90px;
       position: relative; }
       .my-account-page .change-plan-container button h3 {
         margin: 0;
         float: left; }
+      .my-account-page .change-plan-container button h3:first-child {
+        line-height: 45px; }
       .my-account-page .change-plan-container button h3:last-child {
         float: right; }
       .my-account-page .change-plan-container button:hover {
