@@ -27,3 +27,26 @@
     }
   }
 }
+
+@media (max-width: 1100px) {
+  .higher-performance {
+    .right {
+      img {
+        width: 300px;
+        bottom: 50%;
+      }
+    }
+  }
+}
+
+@media (max-width: 680px) {
+  .higher-performance {
+    .left {
+      width: 100%;
+      margin-left: 0;
+    }
+    .right {
+      display: none;
+    }
+  }
+}

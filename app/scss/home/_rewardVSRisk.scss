@@ -33,3 +33,40 @@
     }
   }
 }
+
+@media (max-width: 875px) {
+  .reward-vs-risk {
+    .content {
+      height: 550px;
+      .wrapper {
+        flex-direction: column;
+        .left {
+          order: 1;
+          width: 100%;
+          text-align: center;
+          img {
+            margin: 0 auto;
+            transform: translateX(-50%);
+            max-width: 100%;
+          }
+        }
+        .right {
+          width: 100%;
+          margin: 0;
+          display: block;
+          p {
+            max-width: 100%;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 650px) {
+  .reward-vs-risk {
+    .content {
+      height: 700px;
+    }
+  }
+}

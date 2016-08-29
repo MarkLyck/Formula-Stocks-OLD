@@ -19,3 +19,26 @@
     }
   }
 }
+
+@media (max-width: 1100px) {
+  .quote-section {
+    .content {
+      .quote {
+        align-self: flex-end;
+        width: 50%;
+      }
+    }
+  }
+}
+
+@media (max-width: 675px) {
+  .quote-section {
+    background: linear-gradient(rgba(#000, .5),rgba(#000, .5)),url('assets/images/Albert_Einstein.jpg');
+    background-size: cover;
+    .content {
+      .quote {
+        width: 100%;
+      }
+    }
+  }
+}

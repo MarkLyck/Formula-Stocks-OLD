@@ -1,3 +1,12 @@
+//
+// @mixin vertical-align {
+//     position: relative;
+//     top: 50%;
+//     -webkit-transform: translateY(-50%);
+//     -ms-transform: translateY(-50%);
+//     transform: translateY(-50%);
+// }
+
 .my-account-page {
   padding: 40px;
   .profile-info {
@@ -8,8 +17,13 @@
     }
   }
   .change-plan-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
     margin-bottom: 20px;
     background: #fff;
     h2 {
@@ -18,12 +32,26 @@
       border-bottom: 1px solid $db-border-color;
     }
     button {
+      display: -webkit-box;
+      display: -ms-flexbox;
       display: flex;
-      justify-content: space-between;
-      align-items: center;
+      -webkit-box-pack: justify;
+          -ms-flex-pack: justify;
+              justify-content: space-between;
+      -webkit-box-align: center;
+          -ms-flex-align: center;
+              align-items: center;
       height: 90px;
+      position: relative;
       h3 {
         margin: 0;
+        float: left;
+      }
+      h3:first-child {
+        // @include vertical-align;
+      }
+      h3:last-child {
+        float: right;
       }
       &:hover {
         background: lighten($primary-color, 5%);
@@ -47,7 +75,8 @@
       }
       &::after {
         content: 'Current';
-        color: $light-text-color
+        color: $light-text-color;
+        float: right;
       }
       &:hover {
         background: #fff;
@@ -60,8 +89,12 @@
     .change-plan {
       max-width: 100%;
       height: 90px;
+      display: -webkit-box;
+      display: -ms-flexbox;
       display: flex;
-      justify-content: center;
+      -webkit-box-pack: center;
+          -ms-flex-pack: center;
+              justify-content: center;
       span {
         margin-left: 5px;
       }
@@ -81,13 +114,24 @@
 }
 
 .change-plan-confirmation {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   h2 {
-    // padding: 20px;
+    /* padding: 20px;*/
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     margin: 0;
     height: 90px;
   }

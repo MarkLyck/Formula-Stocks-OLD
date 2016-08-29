@@ -54,18 +54,19 @@ const Header = React.createClass({
         </div>
       )
     }
-
+// <img id="logo" src="assets/images/logo_horizontal.svg"/>
     return (
       <header>
         <nav>
           <div className="content">
             <div className="left" onClick={() => {scroll.scrollToTop()}}>
-              <img id="logo" src="assets/images/logo_horizontal.svg"/>
+              <div id="logo"></div>
+
             </div>
             <div className="right">
-              <ScrollLink className="nav-link" to="ourProducts" smooth={true} offset={-100} duration={1000}>Products</ScrollLink>
-              <ScrollLink className="nav-link" to="pricing" smooth={true} offset={-100} duration={1000}>Pricing</ScrollLink>
-              <ScrollLink className="nav-link" to="contactUs" smooth={true} offset={-100} duration={1000}>Contact Us</ScrollLink>
+              <ScrollLink className="nav-link products-link" to="ourProducts" smooth={true} offset={-100} duration={1000}>Products</ScrollLink>
+              <ScrollLink className="nav-link pricing-link" to="pricing" smooth={true} offset={-100} duration={1000}>Pricing</ScrollLink>
+              <ScrollLink className="nav-link contact-us-link" to="contactUs" smooth={true} offset={-100} duration={1000}>Contact Us</ScrollLink>
               {navLinks}
             </div>
           </div>

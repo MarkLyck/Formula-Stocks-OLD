@@ -3,7 +3,7 @@
   box-sizing: content-box;
   .left {
     img {
-      height: 250px;
+      max-height: 250px;
       bottom: -160%;
     }
     .slide-up-reach-goal-img {
@@ -17,6 +17,30 @@
       to {
         bottom: -50px;
       }
+    }
+  }
+}
+
+
+@media (max-width: 925px) {
+  .reach-your-goals {
+    .left {
+      img {
+        width: 300px;
+      }
+    }
+  }
+}
+
+
+@media (max-width: 680px) {
+  .reach-your-goals {
+    .left {
+      display: none;
+    }
+    .right {
+      width: 100%;
+      margin-left: 0;
     }
   }
 }

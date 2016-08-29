@@ -606,13 +606,16 @@ header {
       header nav .left:hover {
         cursor: pointer; }
       header nav .left #logo {
-        width: auto;
+        width: 274px;
+        height: 34px;
         font-size: 2rem;
         display: flex;
-        align-items: center; }
+        align-items: center;
+        background-image: url("assets/images/logo_horizontal.svg"); }
     header nav .right {
       display: flex;
-      height: 100%; }
+      height: 100%;
+      margin-left: 20px; }
       header nav .right #nav-links {
         display: flex;
         height: 100%; }
@@ -682,6 +685,20 @@ header {
   #hero-chart h1, #hero-chart h2, #hero-chart h3, #hero-chart h4, #hero-chart p {
     color: #fff; }
 
+@media (max-width: 1050px) {
+  nav .contact-us-link.nav-link {
+    display: none; } }
+@media (max-width: 825px) {
+  nav .products-link.nav-link {
+    display: none; } }
+@media (max-width: 700px) {
+  nav .pricing-link.nav-link {
+    display: none; } }
+@media (max-width: 600px) {
+  header nav .left #logo {
+    background-image: url("assets/images/logo.svg");
+    background-repeat: no-repeat;
+    width: 34px; } }
 .modal-container {
   position: fixed;
   top: 0;
@@ -958,6 +975,11 @@ input[type=submit] {
       #what-is-it .right img:hover {
         transform: scale(1.1); }
 
+@media (max-width: 850px) {
+  #what-is-it .left {
+    max-width: 100%; }
+  #what-is-it .right {
+    display: none; } }
 .split-section {
   width: 100%;
   padding: 50px 0;
@@ -1076,11 +1098,19 @@ input[type=submit] {
     transform: translate(0); }
   to {
     transform: translate(-20%, -230%); } }
+@media (max-width: 850px) {
+  .above-average-returns .left {
+    width: 100%;
+    margin-right: 0; }
+    .above-average-returns .left p {
+      max-width: 100%; }
+  .above-average-returns .right {
+    display: none; } }
 .reach-your-goals {
   padding: 50px 0;
   box-sizing: content-box; }
   .reach-your-goals .left img {
-    height: 250px;
+    max-height: 250px;
     bottom: -160%; }
   .reach-your-goals .left .slide-up-reach-goal-img {
     animation: 0.75s slideUpReachGoalImg;
@@ -1090,6 +1120,15 @@ input[type=submit] {
     bottom: -160%; }
   to {
     bottom: -50px; } }
+@media (max-width: 925px) {
+  .reach-your-goals .left img {
+    width: 300px; } }
+@media (max-width: 680px) {
+  .reach-your-goals .left {
+    display: none; }
+  .reach-your-goals .right {
+    width: 100%;
+    margin-left: 0; } }
 .informational-advantage .right {
   display: flex;
   align-items: flex-end; }
@@ -1132,6 +1171,22 @@ input[type=submit] {
       background-color: #49494A;
       height: 60%; }
 
+@media (max-width: 850px) {
+  .informational-advantage {
+    padding-bottom: 0; }
+    .informational-advantage .content {
+      flex-direction: column; }
+      .informational-advantage .content .left {
+        width: 100%;
+        margin-right: 0; }
+        .informational-advantage .content .left p {
+          max-width: 100%; }
+      .informational-advantage .content .right {
+        margin: 50px auto 0 auto;
+        height: 250px;
+        width: auto; }
+        .informational-advantage .content .right .bar-chart {
+          height: 100%; } }
 .one-dollar .left .plans button {
   background: none;
   color: #49494A; }
@@ -1182,6 +1237,23 @@ input[type=submit] {
   flex-direction: column;
   justify-content: center; }
 
+@media (max-width: 850px) {
+  .one-dollar {
+    padding-bottom: 0; }
+    .one-dollar .content {
+      flex-direction: column; }
+      .one-dollar .content .left {
+        width: 100%;
+        margin-right: 0;
+        order: 1; }
+        .one-dollar .content .left p {
+          max-width: 100%; }
+      .one-dollar .content .right {
+        margin: 50px 0;
+        height: 250px;
+        width: auto; }
+        .one-dollar .content .right .bar-chart {
+          height: 100%; } }
 .higher-performance .left .cta {
   margin-top: 25px;
   display: flex; }
@@ -1198,6 +1270,16 @@ input[type=submit] {
     transform: translateY(100%); }
   to {
     transform: translateY(50%); } }
+@media (max-width: 1100px) {
+  .higher-performance .right img {
+    width: 300px;
+    bottom: 50%; } }
+@media (max-width: 680px) {
+  .higher-performance .left {
+    width: 100%;
+    margin-left: 0; }
+  .higher-performance .right {
+    display: none; } }
 .our-products {
   display: flex;
   justify-content: center;
@@ -1227,6 +1309,9 @@ input[type=submit] {
   .our-products a:hover {
     text-decoration: underline; }
 
+@media (max-width: 650px) {
+  .our-products .icon-container {
+    display: none; } }
 .the-results {
   background: #27A5F9; }
   .the-results .content {
@@ -1378,10 +1463,22 @@ input[type=submit] {
 
   .plan:nth-child(3) {
     margin-left: 0; } }
+@media (max-width: 985px) {
+  .modal-container .modal {
+    width: 80%; } }
 @media (max-width: 760px) {
   .plan {
     width: calc(100%);
-    margin: 0 0 40px 0; } }
+    margin: 0 0 40px 0; }
+
+  .product-modal {
+    flex-direction: column;
+    overflow-y: scroll;
+    max-height: 80vh; }
+    .product-modal .left, .product-modal .right {
+      width: 100%; }
+      .product-modal .left div p:last-child, .product-modal .right div p:last-child {
+        padding-bottom: 20px; } }
 .brochures {
   background-image: url("assets/images/NY_Skyline.jpg");
   background-size: cover;
@@ -1393,13 +1490,18 @@ input[type=submit] {
   align-items: center; }
   .brochures .title {
     color: #fff;
-    font-size: 1.75rem; }
+    font-size: 1.75rem;
+    padding: 0 20px;
+    text-align: center;
+    margin: 0; }
   .brochures .cta {
     display: flex;
-    margin-top: 90px; }
+    margin-top: 90px;
+    width: 100%;
+    justify-content: center; }
     .brochures .cta button {
       margin: 0 40px;
-      max-width: 40% !important;
+      max-width: 40%;
       width: 300px;
       background: #27A5F9; }
       .brochures .cta button i {
@@ -1407,6 +1509,14 @@ input[type=submit] {
       .brochures .cta button:hover {
         background: #068de7; }
 
+@media (max-width: 575px) {
+  .brochures .cta {
+    flex-direction: column;
+    align-items: center; }
+    .brochures .cta button:first-child {
+      margin-bottom: 20px; }
+    .brochures .cta button {
+      max-width: 80%; } }
 .reward-vs-risk {
   padding-bottom: 40px; }
   .reward-vs-risk .content {
@@ -1436,6 +1546,28 @@ input[type=submit] {
         flex-direction: column;
         justify-content: space-between; }
 
+@media (max-width: 875px) {
+  .reward-vs-risk .content {
+    height: 550px; }
+    .reward-vs-risk .content .wrapper {
+      flex-direction: column; }
+      .reward-vs-risk .content .wrapper .left {
+        order: 1;
+        width: 100%;
+        text-align: center; }
+        .reward-vs-risk .content .wrapper .left img {
+          margin: 0 auto;
+          transform: translateX(-50%);
+          max-width: 100%; }
+      .reward-vs-risk .content .wrapper .right {
+        width: 100%;
+        margin: 0;
+        display: block; }
+        .reward-vs-risk .content .wrapper .right p {
+          max-width: 100%; } }
+@media (max-width: 650px) {
+  .reward-vs-risk .content {
+    height: 700px; } }
 .quote-section {
   background: url("assets/images/Albert_Einstein.jpg");
   background-size: cover;
@@ -1453,6 +1585,16 @@ input[type=submit] {
       color: rgba(255, 255, 255, 0.8);
       font-size: 1rem; }
 
+@media (max-width: 1100px) {
+  .quote-section .content .quote {
+    align-self: flex-end;
+    width: 50%; } }
+@media (max-width: 675px) {
+  .quote-section {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("assets/images/Albert_Einstein.jpg");
+    background-size: cover; }
+    .quote-section .content .quote {
+      width: 100%; } }
 .cumulative-interest {
   display: flex;
   flex-direction: column;
@@ -2785,7 +2927,12 @@ footer .copyright {
     .my-account-page .profile-info i {
       margin-right: 10px; }
   .my-account-page .change-plan-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
     flex-direction: column;
     margin-bottom: 20px;
     background: #fff; }
@@ -2794,12 +2941,22 @@ footer .copyright {
       margin: 0;
       border-bottom: 1px solid #F3F3F3; }
     .my-account-page .change-plan-container button {
+      display: -webkit-box;
+      display: -ms-flexbox;
       display: flex;
+      -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
       justify-content: space-between;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
       align-items: center;
-      height: 90px; }
+      height: 90px;
+      position: relative; }
       .my-account-page .change-plan-container button h3 {
-        margin: 0; }
+        margin: 0;
+        float: left; }
+      .my-account-page .change-plan-container button h3:last-child {
+        float: right; }
       .my-account-page .change-plan-container button:hover {
         background: #40affa; }
         .my-account-page .change-plan-container button:hover h3, .my-account-page .change-plan-container button:hover p {
@@ -2814,7 +2971,8 @@ footer .copyright {
         display: none; }
       .my-account-page .change-plan-container .current::after {
         content: 'Current';
-        color: #95989E; }
+        color: #95989E;
+        float: right; }
       .my-account-page .change-plan-container .current:hover {
         background: #fff;
         cursor: auto; }
@@ -2823,7 +2981,11 @@ footer .copyright {
     .my-account-page .change-plan-container .change-plan {
       max-width: 100%;
       height: 90px;
+      display: -webkit-box;
+      display: -ms-flexbox;
       display: flex;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
       justify-content: center; }
       .my-account-page .change-plan-container .change-plan span {
         margin-left: 5px; }
@@ -2837,11 +2999,23 @@ footer .copyright {
       background: #c3114b; }
 
 .change-plan-confirmation {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center; }
   .change-plan-confirmation h2 {
+    /* padding: 20px;*/
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
     margin: 0;
     height: 90px; }

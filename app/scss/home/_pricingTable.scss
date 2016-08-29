@@ -90,7 +90,6 @@
 
 .product-modal {
   display: flex;
-
   .left {
     width: 50%;
     padding: 20px;
@@ -119,16 +118,33 @@
     margin-left: 0;
   }
 }
+
+@media (max-width: 985px) {
+  .modal-container {
+    .modal {
+      width: 80%;
+    }
+  }
+}
+
 @media (max-width: 760px) {
   .plan {
     width: calc(100%);
     margin: 0 0 40px 0;
-    // margin-bottom: 40px;
   }
-  // .plan:nth-child(2) {
-  //   margin-right: 0;
-  // }
-  // .plan:nth-child(3) {
-  //   margin-left: 0;
-  // }
+  .product-modal {
+    flex-direction: column;
+    overflow-y: scroll;
+    max-height: 80vh;
+    .left,.right {
+      width: 100%;
+      div {
+        p:last-child {
+          padding-bottom: 20px;
+        }
+      }
+
+    }
+  }
+
 }

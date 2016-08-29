@@ -39,3 +39,14 @@
     }
   }
 }
+
+@media (max-width: 850px) {
+  #what-is-it {
+    .left {
+      max-width: 100%;
+    }
+    .right {
+      display: none;
+    }
+  }
+}

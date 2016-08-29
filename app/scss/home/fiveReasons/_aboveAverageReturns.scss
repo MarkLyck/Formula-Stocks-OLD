@@ -163,3 +163,18 @@
     }
   }
 }
+
+@media (max-width: 850px) {
+  .above-average-returns {
+    .left {
+      width: 100%;
+      margin-right: 0;
+      p {
+        max-width: 100%;
+      }
+    }
+    .right {
+      display: none;
+    }
+  }
+}

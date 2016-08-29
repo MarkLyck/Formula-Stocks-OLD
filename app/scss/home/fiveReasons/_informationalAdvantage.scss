@@ -52,3 +52,27 @@
     }
   }
 }
+
+@media (max-width: 850px) {
+  .informational-advantage {
+    padding-bottom: 0;
+    .content {
+      flex-direction: column;
+      .left {
+        width: 100%;
+        margin-right: 0;
+        p {
+          max-width: 100%;
+        }
+      }
+      .right {
+        margin: 50px auto 0 auto;
+        height: 250px;
+        width: auto;
+        .bar-chart {
+          height: 100%;
+        }
+      }
+    }
+  }
+}

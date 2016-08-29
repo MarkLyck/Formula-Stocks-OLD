@@ -11,14 +11,19 @@
   .title {
     color: #fff;
     font-size: 1.75rem;
+    padding: 0 20px;
+    text-align: center;
+    margin: 0;
   }
   .cta {
     display: flex;
     margin-top: 90px;
+    width: 100%;
+    justify-content: center;
     button {
       margin: 0 40px;
 
-      max-width: 40% !important;
+      max-width: 40%;
       width: 300px;
       background: $primary-color;
       i {
@@ -26,6 +31,21 @@
       }
       &:hover {
         background: darken($primary-color, 10%);
+      }
+    }
+  }
+}
+
+@media (max-width: 575px) {
+  .brochures {
+    .cta {
+      flex-direction: column;
+      align-items: center;
+      button:first-child {
+        margin-bottom: 20px;
+      }
+      button {
+        max-width: 80%;
       }
     }
   }

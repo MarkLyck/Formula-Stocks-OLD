@@ -35,3 +35,11 @@
     text-decoration: underline;
   }
 }
+
+@media (max-width: 650px) {
+  .our-products {
+    .icon-container {
+      display: none;
+    }
+  }
+}
