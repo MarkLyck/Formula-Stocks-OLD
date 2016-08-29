@@ -1960,6 +1960,14 @@ footer .copyright {
   footer .copyright p {
     color: #95989E; }
 
+.forgot-pw-modal div {
+  text-align: center; }
+  .forgot-pw-modal div i {
+    font-size: 2rem; }
+  .forgot-pw-modal div .filled-btn {
+    max-width: 100%;
+    width: 100%;
+    height: 90px; }
 .forgot-pw-modal h2 {
   text-align: center;
   margin: 0;
