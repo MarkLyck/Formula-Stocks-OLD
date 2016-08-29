@@ -685,6 +685,9 @@ header {
   #hero-chart h1, #hero-chart h2, #hero-chart h3, #hero-chart h4, #hero-chart p {
     color: #fff; }
 
+@media (max-width: 1105px) {
+  #hero .content {
+    margin-top: 50px; } }
 @media (max-width: 1050px) {
   nav .contact-us-link.nav-link {
     display: none; } }
@@ -699,6 +702,15 @@ header {
     background-image: url("assets/images/logo.svg");
     background-repeat: no-repeat;
     width: 34px; } }
+@media (max-width: 575px) {
+  #hero .content {
+    margin-top: 25px; }
+    #hero .content .bounce-down h2 {
+      display: none; }
+    #hero .content .CTA {
+      flex-direction: column; }
+      #hero .content .CTA button {
+        margin-bottom: 20px; } }
 .modal-container {
   position: fixed;
   top: 0;
@@ -1473,7 +1485,7 @@ input[type=submit] {
 
   .product-modal {
     flex-direction: column;
-    overflow-y: scroll;
+    overflow-y: auto;
     max-height: 80vh; }
     .product-modal .left, .product-modal .right {
       width: 100%; }
@@ -1703,6 +1715,28 @@ input[type=range]::-moz-range-thumb {
   -webkit-transition: all .2s ease-out;
   transition: all .2s ease-out; }
 
+@media (max-width: 900px) {
+  .cumulative-interest .left {
+    width: 40%;
+    margin-right: 0; }
+  .cumulative-interest .right {
+    width: 60%; } }
+@media (max-width: 900px) {
+  .cumulative-interest {
+    height: 750px; }
+    .cumulative-interest .content {
+      flex-direction: column; }
+      .cumulative-interest .content .left {
+        width: 100%;
+        margin: 40px 0; }
+        .cumulative-interest .content .left .slider {
+          margin-bottom: 20px; }
+      .cumulative-interest .content .right {
+        width: 100%;
+        margin-top: 40px;
+        margin-left: 0; }
+    .cumulative-interest .disclaimer {
+      margin-top: 150px; } }
 .newsletter {
   background: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)), url("assets/images/WallStreet.jpg");
   background-size: cover;
@@ -1715,7 +1749,9 @@ input[type=range]::-moz-range-thumb {
     color: #fff;
     font-weight: 400;
     font-size: 2rem;
-    margin-bottom: 25px; }
+    margin-bottom: 25px;
+    padding: 0 20px;
+    text-align: center; }
   .newsletter form {
     display: flex;
     max-width: 600px;
@@ -1749,7 +1785,8 @@ input[type=range]::-moz-range-thumb {
     margin: 0 auto;
     width: 80%; }
     .about-us .content .about-fs {
-      padding: 20px 0; }
+      padding: 20px 0;
+      line-height: 1.25; }
     .about-us .content .employees {
       margin: 0 auto; }
       .about-us .content .employees .top-section {
@@ -1768,7 +1805,9 @@ input[type=range]::-moz-range-thumb {
           width: calc(100% / 4 * 2);
           padding: 40px;
           border-top: 1px solid #95989E;
-          border-right: 1px solid #95989E; }
+          border-right: 1px solid #95989E;
+          height: 350px;
+          overflow: auto; }
           .about-us .content .employees .top-section .right p {
             line-height: 1.75;
             margin: 0; }
@@ -1795,6 +1834,24 @@ input[type=range]::-moz-range-thumb {
           .about-us .content .employees .button-wrapper .selected:hover h3, .about-us .content .employees .button-wrapper .selected:hover p {
             color: #fff; }
 
+@media (max-width: 985px) {
+  .about-us .content .employees .top-section .left {
+    width: calc(100% / 3); }
+  .about-us .content .employees .top-section .right {
+    width: calc(100% / 3 * 2); }
+  .about-us .content .employees .button-wrapper button {
+    width: calc(100% / 3); } }
+@media (max-width: 750px) {
+  .about-us .content .employees .top-section .left {
+    height: 300px; }
+  .about-us .content .employees .top-section .right {
+    height: 300px;
+    padding: 40px 20px; }
+    .about-us .content .employees .top-section .right p {
+      line-height: 1.25; } }
+@media (max-width: 600px) {
+  .about-us .content .employees {
+    display: none; } }
 .contact-us {
   padding: 50px 0;
   background: #068de7;
@@ -1855,6 +1912,27 @@ input[type=range]::-moz-range-thumb {
     .contact-us form input {
       width: 100%; }
 
+@media (max-width: 850px) {
+  .contact-us form .left {
+    margin-right: 25px; }
+  .contact-us form .right {
+    margin-left: 25px; } }
+@media (max-width: 700px) {
+  .contact-us form {
+    height: auto;
+    flex-direction: column; }
+    .contact-us form .left {
+      margin-right: 0px;
+      width: 100%;
+      justify-content: flex-start; }
+      .contact-us form .left input {
+        margin-bottom: 20px; }
+    .contact-us form .right {
+      margin-top: 20px;
+      margin-left: 0px;
+      width: 100%; }
+      .contact-us form .right textarea {
+        height: 200px; } }
 footer .disclaimer-container {
   background: #373e4c;
   padding: 40px;
