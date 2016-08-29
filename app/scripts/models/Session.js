@@ -171,7 +171,26 @@ const Session = Backbone.Model.extend({
     } else {
       return false
     }
-  }
+  },
+  browserType() {
+    if((!!window.opr && !!opr.addons) || !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0) {
+      return 'Opera'
+    } else if (typeof InstallTrigger !== 'undefined') {
+      return 'Firefox'
+    } else if (Object.prototype.toString.call(window.HTMLElement).indexOf('Constructor') > 0) {
+      return 'Safari'
+    } else if (/*@cc_on!@*/false || !!document.documentMode) {
+      return 'IE'
+    } else if (!!window.StyleMedia) {
+      return 'Edge'
+    } else if (!!window.chrome && !!window.chrome.webstore) {
+      return 'Chrome'
+    } else if (!!window.CSS) {
+      return 'Blink'
+    } else {
+      return 'Other'
+    }
+  },
 })
 
 export default Session

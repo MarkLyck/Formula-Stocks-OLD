@@ -80,8 +80,9 @@ const PortfolioGraph = React.createClass({
 	        cursorAlpha: 0.5
 	    },
       categoryField: "date",
+      dataDateFormat: "YYYY-MM-DD",
       categoryAxis: {
-        parseDates: true,
+        // parseDates: true,
         tickLength: 0,
       },
     };

@@ -191,12 +191,20 @@ const TheResults = React.createClass({
 	    },
 
       categoryField: "date",
-      dataDateFormat: "YYYY-MM-DD",
+      // dataDateFormat: "YYYY-M-D",
       categoryAxis: {
-        // parseDates: true,
+        parseDates: true,
+        equalSpacing: true,
       },
+
     };
 
+    if (store.session.browserType() === 'Safari') {
+      config.dataDateFormat = "YYYY-M-D",
+      config.categoryAxis = {
+        equalSpacing: true,
+      }
+    }
 
       let chart = (
         <div id="result-chart" className={this.state.chartClass}>
