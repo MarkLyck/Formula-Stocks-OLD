@@ -1,4 +1,5 @@
 import React from 'react'
+import $ from 'jquery'
 
 import PortfolioItemGraph from './PortfolioItemGraph'
 import store from '../../store'
@@ -19,25 +20,41 @@ const PortfolioItem = React.createClass({
     return {
       data: data,
       lastPrice: this.props.stock.latest_price,
-      promise: promise}
+      promise: promise,
+      chartSpan: 6,
+      }
   },
   componentDidMount() {
+    $(window).on('resize', this.checkScreenSize)
     if (!store.plans.get(this.props.plan).get('portfolio')[this.props.number].data) {
       this.state.promise.promise
       .then(r => {
         this.setState({data: r.data, lastPrice: r.data[0][4]})
       })
       .catch(e => {
-        // console.log(e);
+        console.error(e);
       })
     }
+    this.checkScreenSize()
   },
   componentWillUnmount() {
     // console.log(typeof(this.state.promise.cancel));
+    $(window).off('resize', this.checkScreenSize)
     if (typeof this.state.promise.cancel === 'function') {
       this.state.promise.cancel()
     }
 
+  },
+  checkScreenSize() {
+    if ($(window).width() > 850 && $(window).width() < 950 ) {
+      this.setState({chartSpan: 5})
+    } else if ($(window).width() > 650 && $(window).width() < 850 ) {
+      this.setState({chartSpan: 4})
+    } else if ($(window).width() > 525 && $(window).width() < 650 ) {
+      this.setState({chartSpan: 3})
+    } else if ($(window).width() > 400 && $(window).width() < 525 ) {
+      this.setState({chartSpan: 2})
+    }
   },
   render() {
     let stock = this.props.stock
@@ -85,7 +102,7 @@ const PortfolioItem = React.createClass({
             <td className="portfolio-td"><p className="class-checker">{cc.commafy(stock.days_owned)}</p></td>
           </tr>
           <tr>
-            <td colSpan="6">
+            <td colSpan={this.state.chartSpan}>
               <PortfolioItemGraph stock={this.props.stock} plan={this.props.plan} data={this.state.data}/>
             </td>
           </tr>

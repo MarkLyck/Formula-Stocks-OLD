@@ -193,7 +193,7 @@
     }
     tbody {
       tr {
-        td:last-child {
+        .portfolio-td:last-child {
           display: none;
         }
       }
@@ -212,7 +212,7 @@
     }
     tbody {
       tr {
-        td:last-child, td:nth-child(5) {
+        .portfolio-td:last-child, .portfolio-td:nth-child(5) {
           display: none;
         }
       }
@@ -231,7 +231,7 @@
     }
     tbody {
       tr {
-        td:last-child, td:nth-child(4), td:nth-child(5) {
+        .portfolio-td:last-child, .portfolio-td:nth-child(4), .portfolio-td:nth-child(5) {
           display: none;
         }
       }
@@ -250,7 +250,7 @@
     }
     tbody {
       tr {
-        td:last-child, td:nth-child(2), td:nth-child(4), td:nth-child(5) {
+        .portfolio-td:last-child, .portfolio-td:nth-child(2), .portfolio-td:nth-child(4), .portfolio-td:nth-child(5) {
           display: none;
         }
       }
@@ -269,7 +269,7 @@
     }
     tbody {
       tr {
-        td:last-child, td:nth-child(2), td:nth-child(3), td:nth-child(4), td:nth-child(5) {
+        .portfolio-td:last-child, .portfolio-td:nth-child(2), .portfolio-td:nth-child(3), .portfolio-td:nth-child(4), .portfolio-td:nth-child(5) {
           display: none;
         }
       }
