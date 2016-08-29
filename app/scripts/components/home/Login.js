@@ -41,6 +41,7 @@ const Login = React.createClass({
           store.settings.history.push('/')
         }, 300)
       } else if ((_.toArray(e.target.classList).indexOf('modal-container') !== -1
+      || _.toArray(e.target.classList).indexOf('close-modal') !== -1
       || _.toArray(e.target.classList).indexOf('form-modal-container') !== -1)
       && this.state.showForgotPasswordModal)  {
         this.setState({showForgotPasswordModal: false})
@@ -102,7 +103,7 @@ const Login = React.createClass({
 
       forgotPasswordModal = (
         <Modal modalStyles={modalStyles} closeModal={() => {}}>
-          <ForgotPassword/>
+          <ForgotPassword closeModal={this.closeModal}/>
         </Modal>
       )
     }
