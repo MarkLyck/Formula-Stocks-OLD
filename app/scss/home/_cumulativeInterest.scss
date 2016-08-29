@@ -125,3 +125,39 @@ input[type=range]::-moz-range-thumb {
   -webkit-transition: all .2s ease-out;
   transition: all .2s ease-out;
 }
+
+@media (max-width: 900px) {
+  .cumulative-interest {
+    .left {
+      width: 40%;
+      margin-right: 0;
+    }
+    .right {
+      width: 60%;
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  .cumulative-interest {
+    height: 750px;
+    .content {
+      flex-direction: column;
+      .left {
+        width: 100%;
+        margin: 40px 0;
+        .slider {
+          margin-bottom: 20px;
+        }
+      }
+      .right {
+        width: 100%;
+        margin-top: 40px;
+        margin-left: 0;
+      }
+    }
+    .disclaimer {
+      margin-top: 150px;
+    }
+  }
+}

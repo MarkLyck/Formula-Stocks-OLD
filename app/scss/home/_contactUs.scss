@@ -74,3 +74,41 @@
     }
   }
 }
+
+@media (max-width: 850px) {
+  .contact-us {
+    form {
+      .left {
+        margin-right: 25px;
+      }
+      .right {
+        margin-left: 25px;
+      }
+    }
+  }
+}
+
+@media (max-width: 700px) {
+  .contact-us {
+    form {
+      height: auto;
+      flex-direction: column;
+      .left {
+        margin-right: 0px;
+        width: 100%;
+        justify-content: flex-start;
+        input {
+          margin-bottom: 20px;
+        }
+      }
+      .right {
+        margin-top: 20px;
+        margin-left: 0px;
+        width: 100%;
+        textarea {
+          height: 200px;
+        }
+      }
+    }
+  }
+}

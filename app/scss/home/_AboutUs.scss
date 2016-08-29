@@ -8,6 +8,7 @@
     width: 80%;
     .about-fs {
       padding: 20px 0;
+      line-height: 1.25;
     }
     .employees {
       margin: 0 auto;
@@ -30,6 +31,8 @@
           padding: 40px;
           border-top: 1px solid $light-text-color;
           border-right: 1px solid $light-text-color;
+          height: 350px;
+          overflow: auto;
           p {
             line-height: 1.75;
             margin: 0;
@@ -106,5 +109,59 @@
     //     }
     //   }
     // }
+  }
+}
+
+
+@media (max-width: 985px) {
+  .about-us {
+    .content {
+      .employees {
+        .top-section {
+          .left {
+            width: calc(100% / 3);
+          }
+          .right {
+            width: calc(100% / 3 * 2);
+          }
+        }
+        .button-wrapper {
+          button {
+            width: calc(100% / 3);
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 750px) {
+  .about-us {
+    .content {
+      .employees {
+        .top-section {
+          .left {
+            height: 300px;
+          }
+          .right {
+            height: 300px;
+            padding: 40px 20px;
+            p {
+              line-height: 1.25;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .about-us {
+    .content {
+      .employees {
+        display: none;
+      }
+    }
   }
 }

@@ -133,6 +133,14 @@ header {
   }
 }
 
+@media (max-width: 1105px) {
+  #hero {
+    .content {
+      margin-top: 50px;
+    }
+  }
+}
+
 @media (max-width: 1050px) {
   nav {
     .contact-us-link.nav-link {
@@ -165,6 +173,26 @@ header {
         background-image: url('assets/images/logo.svg');
         background-repeat: no-repeat;
         width: 34px;
+        }
+      }
+    }
+  }
+}
+
+
+@media (max-width: 575px) {
+  #hero {
+    .content {
+      margin-top: 25px;
+      .bounce-down {
+        h2 {
+          display: none;
+        }
+      }
+      .CTA {
+        flex-direction: column;
+        button {
+          margin-bottom: 20px;
         }
       }
     }

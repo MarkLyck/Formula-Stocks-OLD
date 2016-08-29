@@ -134,7 +134,7 @@
   }
   .product-modal {
     flex-direction: column;
-    overflow-y: scroll;
+    overflow-y: auto;
     max-height: 80vh;
     .left,.right {
       width: 100%;
