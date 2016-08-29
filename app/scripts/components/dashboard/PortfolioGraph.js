@@ -80,12 +80,20 @@ const PortfolioGraph = React.createClass({
 	        cursorAlpha: 0.5
 	    },
       categoryField: "date",
-      dataDateFormat: "YYYY-MM-DD",
       categoryAxis: {
-        // parseDates: true,
+        parseDates: true,
+        equalSpacing: true,
         tickLength: 0,
       },
     };
+
+    if (store.session.browserType() === 'Safari') {
+      config.dataDateFormat = "YYYY-M-D",
+      config.categoryAxis = {
+        equalSpacing: true,
+        tickLength: 0,
+      }
+    }
 
 
 
