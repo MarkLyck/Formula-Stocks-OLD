@@ -51,9 +51,11 @@ const Articles = React.createClass({
     }
 
     let articles = this.state.articles.map((article, i) => {
+
       var rawData = article.content
       var contentState = convertFromRaw(rawData)
       let previewText = stateToHTML(contentState)
+
       let endIndex = previewText.indexOf('/')
       previewText = previewText.slice(3, endIndex - 1)
       previewText = previewText.slice(0, 150)

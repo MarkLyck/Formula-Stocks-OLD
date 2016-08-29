@@ -26,8 +26,26 @@ const Article = React.createClass({
       var rawData = this.state.article.content
       var contentState = convertFromRaw(rawData)
       let articleHtml = stateToHTML(contentState)
+      console.log(this.state.article);
+      let imageCounter = 0
+      while (imageCounter < this.state.article.images.length) {
+        let startPoint = articleHtml.indexOf('<figure>')
+        let endPoint = articleHtml.indexOf('</figure>')
+        articleHtml = articleHtml
+          .slice(0, startPoint)
+          .concat(`<img src="${this.state.article.images[imageCounter]._downloadURL}"/>`)
+          .concat(articleHtml.slice(endPoint + 9))
+        imageCounter++
+      }
+
+
+      console.log(articleHtml);
+
       article = ReactHtmlParser(articleHtml)
     }
+
+
+
     return (
       <div className="article">
         <h2 className="title">{this.state.article.title}</h2>

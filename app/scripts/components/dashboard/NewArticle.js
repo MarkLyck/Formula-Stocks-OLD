@@ -1,12 +1,14 @@
 import React from 'react'
 import $ from 'jquery'
-import RichTextEditor from './RichTextEditor'
+
+// import RichTextEditor from './RichTextEditor'
+import RichTextEditor from './RichTextEditor/containers/RichEditor'
 
 import Dropzone from 'react-dropzone'
 
 const NewArticle = React.createClass({
   getInitialState() {
-    return {image: ''}
+    return {image: '', submitArticle: false, title: ''}
   },
   onDrop(files) {
     this.setState({uploadedFile: files[0]});
@@ -21,6 +23,9 @@ const NewArticle = React.createClass({
     reader.onload = this.receivedImage;
     reader.readAsDataURL(file);
   },
+  submitArticle() {
+    this.setState({submitArticle: true, title: this.refs.title.value})
+  },
   render() {
     let imgContainerStyles;
 
@@ -30,18 +35,21 @@ const NewArticle = React.createClass({
         backgroundImage: `url("${this.state.image}")`
       }
     }
+
+    // <Dropzone className="dropzone" onDrop={this.onDrop} multiple={false} accept="image/*">
+    //   <div>
+    //     <h3>Drag and drop an image here</h3>
+    //     <i className="fa fa-picture-o" aria-hidden="true"></i>
+    //   </div>
+    // </Dropzone>
+
     return (
     <div className="new-article">
-
-      <Dropzone className="dropzone" onDrop={this.onDrop} multiple={false} accept="image/*">
-        <div>
-          <h3>Drag and drop an image here</h3>
-          <i className="fa fa-picture-o" aria-hidden="true"></i>
-        </div>
-      </Dropzone>
       <div className="image-preview" style={imgContainerStyles}></div>
       <div className="editor">
-        <RichTextEditor uploadedFile={this.state.uploadedFile}/>
+        <input type="text" className="article-title" placeholder="Title" ref="title"/>
+        <RichTextEditor uploadedFile={this.state.uploadedFile} submitArticle={this.state.submitArticle} title={this.state.title}/>
+        <button className="filled-btn submit-article" onClick={this.submitArticle}>Submit</button>
       </div>
     </div>
   )

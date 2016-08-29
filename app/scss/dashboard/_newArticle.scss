@@ -31,10 +31,12 @@
   .editor {
     background: #fff;
     width: calc(100% - 40px);
-    margin: 20px auto;
+
+    margin: 40px auto;
     font-family: 'Georgia', serif;
     font-size: 14px;
-    padding: 15px;
+    padding: 40px 60px;
+    position: relative;
     .article-title {
       width: 100%;
       border: none;

@@ -11,6 +11,7 @@ let admin = {
   fileID: '',
   articleID: '',
   model: {},
+  images: [],
   uploadImage(file, model) {
     return new Promise((resolve, reject) => {
       this.file = file
@@ -56,12 +57,16 @@ let admin = {
     console.log('in put to kinvey collection');
     console.log('model: ', model);
     console.log('fileID: ', this.fileID);
+
     let newModel = model.toJSON()
     this.articleID = newModel._id
-    newModel.image = {
+    console.log('newModel: ', newModel);
+
+    newModel.images.push({
       _type: 'KinveyFile',
       _id: this.fileID
-    }
+    })
+
     return $.ajax({
       url: `https://baas.kinvey.com/appdata/kid_rJRC6m9F/articles/${newModel._id}`,
       type: 'PUT',

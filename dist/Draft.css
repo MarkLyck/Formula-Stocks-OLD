@@ -1,0 +1,480 @@
+/**
+ * @providesModule DraftEditor
+ * @permanent
+ */
+
+/**
+ * We inherit the height of the container by default
+ */
+
+.DraftEditor-root,
+.DraftEditor-editorContainer,
+.public-DraftEditor-content {
+  height: inherit;
+  text-align: initial;
+}
+
+.DraftEditor-root {
+  position: relative;
+}
+
+/**
+ * Zero-opacity background used to allow focus in IE. Otherwise, clicks
+ * fall through to the placeholder.
+ */
+
+.DraftEditor-editorContainer {
+  background-color: rgba(255, 255, 255, 0);
+  /* Repair mysterious missing Safari cursor */
+  border-left: 0.1px solid transparent;
+  position: relative;
+  z-index: 1;
+}
+
+.public-DraftEditor-content {
+  outline: none;
+  white-space: pre-wrap;
+}
+
+.public-DraftEditor-block {
+  position: relative;
+}
+
+.DraftEditor-alignLeft .public-DraftStyleDefault-block {
+  text-align: left;
+}
+
+.DraftEditor-alignLeft .public-DraftEditorPlaceholder-root {
+  left: 0;
+  text-align: left;
+}
+
+.DraftEditor-alignCenter .public-DraftStyleDefault-block {
+  text-align: center;
+}
+
+.DraftEditor-alignCenter .public-DraftEditorPlaceholder-root {
+  margin: 0 auto;
+  text-align: center;
+  width: 100%;
+}
+
+.DraftEditor-alignRight .public-DraftStyleDefault-block {
+  text-align: right;
+}
+
+.DraftEditor-alignRight .public-DraftEditorPlaceholder-root {
+  right: 0;
+  text-align: right;
+}
+/**
+ * @providesModule DraftEditorPlaceholder
+ */
+
+.public-DraftEditorPlaceholder-root {
+  color: #9197a3;
+  position: absolute;
+  z-index: 0;
+}
+
+.public-DraftEditorPlaceholder-hasFocus {
+  color: #bdc1c9;
+}
+
+.DraftEditorPlaceholder-hidden {
+  display: none;
+}
+/**
+ * @providesModule DraftStyleDefault
+ */
+
+.public-DraftStyleDefault-block {
+  position: relative;
+  white-space: pre-wrap;
+}
+
+/* @noflip */
+
+.public-DraftStyleDefault-ltr {
+  direction: ltr;
+  text-align: left;
+}
+
+/* @noflip */
+
+.public-DraftStyleDefault-rtl {
+  direction: rtl;
+  text-align: right;
+}
+
+/**
+ * These rules provide appropriate text direction for counter pseudo-elements.
+ */
+
+/* @noflip */
+
+.public-DraftStyleDefault-listLTR {
+  direction: ltr;
+}
+
+/* @noflip */
+
+.public-DraftStyleDefault-listRTL {
+  direction: rtl;
+}
+
+/**
+ * Default spacing for list container elements. Override with CSS as needed.
+ */
+
+.public-DraftStyleDefault-ul,
+.public-DraftStyleDefault-ol {
+  margin: 16px 0;
+  padding: 0;
+}
+
+/**
+ * Default counters and styles are provided for five levels of nesting.
+ * If you require nesting beyond that level, you should use your own CSS
+ * classes to do so. If you care about handling RTL languages, the rules you
+ * create should look a lot like these.
+ */
+
+/* @noflip */
+
+.public-DraftStyleDefault-depth0.public-DraftStyleDefault-listLTR {
+  margin-left: 1.5em;
+}
+
+/* @noflip */
+
+.public-DraftStyleDefault-depth0.public-DraftStyleDefault-listRTL {
+  margin-right: 1.5em;
+}
+
+/* @noflip */
+
+.public-DraftStyleDefault-depth1.public-DraftStyleDefault-listLTR {
+  margin-left: 3em;
+}
+
+/* @noflip */
+
+.public-DraftStyleDefault-depth1.public-DraftStyleDefault-listRTL {
+  margin-right: 3em;
+}
+
+/* @noflip */
+
+.public-DraftStyleDefault-depth2.public-DraftStyleDefault-listLTR {
+  margin-left: 4.5em;
+}
+
+/* @noflip */
+
+.public-DraftStyleDefault-depth2.public-DraftStyleDefault-listRTL {
+  margin-right: 4.5em;
+}
+
+/* @noflip */
+
+.public-DraftStyleDefault-depth3.public-DraftStyleDefault-listLTR {
+  margin-left: 6em;
+}
+
+/* @noflip */
+
+.public-DraftStyleDefault-depth3.public-DraftStyleDefault-listRTL {
+  margin-right: 6em;
+}
+
+/* @noflip */
+
+.public-DraftStyleDefault-depth4.public-DraftStyleDefault-listLTR {
+  margin-left: 7.5em;
+}
+
+/* @noflip */
+
+.public-DraftStyleDefault-depth4.public-DraftStyleDefault-listRTL {
+  margin-right: 7.5em;
+}
+
+/**
+ * Only use `square` list-style after the first two levels.
+ */
+
+.public-DraftStyleDefault-unorderedListItem {
+  list-style-type: square;
+  position: relative;
+}
+
+.public-DraftStyleDefault-unorderedListItem.public-DraftStyleDefault-depth0 {
+  list-style-type: disc;
+}
+
+.public-DraftStyleDefault-unorderedListItem.public-DraftStyleDefault-depth1 {
+  list-style-type: circle;
+}
+
+/**
+ * Ordered list item counters are managed with CSS, since all list nesting is
+ * purely visual.
+ */
+
+.public-DraftStyleDefault-orderedListItem {
+  list-style-type: none;
+  position: relative;
+}
+
+/* @noflip */
+
+.public-DraftStyleDefault-orderedListItem.public-DraftStyleDefault-listLTR:before {
+  left: -36px;
+  position: absolute;
+  text-align: right;
+  width: 30px;
+}
+
+/* @noflip */
+
+.public-DraftStyleDefault-orderedListItem.public-DraftStyleDefault-listRTL:before {
+  position: absolute;
+  right: -36px;
+  text-align: left;
+  width: 30px;
+}
+
+/**
+ * Counters are reset in JavaScript. If you need different counter styles,
+ * override these rules. If you need more nesting, create your own rules to
+ * do so.
+ */
+
+.public-DraftStyleDefault-orderedListItem:before {
+  content: counter(ol0) ". ";
+  counter-increment: ol0;
+}
+
+.public-DraftStyleDefault-orderedListItem.public-DraftStyleDefault-depth1:before {
+  content: counter(ol1) ". ";
+  counter-increment: ol1;
+}
+
+.public-DraftStyleDefault-orderedListItem.public-DraftStyleDefault-depth2:before {
+  content: counter(ol2) ". ";
+  counter-increment: ol2;
+}
+
+.public-DraftStyleDefault-orderedListItem.public-DraftStyleDefault-depth3:before {
+  content: counter(ol3) ". ";
+  counter-increment: ol3;
+}
+
+.public-DraftStyleDefault-orderedListItem.public-DraftStyleDefault-depth4:before {
+  content: counter(ol4) ". ";
+  counter-increment: ol4;
+}
+
+.public-DraftStyleDefault-depth0.public-DraftStyleDefault-reset {
+  counter-reset: ol0;
+}
+
+.public-DraftStyleDefault-depth1.public-DraftStyleDefault-reset {
+  counter-reset: ol1;
+}
+
+.public-DraftStyleDefault-depth2.public-DraftStyleDefault-reset {
+  counter-reset: ol2;
+}
+
+.public-DraftStyleDefault-depth3.public-DraftStyleDefault-reset {
+  counter-reset: ol3;
+}
+
+.public-DraftStyleDefault-depth4.public-DraftStyleDefault-reset {
+  counter-reset: ol4;
+}
+
+
+
+.a-bold:before {
+  font-family: FontAwesome;
+  content: "\f032";
+  font-size: 1rem;
+  font-style: normal;
+}
+.a-italic:before {
+  font-family: FontAwesome;
+  content: "\f033";
+  font-size: 1rem;
+  font-style: normal;
+}
+.a-unordered-list:before {
+  font-family: FontAwesome;
+    content: "\f0ca";
+    font-size: 1rem;
+    font-style: normal;
+}
+.a-ordered-list:before {
+  font-family: FontAwesome;
+    content: "\f0cb";
+    font-size: 1rem;
+    font-style: normal;
+}
+.a-quote:before {
+  font-family: FontAwesome;
+    content: "\f10d";
+    font-size: 1rem;
+    font-style: normal;
+}
+.a-photo:before {
+  font-family: FontAwesome;
+    content: "\f03e";
+    font-size: 1rem;
+    font-style: normal;
+}
+.a-menu:before {
+  font-family: FontAwesome;
+    content: "\f0c9";
+    font-size: 1rem;
+    font-style: normal;
+}
+.editor {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 960px;
+  margin: 50px auto;
+  padding: 25px;
+  font-size: 18px;
+}
+.editor .paragraph {
+  margin-bottom: 0.5rem;
+}
+.editor blockquote {
+  margin-left: 0px;
+  padding-left: 21px;
+  border-left: 3px solid #444;
+}
+.editor img {
+  max-width: 100%;
+}
+.toolbar {
+  position: absolute;
+  z-index: 9999;
+  height: 35px;
+  cursor: default;
+}
+.toolbar.side {
+  top: -32px;
+  left: -48px;
+}
+.toolbar.image {
+  top: 7px;
+  left: 50%;
+  height: 40px;
+  margin-left: -50px;
+}
+.toolbar.image .toolbar-icons .toolbar-icon {
+  width: 40px;
+  max-width: 40px;
+}
+.toolbar.image .toolbar-icons .toolbar-icon i {
+  font-size: 2.3rem;
+}
+.toolbar .toolbar-icons {
+  position: absolute;
+  z-index: 1;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  list-style: none;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(to bottom, #f5f5f5 0%, #ededed 100%);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  box-shadow: 0 0 25px -4px rgba(0, 0, 0, 0.25);
+}
+.toolbar .toolbar-icons .toolbar-icon {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 100%;
+  width: 35px;
+  max-width: 35px;
+  color: #444;
+  font-family: 'Roboto';
+  font-size: 1.4rem;
+  border-bottom: 3px solid #444;
+  transition: all 0.15s linear;
+  cursor: pointer;
+}
+.toolbar .toolbar-icons .toolbar-icon:first-child {
+  border-bottom-left-radius: 3px;
+}
+.toolbar .toolbar-icons .toolbar-icon:last-child {
+  border-bottom-right-radius: 3px;
+}
+.toolbar .toolbar-icons .toolbar-icon:hover,
+.toolbar .toolbar-icons .toolbar-icon.active {
+  color: #c95339;
+  border-color: #c95339;
+}
+.toolbar .toolbar-icons .toolbar-icon:hover i,
+.toolbar .toolbar-icons .toolbar-icon.active i {
+  color: #c95339;
+}
+.toolbar .toolbar-icons .toolbar-icon i {
+  margin: 0;
+  padding: 0;
+  color: #444;
+  font-size: 1.8rem;
+}
+.toolbar .toolbar-icons:after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  margin-left: -5px;
+  border-top: 5px solid #444;
+  border-right: 5px solid transparent;
+  border-left: 5px solid transparent;
+}
+.side-toolbar {
+  position: absolute;
+  /*top: 25px;*/
+  top: 33px;
+  right: 0;
+  bottom: 0;
+  /*left: -50px;*/
+  left: 0px;
+  width: 70px;
+}
+.side-toolbar i {
+  margin-right: 10px;
+  color: rgba(0, 0, 0, 0.2);
+  font-size: 20px;
+  cursor: pointer;
+  vertical-align: middle;
+}
+.side-toolbar i.a-menu {
+  font-size: 22px;
+}
