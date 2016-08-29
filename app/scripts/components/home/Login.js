@@ -4,10 +4,15 @@ import _ from 'underscore'
 
 import store from '../../store'
 import Modal from '../Modal'
+import ForgotPassword from './ForgotPassword'
 
 const Login = React.createClass({
   getInitialState: function() {
-    return {formClasses: 'form-modal login form-bounce-down', error: ''}
+    return {
+      formClasses: 'form-modal login form-bounce-down',
+      error: '',
+      showForgotPasswordModal: false
+    }
   },
   login: function(e) {
     e.preventDefault()
@@ -27,14 +32,23 @@ const Login = React.createClass({
   },
   closeModal(e) {
     if (e) {
-      if (_.toArray(e.target.classList).indexOf('modal-container') !== -1 || _.toArray(e.target.classList).indexOf('form-modal-container') !== -1 ) {
+      if ((_.toArray(e.target.classList).indexOf('modal-container') !== -1
+      || _.toArray(e.target.classList).indexOf('form-modal-container') !== -1)
+      && !this.state.showForgotPasswordModal) {
         this.setState({slideOut: true, formClasses: 'form-modal login slide-out'})
 
         window.setTimeout(() => {
           store.settings.history.push('/')
         }, 300)
+      } else if ((_.toArray(e.target.classList).indexOf('modal-container') !== -1
+      || _.toArray(e.target.classList).indexOf('form-modal-container') !== -1)
+      && this.state.showForgotPasswordModal)  {
+        this.setState({showForgotPasswordModal: false})
       }
     }
+  },
+  showForgotPasswordModal() {
+    this.setState({showForgotPasswordModal: true})
   },
   render: function() {
     let errorMsg
@@ -79,6 +93,20 @@ const Login = React.createClass({
       }
     }
 
+    let forgotPasswordModal;
+    if (this.state.showForgotPasswordModal) {
+      let modalStyles = {
+        maxWidth: '400px',
+
+      }
+
+      forgotPasswordModal = (
+        <Modal modalStyles={modalStyles} closeModal={() => {}}>
+          <ForgotPassword/>
+        </Modal>
+      )
+    }
+
 
     return (
       <div onClick={this.closeModal} className="modal-container fade-in" style={containerStyles}>
@@ -98,11 +126,14 @@ const Login = React.createClass({
               <div className={passwordClasses}>
                 <input type="password" placeholder="Password" ref="password"/>
               </div>
+
               <input type="submit" id="submit-btn" value="Login"/>
+              <a className="white forgot-pw blue-color" onClick={this.showForgotPasswordModal}>Forgot your password?</a>
             </form>
 
           </div>
         </Transition>
+        {forgotPasswordModal}
       </div>
     )
   }

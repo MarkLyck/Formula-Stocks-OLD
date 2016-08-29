@@ -38,12 +38,10 @@ const PortfolioItem = React.createClass({
     this.checkScreenSize()
   },
   componentWillUnmount() {
-    // console.log(typeof(this.state.promise.cancel));
     $(window).off('resize', this.checkScreenSize)
     if (typeof this.state.promise.cancel === 'function') {
       this.state.promise.cancel()
     }
-
   },
   checkScreenSize() {
     if ($(window).width() > 850 && $(window).width() < 950 ) {

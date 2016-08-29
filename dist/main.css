@@ -805,6 +805,13 @@ header {
     left: 10px;
     transform: translateY(-58%);
     z-index: 2; }
+  .form-modal .forgot-pw {
+    margin: 0;
+    padding: 15px;
+    font-size: 0.9rem;
+    text-align: center; }
+    .form-modal .forgot-pw:hover {
+      text-decoration: underline; }
   .form-modal .error::before {
     color: #da1354; }
   .form-modal input[type="submit"] {
@@ -1952,6 +1959,26 @@ footer .copyright {
   text-align: center; }
   footer .copyright p {
     color: #95989E; }
+
+.forgot-pw-modal h2 {
+  text-align: center;
+  margin: 0;
+  padding: 20px;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+.forgot-pw-modal p {
+  padding: 20px; }
+.forgot-pw-modal input[type="email"] {
+  width: 100%;
+  height: 90px;
+  padding: 20px;
+  border: none;
+  border-top: 1px solid #e6e6e6;
+  background: #f2f2f2; }
+.forgot-pw-modal input[type="submit"] {
+  height: 90px; }
 
 .payment-form {
   background: #fff;

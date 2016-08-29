@@ -71,6 +71,15 @@
       z-index: 2;
     }
   }
+  .forgot-pw {
+    margin: 0;
+    padding: 15px;
+    font-size: 0.9rem;
+    text-align: center;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
   .error::before {
     color: $warning-color;
   }

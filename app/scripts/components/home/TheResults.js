@@ -79,13 +79,11 @@ const TheResults = React.createClass({
   		return price;
   	}
 
-    // console.log(this.state.logarithmic);
     let chartData = []
     if (this.state.animate) {
       chartData = fixedData;
     }
 
-    console.log(chartData);
     let config = {
       type: "serial",
       theme: "dark",

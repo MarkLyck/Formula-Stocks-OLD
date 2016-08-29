@@ -41,7 +41,7 @@ const Visit = Backbone.Model.extend({
             console.error('failed putting visit: ', e)
           }
         })
-        console.log('already visited');
+        // console.log('already visited');
       }
 
     })
