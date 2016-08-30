@@ -30,7 +30,6 @@ const SideBar = React.createClass({
     return {plan: this.props.plan, selected: selected, dropDown: dropDown}
   },
   toggleDropdown(dropdown, e) {
-    console.log(dropdown);
     if (_.toArray(e.target.classList).indexOf('dropdown-link') === -1) {
       if (!this.state.dropDown || dropdown !== this.state.selected) {
         this.setState({selected: dropdown, plan: this.props.plan, dropDown: true})
@@ -66,7 +65,6 @@ const SideBar = React.createClass({
     store.session.logout()
   },
   render() {
-    console.log('dropdown: ', this.state.dropDown);
     let suggestionsClass = 'suggestions side-bar-link'
     let portfoliosClass = 'portfolios side-bar-link'
     let myAccountClass = 'myaccount side-bar-link'
