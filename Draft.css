@@ -340,6 +340,12 @@
     font-size: 1rem;
     font-style: normal;
 }
+.a-photo:hover {
+  color: #27A5F9;
+}
+.a-menu:hover {
+  color: #27A5F9;
+}
 .editor {
   position: absolute;
   top: 0;
@@ -377,6 +383,9 @@
   left: 50%;
   height: 40px;
   margin-left: -50px;
+}
+.toolbar-icons {
+  transform: translateX(-6px);
 }
 .toolbar.image .toolbar-icons .toolbar-icon {
   width: 40px;
@@ -435,14 +444,15 @@
 }
 .toolbar .toolbar-icons .toolbar-icon:hover,
 .toolbar .toolbar-icons .toolbar-icon.active {
-  color: #c95339;
-  border-color: #c95339;
+  color: #27A5F9;
+  border-color: #27A5F9;
 }
 .toolbar .toolbar-icons .toolbar-icon:hover i,
 .toolbar .toolbar-icons .toolbar-icon.active i {
-  color: #c95339;
+  color: #27A5F9;
 }
 .toolbar .toolbar-icons .toolbar-icon i {
+  display: flex;
   margin: 0;
   padding: 0;
   color: #444;
