@@ -957,6 +957,10 @@ input[type=submit] {
   .page-not-found img {
     width: 50%;
     margin-bottom: 20px; }
+  .page-not-found a {
+    display: flex;
+    align-items: center;
+    justify-content: center; }
 
 #what-is-it {
   display: flex;
