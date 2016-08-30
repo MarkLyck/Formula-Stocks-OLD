@@ -11,7 +11,7 @@ let store = {
   session: new Session(),
   settings: {
     anomToken: '8c66d956-de91-4cf8-83ab-fe8545866571.h9Ps7jZMlx+3WjjInLAfr9+MGz1aE2GN6OlUly6F6z4=',
-    history: hashHistory,
+    history: browserHistory,
     quandlKey: 'zP2W-4snDLyygfZVpw2v',
     appKey: 'kid_rJRC6m9F',
     appSecret: 'e6688b599fca47e1bf150d99a786132d',
