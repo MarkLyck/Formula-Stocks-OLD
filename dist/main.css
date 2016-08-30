@@ -3392,6 +3392,9 @@ button {
   button:hover {
     cursor: pointer; }
 
+i {
+  font-style: normal; }
+
 .filled-btn {
   background: #12D99E;
   color: #fff;
