@@ -443,9 +443,6 @@ textarea {
 .bold {
   font-weight: 700; }
 
-.semibold {
-  font-weight: 600; }
-
 .font.dark {
   color: #49494A; }
 
@@ -3393,7 +3390,7 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
       padding: 10px 20px; }
 
 body {
-  font-family: 'proxima-nova', 'Lato', sans-serif; }
+  font-family: 'proxima-nova', sans-serif; }
 
 * {
   box-sizing: border-box; }
