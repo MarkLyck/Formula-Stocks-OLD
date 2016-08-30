@@ -3,6 +3,9 @@ import Newsletter from '../../models/Newsletter'
 import store from '../../store'
 
 const NewsLetter = React.createClass({
+  getInitialState() {
+    return {sent: false}
+  },
   signUpForNewsletter(e) {
     e.preventDefault()
     let email = this.refs.email.value
@@ -11,6 +14,7 @@ const NewsLetter = React.createClass({
         email: email
       })
       newsletter.save()
+      this.refs.email.value = ''
     } else {
       console.log('### Invalid email')
     }

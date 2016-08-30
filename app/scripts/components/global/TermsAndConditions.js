@@ -4,7 +4,7 @@ import React from 'react'
 const TermsAndConditions = React.createClass({
   render() {
     let styles = {
-      
+
     }
     return (
       <div className="terms-and-conditions">
@@ -59,25 +59,36 @@ const TermsAndConditions = React.createClass({
           <p>
           A) BASIC or PREMIUM plans:<br/><br/>
 
-          By purchasing a BASIC or PREMIUM plan you acquire the right to use the service for your personal
-          investment account(s) held in your name. You may not resell, share, or otherwise provide the
-          information obtained through our service to any other person, whether personally or by any
-          other medium. Sharing of personal access codes to the website is expressly prohibited,
+          By purchasing a BASIC or PREMIUM plan you acquire the right to use the service for your
+          personal investment account(s) held in your name. You may not resell, share,
+          or otherwise provide the information obtained through our service to any other person,
+          whether personally or by any other medium. Sharing of personal access codes to the website,
+          as well as copyrighted data from the website, is expressly prohibited, and transgressions
+          will be considered a criminal offense.<br/><br/>
+
+          B) BUSINESS plan:<br/><br/>
+
+
+          The BUSINESS license is personal, and allows one person access to use FORMULA STOCKS,
+          meaning several users within one company requires multiple licenses. BUSINESS cannot be
+          accessed by institutional capital, advisors advising multiple clients, by funds,
+          or any collective investment vehicles. Please refer to FUND instead. FORMULA STOCKS
+          reserves the right to allocate only a select number of slots to BUSINESS plan subscribers,
+          and the right to accept subscribers to this particular plan only on a clearly subjective
+          basis. Sharing of personal access codes to the website is expressly prohibited,
           and transgressions will be considered a criminal offense.<br/><br/>
 
-          B) BUSINESS or FUND plan:<br/><br/>
+          B) FUND plan:<br/><br/>
 
-          The BUSINESS license is personal, and allows one investment manager access to use
-          FORMULA STOCKS, meaning several users within one company requires multiple licenses.
-          Usage of FORMULA STOCKS business plans by an investment advisor advising multiple clients,
-          is not possible using the standard license outlined here, but please contact a FORMULA STOCKS
-          representative for a customized solution tailored to your needs. The flat fee structure has
-          no limits as regards AUM under the provision that it is only used within one legal entity,
-          by one investment manager. The term Investment Manager applies in this context to any person
-          making decisions about investments. FORMULA STOCKS reserves the right to allocate only a select
-          number of slots to “business” plan subscribers, and the right to accept subscribers to this
-          particular plan only on a subjective basis. Sharing of personal access codes to the website is
-          expressly prohibited, and transgressions will be considered a criminal offense.
+
+          The FUND license is a company-specific and company-wide license.
+          FUND allows for multiple users within one company. The license is intended for commercial
+          use. Usage of FORMULA STOCKS plans by an investment advisor advising multiple clients,
+          is only possible through the FUND plan. The FUND flat fee structure has no limits as regards
+          AUM under the provision that it is only used within one legal entity. It is possible to use
+          FUND for a distributed commercial product, such as a fund, ETF, other investment vehicle or
+          other forms of institutional capital. Please contact a Formula Stocks representative for further
+          details.
           </p>
 
 

@@ -24,14 +24,14 @@
           border-left: 1px solid $light-text-color;
           border-right: 1px solid $light-text-color;
 
-          height: 350px;
+          height: 450px;
         }
         .right {
           width: calc(100% / 4 * 2);
           padding: 40px;
           border-top: 1px solid $light-text-color;
           border-right: 1px solid $light-text-color;
-          height: 350px;
+          height: 450px;
           overflow: auto;
           p {
             line-height: 1.75;

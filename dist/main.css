@@ -1822,13 +1822,13 @@ input[type=range]::-moz-range-thumb {
           border-top: 1px solid #95989E;
           border-left: 1px solid #95989E;
           border-right: 1px solid #95989E;
-          height: 350px; }
+          height: 450px; }
         .about-us .content .employees .top-section .right {
           width: calc(100% / 4 * 2);
           padding: 40px;
           border-top: 1px solid #95989E;
           border-right: 1px solid #95989E;
-          height: 350px;
+          height: 450px;
           overflow: auto; }
           .about-us .content .employees .top-section .right p {
             line-height: 1.75;
