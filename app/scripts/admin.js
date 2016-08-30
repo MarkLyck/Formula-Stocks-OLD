@@ -17,31 +17,16 @@ let admin = {
       let fileID = ''
       let KinveyFile;
       this.postToKinveyFile(file)
-        // .then(this.putToGoogle.bind(this, file))
         .then((KinveyFile) => {
           fileID = KinveyFile._id
-          // console.log('fileID before putTOGoogle: ', fileID);
-          // return new Promise((resolve, reject) => {
-            this.putToGoogle(file, KinveyFile)
-              .then(this.putToKinveyCollection.bind(this, model, fileID))
-              .then(this.getFromKinveyCollection.bind(this))
-              .then((article) => {
-                console.log('ARTICLE: ', article);
-                resolve(article)
-              })
-          // })
+          this.putToGoogle(file, KinveyFile)
+            .then(this.putToKinveyCollection.bind(this, model, fileID))
+            .then(this.getFromKinveyCollection.bind(this))
+            .then((article) => {
+              console.log('ARTICLE: ', article);
+              resolve(article)
+            })
         })
-        // .then(() => {
-        //
-        // })
-        // .then((article) => {
-        //   console.log('article before getFromK: ', article);
-        //   this.getFromKinveyCollection(article)
-        // })
-        // .then((article) => {
-        //   console.log('ARTICLE: ', article);
-        //   resolve(article)
-        // })
     })
   },
   postToKinveyFile(file) {
@@ -60,8 +45,6 @@ let admin = {
     })
   },
   putToGoogle(file, KinveyFile) {
-    // this.fileID = kinveyFile._id;
-    // console.log('kinveyFile in putToGoogle: ', KinveyFile);
     return $.ajax({
       url: KinveyFile._uploadURL,
       type: 'PUT',
@@ -73,15 +56,8 @@ let admin = {
     })
   },
   putToKinveyCollection(model, fileID) {
-    // console.log('in put to kinvey collection');
-    // console.log('model: ', model);
-    // console.log('fileID: ', fileID);
-    // console.log('google: ', google);
-    // console.log('args: ', arguments);
-
     let newModel = model.toJSON()
     this.articleID = newModel._id
-    console.log('newModel: ', newModel);
 
     newModel.images.push({
       _type: 'KinveyFile',
