@@ -1217,8 +1217,7 @@ input[type=submit] {
           max-width: 100%; }
       .informational-advantage .content .right {
         margin: 50px auto 0 auto;
-        height: 250px;
-        width: auto; }
+        height: 250px; }
         .informational-advantage .content .right .bar-chart {
           height: 100%; } }
 .one-dollar .left .plans button {
