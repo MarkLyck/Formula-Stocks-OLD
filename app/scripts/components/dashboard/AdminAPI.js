@@ -63,7 +63,7 @@ const AdminAPI = React.createClass({
           <Dropzone className="dropzone" onDrop={this.onDrop}>
             <div>
               <h3>Drag and drop JSON files here</h3>
-              <img src="assets/icons/json_icon.svg"/>
+              <img src="/assets/icons/json_icon.svg"/>
             </div>
           </Dropzone>
         </div>
