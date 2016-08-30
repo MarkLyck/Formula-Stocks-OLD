@@ -655,7 +655,7 @@ header {
         font-size: 1.25rem; }
   #hero::before {
     content: "";
-    background: url("assets/images/hero.jpg");
+    background: url("/assets/images/hero.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
@@ -668,7 +668,7 @@ header {
     z-index: 1; }
 
 #hero-chart {
-  background: url("assets/images/hero-chart.svg");
+  background: url("/assets/images/hero-chart.svg");
   background-repeat: no-repeat;
   background-size: cover;
   bottom: 0;
@@ -694,8 +694,9 @@ header {
     display: none; } }
 @media (max-width: 600px) {
   header nav .left #logo {
-    background-image: url("assets/images/logo.svg");
+    background-image: url("/assets/images/logo.svg");
     background-repeat: no-repeat;
+    background-size: contain;
     width: 34px; } }
 @media (max-width: 575px) {
   #hero .content {
