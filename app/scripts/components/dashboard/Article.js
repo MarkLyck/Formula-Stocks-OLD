@@ -37,6 +37,10 @@ const Article = React.createClass({
           .concat(articleHtml.slice(endPoint + 9))
         imageCounter++
       }
+      while (articleHtml.indexOf('&nbsp;') > -1) {
+        articleHtml = articleHtml.replace('&nbsp;', '<br/><br/>')
+      }
+
 
 
       console.log(articleHtml);

@@ -56,14 +56,20 @@ const Articles = React.createClass({
       var contentState = convertFromRaw(rawData)
       let previewText = stateToHTML(contentState)
 
-      let endIndex = previewText.indexOf('/')
+
+      let endIndex = previewText.indexOf('/p')
       previewText = previewText.slice(3, endIndex - 1)
       previewText = previewText.slice(0, 150)
+      while (previewText.indexOf('&nbsp;') > -1) {
+        previewText = previewText.replace('&nbsp;', '</br></br>')
+      }
+      previewText = ReactHtmlParser(previewText)
+
 
       return (
         <li key={i} className="article-preview" onClick={this.gotoArticle.bind(null, article._id)}>
           <h3>{article.title}</h3>
-          <p>{previewText}...</p>
+          {previewText}...
         </li>
       )
     })

@@ -52,7 +52,7 @@ class SideToolbar extends Component {
         <i className="a-menu"
            onMouseEnter={() => this.setState({ isExpanded: true })}
            onMouseDown={(e) => e.preventDefault()}
-           onMouseLeave={() => this.setState({ isExpanded: true })}
+           onMouseLeave={() => this.setState({ isExpanded: false })}
         >
           {isExpanded
            ? <SideToolbarExtras editorState={editorState} onToggle={onToggle} />

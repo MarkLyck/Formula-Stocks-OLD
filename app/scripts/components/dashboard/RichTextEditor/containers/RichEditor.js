@@ -145,7 +145,7 @@ class RichEditor extends Component {
 
     console.log('content to save: ', content);
 
-
+    let imagesUploaded = 0;
 
     store.articles.data.create({
       content: content,
@@ -158,11 +158,19 @@ class RichEditor extends Component {
             if (entity.data.src) {
               admin.uploadImage(this.state.images[i], response)
                 .then((article) => {
-                  console.log('UPLOADED IMAGES: ', article);
+                  console.log('Uploaded Image');
+                  imagesUploaded++
+                  console.log(article);
+                  if (imagesUploaded => this.state.images.length) {
+                    store.settings.history.push(`/dashboard/articles/${article._id}`)
+                  }
                 })
             }
           }
         })
+        if (this.state.images.length === 0) {
+          store.settings.history.push(`/dashboard/articles/${response.get('_id')}`)
+        }
       }
     })
   }
