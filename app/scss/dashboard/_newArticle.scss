@@ -32,15 +32,17 @@
     background: #fff;
     width: calc(100% - 40px);
 
-    margin: 40px auto;
+    margin: 20px auto;
     font-family: 'Georgia', serif;
     font-size: 14px;
-    padding: 40px 60px;
+    // padding: 40px 60px;
+    padding: 20px 40px;
     position: relative;
     .article-title {
       width: 100%;
       border: none;
-      padding: 20px 20px 20px 10px;
+      padding: 20px 20px 20px 60px;
+      border-bottom: 1px solid $db-border-color;
       font-size: 2rem;
       color: $text-color;
     }
