@@ -9,10 +9,11 @@ const BrowserPieChart = React.createClass({
         "value": this.props.value,
       }, {
         "title": "",
-        "value": this.props.max,
+        "value": this.props.max - this.props.value,
       } ],
       "titleField": "title",
       "valueField": "value",
+      "balloonText": `[[value]]`,
       "radius": "40%",
       "innerRadius": "70%",
       labelsEnabled: false,

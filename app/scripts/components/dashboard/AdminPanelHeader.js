@@ -26,8 +26,7 @@ const AdminPanelHeader = React.createClass({
     this.setState({newsletterSubs: admin.newsletterSubs.toJSON()})
   },
   render() {
-    console.log(this.state.newsletterSubs);
-    let subscribers = this.state.visitors.filter((visitor) => {
+     let subscribers = this.state.visitors.filter((visitor) => {
       if (visitor.type > 0 && visitor.type < 5) {
         return true
       } else {
