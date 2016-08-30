@@ -15,6 +15,7 @@ const Visit = Backbone.Model.extend({
     $.ajax('https://freegeoip.net/json/')
     .then((r) => {
       this.set('location', r)
+      this.set('browser', store.session.browserType())
       this.set('type', type || -1)
       store.session.set('location', r)
       if (!localStorage.getItem('visitorID')) {
