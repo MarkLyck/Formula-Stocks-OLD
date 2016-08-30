@@ -24,7 +24,7 @@ const Nav  = React.createClass({
   render() {
     return (
       <nav className="dashboard-nav">
-        <Link to="/"><img id="logo" src="assets/images/logo_horizontal.svg"/></Link>
+        <Link to="/"><img id="logo" src="/assets/images/logo_horizontal.svg"/></Link>
       </nav>
     )
   }
