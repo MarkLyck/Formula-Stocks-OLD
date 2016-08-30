@@ -36,6 +36,9 @@
     width: 100%;
   }
   .email {
+    input {
+      height: 100%;
+    }
     &::before {
       content: '\f0e0';
       font-family: FontAwesome;

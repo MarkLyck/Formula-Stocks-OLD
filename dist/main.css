@@ -778,6 +778,8 @@ header {
   .form-modal div {
     position: relative;
     width: 100%; }
+  .form-modal .email input {
+    height: 100%; }
   .form-modal .email::before {
     content: '\f0e0';
     font-family: FontAwesome;
