@@ -59,37 +59,44 @@ const Plan = Backbone.Model.extend({
               return true
             }
           }).map((sug) => {
-            delete sug.data;
-            return sug
+            const fixedSug = _.omit(sug, 'data');
+            return fixedSug
           })
 
         newSuggestions = _.union(newSuggestions, data.actionable)
-        newSuggestions = newSuggestions.map((suggestion) => {
-          let fixedSuggestion = suggestion
-          delete fixedSuggestion.data;
-          return fixedSuggestion
+        newSuggestions = newSuggestions.map((sug) => {
+          const fixedSug = _.omit(sug, 'data');
+          return fixedSug
         })
 
         let fixedPortfolio = data.portfolio.map((stock) => {
-          let fixedStock = stock
-          delete fixedStock.data;
+          const fixedStock = _.omit(stock, 'data');
           return fixedStock
         })
 
         newSuggestions.forEach((sug) => {
           if (sug.data) {
             console.error('has data: ', sug);
+            store.session.set('notification', {
+              text: `WARNING! uploading unnecessary data, please refresh this page and try again`,
+              type: 'error'
+            })
           }
         })
         fixedPortfolio.forEach((stock) => {
           if (stock.data) {
             console.error('has data: ', stock);
+            store.session.set('notification', {
+              text: `WARNING! uploading unnecessary data, please refresh this page and try again`,
+              type: 'error'
+            })
           }
         })
 
         this.set('suggestions', newSuggestions)
         this.set('portfolio', fixedPortfolio)
         this.set('portfolioYields', data.logs)
+
       } else if (fileArr[i].name.indexOf('annual') > -1) {
         this.set('annualData', data.logs)
         let newStats = data.statistics
