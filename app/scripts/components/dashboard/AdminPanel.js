@@ -3,6 +3,7 @@ import React from 'react'
 
 import admin from '../../admin'
 import AdminPanelHeader from './AdminPanelHeader'
+import BrowserPieChart from './BrowserPieChart'
 
 const AdminPanel = React.createClass({
   getInitialState() {
@@ -63,8 +64,8 @@ const AdminPanel = React.createClass({
         "type": "circle",
         "theme": "light",
 
-        "width": 5,
-        "height": 5,
+        "width": 10,
+        "height": 10,
         "color": color,
         "longitude": visitor.location.longitude,
         "latitude": visitor.location.latitude,
@@ -93,14 +94,32 @@ const AdminPanel = React.createClass({
         "enabled": true
       }
     })
+    let ChromeUsers = this.state.visitors.filter((visitor) => visitor.browser === 'Chrome' ? true : false).length
+    let FirefoxUsers = this.state.visitors.filter((visitor) => visitor.browser === 'Firefox' ? true : false).length
+    let IEUsers = this.state.visitors.filter((visitor) => visitor.browser === 'IE' ? true : false).length
+    let EdgeUsers = this.state.visitors.filter((visitor) => visitor.browser === 'Edge' ? true : false).length
+    let SafariUSers = this.state.visitors.filter((visitor) => visitor.browser === 'Safari' ? true : false).length
+    let OtherUsers = (this.state.visitors.length - ChromeUsers - FirefoxUsers - IEUsers - EdgeUsers - SafariUSers)
+
+
 //          <h2>Unique visitors</h2>
     return (
       <div className="admin-panel">
         <AdminPanelHeader/>
         <div className="unqiue-visiotrs">
-
           <div className="visitor-map">
             {map}
+          </div>
+        </div>
+        <div className="browsers-container">
+          <h2>Browsers</h2>
+          <div className="browsers">
+            <BrowserPieChart title="Chrome" max={this.state.visitors.length} value={ChromeUsers}/>
+            <BrowserPieChart title="Safari" max={this.state.visitors.length} value={SafariUSers}/>
+            <BrowserPieChart title="Firefox" max={this.state.visitors.length} value={FirefoxUsers}/>
+            <BrowserPieChart title="IE" max={this.state.visitors.length} value={IEUsers}/>
+            <BrowserPieChart title="Edge" max={this.state.visitors.length} value={EdgeUsers}/>
+            <BrowserPieChart title="Other" max={this.state.visitors.length} value={OtherUsers}/>
           </div>
         </div>
       </div>

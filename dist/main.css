@@ -3252,7 +3252,21 @@ footer .copyright {
       min-height: 300px;
       background: red; }
 
-a[href="http://www.amcharts.com/javascript-maps/"] {
+.browsers-container {
+  background: #fff;
+  margin: 20px;
+  padding: 20px; }
+  .browsers-container .browsers {
+    display: flex; }
+    .browsers-container .browsers .browserChart {
+      height: 250px;
+      width: calc(100% / 6); }
+      .browsers-container .browsers .browserChart > div {
+        height: 80% !important; }
+      .browsers-container .browsers .browserChart h3 {
+        text-align: center; }
+
+a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.com/javascript-charts/"] {
   display: none !important; }
 
 .new-article .dropzone {

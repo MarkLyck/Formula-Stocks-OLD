@@ -17,6 +17,25 @@
   }
 }
 
-a[href="http://www.amcharts.com/javascript-maps/"] {
+.browsers-container {
+  background: #fff;
+  margin: 20px;
+  padding: 20px;
+  .browsers {
+    display: flex;
+    .browserChart {
+      height: 250px;
+      width: calc(100% / 6);
+      > div {
+        height: 80% !important;
+      }
+      h3 {
+        text-align: center;
+      }
+    }
+  }
+}
+
+a[href="http://www.amcharts.com/javascript-maps/"],  a[href="http://www.amcharts.com/javascript-charts/"]{
   display: none !important;
 }
