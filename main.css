@@ -3257,7 +3257,8 @@ footer .copyright {
   margin: 20px;
   padding: 20px; }
   .browsers-container .browsers {
-    display: flex; }
+    display: flex;
+    flex-wrap: wrap; }
     .browsers-container .browsers .browserChart {
       height: 250px;
       width: calc(100% / 6); }
@@ -3269,6 +3270,15 @@ footer .copyright {
 a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.com/javascript-charts/"] {
   display: none !important; }
 
+@media (max-width: 800px) {
+  .browsers-container .browsers .browserChart {
+    width: calc(100% / 3); } }
+@media (max-width: 450px) {
+  .browsers-container .browsers .browserChart {
+    width: calc(100% / 2); } }
+@media (max-width: 400px) {
+  .browsers-container .browsers .browserChart {
+    width: calc(100%); } }
 .new-article .dropzone {
   display: flex;
   width: calc(100% - 40px);
