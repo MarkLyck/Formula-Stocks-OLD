@@ -160,8 +160,8 @@ const MyAccount = React.createClass({
     }
 
 
-    console.log(store.session.get('stripe').subscriptions.data[0].current_period_end);
-    console.log(moment.unix(store.session.get('stripe').subscriptions.data[0].current_period_end).format('DD MMMM YYYY'));
+    // console.log(store.session.get('stripe').subscriptions.data[0].current_period_end);
+    // console.log(moment.unix(store.session.get('stripe').subscriptions.data[0].current_period_end).format('DD MMMM YYYY'));
     return (
       <div className="my-account-page">
         <section className="top">

@@ -69,7 +69,7 @@ const Articles = React.createClass({
       return (
         <li key={i} className="article-preview" onClick={this.gotoArticle.bind(null, article._id)}>
           <h3>{article.title}</h3>
-          {previewText}...
+          {previewText}
         </li>
       )
     })

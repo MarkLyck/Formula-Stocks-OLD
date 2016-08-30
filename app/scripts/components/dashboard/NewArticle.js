@@ -1,7 +1,6 @@
 import React from 'react'
 import $ from 'jquery'
 
-// import RichTextEditor from './RichTextEditor'
 import RichTextEditor from './RichTextEditor/containers/RichEditor'
 
 import Dropzone from 'react-dropzone'
@@ -43,13 +42,17 @@ const NewArticle = React.createClass({
     //   </div>
     // </Dropzone>
 
+    let submitBtn = <button className="filled-btn submit-article" onClick={this.submitArticle}>Submit</button>
+    if (this.state.submitArticle) {
+      submitBtn = <button className="filled-btn submit-article"><i className="fa fa-spinner fa-pulse fa-fw"></i></button>
+    }
     return (
     <div className="new-article">
       <div className="image-preview" style={imgContainerStyles}></div>
       <div className="editor">
         <input type="text" className="article-title" placeholder="Title" ref="title"/>
         <RichTextEditor uploadedFile={this.state.uploadedFile} submitArticle={this.state.submitArticle} title={this.state.title}/>
-        <button className="filled-btn submit-article" onClick={this.submitArticle}>Submit</button>
+        {submitBtn}
       </div>
     </div>
   )

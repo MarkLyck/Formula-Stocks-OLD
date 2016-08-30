@@ -14,49 +14,70 @@ let admin = {
   images: [],
   uploadImage(file, model) {
     return new Promise((resolve, reject) => {
-      this.file = file
-      this.model = model
-      this.postToKinveyFile()
-        .then(this.putToGoogle.bind(this, file))
-        .then(this.putToKinveyCollection.bind(this, model))
-        .then(this.getFromKinveyCollection)
-        .then((article) => {
-          console.log('ARTICLE: ', article);
-          resolve(article)
+      let fileID = ''
+      let KinveyFile;
+      this.postToKinveyFile(file)
+        // .then(this.putToGoogle.bind(this, file))
+        .then((KinveyFile) => {
+          fileID = KinveyFile._id
+          // console.log('fileID before putTOGoogle: ', fileID);
+          // return new Promise((resolve, reject) => {
+            this.putToGoogle(file, KinveyFile)
+              .then(this.putToKinveyCollection.bind(this, model, fileID))
+              .then(this.getFromKinveyCollection.bind(this))
+              .then((article) => {
+                console.log('ARTICLE: ', article);
+                resolve(article)
+              })
+          // })
         })
+        // .then(() => {
+        //
+        // })
+        // .then((article) => {
+        //   console.log('article before getFromK: ', article);
+        //   this.getFromKinveyCollection(article)
+        // })
+        // .then((article) => {
+        //   console.log('ARTICLE: ', article);
+        //   resolve(article)
+        // })
     })
   },
-  postToKinveyFile() {
+  postToKinveyFile(file) {
     return $.ajax({
       url: `https://baas.kinvey.com/blob/kid_rJRC6m9F`,
       type: 'POST',
       headers: {
         Authorization: `Kinvey ${store.session.get('authtoken')}`,
-        "X-Kinvey-Content-Type": this.file.type
+        "X-Kinvey-Content-Type": file.type
       },
       data: JSON.stringify({
         _public: true,
-        mimeType: this.file.type
+        mimeType: file.type
       }),
       contentType: 'application/json',
     })
   },
-  putToGoogle(file, kinveyFile) {
-    this.fileID = kinveyFile._id;
+  putToGoogle(file, KinveyFile) {
+    // this.fileID = kinveyFile._id;
+    // console.log('kinveyFile in putToGoogle: ', KinveyFile);
     return $.ajax({
-      url: kinveyFile._uploadURL,
+      url: KinveyFile._uploadURL,
       type: 'PUT',
-      headers: kinveyFile._requiredHeaders,
+      headers: KinveyFile._requiredHeaders,
       contentLength: file.size,
       data: file,
       processData: false,
       contentType: false
     })
   },
-  putToKinveyCollection(model) {
-    console.log('in put to kinvey collection');
-    console.log('model: ', model);
-    console.log('fileID: ', this.fileID);
+  putToKinveyCollection(model, fileID) {
+    // console.log('in put to kinvey collection');
+    // console.log('model: ', model);
+    // console.log('fileID: ', fileID);
+    // console.log('google: ', google);
+    // console.log('args: ', arguments);
 
     let newModel = model.toJSON()
     this.articleID = newModel._id
@@ -64,7 +85,7 @@ let admin = {
 
     newModel.images.push({
       _type: 'KinveyFile',
-      _id: this.fileID
+      _id: fileID
     })
 
     return $.ajax({
@@ -75,6 +96,7 @@ let admin = {
     })
   },
   getFromKinveyCollection(article) {
+    console.log('article from egetFromKinvey: ', article);
     return $.ajax(`https://baas.kinvey.com/appdata/kid_rJRC6m9F/articles/${article._id}`)
   }
 }
