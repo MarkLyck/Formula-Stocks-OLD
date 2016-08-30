@@ -658,7 +658,7 @@ header {
         font-size: 1.25rem; }
   #hero::before {
     content: "";
-    background: url("assets/images/hero.png");
+    background: url("assets/images/hero.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
