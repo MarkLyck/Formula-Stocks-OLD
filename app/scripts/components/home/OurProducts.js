@@ -3,8 +3,12 @@ import Scroll from 'react-scroll'
 
 
 const OurProducts = React.createClass({
+  downloadBrochure(name) {
+    window.open(`/assets/downloads/${name}.pdf`)
+  },
   render() {
     let Element = Scroll.Element;
+    let ScrollLink = Scroll.Link
     return (
       <section className="our-products bg-gray">
         <div className="content">
@@ -54,8 +58,8 @@ const OurProducts = React.createClass({
           at the expense of diversification. Our <span className="semibold">Fund</span> product is for institutional capital,
           capable of handling large diversified AUMs, which other products cannot.
            Each product utilizes a different number of Intelligent Investment Technology formulas.
-          You can explore our <a className="blue-color">product matrix</a> below.
-          Or see our <a className="blue-color">retail brochure</a> or <a className="blue-color">business brochure</a>.<br/><br/>
+          You can explore our <ScrollLink className="blue-color" to="pricing" smooth={true} offset={-100} duration={1000}>product matrix</ScrollLink> below.
+          Or see our <a className="blue-color" onClick={this.downloadBrochure.bind(null, 'retail')}>retail brochure</a> or <a className="blue-color" onClick={this.downloadBrochure.bind(null,'business')}>business brochure</a>.<br/><br/>
 
           <span className="disclaimer">Formula Stocks does not provide personalized investment advice. We respect your privacy
           and receive no financial information in the process.
