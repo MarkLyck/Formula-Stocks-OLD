@@ -2538,6 +2538,11 @@ footer .copyright {
       overflow-y: scroll;
       position: relative; }
 
+.upgrade-your-plan {
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
 .notification {
   background: #12D99E;
   display: flex;
