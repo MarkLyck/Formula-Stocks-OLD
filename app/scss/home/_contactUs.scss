@@ -96,6 +96,8 @@
       .left {
         margin-right: 0px;
         width: 100%;
+        min-height: 300px;
+        height: auto;
         justify-content: flex-start;
         input {
           margin-bottom: 20px;
