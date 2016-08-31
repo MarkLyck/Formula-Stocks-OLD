@@ -92,7 +92,7 @@ const Portfolio = React.createClass({
     holdings = (
       <section className="no-permissions">
         <h3>Upgrade to the <span className="capitalize blue-color ">{this.props.plan} formula</span> to see this portfolio</h3>
-        <Link to="/dashboard/account" className="filled-btn">Upgrade your plan</Link>
+        <Link to="/dashboard/account" className="filled-btn upgrade-your-plan">Upgrade your plan</Link>
       </section>
     )
   }
