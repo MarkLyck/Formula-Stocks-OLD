@@ -7,10 +7,8 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 		<script type="text/javascript">
-
 			if (document.location.protocol !== 'https:' && document.location.href.indexOf('localhost') === -1) {
-				console.log('REDIRECTING TO HTTPS');
-				var newLocation = document.location.href.replace('http', 'https')
+				var newLocation = document.location.href.replace('http:', 'https:')
 				document.location.href = newLocation
 			}
 		</script>
@@ -23,7 +21,6 @@
 		<link rel="mask-icon" href="/assets/favicon/safari-pinned-tab.svg" color="#5bbad5">
 		<meta name="theme-color" content="#ffffff">
 
-		<!-- <link rel="icon" href="/assets/favicon.ico" type="image/png"> -->
 		<link rel="stylesheet" href="/font-awesome.min.css" media="screen">
 		<link rel="stylesheet" href="/Draft.css" media="screen">
 		<link media="screen" href="/main.css" rel="stylesheet"/>
@@ -34,12 +31,14 @@
 		<script src="/libraries/amcharts/amcharts.js"></script>
 		<script src="/libraries/amcharts/serial.js"></script>
 		<script src="/libraries/amcharts/themes/dark.js"></script>
-		<script src="/libraries/amcharts/themes/light.js"></script>
-		<script src="https://www.amcharts.com/lib/3/ammap.js"></script>
-		<script src="https://www.amcharts.com/lib/3/maps/js/worldLow.js"></script>
-		<script src="https://www.amcharts.com/lib/3/pie.js"></script>
 
 		<script src="/main.js" charset="utf-8"></script>
+
+		<script src="/libraries/amcharts/themes/light.js"></script>
+		<script src="/libraries/amcharts/pie.js"></script>
+		<script src="https://www.amcharts.com/lib/3/ammap.js"></script>
+		<script src="https://www.amcharts.com/lib/3/maps/js/worldLow.js"></script>
+
 		<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
 	</body>
 </html>
