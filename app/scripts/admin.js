@@ -31,7 +31,7 @@ let admin = {
   },
   postToKinveyFile(file) {
     return $.ajax({
-      url: `https://baas.kinvey.com/blob/kid_rJRC6m9F`,
+      url: `https://baas.kinvey.com/blob/kid_rJRC6m9F?tls=true`,
       type: 'POST',
       headers: {
         Authorization: `Kinvey ${store.session.get('authtoken')}`,
@@ -46,9 +46,9 @@ let admin = {
   },
   putToGoogle(file, KinveyFile) {
     console.log(KinveyFile);
-    let fixedUploadURL = KinveyFile._uploadURL.replace('http', 'https')
+    // let fixedUploadURL = KinveyFile._uploadURL.replace('http', 'https')
     return $.ajax({
-      url: fixedUploadURL,
+      url: KinveyFile._uploadURL,
       type: 'PUT',
       headers: KinveyFile._requiredHeaders,
       contentLength: file.size,
