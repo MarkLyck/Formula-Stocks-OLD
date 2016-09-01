@@ -46,7 +46,6 @@ let admin = {
   },
   putToGoogle(file, KinveyFile) {
     console.log(KinveyFile);
-    // let fixedUploadURL = KinveyFile._uploadURL.replace('http', 'https')
     return $.ajax({
       url: KinveyFile._uploadURL,
       type: 'PUT',
