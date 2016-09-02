@@ -77,7 +77,7 @@ const SignupForm = React.createClass({
           <input type="password" placeholder="Password" ref="password"/>
         </div>
         <div className={verifyPasswordClasses}>
-          <input type="password" placeholder="Verify Password" ref="verifyPassword"/>
+          <input type="password" placeholder="Verify password" ref="verifyPassword"/>
         </div>
         <input type="submit" id="submit-btn" value="Next"/>
       </form>

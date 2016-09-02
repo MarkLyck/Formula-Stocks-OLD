@@ -35,7 +35,7 @@ const MyAccount = React.createClass({
       cc.updateSubscription(this.state.selectedPlan, cycle)
         .then(() => {
           store.session.set('notification', {
-            text: `You are now subscribed to the ${this.state.selectedPlan} Formula`,
+            text: `You are now subscribed to the ${this.state.selectedPlan} formula`,
             type: 'notification'
           })
           this.setState({charging: false, showModal: false})
@@ -51,14 +51,14 @@ const MyAccount = React.createClass({
       cc.newSubscription(this.state.selectedPlan, cycle)
         .then(() => {
           store.session.set('notification', {
-            text: `You are now subscribed to the ${this.state.selectedPlan} Formula`,
+            text: `You are now subscribed to the ${this.state.selectedPlan} formula`,
             type: 'notification'
           })
           this.setState({charging: false, showModal: false})
         })
         .catch(() => {
           store.session.set('notification', {
-            text: `Failed to subscribe to the ${this.state.selectedPlan} Formula`,
+            text: `Failed to subscribe to the ${this.state.selectedPlan} formula`,
             type: 'error'
           })
           this.setState({charging: false, showModal: false})
@@ -98,7 +98,7 @@ const MyAccount = React.createClass({
     if (store.session.get('stripe').subscriptions && !store.session.get('stripe').subscriptions.data[0].canceled_at !== null) {
       currPlan = store.session.get('stripe').subscriptions.data[0].plan.id
       currPlan = currPlan.slice(0, currPlan.indexOf('-'))
-      currPlan = currPlan + ' Formula'
+      currPlan = currPlan + ' formula'
     }
 
     if (store.session.get('stripe').subscriptions.data[0].canceled_at !== null) {
@@ -107,7 +107,7 @@ const MyAccount = React.createClass({
 
     let changePlanBtn = <button onClick={this.showConfirmationModal} className="change-plan filled-btn">Next</button>
 
-    let bottomBtn = <button onClick={this.cancelSubscription} className="filled-btn cancel-btn red">Cancel Subscription</button>
+    let bottomBtn = <button onClick={this.cancelSubscription} className="filled-btn cancel-btn red">Cancel subscription</button>
     let changeTitle = 'Change your subscription'
     if (store.session.get('stripe').subscriptions.data[0].canceled_at !== null) {
       changePlanBtn = <button onClick={this.showConfirmationModal} className="change-plan filled-btn">Subscribe to: <span className="capitalize"> {this.state.selectedPlan}</span></button>
@@ -116,10 +116,10 @@ const MyAccount = React.createClass({
     }
     let basicDisabled, premiumDisabled, businessDisabled, fundDisabled = false;
 
-    if(currPlan === 'basic Formula') {basicClass = 'blue current'; basicDisabled = true}
-    else if(currPlan === 'premium Formula') {premiumClass = 'blue current'; premiumDisabled = true}
-    else if(currPlan === 'business Formula') {businessClass = 'blue current'; businessDisabled = true}
-    else if(currPlan === 'fund Formula') {fundClass = 'blue current'; fundDisabled = true}
+    if(currPlan === 'basic formula') {basicClass = 'blue current'; basicDisabled = true}
+    else if(currPlan === 'premium formula') {premiumClass = 'blue current'; premiumDisabled = true}
+    else if(currPlan === 'business formula') {businessClass = 'blue current'; businessDisabled = true}
+    else if(currPlan === 'fund formula') {fundClass = 'blue current'; fundDisabled = true}
 
 
     console.log(store.session.get('stripe'));
@@ -177,8 +177,8 @@ const MyAccount = React.createClass({
           <h2>{changeTitle}</h2>
           <button className={basicClass} disabled={basicDisabled} onClick={this.selectPlan.bind(null, 'basic')}><h3 className="plan-name">Basic</h3><h3 className="price">$50<br/><span className="disclaimer">monthly</span></h3></button>
           <button className={premiumClass} disabled={premiumDisabled} onClick={this.selectPlan.bind(null, 'premium')}><h3 className="plan-name">Premium</h3><h3 className="price">$100<br/><span className="disclaimer">monthly</span></h3></button>
-          <button className={businessClass} disabled={businessDisabled} onClick={this.selectPlan.bind(null, 'business')}><h3 className="plan-name">Business</h3><h3 className="price">$20,000<br/><span className="disclaimer">annually</span></h3></button>
-          <button className={fundClass} disabled={fundDisabled} onClick={this.selectPlan.bind(null, 'fund')}><h3 className="plan-name">Fund</h3><h3 className="price">$120,000<br/><span className="disclaimer">annually</span></h3></button>
+          <button className={businessClass} disabled={businessDisabled} onClick={this.selectPlan.bind(null, 'business')}><h3 className="plan-name">Business</h3><h3 className="price">$20,000<br/><span className="disclaimer">yearly</span></h3></button>
+          <button className={fundClass} disabled={fundDisabled} onClick={this.selectPlan.bind(null, 'fund')}><h3 className="plan-name">Fund</h3><h3 className="price">$120,000<br/><span className="disclaimer">yearly</span></h3></button>
 
           {changePlanBtn}
         </div>

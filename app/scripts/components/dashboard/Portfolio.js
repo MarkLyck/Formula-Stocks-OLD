@@ -71,7 +71,7 @@ const Portfolio = React.createClass({
       <section className="holdings">
         <div className="top">
           <h2>Holdings</h2>
-          <h2 className="blue-color">{store.plans.get(this.props.plan).get('portfolio').length - 1} Stocks</h2>
+          <h2 className="blue-color">{store.plans.get(this.props.plan).get('portfolio').length - 1} stocks</h2>
         </div>
         <table className="portfolio-table">
           <thead className="labels">
@@ -128,14 +128,14 @@ const Portfolio = React.createClass({
         <section className="portfolio-yields">
 
           <div className="left">
-            <h2>Portfolio Yields</h2>
+            <h2>Portfolio yields</h2>
             <PortfolioGraph plan={this.props.plan}/>
           </div>
 
           <div className="right">
 
             <div className="fs stats">
-              <h3 className="fs-plan blue-color">{this.props.plan} Formula</h3>
+              <h3 className="fs-plan blue-color"><span className="capitalize">{this.props.plan}</span> formula</h3>
               <div className="wrapper">
                 <i className="fa fa-caret-up" aria-hidden="true"></i>
                 <p><span className="blue-color">{FSPercent}%</span> since 2009</p>

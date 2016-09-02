@@ -41,7 +41,7 @@ const SuggestionHeader = React.createClass({
             </div>
             <div className="value">
               <h3 className="blue-color">{this.state.stats.WLRatio.toFixed(2)}%</h3>
-              <p className="blue-color">Profitable Stocks</p>
+              <p className="blue-color">Profitable stocks</p>
             </div>
           </li>
 
@@ -63,7 +63,7 @@ const SuggestionHeader = React.createClass({
             </div>
             <div className="value white">
               <h3 className="green-color">{cashAllocation}%</h3>
-              <p className="green-color">Percent in Cash</p>
+              <p className="green-color">Percent in cash</p>
             </div>
           </li>
 

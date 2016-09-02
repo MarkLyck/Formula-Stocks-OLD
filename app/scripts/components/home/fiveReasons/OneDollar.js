@@ -98,7 +98,7 @@ const OneDollar = React.createClass({
               <button onClick={this.updateNumbers.bind(null, 'fund')} className={funClass}>Fund<div></div></button>
             </div>
             <div className="fs bar" style={fsStyle}><p>${cc.commafy(Math.round(this.state.fs))}</p></div>
-            <p className="fs plan-name capitalize">{this.state.plan} product</p>
+            <p className="fs plan-name"><span className="capitalize">{this.state.plan}</span> product</p>
 
             <div className="market-bar-container">
               <div className="market bar" style={spStyle}></div><p>${Math.round(this.state.market)}</p>

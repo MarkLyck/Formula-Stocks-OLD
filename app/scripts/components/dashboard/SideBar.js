@@ -87,10 +87,10 @@ const SideBar = React.createClass({
       if (this.state.dropDown) {
         suggestionsDropdown = (
           <div className="dropdown plan-dd">
-            <a className={'dropdown-link ' + SbasicClass} onClick={this.gotoPath.bind(null, '/dashboard/suggestions/basic')}>Basic Suggestions</a>
-            <a className={'dropdown-link ' + SpremiumClass} onClick={this.gotoPath.bind(null, '/dashboard/suggestions/premium')}>Premium Suggestions</a>
-            <a className={'dropdown-link ' + SbusinessClass} onClick={this.gotoPath.bind(null, '/dashboard/suggestions/business')}>Business Suggestions</a>
-            <a className={'dropdown-link ' + SfundClass} onClick={this.gotoPath.bind(null, '/dashboard/suggestions/fund')}>Fund Suggestions</a>
+            <a className={'dropdown-link ' + SbasicClass} onClick={this.gotoPath.bind(null, '/dashboard/suggestions/basic')}>Basic suggestions</a>
+            <a className={'dropdown-link ' + SpremiumClass} onClick={this.gotoPath.bind(null, '/dashboard/suggestions/premium')}>Premium suggestions</a>
+            <a className={'dropdown-link ' + SbusinessClass} onClick={this.gotoPath.bind(null, '/dashboard/suggestions/business')}>Business suggestions</a>
+            <a className={'dropdown-link ' + SfundClass} onClick={this.gotoPath.bind(null, '/dashboard/suggestions/fund')}>Fund suggestions</a>
           </div>
         )
       }
@@ -106,10 +106,10 @@ const SideBar = React.createClass({
       if (this.state.dropDown) {
         portfoliosDropdown = (
           <div className="dropdown plan-dd">
-            <a className={'dropdown-link ' + PbasicClass} onClick={this.gotoPath.bind(null, '/dashboard/portfolio/basic')}>Basic Portfolio</a>
-            <a className={'dropdown-link ' + PpremiumClass} onClick={this.gotoPath.bind(null, '/dashboard/portfolio/premium')}>Premium Portfolio</a>
-            <a className={'dropdown-link ' + PbusinessClass} onClick={this.gotoPath.bind(null, '/dashboard/portfolio/business')}>Business Portfolio</a>
-            <a className={'dropdown-link ' + PfundClass} onClick={this.gotoPath.bind(null, '/dashboard/portfolio/fund')}>Fund Portfolio</a>
+            <a className={'dropdown-link ' + PbasicClass} onClick={this.gotoPath.bind(null, '/dashboard/portfolio/basic')}>Basic portfolio</a>
+            <a className={'dropdown-link ' + PpremiumClass} onClick={this.gotoPath.bind(null, '/dashboard/portfolio/premium')}>Premium portfolio</a>
+            <a className={'dropdown-link ' + PbusinessClass} onClick={this.gotoPath.bind(null, '/dashboard/portfolio/business')}>Business portfolio</a>
+            <a className={'dropdown-link ' + PfundClass} onClick={this.gotoPath.bind(null, '/dashboard/portfolio/fund')}>Fund portfolio</a>
           </div>
         )
       }

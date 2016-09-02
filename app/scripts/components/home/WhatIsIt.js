@@ -9,7 +9,7 @@ const WhatIsIt = React.createClass({
           <h3 className="title">What is it?</h3>
           <p>
           Using expert system technology we pick
-          next year's winners in the markets.<br/><br/>
+          next year's winners in the markets today.<br/><br/>
 
           Whether value or growth investor, pro or
           novice, you can rely on Formula Stocks for

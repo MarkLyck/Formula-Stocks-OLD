@@ -2,6 +2,7 @@ import React from 'react'
 import $ from 'jquery'
 
 import store from '../../store'
+import cc from '../../cc'
 
 const CumulativeInterest = React.createClass({
   getInitialState() {
@@ -22,7 +23,7 @@ const CumulativeInterest = React.createClass({
       }
     }).trigger("change");
     $(this.refs.investmentSlider).on("change", function() {
-      $('#investmentValue').val('Investment: $' + this.value);
+      $('#investmentValue').val('Investment: $' + cc.commafy(this.value));
       if (self.state.animate) {
         self.setState({investment: this.value, startDuration: 0})
       } else {
@@ -61,7 +62,7 @@ const CumulativeInterest = React.createClass({
     for(let i=0; i < this.state.years; i++) {
       currentValue = currentValue * (this.state.cagr / 100 + 1)
       currentMarketValue = currentMarketValue * (store.market.cagr / 100 + 1)
-      chartData.push({value: currentValue.toFixed(0), market: currentMarketValue.toFixed(2), year: i + 1})
+      chartData.push({value: currentValue.toFixed(0), market: currentMarketValue.toFixed(0), year: i + 1})
     }
     if (this.state.animate) {
       return chartData
@@ -159,8 +160,8 @@ const CumulativeInterest = React.createClass({
           </div>
         </div>
         <p className="disclaimer">
-          The foregoing is for illustration purposes only. It does not represent,
-          warrant or guarantee any level of future investment performance.
+          The above is for illustration purposes only. It does not represent,
+          warrant, or guarantee any level of future investment performance.
           It is a standard compound interest calculator, which visualizes any specified level of
           return relative to the market return. Market CAGR is indicated at 10.71% based on
           S&P 500 performance from 1970 to 2015 with dividends reinvested.

@@ -37,15 +37,15 @@ const AboveAverageReturns = React.createClass({
       <section className="split-section above-average-returns">
         <div className="content">
           <div className="left">
-            <h2 className="title">Prefer above average returns?</h2>
+            <h2 className="title">Prefer above-average returns?</h2>
             <p>
               The world is full of investment information.
               Because this information is offered to
               a large number of people,
               the market has already adjusted to it and priced it in,
-              when you receive it  <br/><br/>
+              when you receive it.  <br/><br/>
 
-              So in order to outperform markets,
+              So in order to outperform the markets,
               you will need an edge, an informational
               advantage available only to a minority.
             </p>

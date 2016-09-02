@@ -21,12 +21,12 @@ const RewardVSRisk = React.createClass({
               </p>
               <p className="disclaimer">
                 One of the best and most modern risk/reward benchmarks
-                is the Omega function, the output of which, is depicted on the left.<br/><br/>
+                is the Omega function, the output of which is depicted on the left.<br/><br/>
 
                 Higher levels indicate higher returns,
                 and steeper slopes indicate lower risk.
                 The yearly return distribution is significantly superior to DJIA at all thresholds
-                and for all products. Depicted: Yearly Omega Function
+                and for all products. Depicted: yearly Omega Function.
               </p>
             </div>
           </div>

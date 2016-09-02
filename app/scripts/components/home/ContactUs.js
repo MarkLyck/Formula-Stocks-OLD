@@ -70,15 +70,15 @@ const ContactUs = React.createClass({
           </label>
           <label>
             <p>Email</p>
-            <input id="contact-us-email" type="email" placeholder="email" ref="email" onKeyUp={this.changingEmail}/>
+            <input id="contact-us-email" type="email" placeholder="Email" ref="email" onKeyUp={this.changingEmail}/>
           </label>
           <label>
             <p>Company</p>
-            <input id="contact-us-company" type="text" placeholder="company" ref="company"/>
+            <input id="contact-us-company" type="text" placeholder="Company" ref="company"/>
           </label>
           </div>
           <div className="right">
-          <textarea placeholder="Your Message" ref="body"/>
+          <textarea placeholder="Your message" ref="body"/>
             {sendBtn}
           </div>
         </form>

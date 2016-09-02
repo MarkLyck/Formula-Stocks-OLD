@@ -14,7 +14,7 @@ const OurProducts = React.createClass({
         <div className="content">
           <Element name="ourProducts"></Element>
           <div className="title-container">
-            <h2>Our <span className="blue-color">Products</span></h2>
+            <h2>Our <span className="blue-color">products</span></h2>
             <div className="divider"></div>
           </div>
           <p>
@@ -53,13 +53,13 @@ const OurProducts = React.createClass({
           </div>
 
           <p>
-          <span className="bold">Basic</span> and <span className="bold">Premium</span> are both diversified retail products with excellent value propositions.
+          <span className="bold">Basic</span> and <span className="bold">Premium</span> are both diversified retail products with excellent value propositions and targeted at the private investor.
           <span className="bold"> Business</span> is designed for CEOs, accredited investors, and enterprising investors focusing on performance and margin of safety,
           at the expense of diversification. Our <span className="bold">Fund</span> product is for institutional capital,
           capable of handling large diversified AUMs, which other products cannot.
            Each product utilizes a different number of Intelligent Investment Technology formulas.
           You can explore our <ScrollLink className="blue-color" to="pricing" smooth={true} offset={-100} duration={1000}>product matrix</ScrollLink> below.
-          Or see our <a className="blue-color" onClick={this.downloadBrochure.bind(null, 'retail')}>retail brochure</a> or <a className="blue-color" onClick={this.downloadBrochure.bind(null,'business')}>business brochure</a>.<br/><br/>
+          Or see our <a className="blue-color" onClick={this.downloadBrochure.bind(null, 'FAQ')}>FAQ</a> or <a className="blue-color" onClick={this.downloadBrochure.bind(null,'business')}>business brochure</a>.<br/><br/>
 
           <span className="disclaimer">Formula Stocks does not provide personalized investment advice. We respect your privacy
           and receive no financial information in the process.

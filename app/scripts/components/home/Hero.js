@@ -19,7 +19,7 @@ const Hero = React.createClass({
         <div className="content">
           <div className="bounce-down">
             <h1 id="main-title">A better <span className="font bold">solution</span> for the <span className="font bold">stock market investor</span></h1>
-            <h2>What if it was possible to identify some of next year's winners in the markets today with up to a 84-92% average success rate?</h2>
+            <h2>What if it was possible to identify some of next year's winners in the markets today with a success rate of up to 84-92%?</h2>
           </div>
           <div className="CTA fade-in">
             <button className="filled-btn" onClick={this.tryIt}>Try it for free!</button>
