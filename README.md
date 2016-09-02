@@ -1,7 +1,11 @@
 # Formula Stocks
+Formula Stocks is a stock recommendation service, that gives you recommendations on what to buy, for how much and when you should sell it. These recommendations are based on a deep learning algorithm that selects winning stocks 84-92% of the time. With an average annual interest rate of 20-35% depending on the product you choose.
+
+See it live at: [https://formulastocks.com](https://formulastocks.com/)
+
 
 ### Elevator pitch
-What if it was possible to predict some of the next years’ winners in the stock market, at an 84-95% success rate? Would you invest?
+What if it was possible to predict some of the next years’ winners in the stock market, at an 84-92% success rate? Would you invest?
 
 ### Basic Features
 - Access to stock suggestions, based the users plan.
@@ -96,11 +100,13 @@ What if it was possible to predict some of the next years’ winners in the stoc
 - /dashboard/business/suggestions
 - /dashboard/fund/portfolio
 - /dashboard/fund/suggestions
+- /dashboard/articles
+- /dashboard/articles/:articleID
 - /dashboard/admin
 - /dashboard/admin/api
 - /dashboard/admin/users
 - /dashboard/admin/new-blog
-- /dashboard/admin/newsletter
+- /dashboard/admin/newarticle
 
 ### User flow
 - read what we do
@@ -114,11 +120,11 @@ What if it was possible to predict some of the next years’ winners in the stoc
 - JQuery
 - Underscore
 - [Stripe](https://stripe.com/) (payment system)
-- [aws-sdk](https://aws.com/) Cloud json storage
 - [AmCharts](https://www.amcharts.com/) (financial charts)
-- [dropzonejs](http://www.dropzonejs.com/) (drag and drop file upload)
+- React dropzone (drag and drop file upload)
 - [moment](http://momentjs.com/) (date formatting)
 - [react-html-parser](https://github.com/wrakky/react-html-parser) (optional for blogs)
+- React smooth scroll
 
 ### Frameworks
 - React
@@ -128,8 +134,8 @@ What if it was possible to predict some of the next years’ winners in the stoc
 - Custom logarithmic graph layout.
 - MaiLgun / Nodemailer / PostMark (newsletter email service)
 - FastMail (contact emails)
-- 12 updatable JSON files hosted with Amazon Web Services
-- Extremely Polished user interface
+- Ability to upload JSON files to update data on website.
+- Must be set up with an SSL Certificate
 
 ### Extra possible features
 - Mark stocks as bought, and keep track of your stocks.
