@@ -2691,7 +2691,7 @@ footer .copyright {
   content: 'Articles'; }
 
 .my-account-btn::before {
-  content: 'My Account'; }
+  content: 'My account'; }
 
 .admin-btn::before {
   content: 'Admin'; }
@@ -2805,8 +2805,6 @@ footer .copyright {
         margin-right: 5px; }
       .portfolio-yields .right .stats .wrapper .Spinner {
         font-size: 0.75rem; }
-    .portfolio-yields .right .fs.stats .fs-plan {
-      text-transform: capitalize; }
     .portfolio-yields .right .fs.stats .wrapper i {
       color: #27A5F9; }
 
