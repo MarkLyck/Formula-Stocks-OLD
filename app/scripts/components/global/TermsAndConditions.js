@@ -95,20 +95,45 @@ const TermsAndConditions = React.createClass({
           <h3>General</h3>
 
           <p>
-          FORMULA STOCKS is an information provider, not an investment advisory service,
-          nor a registered investment advisor and does not offer individual investment advice.
-          FORMULA STOCKS does not manage client funds, but act solely as an information and technology
-          supplier. FORMULA STOCKS does not purport to tell or suggest which securities individual
-          customers should buy or sell for themselves. FORMULA STOCKS purchase or sell indications,
-          are not solicitations to buy or sell, but rather, information you can use as a starting point
-          for doing additional independent research in order to allow you to form your own opinion
-          regarding investments, and make your own informed decisions.<br/><br/>
+          FORMULA STOCKS is an Internet based publication, and as such not registered as an
+          investment adviser with any national, federal or state regulatory agency, or in any other
+          regulatory capacity. To the extent that any portion of the Formula Stocks website would
+          need to rely upon such an exemption, FORMULA STOCKS would rely upon the “publisher’s
+          exclusion” from the definition of “investment adviser” as provided under Section 202(a)(11)
+          of the Investment Advisers Act of 1940 and corresponding state securities laws.
+          To the extent reliance on the publisher’s exemption is necessary, the FORMULA STOCKS plans
+          are bona fide publications of general and regular circulation offering impersonalized
+          investment-related information to users and/or prospective users (e.g., not tailored to the
+          specific investment portfolio or needs of current and/or prospective users).<br/><br/>
 
-          FORMULA STOCKS assume no responsibility or liability for your investment results.
-          You understand and acknowledge that there is a high degree of risk involved in investing in
-          securities. This document and service does not constitute an offer, a solicitation to buy a
-          security or to open a brokerage account. The terms and conditions of the products described
-          herein are indicative and are subject to change.<br/><br/>
+          FORMULA STOCKS is not an investment advisory service, nor a registered investment advisor
+          and does not offer individual investment advice. FORMULA STOCKS does not manage client funds,
+          but act solely as an information and technology supplier and publisher.
+          The user maintains absolute discretion as to whether or not to follow any portion of the
+          FORMULA STOCKS content. It remains the user’s exclusive responsibility to review and evaluate
+          the content and to determine whether to accept or reject any content. FORMULA STOCKS expresses
+          no opinion as to whether any of the website content is appropriate for a user’s investment
+          portfolio, strategy, financial situation, or investment objective(s). FORMULA STOCKS does not
+          purport to tell or suggest which securities individual customers should buy or sell for
+          themselves. FORMULA STOCKS purchase or sell indications, are not solicitations to buy or sell,
+          but rather, information the user can use as a starting point for doing additional independent
+          research in order to allow you to form your own opinion regarding investments, and make your own
+          informed decisions.<br/><br/>
+
+          It is the user’s exclusive responsibility to determine if any portion of the investment-related
+          information is suitable or appropriate for his/her financial situation and/or investment
+          objectives, both initially and on an ongoing basis. No current or prospective user should assume
+          that the future performance of any specific investment, investment strategy, or any other
+          website content will be suitable or profitable for a user’s portfolio, equal historical or
+          anticipated performance levels.<br/><br/>
+
+          Different types of investments involve varying degrees of risk, and there can be no assurance
+          that any specific investment will either be suitable or profitable for a user or prospective
+          user’s investment portfolio. Users do not receive investment advisory, investment supervisory
+          or investment management services, nor an initial or ongoing review or monitoring of the user’s
+          individual investment portfolio or individual particular needs. Therefore, no user should assume
+          that his or hers use serves as a substitute for individual personalized advice from an
+          investment professional of the user’s choosing.<br/><br/>
 
           The supplied information is provided solely for educational and informational purposes and may
           not be construed as an offer to buy or sell, or a solicitation of an offer to buy or sell,
@@ -144,24 +169,23 @@ const TermsAndConditions = React.createClass({
           ACHIEVE PROFITS OR LOSSES SIMILAR TO THOSE SHOWN.<br/><br/>
 
           For users of our “BUSINESS” plan service only (does not apply to “BASIC” or “PREMIUM” plan
-            members): The BUSINESS service is intended for what is generally known as accredited or
-            sophisticated investors, or corporations/businesses. The exact definition of accredited and
-            sophisticated varies between countries, generally referring to either a certain net worth,
-            income, or professional status, status as a corporation or financial institution or
-            business with relation to the investment field. In the US it could imply either a net worth
-            in excess of 1 mio. USD, excluding value of primary residence, or alternatively an annual income
-            of at least 200,000 USD, or other factors as defined in regulations, such as status as an
-            investment company, bank, insurance company, charitable organization with a certain amount of
-            assets, and many other designations. Using BUSINESS does require some knowledge about investments
-            in general, due to its focused nature, and if you sign up to the BUSINESS plan,
-            you indicate that you can be considered either A) a sophisticated or accredited investor based
-            upon either the rules of definition in your country of residence, or
-            B) Represent a corporation/business which by definition enlists the services of tax or
-            financial advisors, or C) by your own definition meet similar standards of investment
-            knowledge where this may be applicable.<br/><br/>
+          members): The BUSINESS service is intended for what is generally known as accredited or
+          sophisticated investors, or corporations/businesses. The exact definition of accredited and
+          sophisticated varies between countries, generally referring to either a certain net worth,
+          income, or professional status, status as a corporation or financial institution or
+          business with relation to the investment field. In the US it could imply either a net worth
+          in excess of 1 mio. USD, excluding value of primary residence, or alternatively an annual income
+          of at least 200,000 USD, or other factors as defined in regulations, such as status as an
+          investment company, bank, insurance company, charitable organization with a certain amount of
+          assets, and many other designations. Using BUSINESS does require some knowledge about investments
+          in general, due to its focused nature, and if you sign up to the BUSINESS plan,
+          you indicate that you can be considered either A) a sophisticated or accredited investor based
+          upon either the rules of definition in your country of residence, or
+          B) Represent a corporation/business which by definition enlists the services of tax or
+          financial advisors, or C) by your own definition meet similar standards of investment
+          knowledge where this may be applicable.<br/><br/>
 
-          Keep in mind that while diversification may help spread risk it does not assure a profit,
-          or protect against loss. There is always the potential of losing money when you invest in
+          There is always the potential of losing money when you invest in
           securities, or other financial products. Investors should consider their investment objectives
           and risks carefully in the context of their own personal financial situation before investing.<br/><br/>
 
@@ -174,17 +198,14 @@ const TermsAndConditions = React.createClass({
 
           You agree not to reproduce, duplicate, copy, sell, resell or exploit any portion of the Service,
           use of the Service, or access to the Service or any contact on the website through which the
-          service is provided, without express written permission by us.
-          </p>
+          service is provided, without express written permission by us.<br/><br/>
 
-          <h3>Licensing</h3>
-
-          <p>
-          A) BASIC or PREMIUM plans:<br/><br/>
-
-          By purchasing a BASIC or PREMIUM plan you acquire the right to use the service for your personal
-          investment account. You may not resell, share, or otherwise provide the information obtained
-          through our service to any other person.
+          RELEASE: Each user or prospective user acknowledges and accepts the limitations of the
+          website and agrees, as a condition precedent to his or hers access to the website, to
+          release and hold harmless FORMULA STOCKS, its members, officers, directors, owners,
+          employees) from any and all adverse consequences resulting from his or hers use, including,
+          but not limited to, losses resulting from the user’s implementation of any of investment-related
+          information.
           </p>
 
           <h3>Age of consent</h3>
@@ -200,8 +221,6 @@ const TermsAndConditions = React.createClass({
           <p>
           You may not use our products for any illegal or unauthorized purpose nor may you, in the use of
           the Service, violate any laws in your jurisdiction (including but not limited to copyright laws).<br/><br/>
-
-          You must not transmit any worms or viruses or any code of a destructive nature.
           </p>
 
           <h3>Accuracy, completeness and timeliness of information</h3>
@@ -457,8 +476,6 @@ const TermsAndConditions = React.createClass({
 
           <h3>Confidentiality</h3>
           <p>
-          We are registered under the Data Protection Act 1998 and as such, any information concerning
-          the Client and their respective Client Records may be passed to third parties. However,
           Client records are regarded as confidential and therefore will not be divulged to any third party,
           other than our suppliers or if legally required to do so to the appropriate authorities.
           Clients have the right to request sight of, and copies of any and all Client Records we keep,
@@ -502,7 +519,7 @@ const TermsAndConditions = React.createClass({
 
           If our website, company or application is acquired or merged with another company,
           your information may be transferred to the new owners so that we may continue to sell products
-          to you
+          to you.
           </p>
 
           <h3>Termination of Agreements and Refunds Policy</h3>
@@ -572,7 +589,7 @@ const TermsAndConditions = React.createClass({
           <p>
           Neither party shall be liable to the other for any failure to perform any obligation under any
           Agreement which is due to an event beyond the control of such party including but not limited
-          to any Act of God, terrorism, war, Political insurgence, insurrection, riot, civil unrest,
+          to terrorism, war, political insurgence, insurrection, riot, civil unrest,
           act of civil or military authority, uprising, earthquake, flood or any other natural or man
           made eventuality outside of our control, which causes the termination of an agreement or
           contract entered into, nor which could have been reasonably foreseen. Any Party affected

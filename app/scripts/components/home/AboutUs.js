@@ -9,13 +9,7 @@ const AboutUs = React.createClass({
     this.setState({selectedEmployee: name})
   },
 
-  // <div className="card-wrapper">
-  //   <ProfileCard name="Thomas Lyck" title="CEO" imgName="Thomas"/>
-  //   <ProfileCard name="Mark Lyck" title="COO" imgName="Mark"/>
-  //   <ProfileCard name="Marie Lauritzen" title="PhD. Research Assistant" imgName="Marie"/>
-  // </div>
   render() {
-
     let classThomas, classMark, classMarie, bio;
     if (this.state.selectedEmployee === 'Thomas') {
       classThomas = 'selected'
@@ -34,7 +28,7 @@ const AboutUs = React.createClass({
        our results with you.<br/><br/>
        Mark Lyck is an entrepreneur who has brought his experience and edge to Formula Stocks through
        collaboration with Thomas. With a background in Business Administration and
-       web-based user interface design, he makes complex technology easily accessible for everyone in,
+       web-based user interface design, he makes complex technology easily accessible for everyone
        in a user-friendly manner.</p>
     } else if (this.state.selectedEmployee === 'Marie') {
       classMarie = 'selected'
