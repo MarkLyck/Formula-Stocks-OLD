@@ -106,10 +106,10 @@ header {
   &::before {
     content: "";
     background: url('/assets/images/hero.jpg');
-    background-position: 50%, 50%;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
+    background-position: 50%, 50% !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    background-attachment: fixed !important;
     opacity: 0.75;
     top: -75px;
     left: 0;
