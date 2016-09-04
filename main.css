@@ -3269,6 +3269,8 @@ footer .copyright {
   background: #fff;
   margin: 20px;
   padding: 20px; }
+  .browsers-container h2 {
+    margin: 0; }
   .browsers-container .browsers {
     display: flex;
     flex-wrap: wrap; }
@@ -3402,6 +3404,31 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
       font-style: italic;
       margin: 16px 0;
       padding: 10px 20px; }
+
+.user-list-container {
+  background: #fff;
+  margin: 20px; }
+  .user-list-container h2 {
+    padding: 20px 0 0 20px; }
+  .user-list-container .user-list {
+    border-collapse: collapse;
+    width: 100%; }
+    .user-list-container .user-list .labels tr {
+      width: 100%;
+      border-bottom: 1px solid #F3F3F3; }
+      .user-list-container .user-list .labels tr th {
+        margin: 0;
+        padding: 20px 0;
+        padding-right: 25px;
+        padding-left: 20px;
+        text-align: left;
+        font-weight: 100; }
+    .user-list-container .user-list tbody tr {
+      height: 75px;
+      border-bottom: 1px solid #F3F3F3; }
+      .user-list-container .user-list tbody tr td {
+        font-weight: 400;
+        padding-left: 20px; }
 
 body {
   font-family: 'proxima-nova', sans-serif; }
