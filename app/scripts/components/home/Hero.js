@@ -12,8 +12,13 @@ const Hero = React.createClass({
   render() {
     let Link = Scroll.Link;
     let Element = Scroll.Element;
+
+    let iOSException = ''
+    var iOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+    if (iOS) { iOSException = 'iOSException' }
+
     return (
-      <div id="hero">
+      <div id="hero" className={iOSException}>
         <div className="content">
           <div className="bounce-down">
             <h1 id="main-title">A better <span className="font bold">solution</span> for the <span className="font bold">stock market investor</span></h1>
