@@ -33,18 +33,22 @@ const Breadcrumbs = React.createClass({
     }
 
     let lastUpdated;
+    let lastUpdatedTag;
     if (page === 'Suggestions' && store.plans.get(planName).get('suggestions')[0]) {
       let date = store.plans.get(planName).get('suggestions')[0].date
       lastUpdated = moment(date.year + date.month + date.date, 'YYYYMMDD').format('MMMM D, YYYY')
+      let endWindow = moment(date.year + date.month + date.date, 'YYYYMMDD').add(30, 'days').format('MMMM D, YYYY')
+      lastUpdatedTag = <p>Trading Window: <span>{lastUpdated} to {endWindow}</span></p>
     } else if (page === 'Portfolio' && store.plans.get(planName).get('portfolio')[0]){
       let date = store.plans.get(planName).get('portfolio')[0].date
       lastUpdated = moment(date.year + date.month + date.date, 'YYYYMMDD').format('MMMM D, YYYY')
+      lastUpdatedTag = <p>Last updated: <span>{lastUpdated}</span></p>
     }
 
     return (
       <div className="breadcrumbs">
         <p>{page} <i className="fa fa-chevron-right" aria-hidden="true"></i> <span className="blue-color capitalize">{planName}</span></p>
-        <p>Last updated: <span>{lastUpdated}</span></p>
+        {lastUpdatedTag}
       </div>
     )
   }
