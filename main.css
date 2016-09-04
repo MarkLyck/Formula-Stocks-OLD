@@ -2143,6 +2143,8 @@ footer .copyright {
     .payment-form .pay-button i {
       font-size: 1.5rem;
       color: #fff; }
+    .payment-form .pay-button:hover {
+      background: #0e9bf8; }
 
 .Select {
   position: relative;
