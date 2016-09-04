@@ -2,6 +2,7 @@ import React from 'react'
 import Dropzone from 'react-dropzone'
 
 import store from '../../store'
+import admin from '../../admin'
 
 const AdminAPI = React.createClass({
   onDrop(files) {
@@ -36,6 +37,7 @@ const AdminAPI = React.createClass({
       })
       return null
     } else {
+      admin.filesToUpload = files.length
       let basicFiles = files.filter((file) => { if (file.name.indexOf('basic') > -1) { return true } })
       let premiumFiles = files.filter((file) => { if (file.name.indexOf('premium') > -1) { return true } })
       let businessFiles = files.filter((file) => { if (file.name.indexOf('business') > -1) { return true } })

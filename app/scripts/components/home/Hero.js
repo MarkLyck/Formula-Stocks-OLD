@@ -7,9 +7,7 @@ import store from '../../store'
 const Hero = React.createClass({
   tryIt() {
     store.settings.history.push('/signup')
-  },
-  learnMore() {
-
+    sessionStorage.selectedPlan = 'basic'
   },
   render() {
     let Link = Scroll.Link;

@@ -12,6 +12,8 @@ let admin = {
   articleID: '',
   model: {},
   images: [],
+  filesToUpload: 0,
+  filesUploaded: 0,
   uploadImage(file, model) {
     return new Promise((resolve, reject) => {
       let fileID = ''

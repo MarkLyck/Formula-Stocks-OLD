@@ -3,6 +3,7 @@ import _ from 'underscore'
 import Backbone from 'backbone'
 
 import store from '../store'
+import admin from '../admin'
 
 const Plan = Backbone.Model.extend({
   urlRoot: `https://baas.kinvey.com/appdata/kid_rJRC6m9F/api`,
@@ -32,69 +33,77 @@ const Plan = Backbone.Model.extend({
               return true
             }
           })
-          .map((sug) => {
-            const fixedSug = _.omit(sug, 'data');
-            return fixedSug
-          })
+          // .map((sug) => {
+          //   const fixedSug = _.omit(sug, 'data');
+          //   return fixedSug
+          // })
 
         newSuggestions = _.union(data.actionable, newSuggestions)
 
-        newSuggestions = newSuggestions.map((suggestion) => {
-          const fixedSug = _.omit(suggestion, 'data');
-          return fixedSug
-        })
+        // newSuggestions = newSuggestions.map((suggestion) => {
+        //   const fixedSug = _.omit(suggestion, 'data');
+        //   return fixedSug
+        // })
 
-        newSuggestions.forEach((sug) => {
-          if (sug.data) {
-            delete sug.data;
-            console.error('has data: ', sug);
-          }
-        })
+        // newSuggestions.forEach((sug) => {
+        //   if (sug.data) {
+        //     delete sug.data;
+        //     console.error('has data: ', sug);
+        //   }
+        // })
+
+        // let fixedPortfolio = this.get('portfolio').map((stock) => {
+        //   const fixedStock = _.omit(stock, 'data');
+        //   return fixedStock
+        // })
 
         this.set('suggestions', newSuggestions)
+        // this.set('portfolio', fixedPortfolio)
+
       } else if (fileArr[i].name.indexOf('monthly') > -1) {
         let newSuggestions = this.get('suggestions')
           .filter((sug) => {
             if (sug.action === "BUY") {
               return true
             }
-          }).map((sug) => {
-            const fixedSug = _.omit(sug, 'data');
-            return fixedSug
           })
+          // .map((sug) => {
+          //   const fixedSug = _.omit(sug, 'data');
+          //   return fixedSug
+          // })
 
         newSuggestions = _.union(newSuggestions, data.actionable)
-        newSuggestions = newSuggestions.map((sug) => {
-          const fixedSug = _.omit(sug, 'data');
-          return fixedSug
-        })
+        // newSuggestions = newSuggestions.map((sug) => {
+        //   const fixedSug = _.omit(sug, 'data');
+        //   return fixedSug
+        // })
+        //
+        // let fixedPortfolio = data.portfolio.map((stock) => {
+        //   const fixedStock = _.omit(stock, 'data');
+        //   return fixedStock
+        // })
 
-        let fixedPortfolio = data.portfolio.map((stock) => {
-          const fixedStock = _.omit(stock, 'data');
-          return fixedStock
-        })
-
-        newSuggestions.forEach((sug) => {
-          if (sug.data) {
-            console.error('has data: ', sug);
-            store.session.set('notification', {
-              text: `WARNING! uploading unnecessary data, please refresh this page and try again`,
-              type: 'error'
-            })
-          }
-        })
-        fixedPortfolio.forEach((stock) => {
-          if (stock.data) {
-            console.error('has data: ', stock);
-            store.session.set('notification', {
-              text: `WARNING! uploading unnecessary data, please refresh this page and try again`,
-              type: 'error'
-            })
-          }
-        })
+        // newSuggestions.forEach((sug) => {
+        //   if (sug.data) {
+        //     console.error('has data: ', sug);
+        //     store.session.set('notification', {
+        //       text: `WARNING! uploading unnecessary data, please refresh this page and try again`,
+        //       type: 'error'
+        //     })
+        //   }
+        // })
+        // fixedPortfolio.forEach((stock) => {
+        //   if (stock.data) {
+        //     console.error('has data: ', stock);
+        //     store.session.set('notification', {
+        //       text: `WARNING! uploading unnecessary data, please refresh this page and try again`,
+        //       type: 'error'
+        //     })
+        //   }
+        // })
 
         this.set('suggestions', newSuggestions)
-        this.set('portfolio', fixedPortfolio)
+        this.set('portfolio', data.portfolio)
         this.set('portfolioYields', data.logs)
 
       } else if (fileArr[i].name.indexOf('annual') > -1) {
@@ -105,11 +114,28 @@ const Plan = Backbone.Model.extend({
         let stats = _.extend({}, oldStats, newStats)
         this.set('stats', stats)
       }
+
       console.log('saving file...');
+
+      let newSuggestions = this.get('suggestions').map((sug) => {
+        const fixedSug = _.omit(sug, 'data');
+        return fixedSug
+      })
+
+      console.log(this.get('portfolio'));
+      let fixedPortfolio = this.get('portfolio').map((stock) => {
+        const fixedStock = _.omit(stock, 'data');
+        return fixedStock
+      })
+
+      this.set('suggestions', newSuggestions)
+      this.set('portfolio', fixedPortfolio)
+
       this.save(null, {
         success: function(m, r) {
+          admin.filesUploaded++
           store.session.set('notification', {
-            text: `Succesfully saved file: ${fileArr[i].name}`,
+            text: `Succesfully saved file: ${fileArr[i].name} (${admin.filesUploaded}/${admin.filesToUpload})`,
             type: 'success'
           })
         },

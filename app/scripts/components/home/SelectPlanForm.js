@@ -4,7 +4,7 @@ import store from '../../store'
 
 const SelectPlanForm = React.createClass({
   getInitialState() {
-    return {planFormClasses: `select-plan-form ${this.props.formAnimation}`, selectedPlan: 'premium'}
+    return {planFormClasses: `select-plan-form ${this.props.formAnimation}`, selectedPlan: sessionStorage.selectedPlan || 'premium'}
   },
   componentWillReceiveProps(newProps) {
     this.setState({planFormClasses: `select-plan-form ${newProps.formAnimation}`})

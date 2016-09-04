@@ -17,7 +17,6 @@ const HigherPerformance = React.createClass({
     $(window).off('scroll', this.animate)
   },
   animate() {
-
     let hT = $(this.refs.content).offset().top
     let hH = $(this.refs.content).outerHeight()
     let wH = $(window).height()
@@ -30,6 +29,7 @@ const HigherPerformance = React.createClass({
   },
   tryIt() {
     store.settings.history.push('/signup')
+    sessionStorage.selectedPlan = 'basic'
   },
   render() {
     let Link = Scroll.Link;

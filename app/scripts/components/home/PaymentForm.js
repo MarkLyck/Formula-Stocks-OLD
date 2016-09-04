@@ -161,7 +161,7 @@ const PaymentForm = React.createClass({
     if (this.state.taxPercent > 0 && this.props.passedProps.plan === 'basic') {
       payButton = (<button className="pay-button">
                       <h3>Start free trial</h3>
-                      <p className="tax">${cc.commafy(this.state.price * (this.state.taxPercent/100 + 1))} after first month</p>
+                      <p className="tax">${cc.commafy(this.state.price * (this.state.taxPercent/100 + 1))} after 30 days</p>
                       <p className="tax">Tax: ${cc.commafy((this.state.price * (this.state.taxPercent/100 + 1)) - this.state.price)}</p>
                     </button>)
     } else if (this.state.taxPercent > 0) {
@@ -173,7 +173,7 @@ const PaymentForm = React.createClass({
       console.log('else if plan === basic');
       payButton =  (<button className="pay-button">
                       <h3>Start free trial</h3>
-                      <p className="tax">${cc.commafy(this.state.price)} after first month</p>
+                      <p className="tax">${cc.commafy(this.state.price)} after 30 days</p>
                     </button>)
     }
     if (this.state.validatingPayment) {
