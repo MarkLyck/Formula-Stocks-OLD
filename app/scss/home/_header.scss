@@ -1,32 +1,21 @@
 header {
   padding-top: 75px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
   overflow: hidden;
 
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#2d3a65+0,18aed6+100 */
-  background: #2d3a65; /* Old browsers */ /* FF3.6-15 */
+  background: #2d3a65; /* Old browsers */
+  background: -moz-linear-gradient(-45deg,  #2d3a65 0%, #18aed6 100%); /* FF3.6-15 */
   background: -webkit-linear-gradient(-45deg,  #2d3a65 0%,#18aed6 100%); /* Chrome10-25,Safari5.1-6 */
-  background: -webkit-linear-gradient(315deg,  #2d3a65 0%,#18aed6 100%);
   background: linear-gradient(135deg,  #2d3a65 0%,#18aed6 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 
   nav {
     height: 75px;
     width: 100%;
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    justify-content: center;
+    align-items: center;
     position: fixed;
     top: 0;
     background: rgba(255, 255, 255, 0.2);
@@ -34,24 +23,14 @@ header {
     .content {
       width: 80vw;
       height: 100%;
-      display: -webkit-box;
-      display: -ms-flexbox;
       display: flex;
-      -webkit-box-pack: justify;
-          -ms-flex-pack: justify;
-              justify-content: space-between;
-      -webkit-box-align: center;
-          -ms-flex-align: center;
-              align-items: center;
+      justify-content: space-between;
+      align-items: center;
     }
     .left {
       height: 100%;
-      display: -webkit-box;
-      display: -ms-flexbox;
       display: flex;
-      -webkit-box-align: center;
-          -ms-flex-align: center;
-              align-items: center;
+      align-items: center;
       &:hover {
         cursor: pointer;
       }
@@ -59,43 +38,28 @@ header {
         width: 274px;
         height: 34px;
         font-size: 2rem;
-        display: -webkit-box;
-        display: -ms-flexbox;
         display: flex;
-        -webkit-box-align: center;
-            -ms-flex-align: center;
-                align-items: center;
+        align-items: center;
         background-image: url('assets/images/logo_horizontal.svg');
       }
     }
 
     .right {
-      display: -webkit-box;
-      display: -ms-flexbox;
       display: flex;
       height: 100%;
       margin-left: 20px;
       #nav-links {
-        display: -webkit-box;
-        display: -ms-flexbox;
         display: flex;
         height: 100%;
       }
       a {
-        display: -webkit-box;
-        display: -ms-flexbox;
         display: flex;
-        -webkit-box-align: center;
-            -ms-flex-align: center;
-                align-items: center;
-        -webkit-box-pack: center;
-            -ms-flex-pack: center;
-                justify-content: center;
+        align-items: center;
+        justify-content: center;
         height: 100%;
         min-width: 100px;
         padding: 0 20px;
         color: #fff;
-        -webkit-transition: color .3s;
         transition: color .3s;
         i {
           margin-right: 5px;
@@ -109,30 +73,17 @@ header {
 }
 
 #hero {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  align-items: center;
+  flex-direction: column;
   position: relative;
   height: 1000px;
+  width: 100%;
   .content {
     margin-top: 100px;
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    flex-direction: column;
+    align-items: center;
     z-index: 5;
     width: 60%;
     text-align: center;
@@ -143,12 +94,8 @@ header {
     .CTA {
       margin-top: 50px;
       width: 100%;
-      display: -webkit-box;
-      display: -ms-flexbox;
       display: flex;
-      -webkit-box-pack: center;
-          -ms-flex-pack: center;
-              justify-content: center;
+      justify-content: center;
       button,a {
         margin: 0 10px;
         max-width: 250px;
@@ -246,10 +193,7 @@ header {
         }
       }
       .CTA {
-        -webkit-box-orient: vertical;
-        -webkit-box-direction: normal;
-            -ms-flex-direction: column;
-                flex-direction: column;
+        flex-direction: column;
         button {
           margin-bottom: 20px;
         }
