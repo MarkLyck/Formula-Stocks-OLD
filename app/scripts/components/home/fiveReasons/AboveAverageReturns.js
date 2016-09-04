@@ -53,12 +53,12 @@ const AboveAverageReturns = React.createClass({
           <div className="right" ref="right">
             <div className="container">
               <p className={p1}>+61%</p>
-              <p className={p2}>+47%</p>
-              <p className={p3}>+43%</p>
-              <p className={p4}>+32%</p>
-              <p className={p5}>+29%</p>
-              <p className={p6}>+23%</p>
-              <p className={p7}>+17%</p>
+              <p className={p2}>+42%</p>
+              <p className={p3}>+23%</p>
+              <p className={p4}>+17%</p>
+              <p className={p5}>+11%</p>
+              <p className={p6}>+9%</p>
+              <p className={p7}>+7%</p>
             </div>
           </div>
         </div>
