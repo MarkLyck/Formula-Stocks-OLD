@@ -14,7 +14,8 @@ const Session = Backbone.Model.extend({
     name: '',
     stripe: {},
     location: {},
-    type: 0
+    type: 0,
+    lastSeen: new Date()
   },
   parse: function(response) {
     if (response) {
