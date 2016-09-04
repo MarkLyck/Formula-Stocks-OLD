@@ -127,14 +127,15 @@ input[type=range]::-moz-range-thumb {
   transition: all .2s ease-out;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1000px) {
   .cumulative-interest {
     .left {
       width: 40%;
-      margin-right: 0;
+      margin-right: 25px;
     }
     .right {
       width: 60%;
+      margin-left: 0;
     }
   }
 }
