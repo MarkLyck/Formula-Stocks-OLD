@@ -1742,12 +1742,13 @@ input[type=range]::-moz-range-thumb {
   -webkit-transition: all .2s ease-out;
   transition: all .2s ease-out; }
 
-@media (max-width: 900px) {
+@media (max-width: 1000px) {
   .cumulative-interest .left {
     width: 40%;
-    margin-right: 0; }
+    margin-right: 25px; }
   .cumulative-interest .right {
-    width: 60%; } }
+    width: 60%;
+    margin-left: 0; } }
 @media (max-width: 900px) {
   .cumulative-interest {
     height: 750px; }
