@@ -17,6 +17,7 @@ const SelectPlanForm = React.createClass({
   selectPlan(plan, e) {
     e.preventDefault()
     this.setState({selectedPlan: plan})
+    sessionStorage.selectedPLan = plan
   },
   next(e) {
     e.preventDefault()

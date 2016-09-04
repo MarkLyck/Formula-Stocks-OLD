@@ -155,11 +155,26 @@ const PaymentForm = React.createClass({
 
     // let payButton =   <input className="pay-button" type="submit" value={this.state.priceText}/>
     let payButton =   <button className="pay-button"><h3>Subscribe for ${cc.commafy(this.state.price)} {this.state.cycle}</h3></button>
-    if (this.state.taxPercent > 0) {
-      payButton =   <button className="pay-button">
-        <h3>Subscribe for ${cc.commafy(this.state.price * (this.state.taxPercent/100 + 1))} {this.state.cycle}</h3>
-        <p className="tax">Tax: ${cc.commafy((this.state.price * (this.state.taxPercent/100 + 1)) - this.state.price)}</p>
-      </button>
+
+    console.log(this.props.passedProps.plan);
+
+    if (this.state.taxPercent > 0 && this.props.passedProps.plan === 'basic') {
+      payButton = (<button className="pay-button">
+                      <h3>Start free trial</h3>
+                      <p className="tax">${cc.commafy(this.state.price * (this.state.taxPercent/100 + 1))} after first month</p>
+                      <p className="tax">Tax: ${cc.commafy((this.state.price * (this.state.taxPercent/100 + 1)) - this.state.price)}</p>
+                    </button>)
+    } else if (this.state.taxPercent > 0) {
+      payButton = (<button className="pay-button">
+                    <h3>Subscribe for ${cc.commafy(this.state.price * (this.state.taxPercent/100 + 1))} {this.state.cycle}</h3>
+                    <p className="tax">Tax: ${cc.commafy((this.state.price * (this.state.taxPercent/100 + 1)) - this.state.price)}</p>
+                  </button>)
+    } else if (this.props.passedProps.plan === 'basic') {
+      console.log('else if plan === basic');
+      payButton =  (<button className="pay-button">
+                      <h3>Start free trial</h3>
+                      <p className="tax">${cc.commafy(this.state.price)} after first month</p>
+                    </button>)
     }
     if (this.state.validatingPayment) {
       payButton =   <div className="pay-button"><i className="fa fa-spinner fa-pulse fa-3x fa-fw"></i></div>
