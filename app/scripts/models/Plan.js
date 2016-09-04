@@ -33,20 +33,20 @@ const Plan = Backbone.Model.extend({
             }
           })
           .map((sug) => {
-            delete sug.data;
-            return sug
+            const fixedSug = _.omit(sug, 'data');
+            return fixedSug
           })
 
         newSuggestions = _.union(data.actionable, newSuggestions)
 
         newSuggestions = newSuggestions.map((suggestion) => {
-          let fixedSuggestion = suggestion
-          delete fixedSuggestion.data;
-          return fixedSuggestion
+          const fixedSug = _.omit(suggestion, 'data');
+          return fixedSug
         })
 
         newSuggestions.forEach((sug) => {
           if (sug.data) {
+            delete sug.data;
             console.error('has data: ', sug);
           }
         })

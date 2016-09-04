@@ -54,14 +54,12 @@ const Header = React.createClass({
         </div>
       )
     }
-// <img id="logo" src="assets/images/logo_horizontal.svg"/>
     return (
       <header>
         <nav>
           <div className="content">
             <div className="left" onClick={() => {scroll.scrollToTop()}}>
               <div id="logo"></div>
-
             </div>
             <div className="right">
               <ScrollLink className="nav-link products-link" to="ourProducts" smooth={true} offset={-100} duration={1000}>Products</ScrollLink>
