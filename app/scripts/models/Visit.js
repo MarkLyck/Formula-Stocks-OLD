@@ -37,8 +37,10 @@ const Visit = Backbone.Model.extend({
           type: 'PUT',
           success: (r) => {
             // console.log('updated visit: ', r);
-            store.session.set('lastSeen', new Date())
-            store.session.updateUser()
+            if (store.session.get('username') !== 'anom') {
+              store.session.set('lastSeen', new Date())
+              store.session.updateUser()
+            }
           },
           error: (e) => {
             console.error('failed putting visit: ', e)
