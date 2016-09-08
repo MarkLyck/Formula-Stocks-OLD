@@ -96,8 +96,8 @@
         margin: 50px 0;
         height: 250px;
         width: auto;
-        .bar-chart {
-          height: 100%;
+        .title, p {
+          align-self: flex-start;
         }
       }
     }

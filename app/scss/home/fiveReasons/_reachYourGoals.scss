@@ -44,8 +44,7 @@
   }
 }
 
-
-@media (max-width: 680px) {
+@media (max-width: 780px) {
   .reach-your-goals {
     .left {
       display: none;
@@ -53,6 +52,9 @@
     .right {
       width: 100%;
       margin-left: 0;
+      .title, p {
+        align-self: flex-start;
+      }
     }
   }
 }
