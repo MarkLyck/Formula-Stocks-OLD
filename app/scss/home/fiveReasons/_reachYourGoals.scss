@@ -19,6 +19,18 @@
       }
     }
   }
+  .right {
+    display: flex;
+    flex-direction: column;
+    p {
+      width: 400px;
+      align-self: flex-end;
+    }
+    .title {
+      width: 400px;
+      align-self: flex-end;
+    }
+  }
 }
 
 

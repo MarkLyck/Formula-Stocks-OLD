@@ -6,12 +6,14 @@
   .content {
     margin: 0 auto;
     width: 80%;
+    max-width: 1200px;
     .about-fs {
       padding: 20px 0;
       line-height: 1.25;
     }
     .employees {
       margin: 0 auto;
+      max-width: 1200px;
       .top-section {
         display: flex;
         justify-content: center;
