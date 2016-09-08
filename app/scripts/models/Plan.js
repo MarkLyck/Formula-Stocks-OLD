@@ -33,32 +33,8 @@ const Plan = Backbone.Model.extend({
               return true
             }
           })
-          // .map((sug) => {
-          //   const fixedSug = _.omit(sug, 'data');
-          //   return fixedSug
-          // })
-
         newSuggestions = _.union(data.actionable, newSuggestions)
-
-        // newSuggestions = newSuggestions.map((suggestion) => {
-        //   const fixedSug = _.omit(suggestion, 'data');
-        //   return fixedSug
-        // })
-
-        // newSuggestions.forEach((sug) => {
-        //   if (sug.data) {
-        //     delete sug.data;
-        //     console.error('has data: ', sug);
-        //   }
-        // })
-
-        // let fixedPortfolio = this.get('portfolio').map((stock) => {
-        //   const fixedStock = _.omit(stock, 'data');
-        //   return fixedStock
-        // })
-
         this.set('suggestions', newSuggestions)
-        // this.set('portfolio', fixedPortfolio)
 
       } else if (fileArr[i].name.indexOf('monthly') > -1) {
         let newSuggestions = this.get('suggestions')
@@ -67,40 +43,7 @@ const Plan = Backbone.Model.extend({
               return true
             }
           })
-          // .map((sug) => {
-          //   const fixedSug = _.omit(sug, 'data');
-          //   return fixedSug
-          // })
-
         newSuggestions = _.union(newSuggestions, data.actionable)
-        // newSuggestions = newSuggestions.map((sug) => {
-        //   const fixedSug = _.omit(sug, 'data');
-        //   return fixedSug
-        // })
-        //
-        // let fixedPortfolio = data.portfolio.map((stock) => {
-        //   const fixedStock = _.omit(stock, 'data');
-        //   return fixedStock
-        // })
-
-        // newSuggestions.forEach((sug) => {
-        //   if (sug.data) {
-        //     console.error('has data: ', sug);
-        //     store.session.set('notification', {
-        //       text: `WARNING! uploading unnecessary data, please refresh this page and try again`,
-        //       type: 'error'
-        //     })
-        //   }
-        // })
-        // fixedPortfolio.forEach((stock) => {
-        //   if (stock.data) {
-        //     console.error('has data: ', stock);
-        //     store.session.set('notification', {
-        //       text: `WARNING! uploading unnecessary data, please refresh this page and try again`,
-        //       type: 'error'
-        //     })
-        //   }
-        // })
 
         this.set('suggestions', newSuggestions)
         this.set('portfolio', data.portfolio)

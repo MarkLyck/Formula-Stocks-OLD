@@ -79,21 +79,6 @@ const InformationalAdvantage = React.createClass({
       height: `calc(${this.state.market}% + 45px)`
     }
 
-    // Formula Stocks uses state-of-the-art technology to compile and
-    // analyze an enormous amount of information, creating a new unique
-    // edge for outperforming the market. And, above all, we make it
-    // available only to a small number of members, giving them an
-    // advantage available nowhere else.<br/><br/>
-    //
-    // This scientifically based approach on stock selection has predicted
-    // winners with an 84%, 87%, 90% and 97% success rate in the past.<br/><br/>
-    //
-    // This contrasts strongly to the ≈60% win ratio of typical
-    // investments in the market.<br/><br/>
-    //
-    // To the right you see four different Formula Stocks products and their
-    // win ratio performance relative to the market.
-
     return (
       <div className="bg-white split-section informational-advantage">
         <div className="content" ref='content'>

@@ -11,7 +11,6 @@ import Dashboard from './components/dashboard/Dashboard'
 import Portfolio from './components/dashboard/Portfolio'
 import Suggestions from './components/dashboard/Suggestions'
 import Articles from './components/dashboard/Articles'
-// import Article from './components/dashboard/Article'
 import MyAccount from './components/dashboard/MyAccount'
 
 import AdminPanel from './components/dashboard/AdminPanel'

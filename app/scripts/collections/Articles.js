@@ -1,5 +1,4 @@
 import Backbone from 'backbone'
-
 import Article from '../models/Article'
 
 const Articles = Backbone.Collection.extend({

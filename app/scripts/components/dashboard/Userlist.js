@@ -10,7 +10,6 @@ const Userlist = React.createClass({
   componentDidMount() {
     $.ajax(`https://baas.kinvey.com/user/kid_rJRC6m9F/`)
     .then((r) => {
-      console.log(r);
       this.setState({users: r})
     })
   },

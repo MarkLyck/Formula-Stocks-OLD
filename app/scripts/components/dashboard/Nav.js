@@ -17,10 +17,6 @@ const Nav  = React.createClass({
     store.session.off('change', this.updateState)
   },
 
-  // <div className="right">
-  //   <Link to="/dashboard/account" className="user-btn"><i className="fa fa-user" aria-hidden="true"></i>{store.session.get('name')}</Link>
-  //   <button onClick={store.session.logout.bind(store.session)}className="logout-btn"><i className="fa fa-power-off" aria-hidden="true"></i></button>
-  // </div>
   render() {
     return (
       <nav className="dashboard-nav">

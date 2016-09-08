@@ -121,8 +121,6 @@ const MyAccount = React.createClass({
     else if(currPlan === 'business formula') {businessClass = 'blue current'; businessDisabled = true}
     else if(currPlan === 'fund formula') {fundClass = 'blue current'; fundDisabled = true}
 
-
-    console.log(store.session.get('stripe'));
     let modal;
     if (this.state.showModal) {
 

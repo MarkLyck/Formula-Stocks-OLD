@@ -41,10 +41,6 @@ const Article = React.createClass({
         articleHtml = articleHtml.replace('&nbsp;', '<br/><br/>')
       }
 
-
-
-      console.log(articleHtml);
-
       article = ReactHtmlParser(articleHtml)
     }
 
