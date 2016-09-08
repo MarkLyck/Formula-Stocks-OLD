@@ -1184,7 +1184,8 @@ input[type=submit] {
     align-items: flex-end;
     height: calc(100% - 45px);
     position: absolute;
-    bottom: 0; }
+    bottom: 0;
+    right: 0; }
     .informational-advantage .right .bar-chart div {
       width: 60px;
       margin: 0 10px;
