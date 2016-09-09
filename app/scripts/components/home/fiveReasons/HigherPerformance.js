@@ -45,13 +45,14 @@ const HigherPerformance = React.createClass({
           <div className="left">
             <h2 className="title">Higher performance at a lower cost</h2>
             <p>
-                Formula Stocks offers an informational advantage
-                in the form of a capital allocation strategy and easy-to-use
-                purchase and sales recommendations.<br/><br/>
+                Formula Stocks technology greatly improves odds for investment performance above
+                the market averages.<br/><br/>
 
-                It comes at a low flat fee, which will typically involve
-                considerable savings compared to traditional methods
-                of investing, such as funds or money management.<br/><br/>
+                Convenient, time saving and easy to use.<br/><br/>
+
+
+                It comes at a low flat fee, typically providing considerable savings compared
+                to other methods of investing, such as funds or money management.<br/><br/>
 
                 Higher performance at a lower cost. What’s not to like?
             </p>

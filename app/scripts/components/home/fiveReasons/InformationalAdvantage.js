@@ -88,8 +88,7 @@ const InformationalAdvantage = React.createClass({
               Formula Stocks develops proprietary state-of-the-art technology
               to compile and analyze enormous amounts of information,
               creating a new unique edge for outperforming the market.
-              Above all, we make it available only to members,
-              giving them an exclusive advantage available nowhere else.<br/><br/>
+              Exclusively available for members only.<br/><br/>
 
               This scientifically based approach to stock selection has predicted winners with an
                {' ' + Math.floor(store.plans.get('basic').get('stats').WLRatio)}%,
