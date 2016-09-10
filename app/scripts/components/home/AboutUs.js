@@ -46,10 +46,12 @@ const AboutUs = React.createClass({
 
         <div className="content">
           <p className="about-fs">
-            Formula Stocks is a research and development company based in Denmark. We started R&D operations in 2003. The basic idea was simple: leveraging
-            decades of supercomputer experience and investment acumen to create an informational advantage in equity investing. We have specialized in being right far
-            more often than we are wrong, using a scientific approach and intelligent technology to analyze businesses and business models and thus accumulate
-            knowledge which can be found nowhere else.
+            Formula Stocks is a research and development company based in Denmark.
+            We started R&D operations in 2003. The basic idea was simple:
+            leveraging decades of supercomputer experience and investment acumen to create an
+            informational advantage in equity investing. We specialize in being right far more often
+            than we are wrong, using a scientific approach and intelligent technology to analyze
+            businesses and accumulate extensive knowledge which can literaly be found nowhere else.
           </p>
           <div className="employees">
             <div className="top-section">
