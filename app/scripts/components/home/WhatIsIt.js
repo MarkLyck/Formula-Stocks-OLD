@@ -8,12 +8,13 @@ const WhatIsIt = React.createClass({
           <p className="fs-title">Formula Stocks</p>
           <h3 className="title">What is it?</h3>
           <p>
-          Using expert system technology we pick next year's winners in the markets today.<br/><br/>
+            Using proprietary advanced technology we can pick next year's
+            winners in the markets today.<br/><br/>
 
-          We offer an informational advantage in the form of a capital allocation strategy
-          and easy-to-use purchase and sales recommendations.<br/><br/>
+            We use this to offer you an informational advantage in the form of a capital allocation
+            strategy and easy-to-use purchase and sales recommendations.<br/><br/>
 
-          Use this to better your investment performance.
+            Use this to better your investment performance.
           </p>
         </div>
         <div className="right">
