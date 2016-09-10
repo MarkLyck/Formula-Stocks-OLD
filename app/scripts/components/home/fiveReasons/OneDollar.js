@@ -109,8 +109,8 @@ const OneDollar = React.createClass({
             <h2 className="title">$1 and 45 years</h2>
             <p>
               This is how much 1 dollar could have grown over 45 years,
-              If you had invested it either in the market (S&P 500)
-              or a Formula Stocks strategy.*
+              If invested in either the market (S&P 500) or a Formula Stocks strategy.*<br/><br/>
+              Select Basic, Premium or Business, to see the difference.
             </p>
             <p className="disclaimer">(*) in a tax-free account, excluding trading costs and slippage</p>
           </div>
