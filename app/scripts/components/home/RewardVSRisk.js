@@ -17,11 +17,13 @@ const RewardVSRisk = React.createClass({
                 One simply uses leverage, thus amplifying both risk and reward.<br/><br/>
 
                 But our methods generally do the exact opposite. They deliver above-average returns
-                at a below-average risk and without any form of leverage - an absolute rarity.
+                at a below-average risk and without any form of leverage - an absolute rarity.<br/><br/>
+
+                One of the best and most modern risk/reward benchmarks
+                is the Omega function, the output of which is depicted on the left.
               </p>
               <p className="disclaimer">
-                One of the best and most modern risk/reward benchmarks
-                is the Omega function, the output of which is depicted on the left.<br/><br/>
+                <br/><br/>
 
                 Higher levels indicate higher returns,
                 and steeper slopes indicate lower risk.
