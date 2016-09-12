@@ -1372,6 +1372,87 @@ input[type=submit] {
 @media (max-width: 650px) {
   .our-products .icon-container {
     display: none; } }
+.previous-recommendations .content .right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; }
+  .previous-recommendations .content .right .plans {
+    align-self: flex-end;
+    width: 400px; }
+    .previous-recommendations .content .right .plans button {
+      background: none;
+      color: #49494A;
+      width: 100px; }
+      .previous-recommendations .content .right .plans button:hover {
+        color: #27A5F9; }
+        .previous-recommendations .content .right .plans button:hover div {
+          height: 2px;
+          width: 100%;
+          margin-top: 5px;
+          background: #27A5F9; }
+    .previous-recommendations .content .right .plans .selected {
+      color: #27A5F9; }
+      .previous-recommendations .content .right .plans .selected div {
+        height: 2px;
+        width: 100%;
+        margin-top: 5px;
+        background: #27A5F9; }
+  .previous-recommendations .content .right .video-container {
+    align-self: flex-end;
+    position: relative; }
+    .previous-recommendations .content .right .video-container .y-axis {
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      left: -50px;
+      top: 42px; }
+      .previous-recommendations .content .right .video-container .y-axis li {
+        margin-bottom: 53px; }
+    .previous-recommendations .content .right .video-container .x-axis {
+      position: absolute;
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      left: -3px;
+      bottom: -25px; }
+    .previous-recommendations .content .right .video-container video {
+      z-index: 1; }
+    .previous-recommendations .content .right .video-container:hover {
+      cursor: pointer; }
+    .previous-recommendations .content .right .video-container:hover::after {
+      content: '\f04b';
+      font-family: FontAwesome;
+      background: rgba(0, 0, 0, 0.5);
+      width: 75px;
+      height: 75px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #fff; }
+  .previous-recommendations .content .right .playing {
+    position: relative; }
+    .previous-recommendations .content .right .playing:hover::after {
+      content: '\f04c';
+      font-family: FontAwesome;
+      background: rgba(0, 0, 0, 0.5);
+      width: 75px;
+      height: 75px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #fff; }
+
 .the-results {
   background: #27A5F9; }
   .the-results .content {

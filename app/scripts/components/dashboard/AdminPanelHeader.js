@@ -1,4 +1,5 @@
 import React from 'react'
+import $ from 'jquery'
 
 import store from '../../store'
 import admin from '../../admin'
@@ -8,7 +9,8 @@ const AdminPanelHeader = React.createClass({
     return {
       fetched: false,
       visitors: admin.visits.toJSON(),
-      newsletterSubs: admin.newsletterSubs.toJSON()
+      newsletterSubs: admin.newsletterSubs.toJSON(),
+      users: []
     }
   },
   componentDidMount() {
@@ -16,35 +18,38 @@ const AdminPanelHeader = React.createClass({
     admin.newsletterSubs.on('update', this.updateState)
     admin.visits.fetch()
     admin.newsletterSubs.fetch()
+    $.ajax(`https://baas.kinvey.com/user/kid_rJRC6m9F/`)
+    .then((users) => {
+      this.setState({users: users})
+    })
   },
   componentWillUnmount() {
     admin.visits.off('change update', this.updateState)
   },
   updateState() {
-    // console.log(admin.visits.toJSON());
     this.setState({visitors: admin.visits.toJSON()})
     this.setState({newsletterSubs: admin.newsletterSubs.toJSON()})
   },
   render() {
-     let subscribers = this.state.visitors.filter((visitor) => {
-      if (visitor.type > 0 && visitor.type < 5) {
-        return true
+    let subscribers = this.state.users.filter((user) => {
+      if (user.type > 0 && user.type < 5 && user.name !== 'FS Demo') {
+        return true;
       } else {
-        return false
+        return false;
       }
     })
-    let trials = this.state.visitors.filter((visitor) => {
-      if (visitor.type === 0) {
+    let trials = this.state.users.filter((user) => {
+      if (user.type === 0) {
         return true
       } else {
         return false
       }
     })
 
-    let conversionRate = 0.00;
-    if (subscribers.length !== 0) {
-      conversionRate = 100 - this.state.visitors.length / subscribers.length * 100
-    }
+    // let conversionRate = 0.00;
+    // if (subscribers.length !== 0) {
+    //   conversionRate = 100 - this.state.visitors.length / subscribers.length * 100
+    // }
     return (
       <section className="suggestion-header">
         <ul>

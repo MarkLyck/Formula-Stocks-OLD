@@ -10,6 +10,7 @@ import InformationalAdvantage from './fiveReasons/InformationalAdvantage'
 import OneDollar from './fiveReasons/OneDollar'
 import HigherPerformance from './fiveReasons/HigherPerformance'
 import OurProducts from './OurProducts'
+import PreviousRecommendations from './PreviousRecommendations'
 import TheResults from './TheResults'
 import PricingTable from './PricingTable'
 import Brochures from './Brochures'
@@ -71,7 +72,7 @@ const Home = React.createClass({
       }
 
     }
-
+//<PreviousRecommendations/>
     return (
       <div id="home">
         {modal}
@@ -82,6 +83,7 @@ const Home = React.createClass({
         <OneDollar/>
         <HigherPerformance/>
         <OurProducts/>
+
         <TheResults/>
         <PricingTable/>
         <Brochures/>
