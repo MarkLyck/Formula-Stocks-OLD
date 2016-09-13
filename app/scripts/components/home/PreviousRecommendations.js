@@ -66,21 +66,15 @@ const PreviousRecommendations = React.createClass({
           <div className="left">
             <h2 className="title">Previous Recommendations</h2>
             <p>
-                Here you can see the historical performance of
-                recommendations in the past for each product.<br/><br/>
+              Click play to watch the historical outcomes of all Formula Stocks recommendations.<br/><br/>
 
-                In the videos you will see price movements in
-                blue, indicating the path price has taken from buy
-                recommentation to sell recommendation.<br/><br/>
+              In the videos you will see price movements in white, indicating the smoothed path price
+              has taken from buy recommendation to sell recommendation.<br/><br/>
 
-                Green dots indicate a winning investment,
-                red dots a losing investment.<br/><br/>
+              White circles indicate winning investments, grey indicate losing.<br/><br/>
 
-                Our recommendations are rules based, and the rules
-                do not change. So we can quantify every
-                call ever made. No bias is present.<br/><br/>
-
-                You can view a total of 9,800 recommendations.
+              Our recommendations are rules based, and the rules do not change. So we can quantify every call ever made. It becomes clear that risk/reward is skewed very significantly in favour of reward with our products.
+              You can view a total of 9,800 recommendations for 4 products.
             </p>
           </div>
           <div className="right">
