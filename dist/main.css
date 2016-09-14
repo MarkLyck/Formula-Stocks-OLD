@@ -1463,6 +1463,22 @@ input[type=submit] {
         transform: translate(-50%, -50%);
         color: #fff; }
 
+@media (max-width: 1000px) {
+  .previous-recommendations .content {
+    flex-direction: column; }
+    .previous-recommendations .content .left {
+      width: 100%;
+      margin-right: 0; }
+      .previous-recommendations .content .left p {
+        max-width: 100%; }
+    .previous-recommendations .content .right {
+      justify-content: center;
+      width: 100%;
+      margin-left: 0; }
+      .previous-recommendations .content .right .plans {
+        align-self: center; }
+      .previous-recommendations .content .right .video-container {
+        align-self: center; } }
 .the-results {
   background: #27A5F9; }
   .the-results .content {

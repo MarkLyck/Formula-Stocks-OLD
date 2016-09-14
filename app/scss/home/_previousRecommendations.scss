@@ -99,3 +99,31 @@
     }
   }
 }
+
+
+@media (max-width: 1000px) {
+  .previous-recommendations {
+    .content {
+      flex-direction: column;
+      .left {
+        width: 100%;
+        margin-right: 0;
+        p {
+          max-width: 100%;
+        }
+      }
+      .right {
+        // margin: 50px auto 0 50px;
+        justify-content: center;
+        width: 100%;
+        margin-left: 0;
+        .plans {
+          align-self: center;
+        }
+        .video-container {
+          align-self: center;
+        }
+      }
+    }
+  }
+}
