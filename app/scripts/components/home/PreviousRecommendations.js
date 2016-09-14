@@ -64,17 +64,17 @@ const PreviousRecommendations = React.createClass({
       <div className="bg-white split-section previous-recommendations">
         <div className="content" ref="content">
           <div className="left">
-            <h2 className="title">Previous Recommendations</h2>
+            <h2 className="title">Recommedations to date</h2>
             <p>
               Click play to watch the historical outcomes of all Formula Stocks recommendations.<br/><br/>
 
               In the videos you will see price movements in white, indicating the smoothed path price
               has taken from buy recommendation to sell recommendation.<br/><br/>
 
-              White circles indicate winning investments, grey indicate losing.<br/><br/>
+              White circles indicate winning investments, grey losing.<br/><br/>
 
-              Our recommendations are rules based, and the rules do not change. So we can quantify every call ever made. It becomes clear that risk/reward is skewed very significantly in favour of reward with our products.
-              You can view a total of 9,800 recommendations for 4 products.
+              Our recommendations are rules based, and the rules do not change. So we can quantify every call ever made. It becomes clear that risk/reward is skewed very significantly in favour of reward.
+              You can view a total of 9,800 recommendations.
             </p>
           </div>
           <div className="right">

@@ -1,9 +1,10 @@
 .previous-recommendations {
   .content {
+    margin-bottom: 25px;
     .right {
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      margin-left: 65px;
       .plans {
         align-self: flex-end;
         width: 400px;

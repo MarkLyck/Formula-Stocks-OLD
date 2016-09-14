@@ -39,15 +39,11 @@ const AboveAverageReturns = React.createClass({
           <div className="left">
             <h2 className="title">Prefer above-average returns?</h2>
             <p>
-              The world is full of investment information.
-              Because this information is offered to
-              a large number of people,
-              the market has already adjusted to it and priced it in,
-              when you receive it.  <br/><br/>
+              It is only when you know something the competition does not that above-average
+              returns become a realistic proposition.<br/><br/>
 
-              So in order to outperform the markets,
-              you will need an edge, an informational
-              advantage available only to a minority.
+              By offering valuable information available nowhere else, Formula Stocks can give you an
+              informational advantage over the competition, empowering you with far better odds.
             </p>
           </div>
           <div className="right" ref="right">
