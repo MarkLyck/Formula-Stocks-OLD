@@ -1353,25 +1353,33 @@ input[type=submit] {
       margin: 0; }
   .our-products .icon-container {
     display: flex;
-    justify-content: space-between;
+    flex-wrap: wrap;
     padding: 20px 0; }
     .our-products .icon-container .plan-icon {
+      width: calc(25% - 50px);
       display: flex;
       flex-direction: column;
       align-items: center;
-      transition: transform .5s; }
+      transition: transform .5s;
+      margin: 0 25px;
+      margin-bottom: 25px; }
       .our-products .icon-container .plan-icon:hover {
         transform: scale(1.1); }
       .our-products .icon-container .plan-icon img {
         height: 100px; }
       .our-products .icon-container .plan-icon p {
         margin: 10px 0 0 0; }
+      .our-products .icon-container .plan-icon .descr {
+        margin-top: 10px; }
   .our-products a:hover {
     text-decoration: underline; }
 
+@media (max-width: 1100px) {
+  .our-products .icon-container .plan-icon {
+    width: calc(50% - 50px); } }
 @media (max-width: 650px) {
-  .our-products .icon-container {
-    display: none; } }
+  .our-products .icon-container .plan-icon {
+    width: calc(100%); } }
 .previous-recommendations .content {
   margin-bottom: 25px; }
   .previous-recommendations .content .right {
