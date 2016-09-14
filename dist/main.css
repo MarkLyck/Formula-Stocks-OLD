@@ -1607,18 +1607,26 @@ input[type=submit] {
   margin-right: 0; }
 
 .product-modal {
-  display: flex; }
-  .product-modal .left {
-    width: 50%;
-    padding: 20px; }
-  .product-modal .right {
-    width: 50%;
-    background: #2C323D;
-    padding: 20px; }
-    .product-modal .right p {
-      color: #fff;
-      font-weight: 100;
-      font-size: 1rem; }
+  max-height: 75vh;
+  overflow: auto; }
+  .product-modal .wrapper {
+    display: flex; }
+    .product-modal .wrapper .left {
+      width: 50%;
+      padding: 20px;
+      background: #2C323D; }
+      .product-modal .wrapper .left p {
+        color: #fff; }
+    .product-modal .wrapper .right {
+      width: 50%;
+      background: #2C323D;
+      padding: 20px; }
+      .product-modal .wrapper .right p {
+        color: #fff;
+        font-weight: 100;
+        font-size: 1rem; }
+  .product-modal .description {
+    margin: 25px; }
 
 @media (max-width: 1200px) {
   .plan {
@@ -1639,13 +1647,16 @@ input[type=submit] {
     margin: 0 0 40px 0; }
 
   .product-modal {
-    flex-direction: column;
-    overflow-y: auto;
-    max-height: 80vh; }
-    .product-modal .left, .product-modal .right {
-      width: 100%; }
-      .product-modal .left div p:last-child, .product-modal .right div p:last-child {
-        padding-bottom: 20px; } }
+    flex-direction: column; }
+    .product-modal .wrapper {
+      flex-direction: column; }
+      .product-modal .wrapper .left, .product-modal .wrapper .right {
+        width: 100%;
+        padding: 0 20px; }
+        .product-modal .wrapper .left div p:last-child, .product-modal .wrapper .right div p:last-child {
+          margin-bottom: 0; }
+      .product-modal .wrapper .right div p:last-child {
+        margin-bottom: 20px; } }
 .brochures {
   background-image: url("assets/images/NY_Skyline.jpg");
   background-size: cover;
