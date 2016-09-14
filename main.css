@@ -1427,7 +1427,9 @@ input[type=submit] {
         left: -3px;
         bottom: -25px; }
       .previous-recommendations .content .right .video-container video {
-        z-index: 1; }
+        z-index: 1;
+        height: 300px;
+        width: 400px; }
       .previous-recommendations .content .right .video-container:hover {
         cursor: pointer; }
       .previous-recommendations .content .right .video-container:hover::after {
