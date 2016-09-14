@@ -1,4 +1,5 @@
 import React from 'react';
+import Scroll from 'react-scroll'
 
 const PreviousRecommendations = React.createClass({
   getInitialState() {
@@ -16,6 +17,7 @@ const PreviousRecommendations = React.createClass({
     this.setState({video: 'paused'});
   },
   render() {
+    let Element = Scroll.Element;
     let basClass, preClass, busClass, funClass;
     if (this.state.plan === 'basic') {basClass='selected'}
     if (this.state.plan === 'premium') {preClass='selected'}
@@ -62,6 +64,7 @@ const PreviousRecommendations = React.createClass({
 
     return (
       <div className="bg-white split-section previous-recommendations">
+        <Element name="recommendationsToDate"></Element>
         <div className="content" ref="content">
           <div className="left">
             <h2 className="title">Recommendations to date</h2>

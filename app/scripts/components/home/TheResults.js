@@ -1,6 +1,7 @@
 import React from 'react'
 import $ from 'jquery'
 import store from '../../store'
+import Scroll from 'react-scroll'
 
 import unnamedChartComponent from '../../libraries/amcharts3-react';
 
@@ -35,6 +36,7 @@ const TheResults = React.createClass({
     this.setState({logarithmic: !this.state.logarithmic})
   },
   render() {
+    let Element = Scroll.Element;
     let basicData = store.plans.get('basic').get('annualData')
     let premiumData = store.plans.get('premium').get('annualData')
     let businessData = store.plans.get('business').get('annualData')
@@ -213,6 +215,7 @@ const TheResults = React.createClass({
 
     return (
       <section className="the-results">
+        <Element name="performance"></Element>
         <div className="content" ref="content">
           <h2 className="title">Performance</h2>
           <div className="divider"></div>
