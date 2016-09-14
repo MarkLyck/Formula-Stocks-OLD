@@ -89,7 +89,7 @@ store.plans.add({
   type: 4,
   info: {
     roundtripTradesPerYear: 63,
-    IITFormulas: 87,
+    IITFormulas: 90,
     avgGainPerPosition: 66.097,
     avgLossPerPosition: 16.85,
     maxDrawdown45y: 45.00,

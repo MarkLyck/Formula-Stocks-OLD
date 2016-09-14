@@ -9,6 +9,10 @@ const ProductModal = React.createClass({
   componentWillReceiveProps(newProps) {
     this.setState({plan: store.plans.get(newProps.planName.toLowerCase()).toJSON()})
   },
+  signUp(plan) {
+    store.settings.history.push('/signup')
+    sessionStorage.selectedPlan = plan
+  },
   render() {
     let planDescription;
     if (this.props.planName === 'Basic') {
@@ -16,7 +20,7 @@ const ProductModal = React.createClass({
         <p>
           Basic is an entry level product for individual use. It offers a very good value proposition.
           <br/><br/>
-          Once you have signed up as a member (here), you will get access to our secure dashboard. The dashboard contains our model portfolio, which is the currently owned stocks for the Basic product. You can choose to mirror this easily.
+          Once you have <a className="blue-color" onClick={this.signUp.bind(null, 'basic')}>signed up as a member</a>, you will get access to our secure dashboard. The dashboard contains our model portfolio, which is the currently owned stocks for the Basic product. You can choose to mirror this easily.
           <br/><br/>
           We also provide suggestions, which are fresh weekly recommendations to purchase and/or sell stocks. Also here you will find more advanced information about individual stocks.
           <br/><br/>
@@ -29,7 +33,7 @@ const ProductModal = React.createClass({
         <p>
           Premium is the premium product for individual use. It offers a very good value proposition, with an increased rate or return historically, as well as much better win/loose ratios. With premium, nearly 9 out 10 investments has provided a gain over the longer term.
           <br/><br/>
-          Once you have signed up as a member (here), you will get access to our secure dashboard. The dashboard contains our model portfolio, which is the currently owned stocks for the Basic product. You can choose to mirror this easily.
+          Once you have <a className="blue-color" onClick={this.signUp.bind(null, 'premium')}>signed up as a member</a>, you will get access to our secure dashboard. The dashboard contains our model portfolio, which is the currently owned stocks for the Basic product. You can choose to mirror this easily.
           <br/><br/>
           We also provide suggestions, which are fresh weekly recommendations to purchase and/or sell stocks. Also here you will find more advanced information about individual stocks.
           <br/><br/>
@@ -50,14 +54,14 @@ const ProductModal = React.createClass({
           <br/><br/>
           If you run a portfolio which is made up primarily by one investment style (be that value, deep value, growth, momentum, quantitative, etc.)- you may experience that your portfolio behaves more succesfully in some macro environments / time periods than in others. With Business, 44 different Intelligent Investment Technologies are applied simultaneously, providing actual strong strategy diversification within this single product as well, reducing any dependancies on a favorable macro environment "
           <br/><br/>
-          For more information, please refer to our Business brochure. Or sign up here. Business is unavailable for institutional capital, please see the Funds product instead.
+          For more information, please refer to our Business brochure. Or sign up <a className="blue-color" onClick={this.signUp.bind(null, 'business')}>here</a>. Business is unavailable for institutional capital, please see the Funds product instead.
       </p>)
     } else if (this.props.planName === 'Fund') {
       planDescription = (
         <p>
           Fund is a product for the institutional investor. It is designed for strong diversification
           and the deep liquidity requirements of institutional capital. With Fund most realistic AUM
-          sizes becomes possible.<br/><br/>
+          sizes become possible.<br/><br/>
           You may choose to use Fund to complement your existing research or fund management efforts.
           Fund provides valuable research and actionable market intelligence.
           Or alternatively, you may view Fund as an OEM fund-in-a-box. It provides as such a

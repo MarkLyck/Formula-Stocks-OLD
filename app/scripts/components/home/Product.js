@@ -25,7 +25,7 @@ const Product = React.createClass({
           <p><span className="light-text-color">Avg. round trip trades p.a: </span>{this.props.info.roundtripTradesPerYear}</p>
           <p><span className="light-text-color">IIT formulas applied: </span>{this.props.info.IITFormulas}</p>
           <p><span className="light-text-color">Annual growth: </span>{this.props.stats.CAGR.toFixed(2)}%</p>
-          <p><span className="light-text-color">Avg. winning positions: </span>{this.props.stats.WLRatio.toFixed(2)}%</p>
+          <p><span className="light-text-color">Win/loss ratio: </span>{this.props.stats.WLRatio.toFixed(2)}%</p>
         </div>
         <button onClick={this.showModal} className="more-info filled-btn">More info</button>
         <button className="sign-up filled-btn" onClick={this.signup}>{this.props.signupText}</button>
