@@ -24,6 +24,43 @@
           max-height: 275px;
           top: 20px;
         }
+        .chart-indicators {
+          position: absolute;
+          top: 0;
+          right: 0;
+          .chart-indicator {
+            background: none;
+            padding-left: 25px;
+            position: relative;
+            margin-bottom: 10px;
+            &::before {
+              content: '';
+              width: 15px;
+              height: 15px;
+              left: 0;
+              top: 50%;
+              transform: translateY(-50%);
+              background: $primary-color;
+              position: absolute;
+              z-index: 2;
+            }
+          }
+          .business::before {
+            background: #4C7899;
+          }
+          .fund::before {
+            background: $text-color;
+          }
+          .premium::before {
+            background: #6FCEE1;
+          }
+          .basic::before {
+            background: #AFD1E3;
+          }
+          .sp500::before {
+            background: #989898;
+          }
+        }
       }
       .right {
         width: 50%;

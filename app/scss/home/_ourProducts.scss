@@ -13,16 +13,15 @@
   }
   .icon-container {
     display: flex;
-    flex-wrap: wrap;
+    justify-content: space-between;
     padding: 20px 0;
     .plan-icon {
-      width: calc(25% - 50px);
+      width: calc(25%);
       display: flex;
       flex-direction: column;
       align-items: center;
       transition: transform .5s;
-      margin: 0 25px;
-      margin-bottom: 25px;
+      margin-right: 50px;
       &:hover {
         transform: scale(1.1);
       }
@@ -35,6 +34,9 @@
       .descr {
         margin-top: 10px;
       }
+      &:last-child {
+        margin-right: 0;
+      }
     }
   }
   a:hover {
@@ -45,8 +47,13 @@
 @media (max-width: 1100px) {
   .our-products {
     .icon-container {
+      flex-wrap: wrap;
       .plan-icon {
         width: calc(50% - 50px);
+        margin: 0 25px 25px;
+        &:last-child {
+          margin-bottom: 0;
+        }
       }
     }
   }
