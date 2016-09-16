@@ -23,12 +23,12 @@ const Hero = React.createClass({
           <div className="bounce-down">
             <h1 id="main-title">A better <span className="font bold">solution</span> for the <span className="font bold">stock market investor</span></h1>
             <h2>Formula Stocks has a record of picking next year’s winners with a success rate of up to 84-92%<sup>*</sup>. Give your investments a significant boost – join us today.</h2>
-            <sub className="white-color"><sup>*</sup>Past performance is not necessarily indicative of future results. </sub>
           </div>
           <div className="CTA fade-in">
             <button className="filled-btn" onClick={this.tryIt}>Try it for free!</button>
             <Link className="outline-btn" to="whatIsIt" smooth={true} offset={100} duration={500}>Learn more</Link>
           </div>
+          <sub className="white-color hero-disclaimer"><sup>*</sup>Past performance is not necessarily indicative of future results. </sub>
         </div>
 
           <div id="hero-chart" className="slide-up">

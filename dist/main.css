@@ -654,6 +654,9 @@ header {
         margin: 0 10px;
         max-width: 250px;
         font-size: 1.25rem; }
+    #hero .content .hero-disclaimer {
+      margin-top: 20px;
+      line-height: normal; }
   #hero::before {
     content: "";
     background: url("/assets/images/hero.jpg");
