@@ -9,14 +9,17 @@ const RewardVSRisk = React.createClass({
           <div className="divider"></div>
           <div className="wrapper">
             <div className="left">
-              <img src="assets/images/omega_chart.svg"/>
-              <div className="chart-indicators">
-                <div className="chart-indicator business">Business</div>
-                <div className="chart-indicator fund">Fund</div>
-                <div className="chart-indicator premium">Premium</div>
-                <div className="chart-indicator basic">Basic</div>
-                <div className="chart-indicator sp500">S&P500</div>
+              <div className="chart-container">
+                <img src="assets/images/omega_chart.svg"/>
+                <div className="chart-indicators">
+                  <div className="chart-indicator business">Business</div>
+                  <div className="chart-indicator fund">Fund</div>
+                  <div className="chart-indicator premium">Premium</div>
+                  <div className="chart-indicator basic">Basic</div>
+                  <div className="chart-indicator sp500">S&P500</div>
+                </div>
               </div>
+
             </div>
             <div className="right">
               <p>

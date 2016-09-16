@@ -22,7 +22,7 @@ const Hero = React.createClass({
         <div className="content">
           <div className="bounce-down">
             <h1 id="main-title">A better <span className="font bold">solution</span> for the <span className="font bold">stock market investor</span></h1>
-            <h2>Formula Stocks has a record of picking next year’s winners with a success rate of up to 84-92%<sup>*</sup>. Give your investments a significant boost – join us today.</h2>
+            <h2>Formula Stocks has a history of picking next year’s winners with an 84-92% average success rate<sup>*</sup>. Give your investments a significant boost – join us today.</h2>
           </div>
           <div className="CTA fade-in">
             <button className="filled-btn" onClick={this.tryIt}>Try it for free!</button>
