@@ -1713,7 +1713,6 @@ input[type=submit] {
     flex-direction: column;
     align-items: center;
     width: 80%;
-    height: 400px;
     padding-bottom: 40px; }
     .reward-vs-risk .content .title {
       margin-top: 0; }
@@ -1726,39 +1725,43 @@ input[type=submit] {
         width: 50%;
         height: 100%;
         position: relative; }
-        .reward-vs-risk .content .wrapper .left img {
-          height: 100%;
-          max-height: 275px;
-          top: 20px; }
-        .reward-vs-risk .content .wrapper .left .chart-indicators {
-          position: absolute;
-          top: 0;
-          right: 0; }
-          .reward-vs-risk .content .wrapper .left .chart-indicators .chart-indicator {
-            background: none;
-            padding-left: 25px;
-            position: relative;
-            margin-bottom: 10px; }
-            .reward-vs-risk .content .wrapper .left .chart-indicators .chart-indicator::before {
-              content: '';
-              width: 15px;
-              height: 15px;
-              left: 0;
-              top: 50%;
-              transform: translateY(-50%);
-              background: #27A5F9;
-              position: absolute;
-              z-index: 2; }
-          .reward-vs-risk .content .wrapper .left .chart-indicators .business::before {
-            background: #4C7899; }
-          .reward-vs-risk .content .wrapper .left .chart-indicators .fund::before {
-            background: #49494A; }
-          .reward-vs-risk .content .wrapper .left .chart-indicators .premium::before {
-            background: #6FCEE1; }
-          .reward-vs-risk .content .wrapper .left .chart-indicators .basic::before {
-            background: #AFD1E3; }
-          .reward-vs-risk .content .wrapper .left .chart-indicators .sp500::before {
-            background: #989898; }
+        .reward-vs-risk .content .wrapper .left .chart-container {
+          position: relative;
+          min-height: 275px;
+          max-width: 375px; }
+          .reward-vs-risk .content .wrapper .left .chart-container img {
+            height: auto;
+            max-width: 375px;
+            top: 20px; }
+          .reward-vs-risk .content .wrapper .left .chart-container .chart-indicators {
+            position: absolute;
+            top: 16px;
+            right: 0; }
+            .reward-vs-risk .content .wrapper .left .chart-container .chart-indicators .chart-indicator {
+              background: none;
+              padding-left: 25px;
+              position: relative;
+              margin-bottom: 10px; }
+              .reward-vs-risk .content .wrapper .left .chart-container .chart-indicators .chart-indicator::before {
+                content: '';
+                width: 15px;
+                height: 15px;
+                left: 0;
+                top: 50%;
+                transform: translateY(-50%);
+                background: #27A5F9;
+                position: absolute;
+                z-index: 2; }
+            .reward-vs-risk .content .wrapper .left .chart-container .chart-indicators .business::before {
+              background: #4C7899; }
+            .reward-vs-risk .content .wrapper .left .chart-container .chart-indicators .fund::before {
+              background: #49494A; }
+            .reward-vs-risk .content .wrapper .left .chart-container .chart-indicators .premium::before {
+              background: #6FCEE1; }
+            .reward-vs-risk .content .wrapper .left .chart-container .chart-indicators .basic::before {
+              background: #AFD1E3; }
+            .reward-vs-risk .content .wrapper .left .chart-container .chart-indicators .sp500::before {
+              background: #989898; }
       .reward-vs-risk .content .wrapper .right {
         width: 50%;
         display: flex;
@@ -1766,27 +1769,22 @@ input[type=submit] {
         justify-content: space-between; }
 
 @media (max-width: 875px) {
-  .reward-vs-risk .content {
-    height: 550px; }
-    .reward-vs-risk .content .wrapper {
-      flex-direction: column; }
-      .reward-vs-risk .content .wrapper .left {
-        order: 1;
-        width: 100%;
-        text-align: center; }
-        .reward-vs-risk .content .wrapper .left img {
-          margin: 0 auto;
-          transform: translateX(-50%);
-          max-width: 100%; }
-      .reward-vs-risk .content .wrapper .right {
-        width: 100%;
-        margin: 0;
-        display: block; }
-        .reward-vs-risk .content .wrapper .right p {
-          max-width: 100%; } }
-@media (max-width: 650px) {
-  .reward-vs-risk .content {
-    height: 700px; } }
+  .reward-vs-risk .content .wrapper {
+    flex-direction: column; }
+    .reward-vs-risk .content .wrapper .left {
+      order: 1;
+      width: 100%;
+      text-align: center; }
+      .reward-vs-risk .content .wrapper .left img {
+        margin: 0 auto;
+        transform: translateX(-50%);
+        max-width: 100%; }
+    .reward-vs-risk .content .wrapper .right {
+      width: 100%;
+      margin: 0;
+      display: block; }
+      .reward-vs-risk .content .wrapper .right p {
+        max-width: 100%; } }
 .quote-section {
   background: url("assets/images/Albert_Einstein.jpg");
   background-size: cover;
