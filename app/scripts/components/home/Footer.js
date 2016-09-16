@@ -63,7 +63,11 @@ const Footer = React.createClass({
           </p>
           <p className="white-color disclaimer agreement">By visiting this site, you agree to our <a className="blue-color" onClick={this.showTerms}>Terms and Conditions</a> & <a className="blue-color" onClick={this.showPrivacy}>Privacy Policy</a></p>
         </div>
+
         <div className="copyright">
+          <div className="contact-info">
+            <p>Formula Stocks ApS     Ribe Landevej 39      DK-6100 Haderslev      Denmark.</p>
+          </div>
           <p>© Formula Stocks 2016 - All rights reserved.</p>
         </div>
       </footer>
