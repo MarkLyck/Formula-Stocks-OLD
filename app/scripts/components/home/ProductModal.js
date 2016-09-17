@@ -50,7 +50,7 @@ const ProductModal = React.createClass({
           <br/><br/>
           As a Business subscriber, you obtain the best odds, and the best informational advantage, we can provide, powered by some of the most advanced investment technology available anywhere in the world. This means getting the very best investment propositions we can locate within the current opportunity set. Of course, as a professional investor you will know that we can produce the odds, but we cannot control the outcome.
           <br/><br/>
-          You may choose to mirror our model portfolio, or use our recommendations as a starting point for your own research. You may choose to apply your own risk tolerances and capital allocation strategy, or rely on Formula Stock technology. The central risk reduction strategy with Business is the application of a margin of safety.
+          You may choose to mirror our model portfolio, or use our recommendations as a starting point for your own research. You may choose to apply your own risk tolerances and capital allocation strategy, or rely on Formula Stocks technology. The central risk reduction strategy with Business is the application of a margin of safety.
           <br/><br/>
           If you run a portfolio which is made up primarily by one investment style (be that value, deep value, growth, momentum, quantitative, etc.)- you may experience that your portfolio behaves more succesfully in some macro environments / time periods than in others. With Business, 44 different Intelligent Investment Technologies are applied simultaneously, providing actual strong strategy diversification within this single product as well, reducing any dependancies on a favorable macro environment "
           <br/><br/>
