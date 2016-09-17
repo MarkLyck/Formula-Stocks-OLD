@@ -634,7 +634,7 @@ header {
   flex-direction: column;
   position: relative;
   height: 1000px;
-  width: 100%; }
+  width: 100vw; }
   #hero .content {
     margin-top: 100px;
     display: flex;
@@ -666,7 +666,7 @@ header {
     opacity: 0.75;
     top: -75px;
     left: 0;
-    width: 100%;
+    width: 100vw;
     height: calc(100vh + 25px);
     position: absolute;
     z-index: 1; }
