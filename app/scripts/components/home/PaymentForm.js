@@ -154,26 +154,32 @@ const PaymentForm = React.createClass({
 
 
     // let payButton =   <input className="pay-button" type="submit" value={this.state.priceText}/>
-    let payButton =   <button className="pay-button"><h3>Subscribe for ${cc.commafy(this.state.price)} {this.state.cycle}</h3></button>
+    let payButton =   <button className="pay-button"><div><h3>Subscribe for ${cc.commafy(this.state.price)} {this.state.cycle}</h3></div></button>
 
     console.log(this.props.passedProps.plan);
 
     if (this.state.taxPercent > 0 && this.props.passedProps.plan === 'basic') {
       payButton = (<button className="pay-button">
+                      <div>
                       <h3>Start free trial</h3>
-                      <p className="tax">${cc.commafy(this.state.price * (this.state.taxPercent/100 + 1))} after 30 days</p>
-                      <p className="tax">Tax: ${cc.commafy((this.state.price * (this.state.taxPercent/100 + 1)) - this.state.price)}</p>
+                        <p className="tax">${cc.commafy(this.state.price * (this.state.taxPercent/100 + 1))} after 30 days</p>
+                        <p className="tax">Tax: ${cc.commafy((this.state.price * (this.state.taxPercent/100 + 1)) - this.state.price)}</p>
+                      </div>
                     </button>)
     } else if (this.state.taxPercent > 0) {
       payButton = (<button className="pay-button">
-                    <h3>Subscribe for ${cc.commafy(this.state.price * (this.state.taxPercent/100 + 1))} {this.state.cycle}</h3>
-                    <p className="tax">Tax: ${cc.commafy((this.state.price * (this.state.taxPercent/100 + 1)) - this.state.price)}</p>
+                    <div>
+                      <h3>Subscribe for ${cc.commafy(this.state.price * (this.state.taxPercent/100 + 1))} {this.state.cycle}</h3>
+                      <p className="tax">Tax: ${cc.commafy((this.state.price * (this.state.taxPercent/100 + 1)) - this.state.price)}</p>
+                    </div>
                   </button>)
     } else if (this.props.passedProps.plan === 'basic') {
       console.log('else if plan === basic');
       payButton =  (<button className="pay-button">
-                      <h3>Start free trial</h3>
-                      <p className="tax">${cc.commafy(this.state.price)} after 30 days</p>
+                      <div>
+                        <h3>Start free trial</h3>
+                        <p className="tax">${cc.commafy(this.state.price)} after 30 days</p>
+                      </div>
                     </button>)
     }
     if (this.state.validatingPayment) {

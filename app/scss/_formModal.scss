@@ -248,14 +248,17 @@ input[type=submit] {
     button {
       background: #fff;
       transition: background .3s, color .3s;
-      display: flex;
-      align-items: center;
       padding: 10px 40px;
       height: 90px;
-      justify-content: space-between;
       border-radius: 0;
-      h3:last-child {
-        text-align: right;
+      div {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        h3:last-child {
+          text-align: right;
+        }
+
       }
       &:hover {
         background: $primary-color;

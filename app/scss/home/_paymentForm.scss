@@ -150,11 +150,18 @@
   .pay-button {
     height: 90px;
     width: 100%;
+    background: $primary-color;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: $primary-color;
+    div {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+    }
     h3 {
       color: #fff;
       font-size: 1rem;

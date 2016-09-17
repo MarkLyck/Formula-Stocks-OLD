@@ -38,10 +38,10 @@ const SelectPlanForm = React.createClass({
       <form className={this.state.planFormClasses}>
         <h3 className="modal-title">Select a Plan</h3>
         <div className="plans">
-          <button className={basicClass} onClick={this.selectPlan.bind(null, 'basic')}><h3 className="plan-name">Basic</h3><h3 className="price">Free trial<br/><span className="disclaimer">$50 monthly after first month</span></h3></button>
-          <button className={premiumClass} onClick={this.selectPlan.bind(null, 'premium')}><h3 className="plan-name">Premium</h3><h3 className="price">$100<br/><span className="disclaimer">monthly</span></h3></button>
-          <button className={businessClass} onClick={this.selectPlan.bind(null, 'business')}><h3 className="plan-name">Business</h3><h3 className="price">$20,000<br/><span className="disclaimer">annually</span></h3></button>
-          <button className={fundClass} onClick={this.selectPlan.bind(null, 'fund')}><h3 className="plan-name">Fund</h3><h3 className="price">$120,000<br/><span className="disclaimer">annually</span></h3></button>
+          <button className={basicClass} onClick={this.selectPlan.bind(null, 'basic')}><div><h3 className="plan-name">Basic</h3><h3 className="price">Free trial<br/><span className="disclaimer">$50 monthly after first month</span></h3></div></button>
+          <button className={premiumClass} onClick={this.selectPlan.bind(null, 'premium')}><div><h3 className="plan-name">Premium</h3><h3 className="price">$100<br/><span className="disclaimer">monthly</span></h3></div></button>
+          <button className={businessClass} onClick={this.selectPlan.bind(null, 'business')}><div><h3 className="plan-name">Business</h3><h3 className="price">$20,000<br/><span className="disclaimer">annually</span></h3></div></button>
+          <button className={fundClass} onClick={this.selectPlan.bind(null, 'fund')}><div><h3 className="plan-name">Fund</h3><h3 className="price">$120,000<br/><span className="disclaimer">annually</span></h3></div></button>
         </div>
         <button onClick={this.next} className="filled-btn">Next</button>
       </form>
