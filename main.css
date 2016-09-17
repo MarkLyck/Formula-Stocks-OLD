@@ -933,14 +933,15 @@ input[type=submit] {
     .select-plan-form .plans button {
       background: #fff;
       transition: background .3s, color .3s;
-      display: flex;
-      align-items: center;
       padding: 10px 40px;
       height: 90px;
-      justify-content: space-between;
       border-radius: 0; }
-      .select-plan-form .plans button h3:last-child {
-        text-align: right; }
+      .select-plan-form .plans button div {
+        display: flex;
+        justify-content: space-between;
+        align-items: center; }
+        .select-plan-form .plans button div h3:last-child {
+          text-align: right; }
       .select-plan-form .plans button:hover {
         background: #27A5F9; }
         .select-plan-form .plans button:hover h3 {
@@ -2315,11 +2316,17 @@ footer .copyright {
   .payment-form .pay-button {
     height: 90px;
     width: 100%;
+    background: #27A5F9;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    background: #27A5F9; }
+    align-items: center; }
+    .payment-form .pay-button div {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100%; }
     .payment-form .pay-button h3 {
       color: #fff;
       font-size: 1rem;
