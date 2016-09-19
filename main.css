@@ -2003,20 +2003,20 @@ input[type=range]::-moz-range-thumb {
         display: flex;
         justify-content: center; }
         .about-us .content .employees .top-section .left {
-          width: calc(100% / 4);
+          width: calc(100% / 5 + 3px);
           background-size: cover;
           background-repeat: no-repeat;
           background-position: center;
           border-top: 1px solid #95989E;
           border-left: 1px solid #95989E;
           border-right: 1px solid #95989E;
-          height: 350px; }
+          height: 300px; }
         .about-us .content .employees .top-section .right {
-          width: calc(100% / 4 * 2);
+          width: calc(100% / 5 * 2);
           padding: 40px;
           border-top: 1px solid #95989E;
           border-right: 1px solid #95989E;
-          height: 350px;
+          height: 300px;
           overflow: auto; }
           .about-us .content .employees .top-section .right p {
             line-height: 1.75;
@@ -2026,10 +2026,15 @@ input[type=range]::-moz-range-thumb {
         display: flex;
         justify-content: center; }
         .about-us .content .employees .button-wrapper button {
-          width: calc(100% / 4);
+          width: calc(100% / 5);
           max-width: 100%;
           background: none;
-          border: 1px solid #95989E; }
+          border: 1px solid #95989E;
+          padding: 15px; }
+          .about-us .content .employees .button-wrapper button h3, .about-us .content .employees .button-wrapper button p {
+            margin: 0; }
+          .about-us .content .employees .button-wrapper button h3 {
+            margin-bottom: 10px; }
           .about-us .content .employees .button-wrapper button:hover h3, .about-us .content .employees .button-wrapper button:hover p {
             color: #27A5F9; }
         .about-us .content .employees .button-wrapper button:first-child {
