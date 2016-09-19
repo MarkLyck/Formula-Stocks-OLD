@@ -35,6 +35,7 @@ store.plans.add({
   type: 1,
   info: {
     roundtripTradesPerYear: 39,
+    avgNumOfPosInPortfolio: 75,
     IITFormulas: 3,
     avgGainPerPosition: 65.97,
     avgLossPerPosition: 18.32,
@@ -53,6 +54,7 @@ store.plans.add({
   type: 2,
   info: {
     roundtripTradesPerYear: 44,
+    avgNumOfPosInPortfolio: 95,
     IITFormulas: 8,
     avgGainPerPosition: 77.49,
     avgLossPerPosition: 17.03,
@@ -71,6 +73,7 @@ store.plans.add({
   type: 3,
   info: {
     roundtripTradesPerYear: 20,
+    avgNumOfPosInPortfolio: 49,
     IITFormulas: 44,
     avgGainPerPosition: 102.37,
     avgLossPerPosition: 16.47,
@@ -89,6 +92,7 @@ store.plans.add({
   type: 4,
   info: {
     roundtripTradesPerYear: 63,
+    avgNumOfPosInPortfolio: 124,
     IITFormulas: 90,
     avgGainPerPosition: 66.097,
     avgLossPerPosition: 16.85,

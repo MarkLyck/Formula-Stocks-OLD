@@ -92,6 +92,7 @@ const ProductModal = React.createClass({
               <p>Buy & Sell recommendations</p>
               <p>Model Portfolio Tracking</p>
               <p><span className="light-text-color">Avg. round-trip trades per year: </span>{this.state.plan.info.roundtripTradesPerYear}</p>
+              <p><span className="light-text-color">Avg. number of pos. in portfolio: </span>{this.state.plan.info.avgNumOfPosInPortfolio}</p>
               <p><span className="light-text-color">IIT formulas applied: </span>{this.state.plan.info.IITFormulas}</p>
               <p><span className="light-text-color">Historical 45 year CAGR: </span>{this.state.plan.stats.CAGR.toFixed(2)}%</p>
               <p><span className="light-text-color">Win/loss ratio: </span>{this.state.plan.stats.WLRatio.toFixed(2)}%</p>
