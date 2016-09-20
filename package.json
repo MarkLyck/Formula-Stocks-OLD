@@ -41,21 +41,29 @@
       "react"
     ]
   },
-  "author": "nicerhugs",
+  "author": "Mark Lyck",
   "license": "MIT",
   "devDependencies": {
     "babel-preset-es2015": "^6.9.0",
     "babel-preset-react": "^6.11.1",
     "babel-register": "^6.11.5",
     "babelify": "^7.3.0",
+    "browser-sync": "^2.16.0",
     "browserify": "^13.0.1",
     "chai": "^3.5.0",
+    "cssmin": "^0.4.3",
     "enzyme": "^2.4.1",
+    "htmlmin": "0.0.7",
+    "imagemin": "^5.2.2",
     "jsdom": "^9.4.1",
+    "node-sass": "^3.10.0",
     "onchange": "^2.5.0",
     "parallelshell": "^2.0.0",
     "react-addons-test-utils": "^15.3.0",
-    "watchify": "^3.7.0"
+    "uglify-js": "^2.7.3",
+    "uglifyjs": "^2.4.10",
+    "watchify": "^3.7.0",
+    "webpack": "^1.13.2"
   },
   "dependencies": {
     "amcharts3": "github:amcharts/amcharts3",

@@ -79,15 +79,26 @@ const PortfolioItemGraph = React.createClass({
 			}]
     };
 
-
-
-
-
-    let chart = (
-      <div id="portfolio-item-chart">
-        {React.createElement(AmCharts.React, config)}
-      </div>
-    )
+    let chart
+    if (chartData.length) {
+      chart = (
+        <div id="portfolio-item-chart">
+          {React.createElement(AmCharts.React, config)}
+        </div>
+      )
+    } else if (this.props.isLoading) {
+      chart = (
+        <div id="portfolio-item-chart">
+          <h3>Loading...</h3>
+        </div>
+      )
+    } else {
+      chart = (
+        <div id="portfolio-item-chart">
+          <h3>No data found.</h3>
+        </div>
+      )
+    }
 
     return chart
   }

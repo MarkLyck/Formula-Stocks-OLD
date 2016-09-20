@@ -4,3 +4,5 @@ node_modules
 .sass-cache
 dist/main.css.map
 node_modules
+webpack.config.js
+.babelrc

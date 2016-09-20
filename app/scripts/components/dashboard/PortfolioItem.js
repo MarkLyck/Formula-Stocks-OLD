@@ -22,6 +22,7 @@ const PortfolioItem = React.createClass({
       lastPrice: this.props.stock.latest_price,
       promise: promise,
       chartSpan: 6,
+      isLoading: true
       }
   },
   componentDidMount() {
@@ -29,10 +30,11 @@ const PortfolioItem = React.createClass({
     if (!store.plans.get(this.props.plan).get('portfolio')[this.props.number].data) {
       this.state.promise.promise
       .then(r => {
-        this.setState({data: r.data, lastPrice: r.data[0][4]})
+        this.setState({data: r.data, lastPrice: r.data[0][4], isLoading: false})
       })
       .catch(e => {
         console.error(e);
+        this.setState({isLoading: false})
       })
     }
     this.checkScreenSize()
@@ -101,7 +103,7 @@ const PortfolioItem = React.createClass({
           </tr>
           <tr>
             <td colSpan={this.state.chartSpan}>
-              <PortfolioItemGraph stock={this.props.stock} plan={this.props.plan} data={this.state.data}/>
+              <PortfolioItemGraph stock={this.props.stock} plan={this.props.plan} data={this.state.data} isLoading={this.state.isLoading}/>
             </td>
           </tr>
         </tbody>

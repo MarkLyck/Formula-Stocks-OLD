@@ -3089,7 +3089,11 @@ footer .copyright {
           margin-right: 30px; }
 
 #portfolio-item-chart {
-  height: 300px; }
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
 
 @media (max-width: 1000px) {
   .portfolio-yields .left {
