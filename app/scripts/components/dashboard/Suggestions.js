@@ -1,5 +1,6 @@
 import _ from 'underscore'
 import React from 'react'
+import moment from 'moment'
 import {Link} from 'react-router'
 
 import Suggestion from './Suggestion'
@@ -48,10 +49,21 @@ const Suggestions = React.createClass({
       )
     }
 
+    let lastUpdatedText;
+    if (!this.state.fetching) {
+      let lastUpdated = store.plans.get(this.props.plan).toJSON()
+      if (lastUpdated._kmd) {
+        lastUpdatedText = <h3 className="timeStamp">Last updated: {moment(lastUpdated._kmd.lmt).format("MMM Do YYYY")}</h3>
+      }
+
+    }
+
+
     return (
       <div className="suggestions">
         <SuggestionHeader plan={this.props.plan}/>
         {suggestionsList}
+        {lastUpdatedText}
       </div>
     )
   }
