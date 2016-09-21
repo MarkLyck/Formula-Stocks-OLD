@@ -6,12 +6,12 @@ import cc from '../../cc'
 
 const CumulativeInterest = React.createClass({
   getInitialState() {
-    return {cagr: 25, investment: 10000, years: 20, animate: false, startDuration: 0.75}
+    return {cagr: 25, investment: 5000, years: 20, animate: false, startDuration: 0.75}
   },
   componentDidMount: function() {
     $(window).on('scroll', this.animate)
-    this.refs.cagrSlider.value = 25
-    this.refs.investmentSlider.value = 1000
+    this.refs.cagrSlider.value = 20
+    this.refs.investmentSlider.value = 5000
     self = this
 
     $(this.refs.cagrSlider).on("change", function() {
@@ -57,7 +57,7 @@ const CumulativeInterest = React.createClass({
     let currentValue = this.state.investment
     let currentMarketValue = this.state.investment
 
-    let chartData = [{value: currentValue, market: currentMarketValue, year: 0}]
+    let chartData = []
 
     for(let i=0; i < this.state.years; i++) {
       currentValue = currentValue * (this.state.cagr / 100 + 1)
@@ -146,7 +146,7 @@ const CumulativeInterest = React.createClass({
           </div>
 
           <div className="slider">
-            <input type = "range" min="0" max="10000" step="100" ref="investmentSlider"/>
+            <input type = "range" min="0" max="20000" step="100" ref="investmentSlider"/>
             <output id="investmentValue">50</output>
           </div>
 

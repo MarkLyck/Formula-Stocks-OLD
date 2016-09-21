@@ -20,7 +20,7 @@ let store = {
   plans: new Plans(),
   market: {
     data: new Market(),
-    cagr: 10.71
+    cagr: 10.483
   },
   articles: {
     fetching: false,

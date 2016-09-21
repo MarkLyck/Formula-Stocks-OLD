@@ -46,14 +46,16 @@ const Footer = React.createClass({
             risk profile as the required level of diversification differs from individual to  individual,
             so set your own individual maximum position size accordingly.<br/><br/>
 
-            The period 2009-2016 reflects actual investment results. Other period statistics are
-            the result of back-testing the strategies. Back-tested performance results have certain
-            inherent limitations, as they could potentially be designed with some benefit of hindsight,
-            even though every effort has been taken to avoid such risk. Unlike an actual
-            live investment period (such as 2009-2016), back-tested results do not represent actual
-            trading and may not be impacted by brokerage and other slippage fees. Also since transactions
-            may or may not actually have been executed, results may have under- or over-compensated for impact,
-            if any, of certain market factors, such as lack of market liquidity or level of participation.<br/><br/>
+            The 2009-2016 period reflects actual investment results which have been achievable in
+            real-time. Previous period statistics (from 1970-2009) are the result of backtesting
+            the strategies in this timeframe as Formula Stocks plans only became available in 2009.
+            Backtested performance results have certain inherent limitations, as they could potentially
+            be designed with some benefit of hindsight, even though best efforts has been taken to
+            avoid such risk. Unlike an actual performance record, backtested results do not represent
+            actual trading and may not be impacted by brokerage and other slippage fees. Also,
+            since transactions may or may not actually have been executed, results may have under- or
+            over-compensated for impact, if any, of certain market factors, such as lack of market
+            liquidity or level of participation.<br/><br/>
 
             Formula Stocks business analytics depends on the accuracy of the published accounts of
             public corporations. Such accuracy may from time to time be less than ideal.

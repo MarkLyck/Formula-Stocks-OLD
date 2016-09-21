@@ -9,7 +9,7 @@ const TermsAndConditions = React.createClass({
     return (
       <div className="terms-and-conditions">
           <h2>Terms and Conditions</h2>
-          <p className="disclaimer">Last updated (May 30th, 2015)</p>
+          <p className="disclaimer">Last updated (Sep 21st, 2016)</p>
 
           <p>
           Please read these Terms and Conditions carefully before using the http://www.formulastocks.com
@@ -153,20 +153,23 @@ const TermsAndConditions = React.createClass({
           differs from individual to individual. Set your own individual maximum position size
           accordingly or consult an advisor.<br/><br/>
 
-          The real time test period 2009-2011 reflects actual investment results. Other period statistics
-          are the result of backtesting the strategies. Backtested performance results have certain
-          inherent limitations, as they could potentially be designed with some benefit of hindsight,
-          even though best efforts has been taken to avoid such risk. Unlike an actual performance record
-          (such as the 2009-2011 record), backtested results do not represent actual trading
-          and may not be impacted by brokerage and other slippage fees. Also, since transactions
-          may or may not actually have been executed, results may have under- or over-compensated for
-          impact, if any, of certain market factors, such as lack of market liquidity or level of
-          participation. FORMULA STOCKS business analytics depend on the accuracy of the published
-          accounts of public corporations. Such accuracy may from time to time be less than ideal.
-          FORMULA STOCKS strategies evolve and improve on a recurring basis, and any result and statistic
-          is therefore subject to change without notice. FORMULA STOCKS employees may or may not own
-          equities mentioned in the service. NO REPRESENTATION IS BEING MADE THAT YOU ARE LIKELY TO
-          ACHIEVE PROFITS OR LOSSES SIMILAR TO THOSE SHOWN.<br/><br/>
+          TThe 2009-2016 period reflects actual investment results which have been achievable in
+          real-time. Previous period statistics (from 1970-2009) are the result of backtesting the
+          strategies in this timeframe as Formula Stocks plans only became available in 2009.
+          Backtested performance results have certain inherent limitations, as they could potentially
+          be designed with some benefit of hindsight, even though best efforts has been taken to avoid
+          such risk. Unlike an actual performance record, backtested results do not represent actual
+          trading and may not be impacted by brokerage and other slippage fees. Also, since
+          transactions may or may not actually have been executed, results may have under- or
+          over-compensated for impact, if any, of certain market factors, such as lack of market
+          liquidity or level of participation. NO REPRESENTATION IS BEING MADE THAT YOU ARE LIKELY
+          TO ACHIEVE PROFITS OR LOSSES SIMILAR TO THOSE SHOWN.<br/><br/>
+
+          FORMULA STOCKS business analytics depend on the accuracy of the published accounts of
+          public corporations. Such accuracy may from time to time be less than ideal.
+          FORMULA STOCKS strategies evolve and improve on a recurring basis,
+          and any result and statistic is therefore subject to change without notice.
+          FORMULA STOCKS employees may or may not own equities mentioned in the service.<br/><br/>
 
           For users of our “BUSINESS” plan service only (does not apply to “BASIC” or “PREMIUM” plan
           members): The BUSINESS service is intended for what is generally known as accredited or
