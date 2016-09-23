@@ -108,7 +108,7 @@ let cc = {
         console.log('less than 16');
         reject('Card number invalid')
       } else {
-        Stripe.setPublishableKey('pk_test_hh5vsZ7wNnMi80XJgzHVanEm');
+        Stripe.setPublishableKey('pk_live_UTFEdLHeTQIAA0o2JSBM3fwL');
         Stripe.card.createToken({
           number: card.number,
           cvc: card.cvc,
