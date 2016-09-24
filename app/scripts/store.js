@@ -10,7 +10,7 @@ import Articles from './collections/Articles'
 let store = {
   session: new Session(),
   settings: {
-    anomToken: 'b754b668-7067-46bb-a310-8f4217ea3502.vMehqUPQHVcSNv07pvUo4c3aag7Sk8vjwyvFl6YxLok=',
+    anomToken: '7a05be90-339d-4b4b-85bf-9f75f861c1f0.o7Wf59+6i+MIXo7d4SK0LqrNGNIQNujg6fTUpohJEQk=',
     history: browserHistory,
     quandlKey: 'zP2W-4snDLyygfZVpw2v',
     appKey: 'kid_rJRC6m9F',
@@ -88,7 +88,7 @@ store.plans.add({
 store.plans.add({
   id: 'fund',
   name: 'fund',
-  price: 120000,
+  price: 140000,
   type: 4,
   info: {
     roundtripTradesPerYear: 63,
