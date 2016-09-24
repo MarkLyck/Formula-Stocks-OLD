@@ -10,7 +10,7 @@ import Articles from './collections/Articles'
 let store = {
   session: new Session(),
   settings: {
-    anomToken: '7a05be90-339d-4b4b-85bf-9f75f861c1f0.o7Wf59+6i+MIXo7d4SK0LqrNGNIQNujg6fTUpohJEQk=',
+    anomToken: '17dcc7f4-49f8-4d7c-8d66-d96474fa6818.tEs1/na2P9cqWKXn3ab9pgIdPpmEPAaQDIJEYNbG7E4=',
     history: browserHistory,
     quandlKey: 'zP2W-4snDLyygfZVpw2v',
     appKey: 'kid_rJRC6m9F',

@@ -100,10 +100,12 @@ const Session = Backbone.Model.extend({
     })
   },
   updateUser: function() {
-    this.save(null, {
-      type: 'PUT',
-      url: `https://baas.kinvey.com/user/${store.settings.appKey}/${this.get('userId')}`,
-    }, {silent: true})
+    if (this.get('username') !== 'anom') {
+      this.save(null, {
+        type: 'PUT',
+        url: `https://baas.kinvey.com/user/${store.settings.appKey}/${this.get('userId')}`,
+      }, {silent: true})
+    }
   },
   validateNewUser: function(user) {
     return new Promise((resolve, reject) => {
