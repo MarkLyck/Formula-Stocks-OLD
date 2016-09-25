@@ -8,12 +8,14 @@ import cc from '../../cc'
 const PortfolioItem = React.createClass({
   getInitialState() {
 
-    let promise = {}
+    let promise = store.plans.get(this.props.plan).getStockInfo(this.props.stock.ticker, this.props.number, true)
     let data = []
 
-    if (!store.plans.get(this.props.plan).get('portfolio')[this.props.number].data) {
-      promise = store.plans.get(this.props.plan).getStockInfo(this.props.stock.ticker, this.props.number, true)
-    } else {
+    if (store.plans.get(this.props.plan).get('portfolio')[this.props.number].data) {
+      // console.log('IF');
+      // promise = store.plans.get(this.props.plan).getStockInfo(this.props.stock.ticker, this.props.number, true)
+    // } else {
+      // console.log('ELSE');
       data = store.plans.get(this.props.plan).get('portfolio')[this.props.number].data
     }
 
@@ -27,16 +29,16 @@ const PortfolioItem = React.createClass({
   },
   componentDidMount() {
     $(window).on('resize', this.checkScreenSize)
-    if (!store.plans.get(this.props.plan).get('portfolio')[this.props.number].data) {
+    // if (!store.plans.get(this.props.plan).get('portfolio')[this.props.number].data) {
       this.state.promise.promise
       .then(r => {
         this.setState({data: r.data, lastPrice: r.data[0][4], isLoading: false})
       })
       .catch(e => {
-        console.error(e);
+        // console.error(e);
         this.setState({isLoading: false})
       })
-    }
+    // }
     this.checkScreenSize()
   },
   componentWillUnmount() {

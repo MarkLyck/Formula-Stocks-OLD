@@ -49,7 +49,6 @@ const Portfolio = React.createClass({
       let portfolio;
       portfolio = store.plans.get(this.props.plan).get('portfolio').map((stock, i) => {
         if (stock.name === 'CASH') {
-
           return (
             <tbody key={i} className="cash">
               <tr>
@@ -61,9 +60,9 @@ const Portfolio = React.createClass({
         }
 
       if (this.state.selectedStock !== stock.ticker) {
-        return (<PortfolioItem stock={stock} plan={this.props.plan} key={stock.ticker} expandStock={this.expandStock} number={i}/>)
+        return (<PortfolioItem stock={stock} plan={this.props.plan} key={stock.ticker + i} expandStock={this.expandStock} number={i}/>)
       } else {
-        return (<PortfolioItem stock={stock} plan={this.props.plan} graph={true} key={stock.ticker} expandStock={this.expandStock} number={i}/>)
+        return (<PortfolioItem stock={stock} plan={this.props.plan} graph={true} key={stock.ticker + i} expandStock={this.expandStock} number={i}/>)
       }
     })
 
