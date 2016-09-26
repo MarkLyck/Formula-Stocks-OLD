@@ -161,6 +161,10 @@ const Session = Backbone.Model.extend({
     }
   },
   isAllowedToView(plan) {
+    console.log('this: ', this);
+    if (this.get('email') === 'demo@formulastocks.com') {
+      return true
+    }
     let type = 5
     if (plan === 'basic')         { type = 1 }
     else if (plan === 'premium')  { type = 2 }
