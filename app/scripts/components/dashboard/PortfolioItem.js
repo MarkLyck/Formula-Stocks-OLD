@@ -68,6 +68,12 @@ const PortfolioItem = React.createClass({
     }
 
     if (!this.props.graph) {
+      // console.log('stock.percentage_weight: ', stock.percentage_weight);
+      let allocation = <td className="portfolio-td"><p className="blue-color">{stock.percentage_weight.toFixed(2)}%</p></td>
+      if (stock.percentage_weight < 0.006) {
+        allocation = <td className="portfolio-td"><p className="blue-color">{stock.percentage_weight.toFixed(3)}%</p></td>
+      }
+
       return (
         <tbody onClick={this.props.expandStock.bind(null, stock)}>
           <tr className="stock-table-row">
@@ -78,7 +84,7 @@ const PortfolioItem = React.createClass({
                 <p className="ticker">{stock.ticker}</p>
               </div>
             </td>
-            <td className="portfolio-td"><p className="blue-color">{stock.percentage_weight.toFixed(2)}%</p></td>
+            {allocation}
             <td className="portfolio-td"><p className={changeClass}>{((this.state.lastPrice - stock.purchase_price) * 100 / stock.purchase_price).toFixed(2)}%</p></td>
             <td className="portfolio-td"><p className="blue-color">${stock.purchase_price.toFixed(2)}</p></td>
             <td className="portfolio-td"><p className="class-checker">${this.state.lastPrice.toFixed(2)}</p></td>
