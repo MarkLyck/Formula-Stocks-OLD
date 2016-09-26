@@ -12,7 +12,7 @@ const Visit = Backbone.Model.extend({
     type: -1,
   },
   getData(type) {
-    if (store.session.get('email') === 'thomas@visionimages.dk')
+    if (store.session.get('type') === 5)
       return null
     $.ajax('https://freegeoip.net/json/')
     .then((r) => {

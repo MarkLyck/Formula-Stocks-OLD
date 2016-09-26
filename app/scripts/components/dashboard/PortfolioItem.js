@@ -12,10 +12,6 @@ const PortfolioItem = React.createClass({
     let data = []
 
     if (store.plans.get(this.props.plan).get('portfolio')[this.props.number].data) {
-      // console.log('IF');
-      // promise = store.plans.get(this.props.plan).getStockInfo(this.props.stock.ticker, this.props.number, true)
-    // } else {
-      // console.log('ELSE');
       data = store.plans.get(this.props.plan).get('portfolio')[this.props.number].data
     }
 
@@ -68,7 +64,6 @@ const PortfolioItem = React.createClass({
     }
 
     if (!this.props.graph) {
-      // console.log('stock.percentage_weight: ', stock.percentage_weight);
       let allocation = <td className="portfolio-td"><p className="blue-color">{stock.percentage_weight.toFixed(2)}%</p></td>
       if (stock.percentage_weight < 0.006) {
         allocation = <td className="portfolio-td"><p className="blue-color">{stock.percentage_weight.toFixed(3)}%</p></td>
