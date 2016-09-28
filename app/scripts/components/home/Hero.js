@@ -28,7 +28,6 @@ const Hero = React.createClass({
             <button className="filled-btn" onClick={this.tryIt}>Try it for free!</button>
             <Link className="outline-btn" to="whatIsIt" smooth={true} offset={100} duration={500}>Learn more</Link>
           </div>
-          <sub className="white-color hero-disclaimer"><sup>*</sup>Past performance is not necessarily indicative of future results. </sub>
         </div>
 
           <div id="hero-chart" className="slide-up">

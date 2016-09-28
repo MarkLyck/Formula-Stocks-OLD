@@ -16,6 +16,7 @@ const WhatIsIt = React.createClass({
 
             Use this to better your investment performance.
           </p>
+          <sub className="white-color hero-disclaimer"><sup>*</sup>Past performance is not necessarily indicative of future results. </sub>
         </div>
         <div className="right">
           <img className="screenshot" src="assets/images/portfolio_page.jpg"/>
