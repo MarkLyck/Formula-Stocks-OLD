@@ -11,20 +11,36 @@ const Header = React.createClass({
     $(window).scroll(function(){
         if($(window).scrollTop() === 0){
             $("nav").css({
-              "background-color":"rgba(255,255,255,0.2)",
+              // "background-color":"rgba(255,255,255,0.2)",
+              "background-color":"rgba(255,255,255,0)",
               "border-bottom": `1px solid rgba(230,230,230, 0)`
             });
             $(".nav-link").css({"color":`white`});
+            $('#logo').css({"opacity": "0"})
+            $('#logo-white').css({"opacity": "1"})
+            $(".nav-link").hover(function(e) {
+                $(this).css("color",e.type === "mouseenter"?"#49494A":"#fff")
+            })
         }
-        else if ($(window).scrollTop() < 100){
+        else if ($(window).scrollTop() < 100) {
             $('nav').css({
               "background-color":`rgba(255, 255, 255, ${$(window).scrollTop() / 100 + 0.2})`,
               "border-bottom": `1px solid rgba(230,230,230, ${$(window).scrollTop() / 100 + 0.2})`
             });
             if ($(window).scrollTop() > 30){
               $(".nav-link").css({"color":`rgba(73, 73, 73, ${$(window).scrollTop() / 50})`});
+              $(".nav-link").hover(function(e) {
+                  $(this).css("color",e.type === "mouseenter"?"#27A5F9":"#49494A")
+              })
+              $('#logo').css({"opacity": "1"})
+              $('#logo-white').css({"opacity": "0"})
             } else {
               $(".nav-link").css({"color":`white`});
+              $('#logo').css({"opacity": "0"})
+              $('#logo-white').css({"opacity": "1"})
+              $(".nav-link").hover(function(e) {
+                  $(this).css("color",e.type === "mouseenter"?"#49494A":"#fff")
+              })
             }
         } else {
           $("nav").css({
@@ -32,6 +48,8 @@ const Header = React.createClass({
             "border-bottom": `1px solid rgba(230,230,230, 1)`
           });
           $(".nav-link").css({"color":`rgba(73, 73, 73, 1)`});
+          $('#logo').css({"opacity": "1"})
+          $('#logo-white').css({"opacity": "0"})
         }
     })
   },
@@ -59,7 +77,10 @@ const Header = React.createClass({
         <nav>
           <div className="content">
             <div className="left" onClick={() => {scroll.scrollToTop()}}>
-              <div id="logo"></div>
+              <div className="logo-container">
+                <div id="logo"></div>
+                <div id="logo-white"></div>
+              </div>
             </div>
             <div className="right">
               <ScrollLink className="nav-link products-link" to="ourProducts" smooth={true} offset={-100} duration={1000}>Products</ScrollLink>

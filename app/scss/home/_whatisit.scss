@@ -2,10 +2,13 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: absolute;
-  top: 250px;
-  left: 50%;
-  transform: translateX(-50%);
+  margin: 0 auto;
+  margin-bottom: 50px;
+  margin-top: -50px;
+  // position: absolute;
+  // top: 250px;
+  // left: 50%;
+  // transform: translateX(-50%);
   width: 80vw;
   .left {
     max-width: 400px;
@@ -42,6 +45,7 @@
 
 @media (max-width: 850px) {
   #what-is-it {
+    margin-top: 0px;
     .left {
       max-width: 100%;
     }

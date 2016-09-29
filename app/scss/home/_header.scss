@@ -3,12 +3,13 @@ header {
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  background: $primary-color;
 
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#2d3a65+0,18aed6+100 */
-  background: #2d3a65; /* Old browsers */
-  background: -moz-linear-gradient(-45deg,  #2d3a65 0%, #18aed6 100%); /* FF3.6-15 */
-  background: -webkit-linear-gradient(-45deg,  #2d3a65 0%,#18aed6 100%); /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(135deg,  #2d3a65 0%,#18aed6 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  // background: #2d3a65; /* Old browsers */
+  // background: -moz-linear-gradient(-45deg,  #2d3a65 0%, #18aed6 100%); /* FF3.6-15 */
+  // background: -webkit-linear-gradient(-45deg,  #2d3a65 0%,#18aed6 100%); /* Chrome10-25,Safari5.1-6 */
+  // background: linear-gradient(135deg,  #2d3a65 0%,#18aed6 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 
   nav {
     height: 75px;
@@ -18,7 +19,7 @@ header {
     align-items: center;
     position: fixed;
     top: 0;
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0);
     z-index: 10;
     .content {
       width: 80vw;
@@ -34,13 +35,36 @@ header {
       &:hover {
         cursor: pointer;
       }
-      #logo {
+      .logo-container {
         width: 274px;
         height: 34px;
-        font-size: 2rem;
-        display: flex;
-        align-items: center;
-        background-image: url('assets/images/logo_horizontal.svg');
+        position: relative;
+        #logo {
+          position: absolute;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          font-size: 2rem;
+          display: flex;
+          align-items: center;
+          opacity: 0;
+          background-image: url('assets/images/logo_horizontal.svg');
+          background-repeat: no-repeat;
+          transition: opacity 0.1s;
+        }
+        #logo-white {
+          position: absolute;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          font-size: 2rem;
+          display: flex;
+          align-items: center;
+          opacity: 1;
+          background-image: url('assets/images/logo_horizontal_white.svg');
+          background-repeat: no-repeat;
+          transition: opacity 0.1s;
+        }
       }
     }
 
@@ -65,7 +89,7 @@ header {
           margin-right: 5px;
         }
         &:hover {
-          color: $primary-color !important;
+          color: $text-color;
         }
       }
     }
@@ -77,10 +101,10 @@ header {
   align-items: center;
   flex-direction: column;
   position: relative;
-  height: 1000px;
+  // height: 1000px;
   width: 100vw;
   .content {
-    margin-top: 100px;
+    margin-top: 80px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -107,22 +131,22 @@ header {
       line-height: normal;
     }
   }
-  &::before {
-    content: "";
-    background: url('/assets/images/hero.jpg');
-    // background-position: 50%, 50%;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
-    opacity: 0.75;
-    top: -75px;
-    left: 0;
-    // width: 100%;
-    width: 100vw;
-    height: calc(100vh + 25px);
-    position: absolute;
-    z-index: 1;
-  }
+  // &::before {
+  //   content: "";
+  //   background: url('/assets/images/hero.jpg');
+  //   // background-position: 50%, 50%;
+  //   background-repeat: no-repeat;
+  //   background-size: cover;
+  //   background-attachment: fixed;
+  //   opacity: 0.75;
+  //   top: -75px;
+  //   left: 0;
+  //   // width: 100%;
+  //   width: 100vw;
+  //   height: calc(100vh + 25px);
+  //   position: absolute;
+  //   z-index: 1;
+  // }
 }
 .iOSException {
   &::before {
@@ -131,18 +155,28 @@ header {
 }
 
 #hero-chart {
-  background: url('/assets/images/hero-chart.svg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  bottom: 0;
-  width: 100%;
-  height: 650px;
-  position: absolute;
-  left: 0;
-  z-index: 2;
+  // background: url('/assets/images/hero-graph.svg');
+  // background-repeat: no-repeat;
+  // background-size: cover;
+  // bottom: 0;
+  // width: 100%;
+  // min-height: 454px;
+  // height: auto;
+  // position: absolute;
+  // left: 0;
+  // z-index: 2;
   h1,h2,h3,h4, p {
     color: #fff;
   }
+}
+
+.chart-container {
+  width: 100vw;
+  // background: url('/assets/images/hero-graph.svg');
+  // background-repeat: no-repeat;
+  // background-size: cover;
+  // min-height: 454px;
+  height: auto;
 }
 
 @media (max-width: 1105px) {
@@ -181,11 +215,16 @@ header {
   header {
     nav {
     .left {
-      #logo {
-        background-image: url('/assets/images/logo.svg');
-        background-repeat: no-repeat;
-        background-size: contain;
-        width: 34px;
+      .logo-container {
+          width: 34px;
+          #logo {
+            background-image: url('/assets/images/logo.svg');
+            background-size: contain;
+          }
+          #logo-white {
+            background-image: url('/assets/images/logo-white.svg');
+            background-size: contain;
+          }
         }
       }
     }

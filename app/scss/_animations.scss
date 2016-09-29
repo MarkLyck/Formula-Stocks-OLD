@@ -60,6 +60,18 @@
   }
 }
 
+.slide-up-transform {
+  animation: 0.75s SLIDEUP-TRANSFORM;
+}
+@keyframes SLIDEUP-TRANSFORM {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
 .slide-up {
   animation: 0.75s slideUp;
 }
