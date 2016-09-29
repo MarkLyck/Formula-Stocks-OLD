@@ -5,8 +5,7 @@ const WhatIsIt = React.createClass({
     return (
       <div id="what-is-it">
         <div className="left">
-          <p className="fs-title">Formula Stocks</p>
-          <h3 className="title">What is it?</h3>
+          <h3 className="title">What is Formula Stocks?</h3>
           <p>
             Using proprietary advanced technology we can pick next year's
             winners in the markets today.<br/><br/>

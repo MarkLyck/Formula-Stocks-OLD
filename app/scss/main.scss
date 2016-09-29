@@ -113,7 +113,7 @@ i {
   width: 100%;
   font-weight: 400;
   font-size: 1rem;
-  // border-radius: 5px;
+  border-radius: 4px;
   transition: background .3s;
   &:hover {
     background: darken($action-color, 5%);
@@ -127,7 +127,7 @@ i {
   background: none;
   color: #fff;
   border: 2px solid #fff;
-  // border-radius: 5px;
+  border-radius: 4px;
   display: flex;
   justify-content: center;
   align-items: center;
