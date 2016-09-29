@@ -42,7 +42,7 @@ const Breadcrumbs = React.createClass({
     } else if (page === 'Portfolio' && store.plans.get(planName).get('portfolio')[0]){
       let date = store.plans.get(planName).get('portfolio')[0].date
       lastUpdated = moment(date.year + date.month + date.date, 'YYYYMMDD').format('MMMM D, YYYY')
-      lastUpdatedTag = <p>Last updated: <span>{lastUpdated}</span></p>
+      lastUpdatedTag = <p>Last rebalanced: <span>{lastUpdated}</span></p>
     }
 
     return (
