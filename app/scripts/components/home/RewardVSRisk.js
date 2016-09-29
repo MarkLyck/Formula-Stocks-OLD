@@ -16,7 +16,7 @@ const RewardVSRisk = React.createClass({
                   <div className="chart-indicator fund">Fund</div>
                   <div className="chart-indicator premium">Premium</div>
                   <div className="chart-indicator basic">Basic</div>
-                  <div className="chart-indicator sp500">DIJA</div>
+                  <div className="chart-indicator sp500">DJIA</div>
                 </div>
               </div>
 
