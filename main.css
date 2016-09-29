@@ -493,6 +493,14 @@ textarea {
     opacity: 1; }
   to {
     opacity: 0; } }
+.slide-up-transform {
+  animation: 0.75s SLIDEUP-TRANSFORM; }
+
+@keyframes SLIDEUP-TRANSFORM {
+  from {
+    transform: translateY(100%); }
+  to {
+    transform: translateY(0); } }
 .slide-up {
   animation: 0.75s slideUp; }
 
@@ -569,15 +577,8 @@ header {
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#2d3a65+0,18aed6+100 */
-  background: #2d3a65;
-  /* Old browsers */
-  background: -moz-linear-gradient(-45deg, #2d3a65 0%, #18aed6 100%);
-  /* FF3.6-15 */
-  background: -webkit-linear-gradient(-45deg, #2d3a65 0%, #18aed6 100%);
-  /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(135deg, #2d3a65 0%, #18aed6 100%);
-  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */ }
+  background: #27A5F9;
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#2d3a65+0,18aed6+100 */ }
   header nav {
     height: 75px;
     width: 100%;
@@ -586,7 +587,7 @@ header {
     align-items: center;
     position: fixed;
     top: 0;
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0);
     z-index: 10; }
     header nav .content {
       width: 80vw;
@@ -600,13 +601,34 @@ header {
       align-items: center; }
       header nav .left:hover {
         cursor: pointer; }
-      header nav .left #logo {
+      header nav .left .logo-container {
         width: 274px;
         height: 34px;
-        font-size: 2rem;
-        display: flex;
-        align-items: center;
-        background-image: url("assets/images/logo_horizontal.svg"); }
+        position: relative; }
+        header nav .left .logo-container #logo {
+          position: absolute;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          font-size: 2rem;
+          display: flex;
+          align-items: center;
+          opacity: 0;
+          background-image: url("assets/images/logo_horizontal.svg");
+          background-repeat: no-repeat;
+          transition: opacity 0.1s; }
+        header nav .left .logo-container #logo-white {
+          position: absolute;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          font-size: 2rem;
+          display: flex;
+          align-items: center;
+          opacity: 1;
+          background-image: url("assets/images/logo_horizontal_white.svg");
+          background-repeat: no-repeat;
+          transition: opacity 0.1s; }
     header nav .right {
       display: flex;
       height: 100%;
@@ -626,17 +648,16 @@ header {
         header nav .right a i {
           margin-right: 5px; }
         header nav .right a:hover {
-          color: #27A5F9 !important; }
+          color: #49494A; }
 
 #hero {
   display: flex;
   align-items: center;
   flex-direction: column;
   position: relative;
-  height: 1000px;
   width: 100vw; }
   #hero .content {
-    margin-top: 100px;
+    margin-top: 80px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -657,35 +678,16 @@ header {
     #hero .content .hero-disclaimer {
       margin-top: 20px;
       line-height: normal; }
-  #hero::before {
-    content: "";
-    background: url("/assets/images/hero.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
-    opacity: 0.75;
-    top: -75px;
-    left: 0;
-    width: 100vw;
-    height: calc(100vh + 25px);
-    position: absolute;
-    z-index: 1; }
 
 .iOSException::before {
   background-attachment: scroll !important; }
 
-#hero-chart {
-  background: url("/assets/images/hero-chart.svg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  bottom: 0;
-  width: 100%;
-  height: 650px;
-  position: absolute;
-  left: 0;
-  z-index: 2; }
-  #hero-chart h1, #hero-chart h2, #hero-chart h3, #hero-chart h4, #hero-chart p {
-    color: #fff; }
+#hero-chart h1, #hero-chart h2, #hero-chart h3, #hero-chart h4, #hero-chart p {
+  color: #fff; }
+
+.chart-container {
+  width: 100vw;
+  height: auto; }
 
 @media (max-width: 1105px) {
   #hero .content {
@@ -700,11 +702,14 @@ header {
   nav .pricing-link.nav-link {
     display: none; } }
 @media (max-width: 600px) {
-  header nav .left #logo {
-    background-image: url("/assets/images/logo.svg");
-    background-repeat: no-repeat;
-    background-size: contain;
-    width: 34px; } }
+  header nav .left .logo-container {
+    width: 34px; }
+    header nav .left .logo-container #logo {
+      background-image: url("/assets/images/logo.svg");
+      background-size: contain; }
+    header nav .left .logo-container #logo-white {
+      background-image: url("/assets/images/logo-white.svg");
+      background-size: contain; } }
 @media (max-width: 575px) {
   #hero .content {
     margin-top: 25px; }
@@ -974,10 +979,9 @@ input[type=submit] {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: absolute;
-  top: 250px;
-  left: 50%;
-  transform: translateX(-50%);
+  margin: 0 auto;
+  margin-bottom: 50px;
+  margin-top: -50px;
   width: 80vw; }
   #what-is-it .left {
     max-width: 400px;
@@ -1005,10 +1009,12 @@ input[type=submit] {
         transform: scale(1.1); }
 
 @media (max-width: 850px) {
-  #what-is-it .left {
-    max-width: 100%; }
-  #what-is-it .right {
-    display: none; } }
+  #what-is-it {
+    margin-top: 0px; }
+    #what-is-it .left {
+      max-width: 100%; }
+    #what-is-it .right {
+      display: none; } }
 .split-section {
   width: 100%;
   padding: 50px 0;
@@ -3680,6 +3686,7 @@ i {
   width: 100%;
   font-weight: 400;
   font-size: 1rem;
+  border-radius: 4px;
   transition: background .3s; }
   .filled-btn:hover {
     background: #10c18d; }
@@ -3690,6 +3697,7 @@ i {
   background: none;
   color: #fff;
   border: 2px solid #fff;
+  border-radius: 4px;
   display: flex;
   justify-content: center;
   align-items: center;
