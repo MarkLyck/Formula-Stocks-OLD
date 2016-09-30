@@ -687,11 +687,15 @@ header {
 
 .chart-container {
   width: 100vw;
+  margin-top: -25px;
   height: auto; }
 
 @media (max-width: 1105px) {
   #hero .content {
-    margin-top: 50px; } }
+    margin-top: 50px; }
+
+  .chart-container {
+    margin-top: 24px; } }
 @media (max-width: 1050px) {
   nav .contact-us-link.nav-link {
     display: none; } }
