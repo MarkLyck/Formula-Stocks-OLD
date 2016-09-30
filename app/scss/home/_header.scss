@@ -176,6 +176,7 @@ header {
   // background-repeat: no-repeat;
   // background-size: cover;
   // min-height: 454px;
+  margin-top: -25px;
   height: auto;
 }
 
@@ -184,6 +185,9 @@ header {
     .content {
       margin-top: 50px;
     }
+  }
+  .chart-container {
+    margin-top: 24px;
   }
 }
 

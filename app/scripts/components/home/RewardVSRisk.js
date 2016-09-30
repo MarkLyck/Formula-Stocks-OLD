@@ -32,7 +32,7 @@ const RewardVSRisk = React.createClass({
                 One of the best and most modern risk/reward benchmarks
                 is the Omega function, the output of which is depicted on the left.
               </p>
-              <p className="disclaimer">
+              <p className="disclaimer">n
                 <br/><br/>
 
                 Higher levels indicate higher returns,
