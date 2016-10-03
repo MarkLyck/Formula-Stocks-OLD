@@ -39,11 +39,11 @@ store.plans.add({
     IITFormulas: 4,
     avgGainPerPosition: 65.97,
     avgLossPerPosition: 18.32,
-    maxDrawdown45y: 50.07,
+    maxDrawdown45y: 46.02,
     maxDrawdown36m: 36.04,
     IRRArithmeticMean: 52.61,
     IRRGeometricMean: 27.18,
-    sortinoRatio: 2.4812,
+    sortinoRatio: 2.618,
     gainToPainRatio: 1.1493,
   }
 })
@@ -58,11 +58,11 @@ store.plans.add({
     IITFormulas: 15,
     avgGainPerPosition: 77.49,
     avgLossPerPosition: 17.03,
-    maxDrawdown45y: 52.33,
+    maxDrawdown45y: 32.04,
     maxDrawdown36m: 21.51,
     IRRArithmeticMean: 68.60,
     IRRGeometricMean: 35.14,
-    sortinoRatio: 4.3393,
+    sortinoRatio: 6.05,
     gainToPainRatio: 1.502,
   }
 })
@@ -77,11 +77,11 @@ store.plans.add({
     IITFormulas: 48,
     avgGainPerPosition: 102.37,
     avgLossPerPosition: 16.47,
-    maxDrawdown45y: 40.88,
+    maxDrawdown45y: 40.61,
     maxDrawdown36m: 7.03,
     IRRArithmeticMean: 108.01,
     IRRGeometricMean: 48.66,
-    sortinoRatio: 6.728,
+    sortinoRatio: 6.196,
     gainToPainRatio: 2.886,
   }
 })
@@ -96,11 +96,11 @@ store.plans.add({
     IITFormulas: 91,
     avgGainPerPosition: 66.097,
     avgLossPerPosition: 16.85,
-    maxDrawdown45y: 45.00,
+    maxDrawdown45y: 24.64,
     maxDrawdown36m: 22.976,
     IRRArithmeticMean: 67.96,
     IRRGeometricMean: 33.27,
-    sortinoRatio: 4.4814,
+    sortinoRatio: 4.987,
     gainToPainRatio: 1.9302,
   },
 })
