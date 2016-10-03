@@ -5,7 +5,7 @@
     flex-direction: column;
     align-items: center;
     width: 80%;
-    // height: 400px;
+    min-height: 400px;
     padding-bottom: 40px;
     .title {
       margin-top: 0;
@@ -81,7 +81,7 @@
 @media (max-width: 875px) {
   .reward-vs-risk {
     .content {
-      // height: 550px;
+      min-height: 625px;
       .wrapper {
         flex-direction: column;
         .left {
@@ -110,7 +110,7 @@
 @media (max-width: 650px) {
   .reward-vs-risk {
     .content {
-      // height: 700px;
+      min-height: 700px;
     }
   }
 }
