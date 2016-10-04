@@ -2065,6 +2065,134 @@ input[type=range]::-moz-range-thumb {
           .about-us .content .employees .button-wrapper .selected:hover h3, .about-us .content .employees .button-wrapper .selected:hover p {
             color: #fff; }
 
+.team-list {
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1000px;
+  width: 100%; }
+  .team-list li {
+    display: flex;
+    flex-direction: column;
+    margin: 0 15px;
+    width: calc(100% / 3 - 30px);
+    margin-bottom: 30px;
+    border: 1px solid #E4E4E4;
+    border-radius: 4px;
+    background: #fff;
+    transition: transform 0.3s;
+    box-sizing: border-box; }
+    .team-list li:hover {
+      transform: scale(1.1);
+      cursor: pointer; }
+    .team-list li img {
+      border-top-left-radius: 3px;
+      border-top-right-radius: 3px;
+      height: calc(100vw / 3 - 30px);
+      height: auto;
+      width: 100%; }
+    .team-list li .content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center; }
+      .team-list li .content h3 {
+        margin: 15px 20px 10px 20px;
+        font-size: 18px;
+        font-weight: 300; }
+      .team-list li .content h4 {
+        color: #27A5F9;
+        margin: 0 20px 15px 20px;
+        font-size: 14px;
+        font-weight: 300; }
+
+.team-modal-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 100; }
+  .team-modal-container .team-modal {
+    max-width: 1000px;
+    max-height: 400px;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    position: relative;
+    display: flex;
+    border-radius: 4px; }
+    .team-modal-container .team-modal .modal-image {
+      height: 100%;
+      border-top-left-radius: 4px;
+      border-bottom-left-radius: 4px; }
+    .team-modal-container .team-modal .content {
+      width: 100%; }
+    .team-modal-container .team-modal .wrapper {
+      padding: 32px;
+      overflow: auto;
+      box-sizing: border-box;
+      text-align: justify; }
+      .team-modal-container .team-modal .wrapper .social-icons {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+        margin-top: 15px; }
+      .team-modal-container .team-modal .wrapper .contact-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        color: #27A5F9;
+        margin-right: 15px;
+        width: 35px;
+        height: 35px;
+        border: 2px solid #27A5F9;
+        border-radius: 50%; }
+        .team-modal-container .team-modal .wrapper .contact-icon:hover {
+          background: #27A5F9;
+          color: #fff; }
+        .team-modal-container .team-modal .wrapper .contact-icon i {
+          font-size: 1rem; }
+      .team-modal-container .team-modal .wrapper .twitter i {
+        margin-top: 3px; }
+      .team-modal-container .team-modal .wrapper h3 {
+        color: rgba(0, 0, 0, 0.81);
+        margin: 15px 0;
+        font-size: 24px;
+        font-weight: 300; }
+      .team-modal-container .team-modal .wrapper h4 {
+        color: #27A5F9;
+        margin: 15px 0 15px 0;
+        font-size: 18px;
+        font-weight: 300; }
+      .team-modal-container .team-modal .wrapper p {
+        line-height: 1.25rem;
+        color: rgba(0, 0, 0, 0.64); }
+    .team-modal-container .team-modal .close-button {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: #fff;
+      border: none;
+      color: #555;
+      background: white;
+      border-radius: 50%;
+      width: 45px;
+      height: 45px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 11;
+      padding: 0; }
+      .team-modal-container .team-modal .close-button:hover {
+        background: #ff0356;
+        color: #fff; }
+      .team-modal-container .team-modal .close-button i {
+        font-size: 25px; }
+
 @media (max-width: 985px) {
   .about-us .content .employees .top-section .left {
     width: calc(100% / 3); }
@@ -2083,6 +2211,77 @@ input[type=range]::-moz-range-thumb {
 @media (max-width: 600px) {
   .about-us .content .employees {
     display: none; } }
+@media (max-width: 1200px) {
+  .team-modal-container .team-modal {
+    max-width: 80%; } }
+@media (max-width: 1000px) {
+  .team-list {
+    max-width: 600px; }
+    .team-list li {
+      margin: 0 7px 7px 0;
+      flex-direction: row;
+      width: calc(50% - 3.5px);
+      height: 75px;
+      position: relative; }
+      .team-list li:hover {
+        transform: none; }
+      .team-list li img {
+        border-top-right-radius: 0;
+        border-bottom-left-radius: 3px;
+        height: 100%;
+        width: auto; }
+    .team-list li:nth-child(even) {
+      margin-right: 0; }
+
+  .team-modal-container .team-modal {
+    max-height: 300px;
+    max-width: 80%; }
+    .team-modal-container .team-modal .modal-image {
+      max-height: 300px;
+      width: auto;
+      max-width: 100%; } }
+@media (max-width: 800px) {
+  .team-modal-container .team-modal {
+    flex-direction: column;
+    max-width: 400px;
+    max-height: 80%;
+    height: auto; }
+    .team-modal-container .team-modal .close-button {
+      top: 5px;
+      right: 5px;
+      background: none; }
+    .team-modal-container .team-modal .modal-image {
+      width: 150px;
+      height: auto;
+      border-bottom-left-radius: 0;
+      z-index: 12; }
+    .team-modal-container .team-modal .main-info {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 150px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border-top-right-radius: 4px;
+      padding-left: 175px;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25); }
+      .team-modal-container .team-modal .main-info .social-icons {
+        margin-bottom: 0; }
+      .team-modal-container .team-modal .main-info h3, .team-modal-container .team-modal .main-info h4 {
+        margin-bottom: 0; }
+      .team-modal-container .team-modal .main-info h3 {
+        margin-top: 0; }
+    .team-modal-container .team-modal .content {
+      background: #fff; } }
+@media (max-width: 648px) {
+  .team-list li {
+    width: 100%;
+    height: 100px;
+    margin-left: 7px; }
+  .team-list li:nth-child(even) {
+    margin-right: 7px; } }
 .contact-us {
   padding: 50px 0;
   background: #068de7;
