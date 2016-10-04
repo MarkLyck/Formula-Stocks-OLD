@@ -7,7 +7,7 @@ import unnamedChartComponent from '../../libraries/amcharts3-react';
 
 const TheResults = React.createClass({
   getInitialState() {
-    return {fetched: false, logarithmic:true, animate: false}
+    return {fetched: false, logarithmic:true, animate: true}
   },
   componentDidMount() {
     $(window).on('scroll', this.animate)
@@ -41,6 +41,7 @@ const TheResults = React.createClass({
     let premiumData = store.plans.get('premium').get('annualData')
     let businessData = store.plans.get('business').get('annualData')
     // let fundData = store.plans.get('fund').get('annualData')
+
 
     let marketData = store.market.data.get('annualData')
 
@@ -82,7 +83,7 @@ const TheResults = React.createClass({
   	}
 
     let chartData = []
-    if (this.state.animate) {
+    if (this.state.animate && this.state.fetched) {
       chartData = fixedData;
     }
 
@@ -206,12 +207,16 @@ const TheResults = React.createClass({
       }
     }
 
-      let chart = (
+    let chart = (<div id="result-chart" className={this.state.chartClass}></div>)
+
+
+    if (chartData[0]) {
+      chart = (
         <div id="result-chart" className={this.state.chartClass}>
           {React.createElement(AmCharts.React, config)}
         </div>
       )
-
+    }
 
     return (
       <section className="the-results">
