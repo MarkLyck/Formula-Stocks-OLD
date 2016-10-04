@@ -23,7 +23,7 @@ const AboutUs = React.createClass({
       if (this.state.showModal === 'Thomas') {
         selected = {
           name: "Thomas Lyck",
-          position: 'Co-founder & CEO',
+          position: 'CEO',
           bio: `Thomas Lyck is the founder of eight businesses since 1990.
           Some of the more well-known include the system which created the building instructions for all
           LEGO products for more than a decade, and many pioneering computer graphics solutions for the movie
@@ -35,7 +35,7 @@ const AboutUs = React.createClass({
       } else if (this.state.showModal === 'Mark') {
         selected = {
           name: "Mark Lyck",
-          position: 'Co-founder & COO',
+          position: 'COO',
           bio: `It is possible to beat the market. Our portfolio service is the product of a decade's worth
            of advanced equity research. We know how to gain an edge over the market, and we want to share
            our results with you.
@@ -95,7 +95,7 @@ const AboutUs = React.createClass({
               <img src="assets/images/profiles/Thomas_Square.jpg" />
               <div className="content">
                 <h3 className="name">Thomas Lyck</h3>
-                <h4>Co-founder & CEO</h4>
+                <h4>CEO</h4>
               </div>
             </li>
             <li className="team-member" onClick={this.showModal.bind(this, 'Mark')}>
@@ -103,7 +103,7 @@ const AboutUs = React.createClass({
               <img src="assets/images/profiles/Mark_Square.jpg" />
               <div className="content">
                 <h3 className="name">Mark Lyck</h3>
-                <h4>Co-founder & COO</h4>
+                <h4>COO</h4>
               </div>
             </li>
             <li className="team-member" onClick={this.showModal.bind(this, 'Marie')}>
