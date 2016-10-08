@@ -47,6 +47,8 @@
 @import "dashboard/newArticle";
 @import "dashboard/userlist";
 
+@import "typed";
+
 
 body {
   font-family: 'proxima-nova', sans-serif;
@@ -56,7 +58,7 @@ body {
   box-sizing: border-box;
 }
 
-h1, h2, h3 {
+h1, h2, h3, #subtitle {
   font-weight: 300;
   color: $text-color;
 }

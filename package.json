@@ -82,6 +82,7 @@
     "react-scroll": "^1.2.0",
     "react-select": "^1.0.0-beta14",
     "stripe": "^4.9.0",
+    "typed.js": "github:mattboldt/typed.js",
     "underscore": "^1.8.3"
   }
 }

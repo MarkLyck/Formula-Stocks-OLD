@@ -111,9 +111,15 @@ header {
     z-index: 5;
     width: 60%;
     text-align: center;
-
+    .bounce-down {
+      min-height: 128px;
+    }
     h1,h2 {
       color: #fff;
+    }
+    #subtitle {
+      color: #fff;
+      font-size: 1.5rem;
     }
     .CTA {
       margin-top: 50px;
@@ -241,7 +247,7 @@ header {
     .content {
       margin-top: 25px;
       .bounce-down {
-        h2 {
+        #subtitle {
           display: none;
         }
       }
