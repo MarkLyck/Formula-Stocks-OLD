@@ -115,31 +115,6 @@ const AboutUs = React.createClass({
               </div>
             </li>
           </ul>
-          {/* <div className="employees">
-            <div className="top-section">
-              <div className="left" style={{backgroundImage: `url("assets/images/profiles/${this.state.selectedEmployee}.jpg")`}}>
-              </div>
-              <div className="right">
-                <p>
-                  {bio}
-                </p>
-              </div>
-            </div>
-            <div className="button-wrapper">
-              <button className={classThomas} onClick={this.selectEmployee.bind(null, 'Thomas')}>
-                <h3>Thomas Lyck</h3>
-                <p>CEO</p>
-              </button>
-              <button className={classMark} onClick={this.selectEmployee.bind(null, 'Mark')}>
-                <h3>Mark Lyck</h3>
-                <p>COO</p>
-              </button>
-              <button className={classMarie} onClick={this.selectEmployee.bind(null, 'Marie')}>
-                <h3>Marie Lauritzen</h3>
-                <p>PhD. Research Assistant</p>
-              </button>
-            </div>
-          </div> */}
         </div>
         {modal}
       </section>
