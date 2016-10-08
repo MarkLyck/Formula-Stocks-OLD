@@ -664,8 +664,13 @@ header {
     z-index: 5;
     width: 60%;
     text-align: center; }
+    #hero .content .bounce-down {
+      min-height: 128px; }
     #hero .content h1, #hero .content h2 {
       color: #fff; }
+    #hero .content #subtitle {
+      color: #fff;
+      font-size: 1.5rem; }
     #hero .content .CTA {
       margin-top: 50px;
       width: 100%;
@@ -717,7 +722,7 @@ header {
 @media (max-width: 575px) {
   #hero .content {
     margin-top: 25px; }
-    #hero .content .bounce-down h2 {
+    #hero .content .bounce-down #subtitle {
       display: none; }
     #hero .content .CTA {
       flex-direction: column; }
@@ -3846,13 +3851,42 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
         font-weight: 400;
         padding-left: 20px; }
 
+.typed-cursor {
+  opacity: 1;
+  color: #fff;
+  font-size: 1.5rem;
+  -webkit-animation: blink 0.7s infinite;
+  -moz-animation: blink 0.7s infinite;
+  animation: blink 0.7s infinite; }
+
+@keyframes blink {
+  0% {
+    opacity: 1; }
+  50% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+@-webkit-keyframes blink {
+  0% {
+    opacity: 1; }
+  50% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+@-moz-keyframes blink {
+  0% {
+    opacity: 1; }
+  50% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
 body {
   font-family: 'proxima-nova', sans-serif; }
 
 * {
   box-sizing: border-box; }
 
-h1, h2, h3 {
+h1, h2, h3, #subtitle {
   font-weight: 300;
   color: #49494A; }
 
