@@ -42,9 +42,9 @@ const Hero = React.createClass({
               <h2>Meet our electronic investment brain. It is capable of true objectivity and business analysis well beyond human capacity. Deeper. Wider. Better.</h2>
               <h2>In the blink of an eye we analyze thousands of businesses at an extreme level of detail that would take 100 men several months to do by hand.</h2>
               <h2>Our offer is to significantly improve your odds for long-term investment success by giving you access to better business analysis and stock selection.</h2>
-              <h2>Consider a case where investments are profitable more than 85% of the time, and you, on balance, win more on a winning hand than you lose on a losing hand.</h2>
+              <h2>Consider a case where investments are profitable more than 86% of the time, and you, on balance, win more on a winning hand than you lose on a losing hand.</h2>
               <h2>Formula Stocks analytics is based on timeless and proven investment principles. We buy good businesses at reasonable prices. Using a margin of safety.</h2>
-              <h2>Progress has always involved adopting better tools. Formula Stocks offers a revolutionary tool which can help you achieve your goals. Join us today.</h2>
+              <h2>Progress has always involved adopting better tools. Formula Stocks offers a new revolutionary tool which can help you achieve your goals. Join us today.</h2>
             </div>
           </div>
           <div className="CTA fade-in">
