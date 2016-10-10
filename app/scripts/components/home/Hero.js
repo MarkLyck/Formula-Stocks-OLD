@@ -38,7 +38,7 @@ const Hero = React.createClass({
             <span id="subtitle"></span>
             <div id="subtitles">
               <h2>Formula Stocks has a history of picking next year’s winners with an 86-93% average success rate<sup>*</sup>. Give your investments a significant boost – join us today.</h2>
-              <h2>The human brain is not wired for evaluating hundreds of data points simultaneously. It prefers stories. Stories produce bias that dampens performance.</h2>
+              <h2>The human brain is not wired for evaluating hundreds of data points simultaneously.<br/> It prefers stories. Stories produce bias that dampens performance.</h2>
               <h2>Meet our electronic investment brain. It is capable of true objectivity and business analysis well beyond human capacity. Deeper. Wider. Better.</h2>
               <h2>In the blink of an eye we analyze thousands of businesses at an extreme level of detail that would take 100 men several months to do by hand.</h2>
               <h2>Our offer is to significantly improve your odds for long-term investment success by giving you access to better business analysis and stock selection.</h2>
