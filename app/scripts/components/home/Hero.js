@@ -18,7 +18,7 @@ const Hero = React.createClass({
         typeSpeed: -50,
         loop: true,
         showCursor: true,
-        backDelay: 10000,
+        backDelay: 6000,
         backSpeed: -100,
     })
   },
@@ -38,13 +38,12 @@ const Hero = React.createClass({
             <span id="subtitle"></span>
             <div id="subtitles">
               <h2>Formula Stocks has a history of picking next year’s winners with an 86-93% average success rate<sup>*</sup>. Give your investments a significant boost – join us today.</h2>
-              <h2>The human brain is not wired for evaluating hundreds of data points simultaneously.<br/> It prefers stories. Stories produce bias that dampens performance.</h2>
-              <h2>Meet our electronic investment brain. It is capable of true objectivity and business analysis well beyond human capacity. Deeper. Wider. Better.</h2>
-              <h2>In the blink of an eye we analyze thousands of businesses at an extreme level of detail that would take 100 men several months to do by hand.</h2>
-              <h2>Our offer is to significantly improve your odds for long-term investment success by giving you access to better business analysis and stock selection.</h2>
-              <h2>Consider a case where investments are profitable more than 86% of the time, and you, on balance, win more on a winning hand than you lose on a losing hand.</h2>
-              <h2>Formula Stocks analytics is based on timeless and proven investment principles. We buy good businesses at reasonable prices. Using a margin of safety.</h2>
-              <h2>Progress has always involved adopting better tools. Formula Stocks offers a new revolutionary tool which can help you achieve your goals. Join us today.</h2>
+              <h2>The human brain is not wired for evaluating hundreds of data points simultaneously. <br/>It prefers stories. But stories produce bias that dampens performance.</h2>
+              <h2>Formula Stocks' intelligent technology delivers unbiased thinking on an expert level. Smart. Experienced. Better.</h2>
+              <h2>You can improve your odds signficantly, using our business analytics solution for stock picking.</h2>
+              <h2>Imagine if you too, could win about 90% of the time over the long run. (Premium, average<sup>*</sup>).</h2>
+              <h2>Based on timeless and proven investment principles. We buy good businesses at reasonable prices, using a margin of safety. </h2>
+              <h2>Progress always involves adopting better tools. Join us today!</h2>
             </div>
           </div>
           <div className="CTA fade-in">

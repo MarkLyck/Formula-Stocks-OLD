@@ -665,12 +665,13 @@ header {
     width: 60%;
     text-align: center; }
     #hero .content .bounce-down {
-      min-height: 128px; }
+      min-height: 136px; }
     #hero .content h1, #hero .content h2 {
       color: #fff; }
     #hero .content #subtitle {
       color: #fff;
-      font-size: 1.5rem; }
+      font-size: 1.5rem;
+      line-height: 1.8rem; }
     #hero .content .CTA {
       margin-top: 50px;
       width: 100%;
