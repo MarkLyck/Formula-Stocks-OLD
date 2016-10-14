@@ -44,7 +44,7 @@ const InformationalAdvantage = React.createClass({
     this.state.premium < Math.floor(store.plans.get('premium').get('stats').WLRatio) ? pre = (this.state.premium + 1) : pre = Math.floor(store.plans.get('premium').get('stats').WLRatio)
     this.state.business < Math.floor(store.plans.get('business').get('stats').WLRatio) ? bus = (this.state.business + 1) : bus = Math.floor(store.plans.get('business').get('stats').WLRatio)
     this.state.fund < Math.floor(store.plans.get('fund').get('stats').WLRatio) ? fun = (this.state.fund + 1) : fun = Math.floor(store.plans.get('fund').get('stats').WLRatio)
-    this.state.market < 60 ? mar = (this.state.market + 1) : mar = 60
+    this.state.market < 59 ? mar = (this.state.market + 1) : mar = 59
 
     this.setState({
       basic: bas,

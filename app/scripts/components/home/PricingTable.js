@@ -51,7 +51,7 @@ const PricingTable = React.createClass({
           </div>
           <p className="disclaimer">
             Information in pricing tables does not represent, warrant, or guarantee any specific level of future investment performance.
-            Historical numbers are based on backtested performance from 1975-2009, whereas data from 2009-2016 reflects actual investment results.
+            Historical numbers are based on backtested performance from 1975-2009, whereas data from 2009-2016 reflects following the strategies in real-time.
             Investing always involves varying degrees of risk.
           </p>
         </div>
