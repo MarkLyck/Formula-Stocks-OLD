@@ -1394,6 +1394,8 @@ input[type=submit] {
         margin-right: 0; }
   .our-products a:hover {
     text-decoration: underline; }
+  .our-products .explore-products {
+    text-align: center; }
 
 @media (max-width: 1100px) {
   .our-products .icon-container {
