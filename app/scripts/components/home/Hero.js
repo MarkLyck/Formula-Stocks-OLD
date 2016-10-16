@@ -35,15 +35,15 @@ const Hero = React.createClass({
         <div className="content">
           <div className="bounce-down">
             <h1 id="main-title">A better <span className="font bold">solution</span> for the <span className="font bold">stock investor</span></h1>
-            {/* <span id="subtitle"></span> */}
+            <span id="subtitle"></span>
             <div id="subtitles">
               <h2>Formula Stocks has a history of picking next year’s winners with an 89-94% average success rate<sup>*</sup>. Give your investments a significant boost – join us today.</h2>
-              {/* <h2>The human brain is not wired for evaluating hundreds of data points simultaneously. <br/>It prefers stories. But stories produce bias that dampens performance.</h2>
+              <h2>The human brain is not wired for evaluating hundreds of data points simultaneously. <br/>It prefers stories. But stories produce bias that dampens performance.</h2>
               <h2>Formula Stocks' intelligent technology delivers unbiased thinking on an expert level. Smart. Experienced. Better.</h2>
               <h2>Expert systems can evaluate hundreds of data points simultaneously. Use this as a tool to improve your odds.</h2>
               <h2>With this tool, it becomes possible to win 9 times out of 10.</h2>
               <h2>Based on timeless and proven investment principles. We buy good businesses at reasonable prices, using a margin of safety.</h2>
-              <h2>Progress always involves adopting better tools.</h2> */}
+              <h2>Progress always involves adopting better tools.</h2>
             </div>
           </div>
           <div className="CTA fade-in">
