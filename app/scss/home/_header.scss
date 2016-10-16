@@ -241,13 +241,40 @@ header {
     }
   }
 }
+@media (max-width: 1375px) {
+  #hero {
+    .content {
+      .bounce-down {
+        min-height: 175px;
+      }
+    }
+  }
+}
 
+@media (max-width: 1075px) {
+  #hero {
+    .content {
+      width: 80%;
+    }
+  }
+}
+
+@media (max-width: 680px) {
+  #hero {
+    .content {
+      .bounce-down {
+        min-height: 227px;
+      }
+    }
+  }
+}
 
 @media (max-width: 575px) {
   #hero {
     .content {
       margin-top: 25px;
       .bounce-down {
+        min-height: 252px;
         #subtitle {
           display: none;
         }

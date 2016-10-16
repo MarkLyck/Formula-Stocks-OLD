@@ -720,11 +720,22 @@ header {
     header nav .left .logo-container #logo-white {
       background-image: url("/assets/images/logo-white.svg");
       background-size: contain; } }
+@media (max-width: 1375px) {
+  #hero .content .bounce-down {
+    min-height: 175px; } }
+@media (max-width: 1075px) {
+  #hero .content {
+    width: 80%; } }
+@media (max-width: 680px) {
+  #hero .content .bounce-down {
+    min-height: 227px; } }
 @media (max-width: 575px) {
   #hero .content {
     margin-top: 25px; }
-    #hero .content .bounce-down #subtitle {
-      display: none; }
+    #hero .content .bounce-down {
+      min-height: 252px; }
+      #hero .content .bounce-down #subtitle {
+        display: none; }
     #hero .content .CTA {
       flex-direction: column; }
       #hero .content .CTA button {
