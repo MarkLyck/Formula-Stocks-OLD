@@ -98,6 +98,22 @@
           color: #fff;
         }
       }
+      .paused::after {
+        content: '\f04b';
+        font-family: FontAwesome;
+        background: rgba(0,0,0,0.5);
+        width: 75px;
+        height: 75px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: #fff;
+      }
     }
   }
 }
