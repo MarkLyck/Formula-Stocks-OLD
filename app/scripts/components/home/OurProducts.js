@@ -61,7 +61,7 @@ const OurProducts = React.createClass({
               </p>
             </div>
           </div>
-          <p>
+          <p className="explore-products">
             You can explore our products historical <ScrollLink className="blue-color" to="performance" smooth={true} offset={-70} duration={500}>performance</ScrollLink>, watch the outcomes of
             <ScrollLink className="blue-color" to="recommendationsToDate" smooth={true} offset={-120} duration={500}> recommendations to date</ScrollLink>,
             or compare statistics in <ScrollLink className="blue-color" to="pricing" smooth={true} offset={-110} duration={500}>features & pricing</ScrollLink> below.
