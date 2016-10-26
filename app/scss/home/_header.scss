@@ -101,7 +101,6 @@ header {
   align-items: center;
   flex-direction: column;
   position: relative;
-  // height: 1000px;
   width: 100vw;
   .content {
     margin-top: 80px;
@@ -113,7 +112,8 @@ header {
     text-align: center;
     max-width: 835px;
     .bounce-down {
-      min-height: 136px;
+      // min-height: 136px;
+      min-height: 164px;
     }
     h1,h2 {
       color: #fff;
