@@ -97,7 +97,7 @@ const InformationalAdvantage = React.createClass({
                {' ' + Math.floor(store.plans.get('business').get('stats').WLRatio)}%
                success rate in the past.<br/><br/>
 
-              This contrasts strongly to the ≈59% success rates of random investments in the market.<br/><br/>
+              This contrasts strongly to the ≈59% success rates of passive investments in the market.<br/><br/>
 
               To the right you see four different Formula Stocks products and their ratio
               of winners to losers, relative to the broader market.

@@ -42,7 +42,7 @@ const PricingTable = React.createClass({
         <div className="content">
           <h2 className="title">Features & pricing</h2>
           <div className="divider"></div>
-          <h3 className="subtitle">Compare the products and find the right solution for you.</h3>
+          <h3 className="subtitle">Compare the membership levels and find the right solution for you.</h3>
           <div className="plans">
             <Product showModal={this.showModal} name="Basic" price={cc.commafy(store.plans.get('basic').get('price'))} stats={store.plans.get('basic').get('stats')} billed="Monthly" signupText="Start Free Month" info={store.plans.get('basic').get('info')}/>
             <Product showModal={this.showModal} name="Premium" price={cc.commafy(store.plans.get('premium').get('price'))} stats={store.plans.get('premium').get('stats')} billed="Monthly" signupText="Get Started" info={store.plans.get('premium').get('info')}/>

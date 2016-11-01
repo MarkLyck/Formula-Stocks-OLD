@@ -14,11 +14,11 @@ const OurProducts = React.createClass({
         <div className="content">
           <Element name="ourProducts"></Element>
           <div className="title-container">
-            <h2>Our <span className="blue-color">products</span></h2>
+            <h2>Our <span className="blue-color">Membership</span></h2>
             <div className="divider"></div>
           </div>
           <p>
-          We offer four products, each of which gives you access to a secure dashboard.
+          We offer four membership levels, each of which gives you access to a secure dashboard.
           You will be able to track our model portfolio, access our purchase and
           sales transactions in real-time,
           and obtain valuable information about stocks selected for purchase or sale.<br/><br/>
@@ -36,7 +36,7 @@ const OurProducts = React.createClass({
               <img src="assets/icons/icon-user.svg"/>
               <p className="blue-color">Basic</p>
               <p className="descr">
-                <span className="bold">Basic</span> is a diversified retail product with an excellent value proposition, targeted at the private investor. Excellent for the beginner.
+                <span className="bold">Basic</span> is a diversified retail membership with an excellent value proposition, targeted at the private investor. Excellent for the beginner.
               </p>
             </div>
             <div className="plan-icon">
