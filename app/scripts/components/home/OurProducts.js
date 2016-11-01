@@ -14,7 +14,7 @@ const OurProducts = React.createClass({
         <div className="content">
           <Element name="ourProducts"></Element>
           <div className="title-container">
-            <h2>Our <span className="blue-color">Membership</span></h2>
+            <h2><span className="blue-color">Membership</span></h2>
             <div className="divider"></div>
           </div>
           <p>
