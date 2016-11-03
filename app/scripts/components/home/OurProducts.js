@@ -36,7 +36,7 @@ const OurProducts = React.createClass({
               <img src="assets/icons/icon-user.svg"/>
               <p className="blue-color">Basic</p>
               <p className="descr">
-                <span className="bold">Basic</span> is a diversified retail membership with an excellent value proposition, targeted at the private investor. Excellent for the beginner.
+                <span className="bold">Basic</span> offers an attractive value proposition, for the private investor, as well as for the beginner.
               </p>
             </div>
             <div className="plan-icon">
