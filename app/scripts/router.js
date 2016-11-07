@@ -6,6 +6,7 @@ import store from './store'
 import Home from './components/home/Home'
 import Login from './components/home/Login'
 import Signup from './components/home/Signup'
+import FAQ from './components/home/faq'
 
 import Dashboard from './components/dashboard/Dashboard'
 import Portfolio from './components/dashboard/Portfolio'
@@ -26,6 +27,7 @@ const router = (
       <Route path="/login" component={Login}/>
       <Route path="/signup" component={Signup}/>
     </Route>
+    <Route path="/faq" component={FAQ}/>
     <Route path="/dashboard" component={Dashboard}>
       <IndexRoute component={Portfolio}/>
       <Route path="portfolio" component={Portfolio}>
