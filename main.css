@@ -2451,6 +2451,31 @@ footer .copyright {
 .forgot-pw-modal input[type="submit"] {
   height: 90px; }
 
+.faq-page .back-btn {
+  position: fixed;
+  top: 64px;
+  left: 64px;
+  margin-left: 64px;
+  margin-bottom: 64px;
+  font-size: 1.5rem; }
+.faq-page .faq-content {
+  margin: 64px auto;
+  max-width: 900px;
+  padding: 0 64px; }
+  .faq-page .faq-content h2 {
+    margin-bottom: 32px; }
+
+@media (max-width: 1250px) {
+  .faq-page {
+    margin-top: 32px; }
+    .faq-page .back-btn {
+      position: relative;
+      left: 0;
+      top: 0; }
+    .faq-page .faq-content {
+      margin: 32px auto; }
+      .faq-page .faq-content p {
+        line-height: 1.15rem; } }
 .payment-form {
   background: #fff;
   width: 100%; }
