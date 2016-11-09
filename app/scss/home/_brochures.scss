@@ -20,9 +20,11 @@
     margin-top: 90px;
     width: 100%;
     justify-content: center;
-    button {
+    button, a {
       margin: 0 40px;
-
+      display: flex;
+      justify-content: center;
+      align-items: center;
       max-width: 40%;
       width: 300px;
       background: $primary-color;

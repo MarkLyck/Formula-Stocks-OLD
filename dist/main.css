@@ -1734,14 +1734,17 @@ input[type=submit] {
     margin-top: 90px;
     width: 100%;
     justify-content: center; }
-    .brochures .cta button {
+    .brochures .cta button, .brochures .cta a {
       margin: 0 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       max-width: 40%;
       width: 300px;
       background: #27A5F9; }
-      .brochures .cta button i {
+      .brochures .cta button i, .brochures .cta a i {
         margin-right: 10px; }
-      .brochures .cta button:hover {
+      .brochures .cta button:hover, .brochures .cta a:hover {
         background: #068de7; }
 
 @media (max-width: 575px) {

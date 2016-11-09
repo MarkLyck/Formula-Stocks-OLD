@@ -22,7 +22,7 @@ import NotFoundPage from './components/404'
 
 
 const router = (
-  <Router history={store.settings.history}>
+  <Router history={store.settings.history} onUpdate={() => window.scrollTo(0, 0)}>
     <Route path="/" component={Home}>
       <Route path="/login" component={Login}/>
       <Route path="/signup" component={Signup}/>

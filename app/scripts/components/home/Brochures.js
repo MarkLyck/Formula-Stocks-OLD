@@ -1,5 +1,5 @@
 import React from 'react'
-
+import {Link} from 'react-router'
 import store from '../../store'
 
 const Brochures = React.createClass({
@@ -11,7 +11,7 @@ const Brochures = React.createClass({
       <section className="brochures">
         <h2 className="title">Want more information? Download our brochures</h2>
         <div className="cta">
-          <button onClick={this.downloadBrochure.bind(null, 'FAQ')} className="filled-btn"><i className="fa fa-file" aria-hidden="true"></i>FAQ</button>
+          <Link to="/faq" className="filled-btn"><i className="fa fa-file" aria-hidden="true"></i>FAQ</Link>
           <button onClick={this.downloadBrochure.bind(null, 'business')} className="filled-btn"><i className="fa fa-file" aria-hidden="true"></i>Business brochure</button>
         </div>
       </section>
