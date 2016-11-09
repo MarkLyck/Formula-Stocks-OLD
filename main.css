@@ -2464,6 +2464,9 @@ footer .copyright {
   padding: 0 64px; }
   .faq-page .faq-content h2 {
     margin-bottom: 32px; }
+  .faq-page .faq-content ol li {
+    margin-bottom: 16px;
+    padding-left: 8px; }
 
 @media (max-width: 1250px) {
   .faq-page {
