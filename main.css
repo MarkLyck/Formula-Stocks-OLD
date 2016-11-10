@@ -697,6 +697,9 @@ header {
   margin-top: -25px;
   height: auto; }
 
+@media (max-width: 1190px) {
+  nav .faq-link.nav-link {
+    display: none; } }
 @media (max-width: 1105px) {
   #hero .content {
     margin-top: 50px; }
