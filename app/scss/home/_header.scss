@@ -188,6 +188,14 @@ header {
   height: auto;
 }
 
+@media (max-width: 1190px) {
+  nav {
+    .faq-link.nav-link {
+      display: none;
+    }
+  }
+}
+
 @media (max-width: 1105px) {
   #hero {
     .content {

@@ -86,6 +86,7 @@ const Header = React.createClass({
               <ScrollLink className="nav-link products-link" to="ourProducts" smooth={true} offset={-100} duration={1000}>Membership</ScrollLink>
               <ScrollLink className="nav-link pricing-link" to="pricing" smooth={true} offset={-100} duration={1000}>Pricing</ScrollLink>
               <ScrollLink className="nav-link contact-us-link" to="contactUs" smooth={true} offset={-100} duration={1000}>Contact us</ScrollLink>
+              <Link className="nav-link faq-link" to="/faq" >FAQ</Link>
               {navLinks}
             </div>
           </div>
