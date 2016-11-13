@@ -79,6 +79,7 @@
     "react-dom": "^15.3.0",
     "react-dropzone": "^3.5.3",
     "react-html-parser": "^1.0.3",
+    "react-markdown-editor": "^0.4.0",
     "react-router": "^2.6.1",
     "react-scroll": "^1.2.0",
     "react-select": "^1.0.0-beta14",

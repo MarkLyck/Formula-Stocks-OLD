@@ -16,7 +16,7 @@ import MyAccount from './components/dashboard/MyAccount'
 
 import AdminPanel from './components/dashboard/AdminPanel'
 import AdminAPI from './components/dashboard/AdminAPI'
-import NewArticle from './components/dashboard/NewArticle'
+import NewArticle from './components/dashboard/NewArticle2'
 
 import NotFoundPage from './components/404'
 
