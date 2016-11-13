@@ -3890,6 +3890,17 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
       margin: 16px 0;
       padding: 10px 20px; }
 
+.md-editor {
+  height: 100%; }
+  .md-editor > div {
+    height: 100%; }
+    .md-editor > div .md-editor-header {
+      height: 51px; }
+      .md-editor > div .md-editor-header .md-editor-menu div {
+        height: 30px !important; }
+    .md-editor > div textarea {
+      height: 100% !important; }
+
 .user-list-container {
   background: #fff;
   margin: 20px; }
