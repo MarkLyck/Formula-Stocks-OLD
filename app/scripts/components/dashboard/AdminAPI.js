@@ -23,7 +23,6 @@ const AdminAPI = React.createClass({
     ];
 
     let badFiles = files.filter((file,i) => {
-      console.log(i);
       if (filenames.indexOf(file.name) === -1) {
         return true
       }

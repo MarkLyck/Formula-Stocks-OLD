@@ -6,6 +6,7 @@ import Plans from './collections/Plans'
 import Market from './models/Market'
 
 import Articles from './collections/Articles'
+import MDArticles from './collections/MDArticles'
 
 let store = {
   session: new Session(),
@@ -25,6 +26,10 @@ let store = {
   articles: {
     fetching: false,
     data: new Articles()
+  },
+  mdarticles: {
+    fetching: false,
+    data: new MDArticles()
   }
 }
 

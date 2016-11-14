@@ -3891,7 +3891,7 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
       padding: 10px 20px; }
 
 .md-editor {
-  height: 100%; }
+  height: calc(100% - 58px); }
   .md-editor > div {
     height: 100%; }
     .md-editor > div .md-editor-header {

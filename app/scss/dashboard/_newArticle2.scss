@@ -1,5 +1,5 @@
 .md-editor {
-  height: 100%;
+  height: calc(100% - 58px);
   > div {
     height: 100%;
     .md-editor-header {
