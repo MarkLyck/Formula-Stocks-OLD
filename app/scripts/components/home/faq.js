@@ -7,7 +7,6 @@ import { Link } from 'react-router'
 let html_content = markdown.toHTML( FAQData )
 html_content = html_content.replace('&amp;', '&')
 const faqHTML = ReactHtmlParser(html_content)
-console.log(html_content)
 
 const FAQ = React.createClass({
   render() {
