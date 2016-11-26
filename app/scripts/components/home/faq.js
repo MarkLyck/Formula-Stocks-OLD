@@ -4,8 +4,13 @@ import ReactHtmlParser from 'react-html-parser';
 import FAQData from '../../data/faqData'
 import { Link } from 'react-router'
 
+String.prototype.replaceAll = function(search, replacement) {
+  var target = this;
+  return target.replace(new RegExp(search, 'g'), replacement);
+}
+
 let html_content = markdown.toHTML( FAQData )
-html_content = html_content.replace('&amp;', '&')
+html_content = html_content.replaceAll('&amp;', '&')
 const faqHTML = ReactHtmlParser(html_content)
 
 const FAQ = React.createClass({
