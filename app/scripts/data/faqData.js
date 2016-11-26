@@ -22,15 +22,15 @@ export default (`
 
    **What does “cash allocation” percentages in purchase recommendations signify?**
 
-  Each month, if you choose to mirror our model portfolio, you deploy a percentage of the available cash into a new stock. Please note that this is not a percentage of the entire portfolio’snet worth, but only of freely available cash.
+  Each month, if you choose to mirror our model portfolio, you deploy a percentage of the available cash into a new stock. Please note that this is not a percentage of the entire portfolio’s net worth, but only of freely available cash.
 
    **How often are new stocks recommended for purchase or sale?**
 
-  New recommendations appear on a weekly basis if and when the market offers them. Accessingthese once a month is fully sufficient. The number of weekly recommendations depends verymuch on current market conditions, and from time to time the recommendations may be the same for a while. Formula Stocks looks for great opportunities in the markets; sometimes we findva few (less than five), sometimes we find many (more than 50). The holding period is long term, from 300 to 1,200 days.
+  New recommendations appear on a weekly basis if and when the market offers them. Accessing these once a month is fully sufficient. The number of weekly recommendations depends very much on current market conditions, and from time to time the recommendations may be the same for a while. Formula Stocks looks for great opportunities in the markets; sometimes we find a few (less than five), sometimes we find many (more than 50). The holding period is long term, from 300 to 1,200 days.
 
    **How many new investment candidates are available?**
 
-  The availability of new investment candidates is a function of the available investments we can locate in the markets with a sufficient degree of certainty. We buy stocks like you buy steaks in the supermarket. We generally prefer high quality and low prices. The market does not always accommodate to our preferences, and the number of candidates does vary greatly with the price level of the general market. If pickings are slim, we may prefer a partial cash position for a while.
+  The availability of new investment candidates is a function of the available investments we can locate in the markets with a sufficient degree of certainty. We buy stocks like you buy steaks in the supermarket. We generally prefer high quality and low prices. The market does not always accommodate our preferences, and the number of candidates does vary greatly with the price level of the general market. If pickings are slim, we may prefer a partial cash position for a while.
 
    **Which and how many stocks are covered by your service?**
 
@@ -118,7 +118,7 @@ export default (`
 
    **Why are there fewer current portfolio positions than indicated as average?**
 
-  The average number of concurrent portfolio positions over time are for Fund: 124, Business: 49, Premium: 95, Basic: 75. However, unlike an index fund Formula Stocks does not invest in stocks regardless of conditions. We only invest, when we see attractive probabilities for success. This means that the cheaper the markets get, of course the more diverse the portfolio becomes. Conversely, when the markets are expensive, fewer good investments can be located, and portfolio sizes decrease. Toward a price peak the number of positions may dwindle, as they are sold (for a profit), converted into cash, preparing for the next market cycle, when an inevitable correction materializes, and the portfolio once again expands.
+  The average number of concurrent portfolio positions over time are for Fund: 128, Business: 52, Premium: 102, Basic: 118. However, unlike an index fund Formula Stocks does not invest in stocks regardless of conditions. We only invest, when we see attractive probabilities for success. This means that the cheaper the markets get, of course the more diverse the portfolio becomes. Conversely, when the markets are expensive, fewer good investments can be located, and portfolio sizes decrease. Toward a price peak the number of positions may dwindle, as they are sold (for a profit), converted into cash, preparing for the next market cycle, when an inevitable correction materializes, and the portfolio once again expands.
 
    **How is the model portfolio updated?**
 

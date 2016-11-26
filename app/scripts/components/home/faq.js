@@ -10,7 +10,7 @@ String.prototype.replaceAll = function(search, replacement) {
 }
 
 let html_content = markdown.toHTML( FAQData )
-html_content = html_content.replaceAll('&amp;', '&')
+html_content = html_content.replaceAll('&amp;', '&').replaceAll('&quot;', '"')
 const faqHTML = ReactHtmlParser(html_content)
 
 const FAQ = React.createClass({
