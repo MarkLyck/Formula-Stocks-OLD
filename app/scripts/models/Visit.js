@@ -47,7 +47,6 @@ const Visit = Backbone.Model.extend({
           }
         })
       }
-
     })
   }
 })

@@ -5,8 +5,6 @@ import ReactDOM from 'react-dom'
 import router from './router'
 import store from './store'
 
-import Visit from './models/Visit'
-
 if (localStorage.getItem('authtoken')) {
   store.session.set('authtoken', localStorage.authtoken)
   store.session.retrieve()
@@ -16,8 +14,7 @@ if (localStorage.getItem('authtoken')) {
 }
 
 store.plans.fetch({
-  success: (r) => {
-  },
+  success: (r) => {},
   error: (e) => {
     console.error('error: ', e);
   }

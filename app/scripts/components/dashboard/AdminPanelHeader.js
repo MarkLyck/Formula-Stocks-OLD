@@ -4,6 +4,8 @@ import $ from 'jquery'
 import store from '../../store'
 import admin from '../../admin'
 
+import _ from 'underscore'
+
 const AdminPanelHeader = React.createClass({
   getInitialState() {
     return {
@@ -30,26 +32,40 @@ const AdminPanelHeader = React.createClass({
     this.setState({visitors: admin.visits.toJSON()})
     this.setState({newsletterSubs: admin.newsletterSubs.toJSON()})
   },
-  render() {
-    let subscribers = this.state.users.filter((user) => {
-      if (user.type > 0 && user.type < 5 && user.name !== 'FS Demo') {
-        return true;
-      } else {
-        return false;
-      }
-    })
-    let trials = this.state.users.filter((user) => {
-      if (user.type === 0) {
+  calculateVisitors() {
+    let uniqueIPs = []
+    let uniqueVisitors = this.state.visitors.filter((visitor) => {
+      if (uniqueIPs.indexOf(visitor.location.ip) === -1) {
+        uniqueIPs.push(visitor.location.ip)
         return true
       } else {
         return false
       }
     })
+    return uniqueVisitors.length
+  },
+  render() {
+    // console.log('visitors; ', this.state.visitors)
+    let subscribers = this.state.users.filter((user) => {
+      if (user.stripe) {
+        if (user.stripe.subscriptions.data[0].status !== 'trialing') {
+          if (user.type > 0 && user.type < 5 && user.name !== 'FS Demo') {
+            return true
+          }
+        }
+      }
+      return false
+    })
+    // console.log(this.state.users)
+    let trials = this.state.users.filter((user) => {
+      if (user.stripe) {
+        if (user.stripe.subscriptions.data[0].status === 'trialing') {
+          return true
+        }
+      }
+      return false
+    })
 
-    // let conversionRate = 0.00;
-    // if (subscribers.length !== 0) {
-    //   conversionRate = 100 - this.state.visitors.length / subscribers.length * 100
-    // }
     return (
       <section className="suggestion-header">
         <ul>
@@ -58,7 +74,7 @@ const AdminPanelHeader = React.createClass({
               <i className="fa fa-users white-color"></i>
             </div>
             <div className="value">
-              <h3 className="white-color">{this.state.visitors.length}</h3>
+              <h3 className="white-color">{this.calculateVisitors()}</h3>
               <p className="white-color">Unique Visitors</p>
             </div>
           </li>
