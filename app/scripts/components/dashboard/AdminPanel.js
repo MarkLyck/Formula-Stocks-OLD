@@ -5,6 +5,7 @@ import admin from '../../admin'
 import AdminPanelHeader from './AdminPanelHeader'
 import BrowserPieChart from './BrowserPieChart'
 import Userlist from './Userlist'
+import moment from 'moment'
 
 const AdminPanel = React.createClass({
   getInitialState() {
@@ -22,17 +23,24 @@ const AdminPanel = React.createClass({
   },
   render() {
     let images = this.state.visitors.map((visitor) => {
-      let color = (visitor.type > 0 && visitor.type < 5) ? '#27A5F9' : visitor.type === 5 ? '#da1354' : '#12D99E'
+      let color = '#12D99E'
+      if (visitor.type === 5)
+        color = '#da1354'
+      else if (visitor.type > 0 && visitor.type < 5)
+        color = '#27A5F9'
+      else if (moment().format('YYYYMMDD') - moment(visitor._kmd.lmt).format('YYYYMMDD') < 1)
+        color = '#f9f027'
+
       return({
         "type": "circle",
         "theme": "light",
 
-        "width": 10,
-        "height": 10,
+        "width": 8,
+        "height": 8,
         "color": color,
         "longitude": visitor.location.longitude,
         "latitude": visitor.location.latitude,
-        "title": `${visitor.location.country_name}<br/>${visitor.location.city}<br/>`,
+        "title": `${visitor.location.country_name}<br/>${visitor.location.city}<br/>${moment(visitor._kmd.lmt).fromNow()}`,
         // "value": visitor.amount
       });
     })
