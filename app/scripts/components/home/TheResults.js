@@ -7,7 +7,7 @@ import '../../libraries/amcharts3-react';
 
 const TheResults = React.createClass({
   getInitialState() {
-    return {fetched: false, logarithmic:true, animate: true}
+    return { fetched: false, logarithmic: true, animate: true }
   },
   componentDidMount() {
     $(window).on('scroll', this.animate)
@@ -42,7 +42,6 @@ const TheResults = React.createClass({
     let businessData = store.plans.get('business').get('annualData')
     // let fundData = store.plans.get('fund').get('annualData')
 
-
     let marketData = store.market.data.get('annualData')
 
     let fixedData = basicData.map((point, i) => {
@@ -57,6 +56,11 @@ const TheResults = React.createClass({
       // if (fundData[i]) { fundBalance = fundData[i].balance }
       if (marketData[i]) { marketBalance = marketData[i] }
 
+      let month = point.date.month
+      if (Number(point.date.month) <= 9) {
+        month = '0' + point.date.month
+      }
+
       return {
         basic: point.balance,
         premium: premiumBalance,
@@ -70,7 +74,7 @@ const TheResults = React.createClass({
         // fundBalloon: formatPrice(fundBalance),
         marketBalloon: formatPrice(marketBalance),
 
-        date: `${point.date.year}-${point.date.month}-${point.date.day}`
+        date: `${point.date.year}-${month}-${point.date.day}`
       }
     })
 
@@ -91,8 +95,6 @@ const TheResults = React.createClass({
       type: "serial",
       theme: "dark",
       addClassNames: true,
-
-
       dataProvider: chartData,
 
       balloon: {
@@ -210,7 +212,8 @@ const TheResults = React.createClass({
     let chart = (<div id="result-chart" className={this.state.chartClass}></div>)
 
 
-    if (chartData[0]) {
+
+    if (chartData.length) {
       chart = (
         <div id="result-chart" className={this.state.chartClass}>
           {React.createElement(AmCharts.React, config)}

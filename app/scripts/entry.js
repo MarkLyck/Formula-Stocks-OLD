@@ -7,16 +7,6 @@ import store from './store'
 
 import Visit from './models/Visit'
 
-import './ghost'
-
-$.get(ghost.url.api('posts', {limit: 2})).done(function (data){
-  console.log('posts', data.posts);
-}).fail(function (err){
-  console.log(err);
-});
-
-
-
 if (localStorage.getItem('authtoken')) {
   store.session.set('authtoken', localStorage.authtoken)
   store.session.retrieve()

@@ -15,10 +15,14 @@ const PortfolioGraph = React.createClass({
     }
 
     let fixedData = store.plans.get(this.props.plan).get('portfolioYields').map((point, i) => {
+      let month = point.date.month
+      if (Number(point.date.month) <= 9) {
+        month = '0' + point.date.month
+      }
       return {
         fs: ((point.balance-startValue) / startValue * 100).toFixed(2),
         market: ((store.market.data.get('portfolioData')[i] - marketStartValue) / marketStartValue * 100).toFixed(2),
-        date:  `${point.date.year}-${point.date.month}-${point.date.day}`
+        date:  `${point.date.year}-${month}-${point.date.day}`
       }
     })
 
