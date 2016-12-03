@@ -3955,6 +3955,10 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
     opacity: 0; }
   100% {
     opacity: 1; } }
+input {
+  -webkit-appearance: none;
+  border-radius: 0; }
+
 body {
   font-family: 'proxima-nova', sans-serif; }
 
