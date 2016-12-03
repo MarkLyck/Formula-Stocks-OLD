@@ -33,8 +33,6 @@ const RewardVSRisk = React.createClass({
                 is the Omega function, the output of which is depicted on the left.
               </p>
               <p className="disclaimer">
-                <br/><br/>
-
                 Higher levels indicate higher returns,
                 and steeper slopes indicate lower risk.
                 The yearly return distribution is significantly superior to DJIA at all thresholds

@@ -27,6 +27,7 @@
 
 #result-chart {
   height: 65vh;
+  max-height: 800px;
   .chart-balloon {
     font-family: 'proxima-nova', sans-serif;
     display: flex;
