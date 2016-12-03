@@ -3135,6 +3135,9 @@ footer .copyright {
         transform: translateY(-50%); }
     .side-bar-links .side-bar-link button i {
       color: #F3F3F3; }
+    .side-bar-links .side-bar-link button .db-icon {
+      position: absolute;
+      right: 24px; }
   .side-bar-links .side-bar-link .dropdown {
     display: flex;
     flex-direction: column; }

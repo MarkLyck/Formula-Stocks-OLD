@@ -146,7 +146,7 @@ const SideBar = React.createClass({
 
       admin = (
         <li className={adminClass} onClick={this.toggleDropdown.bind(null, 'admin')}>
-          <button className="admin-btn"><h3><i className="fa fa-tachometer" aria-hidden="true"></i></h3><i className="fa fa-angle-down" aria-hidden="true"></i></button>
+          <button className="admin-btn"><h3><i className="fa fa-tachometer" aria-hidden="true"></i></h3><i className="fa fa-angle-down db-icon" aria-hidden="true"></i></button>
           {adminDropdown}
         </li>
       )
@@ -157,12 +157,12 @@ const SideBar = React.createClass({
         <ul className="side-bar-links">
 
           <li className={suggestionsClass} onClick={this.toggleDropdown.bind(null, 'suggestions')}>
-            <button className="suggestions-btn"><h3><i className="fa fa-flask" aria-hidden="true"></i></h3> <i className="fa fa-angle-down" aria-hidden="true"></i></button>
+            <button className="suggestions-btn"><h3><i className="fa fa-flask" aria-hidden="true"></i></h3> <i className="fa fa-angle-down db-icon" aria-hidden="true"></i></button>
             {suggestionsDropdown}
           </li>
 
           <li className={portfoliosClass} onClick={this.toggleDropdown.bind(null, 'portfolio')}>
-            <button className="portfolios-btn"><h3><i className="fa fa-line-chart" aria-hidden="true"></i></h3> <i className="fa fa-angle-down" aria-hidden="true"></i></button>
+            <button className="portfolios-btn"><h3><i className="fa fa-line-chart" aria-hidden="true"></i></h3> <i className="fa fa-angle-down db-icon" aria-hidden="true"></i></button>
             {portfoliosDropdown}
           </li>
 
