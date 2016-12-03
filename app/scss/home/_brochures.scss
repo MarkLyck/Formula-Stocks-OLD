@@ -28,8 +28,20 @@
       max-width: 40%;
       width: 300px;
       background: $primary-color;
+      text-align: center;
       i {
         margin-right: 10px;
+      }
+      .button-content {
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        p {
+          margin: 0;
+          padding: 0;
+          color: #fff;
+        }
       }
       &:hover {
         background: darken($primary-color, 10%);
