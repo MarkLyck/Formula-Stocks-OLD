@@ -3,7 +3,7 @@ import $ from 'jquery'
 import store from '../../store'
 import Scroll from 'react-scroll'
 
-import unnamedChartComponent from '../../libraries/amcharts3-react';
+import '../../libraries/amcharts3-react';
 
 const TheResults = React.createClass({
   getInitialState() {

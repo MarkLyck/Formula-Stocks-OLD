@@ -51,6 +51,10 @@
 
 @import "typed";
 
+input {
+  -webkit-appearance: none;
+  border-radius: 0;
+}
 
 body {
   font-family: 'proxima-nova', sans-serif;
