@@ -49,7 +49,7 @@ const PreviousRecommendations = React.createClass({
         <div className="video-container paused" onClick={this.playVideo}>
           {yAxis}
           {xAxis}
-          <video src={`/assets/videos/recommendations_${this.state.plan}.mp4`} ref='video'/>
+          <video src={`/assets/videos/recommendations_${this.state.plan}.mp4`} ref='video' poster={`/assets/videos/posters/${this.state.plan}.png`}/>
         </div>
       )
     } else if (this.state.video === 'playing') {
@@ -57,7 +57,7 @@ const PreviousRecommendations = React.createClass({
         <div className="video-container playing" onClick={this.pauseVideo}>
           {yAxis}
           {xAxis}
-          <video src={`/assets/videos/recommendations_${this.state.plan}.mp4`} ref='video'/>
+          <video src={`/assets/videos/recommendations_${this.state.plan}.mp4`} ref='video' poster={`/assets/videos/posters/${this.state.plan}.png`}/>
         </div>
       )
     }
