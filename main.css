@@ -1745,9 +1745,19 @@ input[type=submit] {
       align-items: center;
       max-width: 40%;
       width: 300px;
-      background: #27A5F9; }
+      background: #27A5F9;
+      text-align: center; }
       .brochures .cta button i, .brochures .cta a i {
         margin-right: 10px; }
+      .brochures .cta button .button-content, .brochures .cta a .button-content {
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+        align-items: center; }
+        .brochures .cta button .button-content p, .brochures .cta a .button-content p {
+          margin: 0;
+          padding: 0;
+          color: #fff; }
       .brochures .cta button:hover, .brochures .cta a:hover {
         background: #068de7; }
 
