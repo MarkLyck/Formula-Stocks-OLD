@@ -2,12 +2,13 @@ import React from 'react'
 import $ from 'jquery'
 import store from '../../store'
 import Scroll from 'react-scroll'
+import TheResultsGraph from './TheResultsGraph'
 
 import '../../libraries/amcharts3-react';
 
 const TheResults = React.createClass({
   getInitialState() {
-    return { fetched: false, logarithmic: true, animate: true }
+    return { fetched: false, animate: true }
   },
   componentDidMount() {
     $(window).on('scroll', this.animate)
@@ -31,9 +32,6 @@ const TheResults = React.createClass({
   },
   drawGraph() {
     this.setState({fetched: true})
-  },
-  toggleLogScale() {
-    this.setState({logarithmic: !this.state.logarithmic})
   },
   render() {
     let Element = Scroll.Element;
@@ -91,132 +89,19 @@ const TheResults = React.createClass({
       chartData = fixedData;
     }
 
-    let config = {
-      type: "serial",
-      theme: "dark",
-      addClassNames: true,
-      dataProvider: chartData,
-
-      balloon: {
-        color: '#49494A',
-        fillAlpha: 1,
-        borderColor: '#FFFFFF',
-        borderThickness: 0,
-      },
-
-      graphs: [
-        {
-          id: "market",
-          lineColor: "#49494A",
-
-          bullet: "square",
-          bulletBorderAlpha: 1,
-          bulletColor: "#FFFFFF",
-          bulletSize: 5,
-          hideBulletsCount: 10,
-          lineThickness: 2,
-          useLineColorForBulletBorder: true,
-          valueField: "market",
-          "balloonText": "<div class=\"chart-balloon\"><span class=\"plan-name market-name\">S&P 500</span><span class=\"balloon-value\">[[marketBalloon]]</span></div>",
-        },
-        {
-        id: "basic",
-        lineColor: "#FFFFFF",
-
-        bullet: "square",
-        bulletBorderAlpha: 1,
-        bulletColor: "#FFFFFF",
-        bulletSize: 5,
-        hideBulletsCount: 10,
-        lineThickness: 2,
-        useLineColorForBulletBorder: true,
-        valueField: "basic",
-        balloonText: "<div class=\"chart-balloon\"><span class=\"plan-name\">Basic</span><span class=\"balloon-value\">[[basicBalloon]]</span></div>"
-      },
-      {
-        id: "premium",
-        lineColor: "#FFFFFF",
-
-        bullet: "square",
-        bulletBorderAlpha: 1,
-        bulletColor: "#FFFFFF",
-        bulletSize: 5,
-        hideBulletsCount: 10,
-        lineThickness: 2,
-        useLineColorForBulletBorder: true,
-        valueField: "premium",
-        balloonText: "<div class=\"chart-balloon\"><span class=\"plan-name\">Premium</span><span class=\"balloon-value\">[[premiumBalloon]]</span></div>"
-      },
-      {
-        id: "business",
-        lineColor: "#FFFFFF",
-
-        bullet: "square",
-        bulletBorderAlpha: 1,
-        bulletColor: "#FFFFFF",
-        bulletSize: 5,
-        hideBulletsCount: 10,
-        lineThickness: 2,
-        useLineColorForBulletBorder: true,
-        valueField: "business",
-        "balloonText": "<div class=\"chart-balloon\"><span class=\"plan-name\">Business</span><span class=\"balloon-value\">[[businessBalloon]]</span></div>",
-      },
-      // {
-      //   id: "fund",
-      //   lineColor: "#fff",
-      //
-      //   bullet: "square",
-      //   bulletBorderAlpha: 1,
-      //   bulletColor: "#FFF",
-      //   bulletSize: 5,
-      //   hideBulletsCount: 10,
-      //   lineThickness: 2,
-      //   useLineColorForBulletBorder: true,
-      //   valueField: "fund",
-      //   "balloonText": "<div class=\"chart-balloon\"><span class=\"plan-name\">Fund</span><span class=\"balloon-value\">[[fundBalloon]]</span></div>",
-      // }
-    ],
-      valueAxes: [{
-        logarithmic: true,
-        unit: '$',
-        unitPosition: 'left',
-        gridAlpha: 0.15,
-        minorGridEnabled: true,
-        dashLength: 0,
-        inside: true,
-			}],
-
-      chartCursor: {
-	        valueLineEnabled: true,
-	        valueLineAlpha: 0.5,
-	        fullWidth: true,
-	        cursorAlpha: 0.5
-	    },
-
-      categoryField: "date",
-      // dataDateFormat: "YYYY-M-D",
-      categoryAxis: {
-        parseDates: true,
-        equalSpacing: true,
-      },
-
-    };
-
-    if (store.session.browserType() === 'Safari') {
-      config.dataDateFormat = "YYYY-M-D",
-      config.categoryAxis = {
-        equalSpacing: true,
-      }
-    }
+    // if (store.session.browserType() === 'Safari') {
+    //   config.dataDateFormat = "YYYY-M-D",
+    //   config.categoryAxis = {
+    //     equalSpacing: true,
+    //   }
+    // }
 
     let chart = (<div id="result-chart" className={this.state.chartClass}></div>)
-
-
 
     if (chartData.length) {
       chart = (
         <div id="result-chart" className={this.state.chartClass}>
-          {React.createElement(AmCharts.React, config)}
+          {TheResultsGraph(chartData)}
         </div>
       )
     }
