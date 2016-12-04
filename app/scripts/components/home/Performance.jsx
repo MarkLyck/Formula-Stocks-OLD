@@ -1,6 +1,7 @@
 import React from 'react'
 import store from '../../store'
 import Scroll from 'react-scroll'
+import $ from 'jquery'
 import TheResultsGraph from './TheResultsGraph'
 
 function formatPrice(value) {
@@ -15,38 +16,49 @@ class Performance extends React.Component {
   constructor(props) {
     super(props)
 
+    this.animate = this.animate.bind(this)
     this.getData = this.getData.bind(this)
     this.createChartData = this.createChartData.bind(this)
     this.renderChart = this.renderChart.bind(this)
 
-    this.state = { chartData: [] }
+    this.state = { chartData: [], animate: false }
   }
 
   componentDidMount() {
-    // $(window).on('scroll', this.animate)
-    store.plans.on('update', this.getData)
-    store.market.data.on('update', this.getData)
+    $(window).on('scroll', this.animate)
+    store.plans.on('update', this.getData.bind(this, 'plans'))
+    store.market.data.on('change', this.getData.bind(this, 'market'))
   }
 
   componentWillUnmount() {
-    // $(window).off('scroll', this.animate)
+    $(window).off('scroll', this.animate)
     store.plans.off('update', this.getData)
     store.market.data.off('update', this.getData)
   }
 
-  getData() {
-    let basicData = store.plans.get('basic').get('annualData')
-    let premiumData = store.plans.get('premium').get('annualData')
-    let businessData = store.plans.get('business').get('annualData')
-    // let fundData = store.plans.get('fund').get('annualData')
-    let marketData = store.market.data.get('annualData')
+  animate() {
+    let hT = $(this.refs.subtitle).offset().top
+    let hH = $(this.refs.subtitle).outerHeight() + 250
+    let wH = $(window).height()
 
-    console.log('basic length: ', basicData.length)
-    console.log('premium length: ', premiumData.length)
+    if ($(window).scrollTop() > (hT + hH - wH)) {
+      this.setState({ animate: true })
+      console.log('animate')
+      $(window).off('scroll', this.animate)
+    }
+  }
 
-    if (basicData.length && premiumData.length && businessData.length && marketData.length) {
-      console.log('CREATE CHART DATA')
-      this.createChartData(basicData, premiumData, businessData, marketData)
+  getData(dataType) {
+    if (!this.state.chartData.length) {
+      let basicData = store.plans.get('basic').get('annualData')
+      let premiumData = store.plans.get('premium').get('annualData')
+      let businessData = store.plans.get('business').get('annualData')
+      // let fundData = store.plans.get('fund').get('annualData')
+      let marketData = store.market.data.get('annualData')
+
+      if (basicData.length && premiumData.length && businessData.length && marketData.length) {
+        this.createChartData(basicData, premiumData, businessData, marketData)
+      }
     }
   }
 
@@ -88,7 +100,7 @@ class Performance extends React.Component {
   }
 
   renderChart() {
-    if (!this.state.chartData.length) {
+    if (!this.state.chartData.length || !this.state.animate) {
       return <div id="result-chart" className={this.state.chartClass}></div>
     } else {
       console.log('rendering chart')
