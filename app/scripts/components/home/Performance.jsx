@@ -43,7 +43,6 @@ class Performance extends React.Component {
 
     if ($(window).scrollTop() > (hT + hH - wH)) {
       this.setState({ animate: true })
-      console.log('animate')
       $(window).off('scroll', this.animate)
     }
   }
@@ -103,7 +102,6 @@ class Performance extends React.Component {
     if (!this.state.chartData.length || !this.state.animate) {
       return <div id="result-chart" className={this.state.chartClass}></div>
     } else {
-      console.log('rendering chart')
       return (
         <div id="result-chart" className={this.state.chartClass}>
           {TheResultsGraph(this.state.chartData)}

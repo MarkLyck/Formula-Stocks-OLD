@@ -29,13 +29,6 @@ let testData = [
 ]
 
 export default function TheResultsGraph(chartData) {
-  console.log('chartData', chartData)
-
-  // console.log(chartData.length)
-  // let checkData = chartData.slice(0, 562)
-  // console.log('CD: ', checkData)
-  // console.log(chartData);
-
   let config = {
     type: "serial",
     theme: "dark",
@@ -139,7 +132,6 @@ export default function TheResultsGraph(chartData) {
     },
 
     categoryField: "date",
-    // dataDateFormat: "YYYY-M-D",
     categoryAxis: {
       parseDates: true,
       equalSpacing: true,

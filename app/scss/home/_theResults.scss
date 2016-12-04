@@ -3,7 +3,6 @@
   .content {
     padding: 40px 0;
     text-align: center;
-    // width: 100%;
     .title {
       color: #fff;
       margin-top: 0;
@@ -47,18 +46,14 @@
     }
   }
 }
-// .animate-chart {
-  .amcharts-graph-basic, .amcharts-graph-premium, .amcharts-graph-business, .amcharts-graph-market {
-    stroke-linejoin: round;
-    stroke-linecap: round;
-    stroke-dasharray: 500%;
-    // stroke-dasharray: 0 0;    /* fixes IE prob */
-    // stroke-dashoffset: 0 0;   /* fixes IE prob */
-    -webkit-animation: am-draw 5s;
-    animation: am-draw 5s;
-    position: relative;
-  }
-// }
+.amcharts-graph-basic, .amcharts-graph-premium, .amcharts-graph-business, .amcharts-graph-market {
+  stroke-linejoin: round;
+  stroke-linecap: round;
+  stroke-dasharray: 500%;
+  -webkit-animation: am-draw 5s;
+  animation: am-draw 5s;
+  position: relative;
+}
 
 
 @-webkit-keyframes am-draw {
