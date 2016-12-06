@@ -20,12 +20,14 @@ const Userlist = React.createClass({
 
     let userlist = sortedUsers.map((user, i) => {
 
-      if (user.username === 'anom' || user.username === 'demo@formulastocks.com') {
+      if (user.username === 'anom' || user.type === 5) {
         return undefined;
       }
 
       let type = "Trial"
-      if (user.type === 1) {
+      if (user.username === 'demo@formulastocks.com') {
+        type = "Demo"
+      } else if (user.type === 1) {
         type = "Basic"
       } else if (user.type === 2) {
         type = "Premium"

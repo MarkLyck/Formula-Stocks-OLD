@@ -39,6 +39,10 @@ const Session = Backbone.Model.extend({
           this.unset('password')
           this.set('showModal', false)
           resolve()
+          if (store.session.get('username') !== 'anom') {
+            this.set('lastSeen', new Date())
+            this.updateUser()
+          }
           store.settings.history.push('/dashboard')
         },
         error: function(model, response) {
@@ -93,6 +97,10 @@ const Session = Backbone.Model.extend({
       success: () => {
         let visit = new Visit()
         visit.getData(this.get('type'))
+        if (store.session.get('username') !== 'anom') {
+          this.set('lastSeen', new Date())
+          this.updateUser()
+        }
       },
       error: function(response) {
         throw new Error('FETCHING USER FAILED!')
