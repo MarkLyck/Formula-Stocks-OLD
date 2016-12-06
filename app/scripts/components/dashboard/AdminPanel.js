@@ -40,7 +40,7 @@ const AdminPanel = React.createClass({
         color = '#da1354'
       else if (visitor.type > 0 && visitor.type < 5)
         color = '#27A5F9'
-      else if (moment().format('YYYYMMDD') - moment(visitor._kmd.lmt).format('YYYYMMDD') < 1)
+      else if (moment().format('YYYYMMDD') - moment(visitor._kmd.lmt).format('YYYYMMDD') <= 1)
         color = '#f9f027'
 
       return({
