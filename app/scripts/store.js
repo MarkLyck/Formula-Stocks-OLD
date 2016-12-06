@@ -13,7 +13,8 @@ let store = {
   settings: {
     anomToken: '17dcc7f4-49f8-4d7c-8d66-d96474fa6818.tEs1/na2P9cqWKXn3ab9pgIdPpmEPAaQDIJEYNbG7E4=',
     history: browserHistory,
-    quandlKey: 'zP2W-4snDLyygfZVpw2v',
+    quandlKey: 'YjZ14NUXoyAGAPRDomS5',
+    // quandlKey: 'zP2W-4snDLyygfZVpw2v', FREE API KEY
     appKey: 'kid_rJRC6m9F',
     appSecret: 'e6688b599fca47e1bf150d99a786132d',
     basicAuth: btoa('kid_rJRC6m9F:e6688b599fca47e1bf150d99a786132d')

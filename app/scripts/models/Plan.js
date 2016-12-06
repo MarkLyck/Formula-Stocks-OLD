@@ -113,6 +113,7 @@ const Plan = Backbone.Model.extend({
       let query = `https://www.quandl.com/api/v1/datasets/WIKI/${ticker}.json?api_key=${store.settings.quandlKey}`
       $.ajax({
         url: query,
+        dataType: 'json'
       })
       .then((response) => {
         if (!portfolioStock) {
@@ -134,9 +135,13 @@ const Plan = Backbone.Model.extend({
           hasCanceled_ ? reject({isCancelled: true}) : resolve(response)
         }
       })
-      .fail((e) => {
+      .fail((error) => {
+        console.log('||| ERROR ||| ', error)
         query = `https://www.quandl.com/api/v1/datasets/GOOG/NASDAQ_${ticker}.json?api_key=${store.settings.quandlKey}`
-        $.ajax(query)
+        $.ajax({
+          url: query,
+          dataType: 'json'
+        })
         .then((response) => {
           if (!portfolioStock) {
             let suggestionToUpdate = this.get('suggestions')[i]
@@ -159,7 +164,10 @@ const Plan = Backbone.Model.extend({
         })
         .fail((error) => {
           query = `https://www.quandl.com/api/v1/datasets/GOOG/NYSE_${ticker}.json?api_key=${store.settings.quandlKey}`
-          $.ajax(query)
+          $.ajax({
+            url: query,
+            dataType: 'json'
+          })
           .then((response) => {
             if (!portfolioStock) {
               let suggestionToUpdate = this.get('suggestions')[i]
@@ -182,7 +190,10 @@ const Plan = Backbone.Model.extend({
           })
           .fail(() => {
             query = `https://www.quandl.com/api/v1/datasets/GOOG/AMEX_${ticker}.json?api_key=${store.settings.quandlKey}`
-            $.ajax(query)
+            $.ajax({
+              url: query,
+              dataType: 'json'
+            })
             .then((response) => {
               if (!portfolioStock) {
                 let suggestionToUpdate = this.get('suggestions')[i]
@@ -205,7 +216,10 @@ const Plan = Backbone.Model.extend({
             })
             .fail(() => {
               query = `https://www.quandl.com/api/v1/datasets/YAHOO/TSX_${ticker}.json?api_key=${store.settings.quandlKey}`
-              $.ajax(query)
+              $.ajax({
+                url: query,
+                dataType: 'json'
+              })
               .then((response) => {
                 if (!portfolioStock) {
                   let suggestionToUpdate = this.get('suggestions')[i]
