@@ -60,7 +60,7 @@ const Suggestion = React.createClass({
     )
 
     if (this.props.suggestion.action === 'SELL') {
-      listClass = 'fade-in blue'
+      listClass = 'fade-in sell-suggestion'
       textColor = 'white-color'
       actionClass = 'sell'
       SuggestedPriceText = 'Sell at'
@@ -81,7 +81,7 @@ const Suggestion = React.createClass({
     } else if (this.state.failed) {
       chartArea = (
         <div className="fetching-data">
-          <p className="red-color">Failed loading data</p>
+          <p className="failed"><i className="fa fa-exclamation-circle" aria-hidden="true"></i> Couldn't find data</p>
         </div>)
     } else if (this.state.fetched) {
       chartArea = (
