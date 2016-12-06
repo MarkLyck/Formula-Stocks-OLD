@@ -3457,6 +3457,13 @@ footer .copyright {
     .suggestions-list li #suggestion-chart {
       height: 300px;
       width: 100%; }
+    .suggestions-list li .failed {
+      display: flex;
+      align-items: center;
+      color: #da1354; }
+      .suggestions-list li .failed i {
+        font-size: 1.3rem;
+        margin-right: 8px; }
     .suggestions-list li .bottom {
       display: flex;
       padding: 10px 10px; }
@@ -3476,6 +3483,10 @@ footer .copyright {
         color: #F3F3F3; }
     .suggestions-list li .more-info.sell {
       display: none; }
+  .suggestions-list .sell-suggestion {
+    background: #27A5F9; }
+    .suggestions-list .sell-suggestion .failed {
+      color: #fff; }
 
 .suggestion-balloon {
   display: flex; }
