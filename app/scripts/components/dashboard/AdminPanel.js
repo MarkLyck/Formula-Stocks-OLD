@@ -21,8 +21,20 @@ const AdminPanel = React.createClass({
   updateState() {
     this.setState({visitors: admin.visits.toJSON()})
   },
+  filterVisitors(visitors) {
+    let uniqueIPs = []
+    let uniqueVisitors = visitors.filter((visitor) => {
+      if (uniqueIPs.indexOf(visitor.location.ip) === -1) {
+        uniqueIPs.push(visitor.location.ip)
+        return true
+      } else {
+        return false
+      }
+    })
+    return uniqueVisitors
+  },
   render() {
-    let images = this.state.visitors.map((visitor) => {
+    let images = this.filterVisitors(this.state.visitors).map((visitor) => {
       let color = '#12D99E'
       if (visitor.type === 5)
         color = '#da1354'
