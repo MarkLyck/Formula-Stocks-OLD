@@ -34,7 +34,8 @@ const AdminPanel = React.createClass({
     return uniqueVisitors
   },
   render() {
-    let images = this.filterVisitors(this.state.visitors).map((visitor) => {
+    const filteredVisitors = this.filterVisitors(this.state.visitors)
+    let images = filteredVisitors.map((visitor) => {
       let color = '#12D99E'
       if (visitor.type === 5)
         color = '#da1354'
@@ -77,12 +78,12 @@ const AdminPanel = React.createClass({
         "enabled": true
       }
     })
-    let ChromeUsers = this.state.visitors.filter((visitor) => visitor.browser === 'Chrome' ? true : false).length
-    let FirefoxUsers = this.state.visitors.filter((visitor) => visitor.browser === 'Firefox' ? true : false).length
-    let IEUsers = this.state.visitors.filter((visitor) => visitor.browser === 'IE' ? true : false).length
-    let EdgeUsers = this.state.visitors.filter((visitor) => visitor.browser === 'Edge' ? true : false).length
-    let SafariUSers = this.state.visitors.filter((visitor) => visitor.browser === 'Safari' ? true : false).length
-    let OtherUsers = (this.state.visitors.length - ChromeUsers - FirefoxUsers - IEUsers - EdgeUsers - SafariUSers)
+    let ChromeUsers = filteredVisitors.filter((visitor) => visitor.browser === 'Chrome' || visitor.browser === 'Blink' ? true : false).length
+    let FirefoxUsers = filteredVisitors.filter((visitor) => visitor.browser === 'Firefox' ? true : false).length
+    let IEUsers = filteredVisitors.filter((visitor) => visitor.browser === 'IE' ? true : false).length
+    let EdgeUsers = filteredVisitors.filter((visitor) => visitor.browser === 'Edge' ? true : false).length
+    let SafariUSers = filteredVisitors.filter((visitor) => visitor.browser === 'Safari' ? true : false).length
+    let OtherUsers = (filteredVisitors.length - ChromeUsers - FirefoxUsers - IEUsers - EdgeUsers - SafariUSers)
 
     return (
       <div className="admin-panel">
@@ -95,12 +96,12 @@ const AdminPanel = React.createClass({
         <div className="browsers-container">
           <h2>Browsers</h2>
           <div className="browsers">
-            <BrowserPieChart title="Chrome" max={this.state.visitors.length} value={ChromeUsers}/>
-            <BrowserPieChart title="Safari" max={this.state.visitors.length} value={SafariUSers}/>
-            <BrowserPieChart title="Firefox" max={this.state.visitors.length} value={FirefoxUsers}/>
-            <BrowserPieChart title="IE" max={this.state.visitors.length} value={IEUsers}/>
-            <BrowserPieChart title="Edge" max={this.state.visitors.length} value={EdgeUsers}/>
-            <BrowserPieChart title="Other" max={this.state.visitors.length} value={OtherUsers}/>
+            <BrowserPieChart title="Chrome" max={filteredVisitors.length} value={ChromeUsers}/>
+            <BrowserPieChart title="Safari" max={filteredVisitors.length} value={SafariUSers}/>
+            <BrowserPieChart title="Firefox" max={filteredVisitors.length} value={FirefoxUsers}/>
+            <BrowserPieChart title="IE" max={filteredVisitors.length} value={IEUsers}/>
+            <BrowserPieChart title="Edge" max={filteredVisitors.length} value={EdgeUsers}/>
+            <BrowserPieChart title="Other" max={filteredVisitors.length} value={OtherUsers}/>
           </div>
         </div>
         <div className="user-list-container">
