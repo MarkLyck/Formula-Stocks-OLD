@@ -37,7 +37,7 @@ const AdminPanel = React.createClass({
     const filteredVisitors = this.filterVisitors(this.state.visitors)
     let images = filteredVisitors.map((visitor) => {
       let color = '#12D99E'
-      if (visitor.type === 5)
+      if (visitor.type === 4)
         color = '#da1354'
       else if (visitor.type > 0 && visitor.type < 5)
         color = '#27A5F9'
@@ -74,9 +74,6 @@ const AdminPanel = React.createClass({
         "selectedColor": "#ccc",
         "color": "#26262C",
       },
-      "export": {
-        "enabled": true
-      }
     })
     let ChromeUsers = filteredVisitors.filter((visitor) => visitor.browser === 'Chrome' || visitor.browser === 'Blink' ? true : false).length
     let FirefoxUsers = filteredVisitors.filter((visitor) => visitor.browser === 'Firefox' ? true : false).length

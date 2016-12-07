@@ -129,7 +129,7 @@ const MyAccount = React.createClass({
       if     (this.state.selectedPlan === 'basic') {price = 50}
       else if(this.state.selectedPlan === 'premium') {price = 100}
       else if(this.state.selectedPlan === 'business') {price = 20000; cycle="annually"}
-      else if(this.state.selectedPlan === 'fund') {price = 120000; cycle="annually"}
+      else if(this.state.selectedPlan === 'fund') {price = 140000; cycle="annually"}
 
       let modalStyles = {
         maxWidth: '400px',
@@ -176,7 +176,7 @@ const MyAccount = React.createClass({
           <button className={basicClass} disabled={basicDisabled} onClick={this.selectPlan.bind(null, 'basic')}><h3 className="plan-name">Basic</h3><h3 className="price">$50<br/><span className="disclaimer">monthly</span></h3></button>
           <button className={premiumClass} disabled={premiumDisabled} onClick={this.selectPlan.bind(null, 'premium')}><h3 className="plan-name">Premium</h3><h3 className="price">$100<br/><span className="disclaimer">monthly</span></h3></button>
           <button className={businessClass} disabled={businessDisabled} onClick={this.selectPlan.bind(null, 'business')}><h3 className="plan-name">Business</h3><h3 className="price">$20,000<br/><span className="disclaimer">yearly</span></h3></button>
-          <button className={fundClass} disabled={fundDisabled} onClick={this.selectPlan.bind(null, 'fund')}><h3 className="plan-name">Fund</h3><h3 className="price">$120,000<br/><span className="disclaimer">yearly</span></h3></button>
+          <button className={fundClass} disabled={fundDisabled} onClick={this.selectPlan.bind(null, 'fund')}><h3 className="plan-name">Fund</h3><h3 className="price">$140,000<br/><span className="disclaimer">yearly</span></h3></button>
 
           {changePlanBtn}
         </div>
