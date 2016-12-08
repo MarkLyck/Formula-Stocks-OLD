@@ -6,6 +6,7 @@ import AdminPanelHeader from './AdminPanelHeader'
 import BrowserPieChart from './BrowserPieChart'
 import Userlist from './Userlist'
 import moment from 'moment'
+import DAUGraph from './DAUGraph'
 
 const AdminPanel = React.createClass({
   getInitialState() {
@@ -100,6 +101,10 @@ const AdminPanel = React.createClass({
             <BrowserPieChart title="Edge" max={filteredVisitors.length} value={EdgeUsers}/>
             <BrowserPieChart title="Other" max={filteredVisitors.length} value={OtherUsers}/>
           </div>
+        </div>
+        <div className="DAU-container">
+          <h2>Daily Visitors</h2>
+          <DAUGraph data={filteredVisitors}/>
         </div>
         <div className="user-list-container">
           <h2>Users</h2>
