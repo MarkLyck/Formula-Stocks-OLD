@@ -3792,6 +3792,13 @@ footer .copyright {
       .browsers-container .browsers .browserChart h3 {
         text-align: center; }
 
+.DAU-container {
+  background: #fff;
+  margin: 20px;
+  padding: 20px; }
+  .DAU-container h2 {
+    margin: 0; }
+
 a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.com/javascript-charts/"] {
   display: none !important; }
 
