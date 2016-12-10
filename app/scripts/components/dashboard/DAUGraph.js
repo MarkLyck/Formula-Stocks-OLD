@@ -18,22 +18,41 @@ const DAUGraph = React.createClass({
 
 
     visitors = visitors.reduce((prev, curr) => {
+
       let dateFound = false
-      prev.map(point => {
+      prev = prev.map(point => {
         if (point.date === curr) {
           dateFound = true
           point.visitors++
         }
         return point
       })
+      if (prev[prev.length - 1] ) {
+        let currDate = Number(curr.split('-').join(''))
+        let prevDate = Number(prev[prev.length - 1].date.split('-').join(''))
+
+        const missingDates = currDate - prevDate
+
+        if (missingDates > 1 && missingDates < 28) {
+            const year = curr.split('-')[0]
+            const month = curr.split('-')[1]
+            let date = Number(prev[prev.length - 1].date.split('-')[2])
+          _(missingDates - 1).times(() => {
+            date++
+            prev = prev.concat({ visitors: 0, date: `${year}-${month}-${date}` })
+          })
+        }
+      }
+
 
       if (!dateFound) {
         return prev.concat({ visitors: 1, date: curr })
       } else {
+
+
         return prev
       }
     }, [])
-    console.log('visitors: ', visitors)
 
     let chartData = visitors
 
@@ -70,6 +89,9 @@ const DAUGraph = React.createClass({
             lineColor: '#27A5F9',
             "lineThickness": 2,
             "valueField": "visitors",
+            // "type": "smoothedLine",
+            // // "bullet": "round",
+            // // "bulletSize": 3,
             "balloonText": `<div class=\"suggestion-balloon\"><p class="ticker">Visitors</p> <p>[[value]]</p></div>`
         }
       ],
