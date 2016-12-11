@@ -14,7 +14,7 @@ class NewArticle extends React.Component {
     e.preventDefault()
     const markdown = this.refs.mdeditor.state.content
     store.mdarticles.data.create({
-      author: '',
+      author: store.session.get('name'),
       title: '',
       mdBody: markdown
     })

@@ -42,8 +42,8 @@ const AboveAverageReturns = React.createClass({
               It is only when you know something the competition does not that above-average
               returns become a realistic proposition.<br/><br/>
 
-              By offering valuable information available nowhere else, Formula Stocks can give you an
-              informational advantage over the competition, empowering you with far better odds.
+              By offering actionable information every week, Formula Stocks can give you an
+              informational advantage available nowhere else, empowering you with better odds.
             </p>
           </div>
           <div className="right" ref="right">
