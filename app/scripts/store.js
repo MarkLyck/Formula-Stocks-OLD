@@ -40,9 +40,9 @@ store.plans.add({
   price: 50,
   type: 1,
   info: {
-    roundtripTradesPerYear: 96,
-    avgNumOfPosInPortfolio: 118,
-    IITFormulas: 3,
+    roundtripTradesPerYear: 82,
+    avgNumOfPosInPortfolio: 152,
+    IITFormulas: 4,
     avgGainPerPosition: 65.97,
     avgLossPerPosition: 18.32,
     maxDrawdown45y: 46.02,
