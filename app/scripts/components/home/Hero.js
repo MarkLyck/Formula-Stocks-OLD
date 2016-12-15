@@ -37,14 +37,12 @@ const Hero = React.createClass({
             <h1 id="main-title">A better <span className="font bold">solution</span> for the <span className="font bold">stock investor</span></h1>
             <span id="subtitle"></span>
             <div id="subtitles">
-              <h2>Formula Stocks has a history of picking next year’s winners with an 89-94% average success rate<sup>*</sup>. Give your investments a significant boost – join us today.</h2>
-              <h2>The human brain is not wired for evaluating hundreds of data points simultaneously. It prefers stories. But stories produce bias that dampens performance.</h2>
+              <h2>Formula Stocks usually estimates next year’s winners with an 89-94% success rate<sup>*</sup>. Give your investments a boost – join today.</h2>
+              <h2>A human brain is not wired for evaluating hundreds of data points. We prefer stories. But stories produce bias, dampens performance.</h2>
               <h2>Formula Stocks' intelligent technology delivers unbiased thinking on an expert level. Smart. Experienced. Better.</h2>
-              <h2>Expert systems can evaluate hundreds of data points simultaneously. Use this tool to improve your odds.</h2>
-              <h2>With this tool, it becomes possible to win up to 9 times out of 10.</h2>
-              <h2>At the same time, you can save on fees and keep hands-on oversight on your investments.</h2>
-              <h2>Based on timeless and proven investment principles. We buy good businesses at reasonable prices, using a margin of safety.</h2>
-              <h2>Progress always involves adopting better tools.</h2>
+              <h2>It becomes possible to win up to 9 times out of 10.</h2>
+              <h2>You can also save on fees and keep hands-on oversight on your investments.</h2>
+              <h2>Timeless and proven investment principles. We buy good businesses at fair prices, with a margin of safety.</h2>
             </div>
           </div>
           <div className="CTA fade-in">
