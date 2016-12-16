@@ -7,8 +7,7 @@ const WhatIsIt = React.createClass({
         <div className="left">
           <h3 className="title">What is Formula Stocks?</h3>
           <p>
-            Using proprietary advanced technology we can pick next year's
-            winners in the markets today.<br/><br/>
+            Using proprietary technology we estimate who will win in the market over the next year or two.<br/><br/>
 
             We use this to offer you an informational advantage in the form of a capital allocation
             strategy and easy-to-use purchase and sales recommendations.<br/><br/>
