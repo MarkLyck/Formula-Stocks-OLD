@@ -7,7 +7,7 @@ import Modal from '../Modal'
 
 import SelectPlanForm from './SelectPlanForm'
 import SignupForm from './SignupForm'
-import PaymentForm from './PaymentForm'
+import PaymentForm from './PaymentForm.jsx'
 
 const Signup = React.createClass({
   getInitialState: function() {

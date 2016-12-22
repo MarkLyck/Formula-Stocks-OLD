@@ -1,16 +1,23 @@
 import React from 'react'
-
 import Select from 'react-select'
-
 import cc from '../../cc'
 import store from '../../store'
-
 import countries from '../../data/countries'
+import _ from 'underscore'
 
-const PaymentForm = React.createClass({
-  getInitialState() {
-    console.log(this.props.passedProps.plan);
-    console.log(store.session.toJSON());
+class PaymentForm extends React.Component {
+  constructor(props) {
+    super(props)
+
+    this.ccFormat = this.ccFormat.bind(this)
+    this.dateFormat = this.dateFormat.bind(this)
+    this.cvcFormat = this.cvcFormat.bind(this)
+    this.checkPayment = this.checkPayment.bind(this)
+    this.createCustomer = this.createCustomer.bind(this)
+    this.toggleCheckBox = this.toggleCheckBox.bind(this)
+    this.selectCountry = this.selectCountry.bind(this)
+    this.showTerms = this.showTerms.bind(this)
+
     let cycle = ' monthly'
     if (this.props.passedProps.plan === 'business' || this.props.passedProps.plan === 'fund') {
       cycle = ' annually'
@@ -23,13 +30,19 @@ const PaymentForm = React.createClass({
 
     let countryText = 'Country of residence'
     let countryCode;
+    let taxPercent = 0
     if (store.session.get('location').country_code
         && store.session.get('location').country_name) {
       countryText = store.session.get('location').country_name
       countryCode = store.session.get('location').country_code
+
+      let country = _.where(countries, {value: countryCode})
+      if (country[0].taxPercent) {
+        taxPercent = country[0].taxPercent
+      }
     }
 
-    return {
+    this.state = {
       priceText: priceText,
       price: store.plans.get(this.props.passedProps.plan).get('price'),
       formClass: `payment-form ${this.props.formAnimation}`,
@@ -37,31 +50,38 @@ const PaymentForm = React.createClass({
       validatingPayment: false,
       countryName: countryText,
       countryCode: countryCode,
-      taxPercent: 0,
-      cycle: cycle}
-  },
+      taxPercent: taxPercent,
+      cycle: cycle
+    }
+  }
+
   componentWillReceiveProps(newProps) {
     this.setState({formClass: `payment-form ${newProps.formAnimation}`})
-  },
+  }
+
   ccFormat() {
     this.refs.cardNumber.value = cc.ccFormat(this.refs.cardNumber.value)
-  },
+  }
+
   dateFormat(e) {
     this.refs.cardExpiry.value = cc.dateFormat(e, this.refs.cardExpiry.value)
-  },
+  }
+
   cvcFormat() {
     this.refs.cardCvc.value = cc.cvcFormat(this.refs.cardCvc.value)
-  },
+  }
+
   calculateTax(countryCode) {
     cc.calculateTax(countryCode).then((tax) => {
       this.setState({taxPercent: tax})
     })
-  },
+  }
+
   checkPayment(e) {
     e.preventDefault()
 
     if (!this.state.validatingPayment) {
-      this.setState({validatingPayment: true})
+      this.setState({ validatingPayment: true })
       let location = {
         country_name: this.state.countryName,
         country_code: this.state.countryCode,
@@ -71,31 +91,31 @@ const PaymentForm = React.createClass({
 
       cc.validateLocation(location)
       .then(() => {
-        this.calculateTax(this.state.countryCode)
-          const card = {
-            number: this.refs.cardNumber.value.replace(/\s+/g, ''),
-            month: this.refs.cardExpiry.value.split(' / ')[0],
-            year: this.refs.cardExpiry.value.split(' / ')[1],
-            cvc: this.refs.cardCvc.value,
-          }
+        // this.calculateTax(this.state.countryCode)
+        const card = {
+          number: this.refs.cardNumber.value.replace(/\s+/g, ''),
+          month: this.refs.cardExpiry.value.split(' / ')[0],
+          year: this.refs.cardExpiry.value.split(' / ')[1],
+          cvc: this.refs.cardCvc.value,
+        }
 
-          cc.checkPayment(card)
-            .then((token) => {
-              if (this.state.checked) {
-                this.createCustomer(token)
-              } else {
-                this.setState({error: 'You must agree to the Terms and Conditions', formClass: 'payment-form shake', validatingPayment: false})
-                window.setTimeout(() => {
-                  this.setState({formClass: 'payment-form'})
-                }, 300)
-              }
-            })
-            .catch((e) => {
-              this.setState({error: e, formClass: 'payment-form shake', validatingPayment: false})
-              window.setTimeout(() => {
-                this.setState({formClass: 'payment-form'})
-              }, 300)
-            })
+        cc.checkPayment(card)
+        .then((token) => {
+          if (this.state.checked) {
+            this.createCustomer(token)
+          } else {
+            this.setState({error: 'You must agree to the Terms and Conditions', formClass: 'payment-form shake', validatingPayment: false})
+            window.setTimeout(() => {
+              this.setState({formClass: 'payment-form'})
+            }, 300)
+          }
+        })
+        .catch((e) => {
+          this.setState({error: e, formClass: 'payment-form shake', validatingPayment: false})
+          window.setTimeout(() => {
+            this.setState({formClass: 'payment-form'})
+          }, 300)
+        })
       })
       .catch((e) => {
         this.setState({error: e, formClass: 'payment-form shake', validatingPayment: false})
@@ -103,43 +123,42 @@ const PaymentForm = React.createClass({
           this.setState({formClass: 'payment-form'})
         }, 300)
       })
-
-
-
-
-
-
     }
-  },
+  }
+
   createCustomer(token) {
     cc.createCustomer(token, this.props.passedProps.plan, this.state.cycle, this.state.taxPercent)
       .then(() => {
-        console.log('SUCCESFUL PAYMENT');
+        console.log('SUCCESFUL PAYMENT')
       })
       .catch((e) => {
-        console.error('charge ERROR: ', e);
+        console.error('charge ERROR: ', e)
         this.setState({error: String(e), formClass: 'payment-form shake', validatingPayment: false})
         window.setTimeout(() => {
           this.setState({formClass: 'payment-form'})
         }, 300)
       })
-  },
+  }
+
   toggleCheckBox() {
     this.setState({checked: !this.state.checked})
-  },
+  }
+
   selectCountry(country) {
     this.setState({
       countryName: country.label,
       countryCode: country.value,
     })
     this.calculateTax(country.value)
-  },
+  }
+
   showTerms() {
     store.session.set('showModal', 'terms')
-  },
-  render() {
+  }
 
-    let error;
+  render() {
+    console.log('THE RIGHT ONE RENDERED')
+    let error
     if (this.state.error) {
       error = (
         <div className="form-error">
@@ -152,17 +171,15 @@ const PaymentForm = React.createClass({
       checkbox = <div className="checker" onClick={this.toggleCheckBox}><i className="fa fa-check" aria-hidden="true"></i></div>
     }
 
-
-    // let payButton =   <input className="pay-button" type="submit" value={this.state.priceText}/>
     let payButton =   <button className="pay-button"><div><h3>Subscribe for ${cc.commafy(this.state.price)} {this.state.cycle}</h3></div></button>
 
-    console.log(this.props.passedProps.plan);
+    console.log(this.props.passedProps.plan)
 
     if (this.state.taxPercent > 0 && this.props.passedProps.plan === 'basic') {
       payButton = (<button className="pay-button">
                       <div>
                       <h3>Start free trial</h3>
-                        <p className="tax">${cc.commafy(this.state.price * (this.state.taxPercent/100 + 1))} after 30 days</p>
+                        <p className="tax">${cc.commafy(this.state.price * (this.state.taxPercent/100 + 1))} monthly after 30 days</p>
                         <p className="tax">Tax: ${cc.commafy((this.state.price * (this.state.taxPercent/100 + 1)) - this.state.price)}</p>
                       </div>
                     </button>)
@@ -174,11 +191,11 @@ const PaymentForm = React.createClass({
                     </div>
                   </button>)
     } else if (this.props.passedProps.plan === 'basic') {
-      console.log('else if plan === basic');
+      console.log('else if plan === basic')
       payButton =  (<button className="pay-button">
                       <div>
                         <h3>Start free trial</h3>
-                        <p className="tax">${cc.commafy(this.state.price)} after 30 days</p>
+                        <p className="tax">${cc.commafy(this.state.price)} monthly after 30 days</p>
                       </div>
                     </button>)
     }
@@ -233,11 +250,9 @@ const PaymentForm = React.createClass({
             {payButton}
           </div>
         </div>
-
-
       </form>
     )
   }
-})
+}
 
 export default PaymentForm

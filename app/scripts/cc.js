@@ -6,10 +6,10 @@ import countries from './data/countries'
 
 let cc = {
   commafy: function(num){
-    var parts = (''+(num<0?-num:num)).split("."), s=parts[0], L, i=L= s.length, o='';
+    var parts = (''+(num<0?-num:num)).split("."), s=parts[0], L, i=L= s.length, o=''
     while(i--){ o = (i===0?'':((L-i)%3?'':','))
                     +s.charAt(i) +o }
-    return (num<0?'-':'') + o + (parts[1] ? '.' + parts[1] : '');
+    return (num<0?'-':'') + o + (parts[1] ? '.' + parts[1] : '')
   },
   validateLocation(location) {
     return new Promise((resolve, reject) => {
@@ -23,7 +23,6 @@ let cc = {
     })
   },
   calculateTax(countryCode) {
-    console.log(countryCode);
     return new Promise((resolve, reject) => {
       let country = _.where(countries, {value: countryCode})
       if (country[0].taxPercent) {
@@ -36,7 +35,7 @@ let cc = {
   },
   ccFormat: function(input) {
     let v = input.replace(/\s+/g, '').replace(/[^0-9]/gi, '')
-    let matches = v.match(/\d{4,16}/g);
+    let matches = v.match(/\d{4,16}/g)
     let match = matches && matches[0] || ''
     let parts = []
     for (let i = 0, len = match.length; i < len; i += 4) {
@@ -105,7 +104,7 @@ let cc = {
     return new Promise((resolve, reject) => {
       console.log(String(card.number).split('').length);
       if (String(card.number).split('').length < 16) {
-        console.log('less than 16');
+        console.log('less than 16')
         reject('Card number invalid')
       } else {
         Stripe.setPublishableKey('pk_live_UTFEdLHeTQIAA0o2JSBM3fwL');
@@ -117,14 +116,14 @@ let cc = {
         }, (status, response) => {
           if (status === 200) {
             resolve(response.id)
-            console.log(response);
+            console.log(response)
           } else if (response.error.message.indexOf('required param: exp_year') !== -1) {
             reject('Missing expiry year')
           } else {
-            console.log(response.error.message);
+            console.log(response.error.message)
             reject(response.error.message)
           }
-        });
+        })
       }
     })
   },
@@ -140,7 +139,7 @@ let cc = {
           tax_percent: taxPercent
         },
         success: (customer) => {
-          console.log(customer);
+          console.log(customer)
           store.session.set('stripe', customer)
 
           let type = 0
@@ -154,14 +153,14 @@ let cc = {
           resolve()
         },
         error: (response) => {
-          console.error(response);
+          console.error(response)
           reject(JSON.parse(response.responseText).error)
         }
       })
     })
   },
   cancelSubscription() {
-    console.log(store.session.get('stripe').subscriptions.data[0].id);
+    console.log(store.session.get('stripe').subscriptions.data[0].id)
     $.ajax({
       type: 'POST',
       url: `https://baas.kinvey.com/rpc/${store.settings.appKey}/custom/cancelsub`,
@@ -219,9 +218,9 @@ let cc = {
     })
   },
   newSubscription(planName, cycle) {
-    // console.log(store.session.get('stripe').customer);
+    // console.log(store.session.get('stripe').customer)
     // console.log(planName+'-'+cycle),
-    console.log('creating a new subscription');
+    console.log('creating a new subscription')
     return new Promise((resolve, reject) => {
       $.ajax({
         type: 'POST',
@@ -231,7 +230,7 @@ let cc = {
           customer: store.session.get('stripe').sources.data[0].customer
         },
         success: (subscription) => {
-          console.log('successfully created new subscription: ', subscription);
+          console.log('successfully created new subscription: ', subscription)
 
           let customer = store.session.get('stripe')
           customer.subscriptions = {data: [subscription]}
