@@ -15,7 +15,7 @@ const Userlist = React.createClass({
   },
   render() {
     let sortedUsers = _.sortBy(this.state.users, (user) => {
-      return user.type
+      return user.lastSeen
     }).reverse()
 
     let userlist = sortedUsers.map((user, i) => {
