@@ -28,7 +28,11 @@ const Userlist = React.createClass({
       if (user.username === 'demo@formulastocks.com') {
         type = "Demo"
       } else if (user.type === 1) {
-        type = "Basic"
+        if (user.stripe) {
+          if (user.stripe.subscriptions.data[0].status !== 'trialing') {
+            type = "Basic"
+          }
+        }
       } else if (user.type === 2) {
         type = "Premium"
       } else if (user.type === 3) {
@@ -39,6 +43,12 @@ const Userlist = React.createClass({
         type = "Admin"
       } else if (user.type === -1) {
         type = "Unsubscribed"
+      }
+
+      if (user.stripe) {
+        if (user.stripe.subscriptions.data[0].canceled_at && user.username !== 'demo@formulastocks.com') {
+          type = "Cancelled"
+        }
       }
 
       return (
