@@ -1,12 +1,18 @@
 import React from 'react'
+import store from '../../../store'
 import $ from 'jquery'
+import LastYearGraph from './LastYearGraph.jsx'
 
 const AboveAverageReturns = React.createClass({
   getInitialState() {
-    return {animate: false}
+    return {animate: false, gotData: false, plan: 'basic'}
   },
   componentDidMount() {
     $(window).on('scroll', this.animate)
+    store.plans.get(this.state.plan).on('change', this.updateState)
+  },
+  updateState() {
+    this.setState({gotData: true})
   },
   componentWillUnmount() {
     $(window).off('scroll', this.animate)
@@ -47,6 +53,7 @@ const AboveAverageReturns = React.createClass({
             </p>
           </div>
           <div className="right" ref="right">
+            {/* <LastYearGraph plan={this.state.plan}/> */}
             <div className="container">
               <p className={p1}>+61%</p>
               <p className={p2}>+42%</p>
