@@ -10,7 +10,7 @@ export default (`
   1.  Mirror the model portfolio, and update your stock portfolio once a month accordingly.
   2.  Use Formula Stocks recommendations when they appear and use them for new positions in your portfolio.
   3.  A combination. You can choose to apply a percentage, for instance 40%, to the model portfolio now, earmarking 20% for the first 3 months’ new recommendations, and keeping 40% in cash for later. This approach is a belt-and-braces way of easing slowly into a position over time.
-  4.  Lastly, you can make your own analysis of either portfolio positions or recommendations, which, if you are a highly experienced investor, may be a very interesting alternative. You then use Formula Stocks effectively as a high-quality stock screener.
+  4.  Lastly, you can make your own analysis of either portfolio positions or recommendations, which, if you are a quite experienced investor, may be a very interesting alternative. You then use Formula Stocks effectively as a high-quality generator of vetted investment ideas, or a specialized stock screener.
 
 **How often are new stocks recommended for purchase or sale?**
 
