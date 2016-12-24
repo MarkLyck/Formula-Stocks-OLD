@@ -91,6 +91,10 @@ const AdminPanel = React.createClass({
             {map}
           </div>
         </div>
+        <div className="DAU-container">
+          <h2>Daily Visitors</h2>
+          <DAUGraph data={filteredVisitors}/>
+        </div>
         <div className="browsers-container">
           <h2>Browsers</h2>
           <div className="browsers">
@@ -101,10 +105,6 @@ const AdminPanel = React.createClass({
             <BrowserPieChart title="Edge" max={filteredVisitors.length} value={EdgeUsers}/>
             <BrowserPieChart title="Other" max={filteredVisitors.length} value={OtherUsers}/>
           </div>
-        </div>
-        <div className="DAU-container">
-          <h2>Daily Visitors</h2>
-          <DAUGraph data={filteredVisitors}/>
         </div>
         <div className="user-list-container">
           <h2>Users</h2>

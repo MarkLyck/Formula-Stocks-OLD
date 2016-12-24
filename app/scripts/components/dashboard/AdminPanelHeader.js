@@ -45,7 +45,6 @@ const AdminPanelHeader = React.createClass({
     return uniqueVisitors.length
   },
   render() {
-    // console.log('visitors; ', this.state.visitors)
     let subscribers = this.state.users.filter((user) => {
       if (user.stripe) {
         if (user.stripe.subscriptions.data[0].status !== 'trialing') {
@@ -56,11 +55,12 @@ const AdminPanelHeader = React.createClass({
       }
       return false
     })
-    // console.log(this.state.users)
     let trials = this.state.users.filter((user) => {
       if (user.stripe) {
         if (user.stripe.subscriptions.data[0].status === 'trialing') {
-          return true
+          if (!user.stripe.subscriptions.data[0].cancel_at_period_end) {
+            return true
+          }
         }
       }
       return false
@@ -91,7 +91,7 @@ const AdminPanelHeader = React.createClass({
 
           <li className="panel green">
             <div className="symbol">
-              <i className="fa fa-list white-color"></i>
+              <i className="fa fa-hourglass-start white-color"></i>
             </div>
             <div className="value">
               <h3 className="white-color">{trials.length}</h3>
