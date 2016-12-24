@@ -16,36 +16,36 @@ class Performance extends React.Component {
   constructor(props) {
     super(props)
 
-    this.animate = this.animate.bind(this)
+    // this.animate = this.animate.bind(this)
     this.getData = this.getData.bind(this)
     this.createChartData = this.createChartData.bind(this)
     this.renderChart = this.renderChart.bind(this)
 
-    this.state = { chartData: [], animate: false }
+    this.state = { chartData: [] }
   }
 
   componentDidMount() {
-    $(window).on('scroll', this.animate)
+    // $(window).on('scroll', this.animate)
     store.plans.on('update', this.getData.bind(this, 'plans'))
     store.market.data.on('change', this.getData.bind(this, 'market'))
   }
 
   componentWillUnmount() {
-    $(window).off('scroll', this.animate)
+    // $(window).off('scroll', this.animate)
     store.plans.off('update', this.getData)
     store.market.data.off('update', this.getData)
   }
 
-  animate() {
-    let hT = $(this.refs.subtitle).offset().top
-    let hH = $(this.refs.subtitle).outerHeight() + 250
-    let wH = $(window).height()
-
-    if ($(window).scrollTop() > (hT + hH - wH)) {
-      this.setState({ animate: true })
-      $(window).off('scroll', this.animate)
-    }
-  }
+  // animate() {
+  //   let hT = $(this.refs.subtitle).offset().top
+  //   let hH = $(this.refs.subtitle).outerHeight() + 250
+  //   let wH = $(window).height()
+  //
+  //   if ($(window).scrollTop() > (hT + hH - wH)) {
+  //     this.setState({ animate: true })
+  //     $(window).off('scroll', this.animate)
+  //   }
+  // }
 
   getData(dataType) {
     if (!this.state.chartData.length) {
@@ -99,7 +99,7 @@ class Performance extends React.Component {
   }
 
   renderChart() {
-    if (!this.state.chartData.length || !this.state.animate) {
+    if (!this.state.chartData.length) {
       return <div id="result-chart" className={this.state.chartClass}></div>
     } else {
       return (
