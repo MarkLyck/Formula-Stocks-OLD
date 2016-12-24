@@ -108,9 +108,9 @@ export default (`
 
   No.
 
-**The majority of active investment managers are unable to beat the market averages in historical analysis. Why is Formula Stocks different?**
+**Relatively few active investment managers beat the market averages. What makes Formula Stocks different?**
 
-  We offer something that most managers simply do not have access to. Our proprietary IIT™ quantifies the risks and reward, odds of success, and the presumed future alpha of every investment candidate. In fact, it quantifies over 400 data points about every single business that we analyze. From this we are able to extract knowledge to beat the market averages using the scientific method. This proprietary technology, 14 years in the making, is a machine learning-based expert system, which runs on a supercomputer and possesses knowledge that is not generally available. This knowledge is a simplistic form of artificial intelligence, geared entirely toward business analysis. Our BUSINESS product, for instance, has historically surpassed the market returns (as defined by the S&P 500) 88% of the time on a yearly basis. Future investment returns are unknown, however, and we make no representation that any particular level of performance will be achieved.
+  We offer something that most investors do not have access to. Our proprietary IIT™ quantifies the risks and reward, odds of success, and the presumed future alpha of every investment candidate. It quantifies over 400 data points about every single business that we analyze. From this we are able to extract knowledge to typically beat the market averages using the scientific method. This proprietary technology, 14 years in the making, is a machine learning-based expert system, which runs on a supercomputer and possesses knowledge that is not generally available. Machine learning refers to a method of learning from the consequences of ones actions to improve future decisionmaking. Historically this has lead us to surpass the market returns (S&P 500) 88% of the time on a yearly basis (backtested 1970-2009, actual returns 2009-2016).
 
 **Why are there fewer current portfolio positions than indicated as average?**
 
