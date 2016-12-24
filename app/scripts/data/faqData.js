@@ -14,11 +14,7 @@ export default (`
 
 **How often are new stocks recommended for purchase or sale?**
 
-  New recommendations appear on a weekly basis if and when the market offers them. Accessing these once a month is fully sufficient. The number of weekly recommendations depends very much on current market conditions, and from time to time the recommendations may be the same for a while. Formula Stocks looks for great opportunities in the markets; sometimes we find a few (less than five), sometimes we find many (more than 50). The holding period is long term, from 300 to 1,200 days.
-
-**What does “cash allocation” percentages in purchase recommendations signify?**
-
-  Each month, if you choose to mirror our model portfolio, you deploy a percentage of the available cash into a new stock. Please note that this is not a percentage of the entire portfolio’s net worth, but only of freely available cash.
+  New recommendations appear on a weekly basis. Accessing these once a month is sufficient for most investors. The number of weekly recommendations depends on market conditions. Formula Stocks looks for great opportunities in the markets; sometimes we locate only few, sometimes we locate many.
 
 **How many new investment candidates are available?**
 
@@ -38,7 +34,7 @@ export default (`
 
 **How does Formula Stocks compare to passive index-investing?**
 
-  Extremely favorably. Passive investment strategies, or index-investing, is simply investing in more or less all stocks available (or a subset of these). The outcome can only be average by definition. Since it is a given, that out of 5.000 stocks, 1 is the best, and 1 is the worst, and all of the other fall somewhere in between, and since it is possible to quantify to a reasonable extent, which is in either end of this spectrum, ahead of time, it is a deeply flawed strategy to simply invest in all stocks. Surely, it makes sense to invest more intelligently, allocating capital towards good businesses and avoiding bad businesses where possible. A superficial argument can be made for passive investment on the basis of not requiring resources or any thinking hence low fees, and for scaling well. But for informed participants, this argument is negated completely by the performance attainable by an active strategy such as Formula Stocks which equally operates with a low fee structure. It simply makes no sense to achieve simply an average return, when it is possible to achieve an above-average return, net of fees.
+  Extremely favorably. Passive investment strategies, or index-investing, is simply investing in more or less all stocks available (or a subset of these). The outcome can only be average by definition. Since it is a given, that out of 5.000 stocks, 1 is the best, and 1 is the worst, and all of the other fall somewhere in between, and since it is possible for us to quantify to a reasonable extent, which is in either end of this spectrum, a priori, it is a deeply flawed strategy to simply invest in all stocks. Surely, it makes sense to invest more intelligently, allocating capital towards good businesses and avoiding bad businesses. A superficial argument can be made for passive investment on the basis of not requiring resources or thinking hence low fees, and for scaling well. But for informed participants, this argument is negated completely by the performance attainable by an active strategy such as Formula Stocks which equally operates with a low fee structure. It makes no sense to aim simply an average return, when it is possible to achieve an above-average return, net of fees.
 
 **Which and how many stocks are covered by your service?**
 
@@ -116,9 +112,13 @@ export default (`
 
   The average number of concurrent portfolio positions over time are for Fund: 163, Business: 50, Premium: 96, Basic: 177. However, unlike an index fund Formula Stocks does not invest in stocks regardless of conditions. We only invest, when we see attractive probabilities for success. This means that the cheaper the markets get, of course the more diverse the portfolio becomes. Conversely, when the markets are expensive, fewer good investments can be located, and portfolio sizes decrease. Toward a price peak the number of positions may dwindle, as they are sold (for a profit), converted into cash, preparing for the next market cycle, when an inevitable correction materializes, and the portfolio once again expands.
 
+**What does “cash allocation” percentages in purchase recommendations signify?**
+
+  If you choose to mirror our model portfolio, you deploy a percentage of the available cash into a new stock each month. This is not a percentage of the entire portfolio’s net worth, but only of freely available cash.
+
 **How is the model portfolio updated?**
 
-  We recalibrate our model portfolio once a month. This involves purchasing new positions, selling existing positions, and adjusting position sizes. Once the decisions have been made, we allow for one full month to perform the actual trading required; this month is our "trading window". This is to allow slow and tempered accumulation or distribution of larger positions, without affecting market price in a significant manner. By using a longer time period, the price impact can be minimized to a reasonable extent. The recommendations are slightly different, as these are updated weekly, and they may change in content more frequently. A recommendation may appear some time before it is included in the model portfolio.
+  We recalibrate our model portfolio once a month. This involves purchasing new positions, selling existing positions, and adjusting position sizes. Once the decisions have been made, we allow for one full month to perform the actual trading required; this month is our "trading window" to allow slow accumulation or distribution of larger positions, without affecting price much. By using a longer time period, the price impact can be minimized. The recommendations are slightly different, as these are updated weekly, and change in content more frequently. A recommendation may appear some time before it is included in the model portfolio.
 
 **What are the size limits/AUM limits?**
 
@@ -128,9 +128,9 @@ export default (`
 
   Only our FUND membership is designed to handle institutional capital. It should cope with AUM sizes well beyond the largest fund AUMs. FUND is designed to maintain an adequate diversification level, with significant liquidity available for market operations, which can satisfy institutional requirements, including the ability to accumulate or distribute positions without affecting a large market impact. Contact us for further information.
 
-**How can you state results all the way back to 1970, when Formula Stocks development first began in 2003?**
+**ow can you state results from 1970, when Formula Stocks development first began in 2003?**
 
-  Our methods are fully quantifiable and built upon a timeless investment philosophy. This means that Formula Stocks methods will work on any opportunity set (any set of available stocks at any point in history, both past and future), and that the exact results of the past can be quantified with great accuracy. In principle, it is possible to calculate Formula Stocks’ results for as many years as company reports contain sufficient detail to provide enough information to make prudent business decisions. 1970 is an arbitrary starting point. Our input is the market opportunity set regardless of time or macro. Our formula is our complex expert system based on sound business logic. The output is a set of fully quantifiable business decisions. Tracking the financial results of executing these decisions is both easy and reasonably accurate. While pre-2009 results as such are calculated, post-2009 results are not. These have been actual, inasmuch as the recommendations have been performed in real time, and the future – as it appeared back then in 2009 – has proven a rather exact match of our expectations. We have profited greatly from investments carried out on the recommendations of Formula Stocks since its release in 2009.
+  Our methods are fully quantifiable and built upon a timeless investment philosophy. This means that Formula Stocks methods will work on any opportunity set (any set of available stocks at any point in history, both past and future), and that the exact results of the past can be quantified with great accuracy. Our input is the market opportunity set regardless of time or macro. Our formula is our complex expert system based on sound business logic. The output is a set of fully quantifiable business decisions. Tracking the financial results of executing these decisions later on is both easy and reasonably accurate. While pre-2009 results are backtested, results stated post our initial launch in 2009 match our actual real life experience and expectation.
 
 **Do you recommend stocks with which you have any form of affiliation or interest?**
 
