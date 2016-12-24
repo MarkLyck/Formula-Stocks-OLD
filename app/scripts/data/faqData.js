@@ -90,7 +90,7 @@ export default (`
 
 **Is your stock selection USA only?**
 
-  No. Formula Stocks can be used from anywhere in the world. It works with a majority of public US companies, a significant part of Canadian companies, and a larger number of international companies with an ADR (American Depositary Receipt). These are international companies which trade on the US exchanges, as if they were US stocks, denominated in USD, even though the company itself may be located in Peru, Switzerland, or Germany, for instance, and trade in the local currency of this particular country. In practical terms, Formula Stocks analyzes international stocks, usually a similar subset to what you might find traded on US exchanges. This is to ensure the availability of all stocks, to all members, no matter their geographical location.
+  Not at all. Formula Stocks analyzes most public US companies, a significant part of Canadian companies, and many larger international companies with an ADR (American Depositary Receipt). These are international companies which trade on the US exchanges, as if they were US stocks, even though the company itself may be located in any country in the world. These stocks can be traded very effectively from anywhere in the world, no matter where you a located geographically.
 
 **What about currencies?**
 
@@ -102,7 +102,7 @@ export default (`
 
 **How does the Formula Stocks portfolios tie in with my existing asset allocation?**
 
-  The Formula Stocks plans differ, but with 94 different strategies used in total they involve sound diversification both in terms of stocks, sectors, and strategies. Formula Stocks includes equities from all sectors. As you have full access to the Formula Stocks portfolio, you can judge the exact portfolio composition for yourself. Adding high-probability investment ideas should be a plus for any portfolio. You can either run your Formula Stocks portfolio as a 1:1 mirror, use recommendations on an ongoing basis, which will result in a slightly different portfolio, or cherry pick specific investments only, thus using Formula Stocks as a very advanced stock screener.
+  Formula Stocks offer sound diversification both in terms of stocks, sectors, and strategies. As you have full access to the Formula Stocks portfolio, you can judge the exact portfolio composition for yourself. Adding high-probability investment ideas should be a plus for any portfolio. You can either simply run your portfolio as a 1:1 mirror of our model portfolio, or freely mix and match specific investments with your pre-existing selections, in order to match your preferred asset allocation model.
 
 **Does Formula Stocks short stocks?**
 
@@ -114,7 +114,7 @@ export default (`
 
 **Why are there fewer current portfolio positions than indicated as average?**
 
-  The average number of concurrent portfolio positions over time are for Fund: 128, Business: 52, Premium: 102, Basic: 118. However, unlike an index fund Formula Stocks does not invest in stocks regardless of conditions. We only invest, when we see attractive probabilities for success. This means that the cheaper the markets get, of course the more diverse the portfolio becomes. Conversely, when the markets are expensive, fewer good investments can be located, and portfolio sizes decrease. Toward a price peak the number of positions may dwindle, as they are sold (for a profit), converted into cash, preparing for the next market cycle, when an inevitable correction materializes, and the portfolio once again expands.
+  The average number of concurrent portfolio positions over time are for Fund: 163, Business: 50, Premium: 96, Basic: 177. However, unlike an index fund Formula Stocks does not invest in stocks regardless of conditions. We only invest, when we see attractive probabilities for success. This means that the cheaper the markets get, of course the more diverse the portfolio becomes. Conversely, when the markets are expensive, fewer good investments can be located, and portfolio sizes decrease. Toward a price peak the number of positions may dwindle, as they are sold (for a profit), converted into cash, preparing for the next market cycle, when an inevitable correction materializes, and the portfolio once again expands.
 
 **How is the model portfolio updated?**
 
@@ -122,11 +122,11 @@ export default (`
 
 **What are the size limits/AUM limits?**
 
-  Memberships BASIC and PREMIUM are designed for retail usage, with which relatively low individual AUMs are intrinsically expected. BUSINESS is designed for medium size capital, typically a corporation, CEO, CFO, accredited or sophisticated investor, etc., and institutional capital is not allowed. BUSINESS is a focused membership, and not widely diversified. FUND is designed for institutional capital, capable of very large AUMs. It is important not to attempt to use retail or BUSINESS memberships with institutional size capital. It will not work. FUND is designed to maintain an adequate diversification level, with a significant level of underlying liquidity, which can satisfy institutional requirements.
+  Memberships BASIC and PREMIUM are designed for retail, with which relatively low individual AUMs are intrinsically expected. BUSINESS is designed for medium size capital, typically a corporation, CEO, CFO, accredited or sophisticated investor, etc., and institutional capital is specifically not allowed. FUND is designed for institutional capital, capable of very large AUMs. It is important not to attempt to use retail or BUSINESS memberships with institutional size capital. The required liquidity is available only in the FUND model, with sufficient diversification to satisfy institutional requirements.
 
 **What about institutional capital?**
 
-  Only our FUND membership is designed to handle institutional capital. It should cope with AUM sizes well beyond the largest typical fund AUMs. FUND is designed to maintain an adequate diversification level, with significant liquidity available for market operations, which can satisfy institutional requirements. Contact us for further information.
+  Only our FUND membership is designed to handle institutional capital. It should cope with AUM sizes well beyond the largest fund AUMs. FUND is designed to maintain an adequate diversification level, with significant liquidity available for market operations, which can satisfy institutional requirements, including the ability to accumulate or distribute positions without affecting a large market impact. Contact us for further information.
 
 **How can you state results all the way back to 1970, when Formula Stocks development first began in 2003?**
 

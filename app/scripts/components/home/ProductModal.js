@@ -22,16 +22,16 @@ const ProductModal = React.createClass({
           <br/><br/>
           Once you have <a className="blue-color" onClick={this.signUp.bind(null, 'basic')}>signed up as a member</a>, you will get access to our secure dashboard. The dashboard contains our model portfolio, which is the currently owned stocks for the Basic product. You can choose to mirror this easily.
           <br/><br/>
-          We also provide suggestions, which are fresh weekly recommendations to purchase and/or sell stocks. Also here you will find more advanced information about individual stocks.
+          We also provide suggestions, which are fresh weekly recommendations to purchase and/or sell stocks. Here you will find more advanced information about individual stocks.
           <br/><br/>
-          You then simply, using the methods that suits you best personally, purchase FS recommended stocks, based on a suggested percentage of the cash available to you this month.
+          You then simply, using the methods that suits you best personally, purchase recommended stocks, based on a suggested percentage of the cash available to you this month.
           <br/><br/>
           On a monthly basis, you check back in to see if any of the stocks purchased, are recommended to be sold, or new stocks are recommended for purchase.
         </p>)
     } else if (this.props.planName === 'Premium') {
       planDescription = (
         <p>
-          Premium is the premium product for individual use. It offers a very good value proposition, with an increased rate or return historically, as well as much better win/loose ratios. With premium, nearly 9 out 10 investments has provided a gain over the longer term.
+          Premium is the premium product for individual use. It offers a very good value proposition, with an increased rate or return historically, as well as much better win/loose ratios. With premium, 9 out 10 investments has provided a gain over the longer term.
           <br/><br/>
           Once you have <a className="blue-color" onClick={this.signUp.bind(null, 'premium')}>signed up as a member</a>, you will get access to our secure dashboard. The dashboard contains our model portfolio, which is the currently owned stocks for the Basic product. You can choose to mirror this easily.
           <br/><br/>
