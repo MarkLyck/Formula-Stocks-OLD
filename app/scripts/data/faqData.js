@@ -128,7 +128,7 @@ export default (`
 
   Only our FUND membership is designed to handle institutional capital. It should cope with AUM sizes well beyond the largest fund AUMs. FUND is designed to maintain an adequate diversification level, with significant liquidity available for market operations, which can satisfy institutional requirements, including the ability to accumulate or distribute positions without affecting a large market impact. Contact us for further information.
 
-**ow can you state results from 1970, when Formula Stocks development first began in 2003?**
+**How can you state results from 1970, when Formula Stocks development first began in 2003?**
 
   Our methods are fully quantifiable and built upon a timeless investment philosophy. This means that Formula Stocks methods will work on any opportunity set (any set of available stocks at any point in history, both past and future), and that the exact results of the past can be quantified with great accuracy. Our input is the market opportunity set regardless of time or macro. Our formula is our complex expert system based on sound business logic. The output is a set of fully quantifiable business decisions. Tracking the financial results of executing these decisions later on is both easy and reasonably accurate. While pre-2009 results are backtested, results stated post our initial launch in 2009 match our actual real life experience and expectation.
 
