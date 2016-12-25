@@ -13,7 +13,8 @@ import OurProducts from './OurProducts'
 import PreviousRecommendations from './PreviousRecommendations'
 import TheResults from './Performance.jsx'
 import PricingTable from './PricingTable'
-import Brochures from './Brochures'
+// import Brochures from './Brochures'
+import MoreInformation from './MoreInformation.jsx'
 import RewardVSRisk from './RewardVSRisk'
 import Quote from './Quote'
 import CumulativeInterest from './CumulativeInterest'
@@ -86,7 +87,8 @@ const Home = React.createClass({
         <PreviousRecommendations/>
         <TheResults/>
         <PricingTable/>
-        <Brochures/>
+        {/* <Brochures/> */}
+        <MoreInformation />
         <RewardVSRisk/>
         <Quote/>
         <CumulativeInterest/>
