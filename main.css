@@ -1718,57 +1718,66 @@ input[type=submit] {
           margin-bottom: 0; }
       .product-modal .wrapper .right div p:last-child {
         margin-bottom: 20px; } }
-.brochures {
-  background-image: url("assets/images/NY_Skyline.jpg");
+.more-information {
+  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("assets/images/NY_Skyline.jpg");
   background-size: cover;
   background-repeat: no-repeat;
-  padding: 50px 0 75px 0;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center; }
-  .brochures .title {
-    color: #fff;
-    font-size: 1.75rem;
-    padding: 0 20px;
-    text-align: center;
-    margin: 0; }
-  .brochures .cta {
-    display: flex;
-    margin-top: 90px;
-    width: 100%;
-    justify-content: center; }
-    .brochures .cta button, .brochures .cta a {
-      margin: 0 40px;
+  padding: 32px; }
+  .more-information .content {
+    display: flex; }
+    .more-information .content .left {
+      margin-right: 32px;
+      width: 100%;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
+      justify-content: center; }
+      .more-information .content .left h1 {
+        color: #fff;
+        text-shadow: 0 2px 2px rgba(0, 0, 0, 0.4);
+        margin-bottom: 32px; }
+      .more-information .content .left .brochure-link {
+        color: #fff;
+        background: #27A5F9;
+        border-radius: 4px;
+        padding: 16px 24px;
+        max-width: 250px; }
+        .more-information .content .left .brochure-link i {
+          margin-right: 8px; }
+        .more-information .content .left .brochure-link:hover {
+          background: #068de7; }
+    .more-information .content .right {
+      margin-left: 32px;
+      display: flex;
       align-items: center;
-      max-width: 40%;
-      width: 300px;
-      background: #27A5F9;
-      text-align: center; }
-      .brochures .cta button i, .brochures .cta a i {
-        margin-right: 10px; }
-      .brochures .cta button .button-content, .brochures .cta a .button-content {
-        margin: 0 auto;
-        display: flex;
-        justify-content: center;
-        align-items: center; }
-        .brochures .cta button .button-content p, .brochures .cta a .button-content p {
-          margin: 0;
-          padding: 0;
-          color: #fff; }
-      .brochures .cta button:hover, .brochures .cta a:hover {
-        background: #068de7; }
+      justify-content: flex-end;
+      width: 100%; }
 
-@media (max-width: 575px) {
-  .brochures .cta {
+.brochure-btn {
+  padding: 0;
+  width: 200px;
+  height: 250px;
+  background: url("assets/images/business_brochure_screen.png");
+  background-size: cover;
+  background-repeat: no-repeat; }
+
+@media (max-width: 770px) {
+  .more-information .content {
     flex-direction: column;
     align-items: center; }
-    .brochures .cta button:first-child {
-      margin-bottom: 20px; }
-    .brochures .cta button {
-      max-width: 80%; } }
+    .more-information .content .left {
+      margin: 0;
+      margin-bottom: 32px;
+      display: flex;
+      flex-direction: column;
+      align-items: center; }
+      .more-information .content .left h1 {
+        text-align: center; }
+    .more-information .content .right {
+      justify-content: center;
+      margin: 0; } }
+@media (max-width: 770px) {
+  .more-information .content .left h1 {
+    font-size: 1.5rem; } }
 .reward-vs-risk {
   padding-bottom: 40px; }
   .reward-vs-risk .content {
