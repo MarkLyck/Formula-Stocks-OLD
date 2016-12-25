@@ -37,7 +37,7 @@ const Hero = React.createClass({
             <h1 id="main-title">A better <span className="font bold">solution</span> for the <span className="font bold">stock investor</span></h1>
             <span id="subtitle"></span>
             <div id="subtitles">
-              <h2>Formula Stocks typically estimates next year’s winners with an 89-94% success rate<sup>*</sup>. Give your investments a boost – join today.</h2>
+              <h2>Formula Stocks typically estimates next year’s winners with an 89-92% success rate<sup>*</sup>. Give your investments a boost – join today.</h2>
               <h2>A human brain is not wired for evaluating hundreds of data points. We prefer stories. But stories produce bias, dampens performance.</h2>
               <h2>Our intelligent technology delivers unbiased thinking on an expert level. Smart. Experienced. Better.</h2>
               <h2>You can also save on fees and keep hands-on oversight on your investments.</h2>
