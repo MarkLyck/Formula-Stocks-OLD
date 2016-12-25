@@ -46,6 +46,14 @@
     }
   }
 }
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  i {
+    color: #fff;
+  }
+}
 .amcharts-graph-basic, .amcharts-graph-premium, .amcharts-graph-business, .amcharts-graph-market {
   stroke-linejoin: round;
   stroke-linecap: round;

@@ -1576,6 +1576,13 @@ input[type=submit] {
     #result-chart .chart-balloon .balloon-value {
       font-size: 1.25rem; }
 
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+  .loading i {
+    color: #fff; }
+
 .amcharts-graph-basic, .amcharts-graph-premium, .amcharts-graph-business, .amcharts-graph-market {
   stroke-linejoin: round;
   stroke-linecap: round;

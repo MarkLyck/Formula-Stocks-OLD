@@ -15,8 +15,6 @@ function formatPrice(value) {
 class Performance extends React.Component {
   constructor(props) {
     super(props)
-
-    // this.animate = this.animate.bind(this)
     this.getData = this.getData.bind(this)
     this.createChartData = this.createChartData.bind(this)
     this.renderChart = this.renderChart.bind(this)
@@ -25,29 +23,17 @@ class Performance extends React.Component {
   }
 
   componentDidMount() {
-    // $(window).on('scroll', this.animate)
+    this.getData()
     store.plans.on('update', this.getData.bind(this, 'plans'))
     store.market.data.on('change', this.getData.bind(this, 'market'))
   }
 
   componentWillUnmount() {
-    // $(window).off('scroll', this.animate)
     store.plans.off('update', this.getData)
     store.market.data.off('update', this.getData)
   }
 
-  // animate() {
-  //   let hT = $(this.refs.subtitle).offset().top
-  //   let hH = $(this.refs.subtitle).outerHeight() + 250
-  //   let wH = $(window).height()
-  //
-  //   if ($(window).scrollTop() > (hT + hH - wH)) {
-  //     this.setState({ animate: true })
-  //     $(window).off('scroll', this.animate)
-  //   }
-  // }
-
-  getData(dataType) {
+  getData() {
     if (!this.state.chartData.length) {
       let basicData = store.plans.get('basic').get('annualData')
       let premiumData = store.plans.get('premium').get('annualData')
@@ -100,7 +86,9 @@ class Performance extends React.Component {
 
   renderChart() {
     if (!this.state.chartData.length) {
-      return <div id="result-chart" className={this.state.chartClass}></div>
+      return (<div id="result-chart" className={this.state.chartClass + ' loading'}>
+                <i className="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
+              </div>)
     } else {
       return (
         <div id="result-chart" className={this.state.chartClass}>
@@ -124,7 +112,7 @@ class Performance extends React.Component {
           <p>
             Log scale graph of Formula Stocks products (white) versus S&P 500 (gray).
             The observed outperformance is the result of cumulatively 9,800 buy & sell recommendations.
-            To date the winners of the future have been identified with an accuracy of 89%, 92%, and 94%,
+            To date the winners of the future have been identified with an accuracy of {Math.floor(store.plans.get('basic').get('stats').WLRatio)}%, {Math.floor(store.plans.get('premium').get('stats').WLRatio)}%, and {Math.floor(store.plans.get('business').get('stats').WLRatio)}%,
             respectively*. Random stocks measured by the same yardstick win ~59% of the time.
             The difference is very significant.<br/><br/>
 
