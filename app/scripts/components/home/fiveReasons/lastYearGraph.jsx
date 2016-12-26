@@ -5,7 +5,6 @@ const LastYearGraph = React.createClass({
   render() {
 
     let startValue;
-    // let data = []
     if (store.plans.get(this.props.plan).get('portfolioYields')[0]) {
       const data = store.plans.get(this.props.plan).get('portfolioYields')
       startValue = data[data.length - 12].balance
@@ -23,8 +22,6 @@ const LastYearGraph = React.createClass({
     })
 
     fixedData = fixedData.reverse().splice(0, 12).reverse()
-
-    // console.log('data: ', fixedData);
 
     var config = {
       "type": "serial",

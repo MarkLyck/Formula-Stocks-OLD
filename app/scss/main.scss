@@ -3,6 +3,7 @@
 @import "fonts";
 @import "animations";
 @import "home/header";
+@import "home/hero2";
 @import "modal";
 @import "formModal";
 @import "notFound";
@@ -50,6 +51,11 @@
 @import "dashboard/userlist";
 
 @import "typed";
+
+html, body, #container {
+  height: 100%;
+  width: 100%;
+}
 
 input {
   -webkit-appearance: none;

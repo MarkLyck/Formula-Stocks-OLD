@@ -3,6 +3,8 @@ import {Router, Route, IndexRoute, hashHistory} from 'react-router'
 
 import store from './store'
 
+import HeroTest from './components/Home/Hero2.jsx'
+
 import Home from './components/home/Home'
 import Login from './components/home/Login'
 import Signup from './components/home/Signup'
@@ -28,6 +30,7 @@ const router = (
       <Route path="/signup" component={Signup}/>
     </Route>
     <Route path="/faq" component={FAQ}/>
+    <Route path="/hero2" component={HeroTest}/>
     <Route path="/dashboard" component={Dashboard}>
       <IndexRoute component={Portfolio}/>
       <Route path="portfolio" component={Portfolio}>
