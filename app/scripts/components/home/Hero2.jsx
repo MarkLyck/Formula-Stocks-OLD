@@ -21,10 +21,13 @@ class Hero extends React.Component {
   }
 
   mousemove(e) {
-    $('.x-small').css('transform', `translate3d(${e.offsetX / 100}px, ${e.offsetY / 75}px, 0px)`)
-    $('.small').css('transform', `translate3d(${e.offsetX / 75}px, ${e.offsetY / 50}px, 0px)`)
-    $('.medium').css('transform', `translate3d(${e.offsetX / 50}px, ${e.offsetY / 30}px, 0px)`)
-    $('.large').css('transform', `translate3d(${e.offsetX / 25}px, ${e.offsetY / 20}px, 0px)`)
+    let offsetX = e.offsetX - ($(window).width() / 2)
+    let offsetY = e.offsetY - ($(window).height() / 2)
+
+    $('.x-small').css('transform', `translate3d(${offsetX / 75}px, ${offsetY / 80}px, 0px)`)
+    $('.small').css('transform', `translate3d(${offsetX / 50}px, ${offsetY / 75}px, 0px)`)
+    $('.medium').css('transform', `translate3d(${offsetX / 25}px, ${offsetY / 50}px, 0px)`)
+    $('.large').css('transform', `translate3d(${offsetX / 5}px, ${offsetY / 25}px, 0px)`)
   }
 
   countUp(element) {
