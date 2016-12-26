@@ -34,10 +34,10 @@ class Hero extends React.Component {
     if (userCanSeeSection) {
       let oldNumber = Number( $(element).text() )
       if (Math.random() > 0.2 || Number( $(element).text() ) < 2) {
-        $(element).find('p').text( (oldNumber + Number(Math.random() * 2) ).toFixed(2) )
+        $(element).find('p').text( (oldNumber + Number(Math.random()) ).toFixed(2) )
         $(element).find('i').removeClass('fa-caret-down').addClass('fa-caret-up')
       } else {
-        $(element).find('p').text( (oldNumber - Number(Math.random() * 2) ).toFixed(2) )
+        $(element).find('p').text( (oldNumber - Number(Math.random()) ).toFixed(2) )
         $(element).find('i').removeClass('fa-caret-up').addClass('fa-caret-down')
       }
 
