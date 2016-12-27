@@ -5,7 +5,7 @@ class WhatWeOffer extends React.Component {
   render() {
     let Link = Scroll.Link
     return (
-      <section>
+      <section className="what-we-offer">
         <h2 className="title">What we offer</h2>
         <div className="divider"/>
         <p>
@@ -21,7 +21,7 @@ class WhatWeOffer extends React.Component {
           relieve you of much tedious and time consuming stock analysis, or narrow your search
           should you prefer to make you own analysis.
         </p>
-        <Link to="prof-pricing">Sign Up</Link>
+        <Link to="prof-pricing">See pricing</Link>
       </section>
     )
   }
