@@ -8,6 +8,7 @@ import RiskReward from './RiskReward.jsx'
 import StockAnalysis from './StockAnalysis.jsx'
 import MachineLearning from './MachineLearning.jsx'
 import ScientificMethod from './ScientificMethod.jsx'
+import Statistics from './Statistics.jsx'
 
 class Home extends React.Component {
   render() {
@@ -22,6 +23,7 @@ class Home extends React.Component {
         <StockAnalysis/>
         <MachineLearning/>
         <ScientificMethod/>
+        <Statistics/>
       </div>
     )
   }
