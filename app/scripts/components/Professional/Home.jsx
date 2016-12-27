@@ -9,6 +9,9 @@ import StockAnalysis from './StockAnalysis.jsx'
 import MachineLearning from './MachineLearning.jsx'
 import ScientificMethod from './ScientificMethod.jsx'
 import Statistics from './Statistics.jsx'
+import IITs from './IITs.jsx'
+import ActiveManagement from './ActiveManagement.jsx'
+import InstitutionalCapital from './InstitutionalCapital.jsx'
 
 class Home extends React.Component {
   render() {
@@ -24,6 +27,9 @@ class Home extends React.Component {
         <MachineLearning/>
         <ScientificMethod/>
         <Statistics/>
+        <IITs/>
+        <ActiveManagement/>
+        <InstitutionalCapital/>
       </div>
     )
   }
