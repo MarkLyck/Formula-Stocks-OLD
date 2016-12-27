@@ -4110,6 +4110,15 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
     font-size: 1.2rem;
     line-height: 1.5;
     max-width: 920px; }
+  .professional section a {
+    background: #27A5F9;
+    color: #fff;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    border-radius: 4px;
+    padding: 0 32px; }
   .professional section .disclaimer {
     font-size: 0.9rem; }
   .professional section .beside {
@@ -4396,6 +4405,29 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
         background: #989898; }
 .risk-reward .graph-explanation {
   margin-top: 32px; }
+
+.comparisons {
+  justify-content: center; }
+  .comparisons .comparisons-list {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: calc(920px + 16px); }
+    .comparisons .comparisons-list li {
+      background: #eee;
+      width: 100%;
+      max-width: calc(100% / 3 - 16px);
+      height: 160px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 8px 16px 8px; }
+      .comparisons .comparisons-list li h3 {
+        text-align: center; }
+      .comparisons .comparisons-list li:hover {
+        cursor: pointer;
+        background: #27A5F9; }
+        .comparisons .comparisons-list li:hover h3 {
+          color: #fff; }
 
 .typed-cursor {
   opacity: 1;
