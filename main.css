@@ -4406,6 +4406,9 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
 .risk-reward .graph-explanation {
   margin-top: 32px; }
 
+.what-we-offer a {
+  margin-top: 16px; }
+
 .comparisons {
   justify-content: center; }
   .comparisons .comparisons-list {
@@ -4420,7 +4423,8 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: 0 8px 16px 8px; }
+      margin: 0 8px 16px 8px;
+      padding: 24px; }
       .comparisons .comparisons-list li h3 {
         text-align: center; }
       .comparisons .comparisons-list li:hover {
