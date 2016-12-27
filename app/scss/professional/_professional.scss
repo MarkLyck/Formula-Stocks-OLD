@@ -22,6 +22,16 @@
       line-height: 1.5;
       max-width: 920px;
     }
+    a {
+      background: $primary-color;
+      color: #fff;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      border-radius: 4px;
+      padding: 0 32px;
+    }
     .disclaimer {
       font-size: 0.9rem;
     }
@@ -63,6 +73,4 @@
   }
 }
 
-.quote {
-  
-}
+.quote {}

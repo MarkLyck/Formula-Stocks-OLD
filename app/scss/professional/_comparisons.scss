@@ -1,0 +1,28 @@
+.comparisons {
+  justify-content: center;
+  .comparisons-list {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: calc(920px + 16px);
+    li {
+      background: #eee;
+      width: 100%;
+      max-width: calc(100% / 3 - 16px);
+      height: 160px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 8px 16px 8px;
+      h3 {
+        text-align: center;
+      }
+      &:hover {
+        cursor: pointer;
+        background: $primary-color;
+        h3 {
+          color: #fff;
+        }
+      }
+    }
+  }
+}

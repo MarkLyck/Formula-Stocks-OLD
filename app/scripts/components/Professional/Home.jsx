@@ -12,6 +12,8 @@ import Statistics from './Statistics.jsx'
 import IITs from './IITs.jsx'
 import ActiveManagement from './ActiveManagement.jsx'
 import InstitutionalCapital from './InstitutionalCapital.jsx'
+import WhatWeOffer from './WhatWeOffer.jsx'
+import Comparisons from './Comparisons.jsx'
 
 class Home extends React.Component {
   render() {
@@ -30,6 +32,8 @@ class Home extends React.Component {
         <IITs/>
         <ActiveManagement/>
         <InstitutionalCapital/>
+        <WhatWeOffer/>
+        <Comparisons/>
       </div>
     )
   }
