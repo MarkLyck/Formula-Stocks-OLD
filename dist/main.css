@@ -4433,6 +4433,106 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
         .comparisons .comparisons-list li:hover h3 {
           color: #fff; }
 
+.recommendations p {
+  width: 100%; }
+.recommendations .right {
+  display: flex;
+  flex-direction: column;
+  margin-left: 65px; }
+  .recommendations .right .plans {
+    align-self: flex-end;
+    width: 400px; }
+    .recommendations .right .plans button {
+      background: none;
+      color: #49494A;
+      width: 100px; }
+      .recommendations .right .plans button:hover {
+        color: #27A5F9; }
+        .recommendations .right .plans button:hover div {
+          height: 2px;
+          width: 100%;
+          margin-top: 5px;
+          background: #27A5F9; }
+    .recommendations .right .plans .selected {
+      color: #27A5F9; }
+      .recommendations .right .plans .selected div {
+        height: 2px;
+        width: 100%;
+        margin-top: 5px;
+        background: #27A5F9; }
+  .recommendations .right .video-container {
+    align-self: flex-end;
+    position: relative; }
+    .recommendations .right .video-container .y-axis {
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      left: -50px;
+      top: 42px; }
+      .recommendations .right .video-container .y-axis li {
+        margin-bottom: 53px; }
+    .recommendations .right .video-container .x-axis {
+      position: absolute;
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      left: -3px;
+      bottom: -25px; }
+    .recommendations .right .video-container video {
+      z-index: 1;
+      height: 300px;
+      width: 400px; }
+    .recommendations .right .video-container:hover {
+      cursor: pointer; }
+    .recommendations .right .video-container:hover::after {
+      content: '\f04b';
+      font-family: FontAwesome;
+      background: rgba(0, 0, 0, 0.5);
+      width: 75px;
+      height: 75px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #fff; }
+  .recommendations .right .playing {
+    position: relative; }
+    .recommendations .right .playing:hover::after {
+      content: '\f04c';
+      font-family: FontAwesome;
+      background: rgba(0, 0, 0, 0.5);
+      width: 75px;
+      height: 75px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #fff; }
+  .recommendations .right .paused::after {
+    content: '\f04b';
+    font-family: FontAwesome;
+    background: rgba(0, 0, 0, 0.5);
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff; }
+
 .typed-cursor {
   opacity: 1;
   color: #fff;

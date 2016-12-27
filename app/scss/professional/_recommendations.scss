@@ -1,0 +1,119 @@
+.recommendations {
+  p {
+    width: 100%;
+  }
+  .right {
+    display: flex;
+    flex-direction: column;
+    margin-left: 65px;
+    .plans {
+      align-self: flex-end;
+      width: 400px;
+      button {
+        background: none;
+        color: $text-color;
+        width: 100px;
+        &:hover {
+          color: $primary-color;
+          div {
+            height: 2px;
+            width: 100%;
+            margin-top: 5px;
+            background: $primary-color;
+          }
+        }
+      }
+      .selected {
+        color: $primary-color;
+        div {
+          height: 2px;
+          width: 100%;
+          margin-top: 5px;
+          background: $primary-color;
+        }
+      }
+    }
+    .video-container {
+      align-self: flex-end;
+      position: relative;
+      .y-axis {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        left: -50px;
+        top: 42px;
+        li {
+          margin-bottom: 53px;
+        }
+      }
+      .x-axis {
+        position: absolute;
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        left: -3px;
+        bottom: -25px;
+      }
+      video {
+        z-index: 1;
+        height: 300px;
+        width: 400px;
+      }
+      &:hover {
+        cursor: pointer;
+      }
+      &:hover::after {
+        content: '\f04b';
+        font-family: FontAwesome;
+        background: rgba(0,0,0,0.5);
+        width: 75px;
+        height: 75px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: #fff;
+      }
+    }
+    .playing {
+      position: relative;
+      &:hover::after {
+        content: '\f04c';
+        font-family: FontAwesome;
+        background: rgba(0,0,0,0.5);
+        width: 75px;
+        height: 75px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: #fff;
+      }
+    }
+    .paused::after {
+      content: '\f04b';
+      font-family: FontAwesome;
+      background: rgba(0,0,0,0.5);
+      width: 75px;
+      height: 75px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #fff;
+    }
+  }
+}
