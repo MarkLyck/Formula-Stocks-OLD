@@ -50,6 +50,12 @@
 @import "dashboard/newArticle2";
 @import "dashboard/userlist";
 
+@import "professional/professional";
+@import "professional/navbar";
+@import "professional/hero";
+@import "professional/components/winRateGraph";
+@import "professional/rewardVSRisk";
+
 @import "typed";
 
 html, body, #container {

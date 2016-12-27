@@ -1,0 +1,64 @@
+.professional {
+  section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 80px 0 80px;
+    margin: 0;
+    .title {
+      font-weight: bold;
+      max-width: 920px;
+    }
+    .subtitle {
+      text-align: center;
+      max-width: 920px;
+    }
+    .divider {
+      margin-bottom: 32px;
+    }
+    p {
+      margin-top: 0;
+      font-size: 1.2rem;
+      line-height: 1.5;
+      max-width: 920px;
+    }
+    .disclaimer {
+      font-size: 0.9rem;
+    }
+    .beside {
+      width: 100%;
+      max-width: 920px;
+      display: flex;
+      justify-content: space-between;
+      > div {
+        max-width: calc(50% - 64px);
+      }
+      > div:first-child {
+        margin-right: 32px;
+      }
+      > div:last-child {
+        margin-left: 32px;
+      }
+    }
+  }
+}
+
+
+.infoBox {
+  background: rgba(119, 119, 119, 0.05);
+  border: 1px solid rgba(0,0,0,0.2);
+  border-radius: 8px;
+  padding: 16px 24px;
+  box-sizing: border-box;
+  max-width: 920px;
+  margin-bottom: 24px;
+  .question {
+    color: $primary-color;
+    font-size: 1.5rem;
+    margin-bottom: 8px;
+  }
+  p {
+    margin: 0;
+    font-size: 1rem;
+  }
+}

@@ -33,7 +33,7 @@ class Hero extends React.Component {
   countUp(element) {
     if (userCanSeeSection) {
       let oldNumber = Number( $(element).text() )
-      if (Math.random() > 0.2 || Number( $(element).text() ) < 2) {
+      if (Math.random() > 0.4 || Number( $(element).text() ) < 2) {
         $(element).find('p').text( (oldNumber + Number(Math.random()) ).toFixed(2) )
         $(element).find('i').removeClass('fa-caret-down').addClass('fa-caret-up')
       } else {

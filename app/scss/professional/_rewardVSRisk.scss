@@ -1,0 +1,55 @@
+.risk-reward {
+  .left {
+    display: flex;
+    align-items: center;
+    .chart-container {
+      position: relative;
+      width: 100%;
+      margin: 0;
+      img {
+        height: auto;
+        width: 100%;
+      }
+      .chart-indicators {
+        position: absolute;
+        top: 16px;
+        right: 0;
+        .chart-indicator {
+          background: none;
+          padding-left: 25px;
+          position: relative;
+          margin-bottom: 10px;
+          &::before {
+            content: '';
+            width: 15px;
+            height: 15px;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            background: $primary-color;
+            position: absolute;
+            z-index: 2;
+          }
+        }
+        .business::before {
+          background: #4C7899;
+        }
+        .fund::before {
+          background: $text-color;
+        }
+        .premium::before {
+          background: #6FCEE1;
+        }
+        .basic::before {
+          background: #AFD1E3;
+        }
+        .djia::before {
+          background: #989898;
+        }
+      }
+    }
+  }
+  .graph-explanation {
+    margin-top: 32px;
+  }
+}
