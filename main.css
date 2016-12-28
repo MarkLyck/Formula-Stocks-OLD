@@ -4396,7 +4396,8 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
     margin: 0; }
     .risk-reward .left .chart-container img {
       height: auto;
-      width: 100%; }
+      width: 100%;
+      max-height: 300px; }
     .risk-reward .left .chart-container .chart-indicators {
       position: absolute;
       top: 16px;
