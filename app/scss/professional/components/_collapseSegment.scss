@@ -1,0 +1,28 @@
+.professional {
+  .collapsable {
+    width: 100%;
+    max-width: 1160px;
+    margin-bottom: 64px;
+    button {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: none;
+      padding: 0;
+      h2 {
+        color: $primary-color;
+        margin: 0;
+      }
+      i {
+        color: $primary-color;
+      }
+    }
+    p {
+      margin-top: 32px;
+    }
+  }
+  .expanded {
+    margin-bottom: 32px;
+  }
+}

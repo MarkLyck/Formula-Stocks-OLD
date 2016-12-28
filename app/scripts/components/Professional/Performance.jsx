@@ -35,7 +35,6 @@ class Performance extends React.Component {
   }
 
   getData() {
-    console.log('get data')
     if (!this.state.chartData.length) {
       const premiumData = store.plans.get('premium').get('portfolioYields')
       const businessData = store.plans.get('business').get('portfolioYields')
@@ -79,7 +78,7 @@ class Performance extends React.Component {
         date: `${point.date.year}-${month}-${point.date.day}`
       }
     })
-    this.setState({ chartData: fixedData})
+    this.setState({ chartData: fixedData })
   }
 
   renderChart() {
