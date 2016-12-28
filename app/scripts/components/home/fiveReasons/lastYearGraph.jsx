@@ -33,7 +33,7 @@ const LastYearGraph = React.createClass({
           "id": "v1",
           unit: '%',
           "axisAlpha": 0,
-          "xAxis": -10,
+          // "xAxis": -10,
           "position": "left",
           "ignoreAxisWidth":true,
           baseValue: -10,

@@ -5,8 +5,9 @@ import store from '../../store'
 const PortfolioGraph = React.createClass({
   render() {
 
-    let startValue;
-    let marketStartValue;
+    let startValue
+    let marketStartValue
+
     if (store.plans.get(this.props.plan).get('portfolioYields')[0]) {
       startValue = store.plans.get(this.props.plan).get('portfolioYields')[0].balance
     }

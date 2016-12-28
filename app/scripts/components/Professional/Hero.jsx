@@ -21,7 +21,6 @@ class Hero extends React.Component {
 
   mousemove(e) {
     let offsetX = e.offsetX - ($(window).width() / 2)
-    // let offsetY = e.offsetY - ($(window).height() / 2)
     let offsetY = 0
 
     $('.x-small').css('transform', `translate3d(${offsetX / 75}px, ${offsetY / 80}px, 0px)`)

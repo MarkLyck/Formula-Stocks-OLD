@@ -50,14 +50,14 @@ class Performance extends React.Component {
   createChartData(basicData, premiumData, businessData, marketData) {
     let fixedData = basicData.map((point, i) => {
 
+      let basicBalance = 25000
       let premiumBalance = 25000
       let businessBalance = 25000
-      // let fundBalance = 25000
       let marketBalance = 25000
 
+      if (basicData[i]) { basicBalance = basicData[i].balance }
       if (premiumData[i]) { premiumBalance = premiumData[i].balance }
       if (businessData[i]) { businessBalance = businessData[i].balance }
-      // if (fundData[i]) { fundBalance = fundData[i].balance }
       if (marketData[i]) { marketBalance = marketData[i] }
 
       let month = point.date.month
@@ -69,13 +69,11 @@ class Performance extends React.Component {
         basic: point.balance,
         premium: premiumBalance,
         business: businessBalance,
-        // fund: fundBalance,
         market: marketBalance,
 
         basicBalloon: formatPrice(point.balance),
         premiumBalloon: formatPrice(premiumBalance),
         businessBalloon: formatPrice(businessBalance),
-        // fundBalloon: formatPrice(fundBalance),
         marketBalloon: formatPrice(marketBalance),
 
         date: `${point.date.year}-${month}-${point.date.day}`

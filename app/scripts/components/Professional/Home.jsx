@@ -1,4 +1,5 @@
 import React from 'react'
+import store from '../../store'
 import NavBar from './NavBar.jsx'
 import Hero from './Hero.jsx'
 import WhatIsIt from './WhatIsIt.jsx'
@@ -17,6 +18,10 @@ import Comparisons from './Comparisons.jsx'
 import Recommendations from './Recommendations.jsx'
 
 class Home extends React.Component {
+  componentDidMount() {
+    store.market.data.getDJIAData()
+  }
+
   render() {
     return (
       <div className="professional">

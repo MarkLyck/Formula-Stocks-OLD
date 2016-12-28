@@ -24,9 +24,9 @@ class Recommendations extends React.Component {
 
   render() {
     let basClass, preClass, busClass, funClass;
-    if (this.state.plan === 'premium') {preClass='selected'}
-    if (this.state.plan === 'business') {busClass='selected'}
-    if (this.state.plan === 'fund') {funClass='selected'}
+    if (this.state.plan === 'premium') { preClass='selected' }
+    if (this.state.plan === 'business') { busClass='selected' }
+    if (this.state.plan === 'fund') { funClass='selected' }
 
     let yAxis = (
       <ul className="y-axis">
