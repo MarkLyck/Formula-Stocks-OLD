@@ -82,6 +82,10 @@ class Recommendations extends React.Component {
 
               Our recommendations are rules based, and the rules do not change.
               So we can quantify every call ever made.<br/><br/>
+
+              It becomes clear that risk/reward is skewed very significantly
+              in favour of reward.<br/>
+              You can view a total of 9,800 recommendations.
             </p>
           </div>
           <div className="right">
@@ -93,11 +97,6 @@ class Recommendations extends React.Component {
             {video}
           </div>
         </div>
-        <p>
-          It becomes clear that risk/reward is skewed very significantly
-          in favour of reward.<br/>
-          You can view a total of 9,800 recommendations.
-        </p>
       </section>
     )
   }
