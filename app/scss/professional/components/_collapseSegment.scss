@@ -2,7 +2,7 @@
   .collapsable {
     width: 100%;
     max-width: 1160px;
-    margin-bottom: 64px;
+    margin-bottom: 32px;
     button {
       width: 100%;
       display: flex;
@@ -10,6 +10,18 @@
       justify-content: space-between;
       background: none;
       padding: 0;
+      position: relative;
+      &:hover {
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: -16px;
+          left: 0;
+          width: 100%;
+          height: 2px;
+          background: $primary-color;
+        }
+      }
       h2 {
         color: $primary-color;
         margin: 0;
@@ -21,8 +33,11 @@
     p {
       margin-top: 32px;
     }
-  }
-  .expanded {
-    margin-bottom: 32px;
+    .underline {
+      margin-top: 14px;
+      width: 100%;
+      height: 2px;
+      background: $primary-color;
+    }
   }
 }
