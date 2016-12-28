@@ -28,18 +28,17 @@ class RiskReward extends React.Component {
             But our methods generally do the exact opposite.
             They deliver above-average returns at a below-average risk and without any
             form of leverage - an absolute rarity.
+
+            One of the best and most modern risk/reward benchmarks is the Omega function,
+            the output of which is depicted to the left.<br/><br/>
+
+            Higher levels indicate higher returns, and steeper slopes indicate lower risk.
+            The yearly return distribution is significantly superior to
+            DJIA at all thresholds and for all products.
+            Depicted: yearly Omega Function.
             </p>
           </div>
         </div>
-        <p className="graph-explanation">
-          One of the best and most modern risk/reward benchmarks is the Omega function,
-          the output of which is depicted above.<br/><br/>
-
-          Higher levels indicate higher returns, and steeper slopes indicate lower risk.
-          The yearly return distribution is significantly superior to
-          DJIA at all thresholds and for all products.
-          Depicted: yearly Omega Function.
-        </p>
       </section>
     )
   }
