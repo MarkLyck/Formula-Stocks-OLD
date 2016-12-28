@@ -23,7 +23,6 @@ class CollapseSegment extends React.Component {
             <h2 className="title">{this.props.title}</h2>
             <i className="fa fa-times" aria-hidden="true"></i>
           </button>
-          <div className="underline"/>
           {this.props.children}
         </div>
       )
