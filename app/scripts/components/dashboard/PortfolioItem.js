@@ -57,7 +57,6 @@ const PortfolioItem = React.createClass({
   render() {
     let stock = this.props.stock
 
-
     let changeClass = 'positive'
     if ((this.state.lastPrice - stock.purchase_price).toFixed(2) < 0) {
       changeClass = 'negative'
@@ -106,7 +105,7 @@ const PortfolioItem = React.createClass({
           </tr>
           <tr>
             <td colSpan={this.state.chartSpan}>
-              <PortfolioItemGraph stock={this.props.stock} plan={this.props.plan} data={this.state.data} isLoading={this.state.isLoading}/>
+              <PortfolioItemGraph stock={this.props.stock} plan={this.props.plan} data={this.state.data} isLoading={this.state.isLoading} />
             </td>
           </tr>
         </tbody>
