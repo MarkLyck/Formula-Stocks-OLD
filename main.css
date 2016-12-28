@@ -4557,6 +4557,11 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
     transform: translate(-50%, -50%);
     color: #fff; }
 
+.professional .about-us .content {
+  width: 100%;
+  margin: 0;
+  padding: 0; }
+
 .typed-cursor {
   opacity: 1;
   color: #fff;
