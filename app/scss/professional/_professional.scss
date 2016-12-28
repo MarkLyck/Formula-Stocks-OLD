@@ -5,6 +5,7 @@
     align-items: center;
     padding: 40px 80px 0 80px;
     margin: 0;
+    background: #fff;
     .title {
       font-weight: bold;
       max-width: 920px;
@@ -18,7 +19,7 @@
     }
     p {
       margin-top: 0;
-      font-size: 1.2rem;
+      font-size: 1rem;
       line-height: 1.5;
       max-width: 920px;
     }
@@ -50,6 +51,9 @@
         margin-left: 32px;
       }
     }
+  }
+  section:nth-child(even) {
+    background: #f4f4f4;
   }
 }
 
