@@ -4099,7 +4099,7 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
   margin: 0;
   background: #fff; }
   .professional section .title {
-    font-weight: bold;
+    font-weight: 300;
     max-width: 1160px; }
   .professional section .subtitle {
     text-align: center;
