@@ -8,7 +8,7 @@ function formatPrice(value) {
     value = value.toString().replace(/(\d+)(\d{3})/, '$1'+','+'$2')
   }
   let price = value + '%'
-  if (value > 0) { price = '+' + price }
+  if (Number(value.replace(',','')) > 0) { price = '+' + price }
   return price
 }
 
