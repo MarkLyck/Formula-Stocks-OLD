@@ -30,7 +30,7 @@ class RiskReward extends React.Component {
             form of leverage - an absolute rarity.
 
             One of the best and most modern risk/reward benchmarks is the Omega function,
-            the output of which is depicted to the left.<br/><br/>
+            the output of which is depicted in the graph.<br/><br/>
 
             Higher levels indicate higher returns, and steeper slopes indicate lower risk.
             The yearly return distribution is significantly superior to
