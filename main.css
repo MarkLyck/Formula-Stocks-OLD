@@ -1700,7 +1700,7 @@ input[type=submit] {
   .loading i {
     color: #fff; }
 
-.amcharts-graph-basic, .amcharts-graph-premium, .amcharts-graph-business, .amcharts-graph-market {
+.amcharts-graph-basic, .amcharts-graph-premium, .amcharts-graph-business, .amcharts-graph-fund, .amcharts-graph-market {
   stroke-linejoin: round;
   stroke-linecap: round;
   stroke-dasharray: 500%;
@@ -4363,6 +4363,13 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
       position: absolute;
       top: -40px;
       background: none; }
+
+.prof-performance #result-chart {
+  height: 480px;
+  width: 100%;
+  max-width: 640px; }
+  .prof-performance #result-chart i {
+    color: #27A5F9; }
 
 .risk-reward .left {
   display: flex;
