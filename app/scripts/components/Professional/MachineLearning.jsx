@@ -1,20 +1,20 @@
 import React from 'react'
+import CollapseSegment from './components/CollapseSegment.jsx'
 
 class MachineLearning extends React.Component {
   render() {
     return (
-      <section>
+      <section className="machine-learning">
         <h2 className="title">Machine Learning</h2>
         <div className="divider"/>
-        <div className="infoBox">
-          <p className="question">What is machine learning?</p>
+        <CollapseSegment title="What is machine learning?" bg="#ffffff">
           <p>
             Machine learning is the study of computer algorithms that improve through experience. As a
             branch of the artificial intelligence field it deals with algorithms that can learn from and make
             predictions based on input data and utilize these to reach even more optimal predictions and
             decisions.
           </p>
-        </div>
+        </CollapseSegment>
         <p>
           We use machine learning to obtain a level of experience which it is quite
           impossible to obtain through regular career experience.<br/><br/>

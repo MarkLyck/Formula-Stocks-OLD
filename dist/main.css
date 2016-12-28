@@ -4430,6 +4430,9 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
 .risk-reward .graph-explanation {
   margin-top: 32px; }
 
+.machine-learning .collapsable {
+  margin-bottom: 32px; }
+
 .what-we-offer a {
   margin-top: 16px; }
 
@@ -4574,7 +4577,7 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
     padding: 24px;
     position: relative; }
     .professional .collapsable button:hover {
-      background: #f5f5f5; }
+      background: attr(hover); }
     .professional .collapsable button h2 {
       color: #27A5F9;
       margin: 0; }
