@@ -3,7 +3,7 @@ import React from 'react'
 class WhatIsIt extends React.Component {
   render() {
     return (
-      <section>
+      <section className="what-is-it">
         <h2 className="title">What is it?</h2>
         <div className="divider"/>
         <p>
@@ -20,10 +20,11 @@ class WhatIsIt extends React.Component {
 
           14 years ago we started a product development cycle using machine learning – well ahead of most industry
           participants. We would like to invite you on a tour of an idea and a groundbreaking product that may be able to
-          assist you in obtaining better performance for you or your customers.<br/><br/>
-
-          We call it Formula Stocks.<br/><br/>
-
+          assist you in obtaining better performance for you or your customers.
+        </p>
+          <p className="we-call-it">We call it Formula Stocks.</p>
+          <img className="screenshot" src="assets/images/portfolio_page.jpg"/>
+        <p>
           What does it do? It beats the market by understanding businesses and strategies better than the competition,
           thus gaining a durable informational advantage or edge.<br/><br/>
 
