@@ -4591,6 +4591,17 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
   .professional .expanded p {
     padding: 0 24px; }
 
+.professional .what-is-it .we-call-it {
+  font-size: 1.2rem;
+  margin-top: 32px; }
+.professional .what-is-it img {
+  max-width: 640px;
+  margin-bottom: 32px;
+  transition: transform 0.5s;
+  box-shadow: 0 0px 4px rgba(0, 0, 0, 0.2); }
+  .professional .what-is-it img:hover {
+    transform: scale(1.05); }
+
 .typed-cursor {
   opacity: 1;
   color: #fff;
