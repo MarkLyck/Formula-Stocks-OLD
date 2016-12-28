@@ -4096,7 +4096,8 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
   flex-direction: column;
   align-items: center;
   padding: 40px 80px 0 80px;
-  margin: 0; }
+  margin: 0;
+  background: #fff; }
   .professional section .title {
     font-weight: bold;
     max-width: 920px; }
@@ -4107,7 +4108,7 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
     margin-bottom: 32px; }
   .professional section p {
     margin-top: 0;
-    font-size: 1.2rem;
+    font-size: 1rem;
     line-height: 1.5;
     max-width: 920px; }
   .professional section a {
@@ -4132,6 +4133,8 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
       margin-right: 32px; }
     .professional section .beside > div:last-child {
       margin-left: 32px; }
+.professional section:nth-child(even) {
+  background: #f4f4f4; }
 
 .infoBox {
   background: rgba(119, 119, 119, 0.05);
