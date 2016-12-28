@@ -9,8 +9,8 @@ class CollapseSegment extends React.Component {
   render() {
     if (!this.state.expanded) {
       return (
-        <div className="collapsable collapsed" style={{ background: this.props.bg }} data-hover={this.props.bg}>
-          <button onClick={() => this.setState({ expanded: !this.state.expanded })}>
+        <div className="collapsable collapsed" style={{ background: this.props.bg ? this.props.bg : '' }}>
+          <button onClick={ () => this.setState({ expanded: !this.state.expanded }) } style={{ background: this.props.bg ? this.props.bg : '' }}>
             <h2 className="title">{this.props.title}</h2>
             <i className="fa fa-chevron-down" aria-hidden="true"></i>
           </button>
@@ -18,8 +18,8 @@ class CollapseSegment extends React.Component {
       )
     } else {
       return (
-        <div className="collapsable expanded" style={{ background: this.props.bg }} data-hover={this.props.bg}>
-          <button onClick={() => this.setState({ expanded: !this.state.expanded })}>
+        <div className="collapsable expanded" style={{ background: this.props.bg ? this.props.bg : '' }}>
+          <button onClick={ () => this.setState({ expanded: !this.state.expanded }) } style={{ background: this.props.bg ? this.props.bg : '' }}>
             <h2 className="title">{this.props.title}</h2>
             <i className="fa fa-times" aria-hidden="true"></i>
           </button>

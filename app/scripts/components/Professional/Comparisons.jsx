@@ -7,7 +7,7 @@ class Comparisons extends React.Component {
       <section className="comparisons">
         <h2 className="title">Compare Formula Stocks to:</h2>
         <div className="divider"/>
-        <CollapseSegment title="Passive management">
+        <CollapseSegment title="Passive management" >
           <p>
             Formula Stocks does more than select equities. It includes an active management
             system, which actively buys, holds, and sells equities when deemed most beneficial.
