@@ -1,5 +1,5 @@
 .win-rate-graph {
-  height: 220px;
+  height: 320px;
   display: flex;
   align-items: flex-end;
   position: relative;
@@ -8,7 +8,8 @@
     background: $primary-color;
     width: 64px;
     margin: 12px;
-    transition: height 1s transform 1s;
+    min-height: 45px;
+    transition: height 1s, transform 0.5s;
     position: relative;
     &:hover {
       transform: scale(1.1);
@@ -30,5 +31,8 @@
       top: -40px;
       background: none;
     }
+  }
+  .sp-bar {
+    background: $text-color;
   }
 }

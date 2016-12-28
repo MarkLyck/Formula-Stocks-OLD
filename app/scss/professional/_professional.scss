@@ -3,16 +3,16 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 40px 80px 0 80px;
+    padding: 40px 80px 40px 80px;
     margin: 0;
     background: #fff;
     .title {
       font-weight: bold;
-      max-width: 920px;
+      max-width: 1160px;
     }
     .subtitle {
       text-align: center;
-      max-width: 920px;
+      max-width: 1160px;
     }
     .divider {
       margin-bottom: 32px;
@@ -21,7 +21,7 @@
       margin-top: 0;
       font-size: 1rem;
       line-height: 1.5;
-      max-width: 920px;
+      max-width: 1160px;
     }
     a {
       background: $primary-color;
@@ -38,7 +38,7 @@
     }
     .beside {
       width: 100%;
-      max-width: 920px;
+      max-width: 1160px;
       display: flex;
       justify-content: space-between;
       > div {
@@ -49,6 +49,20 @@
       }
       > div:last-child {
         margin-left: 32px;
+      }
+    }
+    .columns {
+      display: flex;
+      > div:first-child {
+        margin-right: 32px;
+      }
+      .columns-2 {
+        width: 100%;
+        max-width: calc(1160px / 3 * 2);
+      }
+      .columns-1 {
+        width: 100%;
+        max-width: calc(1160px / 3);
       }
     }
   }
@@ -64,7 +78,7 @@
   border-radius: 8px;
   padding: 16px 24px;
   box-sizing: border-box;
-  max-width: 920px;
+  max-width: 1160px;
   margin-bottom: 24px;
   .question {
     color: $primary-color;
