@@ -4230,9 +4230,16 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
     padding: 8px 12px;
     border-radius: 4px;
     font-weight: bold; }
+    .professional .static .right #login-btn:hover, .professional .static .right #dashboard-link:hover {
+      background: #fff;
+      color: #27A5F9; }
   .professional .static .right #signup-btn, .professional .static .right #logout-btn {
     background: #fff;
-    color: #27A5F9; }
+    color: #27A5F9;
+    border-color: #fff; }
+    .professional .static .right #signup-btn:hover, .professional .static .right #logout-btn:hover {
+      background: #f7f7f7;
+      border-color: #f7f7f7; }
 .professional .fixed {
   position: fixed;
   animation-duration: 1s;
