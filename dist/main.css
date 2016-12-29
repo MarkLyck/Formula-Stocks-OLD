@@ -4602,6 +4602,11 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
   .professional .what-is-it img:hover {
     transform: scale(1.05); }
 
+.professional .pricing {
+  display: flex;
+  flex-direction: row;
+  justify-content: center; }
+
 .typed-cursor {
   opacity: 1;
   color: #fff;

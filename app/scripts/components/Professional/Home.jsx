@@ -16,6 +16,7 @@ import InstitutionalCapital from './InstitutionalCapital.jsx'
 import WhatWeOffer from './WhatWeOffer.jsx'
 import Comparisons from './Comparisons.jsx'
 import Recommendations from './Recommendations.jsx'
+import Pricing from './Pricing.jsx'
 import AboutUs from '../home/AboutUs'
 import Footer from '../home/Footer'
 
@@ -43,6 +44,7 @@ class Home extends React.Component {
         <WhatWeOffer/>
         <Comparisons/>
         <Recommendations/>
+        <Pricing/>
         <AboutUs/>
         <Footer/>
       </div>

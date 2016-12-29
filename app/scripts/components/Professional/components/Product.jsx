@@ -1,0 +1,33 @@
+import React from 'react'
+import { Link } from 'react-router'
+
+const Product = ({ plan }) => {
+  console.log(plan)
+  return (
+  <div className="plan">
+    <div className="top">
+      <h3>{plan.name}</h3>
+      <p>${plan.price}</p>
+    </div>
+    <ul className="statistics">
+      <p>Buy & sell recommendations</p>
+      <p>Model portfolio</p>
+      <p><span className="light-text-color">IIT formulas applied: </span>{plan.info.IITFormulas}</p>
+      <p><span className="light-text-color">Annual growth: </span>{plan.stats.CAGR.toFixed(2)}%</p>
+      <p><span className="light-text-color">Win/loss ratio: </span>{plan.stats.WLRatio.toFixed(2)}%</p>
+      <p><span className="light-text-color">Avg. round trip trades p.a: </span>{plan.info.roundtripTradesPerYear}</p>
+      <p><span className="light-text-color">Avg. number of pos. in portfolio: </span>{plan.info.avgNumOfPosInPortfolio}</p>
+      <p><span className="light-text-color">Avg. gain per position: </span>{plan.info.avgGainPerPosition}</p>
+      <p><span className="light-text-color">Avg. loss per position: </span>{plan.info.avgLossPerPosition}</p>
+      <p><span className="light-text-color">Max drawdown in 45 years: </span>{plan.info.maxDrawdown45y}%</p>
+      <p><span className="light-text-color">Max drawdown in 36 months: </span>{plan.info.maxDrawdown36m}%</p>
+      <p><span className="light-text-color">IRR Arithmetic mean: </span>{plan.info.IRRArithmeticMean}%</p>
+      <p><span className="light-text-color">IRR Geometric mean: </span>{plan.info.IRRGeometricMean}%</p>
+      <p><span className="light-text-color">Sortino ratio: </span>{plan.info.sortinoRatio}</p>
+      <p><span className="light-text-color">Gain-to-pain ratio: </span>{plan.info.gainToPainRatio}</p>
+    </ul>
+    <Link to="/signup">Sign Up</Link>
+  </div>
+)}
+
+export default Product
