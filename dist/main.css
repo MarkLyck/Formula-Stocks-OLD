@@ -4197,7 +4197,9 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
 .professional .static {
   position: absolute; }
 .professional .fixed {
-  position: fixed; }
+  position: fixed;
+  animation-duration: 1s;
+  animation-name: slidedown; }
   .professional .fixed .pricing {
     border: 1px solid #27A5F9;
     color: #27A5F9;
@@ -4205,6 +4207,11 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
     border-radius: 4px;
     font-weight: bold; }
 
+@keyframes slidedown {
+  from {
+    top: -65px; }
+  to {
+    top: 0; } }
 .hero2 {
   width: 100%;
   height: 480px;

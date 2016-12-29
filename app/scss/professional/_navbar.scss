@@ -44,6 +44,8 @@
   }
   .fixed {
     position: fixed;
+    animation-duration: 1s;
+    animation-name: slidedown;
     .pricing {
       border: 1px solid $primary-color;
       color: $primary-color;
@@ -51,5 +53,14 @@
       border-radius: 4px;
       font-weight: bold;
     }
+  }
+}
+
+@keyframes slidedown {
+  from {
+    top: -65px;
+  }
+  to {
+    top: 0;
   }
 }
