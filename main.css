@@ -4162,6 +4162,22 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
     margin: 0;
     font-size: 1rem; }
 
+.professional .quote .content {
+  display: flex;
+  width: 100%;
+  margin-top: 32px; }
+  .professional .quote .content i {
+    color: #27A5F9;
+    font-size: 2rem;
+    margin-right: 16px; }
+  .professional .quote .content p {
+    font-style: italic;
+    padding: 0;
+    margin-bottom: 8px; }
+.professional .quote .from {
+  font-weight: bold;
+  margin-left: 16px; }
+
 .prof-navbar {
   padding: 15px;
   width: calc(100% - 24px);
