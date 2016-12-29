@@ -9,12 +9,12 @@ function formatPrice(value) {
 }
 
 const Product = ({ plan, billed }) => {
-  let extraInfo = plan.name === 'premium' ? <div><p>OEM license: <span className="right-align">No</span></p></div> : plan.name === 'business' ? <div><p>Includes Premium</p><p>OEM license: <span className="right-align">No</span></p></div> : plan.name === 'fund' ? <div><p><span>AUM capacity:</span><span className="right-align">$300 billion</span></p><p>OEM license: <span className="right-align">Yes</span></p></div> : ''
+  let extraInfo = plan.name === 'premium' ? <div><p><span className="light-text-color">OEM license:</span> <span className="right-align">No</span></p></div> : plan.name === 'business' ? <div><p>Includes Premium</p><p><span className="light-text-color">OEM license:</span> <span className="right-align">No</span></p></div> : plan.name === 'fund' ? <div><p><span>AUM capacity:</span><span className="right-align">$300 billion</span></p><p><span className="light-text-color">OEM license:</span> <span className="right-align">Yes</span></p></div> : ''
   return (
   <div className="prof-plan">
     <div className="top">
       <h3>{plan.name}</h3>
-      <p>${formatPrice(plan.price)} Billed: {billed}</p>
+      <p>${formatPrice(plan.price)} - {billed}</p>
     </div>
     <ul className="statistics">
       <p>Buy & sell recommendations</p>

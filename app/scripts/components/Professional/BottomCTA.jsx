@@ -7,7 +7,7 @@ class BottomCTA extends React.Component {
         <h1>Now that you've scrolled all the way to the bottom...</h1>
         <h3>It can be just the right moment to stop reading and do some clicking instead.</h3>
         <button className="to-pricing">I'm ready to try</button>
-        <a className="not-convinced">Still not Convinced? Ask us your questions</a>
+        <a className="not-convinced">Need more information? - Just ask us!</a>
       </section>
     )
   }

@@ -51,8 +51,8 @@ class Home extends React.Component {
         <WhatWeOffer/>
         <Comparisons/>
         <Recommendations/>
-        <Pricing/>
         <InstitutionalCapital/>
+        <Pricing/>
         <BacktestedPerformance/>
         <Brochure/>
         <AboutUs/>
