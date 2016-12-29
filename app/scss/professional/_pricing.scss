@@ -13,6 +13,14 @@
             text-transform: capitalize;
           }
         }
+        p {
+          display: flex;
+          justify-content: space-between;
+          .right-align {
+            text-align: right;
+            margin-left: 24px;
+          }
+        }
         .statistics {
           padding: 8px 24px;
           border: 2px solid #f4f4f4;
@@ -20,7 +28,6 @@
           border-bottom: none;
           box-sizing: border-box;
         }
-
         border-radius: 4px;
         margin: 0 32px;
         a {

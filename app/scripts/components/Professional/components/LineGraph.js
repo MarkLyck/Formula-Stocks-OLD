@@ -2,6 +2,7 @@ import React from 'react'
 import store from '../../../store'
 import _ from 'underscore'
 import '../../../libraries/amcharts3-react';
+// import '../../../libraries/amcharts/plugins/export/export.min.js';
 
 export default function LineGraph({data, graphs, unit, unitPosition, minimum, maximum}) {
   let config = {
@@ -28,9 +29,8 @@ export default function LineGraph({data, graphs, unit, unitPosition, minimum, ma
       strictMinMax: true,
     }],
     chartCursor: {
-        valueLineEnabled: false,
-        // valueLineAlpha: 0.5,
-        // fullWidth: true,
+        valueLineEnabled: true,
+        valueLineAlpha: 0.5,
         cursorAlpha: 0.5
     },
     categoryField: "date",
@@ -38,6 +38,9 @@ export default function LineGraph({data, graphs, unit, unitPosition, minimum, ma
       parseDates: true,
       equalSpacing: true,
     },
+    export: {
+      enabled: false
+    }
   }
 
   if (store.session.browserType() === 'Safari') {

@@ -18,6 +18,7 @@ import Comparisons from './Comparisons.jsx'
 import Recommendations from './Recommendations.jsx'
 import Pricing from './Pricing.jsx'
 import AboutUs from '../home/AboutUs'
+import BottomCTA from './BottomCTA.jsx'
 import Footer from '../home/Footer'
 
 class Home extends React.Component {
@@ -46,6 +47,7 @@ class Home extends React.Component {
         <Recommendations/>
         <Pricing/>
         <AboutUs/>
+        <BottomCTA/>
         <Footer/>
       </div>
     )
