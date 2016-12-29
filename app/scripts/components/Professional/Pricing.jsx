@@ -26,9 +26,13 @@ class Pricing extends React.Component {
     // console.log(store.plans.get('premium').toJSON())
     return (
       <section className="pricing">
-        <Product plan={store.plans.get('premium').toJSON()}/>
-        <Product plan={store.plans.get('business').toJSON()}/>
-        <Product plan={store.plans.get('fund').toJSON()}/>
+        <h2 className="title">Pricing</h2>
+        <div className="divider"/>
+        <div className="plans">
+          <Product plan={store.plans.get('premium').toJSON()}/>
+          <Product plan={store.plans.get('business').toJSON()}/>
+          <Product plan={store.plans.get('fund').toJSON()}/>
+        </div>
       </section>
     )
   }

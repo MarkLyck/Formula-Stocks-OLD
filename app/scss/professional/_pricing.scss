@@ -1,7 +1,8 @@
 .professional {
   .pricing {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
+    .plans {
+      display: flex;
+      justify-content: center;
+    }
   }
 }

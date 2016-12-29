@@ -4401,7 +4401,7 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
     .risk-reward .left .chart-container .chart-indicators {
       position: absolute;
       top: 16px;
-      right: 0; }
+      right: 64px; }
       .risk-reward .left .chart-container .chart-indicators .chart-indicator {
         background: none;
         padding-left: 25px;
@@ -4598,13 +4598,12 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
   max-width: 640px;
   margin-bottom: 32px;
   transition: transform 0.5s;
-  box-shadow: 0 0px 4px rgba(0, 0, 0, 0.2); }
+  box-shadow: 0 0px 4px rgba(0, 0, 0, 0.2), 0 4px 8px rgba(0, 0, 0, 0.24); }
   .professional .what-is-it img:hover {
     transform: scale(1.05); }
 
-.professional .pricing {
+.professional .pricing .plans {
   display: flex;
-  flex-direction: row;
   justify-content: center; }
 
 .typed-cursor {
