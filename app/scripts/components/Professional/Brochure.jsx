@@ -10,7 +10,7 @@ class Brochure extends React.Component {
       <section className="brochure">
         <div className="beside">
           <div className="left">
-            <h2>Want more in-depth technical information?</h2>
+            <h1>Want more in-depth technical information?</h1>
             <button className="download-brochure" onClick={this.downloadBrochure}>
               <i className="fa fa-file-pdf-o" aria-hidden="true"></i>
               See the brochure

@@ -84,7 +84,7 @@ class Recommendations extends React.Component {
               So we can quantify every call ever made.<br/><br/>
 
               It becomes clear that risk/reward is skewed very significantly
-              in favour of reward.<br/>
+              in favour of reward.<br/><br/>
               You can view a total of 9,800 recommendations.
             </p>
           </div>
