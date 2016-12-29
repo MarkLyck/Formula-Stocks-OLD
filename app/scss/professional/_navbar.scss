@@ -34,6 +34,9 @@
       padding: 8px 12px;
       border-radius: 4px;
       color: #fff;
+      &:hover {
+        background: darken($primary-color, 10%);
+      }
     }
   }
 }
@@ -52,6 +55,10 @@
       padding: 8px 12px;
       border-radius: 4px;
       font-weight: bold;
+      &:hover {
+        color: darken($primary-color, 10%);
+        border-color: darken($primary-color, 10%);
+      }
     }
   }
 }
