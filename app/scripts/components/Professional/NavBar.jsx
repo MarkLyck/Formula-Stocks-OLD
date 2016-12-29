@@ -40,7 +40,7 @@ class NavBar extends React.Component {
     } else {
       return (
         <div id="nav-links">
-          <Link to="/dashboard" className="nav-link">Dashboard</Link>
+          <Link to="/dashboard" id="dashboard-link" className="nav-link">Dashboard</Link>
           <a href="#" id="logout-btn" onClick={store.session.logout.bind(store.session)} className="nav-link">Logout</a>
         </div>)
     }

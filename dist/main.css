@@ -4198,13 +4198,13 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
         content: '';
         width: 0;
         height: 0; }
-    .prof-navbar .right #signup-btn {
+    .prof-navbar .right #signup-btn, .prof-navbar .right #logout-btn {
       background: #27A5F9;
       border: 1px solid #27A5F9;
       padding: 8px 12px;
       border-radius: 4px;
       color: #fff; }
-      .prof-navbar .right #signup-btn:hover {
+      .prof-navbar .right #signup-btn:hover, .prof-navbar .right #logout-btn:hover {
         border-color: #068de7;
         background: #068de7; }
 
@@ -4225,12 +4225,12 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
       position: absolute;
       bottom: 0;
       left: 0; }
-  .professional .static .right #login-btn {
+  .professional .static .right #login-btn, .professional .static .right #dashboard-link {
     border: 1px solid #fff;
     padding: 8px 12px;
     border-radius: 4px;
     font-weight: bold; }
-  .professional .static .right #signup-btn {
+  .professional .static .right #signup-btn, .professional .static .right #logout-btn {
     background: #fff;
     color: #27A5F9; }
 .professional .fixed {
@@ -4245,20 +4245,20 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
     position: absolute;
     bottom: 0;
     left: 0; }
-  .professional .fixed .pricing {
+  .professional .fixed .pricing, .professional .fixed #dashboard-link {
     border: 1px solid #27A5F9;
     color: #27A5F9;
     padding: 8px 12px;
     border-radius: 4px;
     font-weight: bold; }
-    .professional .fixed .pricing:hover {
+    .professional .fixed .pricing:hover, .professional .fixed #dashboard-link:hover {
       color: #068de7;
       border-color: #068de7; }
-      .professional .fixed .pricing:hover::after {
+      .professional .fixed .pricing:hover::after, .professional .fixed #dashboard-link:hover::after {
         content: '';
         width: 0;
         height: 0; }
-  .professional .fixed #signup-btn:hover::after {
+  .professional .fixed #signup-btn:hover::after, .professional .fixed #logout-btn:hover::after {
     content: '';
     width: 0;
     height: 0; }
