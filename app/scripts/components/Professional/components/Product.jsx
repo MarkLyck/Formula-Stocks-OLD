@@ -34,7 +34,7 @@ const Product = ({ plan, billed }) => {
       <p><span className="light-text-color">Sortino ratio: </span><span className="right-align">{plan.info.sortinoRatio}</span></p>
       <p><span className="light-text-color">Gain-to-pain ratio: </span><span className="right-align">{plan.info.gainToPainRatio}</span></p>
     </ul>
-    <Link to="/signup">Sign Up</Link>
+    <Link to="/signup" className="cta">Get Started</Link>
   </div>
 )}
 

@@ -8,6 +8,8 @@
         .top {
           padding: 24px;
           border: 2px solid #f4f4f4;
+          border-top-left-radius: 4px;
+          border-top-right-radius: 4px;
           border-bottom: none;
           h3 {
             text-transform: capitalize;
@@ -30,10 +32,12 @@
         }
         border-radius: 4px;
         margin: 0 32px;
-        a {
+        .cta {
           width: 100%;
           border-top-left-radius: 0;
           border-top-right-radius: 0;
+          padding: 24px;
+          height: auto;
           &:hover {
             background: darken($primary-color, 10%);
           }
