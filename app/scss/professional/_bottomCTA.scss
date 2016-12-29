@@ -1,0 +1,18 @@
+.professional {
+  .bottom-cta {
+    h1 {
+      margin-bottom: 0;
+    }
+    .to-pricing {
+      border-radius: 4px;
+      margin-top: 24px;
+      margin-bottom: 16px;
+    }
+    .not-convinced {
+      background: none;
+      color: $primary-color;
+      text-decoration: underline;
+    }
+  }
+
+}
