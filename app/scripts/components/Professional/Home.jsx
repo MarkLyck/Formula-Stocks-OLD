@@ -17,6 +17,7 @@ import WhatWeOffer from './WhatWeOffer.jsx'
 import Comparisons from './Comparisons.jsx'
 import Recommendations from './Recommendations.jsx'
 import Pricing from './Pricing.jsx'
+import BacktestedPerformance from './BacktestedPerformance.jsx'
 import AboutUs from '../home/AboutUs'
 import BottomCTA from './BottomCTA.jsx'
 import Footer from '../home/Footer'
@@ -24,6 +25,7 @@ import Footer from '../home/Footer'
 class Home extends React.Component {
   componentDidMount() {
     store.market.data.getDJIAData()
+    store.market.data.getAnnualData()
   }
 
   render() {
@@ -46,6 +48,7 @@ class Home extends React.Component {
         <Comparisons/>
         <Recommendations/>
         <Pricing/>
+        <BacktestedPerformance/>
         <AboutUs/>
         <BottomCTA/>
         <Footer/>

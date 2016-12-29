@@ -4,7 +4,8 @@ import _ from 'underscore'
 import '../../../libraries/amcharts3-react';
 // import '../../../libraries/amcharts/plugins/export/export.min.js';
 
-export default function LineGraph({data, graphs, unit, unitPosition, minimum, maximum}) {
+export default function LineGraph({ data, graphs, unit, unitPosition, minimum, maximum, logarithmic, minorGridEnabled }) {
+  // console.log(logarithmic)
   let config = {
     type: "serial",
     theme: "light",
@@ -18,10 +19,11 @@ export default function LineGraph({data, graphs, unit, unitPosition, minimum, ma
     },
     graphs: graphs,
     valueAxes: [{
+      logarithmic: logarithmic ? true : false,
       unit: unit,
       unitPosition: unitPosition ? unitPosition : 'left',
       gridAlpha: 0.15,
-      minorGridEnabled: false,
+      minorGridEnabled: minorGridEnabled ? true : false,
       dashLength: 0,
       inside: false,
       minimum: minimum,
