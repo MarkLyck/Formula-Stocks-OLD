@@ -8,18 +8,20 @@ import Performance from './Performance.jsx'
 import RiskReward from './RiskReward.jsx'
 import HowWeBeatTheMarket from './HowWeBeatTheMarket.jsx'
 
-import StockAnalysis from './StockAnalysis.jsx'
-import MachineLearning from './MachineLearning.jsx'
-import ScientificMethod from './ScientificMethod.jsx'
-import Statistics from './Statistics.jsx'
-import IITs from './IITs.jsx'
-import ActiveManagement from './ActiveManagement.jsx'
+// import StockAnalysis from './StockAnalysis.jsx'
+// import MachineLearning from './MachineLearning.jsx'
+// import ScientificMethod from './ScientificMethod.jsx'
+// import Statistics from './Statistics.jsx'
+// import IITs from './IITs.jsx'
+// import ActiveManagement from './ActiveManagement.jsx'
+
 import InstitutionalCapital from './InstitutionalCapital.jsx'
 import WhatWeOffer from './WhatWeOffer.jsx'
 import Comparisons from './Comparisons.jsx'
 import Recommendations from './Recommendations.jsx'
 import Pricing from './Pricing.jsx'
 import BacktestedPerformance from './BacktestedPerformance.jsx'
+import Brochure from './Brochure.jsx'
 import AboutUs from '../home/AboutUs'
 import BottomCTA from './BottomCTA.jsx'
 import Footer from '../home/Footer'
@@ -52,6 +54,7 @@ class Home extends React.Component {
         <Pricing/>
         <InstitutionalCapital/>
         <BacktestedPerformance/>
+        <Brochure/>
         <AboutUs/>
         <BottomCTA/>
         <Footer/>
