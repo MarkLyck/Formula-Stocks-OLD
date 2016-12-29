@@ -96,10 +96,16 @@ class HowWeBeatTheMarket extends React.Component {
             level a posteori.
           </p>
           <p className="quote">
-            "The fact that we do not rely on a single, or even a dozen strategies,
-            and only use the ones we can unequivocally prove have worked for half a century,
-            is a testament to the ruggedness of our approach. It will not suddenly be
-            arbitraged away, falter due to macroeconomic change, or cease to be relevant."
+            <div className="content">
+              <i className="fa fa-quote-right" aria-hidden="true"></i>
+              <p>
+                "The fact that we do not rely on a single, or even a dozen strategies,
+                and only use the ones we can unequivocally prove have worked for half a century,
+                is a testament to the ruggedness of our approach. It will not suddenly be
+                arbitraged away, falter due to macroeconomic change, or cease to be relevant."
+              </p>
+            </div>
+            <p className="from">- Thomas Lyck</p>
           </p>
         </CollapseSegment>
       </section>)

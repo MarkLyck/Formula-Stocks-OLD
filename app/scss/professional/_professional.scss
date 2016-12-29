@@ -91,4 +91,26 @@
   }
 }
 
-.quote {}
+.professional {
+  .quote {
+    .content {
+      display: flex;
+      width: 100%;
+      margin-top: 32px;
+      i {
+        color: $primary-color;
+        font-size: 2rem;
+        margin-right: 16px;
+      }
+      p {
+        font-style: italic;
+        padding: 0;
+        margin-bottom: 8px;
+      }
+    }
+    .from {
+      font-weight: bold;
+      margin-left: 16px;
+    }
+  }
+}
