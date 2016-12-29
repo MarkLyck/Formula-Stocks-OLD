@@ -4467,9 +4467,37 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
 .prof-performance #result-chart {
   height: 480px;
   width: 100%;
-  max-width: 640px; }
+  max-width: 640px;
+  position: relative; }
   .prof-performance #result-chart i {
     color: #27A5F9; }
+  .prof-performance #result-chart .chart-indicators {
+    position: absolute;
+    top: 32px;
+    left: 88px; }
+    .prof-performance #result-chart .chart-indicators .chart-indicator {
+      background: none;
+      padding-left: 25px;
+      position: relative;
+      margin-bottom: 10px; }
+      .prof-performance #result-chart .chart-indicators .chart-indicator::before {
+        content: '';
+        width: 15px;
+        height: 15px;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        background: #27A5F9;
+        position: absolute;
+        z-index: 2; }
+    .prof-performance #result-chart .chart-indicators .business::before {
+      background: #3DAEFA; }
+    .prof-performance #result-chart .chart-indicators .fund::before {
+      background: #49494A; }
+    .prof-performance #result-chart .chart-indicators .premium::before {
+      background: #7ED3E4; }
+    .prof-performance #result-chart .chart-indicators .djia::before {
+      background: #A3A3A3; }
 
 .risk-reward .left {
   display: flex;

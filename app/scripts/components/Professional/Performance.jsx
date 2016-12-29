@@ -159,6 +159,12 @@ class Performance extends React.Component {
           ]
       return (
         <div id="result-chart" className={this.state.chartClass}>
+          <div className="chart-indicators">
+            <div className="chart-indicator business">Business</div>
+            <div className="chart-indicator fund">Fund</div>
+            <div className="chart-indicator premium">Premium</div>
+            <div className="chart-indicator djia">DJIA</div>
+          </div>
           <LineGraph graphs={graphs}
                      data={this.state.chartData}
                      unit="%"
@@ -177,7 +183,7 @@ class Performance extends React.Component {
         <Element name="performance"/>
         <h2 className="title">Performance</h2>
         <div className="divider"/>
-        <h3 className="subtitle">The below results are shown below, for the unleveraged performance in %, of 3 strategies since 2009 launch, with DJIA as a baseline</h3>
+        <h3 className="subtitle">Below: Unleveraged performance in %, of 3 strategies since 2009 launch, with DJIA as a baseline</h3>
         {this.renderChart()}
       </section>
     )
