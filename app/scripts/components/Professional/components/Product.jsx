@@ -4,7 +4,7 @@ import { Link } from 'react-router'
 const Product = ({ plan }) => {
   console.log(plan)
   return (
-  <div className="plan">
+  <div className="prof-plan">
     <div className="top">
       <h3>{plan.name}</h3>
       <p>${plan.price}</p>

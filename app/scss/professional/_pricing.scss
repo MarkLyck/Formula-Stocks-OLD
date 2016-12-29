@@ -1,8 +1,22 @@
 .professional {
-  .pricing {
-    .plans {
+  .prof-pricing {
+    .prof-plans {
       display: flex;
       justify-content: center;
+      .prof-plan {
+        .top {
+          padding: 24px;
+        }
+        .statistics {
+          padding: 0 24px;
+        }
+        border: 2px solid #f4f4f4;
+        border-radius: 4px;
+        margin: 0 32px;
+        a {
+          width: 100%;
+        }
+      }
     }
   }
 }
