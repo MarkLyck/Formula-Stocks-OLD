@@ -101,7 +101,7 @@ class BacktestedPerformance extends React.Component {
       let minimum = _.min([preMin, busMin, funMin, marMin])
       minimum = Math.floor(minimum / 50) * 50
       let maximum = _.max(this.state.chartData, (point) => Number(point.business)).business
-      maximum = Math.ceil(maximum/100) * 100
+      maximum = Math.ceil(maximum/10000000000) * 10000000000
 
       const graphs = [
             {

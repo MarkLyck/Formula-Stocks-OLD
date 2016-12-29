@@ -4628,6 +4628,8 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
       height: auto; }
       .professional .prof-pricing .prof-plans .prof-plan .cta:hover {
         background: #068de7; }
+.professional .prof-pricing .not-convinced {
+  margin-top: 32px; }
 
 .professional .bottom-cta h1 {
   margin-bottom: 0; }

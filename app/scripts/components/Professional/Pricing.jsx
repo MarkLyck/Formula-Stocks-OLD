@@ -33,6 +33,8 @@ class Pricing extends React.Component {
           <Product plan={store.plans.get('business').toJSON()} billed="Annually"/>
           <Product plan={store.plans.get('fund').toJSON()} billed="Annually"/>
         </div>
+        <p className="not-convinced">Not quite convinced yet?</p>
+        <a className="learn-more">Learn more</a>
       </section>
     )
   }
