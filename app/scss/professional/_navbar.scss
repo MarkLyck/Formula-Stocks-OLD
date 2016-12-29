@@ -21,11 +21,28 @@
   .right {
     display: flex;
     align-items: center;
+    height: 100%;
     a {
       margin-left: 16px;
       height: 100%;
+      position: relative;
+      height: 100%;
+      display: flex;
+      align-items: center;
       &:hover {
         color: $primary-color;
+      }
+    }
+    #nav-links {
+      display: flex;
+      a {
+        &:hover {
+          &::after {
+            content: '';
+            width: 0;
+            height: 0;
+          }
+        }
       }
     }
     #signup-btn {
@@ -35,6 +52,7 @@
       border-radius: 4px;
       color: #fff;
       &:hover {
+        border-color: darken($primary-color, 10%);
         background: darken($primary-color, 10%);
       }
     }
@@ -53,6 +71,17 @@
     .right {
       a {
         color: #fff;
+        &:hover {
+          &::after {
+            content: '';
+            width: 100%;
+            height: 2px;
+            background: #fff;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+          }
+        }
       }
       #login-btn {
         border: 1px solid #fff;
@@ -70,6 +99,19 @@
     position: fixed;
     animation-duration: 1s;
     animation-name: slidedown;
+    a {
+      &:hover {
+        &::after {
+          content: '';
+          width: 100%;
+          height: 2px;
+          background: $primary-color;
+          position: absolute;
+          bottom: 0;
+          left: 0;
+        }
+      }
+    }
     .pricing {
       border: 1px solid $primary-color;
       color: $primary-color;
@@ -79,6 +121,20 @@
       &:hover {
         color: darken($primary-color, 10%);
         border-color: darken($primary-color, 10%);
+        &::after {
+          content: '';
+          width: 0;
+          height: 0;
+        }
+      }
+    }
+    #signup-btn {
+      &:hover {
+        &::after {
+          content: '';
+          width: 0;
+          height: 0;
+        }
       }
     }
   }
