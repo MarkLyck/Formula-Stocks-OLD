@@ -4612,6 +4612,8 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
     .professional .prof-pricing .prof-plans .prof-plan .top {
       padding: 24px;
       border: 2px solid #f4f4f4;
+      border-top-left-radius: 4px;
+      border-top-right-radius: 4px;
       border-bottom: none; }
       .professional .prof-pricing .prof-plans .prof-plan .top h3 {
         text-transform: capitalize; }
@@ -4627,11 +4629,13 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
       border-top: none;
       border-bottom: none;
       box-sizing: border-box; }
-    .professional .prof-pricing .prof-plans .prof-plan a {
+    .professional .prof-pricing .prof-plans .prof-plan .cta {
       width: 100%;
       border-top-left-radius: 0;
-      border-top-right-radius: 0; }
-      .professional .prof-pricing .prof-plans .prof-plan a:hover {
+      border-top-right-radius: 0;
+      padding: 24px;
+      height: auto; }
+      .professional .prof-pricing .prof-plans .prof-plan .cta:hover {
         background: #068de7; }
 
 .professional .bottom-cta h1 {
