@@ -1,6 +1,7 @@
 import $ from 'jquery'
 import Backbone from 'backbone'
 import {hashHistory} from 'react-router'
+import moment from 'moment'
 
 import store from '../store'
 
@@ -71,6 +72,11 @@ const Session = Backbone.Model.extend({
         model.unset('password')
         localStorage.authtoken = response._kmd.authtoken
         store.settings.history.push('/dashboard')
+        window.Intercom("update", {
+          name: this.get('name'), // Full name
+          email: this.get('email'), // Email address
+          created_at: moment().unix() // Signup date as a Unix timestamp
+        })
         $.ajax({
           url: `https://baas.kinvey.com/rpc/${store.settings.appKey}/custom/welcomeemail`,
           type: 'POST',
@@ -106,6 +112,7 @@ const Session = Backbone.Model.extend({
     this.set('type', 0)
     this.set('email', '')
     this.set('stripe', {})
+    window.Intercom("shutdown")
   },
   retrieve: function() {
     this.fetch({

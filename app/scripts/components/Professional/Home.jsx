@@ -22,6 +22,9 @@ class Home extends React.Component {
   componentDidMount() {
     store.market.data.getDJIAData()
     store.market.data.getAnnualData()
+    window.Intercom("boot", {
+      app_id: "i194mpvo"
+    })
   }
 
   render() {

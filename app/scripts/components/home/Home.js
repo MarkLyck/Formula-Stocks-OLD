@@ -27,13 +27,17 @@ import Modal from '../Modal'
 import TermsAndConditions from '../global/TermsAndConditions'
 import PrivacyPolicy from '../global/PrivacyPolicy'
 
+
 const Home = React.createClass({
   getInitialState() {
-    return {showModal: false}
+    return { showModal: false }
   },
   componentDidMount() {
     store.market.data.getAnnualData()
     store.session.on('change', this.updateState)
+    window.Intercom("boot", {
+      app_id: "i194mpvo"
+    })
   },
   componentWillUnmount() {
     store.session.off('change', this.updateState)
@@ -42,7 +46,6 @@ const Home = React.createClass({
     this.setState({showModal: store.session.get('showModal')})
   },
   closeModal() {
-    console.log('closing modal');
     store.session.set('showModal', false)
   },
   render () {
