@@ -4634,6 +4634,17 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
       .professional .prof-pricing .prof-plans .prof-plan a:hover {
         background: #068de7; }
 
+.professional .bottom-cta h1 {
+  margin-bottom: 0; }
+.professional .bottom-cta .to-pricing {
+  border-radius: 4px;
+  margin-top: 24px;
+  margin-bottom: 16px; }
+.professional .bottom-cta .not-convinced {
+  background: none;
+  color: #27A5F9;
+  text-decoration: underline; }
+
 .typed-cursor {
   opacity: 1;
   color: #fff;
