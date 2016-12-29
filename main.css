@@ -413,10 +413,10 @@ textarea {
   color: #12D99E; }
 
 .red {
-  background: #da1354; }
+  background: #ec1b5f; }
 
 .red-color {
-  color: #da1354; }
+  color: #ec1b5f; }
 
 @font-face {
   font-family: 'proxima-nova';
@@ -967,7 +967,7 @@ header {
     .form-modal .forgot-pw:hover {
       text-decoration: underline; }
   .form-modal .error::before {
-    color: #da1354; }
+    color: #ec1b5f; }
   .form-modal input[type="submit"] {
     background: #27A5F9;
     border: none;
@@ -1034,7 +1034,7 @@ header {
     transform: translateY(-50%);
     z-index: 2; }
   .signup .error::before {
-    color: #da1354; }
+    color: #ec1b5f; }
   .signup input[type=submit] {
     height: 90px; }
 
@@ -1049,7 +1049,7 @@ input[type=submit] {
     cursor: pointer; }
 
 .form-error {
-  background: #da1354;
+  background: #ec1b5f;
   padding-left: 20px;
   height: 60px;
   box-sizing: border-box;
@@ -3188,7 +3188,7 @@ footer .copyright {
     background: none; }
 
 .notification.error {
-  background: #da1354; }
+  background: #ec1b5f; }
 
 .dashboard-nav {
   display: flex;
@@ -3217,7 +3217,7 @@ footer .copyright {
       padding: 0;
       margin-right: 0; }
       .dashboard-nav .right .logout-btn:hover {
-        color: #da1354; }
+        color: #ec1b5f; }
     .dashboard-nav .right .user-btn {
       padding-left: 0; }
       .dashboard-nav .right .user-btn:hover {
@@ -3310,9 +3310,9 @@ footer .copyright {
   .side-bar-links .selected button h3, .side-bar-links .selected button i {
     color: #27A5F9; }
 .side-bar-links .logout:hover button h3 {
-  color: #da1354; }
+  color: #ec1b5f; }
   .side-bar-links .logout:hover button h3 i {
-    color: #da1354; }
+    color: #ec1b5f; }
 
 .suggestions-btn::before {
   content: 'Suggestions'; }
@@ -3505,7 +3505,7 @@ footer .copyright {
       .portfolio-table tbody tr .positive:before {
         content: "+"; }
     .portfolio-table tbody tr .negative {
-      color: #da1354; }
+      color: #ec1b5f; }
   .portfolio-table .cash {
     padding-bottom: 20px; }
     .portfolio-table .cash tr {
@@ -3593,7 +3593,7 @@ footer .copyright {
     .suggestions-list li .failed {
       display: flex;
       align-items: center;
-      color: #da1354; }
+      color: #ec1b5f; }
       .suggestions-list li .failed i {
         font-size: 1.3rem;
         margin-right: 8px; }
@@ -3770,10 +3770,10 @@ footer .copyright {
         background: #10c18d; }
   .my-account-page .cancel-btn {
     margin-top: 100px;
-    background: #da1354;
+    background: #ec1b5f;
     max-width: 100%; }
     .my-account-page .cancel-btn:hover {
-      background: #c3114b; }
+      background: #db1254; }
 
 .change-plan-confirmation {
   display: -webkit-box;
@@ -3852,7 +3852,7 @@ footer .copyright {
       .article-modal-container .article-modal .close-btn i {
         font-size: 2rem; }
       .article-modal-container .article-modal .close-btn:hover i {
-        color: #da1354; }
+        color: #ec1b5f; }
 
 .article .title {
   padding: 30px 40px;
@@ -4223,6 +4223,13 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
       .prof-navbar .right #signup-btn:hover, .prof-navbar .right #logout-btn:hover {
         border-color: #068de7;
         background: #068de7; }
+    .prof-navbar .right #logout-btn {
+      background: #ec1b5f;
+      border-color: #ec1b5f;
+      color: #fff; }
+      .prof-navbar .right #logout-btn:hover {
+        background: #db1254;
+        border-color: #db1254; }
 
 .professional .static {
   position: absolute;
@@ -4256,6 +4263,14 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
     .professional .static .right #signup-btn:hover, .professional .static .right #logout-btn:hover {
       background: #f7f7f7;
       border-color: #f7f7f7; }
+  .professional .static .right #logout-btn {
+    background: #ec1b5f;
+    border-color: #ec1b5f;
+    color: #fff; }
+    .professional .static .right #logout-btn:hover {
+      background: #db1254;
+      border-color: #db1254;
+      color: #fff; }
 .professional .fixed {
   position: fixed;
   animation-duration: 1s;
