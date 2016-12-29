@@ -2268,7 +2268,7 @@ input[type=range]::-moz-range-thumb {
     transition: transform 0.3s;
     box-sizing: border-box; }
     .team-list li:hover {
-      transform: scale(1.1);
+      transform: scale(1.05);
       cursor: pointer; }
     .team-list li img {
       border-top-left-radius: 3px;

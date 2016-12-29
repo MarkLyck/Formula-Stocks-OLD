@@ -29,9 +29,9 @@ class Pricing extends React.Component {
         <h2 className="title">Pricing</h2>
         <div className="divider"/>
         <div className="prof-plans">
-          <Product plan={store.plans.get('premium').toJSON()}/>
-          <Product plan={store.plans.get('business').toJSON()}/>
-          <Product plan={store.plans.get('fund').toJSON()}/>
+          <Product plan={store.plans.get('premium').toJSON()} billed="Monthly"/>
+          <Product plan={store.plans.get('business').toJSON()} billed="Annually"/>
+          <Product plan={store.plans.get('fund').toJSON()} billed="Annually"/>
         </div>
       </section>
     )
