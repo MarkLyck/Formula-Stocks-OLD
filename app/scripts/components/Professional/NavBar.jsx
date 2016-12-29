@@ -15,7 +15,6 @@ class NavBar extends React.Component {
 
   componentDidMount() {
       $(window).scroll(() => {
-        console.log($(window).scrollTop())
         if ($(window).scrollTop() < 560) {
           if (this.state.navbar !== 1) {
             this.setState({ navbar: 1 })

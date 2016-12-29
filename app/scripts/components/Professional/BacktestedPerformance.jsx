@@ -48,9 +48,6 @@ class BacktestedPerformance extends React.Component {
 
   createChartData(premiumData, businessData, fundData, marketData) {
 
-    console.log(marketData.length)
-    console.log(fundData.length)
-
     let fixedData = premiumData.map((point, i) => {
 
       let premiumBalance = 25000
