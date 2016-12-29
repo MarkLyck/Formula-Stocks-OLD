@@ -6,6 +6,8 @@ import WhatIsIt from './WhatIsIt.jsx'
 import Probabilities from './Probabilities.jsx'
 import Performance from './Performance.jsx'
 import RiskReward from './RiskReward.jsx'
+import HowWeBeatTheMarket from './HowWeBeatTheMarket.jsx'
+
 import StockAnalysis from './StockAnalysis.jsx'
 import MachineLearning from './MachineLearning.jsx'
 import ScientificMethod from './ScientificMethod.jsx'
@@ -37,17 +39,18 @@ class Home extends React.Component {
         <Probabilities/>
         <Performance/>
         <RiskReward/>
-        <StockAnalysis/>
-        <MachineLearning/>
-        <ScientificMethod/>
-        <Statistics/>
-        <IITs/>
-        <ActiveManagement/>
-        <InstitutionalCapital/>
+        <HowWeBeatTheMarket/>
+        {/* <StockAnalysis/> */}
+        {/* <MachineLearning/> */}
+        {/* <ScientificMethod/> */}
+        {/* <Statistics/> */}
+        {/* <IITs/> */}
+        {/* <ActiveManagement/> */}
         <WhatWeOffer/>
         <Comparisons/>
         <Recommendations/>
         <Pricing/>
+        <InstitutionalCapital/>
         <BacktestedPerformance/>
         <AboutUs/>
         <BottomCTA/>

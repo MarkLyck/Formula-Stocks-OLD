@@ -1,5 +1,8 @@
 .backtested-performance {
   #result-chart {
     width: 100%;
+    i {
+      color: $primary-color;
+    }
   }
 }
