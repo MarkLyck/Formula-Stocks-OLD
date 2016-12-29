@@ -1,9 +1,11 @@
 import React from 'react'
 import Scroll from 'react-scroll'
 
+
+
 class WhatWeOffer extends React.Component {
   render() {
-    let Link = Scroll.Link
+    let ScrollLink = Scroll.Link
     return (
       <section className="what-we-offer">
         <h2 className="title">What we offer</h2>
@@ -21,7 +23,7 @@ class WhatWeOffer extends React.Component {
           relieve you of much tedious and time consuming stock analysis, or narrow your search
           should you prefer to make you own analysis.
         </p>
-        <Link to="prof-pricing">See pricing</Link>
+        <ScrollLink to="pricing" smooth={true} offset={-100} duration={1000}>See pricing</ScrollLink>
       </section>
     )
   }

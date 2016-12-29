@@ -1,9 +1,12 @@
 import React from 'react'
+import Scroll from 'react-scroll'
 
 class WhatIsIt extends React.Component {
   render() {
+    const Element = Scroll.Element
     return (
       <section className="what-is-it">
+        <Element name="whatIsIt"/>
         <h2 className="title">What is it?</h2>
         <div className="divider"/>
         <p>

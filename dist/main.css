@@ -4555,8 +4555,7 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
     width: 400px; }
     .recommendations .right .plans button {
       background: none;
-      color: #49494A;
-      width: 100px; }
+      color: #49494A; }
       .recommendations .right .plans button:hover {
         color: #27A5F9; }
         .recommendations .right .plans button:hover div {

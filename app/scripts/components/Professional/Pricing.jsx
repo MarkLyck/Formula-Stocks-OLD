@@ -1,4 +1,5 @@
 import React from 'react'
+import Scroll from 'react-scroll'
 import store from '../../store'
 import Product from './components/Product.jsx'
 
@@ -23,9 +24,11 @@ class Pricing extends React.Component {
   }
 
   render() {
-    // console.log(store.plans.get('premium').toJSON())
+    const Element = Scroll.Element
+    const ScrollLink = Scroll.Link
     return (
       <section className="prof-pricing">
+        <Element name="pricing"/>
         <h2 className="title">Pricing</h2>
         <div className="divider"/>
         <div className="prof-plans">
@@ -34,7 +37,7 @@ class Pricing extends React.Component {
           <Product plan={store.plans.get('fund').toJSON()} billed="Annually"/>
         </div>
         <p className="not-convinced">Not quite convinced yet?</p>
-        <a className="learn-more">Learn more</a>
+        <ScrollLink className="learn-more" to="backtested" smooth={true} offset={-100} duration={1000}>Learn more</ScrollLink>
       </section>
     )
   }

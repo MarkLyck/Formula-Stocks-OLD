@@ -1,10 +1,13 @@
 import React from 'react'
+import Scroll from 'react-scroll'
 import CollapseSegment from './components/CollapseSegment.jsx'
 
 class HowWeBeatTheMarket extends React.Component {
   render() {
+    const Element = Scroll.Element
     return (
       <section>
+        <Element name="howItWorks"/>
         <h2 className="title">How we beat the market</h2>
         <div className="divider"/>
         <CollapseSegment title="Stock analysis">

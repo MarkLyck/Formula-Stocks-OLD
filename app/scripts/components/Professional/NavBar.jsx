@@ -4,8 +4,8 @@ import { Link } from 'react-router'
 import Scroll from 'react-scroll'
 import store from '../../store'
 
-let ScrollLink = Scroll.Link
-let scroll = Scroll.animateScroll
+const ScrollLink = Scroll.Link
+const scroll = Scroll.animateScroll
 
 class NavBar extends React.Component {
   constructor() {
@@ -53,9 +53,9 @@ class NavBar extends React.Component {
             <a><img src="assets/images/logo_horizontal.svg"/></a>
           </div>
           <div className="right">
-            <ScrollLink className="nav-link overview" to="ourProducts" smooth={true} offset={-100} duration={1000}>Overview</ScrollLink>
-            <ScrollLink className="nav-link performance" to="pricing" smooth={true} offset={-100} duration={1000}>Performance</ScrollLink>
-            <ScrollLink className="nav-link how-it-works" to="contactUs" smooth={true} offset={-100} duration={1000}>How it works</ScrollLink>
+            <ScrollLink className="nav-link overview" to="whatIsIt" smooth={true} offset={-40} duration={1000}>Overview</ScrollLink>
+            <ScrollLink className="nav-link performance" to="performance" smooth={true} offset={-100} duration={1000}>Performance</ScrollLink>
+            <ScrollLink className="nav-link how-it-works" to="howItWorks" smooth={true} offset={-100} duration={1000}>How it works</ScrollLink>
             <ScrollLink className="nav-link pricing" to="pricing" smooth={true} offset={-100} duration={1000}>Pricing</ScrollLink>
             {this.renderUserLinks()}
           </div>
@@ -68,9 +68,9 @@ class NavBar extends React.Component {
             <a><img src="assets/images/logo_horizontal.svg"/></a>
           </div>
           <div className="right">
-            <ScrollLink className="nav-link overview" to="ourProducts" smooth={true} offset={-100} duration={1000}>Overview</ScrollLink>
-            <ScrollLink className="nav-link performance" to="pricing" smooth={true} offset={-100} duration={1000}>Performance</ScrollLink>
-            <ScrollLink className="nav-link how-it-works" to="contactUs" smooth={true} offset={-100} duration={1000}>How it works</ScrollLink>
+            <ScrollLink className="nav-link overview" to="whatIsIt" smooth={true} offset={-100} duration={1000}>Overview</ScrollLink>
+            <ScrollLink className="nav-link performance" to="performance" smooth={true} offset={-100} duration={1000}>Performance</ScrollLink>
+            <ScrollLink className="nav-link how-it-works" to="howItWorks" smooth={true} offset={-100} duration={1000}>How it works</ScrollLink>
             <Link className="nav-link faq-link" to="/faq" >FAQ</Link>
             <ScrollLink className="nav-link pricing" to="pricing" smooth={true} offset={-100} duration={1000}>View pricing</ScrollLink>
             {this.renderUserLinks()}

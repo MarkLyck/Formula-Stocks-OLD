@@ -1,4 +1,5 @@
 import React from 'react'
+import Scroll from 'react-scroll'
 import _ from 'underscore'
 import store from '../../store'
 import LineGraph from './components/LineGraph'
@@ -169,8 +170,10 @@ class BacktestedPerformance extends React.Component {
   }
 
   render()  {
+    const Element = Scroll.Element
     return (
       <section className="backtested-performance">
+        <Element name="backtested"/>
         <h2 className="title">Backtested Performance</h2>
         <div className="divider"/>
         <h3 className="subtitle">Log Scale graph, of backtested performance 1970 - 2009 and 2009 - 2017 observed performance.</h3>

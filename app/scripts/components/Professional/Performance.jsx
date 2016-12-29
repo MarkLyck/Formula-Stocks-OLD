@@ -1,4 +1,5 @@
 import React from 'react'
+import Scroll from 'react-scroll'
 import _ from 'underscore'
 import store from '../../store'
 import LineGraph from './components/LineGraph'
@@ -170,8 +171,10 @@ class Performance extends React.Component {
   }
 
   render() {
+    const Element = Scroll.Element
     return (
       <section className="prof-performance">
+        <Element name="performance"/>
         <h2 className="title">Performance</h2>
         <div className="divider"/>
         <h3 className="subtitle">The below results are shown below, for the unleveraged performance in %, of 3 strategies since 2009 launch, with DJIA as a baseline</h3>
