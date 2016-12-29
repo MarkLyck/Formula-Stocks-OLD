@@ -2,6 +2,7 @@
   .prof-pricing {
     .prof-plans {
       display: flex;
+      align-items: flex-end;
       justify-content: center;
       .prof-plan {
         .top {
@@ -26,6 +27,9 @@
           width: 100%;
           border-top-left-radius: 0;
           border-top-right-radius: 0;
+          &:hover {
+            background: darken($primary-color, 10%);
+          }
         }
       }
     }
