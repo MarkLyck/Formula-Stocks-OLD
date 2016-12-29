@@ -4602,9 +4602,19 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
   .professional .what-is-it img:hover {
     transform: scale(1.05); }
 
-.professional .pricing .plans {
+.professional .prof-pricing .prof-plans {
   display: flex;
   justify-content: center; }
+  .professional .prof-pricing .prof-plans .prof-plan {
+    border: 2px solid #f4f4f4;
+    border-radius: 4px;
+    margin: 0 32px; }
+    .professional .prof-pricing .prof-plans .prof-plan .top {
+      padding: 24px; }
+    .professional .prof-pricing .prof-plans .prof-plan .statistics {
+      padding: 0 24px; }
+    .professional .prof-pricing .prof-plans .prof-plan a {
+      width: 100%; }
 
 .typed-cursor {
   opacity: 1;
