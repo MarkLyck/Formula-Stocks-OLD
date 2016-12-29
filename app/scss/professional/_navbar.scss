@@ -44,6 +44,27 @@
 .professional {
   .static {
     position: absolute;
+    background: none;
+    box-shadow: none;
+    .left {
+      background: #fff;
+      padding: 16px;
+    }
+    .right {
+      a {
+        color: #fff;
+      }
+      #login-btn {
+        border: 1px solid #fff;
+        padding: 8px 12px;
+        border-radius: 4px;
+        font-weight: bold;
+      }
+      #signup-btn {
+        background: #fff;
+        color: $primary-color;
+      }
+    }
   }
   .fixed {
     position: fixed;
