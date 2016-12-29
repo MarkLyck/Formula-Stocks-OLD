@@ -1,13 +1,19 @@
 import React from 'react'
 import { Link } from 'react-router'
 
+function formatPrice(value) {
+  while(/(\d+)(\d{3})/.test(value.toString())) {
+    value = value.toString().replace(/(\d+)(\d{3})/, '$1'+','+'$2')
+  }
+  return value
+}
+
 const Product = ({ plan }) => {
-  console.log(plan)
   return (
   <div className="prof-plan">
     <div className="top">
       <h3>{plan.name}</h3>
-      <p>${plan.price}</p>
+      <p>${formatPrice(plan.price)}</p>
     </div>
     <ul className="statistics">
       <p>Buy & sell recommendations</p>
