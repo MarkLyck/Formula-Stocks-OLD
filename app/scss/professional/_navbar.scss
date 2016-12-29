@@ -88,10 +88,20 @@
         padding: 8px 12px;
         border-radius: 4px;
         font-weight: bold;
+        &:hover {
+          background: #fff;
+          color: $primary-color;
+        }
       }
       #signup-btn, #logout-btn {
         background: #fff;
         color: $primary-color;
+        border-color: #fff;
+        &:hover {
+          background: darken(#fff, 3%);
+          border-color: darken(#fff, 3%);
+          // color: #fff;
+        }
       }
     }
   }
