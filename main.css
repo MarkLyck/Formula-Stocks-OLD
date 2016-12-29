@@ -4604,6 +4604,7 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
 
 .professional .prof-pricing .prof-plans {
   display: flex;
+  align-items: flex-end;
   justify-content: center; }
   .professional .prof-pricing .prof-plans .prof-plan {
     border-radius: 4px;
@@ -4624,6 +4625,8 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
       width: 100%;
       border-top-left-radius: 0;
       border-top-right-radius: 0; }
+      .professional .prof-pricing .prof-plans .prof-plan a:hover {
+        background: #068de7; }
 
 .typed-cursor {
   opacity: 1;
