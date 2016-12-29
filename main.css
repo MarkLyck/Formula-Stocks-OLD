@@ -4615,6 +4615,12 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
       border-bottom: none; }
       .professional .prof-pricing .prof-plans .prof-plan .top h3 {
         text-transform: capitalize; }
+    .professional .prof-pricing .prof-plans .prof-plan p {
+      display: flex;
+      justify-content: space-between; }
+      .professional .prof-pricing .prof-plans .prof-plan p .right-align {
+        text-align: right;
+        margin-left: 24px; }
     .professional .prof-pricing .prof-plans .prof-plan .statistics {
       padding: 8px 24px;
       border: 2px solid #f4f4f4;
