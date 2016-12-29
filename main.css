@@ -4555,10 +4555,12 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
     transform: translate(-50%, -50%);
     color: #fff; }
 
-.professional .about-us .content {
-  width: 100%;
-  margin: 0;
-  padding: 0; }
+.professional .about-us {
+  background: #f4f4f4; }
+  .professional .about-us .content {
+    width: 100%;
+    margin: 0;
+    padding: 0; }
 
 .professional .collapsable {
   width: 100%;
@@ -4631,16 +4633,18 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
 .professional .prof-pricing .not-convinced {
   margin-top: 32px; }
 
-.professional .bottom-cta h1 {
-  margin-bottom: 0; }
-.professional .bottom-cta .to-pricing {
-  border-radius: 4px;
-  margin-top: 24px;
-  margin-bottom: 16px; }
-.professional .bottom-cta .not-convinced {
-  background: none;
-  color: #27A5F9;
-  text-decoration: underline; }
+.professional .bottom-cta {
+  background: #fff !important; }
+  .professional .bottom-cta h1 {
+    margin-bottom: 0; }
+  .professional .bottom-cta .to-pricing {
+    border-radius: 4px;
+    margin-top: 24px;
+    margin-bottom: 16px; }
+  .professional .bottom-cta .not-convinced {
+    background: none;
+    color: #27A5F9;
+    text-decoration: underline; }
 
 .professional .brochure {
   background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("assets/images/NY_Skyline.jpg") !important;
@@ -4649,7 +4653,7 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
     display: flex;
     flex-direction: column;
     justify-content: center; }
-    .professional .brochure .left h2 {
+    .professional .brochure .left h1 {
       color: #fff;
       text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.2); }
   .professional .brochure .download-brochure {
