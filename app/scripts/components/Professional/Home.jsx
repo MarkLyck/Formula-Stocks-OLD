@@ -7,14 +7,6 @@ import Probabilities from './Probabilities.jsx'
 import Performance from './Performance.jsx'
 import RiskReward from './RiskReward.jsx'
 import HowWeBeatTheMarket from './HowWeBeatTheMarket.jsx'
-
-// import StockAnalysis from './StockAnalysis.jsx'
-// import MachineLearning from './MachineLearning.jsx'
-// import ScientificMethod from './ScientificMethod.jsx'
-// import Statistics from './Statistics.jsx'
-// import IITs from './IITs.jsx'
-// import ActiveManagement from './ActiveManagement.jsx'
-
 import InstitutionalCapital from './InstitutionalCapital.jsx'
 import WhatWeOffer from './WhatWeOffer.jsx'
 import Comparisons from './Comparisons.jsx'
@@ -42,12 +34,6 @@ class Home extends React.Component {
         <Performance/>
         <RiskReward/>
         <HowWeBeatTheMarket/>
-        {/* <StockAnalysis/> */}
-        {/* <MachineLearning/> */}
-        {/* <ScientificMethod/> */}
-        {/* <Statistics/> */}
-        {/* <IITs/> */}
-        {/* <ActiveManagement/> */}
         <WhatWeOffer/>
         <Comparisons/>
         <Recommendations/>

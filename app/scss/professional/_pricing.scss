@@ -8,12 +8,12 @@
         background: #fff;
         .top {
           padding: 24px;
-          // border: 2px solid #f4f4f4;
           border-top-left-radius: 4px;
           border-top-right-radius: 4px;
           border-bottom: none;
           border-bottom: 2px solid #eee;
           border-bottom-color: $primary-color;
+          margin-bottom: 8px;
           h3 {
             text-transform: capitalize;
             font-weight: bold;
@@ -32,7 +32,6 @@
         }
         .statistics {
           padding: 8px 24px;
-          // border: 2px solid #f4f4f4;
           border-top: none;
           border-bottom: none;
           box-sizing: border-box;

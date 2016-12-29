@@ -4667,7 +4667,8 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
       border-top-right-radius: 4px;
       border-bottom: none;
       border-bottom: 2px solid #eee;
-      border-bottom-color: #27A5F9; }
+      border-bottom-color: #27A5F9;
+      margin-bottom: 8px; }
       .professional .prof-pricing .prof-plans .prof-plan .top h3 {
         text-transform: capitalize;
         font-weight: bold;
