@@ -12,13 +12,16 @@
       position: relative;
       &:hover {
         background: #f5f5f5;
+        i {
+          color: $primary-color;
+        }
       }
       h2 {
         color: $primary-color;
         margin: 0;
       }
       i {
-        color: $primary-color;
+        color: $text-color;
       }
     }
     p {
