@@ -22,20 +22,21 @@ class WhatIsIt extends React.Component {
         <h2 className="title">Introduction</h2>
         <div className="divider"/>
         <p>
-          We use technology to analyze businesses in greater detail than the human cortex is
-          able to, including estimating its most likely future based on complex data and logic.
+          We use technology to analyze businesses in greater detail than the human cerebral
+          cortex is able to, including estimating its most likely future based on complex data.
           The human brain is not wired for evaluating hundreds of data points simultaneously,
-          and does not perform this task particularly well. We do prefer stories instead.
-          But stories inherently produce bias, and bias dampens performance.<br/><br/>
+          and does not perform this task well. We do prefer stories instead. But stories
+          inherently produce biases, and biases dampens performance.<br/><br/>
 
-          Our intelligent technology delivers an unbiased form of business analytics on an
-          expert level. This analysis is carried out with more experience than the typical
-          analyst can provide, and the rational, non-emotional analytical process, provides
-          for better and more accurate business decisions, devoid of bias, fear, greed and
-          indecision.<br/><br/>
+          Our intelligent technology delivers an unbiased form of business analytics.
+          On an expert level, this analysis is carried out with more experience than the
+          typical analyst can provide, and the rational, non-emotional analytical process,
+          provides for better and more accurate business decisions, devoid of bias, fear,
+          greed and indecision.<br/><br/>
+
 
           It started 14 years ago when we began a pioneering product development cycle using
-          machine learning. We would like to invite you on a tour of a groundbreaking service
+          machine learning. We would like to invite you on a tour of a groundbreaking product
           that may be able to assist you in obtaining better performance for you or your
           customers.
         </p>
