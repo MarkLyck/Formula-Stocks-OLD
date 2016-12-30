@@ -15,10 +15,10 @@ class InstitutionalCapital extends React.Component {
           accumulation and distribution works towards leaving as small a footprint in the
           market as possible.<br/><br/>
 
-          Only FUND customers can and may deploy institutional size capital with
-          Formula Stocks, or capital on the behalf of others, as it does require specific
-          technology not available with other products and specific fine-tuning to match
-          customer AUM.
+          Only FUND customers may deploy institutional size capital with Formula Stocks, or
+          capital on behalf of others, as it does require specific technology not available
+          with other products and specific fine-tuning to match customer AUMs. FUND is
+          tailormade to client specifications. Contact us for more information.
         </p>
       </section>
     )
