@@ -19,14 +19,13 @@ class Probabilities extends React.Component {
               relationships, where reward outweighs risk.<br/><br/>
 
               The identification, a priori, of equities with a high expectancy of success as a
-              future investment is valuable information. Probability theory will tell you that
-              for a combination of, for example, 100 independent events each with a 92%
-              probability of success yielding a high average return (and conversely little
-              downside for events that are not successful) the collective outcome in terms
-              of a total positive financial return comes as relatively close to a certainty
-              as possible.<br/><br/>
+              future investment is valuable information. Probability theory will tell you that for a
+              combination of, for example, 100 independent events each with a 92% probability of
+              success yielding a high average return (and conversely little downside for events that
+              are not successful) the collective outcome in terms of a total positive financial
+              return comes relatively close to a certainty.<br/><br/>
 
-              Nothing is absolutely certain of course, but the odds are good.<br/><br/>
+              Certainty is not possible, of course, but odds are much better than average.<br/><br/>
 
               This means that investing with our strategies is very likely to be a successful
               endeavor, provided it is done consistently, diversified, and for a longer period of
