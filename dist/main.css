@@ -4700,7 +4700,8 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
 .professional .prof-pricing .prof-plans {
   display: flex;
   align-items: flex-end;
-  justify-content: center; }
+  justify-content: center;
+  margin: 24px 0; }
   .professional .prof-pricing .prof-plans .prof-plan {
     background: #fff;
     border-radius: 4px;
@@ -4744,7 +4745,7 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
 .professional .prof-pricing .not-convinced {
   margin-top: 32px; }
 .professional .prof-pricing .disclaimer {
-  margin-top: 32px;
+  margin-top: 0px;
   text-align: center; }
 
 .professional .bottom-cta {

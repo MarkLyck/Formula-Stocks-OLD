@@ -31,6 +31,15 @@ class Pricing extends React.Component {
         <Element name="pricing"/>
         <h2 className="title">Pricing</h2>
         <div className="divider"/>
+        <p>
+          <span className="bold">Premium</span> is a membership which historically has provided over 20% annual growth<sup>*</sup>. It is a personal license, intended for non-commercial use.
+        </p>
+        <p>
+          <span className="bold">Business</span> is designed for accredited or enterprising investors focusing on performance with a margin of safety, at the expense of diversification.
+        </p>
+        <p>
+          <span className="bold">Fund</span> is for institutional capital and anyone investing on behalf of others. Capable of handling large AUMs. Strong diversification. Deep liquidity.
+        </p>
         <div className="prof-plans">
           <Product plan={store.plans.get('premium').toJSON()} billed="Monthly"/>
           <Product plan={store.plans.get('business').toJSON()} billed="Annually"/>

@@ -28,11 +28,10 @@ class WhatIsIt extends React.Component {
           and does not perform this task well. Humans simply prefer stories instead. But stories
           inherently produce biases, and biases dampens investment performance.<br/><br/>
 
-          Our intelligent technology delivers an unbiased form of business analytics.
-          On an expert level, this analysis is carried out with more experience than the
-          typical analyst can provide, and the rational, non-emotional analytical process,
-          provides for better and more accurate business decisions, devoid of bias, fear,
-          greed and indecision.<br/><br/>
+          Our intelligent technology delivers unbiased business analysis. This analysis is
+          carried out on an expert level, with more experience than the typical analyst can
+          provide. This rational, non-emotional analytical process, provides for better and more
+          accurate business decisions, devoid of bias, fear, greed and indecision.<br/><br/>
 
           It started 14 years ago when we began a pioneering product development cycle using
           machine learning. We would like to invite you on a tour of a groundbreaking product
