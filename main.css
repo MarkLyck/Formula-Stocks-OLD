@@ -4672,7 +4672,7 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
     align-items: center;
     justify-content: space-between;
     background: none;
-    padding: 24px;
+    padding: 16px 24px;
     position: relative;
     font-size: 0.9rem; }
     .professional .collapsable button:hover {
