@@ -82,9 +82,9 @@ class HowWeBeatTheMarket extends React.Component {
             6% to annual performance, compared to passive management.
           </p>
         </CollapseSegment>
-        <CollapseSegment title="94 IITs & Robustness">
+        <CollapseSegment title="93 IITs & Robustness">
           <p>
-            Users can access the results of up to 94 different Intelligent Investment Technologies,
+            Users can access the results of up to 93 different Intelligent Investment Technologies,
             or IITs for short. IITs are methods for outperforming the market. An IIT is specialized
             in one field or another, capable of making superior decisions in this particular field
             due to deep expert knowledge acquired. Due to deep expert specialization,
