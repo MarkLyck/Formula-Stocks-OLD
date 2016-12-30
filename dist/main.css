@@ -4742,6 +4742,9 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
         background: #068de7; }
 .professional .prof-pricing .not-convinced {
   margin-top: 32px; }
+.professional .prof-pricing .disclaimer {
+  margin-top: 32px;
+  text-align: center; }
 
 .professional .bottom-cta {
   background: #fff !important; }
