@@ -90,9 +90,9 @@ class Recommendations extends React.Component {
           </div>
           <div className="right">
             <div className="plans">
-              <button onClick={this.changeVideo.bind(null, 'premium')} className={preClass}>Premium<div></div></button>
-              <button onClick={this.changeVideo.bind(null, 'business')} className={busClass}>Business<div></div></button>
-              <button onClick={this.changeVideo.bind(null, 'fund')} className={funClass}>Fund<div></div></button>
+              <button onClick={this.changeVideo.bind(null, 'premium')} className={preClass}>Premium</button>
+              <button onClick={this.changeVideo.bind(null, 'business')} className={busClass}>Business</button>
+              <button onClick={this.changeVideo.bind(null, 'fund')} className={funClass}>Fund</button>
             </div>
             {video}
           </div>

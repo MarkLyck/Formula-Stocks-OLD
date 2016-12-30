@@ -9,9 +9,13 @@
     .plans {
       align-self: flex-end;
       width: 400px;
+      display: flex;
+      justify-content: space-around;
+      background: #fff;
       button {
         background: none;
         color: $text-color;
+        width: calc(100% / 3);
         &:hover {
           color: $primary-color;
           div {
