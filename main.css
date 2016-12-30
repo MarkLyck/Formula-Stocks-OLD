@@ -4576,13 +4576,13 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
       color: #49494A;
       width: calc(100% / 3 + 1px); }
       .recommendations .right .plans button:hover {
-        background: #27A5F9;
+        background: #30a6f8;
         color: #fff; }
     .recommendations .right .plans button:last-child {
       width: calc(100% / 3); }
     .recommendations .right .plans .selected {
       color: #fff;
-      background: #27A5F9; }
+      background: #49B1F9; }
   .recommendations .right .video-container {
     align-self: flex-end;
     position: relative; }
@@ -4673,7 +4673,8 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
     justify-content: space-between;
     background: none;
     padding: 24px;
-    position: relative; }
+    position: relative;
+    font-size: 0.9rem; }
     .professional .collapsable button:hover {
       background: #f5f5f5; }
       .professional .collapsable button:hover i {
