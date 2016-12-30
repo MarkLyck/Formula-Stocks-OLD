@@ -16,9 +16,10 @@ class Comparisons extends React.Component {
             investment in the marketplace right now, and every single step inbetween.
             Alpha prediction works rather well. Given the availability of such technology,
             passive management as a concept appears entirely non-sensical to us. Why aim for an
-            average return, when even a simple strategy of avoiding the 50% worst stocks can easily
-            outperform the average? While we certainly appreciate low cost and scalability as
-            attractive parameters, these parameters are offered by Formula Stocks as well.
+            average return, when even a simple strategy of avoiding the 50% worst stocks can
+            easily outperform the average? While we certainly appreciate low cost and
+            scalability as attractive parameters, these parameters are offered by Formula
+            Stocks as well.
           </p>
         </CollapseSegment>
         <CollapseSegment title="Growth investing or Garp">
@@ -78,14 +79,14 @@ class Comparisons extends React.Component {
             out Formula Stocks.
           </p>
         </CollapseSegment>
-        <CollapseSegment title="Active fund management">
+        <CollapseSegment title="Active management">
           <p>
-            Any number of active management approaches exist, and using Formula Stocks can be
-            quite similar to investing with a fund manager, except for the fact that you trade
-            in your own account. Formula Stocks performs active management on its model
-            portfolios, yielding up to 6% higher performance on a portfolio of very well
-            selected stocks, compared to passive management. A personal subscription may be a
-            way to save on costs.
+            Any number of active management approaches exist, and using Formula Stocks can have
+            a few similarities to investing with an active manager, except that you trade in
+            your own account. Formula Stocks performs active management on its model portfolios,
+            yielding up to 6% higher performance on a portfolio of very well selected stocks,
+            compared to passive management. A personal subscription may be a way to save on
+            costs.
           </p>
         </CollapseSegment>
       </section>
