@@ -31,7 +31,7 @@ const Product = ({ plan, billed }) => {
       <p><span className="light-text-color">Avg. loss as IRR: </span><span className="right-align">{plan.info.avgLossPerPosition.toFixed(2)}%</span></p>
       {/* <p><span className="light-text-color">Avg. round trip trades p.a: </span><span className="right-align">{plan.info.roundtripTradesPerYear}</span></p> */}
       <p><span className="light-text-color">Avg. number of pos. in portfolio: </span><span className="right-align">{plan.info.avgNumOfPosInPortfolio}</span></p>
-      <p><span className="light-text-color">Max drawdown in 45 years: </span><span className="right-align">{plan.info.maxDrawdown45y.toFixed(2)}%</span></p>
+      <p><span className="light-text-color">Max drawdown in 47 years: </span><span className="right-align">{plan.info.maxDrawdown45y.toFixed(2)}%</span></p>
       <p><span className="light-text-color">Max drawdown in 36 months: </span><span className="right-align">{plan.info.maxDrawdown36m.toFixed(2)}%</span></p>
       {/* <p><span className="light-text-color">IRR Arithmetic mean: </span><span className="right-align">{plan.info.IRRArithmeticMean.toFixed(2)}%</span></p> */}
       <p><span className="light-text-color">IRR Geometric mean: </span><span className="right-align">{plan.info.IRRGeometricMean.toFixed(2)}%</span></p>
