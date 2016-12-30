@@ -36,6 +36,7 @@ class Pricing extends React.Component {
           <Product plan={store.plans.get('business').toJSON()} billed="Annually"/>
           <Product plan={store.plans.get('fund').toJSON()} billed="Annually"/>
         </div>
+        <p>All memberships include Buy & Sell recommendations and model portfolios.</p>
         <p className="disclaimer">Information in pricing tables does not represent, warrant, or guarantee any specific level of future investment performance. Historical numbers are based on backtested performance from 1975-2009, whereas data from 2009-2016 reflects following the strategies in real-time. Investing always involves varying degrees of risk.</p>
         <p className="not-convinced">Not quite convinced yet?</p>
         <ScrollLink className="learn-more" to="brochure" smooth={true} offset={-100} duration={1000}>Learn more</ScrollLink>

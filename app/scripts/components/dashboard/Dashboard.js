@@ -19,6 +19,9 @@ const Dashboard = React.createClass({
   },
   componentDidMount() {
     store.session.on('change', this.updateState)
+    window.Intercom("boot", {
+      app_id: "i194mpvo"
+    })
   },
   componentWillUnmount() {
     store.session.off('change', this.updateState)
