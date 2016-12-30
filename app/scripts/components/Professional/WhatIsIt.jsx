@@ -26,7 +26,7 @@ class WhatIsIt extends React.Component {
           cortex is able to, including estimating its most likely future based on complex data.
           The human brain is not wired for evaluating hundreds of data points simultaneously,
           and does not perform this task well. We do prefer stories instead. But stories
-          inherently produce biases, and biases dampens performance.<br/><br/>
+          inherently produce biases, and biases dampens investment performance.<br/><br/>
 
           Our intelligent technology delivers an unbiased form of business analytics.
           On an expert level, this analysis is carried out with more experience than the
