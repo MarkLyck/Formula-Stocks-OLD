@@ -70,12 +70,12 @@ class Comparisons extends React.Component {
         </CollapseSegment>
         <CollapseSegment title="Quantitative investing">
           <p>
-            Quantitative approaches are typically dominated to single or multi-factor models
-            with somewhat moderate performance. Formula Stocks does quantitative analysis as
+            Quantitative approaches are typically dominated by single or multi-factor models
+            with a somewhat moderate performance. Formula Stocks does quantitative analysis as
             well, but from another angle of Business Analytics, as opposed to market analysis.
-            We prefer a hard data approach with unambigous mathematical properties.
-            Consult our winratios and high probability event prediction, for very good reasons
-            to switch to Formula Stocks.
+            We prefer a hard data approach with unambigous mathematical properties. Consult our
+            winratios and high probability event prediction, for a couple of good reasons to try
+            out Formula Stocks.
           </p>
         </CollapseSegment>
         <CollapseSegment title="Active fund management">
