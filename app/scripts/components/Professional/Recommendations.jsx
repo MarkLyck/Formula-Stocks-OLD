@@ -78,7 +78,7 @@ class Recommendations extends React.Component {
               In the videos you will see price movements in white, indicating the smoothed path price
               has taken from buy recommendation to sell recommendation.<br/><br/>
 
-              White circles indicate winning investments, grey losing.<br/><br/>
+              In the resulting scatter plot, white indicate winning positions, grey losing.<br/><br/>
 
               Our recommendations are rules based, and the rules do not change.
               So we can quantify every call ever made.<br/><br/>
