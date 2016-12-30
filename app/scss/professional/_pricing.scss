@@ -10,10 +10,10 @@
           padding: 24px;
           border-top-left-radius: 4px;
           border-top-right-radius: 4px;
+          border: 1px solid #E4E4E4;
           border-bottom: none;
           border-bottom: 2px solid #eee;
           border-bottom-color: $primary-color;
-          margin-bottom: 8px;
           h3 {
             text-transform: capitalize;
             font-weight: bold;
@@ -31,7 +31,8 @@
           }
         }
         .statistics {
-          padding: 8px 24px;
+          padding: 16px 24px 8px;
+          border: 1px solid #E4E4E4;
           border-top: none;
           border-bottom: none;
           box-sizing: border-box;

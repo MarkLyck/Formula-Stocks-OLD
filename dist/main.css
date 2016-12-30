@@ -4657,7 +4657,7 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
     color: #fff; }
 
 .professional .about-us {
-  background: #f4f4f4; }
+  background: #f8f8f8; }
   .professional .about-us .content {
     width: 100%;
     margin: 0;
@@ -4708,10 +4708,10 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
       padding: 24px;
       border-top-left-radius: 4px;
       border-top-right-radius: 4px;
+      border: 1px solid #E4E4E4;
       border-bottom: none;
       border-bottom: 2px solid #eee;
-      border-bottom-color: #27A5F9;
-      margin-bottom: 8px; }
+      border-bottom-color: #27A5F9; }
       .professional .prof-pricing .prof-plans .prof-plan .top h3 {
         text-transform: capitalize;
         font-weight: bold;
@@ -4725,7 +4725,8 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
         text-align: right;
         margin-left: 24px; }
     .professional .prof-pricing .prof-plans .prof-plan .statistics {
-      padding: 8px 24px;
+      padding: 16px 24px 8px;
+      border: 1px solid #E4E4E4;
       border-top: none;
       border-bottom: none;
       box-sizing: border-box; }
