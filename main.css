@@ -4574,21 +4574,15 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
     .recommendations .right .plans button {
       background: none;
       color: #49494A;
-      width: calc(100% / 3); }
+      width: calc(100% / 3 + 1px); }
       .recommendations .right .plans button:hover {
-        color: #27A5F9; }
-        .recommendations .right .plans button:hover div {
-          height: 2px;
-          width: 100%;
-          margin-top: 5px;
-          background: #27A5F9; }
+        background: #27A5F9;
+        color: #fff; }
+    .recommendations .right .plans button:last-child {
+      width: calc(100% / 3); }
     .recommendations .right .plans .selected {
-      color: #27A5F9; }
-      .recommendations .right .plans .selected div {
-        height: 2px;
-        width: 100%;
-        margin-top: 5px;
-        background: #27A5F9; }
+      color: #fff;
+      background: #27A5F9; }
   .recommendations .right .video-container {
     align-self: flex-end;
     position: relative; }
