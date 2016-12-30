@@ -46,12 +46,11 @@ class Comparisons extends React.Component {
         </CollapseSegment>
         <CollapseSegment title="Magic Formula">
           <p>
-            Whereas the method Greenblatt proposes is logically very simple and we applaud a
-            formulaic approach, it does exhibit a lower performance outside of the years
-            documented by its author, by our calculations, and larger drawdowns than the
-            general market. Its winratio is approx. 59% by our calculation, compared to a
-            Formula Stocks winratio of 89-92%. Using Formula Stocks instead might well yield
-            you significant benefits in terms of increased performance and lower risk.
+            Whereas the magic formula is logically very simple and we applaud a formulaic
+            approach, it does exhibit large drawdowns and its winratio is approx. 59% by our
+            calculation, compared to a Formula Stocks winratio typically around 89-92%. Using
+            Formula Stocks might well yield you significant benefits in terms of increased
+            performance and lower risk.
           </p>
         </CollapseSegment>
         <CollapseSegment title="Value investing">
