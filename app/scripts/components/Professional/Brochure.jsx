@@ -1,4 +1,5 @@
 import React from 'react'
+import Scroll from 'react-scroll'
 
 class Brochure extends React.Component {
   downloadBrochure() {
@@ -6,8 +7,10 @@ class Brochure extends React.Component {
   }
 
   render() {
+    const Element = Scroll.Element
     return (
       <section className="brochure">
+        <Element name="brochure"/>
         <div className="beside">
           <div className="left">
             <h1>Want more in-depth technical information?</h1>

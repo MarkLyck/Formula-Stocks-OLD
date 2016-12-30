@@ -60,9 +60,9 @@ class Hero extends React.Component {
               <h1 id="main-title">A better way for the <span className="font bold">active investor</span> to</h1>
               <span id="subtitle"></span>
               <div id="subtitles">
+                <h1><span className="font bold">Improve investment returns</span></h1>
                 <h1><span className="font bold">Save time</span></h1>
                 <h1><span className="font bold">Reduce costs</span></h1>
-                <h1><span className="font bold">Improve investment returns</span></h1>
               </div>
             </div>
           </div>

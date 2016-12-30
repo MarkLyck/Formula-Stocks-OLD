@@ -40,9 +40,9 @@ class Home extends React.Component {
         <WhatWeOffer/>
         <Comparisons/>
         <Recommendations/>
-        <InstitutionalCapital/>
-        <Pricing/>
         <BacktestedPerformance/>
+        <Pricing/>
+        <InstitutionalCapital/>
         <Brochure/>
         <AboutUs/>
         <BottomCTA/>

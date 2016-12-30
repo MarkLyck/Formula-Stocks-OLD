@@ -13,7 +13,8 @@ class WhatIsIt extends React.Component {
           Using proprietary technology we specialize in selecting stocks with very high
           probabilities of yielding positive investment returns. We use this to offer you an
           informational advantage in the form of actionable purchase and sales recommendations
-          and a capital allocation strategy.<br/><br/>
+          and a capital allocation strategy, which would have outperformed the S&P 500 89% of
+          the time over the last 47 years.<br/><br/>
 
           Use these to better your investment performance and save time. On this page we will
           offer you more information, as to how it works, what it does, and why it would be
@@ -25,7 +26,7 @@ class WhatIsIt extends React.Component {
           We use technology to analyze businesses in greater detail than the human cerebral
           cortex is able to, including estimating its most likely future based on complex data.
           The human brain is not wired for evaluating hundreds of data points simultaneously,
-          and does not perform this task well. We do prefer stories instead. But stories
+          and does not perform this task well. Humans simply prefer stories instead. But stories
           inherently produce biases, and biases dampens investment performance.<br/><br/>
 
           Our intelligent technology delivers an unbiased form of business analytics.
@@ -33,7 +34,6 @@ class WhatIsIt extends React.Component {
           typical analyst can provide, and the rational, non-emotional analytical process,
           provides for better and more accurate business decisions, devoid of bias, fear,
           greed and indecision.<br/><br/>
-
 
           It started 14 years ago when we began a pioneering product development cycle using
           machine learning. We would like to invite you on a tour of a groundbreaking product
@@ -55,9 +55,7 @@ class WhatIsIt extends React.Component {
           methods.<br/><br/>
 
           How can it help you or your customers? We offer products that can improve return on
-          capital, whether personal, corporate, or institutional. You can subscribe to
-          actionable purchase and sales recommendations based on the technology, which would
-          have outperformed the S&P 500 89% of the time for the last 47 years.
+          capital, whether personal, corporate, or institutional.
         </p>
       </section>)
   }

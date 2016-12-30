@@ -17,7 +17,7 @@
         color: $text-color;
         width: calc(100% / 3 + 1px);
         &:hover {
-          background: $primary-color;
+          background: darken(#49B1F9, 5%);
           color: #fff;
         }
       }
@@ -26,7 +26,7 @@
       }
       .selected {
         color: #fff;
-        background: $primary-color;
+        background: #49B1F9;
       }
     }
     .video-container {
