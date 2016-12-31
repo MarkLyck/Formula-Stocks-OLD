@@ -4533,7 +4533,18 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
   margin-bottom: 32px; }
 
 .what-we-offer a {
-  margin-top: 16px; }
+  margin-top: 16px;
+  max-width: 150px; }
+.what-we-offer .right {
+  display: flex;
+  align-items: center; }
+  .what-we-offer .right .screen {
+    height: auto;
+    width: 100%;
+    transition: transform 0.5s;
+    box-shadow: 0 0px 4px rgba(0, 0, 0, 0.2), 0 4px 8px rgba(0, 0, 0, 0.24); }
+    .what-we-offer .right .screen:hover {
+      transform: scale(1.05); }
 
 .comparisons {
   justify-content: center; }
