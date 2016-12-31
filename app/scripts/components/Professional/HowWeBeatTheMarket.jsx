@@ -12,21 +12,46 @@ class HowWeBeatTheMarket extends React.Component {
         <div className="divider"/>
         <CollapseSegment title="Stock analysis">
           <p>
-            Formula Stocks uses technology to automatically analyze a business in greater
-            detail than the human cortex is able to, including estimating its most likely
-            future based on complex data. The human brain is not wired for evaluating
-            hundreds of data points simultaneously. We do prefer stories. But stories
-            inherently produce bias, and bias dampens performance. <br/><br/>
+            The traditional human approach to stock analysis starts with an understanding of
+            the story behind a stock. It is a human beings preferred method of analysis, to
+            absorb and understand a story, because our brains are designed to respond to and
+            understand stories very well. Probably our ancestors communicated vital
+            information for surviving, when gathered around a bonfire using stories.<br/><br/>
 
-            Our intelligent technology delivers unbiased thinking on an expert level. This
-            analysis is carried out with more experience than the typical analyst can provide,
-            and the rational, non-emotional analytical process, provides for better and more
-            accurate business decisions, devoid of fear, greed and indecision.<br/><br/>
+            When it comes to hard facts the situation changes. Scientific studies show, that
+            when the human brain has to respond to a limited number of variables such as 4
+            simultanously in product comparisons it responds reasonably well (60% correct), but
+            already with 12 variables analysis breaks down and correct responses plummet to around
+            20% due to information overload<sup>1</sup>. Formula Stock analysis weighs over many hundreds
+            of variables simultaneously, 100 times more than a human brain is capable of.<br/><br/>
 
-            As a practical example,  our IIT™ and business analytics software can analyze
-            5,000 businesses based on balance sheets, income and cash flow statements, and
-            much other fundamental business and economic data in less than a minute and at a
-            level of detail that would likely take 100 men several months to perform manually.
+            Such analysis would be prohibitively expensive to perform manually. As a practical
+            example, our business analytics software can analyze 5,000 businesses based on
+            balance sheets, income and cash flow statements, and many other forms of
+            fundamental business and economic data in less than a minute and at a level of
+            detail that would likely take 100 men several months to perform manually.<br/><br/>
+
+            Being capable of such analysis is one thing. Acting upon the information another.
+            The human cognitive system is heavily reliant on biases. Short cuts are used to
+            make quick decisions possible. Quick does not equal correct, and a cognitive
+            tradeoff is made along the lines of rather arriving at a quick, if only
+            occasionally correct conclusion, than arriving much more slowly at a correct
+            conclusion. This too, is thought to have a basis in evolution. After all, if
+            chased by a dinosaur, slowly calculating the optimal escape route has generally
+            not yielded a better chance for evolutionary success, compared to simply running
+            as fast as possible.<br/><br/>
+
+            An analytical system, designed to analyze in greater depth and detail, to
+            understand concepts more thoroughly, to make unbiased decisions based on hard
+            data, has in fact very good odds of outperforming the evolutionary baggage we all
+            carry with us.<br/><br/>
+
+            Formula Stocks embodies such analysis, as evidenced by its tested ratio of winners
+            of to losers, in the neighborhood of 90%.
+          </p>
+          <p className="disclaimer">
+            <sup>1</sup>A. Dijksterhuis, M. Bos, L. Nordgren, and R Van Baaren, "On making the right
+            choice: The deliberation without attention effect", Science 311 (2007): 1005-1007
           </p>
         </CollapseSegment>
         <CollapseSegment title="Machine learning">
