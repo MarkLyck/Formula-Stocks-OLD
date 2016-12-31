@@ -85,7 +85,7 @@ const InformationalAdvantage = React.createClass({
           <div className="left">
             <h2 className="title">An informational advantage</h2>
             <p>
-              Formula Stocks develops proprietary state-of-the-art technology
+              Formula Stocks develops technology
               to compile and analyze enormous amounts of information,
               creating a new unique edge for outperforming the market.
               Exclusively available for members.<br/><br/>
