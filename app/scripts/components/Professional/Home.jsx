@@ -8,7 +8,7 @@ import Performance from './Performance.jsx'
 import RiskReward from './RiskReward.jsx'
 import HowWeBeatTheMarket from './HowWeBeatTheMarket.jsx'
 import InstitutionalCapital from './InstitutionalCapital.jsx'
-import WhatWeOffer from './WhatWeOffer.jsx'
+import WhatYouGet from './WhatYouGet.jsx'
 import Comparisons from './Comparisons.jsx'
 import Recommendations from './Recommendations.jsx'
 import Pricing from './Pricing.jsx'
@@ -37,7 +37,7 @@ class Home extends React.Component {
         <Performance/>
         <RiskReward/>
         <HowWeBeatTheMarket/>
-        <WhatWeOffer/>
+        <WhatYouGet/>
         <Comparisons/>
         <Recommendations/>
         <BacktestedPerformance/>

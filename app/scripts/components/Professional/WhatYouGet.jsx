@@ -8,7 +8,7 @@ class WhatWeOffer extends React.Component {
     let ScrollLink = Scroll.Link
     return (
       <section className="what-we-offer">
-        <h2 className="title">What we offer</h2>
+        <h2 className="title">What you get</h2>
         <div className="divider"/>
         <p>
           The market discounts widely known information. If you have access to better
