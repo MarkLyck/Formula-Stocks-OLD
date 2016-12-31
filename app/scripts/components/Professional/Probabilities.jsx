@@ -8,7 +8,7 @@ class Probabilities extends React.Component {
         <h2 className="title">A matter of probabilities</h2>
         <div className="divider"/>
         <p>
-          Our proprietary technology has typically been able to predict investment success
+          Our technology has typically been able to predict investment success
           in the future with a degree of certainty in the neighborhood of 89 to 92%,
           respectively.<sup>1</sup><br/><br/>
         </p>

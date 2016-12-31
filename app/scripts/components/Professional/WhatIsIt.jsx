@@ -10,11 +10,10 @@ class WhatIsIt extends React.Component {
         <h2 className="title">What is it?</h2>
         <div className="divider"/>
         <p>
-          Using proprietary technology we specialize in selecting stocks with high
-          probabilities of yielding positive investment returns. We use this to offer you
-          actionable purchase and sales recommendations and a capital allocation strategy,
-          which would have outperformed the S&P 500 89% of the time over the last 47 years.
-          <br/><br/>
+          We develop technology designed to identify stocks with high probabilities of yielding
+          positive investment returns. We use this to offer you actionable purchase and sales
+          recommendations and a capital allocation strategy, which would have outperformed the
+          S&P 500 89% of the time over the last 47 years.<br/><br/>
 
           Use it to better your investment performance and save time. On this page we will
           offer you more information, as to how it works, and why it would be useful to you.
