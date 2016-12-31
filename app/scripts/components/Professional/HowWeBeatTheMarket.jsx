@@ -37,9 +37,9 @@ class HowWeBeatTheMarket extends React.Component {
             tradeoff is made along the lines of rather arriving at a quick, if only
             occasionally correct conclusion, than arriving much more slowly at a correct
             conclusion. This too, is thought to have a basis in evolution. After all, if
-            chased by a dinosaur, slowly calculating the optimal escape route has generally
-            not yielded a better chance for evolutionary success, compared to simply running
-            as fast as possible.<br/><br/>
+            chased by a predator, slowly calculating the optimal escape route has generally
+            not yielded as good a chance for evolutionary success,  as simply running as fast
+            as possible in the approximate direction.<br/><br/>
 
             An analytical system, designed to analyze in greater depth and detail, to
             understand concepts more thoroughly, to make unbiased decisions based on hard
@@ -88,8 +88,8 @@ class HowWeBeatTheMarket extends React.Component {
           <p>
             Formula Stocks is strongly focused on high-probability events.
             Each method used, has strongly devised mathematical probabilities of winning
-            versus losing. The mathematical expectancy is known well in advance, each time a
-            recommendation is issued.<br/><br/>
+            versus losing. The mathematical expectancy is known, each time a recommendation
+            is issued.<br/><br/>
 
             When producing statistical information care is given to ensure it is solid,
             and based on timeless observations which true not just in a specific timeperiod or
@@ -101,34 +101,33 @@ class HowWeBeatTheMarket extends React.Component {
           <p>
             Formula Stocks does more than select equities. It includes an active management system,
             which actively buys, holds, and sells equities when deemed most beneficial.
-            Active management adds value. On a portfolio of random stocks,
-            active management typically adds around 2,4% to annual performance.
-            On a well selected portfolio of attractive stocks, active management typically adds around
-            6% to annual performance, compared to passive management.
+            Active management adds value. On a portfolio of random stocks, active management
+            typically adds around 2,4% to annual performance. On a well selected portfolio of
+            attractive stocks, it typically adds around 6% to annual performance, compared to
+            passive management.
           </p>
         </CollapseSegment>
         <CollapseSegment title="93 IITs & Robustness">
           <p>
-            Users can access the results of up to 93 different Intelligent Investment Technologies,
-            or IITs for short. IITs are methods for outperforming the market. An IIT is specialized
-            in one field or another, capable of making superior decisions in this particular field
-            due to deep expert knowledge acquired. Due to deep expert specialization,
-            IITs are extremely capable within their field. IITs can work in any number of ways,
-            and within as many different investment disciplines- but they always have one basic
-            attribute in common: The mathematical probabilities and statistical properties of any
-            IIT define it as being capable of beating the general market, even on its own.<br/><br/>
+            Users can access the results of up to 93 different Intelligent Investment
+            Technologies, or IITs for short. IITs are methods for outperforming the market. An
+            IIT is specialized in one field or another, capable of making superior decisions
+            in this particular field due to deep expert knowledge acquired. Due to this
+            specialization, IITs are extremely capable within their field. IITs can work in
+            any number of ways, and within as many different investment disciplines- but they
+            always have one basic attribute in common: The mathematical probabilities and
+            statistical properties of any IIT define it as being capable of outperforming the
+            market, even on its own.<br/><br/>
 
             Generally, IIT decisions are made when mathematical and statistical properties
-            indicate 90%+ probability a priori for winning over the long run.
-            Win ratio expectations has typically been observed around this approximate
-            level a posteori.
+            indicate an approximate 90%+ probability a priori for winning over the long run.
           </p>
           <p className="quote">
             <div className="content">
               <i className="fa fa-quote-right" aria-hidden="true"></i>
               <p>
-                "The fact that we do not rely on a single, or even a dozen strategies,
-                and only use the ones we can unequivocally prove have worked for half a century,
+                "The fact that we do not rely on a single, or even a dozen strategies, and
+                only use the ones we can unequivocally prove have worked for half a century,
                 is a testament to the ruggedness of our approach. It will not suddenly be
                 arbitraged away, falter due to macroeconomic change, or cease to be relevant."
               </p>
