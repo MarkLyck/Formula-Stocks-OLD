@@ -66,7 +66,7 @@ class SignUp extends React.Component {
             <div className="top">
               <div className="steps">
                 <div className="step"><div className="circle selected"/><p>Choose a plan</p></div>
-                <div className="step"><div className="circle"/><p>Create Account</p></div>
+                {/* <div className="step"><div className="circle"/><p>Create Account</p></div> */}
                 <div className="step"><div className="circle"/><p>Billing</p></div>
                 <div className="step"><div className="circle"/><p>Done</p></div>
               </div>

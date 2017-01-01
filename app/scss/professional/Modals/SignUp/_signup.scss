@@ -136,25 +136,6 @@
         }
       }
     }
-    .switch {
-      display: flex;
-      margin-top: 24px;
-      button {
-        background: none;
-        padding: 0;
-        color: $primary-color;
-        font-weight: normal;
-        text-decoration: underline;
-      }
-      .hor-line {
-        margin: 0 8px;
-      }
-      .selected {
-        color: $text-color;
-        font-weight: bold;
-        text-decoration: none;
-      }
-    }
   }
   .right {
     width: 288px;
@@ -170,7 +151,7 @@
       left: 0;
       right: 0;
       .line {
-        height: 196px;
+        height: 140px;
         width: 1px;
         background: $primary-color;
         position: absolute;
