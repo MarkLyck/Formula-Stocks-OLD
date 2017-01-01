@@ -17,6 +17,7 @@ class SignUp extends React.Component {
     this.updateState = this.updateState.bind(this)
     this.selectPlan = this.selectPlan.bind(this)
     this.renderPrice = this.renderPrice.bind(this)
+    this.closeModal = this.closeModal.bind(this)
 
     this.state = {
       page: 1,
@@ -47,9 +48,13 @@ class SignUp extends React.Component {
     return '$' + formatPrice(String(plan.price)) + ' ' + period
   }
 
+  closeModal() {
+    console.log('close modal', this.refs.modalContainer)
+  }
+
   render() {
     return (
-      <div className="prof-modal-container">
+      <div className="prof-modal-container" onClick={this.closeModal} ref="modalContainer">
         <div className="prof-modal signup-modal">
           <div className="beside">
             <div className="left">
