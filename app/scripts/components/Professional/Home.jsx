@@ -47,6 +47,7 @@ class Home extends React.Component {
         <AboutUs/>
         <BottomCTA/>
         <Footer/>
+        {this.props.children}
       </div>
     )
   }

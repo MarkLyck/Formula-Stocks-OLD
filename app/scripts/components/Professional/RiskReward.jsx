@@ -9,7 +9,7 @@ class RiskReward extends React.Component {
         <div className="beside">
           <div className="left">
             <div className="chart-container">
-              <img src="assets/images/omega_chart.svg"/>
+              <img src="/assets/images/omega_chart.svg"/>
               <div className="chart-indicators">
                 <div className="chart-indicator business">Business</div>
                 <div className="chart-indicator fund">Fund</div>

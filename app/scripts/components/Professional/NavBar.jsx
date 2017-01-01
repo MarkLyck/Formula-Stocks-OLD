@@ -50,7 +50,7 @@ class NavBar extends React.Component {
       return (
         <nav className="prof-navbar static">
           <div className="left" onClick={() => {scroll.scrollToTop()}}>
-            <a><img src="assets/images/logo_horizontal.svg"/></a>
+            <a><img src="/assets/images/logo_horizontal.svg"/></a>
           </div>
           <div className="right">
             <ScrollLink className="nav-link overview" to="whatIsIt" smooth={true} offset={-40} duration={1000}>Overview</ScrollLink>
@@ -65,7 +65,7 @@ class NavBar extends React.Component {
       return (
         <nav className="prof-navbar fixed">
           <div className="left" onClick={() => {scroll.scrollToTop()}}>
-            <a><img src="assets/images/logo_horizontal.svg"/></a>
+            <a><img src="/assets/images/logo_horizontal.svg"/></a>
           </div>
           <div className="right">
             <ScrollLink className="nav-link overview" to="whatIsIt" smooth={true} offset={-100} duration={1000}>Overview</ScrollLink>

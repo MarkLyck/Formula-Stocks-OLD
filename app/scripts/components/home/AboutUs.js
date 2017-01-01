@@ -92,7 +92,7 @@ const AboutUs = React.createClass({
 
             <li className="team-member" onClick={this.showModal.bind(this, 'Thomas')}>
               {/* <div className="img-container" style={{backgroundImage: 'url(assets/images/profiles/Thomas.jpg)'}}/> */}
-              <img src="assets/images/profiles/Thomas_Square.jpg" />
+              <img src="/assets/images/profiles/Thomas_Square.jpg" />
               <div className="content">
                 <h3 className="name">Thomas Lyck</h3>
                 <h4>CEO</h4>
@@ -100,7 +100,7 @@ const AboutUs = React.createClass({
             </li>
             <li className="team-member" onClick={this.showModal.bind(this, 'Mark')}>
             {/* <div className="img-container" style={{backgroundImage: 'url(assets/images/profiles/Mark.jpg)'}}/> */}
-              <img src="assets/images/profiles/Mark_Square.jpg" />
+              <img src="/assets/images/profiles/Mark_Square.jpg" />
               <div className="content">
                 <h3 className="name">Mark Lyck</h3>
                 <h4>COO</h4>
@@ -108,7 +108,7 @@ const AboutUs = React.createClass({
             </li>
             <li className="team-member" onClick={this.showModal.bind(this, 'Marie')}>
             {/* <div className="img-container" style={{backgroundImage: 'url(assets/images/profiles/Marie.jpg)'}}/> */}
-              <img src="assets/images/profiles/Marie_Square.jpg" />
+              <img src="/assets/images/profiles/Marie_Square.jpg" />
               <div className="content">
                 <h3 className="name">Marie Lauritzen</h3>
                 <h4>PhD. Research Assistant</h4>

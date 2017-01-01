@@ -7,6 +7,9 @@ import HeroTest from './components/Home/Hero2.jsx'
 
 import Home from './components/home/Home'
 import Professional from './components/Professional/Home.jsx'
+
+import SignUp2 from './components/Professional/Modals/SignUp/SignUp.jsx'
+
 import Login from './components/home/Login'
 import Signup from './components/home/Signup'
 import FAQ from './components/home/faq'
@@ -31,8 +34,8 @@ const router = (
       <Route path="/signup" component={Signup}/>
     </Route>
     <Route path="/professional" component={Professional}>
-      <Route path="/login" component={Login}/>
-      <Route path="/signup" component={Signup}/>
+      <Route path="login" component={Login}/>
+      <Route path="signup" component={SignUp2}/>
     </Route>
     <Route path="/faq" component={FAQ}/>
     <Route path="/hero2" component={HeroTest}/>

@@ -38,7 +38,7 @@ class WhatIsIt extends React.Component {
           customers.
         </p>
           <p className="we-call-it">We call it Formula Stocks.</p>
-          <img className="screenshot" src="assets/images/portfolio_page.jpg"/>
+          <img className="screenshot" src="/assets/images/portfolio_page.jpg"/>
         <p>
           What does it do? It beats the market averages by understanding businesses and
           strategies better than the competition, thus gaining a durable informational
