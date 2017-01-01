@@ -1,5 +1,5 @@
 import Session from './models/Session'
-import {hashHistory, browserHistory} from 'react-router'
+import { hashHistory, browserHistory } from 'react-router'
 
 import Plan from './models/Plan'
 import Plans from './collections/Plans'

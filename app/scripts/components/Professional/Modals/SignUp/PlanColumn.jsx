@@ -13,7 +13,7 @@ const PlanColumn = ({ plan, selected, selectPlan }) => {
       <li className="row"><p>{plan.stats.CAGR}%</p></li>
       <li className="row"><p>{plan.stats.WLRatio.toFixed(2)}%</p></li>
       <li className="row"><p>{plan.info.avgGainPerPosition.toFixed(2)}%</p></li>
-      <li className="row"><p>{plan.info.avgGainPerPosition.toFixed(2)}%</p></li>
+      <li className="row"><p>{plan.info.avgLossPerPosition.toFixed(2)}%</p></li>
       <li className="row"><p>{plan.info.avgNumOfPosInPortfolio}</p></li>
       <li className="row"><p>{plan.info.IRRGeometricMean}%</p></li>
       <li className="row"><p>{plan.info.sortinoRatio}</p></li>

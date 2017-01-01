@@ -2,6 +2,7 @@ import React from 'react'
 import PlanColumn from './PlanColumn.jsx'
 import FeatureList from './FeatureList.jsx'
 import store from '../../../../store.js'
+import { browserHistory } from 'react-router'
 
 function formatPrice(value) {
   while(/(\d+)(\d{3})/.test(value.toString())) {
@@ -48,8 +49,10 @@ class SignUp extends React.Component {
     return '$' + formatPrice(String(plan.price)) + ' ' + period
   }
 
-  closeModal() {
-    console.log('close modal', this.refs.modalContainer)
+  closeModal(e) {
+    if (e.target.className === 'prof-modal-container') {
+      browserHistory.push('/professional')
+    }
   }
 
   render() {
