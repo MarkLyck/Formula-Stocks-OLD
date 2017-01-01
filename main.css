@@ -4902,21 +4902,6 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
           font-weight: 600; }
         .signup-modal .left .plan-overview .plan-columns-container .selected .row:last-child {
           border-bottom: none; }
-  .signup-modal .left .switch {
-    display: flex;
-    margin-top: 24px; }
-    .signup-modal .left .switch button {
-      background: none;
-      padding: 0;
-      color: #27A5F9;
-      font-weight: normal;
-      text-decoration: underline; }
-    .signup-modal .left .switch .hor-line {
-      margin: 0 8px; }
-    .signup-modal .left .switch .selected {
-      color: #49494A;
-      font-weight: bold;
-      text-decoration: none; }
 .signup-modal .right {
   width: 288px;
   background: #F7FAFC;
@@ -4931,7 +4916,7 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
     left: 0;
     right: 0; }
     .signup-modal .right .top .line {
-      height: 196px;
+      height: 140px;
       width: 1px;
       background: #27A5F9;
       position: absolute;
