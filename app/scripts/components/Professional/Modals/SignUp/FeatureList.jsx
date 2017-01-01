@@ -9,7 +9,7 @@ const FeatureList = () => (
         <i className="fa fa-info-circle" aria-hidden="true"></i>
         <div className="explanation">
           <h3>AUM Capital</h3>
-          <p>Whether the plan can handle high liquidity investment of $50 billion or more.</p>
+          <p>Whether the plan can handle high liquidity investments of $50 billion or more.</p>
         </div>
       </div>
     </li>
@@ -38,7 +38,7 @@ const FeatureList = () => (
         <i className="fa fa-info-circle" aria-hidden="true"></i>
         <div className="explanation">
           <h3>Win / Loss ratio</h3>
-          <p>The percentage of stocks the system has sold with a profit.</p>
+          <p>The percentage of stocks each plan has sold with a profit.</p>
         </div>
       </div>
     </li>
@@ -49,7 +49,6 @@ const FeatureList = () => (
           <h3>Avg. gain as IRR</h3>
           <p>
             The average increase in a winning stock's price calculated in percent.
-            IRR stands for Internal Rate of Return.
           </p>
         </div>
       </div>
@@ -61,7 +60,6 @@ const FeatureList = () => (
           <h3>Avg. loss as IRR</h3>
           <p>
             The average loss in a losing stock's price calculated in percent.
-            IRR stands for Internal Rate of Return.
           </p>
         </div>
       </div>
@@ -72,7 +70,7 @@ const FeatureList = () => (
         <i className="fa fa-info-circle" aria-hidden="true"></i>
         <div className="explanation">
           <h3>IRR Geometric mean</h3>
-          <p>IRR stands for Internal Rate of Return.</p>
+          <p>...</p>
         </div>
       </div>
     </li>

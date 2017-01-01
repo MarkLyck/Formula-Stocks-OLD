@@ -1,4 +1,10 @@
 .signup-modal {
+  display: flex;
+  flex-direction: column;
+  .beside {
+    width: 100%;
+    display: flex;
+  }
   .left {
     display: flex;
     flex-direction: column;
@@ -196,11 +202,14 @@
       }
     }
     .plan-price {
-      margin-bottom: 16px;
+      margin-bottom: 32px;
       p:last-child {
         text-transform: none;
         color: $text-color;
       }
+    }
+    label {
+      margin-bottom: 8px;
     }
     input {
       border: 1px solid #dedede;
@@ -213,6 +222,24 @@
       border-radius: 4px;
       &:hover {
         background: darken($primary-color, 10%);
+      }
+    }
+  }
+  .bottom-bar {
+    width: 100%;
+    background: #283544;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 12px;
+    height: 36px;
+    p {
+      margin: 0;
+      color: $light-text-color;
+      font-size: 12px;
+      a {
+        color: #eeeeee;
+        text-decoration: underline;
       }
     }
   }

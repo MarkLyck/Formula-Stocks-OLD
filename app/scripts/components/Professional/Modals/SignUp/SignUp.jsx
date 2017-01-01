@@ -51,39 +51,52 @@ class SignUp extends React.Component {
     return (
       <div className="prof-modal-container">
         <div className="prof-modal signup-modal">
-          <div className="left">
-            <h2>Choose your plan</h2>
-            <div className="plan-overview">
-              <FeatureList/>
-              <div className="plan-columns-container">
-                <PlanColumn plan={store.plans.get('premium').toJSON()} selected={this.state.selected} selectPlan={this.selectPlan} showAll={this.state.showAll}/>
-                <PlanColumn plan={store.plans.get('business').toJSON()} selected={this.state.selected} selectPlan={this.selectPlan} showAll={this.state.showAll}/>
-                <PlanColumn plan={store.plans.get('fund').toJSON()} selected={this.state.selected} selectPlan={this.selectPlan} showAll={this.state.showAll}/>
+          <div className="beside">
+            <div className="left">
+              <h2>Choose your plan</h2>
+              <div className="plan-overview">
+                <FeatureList/>
+                <div className="plan-columns-container">
+                  <PlanColumn plan={store.plans.get('premium').toJSON()} selected={this.state.selected} selectPlan={this.selectPlan} showAll={this.state.showAll}/>
+                  <PlanColumn plan={store.plans.get('business').toJSON()} selected={this.state.selected} selectPlan={this.selectPlan} showAll={this.state.showAll}/>
+                  <PlanColumn plan={store.plans.get('fund').toJSON()} selected={this.state.selected} selectPlan={this.selectPlan} showAll={this.state.showAll}/>
+                </div>
               </div>
             </div>
-          </div>
-          <div className="right">
-            <div className="top">
-              <div className="steps">
-                <div className="step"><div className="circle selected"/><p>Choose a plan</p></div>
-                {/* <div className="step"><div className="circle"/><p>Create Account</p></div> */}
-                <div className="step"><div className="circle"/><p>Billing</p></div>
-                <div className="step"><div className="circle"/><p>Done</p></div>
+
+            <div className="right">
+              <div className="top">
+                <div className="steps">
+                  <div className="step"><div className="circle selected"/><p>Choose a plan</p></div>
+                  <div className="step"><div className="circle"/><p>Billing</p></div>
+                  <div className="step"><div className="circle"/><p>Done</p></div>
+                </div>
+                <div className="line"/>
               </div>
-              <div className="line"/>
+
+              <div className="plan-name info">
+                <p>Plan</p>
+                <p>{this.state.selected}</p>
+              </div>
+              <div className="plan-price info">
+                <p>Price</p>
+                <p>{this.renderPrice()}</p>
+              </div>
+              <label htmlFor="email">Enter your email</label>
+              <input id="email" type="email" placeholder="Email address" ref="email"/>
+              <label htmlFor="email">Choose a password</label>
+              <input id="password" type="password" placeholder="Password" ref="password"/>
+              <button className="next">Next</button>
             </div>
-            <div className="plan-name info">
-              <p>Plan</p>
-              <p>{this.state.selected}</p>
-            </div>
-            <div className="plan-price info">
-              <p>Price</p>
-              <p>{this.renderPrice()}</p>
-            </div>
-            <input type="email" placeholder="Email address"/>
-            <input type="password" placeholder="Password"/>
-            <button className="next">Next</button>
+
           </div>
+          <div className="bottom-bar">
+            <p>Formula Stocks ApS.</p>
+            <p>By signing up you agree to our <a href="/terms">terms and condtions</a> & <a href="/privacy">privacy policy</a></p>
+          </div>
+
+
+
         </div>
       </div>
     )
