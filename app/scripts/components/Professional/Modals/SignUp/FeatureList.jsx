@@ -18,7 +18,7 @@ const FeatureList = () => (
         <i className="fa fa-info-circle" aria-hidden="true"></i>
         <div className="explanation">
           <h3>IIT formulas applied</h3>
-          <p>Number of Intelligent Investment Technologies used in this plan.</p>
+          <p>Number of Intelligent Investment Technologies used in each plan.</p>
         </div>
       </div>
     </li>
