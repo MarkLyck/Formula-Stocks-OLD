@@ -33,7 +33,7 @@ const router = (
       <Route path="/login" component={Login}/>
       <Route path="/signup" component={Signup}/>
     </Route>
-    <Route path="/professional" component={Professional}>
+    <Route path="/pro" component={Professional}>
       <Route path="login" component={Login}/>
       <Route path="signup" component={SignUp2}/>
     </Route>
