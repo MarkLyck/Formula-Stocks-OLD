@@ -79,9 +79,11 @@ class SignUp extends React.Component {
       <div className="prof-modal-container" onClick={this.closeModal} ref="modalContainer">
         <div className="prof-modal signup-modal">
           {this.renderContent()}
-          <div className="bottom-bar">
-            <p>Statistics are calculated from backtested data. We make no guarantee of future performance. See our <Link to='/terms'>Terms of service</Link></p>
-          </div>
+          {this.state.page === 1 ?
+            (<div className="bottom-bar">
+               <p>Statistics are calculated from backtested data. We make no guarantee of future performance. See our <Link to='/terms'>Terms of service</Link></p>
+            </div>)
+           : ''}
         </div>
       </div>
     )

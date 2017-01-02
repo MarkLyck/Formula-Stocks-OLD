@@ -21,7 +21,7 @@ class Billing extends React.Component {
       priceText = 'Start free trial'
     }
 
-    let countryText = 'Country of residence'
+    let countryText = 'Country'
     let countryCode;
     let taxPercent = 0
     if (store.session.get('location').country_code
@@ -52,10 +52,11 @@ class Billing extends React.Component {
     return (
       <div className="billing signup-content">
         <div className="left">
-          <h2>Billing information</h2>
+          <h2>Checkout</h2>
           <form className="billing-form">
+            <h3>Billing address</h3>
+            <div className="divider"/>
             <div className="location-inputs">
-              <input type="text" placeholder="Full name"/>
               <Select name="selected-country"
                 ref="countrySelect"
                 options={countries}
@@ -65,19 +66,20 @@ class Billing extends React.Component {
                 onChange={this.selectCountry}
                 />
               <div className="beside">
-                <input type="text" placeholder="City"/>
-                <input type="text" placeholder="Postal code"/>
+                <div className="icon-input"><i className="fa fa-building" aria-hidden="true"></i><input type="text" placeholder="City"/></div>
+                <div className="icon-input"><i className="fa fa-map" aria-hidden="true"></i><input type="text" placeholder="Postal code"/></div>
               </div>
-              <input type="text" placeholder="Street address"/>
+              <div className="icon-input"><i className="fa fa-home" aria-hidden="true"></i><input type="text" placeholder="Street address"/></div>
             </div>
 
-            <div className="divider" />
-
             <div className="creditcard-inputs">
-              <input type="text" placeholder="card number"/>
+              <h3>Payment details</h3>
+              <div className="divider"/>
+              <div className="icon-input"><i className="fa fa-user" aria-hidden="true"></i><input type="text" placeholder="Name on card"/></div>
+              <div className="icon-input"><i className="fa fa-credit-card-alt" aria-hidden="true"></i><input type="text" placeholder="Card number"/></div>
               <div className="beside">
-                <input type="text" placeholder="MM / YY"/>
-                <input type="number" placeholder="CVC"/>
+                <div className="icon-input"><i className="fa fa-calendar-times-o" aria-hidden="true"></i><input type="text" placeholder="MM / YY"/></div>
+                <div className="icon-input"><i className="fa fa-lock" aria-hidden="true"></i><input type="number" placeholder="CVC"/></div>
               </div>
             </div>
           </form>
@@ -100,7 +102,7 @@ class Billing extends React.Component {
             <p>Price</p>
             <p>{this.props.renderPrice()}</p>
           </div>
-          <button>Pay</button>
+          <button>Subscribe</button>
         </div>
       </div>
     )

@@ -4805,6 +4805,11 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
   .signup-modal .signup-content {
     display: flex;
     width: 100%; }
+    .signup-modal .signup-content input {
+      border: 1px solid #dedede;
+      border-radius: 4px;
+      padding: 16px;
+      margin-bottom: 16px; }
     .signup-modal .signup-content .left {
       display: flex;
       flex-direction: column;
@@ -4995,30 +5000,62 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
   justify-content: flex-end; }
   .choose-plan .right label {
     margin-bottom: 8px; }
-  .choose-plan .right input {
-    border: 1px solid #dedede;
-    border-radius: 4px;
-    padding: 16px;
-    margin-bottom: 16px; }
   .choose-plan .right button {
     width: 100%;
     border-radius: 4px; }
     .choose-plan .right button:hover {
       background: #068de7; }
 
-.billing .left .location-inputs {
-  display: flex;
-  flex-direction: column; }
-.billing .left .divider {
-  width: 100%;
-  height: 2px;
-  background: #eee;
-  margin: 32px 0; }
-.billing .left .creditcard-inputs {
-  display: flex;
-  flex-direction: column; }
-.billing .left .beside {
-  display: flex; }
+.billing .left {
+  align-items: center; }
+  .billing .left h3 {
+    margin: 0; }
+  .billing .left form {
+    width: 100%;
+    max-width: 480px; }
+    .billing .left form .beside {
+      justify-content: space-between; }
+      .billing .left form .beside .icon-input {
+        width: calc(50% - 16px); }
+    .billing .left form .icon-input {
+      position: relative; }
+      .billing .left form .icon-input input {
+        padding-left: 48px;
+        width: 100%; }
+      .billing .left form .icon-input i {
+        position: absolute;
+        left: 16px;
+        top: 50%;
+        transform: translateY(-100%);
+        color: #737373; }
+  .billing .left .location-inputs {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 32px; }
+    .billing .left .location-inputs .Select {
+      height: auto;
+      margin-bottom: 16px; }
+    .billing .left .location-inputs .Select-control {
+      background: #fff;
+      border: 1px solid #dedede;
+      border-radius: 4px;
+      height: auto; }
+      .billing .left .location-inputs .Select-control input {
+        border: none;
+        padding: 0; }
+      .billing .left .location-inputs .Select-control .Select-input {
+        height: auto;
+        padding: 9px 0; }
+  .billing .left .divider {
+    width: 100%;
+    height: 2px;
+    background: #eee;
+    margin: 16px 0; }
+  .billing .left .creditcard-inputs {
+    display: flex;
+    flex-direction: column; }
+  .billing .left .beside {
+    display: flex; }
 
 .prof-modal-container {
   position: fixed;

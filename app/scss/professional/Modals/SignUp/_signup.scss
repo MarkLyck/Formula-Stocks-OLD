@@ -4,6 +4,12 @@
   .signup-content {
     display: flex;
     width: 100%;
+    input {
+      border: 1px solid #dedede;
+      border-radius: 4px;
+      padding: 16px;
+      margin-bottom: 16px;
+    }
     .left {
       display: flex;
       flex-direction: column;
