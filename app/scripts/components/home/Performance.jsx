@@ -116,8 +116,8 @@ class Performance extends React.Component {
 
             Formula Stocks’ strategies have outperformed the S&P 500 between 71% and 88% of the time.
             Modern risk benchmarks indicate that Formula Stocks’ strategies exhibit
-            less risk than the general market. Results after 2009 launch are those of following
-            the strategies in real-time. Results before 2009 are back-tested.
+            less risk than the general market. Backtested data has been employed in the
+            construction of this graph. Please see our ToS for additional details.
           </p>
         </div>
       </section>

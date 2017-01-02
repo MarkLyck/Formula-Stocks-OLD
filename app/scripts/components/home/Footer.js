@@ -34,6 +34,25 @@ const Footer = React.createClass({
             investing in securities. This service does not constitute an offer, a solicitation to
             buy a security, or to open a brokerage account.<br/><br/>
 
+            Formula Stocks as a product underwent a 3 year pilot test program from 2009-2011.
+            During this defined testing program, actual performance data, under normal real
+            time market conditions, was recorded, and results reviewed by a state-licensed Big
+            Four auditor. Based on the BUSINESS membership as it existed in its 2009-2011
+            versions, we recorded an average return on equity employed to sustain securities
+            trading of +66,54% in 2009, +52,56% in 2010, +16,84% in 2011. This reflects factors
+            of market liquidity, trading costs and slippage, financial risk, human factors,
+            and was not carried out with any benefit of hindsight.<br/><br/>
+
+            Due to continual development, the website displays up-to-date calculated data
+            refreshed weekly. This backtested performance results have certain inherent
+            limitations, as they could potentially be designed with some benefit of hindsight,
+            even though best efforts has been taken to avoid such risk. Unlike an actual
+            performance record, backtested results do not represent actual trading and may not
+            be impacted by brokerage and other slippage fees. Also, since transactions may or
+            may not actually have been executed, results may have under- or over-compensated
+            for impact, if any, of certain market factors, such as lack of market liquidity or
+            level of participation.<br/><br/>
+
             Past results of any investment system are not necessarily indicative of future
             results. It should not be assumed that the systems presented in these products will
             be profitable or that they cannot result in losses. In addition, information,
@@ -46,22 +65,10 @@ const Footer = React.createClass({
             adequately diversified for any particular risk profile as the required level of
             diversification differs from individual to individual.<br/><br/>
 
-            The 2009-2017 period reflects observed investment results. Previous period
-            statistics (1970-2009) are the result of backtesting the strategies in this
-            timeframe as Formula Stocks strategies became available in 2009. Backtested
-            performance results have certain inherent limitations, as they could potentially
-            be designed with some benefit of hindsight, even though best efforts has been taken
-            to avoid such risk. Unlike an actual performance record, backtested results do not
-            represent actual trading and may not be impacted by brokerage and other slippage
-            fees. Also, since transactions may or may not actually have been executed, results
-            may have under- or over-compensated for impact, if any, of certain market factors,
-            such as lack of market liquidity or level of participation.<br/><br/>
-
             Formula Stocks business analytics depends on the accuracy of the published accounts
             of public corporations. Such accuracy may from time to time be less than ideal.
             Formula Stocks strategies evolve and improve on a recurring basis, and any result
-            and statistic is therefore subject to change without notice. Formula Stocks
-            employees may or may not own equities mentioned in the service.
+            and statistic is therefore subject to change without notice.
           </p>
           <p className="white-color disclaimer agreement">By visiting this site, you agree to our <a className="blue-color" onClick={this.showTerms}>Terms and Conditions</a> & <a className="blue-color" onClick={this.showPrivacy}>Privacy Policy</a></p>
         </div>
