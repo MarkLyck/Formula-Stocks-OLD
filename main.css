@@ -4802,45 +4802,61 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
 .signup-modal {
   display: flex;
   flex-direction: column; }
-  .signup-modal .beside {
+  .signup-modal .bottom-bar {
     width: 100%;
-    display: flex; }
-  .signup-modal .left {
+    background: #283544;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 12px;
+    height: 36px; }
+    .signup-modal .bottom-bar p {
+      margin: 0;
+      color: #95989E;
+      font-size: 12px; }
+      .signup-modal .bottom-bar p a {
+        color: #eeeeee;
+        text-decoration: underline; }
+
+.choose-plan {
+  display: flex;
+  width: 100%; }
+  .choose-plan .left {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
     padding: 36px; }
-    .signup-modal .left h2 {
+    .choose-plan .left h2 {
       font-size: 100;
       color: #27A5F9;
       font-size: 26px;
       font-weight: 200;
       margin: 0;
       margin-bottom: 32px; }
-    .signup-modal .left .plan-overview {
+    .choose-plan .left .plan-overview {
       height: calc(100% - 72px);
       display: flex;
       align-content: stretch;
       align-items: stretch;
       flex-grow: 1;
       box-sizing: border-box; }
-      .signup-modal .left .plan-overview .features .row {
+      .choose-plan .left .plan-overview .features .row {
         padding-right: 16px; }
-        .signup-modal .left .plan-overview .features .row p {
+        .choose-plan .left .plan-overview .features .row p {
           color: #6A7885; }
-        .signup-modal .left .plan-overview .features .row .info-circle {
+        .choose-plan .left .plan-overview .features .row .info-circle {
           margin-left: 8px;
           color: #6A7885;
           position: relative; }
-          .signup-modal .left .plan-overview .features .row .info-circle:hover .explanation {
+          .choose-plan .left .plan-overview .features .row .info-circle:hover .explanation {
             opacity: 1;
             display: block;
             width: 340px;
             height: auto;
             padding: 24px; }
-            .signup-modal .left .plan-overview .features .row .info-circle:hover .explanation h3, .signup-modal .left .plan-overview .features .row .info-circle:hover .explanation p {
+            .choose-plan .left .plan-overview .features .row .info-circle:hover .explanation h3, .choose-plan .left .plan-overview .features .row .info-circle:hover .explanation p {
               display: block; }
-        .signup-modal .left .plan-overview .features .row .explanation {
+        .choose-plan .left .plan-overview .features .row .explanation {
           display: none;
           width: 0;
           height: 0;
@@ -4857,15 +4873,15 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
           box-shadow: rgba(0, 0, 0, 0.14902) 0px 4px 18px;
           transition: opacity 200ms;
           box-sizing: border-box; }
-          .signup-modal .left .plan-overview .features .row .explanation h3 {
+          .choose-plan .left .plan-overview .features .row .explanation h3 {
             display: none;
             color: #27A5F9;
             margin: 0;
             margin-bottom: 8px; }
-          .signup-modal .left .plan-overview .features .row .explanation p {
+          .choose-plan .left .plan-overview .features .row .explanation p {
             display: none;
             margin: 0; }
-          .signup-modal .left .plan-overview .features .row .explanation::after {
+          .choose-plan .left .plan-overview .features .row .explanation::after {
             content: '';
             position: absolute;
             bottom: -8px;
@@ -4873,42 +4889,42 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
             border-left: 8px solid transparent;
             border-right: 8px solid transparent;
             border-top: 8px solid #fff; }
-      .signup-modal .left .plan-overview .column {
+      .choose-plan .left .plan-overview .column {
         display: flex;
         flex-direction: column;
         border-top: 2px solid #fff; }
-      .signup-modal .left .plan-overview .row {
+      .choose-plan .left .plan-overview .row {
         display: flex;
         flex-grow: 1;
         border-bottom: 1px solid #E9EEF2;
         align-items: center; }
-      .signup-modal .left .plan-overview .row:first-child {
+      .choose-plan .left .plan-overview .row:first-child {
         height: 64px; }
-      .signup-modal .left .plan-overview .plan-columns-container {
+      .choose-plan .left .plan-overview .plan-columns-container {
         display: flex;
         flex-grow: 1; }
-        .signup-modal .left .plan-overview .plan-columns-container .plan-column {
+        .choose-plan .left .plan-overview .plan-columns-container .plan-column {
           width: 100%;
           text-transform: capitalize;
           box-sizing: border-box; }
-          .signup-modal .left .plan-overview .plan-columns-container .plan-column:hover {
+          .choose-plan .left .plan-overview .plan-columns-container .plan-column:hover {
             cursor: pointer; }
-            .signup-modal .left .plan-overview .plan-columns-container .plan-column:hover .row:first-child p {
+            .choose-plan .left .plan-overview .plan-columns-container .plan-column:hover .row:first-child p {
               color: #27A5F9; }
-          .signup-modal .left .plan-overview .plan-columns-container .plan-column .row {
+          .choose-plan .left .plan-overview .plan-columns-container .plan-column .row {
             justify-content: center; }
-        .signup-modal .left .plan-overview .plan-columns-container .selected {
+        .choose-plan .left .plan-overview .plan-columns-container .selected {
           border: 2px solid #27A5F9;
           height: calc(100% + 1px);
           width: calc(100% - 7px); }
-          .signup-modal .left .plan-overview .plan-columns-container .selected .row p {
+          .choose-plan .left .plan-overview .plan-columns-container .selected .row p {
             color: #2b2b4d; }
-          .signup-modal .left .plan-overview .plan-columns-container .selected .row:first-child p {
+          .choose-plan .left .plan-overview .plan-columns-container .selected .row:first-child p {
             color: #27A5F9;
             font-weight: 600; }
-          .signup-modal .left .plan-overview .plan-columns-container .selected .row:last-child {
+          .choose-plan .left .plan-overview .plan-columns-container .selected .row:last-child {
             border-bottom: none; }
-  .signup-modal .right {
+  .choose-plan .right {
     width: 288px;
     background: #F7FAFC;
     padding: 36px;
@@ -4916,12 +4932,12 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
     display: flex;
     flex-direction: column;
     justify-content: flex-end; }
-    .signup-modal .right .top {
+    .choose-plan .right .top {
       position: absolute;
       top: 0;
       left: 0;
       right: 0; }
-      .signup-modal .right .top .line {
+      .choose-plan .right .top .line {
         height: 140px;
         width: 1px;
         background: #27A5F9;
@@ -4929,15 +4945,15 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
         top: 0;
         left: 32px;
         z-index: 1001; }
-      .signup-modal .right .top .steps {
+      .choose-plan .right .top .steps {
         position: absolute;
         top: 24px;
         left: 0;
         z-index: 1010; }
-        .signup-modal .right .top .steps .step {
+        .choose-plan .right .top .steps .step {
           display: flex;
           align-items: center; }
-          .signup-modal .right .top .steps .step .circle {
+          .choose-plan .right .top .steps .step .circle {
             background: #fff;
             margin-left: 24px;
             width: 17px;
@@ -4945,50 +4961,35 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
             border: 1px solid #27A5F9;
             border-radius: 50%;
             margin-right: 24px; }
-          .signup-modal .right .top .steps .step .selected {
+          .choose-plan .right .top .steps .step .selected {
             background: #27A5F9; }
-    .signup-modal .right .info {
+    .choose-plan .right .info {
       display: flex;
       justify-content: space-between;
       border-bottom: 1px solid #dedede;
       padding: 4px 0; }
-      .signup-modal .right .info p {
+      .choose-plan .right .info p {
         text-transform: capitalize; }
-      .signup-modal .right .info p:last-child {
+      .choose-plan .right .info p:last-child {
         font-weight: 600;
         color: #27A5F9; }
-    .signup-modal .right .plan-price {
+    .choose-plan .right .plan-price {
       margin-bottom: 32px; }
-      .signup-modal .right .plan-price p:last-child {
+      .choose-plan .right .plan-price p:last-child {
         text-transform: none;
         color: #49494A; }
-    .signup-modal .right label {
+    .choose-plan .right label {
       margin-bottom: 8px; }
-    .signup-modal .right input {
+    .choose-plan .right input {
       border: 1px solid #dedede;
       border-radius: 4px;
       padding: 16px;
       margin-bottom: 16px; }
-    .signup-modal .right button {
+    .choose-plan .right button {
       width: 100%;
       border-radius: 4px; }
-      .signup-modal .right button:hover {
+      .choose-plan .right button:hover {
         background: #068de7; }
-  .signup-modal .bottom-bar {
-    width: 100%;
-    background: #283544;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 12px;
-    height: 36px; }
-    .signup-modal .bottom-bar p {
-      margin: 0;
-      color: #95989E;
-      font-size: 12px; }
-      .signup-modal .bottom-bar p a {
-        color: #eeeeee;
-        text-decoration: underline; }
 
 .prof-modal-container {
   position: fixed;
