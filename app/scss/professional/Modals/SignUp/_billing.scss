@@ -1,0 +1,21 @@
+.billing {
+  .left {
+    .location-inputs {
+      display: flex;
+      flex-direction: column;
+    }
+    .divider {
+      width: 100%;
+      height: 2px;
+      background: #eee;
+      margin: 32px 0;
+    }
+    .creditcard-inputs {
+      display: flex;
+      flex-direction: column;
+    }
+    .beside {
+      display: flex;
+    }
+  }
+}

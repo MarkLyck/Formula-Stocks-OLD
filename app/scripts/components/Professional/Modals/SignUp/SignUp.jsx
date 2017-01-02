@@ -3,6 +3,7 @@ import store from '../../../../store.js'
 import { Link, browserHistory } from 'react-router'
 
 import ChoosePlan from './ChoosePlan.jsx'
+import Billing from './Billing.jsx'
 
 function formatPrice(value) {
   while(/(\d+)(\d{3})/.test(value.toString())) {
@@ -20,9 +21,10 @@ class SignUp extends React.Component {
     this.renderPrice = this.renderPrice.bind(this)
     this.closeModal = this.closeModal.bind(this)
     this.renderContent = this.renderContent.bind(this)
+    this.nextPage = this.nextPage.bind(this)
 
     this.state = {
-      page: 1,
+      page: 2,
       selected: 'premium',
       gotInfo: false
     }
@@ -56,11 +58,15 @@ class SignUp extends React.Component {
     }
   }
 
+  nextPage() {
+    this.setState({ page: this.state.page + 1 })
+  }
+
   renderContent() {
     if (this.state.page === 1) {
-      return <ChoosePlan selected={this.state.selected} selectPlan={this.selectPlan} renderPrice={this.renderPrice}/>
+      return <ChoosePlan selected={this.state.selected} selectPlan={this.selectPlan} renderPrice={this.renderPrice} nextPage={this.nextPage}/>
     } else if (this.state.page === 2) {
-      return ''
+      return <Billing selected={this.state.selected} renderPrice={this.renderPrice} nextPage={this.nextPage}/>
     }
   }
 

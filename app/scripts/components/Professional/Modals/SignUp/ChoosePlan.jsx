@@ -42,7 +42,7 @@ class ChoosePlan extends React.Component {
             <input id="email" type="email" placeholder="Email address" ref="email"/>
             <label htmlFor="email">Choose a password</label>
             <input id="password" type="password" placeholder="Password" ref="password"/>
-            <button className="next">Next</button>
+            <button className="next" onClick={this.props.nextPage}>Next</button>
           </div>
         </div>)
   }

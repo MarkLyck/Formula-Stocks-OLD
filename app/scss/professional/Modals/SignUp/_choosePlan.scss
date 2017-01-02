@@ -1,19 +1,5 @@
 .choose-plan {
-  display: flex;
-  width: 100%;
   .left {
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-    padding: 36px;
-    h2 {
-      font-size: 100;
-      color: $primary-color;
-      font-size: 26px;
-      font-weight: 200;
-      margin: 0;
-      margin-bottom: 32px;
-    }
     .plan-overview {
       height: calc(100% - 72px);
       display: flex;
@@ -147,63 +133,6 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    .top {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      .line {
-        height: 140px;
-        width: 1px;
-        background: $primary-color;
-        position: absolute;
-        top: 0;
-        left: 32px;
-        z-index: 1001;
-      }
-      .steps {
-        position: absolute;
-        top: 24px;
-        left: 0;
-        z-index: 1010;
-        .step {
-          display: flex;
-          align-items: center;
-          .circle {
-            background: #fff;
-            margin-left: 24px;
-            width: 17px;
-            height: 17px;
-            border: 1px solid $primary-color;
-            border-radius: 50%;
-            margin-right: 24px;
-          }
-          .selected {
-            background: $primary-color;
-          }
-        }
-      }
-    }
-    .info {
-      display: flex;
-      justify-content: space-between;
-      border-bottom: 1px solid #dedede;
-      padding: 4px 0;
-      p {
-        text-transform: capitalize;
-      }
-      p:last-child {
-        font-weight: 600;
-        color: $primary-color;
-      }
-    }
-    .plan-price {
-      margin-bottom: 32px;
-      p:last-child {
-        text-transform: none;
-        color: $text-color;
-      }
-    }
     label {
       margin-bottom: 8px;
     }

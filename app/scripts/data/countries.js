@@ -4,7 +4,7 @@ export default [
   {"label": "Albania", "value": "AL", taxPercent: 20},
   {"label": "Algeria", "value": "DZ"},
   {"label": "American Samoa", "value": "AS"},
-  {"label": "AndorrA", "value": "AD"},
+  {"label": "Andorra", "value": "AD"},
   {"label": "Angola", "value": "AO"},
   {"label": "Anguilla", "value": "AI"},
   {"label": "Antarctica", "value": "AQ"},
