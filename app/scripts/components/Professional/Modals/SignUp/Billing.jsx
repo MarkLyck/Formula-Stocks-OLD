@@ -9,6 +9,8 @@ class Billing extends React.Component {
   constructor(props) {
     super(props)
 
+    this.toggleCheckBox = this.toggleCheckBox.bind(this)
+
     let plan = store.plans.get(this.props.selected).toJSON()
 
     let cycle = ' monthly'
@@ -48,7 +50,15 @@ class Billing extends React.Component {
     }
   }
 
+  toggleCheckBox() {
+    this.setState({checked: !this.state.checked})
+  }
+
   render() {
+    let checkbox = <div className="checker" onClick={this.toggleCheckBox}></div>
+    if (this.state.checked) {
+      checkbox = <div className="checker" onClick={this.toggleCheckBox}><i className="fa fa-check" aria-hidden="true"></i></div>
+    }
     return (
       <div className="billing signup-content">
         <div className="left">
@@ -101,6 +111,14 @@ class Billing extends React.Component {
           <div className="plan-price info">
             <p>Price</p>
             <p>{this.props.renderPrice()}</p>
+          </div>
+          <div className="discount">
+            <input type="text" placeholder="Discount code"/>
+            <button className="apply-discount">Apply</button>
+          </div>
+          <div className="ToC">
+            {checkbox}
+            <p>I've read and agree to the <a onClick={this.showTerms}>Terms of Service</a></p>
           </div>
           <button>Subscribe</button>
         </div>

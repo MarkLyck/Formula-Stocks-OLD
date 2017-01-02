@@ -5006,56 +5006,98 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
     .choose-plan .right button:hover {
       background: #068de7; }
 
-.billing .left {
-  align-items: center; }
-  .billing .left h3 {
-    margin: 0; }
-  .billing .left form {
-    width: 100%;
-    max-width: 480px; }
-    .billing .left form .beside {
-      justify-content: space-between; }
-      .billing .left form .beside .icon-input {
-        width: calc(50% - 16px); }
-    .billing .left form .icon-input {
-      position: relative; }
-      .billing .left form .icon-input input {
-        padding-left: 48px;
-        width: 100%; }
-      .billing .left form .icon-input i {
-        position: absolute;
-        left: 16px;
-        top: 50%;
-        transform: translateY(-100%);
-        color: #737373; }
-  .billing .left .location-inputs {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 32px; }
-    .billing .left .location-inputs .Select {
-      height: auto;
-      margin-bottom: 16px; }
-    .billing .left .location-inputs .Select-control {
-      background: #fff;
-      border: 1px solid #dedede;
-      border-radius: 4px;
-      height: auto; }
-      .billing .left .location-inputs .Select-control input {
-        border: none;
-        padding: 0; }
-      .billing .left .location-inputs .Select-control .Select-input {
+.billing {
+  height: 100%; }
+  .billing .left {
+    align-items: center; }
+    .billing .left h3 {
+      margin: 0; }
+    .billing .left form {
+      width: 100%;
+      max-width: 480px; }
+      .billing .left form .beside {
+        justify-content: space-between; }
+        .billing .left form .beside .icon-input {
+          width: calc(50% - 16px); }
+      .billing .left form .icon-input {
+        position: relative; }
+        .billing .left form .icon-input input {
+          padding-left: 48px;
+          width: 100%; }
+        .billing .left form .icon-input i {
+          position: absolute;
+          left: 16px;
+          top: 50%;
+          transform: translateY(-100%);
+          color: #737373; }
+    .billing .left .location-inputs {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 32px; }
+      .billing .left .location-inputs .Select {
         height: auto;
-        padding: 9px 0; }
-  .billing .left .divider {
-    width: 100%;
-    height: 2px;
-    background: #eee;
-    margin: 16px 0; }
-  .billing .left .creditcard-inputs {
-    display: flex;
-    flex-direction: column; }
-  .billing .left .beside {
-    display: flex; }
+        margin-bottom: 16px; }
+      .billing .left .location-inputs .Select-control {
+        background: #fff;
+        border: 1px solid #dedede;
+        border-radius: 4px;
+        height: auto; }
+        .billing .left .location-inputs .Select-control input {
+          border: none;
+          padding: 0; }
+        .billing .left .location-inputs .Select-control .Select-input {
+          height: auto;
+          padding: 9px 0; }
+    .billing .left .divider {
+      width: 100%;
+      height: 2px;
+      background: #eee;
+      margin: 16px 0; }
+    .billing .left .creditcard-inputs {
+      display: flex;
+      flex-direction: column; }
+    .billing .left .beside {
+      display: flex; }
+  .billing .right {
+    height: 100%; }
+    .billing .right button:hover {
+      background: #068de7; }
+    .billing .right .discount {
+      display: flex;
+      width: 100%; }
+      .billing .right .discount input {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        border-right: none;
+        width: 100%; }
+      .billing .right .discount .apply-discount {
+        padding: 0 16px;
+        height: 50px;
+        border-top-right-radius: 4px;
+        border-bottom-right-radius: 4px; }
+    .billing .right .ToC {
+      display: flex;
+      align-items: center; }
+      .billing .right .ToC .checker {
+        border: 1px solid #dedede;
+        border-radius: 4px;
+        height: 32px;
+        width: 32px;
+        background: #fff;
+        margin-right: 8px;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: center;
+        align-items: center; }
+        .billing .right .ToC .checker i {
+          color: #27A5F9; }
+        .billing .right .ToC .checker:hover {
+          cursor: pointer; }
+      .billing .right .ToC p {
+        flex-grow: 1;
+        width: calc(100% - 32px - 8px); }
+        .billing .right .ToC p a {
+          text-decoration: underline; }
 
 .prof-modal-container {
   position: fixed;
