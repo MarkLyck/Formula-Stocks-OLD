@@ -16,7 +16,8 @@ class HowWeBeatTheMarket extends React.Component {
             the story behind a stock. It is a human beings preferred method of analysis, to
             absorb and understand a story, because our brains are designed to respond to and
             understand stories very well. Probably our ancestors communicated vital
-            information for surviving, when gathered around a bonfire using stories.<br/><br/>
+            information for survival, when gathered around a bonfire using stories as the
+            medium.<br/><br/>
 
             When it comes to hard facts the situation changes. Scientific studies show, that
             when the human brain has to respond to a limited number of variables such as 4
@@ -70,18 +71,17 @@ class HowWeBeatTheMarket extends React.Component {
         </CollapseSegment>
         <CollapseSegment title="Scientific method">
           <p>
-            We develop based on the scientific method. A thesis is formed,
-            based on observation and logic. A priori investment recommendations are selected
-            in a randomized double blind controlled trial. A posteriori results determine the
-            validity of the thesis tested in comparison with a baseline.<br/><br/>
+            We develop based on the scientific method. A thesis is formed, based on
+            observation and logic. A priori investment recommendations are selected in a
+            randomized double blind controlled trial based on the thesis. A posteriori results
+            determine the validity of the thesis tested in comparison with a baseline.<br/><br/>
 
-            By accepting or rejecting thesis' numbering in the thousands,
-            with quantitative hard data, we have advanced the basic knowledge in our
-            field over the last 14 years. The speed of the process has been greatly
-            accelerated by machine learning.<br/><br/>
+            By accepting or rejecting thesis' numbering in the thousands, with quantitative
+            hard data, we have advanced the basic knowledge in our field over the last 14
+            years. The speed of the process has been greatly accelerated by machine learning.<br/><br/>
 
-            All scientific studies are performed in an environment,
-            specifically built so as to be non-biased in every possible respect.
+            All scientific studies are performed in an environment, specifically built so as
+            to be non-biased in every possible respect.
           </p>
         </CollapseSegment>
         <CollapseSegment title="Statistics">

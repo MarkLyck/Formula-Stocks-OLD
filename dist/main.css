@@ -4104,6 +4104,8 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
   .professional section .subtitle {
     text-align: center;
     max-width: 1160px; }
+  .professional section .left-align {
+    align-self: flex-start; }
   .professional section .divider {
     margin-bottom: 32px; }
   .professional section p {
@@ -4134,7 +4136,8 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
     .professional section .beside > div:last-child {
       margin-left: 32px; }
   .professional section .columns {
-    display: flex; }
+    display: flex;
+    width: 100%; }
     .professional section .columns > div:first-child {
       margin-right: 32px; }
     .professional section .columns .columns-2 {

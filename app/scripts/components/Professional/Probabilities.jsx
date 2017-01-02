@@ -7,10 +7,10 @@ class Probabilities extends React.Component {
       <section className="probabilities">
         <h2 className="title">A matter of probabilities</h2>
         <div className="divider"/>
-        <p>
+        <p className="left-align">
           Our technology has typically been able to predict investment success
           in the future with a degree of certainty in the neighborhood of 89 to 92%,
-          respectively.<sup>1</sup><br/><br/>
+          respectively.<sup>1</sup><br/>
         </p>
         <div className="columns">
           <div className="columns-2">

@@ -14,6 +14,9 @@
       text-align: center;
       max-width: 1160px;
     }
+    .left-align {
+      align-self: flex-start;
+    }
     .divider {
       margin-bottom: 32px;
     }
@@ -53,6 +56,7 @@
     }
     .columns {
       display: flex;
+      width: 100%;
       > div:first-child {
         margin-right: 32px;
       }
