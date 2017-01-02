@@ -4877,12 +4877,13 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
           text-transform: capitalize; }
         .signup-modal .signup-content .right .info p:last-child {
           font-weight: 600;
-          color: #27A5F9; }
-      .signup-modal .signup-content .right .plan-price {
-        margin-bottom: 32px; }
-        .signup-modal .signup-content .right .plan-price p:last-child {
           text-transform: none;
           color: #49494A; }
+      .signup-modal .signup-content .right .plan-name p:last-child {
+        color: #27A5F9;
+        text-transform: capitalize; }
+      .signup-modal .signup-content .right .plan-price {
+        margin-bottom: 32px; }
   .signup-modal .bottom-bar {
     width: 100%;
     background: #283544;
@@ -5024,6 +5025,8 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
         .billing .left form .icon-input input {
           padding-left: 48px;
           width: 100%; }
+          .billing .left form .icon-input input:focus {
+            border-color: #27A5F9; }
         .billing .left form .icon-input i {
           position: absolute;
           left: 16px;
@@ -5070,6 +5073,8 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
         border-bottom-right-radius: 0;
         border-right: none;
         width: 100%; }
+        .billing .right .discount input:focus {
+          border-color: #27A5F9; }
       .billing .right .discount .apply-discount {
         padding: 0 16px;
         height: 50px;
@@ -5092,12 +5097,16 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
         .billing .right .ToC .checker i {
           color: #27A5F9; }
         .billing .right .ToC .checker:hover {
-          cursor: pointer; }
+          cursor: pointer;
+          border-color: #27A5F9; }
       .billing .right .ToC p {
         flex-grow: 1;
         width: calc(100% - 32px - 8px); }
         .billing .right .ToC p a {
           text-decoration: underline; }
+    .billing .right .subscribe {
+      border-radius: 4px;
+      margin-top: 8px; }
 
 .prof-modal-container {
   position: fixed;
