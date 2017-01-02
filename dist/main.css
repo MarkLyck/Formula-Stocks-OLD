@@ -4856,6 +4856,13 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
               margin-right: 24px; }
             .signup-modal .signup-content .right .top .steps .step .selected {
               background: #27A5F9; }
+            .signup-modal .signup-content .right .top .steps .step button {
+              background: none;
+              padding: 0;
+              margin: 16px 0;
+              color: #49494A; }
+              .signup-modal .signup-content .right .top .steps .step button:hover {
+                color: #27A5F9; }
       .signup-modal .signup-content .right .info {
         display: flex;
         justify-content: space-between;

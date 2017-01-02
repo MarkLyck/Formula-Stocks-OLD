@@ -22,6 +22,7 @@ class SignUp extends React.Component {
     this.closeModal = this.closeModal.bind(this)
     this.renderContent = this.renderContent.bind(this)
     this.nextPage = this.nextPage.bind(this)
+    this.lastPage = this.lastPage.bind(this)
 
     this.state = {
       page: 2,
@@ -61,12 +62,15 @@ class SignUp extends React.Component {
   nextPage() {
     this.setState({ page: this.state.page + 1 })
   }
+  lastPage() {
+    this.setState({ page: this.state.page - 1 })
+  }
 
   renderContent() {
     if (this.state.page === 1) {
       return <ChoosePlan selected={this.state.selected} selectPlan={this.selectPlan} renderPrice={this.renderPrice} nextPage={this.nextPage}/>
     } else if (this.state.page === 2) {
-      return <Billing selected={this.state.selected} renderPrice={this.renderPrice} nextPage={this.nextPage}/>
+      return <Billing selected={this.state.selected} renderPrice={this.renderPrice} nextPage={this.nextPage} lastPage={this.lastPage}/>
     }
   }
 

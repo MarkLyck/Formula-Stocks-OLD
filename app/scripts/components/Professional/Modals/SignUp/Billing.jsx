@@ -85,7 +85,7 @@ class Billing extends React.Component {
         <div className="right">
           <div className="top">
             <div className="steps">
-              <div className="step"><div className="circle"/><p>Choose a plan</p></div>
+              <div className="step"><div className="circle"/><button className="last-page" onClick={this.props.lastPage}>Choose a plan</button></div>
               <div className="step"><div className="circle selected"/><p>Billing</p></div>
               <div className="step"><div className="circle"/><p>Done</p></div>
             </div>

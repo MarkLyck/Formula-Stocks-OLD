@@ -60,6 +60,15 @@
             .selected {
               background: $primary-color;
             }
+            button {
+              background: none;
+              padding: 0;
+              margin: 16px 0;
+              color: $text-color;
+              &:hover {
+                color: $primary-color;
+              }
+            }
           }
         }
       }
