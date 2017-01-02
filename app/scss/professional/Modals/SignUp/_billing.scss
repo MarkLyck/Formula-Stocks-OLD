@@ -19,6 +19,9 @@
         input {
           padding-left: 48px;
           width: 100%;
+          &:focus {
+            border-color: $primary-color;
+          }
         }
         i {
           position: absolute;
@@ -81,6 +84,9 @@
         border-bottom-right-radius: 0;
         border-right: none;
         width: 100%;
+        &:focus {
+          border-color: $primary-color;
+        }
       }
       .apply-discount {
         padding: 0 16px;
@@ -108,6 +114,7 @@
         }
         &:hover {
           cursor: pointer;
+          border-color: $primary-color;
         }
       }
       p {
@@ -117,6 +124,10 @@
           text-decoration: underline;
         }
       }
+    }
+    .subscribe {
+      border-radius: 4px;
+      margin-top: 8px;
     }
   }
 }

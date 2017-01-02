@@ -157,7 +157,6 @@ class PaymentForm extends React.Component {
   }
 
   render() {
-    console.log('THE RIGHT ONE RENDERED')
     let error
     if (this.state.error) {
       error = (
@@ -172,8 +171,6 @@ class PaymentForm extends React.Component {
     }
 
     let payButton =   <button className="pay-button"><div><h3>Subscribe for ${cc.commafy(this.state.price)} {this.state.cycle}</h3></div></button>
-
-    console.log(this.props.passedProps.plan)
 
     if (this.state.taxPercent > 0 && this.props.passedProps.plan === 'basic') {
       payButton = (<button className="pay-button">
@@ -191,7 +188,6 @@ class PaymentForm extends React.Component {
                     </div>
                   </button>)
     } else if (this.props.passedProps.plan === 'basic') {
-      console.log('else if plan === basic')
       payButton =  (<button className="pay-button">
                       <div>
                         <h3>Start free trial</h3>

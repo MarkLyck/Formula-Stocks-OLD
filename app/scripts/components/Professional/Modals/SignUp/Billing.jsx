@@ -10,6 +10,17 @@ class Billing extends React.Component {
     super(props)
 
     this.toggleCheckBox = this.toggleCheckBox.bind(this)
+    this.selectCountry = this.selectCountry.bind(this)
+    this.calculateTax = this.calculateTax.bind(this)
+    this.applyDiscount = this.applyDiscount.bind(this)
+
+    this.renderTax = this.renderTax.bind(this)
+
+    this.ccFormat = this.ccFormat.bind(this)
+    this.dateFormat = this.dateFormat.bind(this)
+    this.cvcFormat = this.cvcFormat.bind(this)
+
+
 
     let plan = store.plans.get(this.props.selected).toJSON()
 
@@ -46,12 +57,81 @@ class Billing extends React.Component {
       countryName: countryText,
       countryCode: countryCode,
       taxPercent: taxPercent,
+      discountPercent: 0,
       cycle: cycle
     }
   }
 
+  calculateTax(countryCode) {
+    cc.calculateTax(countryCode).then((tax) => {
+      this.setState({ taxPercent: tax })
+    })
+  }
+
   toggleCheckBox() {
-    this.setState({checked: !this.state.checked})
+    this.setState({ checked: !this.state.checked })
+  }
+
+  ccFormat() {
+    this.refs.cardNumber.value = cc.ccFormat(this.refs.cardNumber.value)
+  }
+
+  dateFormat(e) {
+    this.refs.cardExpiry.value = cc.dateFormat(e, this.refs.cardExpiry.value)
+  }
+
+  cvcFormat() {
+    this.refs.cardCvc.value = cc.cvcFormat(this.refs.cardCvc.value)
+  }
+
+  selectCountry(country) {
+    this.setState({
+      countryName: country.label,
+      countryCode: country.value,
+    })
+    this.calculateTax(country.value)
+  }
+
+  renderTax() {
+    if (this.state.taxPercent > 0) {
+      return (
+        <div className="tax info">
+          <p>Tax</p>
+          <p>${this.state.taxPercent}</p>
+        </div>
+      )
+    }
+  }
+
+  renderDiscount() {
+    if (this.state.discount > 0) {
+      return (
+        <div className="tax info">
+          <p>Discount</p>
+          <p>- ${(this.state.price * (this.state.discount / 100 + 1) - this.state.price).toFixed(2)} </p>
+        </div>
+      )
+    }
+  }
+
+  renderPrice() {
+    let price = this.state.price
+    if (this.state.discount > 0) {
+      price = price * -(this.state.discount / 100 - 1)
+    }
+    if (this.state.taxPercent > 0) {
+      price = price * (this.state.taxPercent / 100 + 1)
+    }
+    return (
+      <div className="tax info">
+        <p>Total</p>
+        <p>${price} {this.state.cycle}</p>
+      </div>
+    )
+  }
+
+  applyDiscount() {
+    this.setState({ discount: 10 })
   }
 
   render() {
@@ -86,10 +166,19 @@ class Billing extends React.Component {
               <h3>Payment details</h3>
               <div className="divider"/>
               <div className="icon-input"><i className="fa fa-user" aria-hidden="true"></i><input type="text" placeholder="Name on card"/></div>
-              <div className="icon-input"><i className="fa fa-credit-card-alt" aria-hidden="true"></i><input type="text" placeholder="Card number"/></div>
+              <div className="icon-input">
+                <i className="fa fa-credit-card-alt" aria-hidden="true"></i>
+                <input type="text" placeholder="Card number" onKeyUp={this.ccFormat} ref="cardNumber"/>
+              </div>
               <div className="beside">
-                <div className="icon-input"><i className="fa fa-calendar-times-o" aria-hidden="true"></i><input type="text" placeholder="MM / YY"/></div>
-                <div className="icon-input"><i className="fa fa-lock" aria-hidden="true"></i><input type="number" placeholder="CVC"/></div>
+                <div className="icon-input">
+                  <i className="fa fa-calendar-times-o" aria-hidden="true"></i>
+                  <input type="text" placeholder="MM / YY" onKeyUp={this.dateFormat} ref="cardExpiry"/>
+                </div>
+                <div className="icon-input">
+                  <i className="fa fa-lock" aria-hidden="true"></i>
+                  <input type="number" placeholder="CVC" onKeyUp={this.cvcFormat} ref="cardCvc"/>
+                </div>
               </div>
             </div>
           </form>
@@ -108,19 +197,18 @@ class Billing extends React.Component {
             <p>Plan</p>
             <p>{this.props.selected}</p>
           </div>
-          <div className="plan-price info">
-            <p>Price</p>
-            <p>{this.props.renderPrice()}</p>
-          </div>
+          {this.renderTax()}
+          {this.renderDiscount()}
+          {this.renderPrice()}
           <div className="discount">
             <input type="text" placeholder="Discount code"/>
-            <button className="apply-discount">Apply</button>
+            <button className="apply-discount" onClick={this.applyDiscount}>Apply</button>
           </div>
           <div className="ToC">
             {checkbox}
             <p>I've read and agree to the <a onClick={this.showTerms}>Terms of Service</a></p>
           </div>
-          <button>Subscribe</button>
+          <button className="subscribe">Subscribe</button>
         </div>
       </div>
     )

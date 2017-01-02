@@ -88,15 +88,18 @@
         }
         p:last-child {
           font-weight: 600;
+          text-transform: none;
+          color: $text-color;
+        }
+      }
+      .plan-name {
+        p:last-child {
           color: $primary-color;
+          text-transform: capitalize;
         }
       }
       .plan-price {
         margin-bottom: 32px;
-        p:last-child {
-          text-transform: none;
-          color: $text-color;
-        }
       }
     }
   }
