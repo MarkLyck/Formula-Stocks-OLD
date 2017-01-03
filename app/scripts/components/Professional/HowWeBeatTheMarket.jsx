@@ -91,10 +91,10 @@ class HowWeBeatTheMarket extends React.Component {
             versus losing. The mathematical expectancy is known, each time a recommendation
             is issued.<br/><br/>
 
-            When producing statistical information care is given to ensure it is solid,
-            and based on timeless observations which true not just in a specific timeperiod or
-            market, but generally over the long run. All statistical material is derived from at
-            least 50 years of measurements.
+            When producing statistical information care is given to ensure it is solid, and
+            based on timeless observations which are true not just in a specific time period or
+            market, but generally over the long run. All statistical material is derived from
+            at least 50 years of measurements.
           </p>
         </CollapseSegment>
         <CollapseSegment title="Active management">

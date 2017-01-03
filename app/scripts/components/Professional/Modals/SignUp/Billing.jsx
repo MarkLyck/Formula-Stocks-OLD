@@ -15,12 +15,14 @@ class Billing extends React.Component {
     this.applyDiscount = this.applyDiscount.bind(this)
 
     this.renderTax = this.renderTax.bind(this)
+    this.renderDiscount = this.renderDiscount.bind(this)
+    this.renderDiscountButton = this.renderDiscountButton.bind(this)
 
     this.ccFormat = this.ccFormat.bind(this)
     this.dateFormat = this.dateFormat.bind(this)
     this.cvcFormat = this.cvcFormat.bind(this)
 
-
+    this.submit = this.submit.bind(this)
 
     let plan = store.plans.get(this.props.selected).toJSON()
 
@@ -57,7 +59,7 @@ class Billing extends React.Component {
       countryName: countryText,
       countryCode: countryCode,
       taxPercent: taxPercent,
-      discountPercent: 0,
+      discount: 0,
       cycle: cycle
     }
   }
@@ -114,6 +116,15 @@ class Billing extends React.Component {
     }
   }
 
+  renderDiscountButton() {
+    if (this.state.discount === 0) {
+      return (<div className="discount">
+        <input type="text" placeholder="Discount code"/>
+        <button className="apply-discount" onClick={this.applyDiscount}>Apply</button>
+      </div>)
+    }
+  }
+
   renderPrice() {
     let price = this.state.price
     if (this.state.discount > 0) {
@@ -132,6 +143,10 @@ class Billing extends React.Component {
 
   applyDiscount() {
     this.setState({ discount: 10 })
+  }
+
+  submit() {
+    this.props.nextPage()
   }
 
   render() {
@@ -200,15 +215,12 @@ class Billing extends React.Component {
           {this.renderTax()}
           {this.renderDiscount()}
           {this.renderPrice()}
-          <div className="discount">
-            <input type="text" placeholder="Discount code"/>
-            <button className="apply-discount" onClick={this.applyDiscount}>Apply</button>
-          </div>
+          {this.renderDiscountButton()}
           <div className="ToC">
             {checkbox}
             <p>I've read and agree to the <a onClick={this.showTerms}>Terms of Service</a></p>
           </div>
-          <button className="subscribe">Subscribe</button>
+          <button className="subscribe" onClick={this.submit}>Subscribe</button>
         </div>
       </div>
     )

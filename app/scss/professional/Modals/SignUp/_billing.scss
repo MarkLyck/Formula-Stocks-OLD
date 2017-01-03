@@ -39,6 +39,12 @@
       .Select {
         height: auto;
         margin-bottom: 16px;
+        .Select-placeholder {
+          padding-left: 48px;
+        }
+        &::before {
+          left: 16px;
+        }
       }
       .Select-control {
         background: #fff;
@@ -52,6 +58,10 @@
         .Select-input {
           height: auto;
           padding: 9px 0;
+          input {
+            padding-left: 48px;
+            margin: 8px 0;
+          }
         }
       }
     }
@@ -79,6 +89,7 @@
     .discount {
       display: flex;
       width: 100%;
+      margin-top: 16px;
       input {
         border-top-right-radius: 0;
         border-bottom-right-radius: 0;
@@ -104,7 +115,7 @@
         height: 32px;
         width: 32px;
         background: #fff;
-        margin-right: 8px;
+        margin-right: 16px;
         box-sizing: border-box;
         display: flex;
         justify-content: center;

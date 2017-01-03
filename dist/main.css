@@ -5043,6 +5043,10 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
       .billing .left .location-inputs .Select {
         height: auto;
         margin-bottom: 16px; }
+        .billing .left .location-inputs .Select .Select-placeholder {
+          padding-left: 48px; }
+        .billing .left .location-inputs .Select::before {
+          left: 16px; }
       .billing .left .location-inputs .Select-control {
         background: #fff;
         border: 1px solid #dedede;
@@ -5054,6 +5058,9 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
         .billing .left .location-inputs .Select-control .Select-input {
           height: auto;
           padding: 9px 0; }
+          .billing .left .location-inputs .Select-control .Select-input input {
+            padding-left: 48px;
+            margin: 8px 0; }
     .billing .left .divider {
       width: 100%;
       height: 2px;
@@ -5070,7 +5077,8 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
       background: #068de7; }
     .billing .right .discount {
       display: flex;
-      width: 100%; }
+      width: 100%;
+      margin-top: 16px; }
       .billing .right .discount input {
         border-top-right-radius: 0;
         border-bottom-right-radius: 0;
@@ -5092,7 +5100,7 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
         height: 32px;
         width: 32px;
         background: #fff;
-        margin-right: 8px;
+        margin-right: 16px;
         box-sizing: border-box;
         display: flex;
         justify-content: center;
