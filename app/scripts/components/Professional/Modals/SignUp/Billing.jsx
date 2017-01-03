@@ -22,6 +22,8 @@ class Billing extends React.Component {
     this.dateFormat = this.dateFormat.bind(this)
     this.cvcFormat = this.cvcFormat.bind(this)
 
+    this.showTerms = this.showTerms.bind(this)
+
     this.submit = this.submit.bind(this)
 
     let plan = store.plans.get(this.props.selected).toJSON()
@@ -145,6 +147,10 @@ class Billing extends React.Component {
     this.setState({ discount: 10 })
   }
 
+  showTerms() {
+    store.session.set('showModal', 'terms')
+  }
+
   submit() {
     this.props.nextPage()
   }
@@ -218,7 +224,7 @@ class Billing extends React.Component {
           {this.renderDiscountButton()}
           <div className="ToC">
             {checkbox}
-            <p>I've read and agree to the <a onClick={this.showTerms}>Terms of Service</a></p>
+            <p>I've read and agree to the <button onClick={this.showTerms}>Terms of Service</button></p>
           </div>
           <button className="subscribe" onClick={this.submit}>Subscribe</button>
         </div>

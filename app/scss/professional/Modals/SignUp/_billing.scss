@@ -131,7 +131,10 @@
       p {
         flex-grow: 1;
         width: calc(100% - 32px - 8px);
-        a {
+        button {
+          background: none;
+          padding: 0;
+          color: $text-color;
           text-decoration: underline;
         }
       }
