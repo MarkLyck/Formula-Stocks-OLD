@@ -4105,7 +4105,7 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
     text-align: center;
     max-width: 1160px; }
   .professional section .left-align {
-    align-self: flex-start; }
+    width: 100%; }
   .professional section .divider {
     margin-bottom: 32px; }
   .professional section p {
@@ -4137,7 +4137,8 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
       margin-left: 32px; }
   .professional section .columns {
     display: flex;
-    width: 100%; }
+    width: 100%;
+    max-width: 1160px; }
     .professional section .columns > div:first-child {
       margin-right: 32px; }
     .professional section .columns .columns-2 {
@@ -5113,7 +5114,10 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
       .billing .right .ToC p {
         flex-grow: 1;
         width: calc(100% - 32px - 8px); }
-        .billing .right .ToC p a {
+        .billing .right .ToC p button {
+          background: none;
+          padding: 0;
+          color: #49494A;
           text-decoration: underline; }
     .billing .right .subscribe {
       border-radius: 4px;
