@@ -3,6 +3,7 @@ import Select from 'react-select'
 import cc from '../../../../cc'
 import store from '../../../../store'
 import countries from '../../../../data/countries'
+import discountCodes from '../../../../data/discountCodes'
 import _ from 'underscore'
 
 class Billing extends React.Component {
@@ -121,7 +122,7 @@ class Billing extends React.Component {
   renderDiscountButton() {
     if (this.state.discount === 0) {
       return (<div className="discount">
-        <input type="text" placeholder="Discount code"/>
+        <input type="text" placeholder="Discount code" ref="discount"/>
         <button className="apply-discount" onClick={this.applyDiscount}>Apply</button>
       </div>)
     }
@@ -144,7 +145,13 @@ class Billing extends React.Component {
   }
 
   applyDiscount() {
-    this.setState({ discount: 10 })
+    var code = discountCodes.filter((code) => {
+        return code.code === this.refs.discount.value
+    })[0]
+
+    if (code) {
+      this.setState({ discount: code.discount })
+    }
   }
 
   showTerms() {

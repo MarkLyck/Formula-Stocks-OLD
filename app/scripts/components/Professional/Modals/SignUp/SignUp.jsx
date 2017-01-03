@@ -4,7 +4,6 @@ import { Link, browserHistory } from 'react-router'
 
 import ChoosePlan from './ChoosePlan.jsx'
 import Billing from './Billing.jsx'
-import Done from './Done.jsx'
 
 function formatPrice(value) {
   while(/(\d+)(\d{3})/.test(value.toString())) {
@@ -70,10 +69,8 @@ class SignUp extends React.Component {
   renderContent() {
     if (this.state.page === 1) {
       return <ChoosePlan selected={this.state.selected} selectPlan={this.selectPlan} renderPrice={this.renderPrice} nextPage={this.nextPage}/>
-    } else if (this.state.page === 2) {
-      return <Billing selected={this.state.selected} renderPrice={this.renderPrice} nextPage={this.nextPage} lastPage={this.lastPage}/>
     } else {
-      return <Done selected={this.state.selected}/>
+      return <Billing selected={this.state.selected} renderPrice={this.renderPrice} nextPage={this.nextPage} lastPage={this.lastPage}/>
     }
   }
 
