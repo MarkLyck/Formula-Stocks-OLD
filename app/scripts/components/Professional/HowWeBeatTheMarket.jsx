@@ -12,39 +12,32 @@ class HowWeBeatTheMarket extends React.Component {
         <div className="divider"/>
         <CollapseSegment title="Overview">
           <p>
-            Outperforming the market has never been an easy task to accomplish. First of all
-            the competition is extreme. There is only way in which to succeed in a systematic
-            and durable fashion, and that is to possess some form of knowledge, skill or
-            information, which other market participants do not possess at least in equal
-            measure.<br/><br/>
+            Outperforming the market has always been challenging. The competition is extreme.
+            The only way in which to succeed in a systematic and durable fashion, is to
+            possess some form of knowledge, skill or information, which other market
+            participants do not possess in equal measure.<br/><br/>
 
             There is still a widespread belief that the markets are efficient. They are not of
-            course. Ample evidence has been produced decades ago to disprove this theory once
-            and for all. Our favorite has to be Warren Buffetts flawless argument presented in
-            <sup>1</sup>.<br/><br/>
+            course. Ample evidence has been produced decades ago to disprove this theory. Our
+            favorite has to be Warren Buffetts flawless argument presented in<sup>1</sup>.<br/><br/>
 
             A principal reason some academics has held that the markets were efficient for
-            years, that is, effectively discounted all known information, to the point of
-            pricing being "fair" or "correct", has been an inability to deconstruct properly
-            how the market operates, and what really determines security prices, now and in
-            the future.<br/><br/>
+            years, and effectively discounted all known information, to the point of pricing
+            being "correct", has been their inability to deconstruct properly how the market
+            operates, and what really determines security prices.<br/><br/>
 
-            This area has been a central area of research at Formula Stocks since 2002. Using
-            20 years of previous experience in HPC (high performance computing), and
-            pioneering scientific research in other areas such as geometry and 3D mathematics,
-            our team has produced a much better understanding of what moves security prices,
-            than that which is considered generally available knowledge. This involves machine
-            based learning, not unlike that employed by IBM when they constructed the chess
-            computer, Deep Blue, that effectively beat then grandmaster Gary Kasparov 2-1 in
-            1997.<br/><br/>
+            This area has been a central area of research at Formula Stocks since 2002.
+            Utilizing 20 years of previous experience in HPC (high performance computing), and
+            pioneering scientific research in other areas such as N-dimensional geometry and 3D
+            mathematics, our team has produced a much better understanding of what moves security
+            prices, than that which is considered generally available knowledge. This involves
+            machine based learning, not unlike that employed by IBM when they constructed the chess
+            computer, Deep Blue, that effectively beat then grandmaster Gary Kasparov 2-1 in 1997.
+            <br/><br/>
 
             Our research has eventually enabled us to analyze a group of stocks, and predict,
             a priori, its future returns as a group within a reasonable tolerance of the
-            results obtained years later, a posteori.  We have built a supercomputer which
-            analyzes all stocks and provides knowledge not available to our competitors.
-
-
-
+            results obtained years later, a posteori.
           </p>
           <p className="disclaimer">
             <sup>1</sup>Buffett, Warren E. 1984. The Superinvestors of Graham-and-Doddsville. Hermes,
