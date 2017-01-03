@@ -146,7 +146,11 @@ class Billing extends React.Component {
 
   applyDiscount() {
     var code = discountCodes.filter((code) => {
-        return code.code === this.refs.discount.value
+      if (code.code === this.refs.discount.value) {
+        if (code.plans.indexOf(this.props.selected) > -1) {
+          return true
+        }
+      }
     })[0]
 
     if (code) {
