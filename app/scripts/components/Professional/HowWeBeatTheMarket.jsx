@@ -37,7 +37,7 @@ class HowWeBeatTheMarket extends React.Component {
 
             Our research has eventually enabled us to analyze a group of stocks, and predict,
             a priori, its future returns as a group within a reasonable tolerance of the
-            results obtained years later, a posteori.
+            results obtained years later, a posteriori.
           </p>
           <p className="disclaimer">
             <sup>1</sup>Buffett, Warren E. 1984. The Superinvestors of Graham-and-Doddsville. Hermes,

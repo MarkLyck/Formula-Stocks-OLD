@@ -44,7 +44,7 @@ const Footer = React.createClass({
             and was not carried out with any benefit of hindsight.<br/><br/>
 
             Due to continual development, the website displays up-to-date calculated data
-            refreshed weekly. This backtested performance results have certain inherent
+            refreshed daily and weekly. Backtested performance results have certain inherent
             limitations, as they could potentially be designed with some benefit of hindsight,
             even though best efforts has been taken to avoid such risk. Unlike an actual
             performance record, backtested results do not represent actual trading and may not
