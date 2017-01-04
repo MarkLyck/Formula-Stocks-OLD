@@ -166,9 +166,9 @@ const SideBar = React.createClass({
             {portfoliosDropdown}
           </li>
 
-          <li className={articlesClass}>
+          {/* <li className={articlesClass}>
             <button className="articles-btn" onClick={this.gotoArticles}><h3><i className="fa fa-newspaper-o" aria-hidden="true"></i></h3></button>
-          </li>
+          </li> */}
 
           <li className={myAccountClass}>
             <button className="my-account-btn" onClick={this.gotoAccount}><h3><i className="fa fa-user" aria-hidden="true"></i></h3></button>
