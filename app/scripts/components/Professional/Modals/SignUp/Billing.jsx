@@ -213,10 +213,9 @@ class Billing extends React.Component {
 
   createCustomer(token) {
     store.session.set('name', this.refs.name.value)
-    cc.createCustomer2(token, 'basic', this.state.cycle, this.state.taxPercent, this.state.coupon.code)
+    cc.createCustomer2(token, this.props.selected, this.state.cycle, this.state.taxPercent, this.state.coupon.code)
     .then(() => {
       console.log('||| SUCCESFUL PAYMENT |||')
-      this.setState({ validatingPayment: false })
     })
     .catch((e) => {
       this.setState({error: String(e), validatingPayment: false})
@@ -310,8 +309,8 @@ class Billing extends React.Component {
             <p>Plan</p>
             <p>{this.props.selected}</p>
           </div>
-          {this.renderTax()}
           {this.renderDiscount()}
+          {this.renderTax()}
           {this.renderPrice()}
           <div className="right-error">{this.renderError('discount')}</div>
           {this.renderDiscountButton()}

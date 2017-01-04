@@ -20,7 +20,8 @@ class ChoosePlan extends React.Component {
     return $.ajax(`https://baas.kinvey.com/user/kid_rJRC6m9F/?query={"email":"${email}"}`)
   }
 
-  submit() {
+  submit(e) {
+    e.preventDefault()
     this.setState({ validating: true, error: '', errorType: '' })
     const email = this.refs.email.value.toLowerCase()
     const password = this.refs.password.value
@@ -49,7 +50,7 @@ class ChoosePlan extends React.Component {
 
   renderNextBtn() {
     if (!this.state.validating) {
-      return <button className="next" onClick={this.submit}>Next</button>
+      return <input type="submit" className="next" value="next"/>
     } else {
       return <div className="next"><i className="fa fa-circle-o-notch fa-spin fa-2x fa-fw"></i></div>
     }
@@ -97,11 +98,13 @@ class ChoosePlan extends React.Component {
               <p>Price</p>
               <p>{this.props.renderPrice()}</p>
             </div>
+            <form className="user-form" onSubmit={this.submit}>
             { this.state.error.toLowerCase().indexOf('email') === -1 ? <label htmlFor="email">Enter your email</label> : this.renderError('email')}
             <input id="email" className={emailClass} type="email" placeholder="Email address" ref="email"/>
             { this.state.error.indexOf('password') === -1 ? <label htmlFor="password">Choose a password</label> : this.renderError('password')}
             <input id="password" className={passwordClass} type="password" placeholder="Password" ref="password"/>
             {this.renderNextBtn()}
+            </form>
           </div>
         </div>)
   }

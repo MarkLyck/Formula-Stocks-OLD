@@ -96,6 +96,7 @@ const Session = Backbone.Model.extend({
     const email = this.get('email')
     const password = this.get('password')
     const address = this.get('address')
+    const name = this.get('name')
 
     store.session.save({
       username: email,
@@ -109,8 +110,8 @@ const Session = Backbone.Model.extend({
         localStorage.authtoken = response._kmd.authtoken
         store.settings.history.push('/dashboard')
         window.Intercom("update", {
-          name: this.get('name'),
-          email: this.get('email'),
+          name: name,
+          email: email,
           created_at: moment().unix()
         })
       },

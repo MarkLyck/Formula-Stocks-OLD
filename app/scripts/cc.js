@@ -156,7 +156,6 @@ let cc = {
           tax_percent: taxPercent
         },
         success: (customer) => {
-          console.log(customer)
           store.session.set('stripe', customer)
 
           let type = 0
