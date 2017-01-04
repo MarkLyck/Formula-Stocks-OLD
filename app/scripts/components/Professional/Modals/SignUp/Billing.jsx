@@ -19,6 +19,8 @@ class Billing extends React.Component {
     this.renderDiscount = this.renderDiscount.bind(this)
     this.renderDiscountButton = this.renderDiscountButton.bind(this)
 
+    this.renderError = this.renderError.bind(this)
+
     this.ccFormat = this.ccFormat.bind(this)
     this.dateFormat = this.dateFormat.bind(this)
     this.cvcFormat = this.cvcFormat.bind(this)
@@ -27,7 +29,7 @@ class Billing extends React.Component {
 
     this.submit = this.submit.bind(this)
 
-    let plan = store.plans.get(this.props.selected).toJSON()
+    const plan = store.plans.get(this.props.selected).toJSON()
 
     let cycle = ' monthly'
     if (plan.name === 'business' || plan.name === 'fund') {
@@ -40,7 +42,7 @@ class Billing extends React.Component {
     }
 
     let countryText = 'Country'
-    let countryCode;
+    let countryCode
     let taxPercent = 0
     if (store.session.get('location').country_code
         && store.session.get('location').country_name) {
@@ -63,7 +65,9 @@ class Billing extends React.Component {
       countryCode: countryCode,
       taxPercent: taxPercent,
       discount: 0,
-      cycle: cycle
+      cycle: cycle,
+      error: '',
+      errorType: ''
     }
   }
 
@@ -73,21 +77,11 @@ class Billing extends React.Component {
     })
   }
 
-  toggleCheckBox() {
-    this.setState({ checked: !this.state.checked })
-  }
+  toggleCheckBox() { this.setState({ checked: !this.state.checked }) }
 
-  ccFormat() {
-    this.refs.cardNumber.value = cc.ccFormat(this.refs.cardNumber.value)
-  }
-
-  dateFormat(e) {
-    this.refs.cardExpiry.value = cc.dateFormat(e, this.refs.cardExpiry.value)
-  }
-
-  cvcFormat() {
-    this.refs.cardCvc.value = cc.cvcFormat(this.refs.cardCvc.value)
-  }
+  ccFormat() { this.refs.cardNumber.value = cc.ccFormat(this.refs.cardNumber.value) }
+  dateFormat(e) { this.refs.cardExpiry.value = cc.dateFormat(e, this.refs.cardExpiry.value) }
+  cvcFormat() { this.refs.cardCvc.value = cc.cvcFormat(this.refs.cardCvc.value) }
 
   selectCountry(country) {
     this.setState({
@@ -145,39 +139,82 @@ class Billing extends React.Component {
   }
 
   applyDiscount() {
+    let error = ''
     var code = discountCodes.filter((code) => {
       if (code.code === this.refs.discount.value) {
         if (code.plans.indexOf(this.props.selected) > -1) {
           return true
+        } else {
+          error = 'Code invalid for this plan'
         }
       }
     })[0]
 
     if (code) {
       this.setState({ discount: code.discount })
+    } else if (error) {
+      this.setState({ error: error, errorType: 'discount' })
+    } else {
+      this.setState({ error: 'Invalid discount code', errorType: 'discount' })
     }
   }
 
   showTerms() {
-    store.session.set('showModal', 'terms')
+    // store.session.set('showModal', 'terms')
   }
 
   submit() {
-    this.props.nextPage()
+    if (!this.state.checked) {
+      this.setState({ error: 'You must read and agree to the Terms of Service', errorType: 'tos' })
+      return
+    } else if (this.refs.name.value.indexOf(' ') === -1) {
+      this.setState({ error: 'Please enter your full name', errorType: 'payment' })
+      return
+    }
+
+    this.setState({ validatingPayment: true, error: '', errorType: '' })
+
+    const card = {
+      number: this.refs.cardNumber.value.replace(/\s+/g, ''),
+      month: this.refs.cardExpiry.value.split(' / ')[0],
+      year: this.refs.cardExpiry.value.split(' / ')[1],
+      cvc: this.refs.cardCvc.value
+    }
+
+    cc.validateNewLocation(this.state.countryCode, this.refs.city.value, this.refs.zip.value, this.refs.address.value)
+    .then(() => {
+      cc.checkPayment(card)
+      .then(token => this.createCustomer(token))
+      .catch(error => this.setState({ error: error, errorType: 'payment' }))
+    })
+    .catch(error => this.setState({ error: error, errorType: 'address' }))
+  }
+
+  createCustomer(token) {
+    console.log('create customer', token)
+  }
+
+  renderError(errorChecker) {
+    if (errorChecker === this.state.errorType) {
+      return <p className="error"><i className="fa fa-exclamation" aria-hidden="true"></i>{this.state.error}</p>
+    }
   }
 
   render() {
     let checkbox = <div className="checker" onClick={this.toggleCheckBox}></div>
-    if (this.state.checked) {
-      checkbox = <div className="checker" onClick={this.toggleCheckBox}><i className="fa fa-check" aria-hidden="true"></i></div>
-    }
+    if (this.state.checked) { checkbox = <div className="checker" onClick={this.toggleCheckBox}><i className="fa fa-check" aria-hidden="true"></i></div> }
+
     return (
       <div className="billing signup-content">
         <div className="left">
           <h2>Checkout</h2>
           <form className="billing-form">
-            <h3>Billing address</h3>
+            <div className="beside">
+              <h3>Billing address</h3>
+              {this.renderError('address')}
+            </div>
             <div className="divider"/>
+
             <div className="location-inputs">
               <Select name="selected-country"
                 ref="countrySelect"
@@ -188,16 +225,19 @@ class Billing extends React.Component {
                 onChange={this.selectCountry}
                 />
               <div className="beside">
-                <div className="icon-input"><i className="fa fa-building" aria-hidden="true"></i><input type="text" placeholder="City"/></div>
-                <div className="icon-input"><i className="fa fa-map" aria-hidden="true"></i><input type="text" placeholder="Postal code"/></div>
+                <div className="icon-input"><i className="fa fa-building" aria-hidden="true"></i><input type="text" placeholder="City" ref="city"/></div>
+                <div className="icon-input"><i className="fa fa-map" aria-hidden="true"></i><input type="text" placeholder="Postal code" ref="zip"/></div>
               </div>
-              <div className="icon-input"><i className="fa fa-home" aria-hidden="true"></i><input type="text" placeholder="Street address"/></div>
+              <div className="icon-input"><i className="fa fa-home" aria-hidden="true"></i><input type="text" placeholder="Street address" ref="address"/></div>
             </div>
 
             <div className="creditcard-inputs">
-              <h3>Payment details</h3>
+              <div className="beside">
+                <h3>Payment details</h3>
+                {this.renderError('payment')}
+              </div>
               <div className="divider"/>
-              <div className="icon-input"><i className="fa fa-user" aria-hidden="true"></i><input type="text" placeholder="Name on card"/></div>
+              <div className="icon-input"><i className="fa fa-user" aria-hidden="true"></i><input type="text" placeholder="Name on card" ref="name"/></div>
               <div className="icon-input">
                 <i className="fa fa-credit-card-alt" aria-hidden="true"></i>
                 <input type="text" placeholder="Card number" onKeyUp={this.ccFormat} ref="cardNumber"/>
@@ -232,7 +272,9 @@ class Billing extends React.Component {
           {this.renderTax()}
           {this.renderDiscount()}
           {this.renderPrice()}
+          <div className="right-error">{this.renderError('discount')}</div>
           {this.renderDiscountButton()}
+          {this.renderError('tos')}
           <div className="ToC">
             {checkbox}
             <p>I've read and agree to the <button onClick={this.showTerms}>Terms of Service</button></p>

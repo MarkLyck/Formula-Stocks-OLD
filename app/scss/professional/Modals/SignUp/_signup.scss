@@ -10,6 +10,13 @@
       padding: 16px;
       margin-bottom: 16px;
     }
+    .error {
+      color: $warning-color;
+      margin: 0;
+      i {
+        margin-right: 8px;
+      }
+    }
     .left {
       display: flex;
       flex-direction: column;
@@ -32,6 +39,11 @@
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
+      .right-error {
+        p {
+          margin-top: 16px;
+        }
+      }
       .top {
         position: absolute;
         top: 0;

@@ -59,17 +59,9 @@ class PaymentForm extends React.Component {
     this.setState({formClass: `payment-form ${newProps.formAnimation}`})
   }
 
-  ccFormat() {
-    this.refs.cardNumber.value = cc.ccFormat(this.refs.cardNumber.value)
-  }
-
-  dateFormat(e) {
-    this.refs.cardExpiry.value = cc.dateFormat(e, this.refs.cardExpiry.value)
-  }
-
-  cvcFormat() {
-    this.refs.cardCvc.value = cc.cvcFormat(this.refs.cardCvc.value)
-  }
+  ccFormat() { this.refs.cardNumber.value = cc.ccFormat(this.refs.cardNumber.value) }
+  dateFormat(e) { this.refs.cardExpiry.value = cc.dateFormat(e, this.refs.cardExpiry.value) }
+  cvcFormat() { this.refs.cardCvc.value = cc.cvcFormat(this.refs.cardCvc.value) }
 
   calculateTax(countryCode) {
     cc.calculateTax(countryCode).then((tax) => {

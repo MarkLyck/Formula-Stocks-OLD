@@ -86,6 +86,9 @@
         background: darken($primary-color, 10%);
       }
     }
+    .rightError {
+      margin-bottom: 0;
+    }
     .discount {
       display: flex;
       width: 100%;

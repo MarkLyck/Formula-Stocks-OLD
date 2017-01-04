@@ -22,6 +22,21 @@ let cc = {
       }
     })
   },
+  validateNewLocation(country, city, zip, address) {
+    return new Promise((resolve, reject) => {
+      if (!country) {
+        reject('No country selected')
+      } else if (!city) {
+        reject('Missing city')
+      } else if (!zip) {
+        reject('Missing postal code')
+      } else if (!address) {
+        reject('Missing street address')
+      } else {
+        resolve()
+      }
+    })
+  },
   calculateTax(countryCode) {
     return new Promise((resolve, reject) => {
       let country = _.where(countries, {value: countryCode})
@@ -102,10 +117,8 @@ let cc = {
   },
   checkPayment: function(card) {
     return new Promise((resolve, reject) => {
-      console.log(String(card.number).split('').length);
       if (String(card.number).split('').length < 16) {
-        console.log('less than 16')
-        reject('Card number invalid')
+        reject('Invalid card number')
       } else {
         Stripe.setPublishableKey('pk_live_UTFEdLHeTQIAA0o2JSBM3fwL');
         Stripe.card.createToken({
