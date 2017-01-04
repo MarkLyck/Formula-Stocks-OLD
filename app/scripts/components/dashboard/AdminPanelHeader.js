@@ -5,6 +5,7 @@ import store from '../../store'
 import admin from '../../admin'
 
 import _ from 'underscore'
+import moment from 'moment'
 
 const AdminPanelHeader = React.createClass({
   getInitialState() {
@@ -47,10 +48,13 @@ const AdminPanelHeader = React.createClass({
   render() {
     let subscribers = this.state.users.filter((user) => {
       if (user.stripe) {
-        if (user.stripe.subscriptions.data[0].status !== 'trialing') {
-          if (user.type > 0 && user.type < 5 && user.name !== 'FS Demo') {
-            return true
-          }
+        if (user.stripe.subscriptions.data[0].trial_end
+          && !user.stripe.subscriptions.data[0].cancel_at_period_end
+          && user.stripe.subscriptions.data[0].trial_end < moment().unix()) {
+          return true
+        }
+        if (user.type > 1 && user.type < 5 && !user.stripe.subscriptions.data[0].cancel_at_period_end) {
+          return true
         }
       }
       return false
