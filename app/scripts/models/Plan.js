@@ -67,7 +67,6 @@ const Plan = Backbone.Model.extend({
       })
 
       newSuggestions = newSuggestions.reduce((suggestions, sug, i) => {
-
         if (i === 1) {
           return [].concat(sug)
         } else {
