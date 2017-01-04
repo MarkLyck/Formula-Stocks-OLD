@@ -66,6 +66,7 @@ class Billing extends React.Component {
       countryCode: countryCode,
       taxPercent: taxPercent,
       discount: 0,
+      coupon: '',
       cycle: cycle,
       error: '',
       errorType: ''
@@ -116,7 +117,7 @@ class Billing extends React.Component {
 
   renderDiscountButton() {
     const discountClass = this.state.error.indexOf('discount') > -1 ? 'red-outline' : ''
-    if (this.state.discount === 0) {
+    if (this.state.discount === 0 && this.props.selected !== 'business' && this.props.selected !== 'fund') {
       return (<div className="discount">
         <input type="text" placeholder="Discount code" ref="discount" className={discountClass}/>
         <button className="apply-discount" onClick={this.applyDiscount}>Apply</button>
@@ -150,9 +151,9 @@ class Billing extends React.Component {
 
   applyDiscount() {
     let error = ''
-    var code = discountCodes.filter((code) => {
-      if (code.code === this.refs.discount.value) {
-        if (code.plans.indexOf(this.props.selected) > -1) {
+    var coupon = discountCodes.filter((coupon) => {
+      if (coupon.code === this.refs.discount.value) {
+        if (coupon.plans.indexOf(this.props.selected) > -1) {
           return true
         } else {
           error = 'Code invalid for this plan'
@@ -160,8 +161,8 @@ class Billing extends React.Component {
       }
     })[0]
 
-    if (code) {
-      this.setState({ discount: code.discount })
+    if (coupon) {
+      this.setState({ discount: coupon.discount, coupon: coupon.code })
     } else if (error) {
       this.setState({ error: error, errorType: 'discount' })
     } else {
@@ -202,7 +203,15 @@ class Billing extends React.Component {
 
   createCustomer(token) {
     console.log('create customer', token)
-    this.setState({ validatingPayment: false })
+    cc.createCustomer2(token, 'basic', this.state.cycle, this.state.taxPercent, this.state.coupon)
+    .then(() => {
+      console.log('||| SUCCESFUL PAYMENT |||')
+      this.setState({ validatingPayment: false })
+    })
+    .catch((e) => {
+      console.error('charge ERROR: ', e)
+      this.setState({error: String(e), validatingPayment: false})
+    })
   }
 
   renderError(errorChecker) {

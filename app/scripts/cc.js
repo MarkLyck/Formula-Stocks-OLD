@@ -129,11 +129,9 @@ let cc = {
         }, (status, response) => {
           if (status === 200) {
             resolve(response.id)
-            console.log(response)
           } else if (response.error.message.indexOf('required param: exp_year') !== -1) {
             reject('Missing expiry year')
           } else {
-            console.log(response.error.message)
             reject(response.error.message)
           }
         })
@@ -151,6 +149,40 @@ let cc = {
           email: store.session.get('email'),
           tax_percent: taxPercent
         },
+        success: (customer) => {
+          console.log(customer)
+          store.session.set('stripe', customer)
+
+          let type = 0
+          if (planName === 'basic')         { type = 1 }
+          else if (planName === 'premium')  { type = 2 }
+          else if (planName === 'business') { type = 3 }
+          else if (planName === 'fund')     { type = 4 }
+          store.session.set('type', type)
+
+          store.session.signup(store.session.get('email'), store.session.get('password'))
+          resolve()
+        },
+        error: (response) => {
+          console.error(response)
+          reject(JSON.parse(response.responseText).error)
+        }
+      })
+    })
+  },
+  createCustomer2: function(token, planName, cycle, taxPercent, coupon) {
+    return new Promise((resolve, reject) => {
+      let data = {
+        plan: (planName+'-'+cycle.trim()),
+        source: token,
+        email: store.session.get('email'),
+        tax_percent: taxPercent
+      }
+      if (coupon) { data.coupon = coupon }
+      $.ajax({
+        type: 'POST',
+        url: `https://baas.kinvey.com/rpc/${store.settings.appKey}/custom/charge`,
+        data: data,
         success: (customer) => {
           console.log(customer)
           store.session.set('stripe', customer)
