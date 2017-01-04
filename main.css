@@ -5024,8 +5024,10 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
   display: flex;
   flex-direction: column;
   justify-content: flex-end; }
-  .choose-plan .right label, .choose-plan .right .error {
-    margin-bottom: 8px; }
+  .choose-plan .right input {
+    margin-top: 8px; }
+  .choose-plan .right .next {
+    margin-bottom: 0; }
   .choose-plan .right button {
     width: 100%;
     border-radius: 4px; }
