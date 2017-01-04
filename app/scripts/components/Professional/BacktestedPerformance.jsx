@@ -176,8 +176,9 @@ class BacktestedPerformance extends React.Component {
         <Element name="backtested"/>
         <h2 className="title">Long-term performance</h2>
         <div className="divider"/>
-        <h3 className="subtitle">Log scale graph. 1970 - 2009 (backtested) and 2009 - 2017 (observed in realtime)</h3>
+        <h3 className="subtitle">Log scale graph 1970-2017</h3>
         {this.renderChart()}
+        <p className="disclaimer">Numbers partially derived through backtesting. 2009 - 2017 match "live" results observed.</p>
       </section>
     )
   }

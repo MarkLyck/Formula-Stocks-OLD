@@ -33,6 +33,12 @@ let cc = {
       } else if (!address) {
         reject('Please enter street address')
       } else {
+        store.session.set('address', {
+          country: country,
+          city: city,
+          zip: zip,
+          address: address
+        })
         resolve()
       }
     })
@@ -194,7 +200,7 @@ let cc = {
           else if (planName === 'fund')     { type = 4 }
           store.session.set('type', type)
 
-          store.session.signup(store.session.get('email'), store.session.get('password'))
+          store.session.signup2()
           resolve()
         },
         error: (response) => {
@@ -205,7 +211,6 @@ let cc = {
     })
   },
   cancelSubscription() {
-    console.log(store.session.get('stripe').subscriptions.data[0].id)
     $.ajax({
       type: 'POST',
       url: `https://baas.kinvey.com/rpc/${store.settings.appKey}/custom/cancelsub`,

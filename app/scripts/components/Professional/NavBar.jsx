@@ -32,10 +32,10 @@ class NavBar extends React.Component {
       return (
         <div id="nav-links">
           <Link to="/login" id="login-btn" className="nav-link">Login</Link>
-          <Link to="/signup" id="signup-btn" className="nav-link">Get started</Link>
+          <Link to="/pro/signup" id="signup-btn" className="nav-link">Get started</Link>
         </div>)
     } else if (!localStorage.authtoken) {
-      return <Link to="/signup" id="signup-btn" className="nav-link">Get started</Link>
+      return <Link to="/pro/signup" id="signup-btn" className="nav-link">Get started</Link>
     } else {
       return (
         <div id="nav-links">

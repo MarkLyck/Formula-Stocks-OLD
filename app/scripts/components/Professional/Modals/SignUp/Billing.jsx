@@ -29,6 +29,7 @@ class Billing extends React.Component {
     this.showTerms = this.showTerms.bind(this)
 
     this.submit = this.submit.bind(this)
+    this.createCustomer = this.createCustomer.bind(this)
 
     const plan = store.plans.get(this.props.selected).toJSON()
 
@@ -95,10 +96,15 @@ class Billing extends React.Component {
 
   renderTax() {
     if (this.state.taxPercent > 0) {
+      let price = this.state.price
+      if (this.state.discount > 0) {
+        price = price * -(this.state.discount / 100 - 1)
+      }
+
       return (
         <div className="tax info">
           <p>Tax</p>
-          <p>${this.state.taxPercent}</p>
+          <p>${price * (this.state.taxPercent / 100)}</p>
         </div>
       )
     }
@@ -106,22 +112,14 @@ class Billing extends React.Component {
 
   renderDiscount() {
     if (this.state.discount > 0) {
-      return (
-        <div className="tax info">
-          <p>Discount</p>
-          <p>- ${(this.state.price * (this.state.discount / 100 + 1) - this.state.price).toFixed(2)} </p>
-        </div>
-      )
-    }
-  }
-
-  renderDiscountButton() {
-    const discountClass = this.state.error.indexOf('discount') > -1 ? 'red-outline' : ''
-    if (this.state.discount === 0 && this.props.selected !== 'business' && this.props.selected !== 'fund') {
-      return (<div className="discount">
-        <input type="text" placeholder="Discount code" ref="discount" className={discountClass}/>
-        <button className="apply-discount" onClick={this.applyDiscount}>Apply</button>
-      </div>)
+      if (this.state.coupon.type === 'percent') {
+        return (
+          <div className="tax info">
+            <p>Discount</p>
+            <p>- {this.state.coupon.discount}% {this.state.coupon.period} </p>
+          </div>
+        )
+      }
     }
   }
 
@@ -140,6 +138,18 @@ class Billing extends React.Component {
       </div>
     )
   }
+
+  renderDiscountButton() {
+    const discountClass = this.state.error.indexOf('discount') > -1 ? 'red-outline' : ''
+    if (this.state.discount === 0 && this.props.selected !== 'business' && this.props.selected !== 'fund') {
+      return (<div className="discount">
+        <input type="text" placeholder="Discount code" ref="discount" className={discountClass}/>
+        <button className="apply-discount" onClick={this.applyDiscount}>Apply</button>
+      </div>)
+    }
+  }
+
+
 
   renderPayButton() {
     if (!this.state.validatingPayment) {
@@ -162,7 +172,7 @@ class Billing extends React.Component {
     })[0]
 
     if (coupon) {
-      this.setState({ discount: coupon.discount, coupon: coupon.code })
+      this.setState({ discount: coupon.discount, coupon: coupon })
     } else if (error) {
       this.setState({ error: error, errorType: 'discount' })
     } else {
@@ -202,14 +212,13 @@ class Billing extends React.Component {
   }
 
   createCustomer(token) {
-    console.log('create customer', token)
-    cc.createCustomer2(token, 'basic', this.state.cycle, this.state.taxPercent, this.state.coupon)
+    store.session.set('name', this.refs.name.value)
+    cc.createCustomer2(token, 'basic', this.state.cycle, this.state.taxPercent, this.state.coupon.code)
     .then(() => {
       console.log('||| SUCCESFUL PAYMENT |||')
       this.setState({ validatingPayment: false })
     })
     .catch((e) => {
-      console.error('charge ERROR: ', e)
       this.setState({error: String(e), validatingPayment: false})
     })
   }

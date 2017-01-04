@@ -15,6 +15,7 @@ const Session = Backbone.Model.extend({
     name: '',
     stripe: {},
     location: {},
+    address: {},
     type: 0,
     lastSeen: new Date()
   },
@@ -73,29 +74,48 @@ const Session = Backbone.Model.extend({
         localStorage.authtoken = response._kmd.authtoken
         store.settings.history.push('/dashboard')
         window.Intercom("update", {
-          name: this.get('name'), // Full name
-          email: this.get('email'), // Email address
-          created_at: moment().unix() // Signup date as a Unix timestamp
+          name: this.get('name'),
+          email: this.get('email'),
+          created_at: moment().unix()
         })
-        $.ajax({
-          url: `https://baas.kinvey.com/rpc/${store.settings.appKey}/custom/welcomeemail`,
-          type: 'POST',
-          data: {
-            email: this.get('email'),
-            name: this.get('name')
-          }
-        })
-        $.ajax({
-          url: `https://baas.kinvey.com/rpc/${store.settings.appKey}/custom/welcomeemail`,
-          type: 'POST',
-          data: {
-            email: 'mark.lyck@gmail.com',
-            name: this.get('name')
-          }
-        })
+        // $.ajax({
+        //   url: `https://baas.kinvey.com/rpc/${store.settings.appKey}/custom/welcomeemail`,
+        //   type: 'POST',
+        //   data: {
+        //     email: this.get('email'),
+        //     name: this.get('name')
+        //   }
+        // })
       },
       error: function(model, response) {
         console.log('ERROR: ', arguments);
+      }
+    })
+  },
+  signup2: function() {
+    const email = this.get('email')
+    const password = this.get('password')
+    const address = this.get('address')
+
+    store.session.save({
+      username: email,
+      password: password,
+      address: address
+    },
+    {
+      url: `https://baas.kinvey.com/user/${store.settings.appKey}/`,
+      success: function(model, response) {
+        model.unset('password')
+        localStorage.authtoken = response._kmd.authtoken
+        store.settings.history.push('/dashboard')
+        window.Intercom("update", {
+          name: this.get('name'),
+          email: this.get('email'),
+          created_at: moment().unix()
+        })
+      },
+      error: function(model, response) {
+        console.error('ERROR: ', arguments)
       }
     })
   },
