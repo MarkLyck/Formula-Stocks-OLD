@@ -34,10 +34,17 @@ const MyAccount = React.createClass({
     if (this.state.currPlan !== 'unsubscribed') {
       cc.updateSubscription(this.state.selectedPlan, cycle)
         .then(() => {
+          let type = 2
+          if (this.state.selectedPlan === 'basic') { type = 1 }
+          else if (this.state.selectedPlan === 'business') { type = 3 }
+          else if (this.state.selectedPlan === 'fund') { type = 4 }
+
           store.session.set('notification', {
             text: `You are now subscribed to the ${this.state.selectedPlan} formula`,
             type: 'notification'
           })
+          store.session.set('type', type)
+          store.session.updateUser()
           this.setState({charging: false, showModal: false})
         })
         .catch(() => {

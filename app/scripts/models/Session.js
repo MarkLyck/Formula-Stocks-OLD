@@ -156,7 +156,7 @@ const Session = Backbone.Model.extend({
       this.save(null, {
         type: 'PUT',
         url: `https://baas.kinvey.com/user/${store.settings.appKey}/${this.get('userId')}`,
-      }, {silent: true})
+      }, { silent: true })
     }
   },
   validateNewUser: function(user) {
