@@ -4,7 +4,7 @@ const FeatureList = () => (
   <ul className="features column">
     <li className="row"><p>Plan</p></li>
 
-    <li className="row"><p>AUM Capital</p>
+    <li className="row"><p>Institutional Capital</p>
       <div className="info-circle">
         <i className="fa fa-info-circle" aria-hidden="true"></i>
         <div className="explanation">

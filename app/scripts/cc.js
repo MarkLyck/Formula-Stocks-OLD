@@ -27,11 +27,11 @@ let cc = {
       if (!country) {
         reject('No country selected')
       } else if (!city) {
-        reject('Missing city')
+        reject('Please enter a city')
       } else if (!zip) {
-        reject('Missing postal code')
+        reject('Please enter postal code')
       } else if (!address) {
-        reject('Missing street address')
+        reject('Please enter street address')
       } else {
         resolve()
       }
