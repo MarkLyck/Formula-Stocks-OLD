@@ -91,7 +91,7 @@ const FeatureList = () => (
           <p>
             Also known as GPR. <br/><br/>
             It represents the sum of all monthly returns divided by the sum of all monthly losses.<br/><br/>A GPR value above 1.5 is considered to be
-            excellent; a GPR value of 1 is considered to be good, and GPR value of less
+            excellent; a GPR value of 1 is considered to be good, and a GPR value of less
             than 0 is considered to be bad.</p>
         </div>
       </div>

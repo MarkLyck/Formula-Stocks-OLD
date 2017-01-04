@@ -85,7 +85,7 @@ class Recommendations extends React.Component {
 
               It becomes clear that risk/reward is skewed very significantly
               in favour of reward.<br/><br/>
-              You can view a total of 9,800 recommendations.
+              You can view a total of 10,190 recommendations.
             </p>
           </div>
           <div className="right">

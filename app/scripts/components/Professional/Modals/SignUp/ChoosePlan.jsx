@@ -5,6 +5,38 @@ import FeatureList from './FeatureList.jsx'
 import PlanColumn from './PlanColumn.jsx'
 
 class ChoosePlan extends React.Component {
+  constructor(props) {
+    super(props)
+
+    this.submit = this.submit.bind(this)
+    this.renderNextBtn = this.renderNextBtn.bind(this)
+    this.renderError = this.renderError.bind(this)
+
+    this.state = { validating: false, error: '', errorType: '' }
+  }
+
+  submit() {
+    this.setState({ validating: true, error: '', errorType: '' })
+    const email = this.refs.email.value.toLowerCase()
+    const password = this.refs.password.value
+
+    
+  }
+
+  renderNextBtn() {
+    if (!this.state.validating) {
+      return <button className="next" onClick={this.submit}>Next</button>
+    } else {
+      return <div className="next"><i className="fa fa-circle-o-notch fa-spin fa-2x fa-fw"></i></div>
+    }
+  }
+
+  renderError(errorChecker) {
+    if (errorChecker === this.state.errorType) {
+      return <p className="error"><i className="fa fa-exclamation" aria-hidden="true"></i>{this.state.error}</p>
+    }
+  }
+
   render() {
     return (
         <div className="choose-plan signup-content">
@@ -42,7 +74,7 @@ class ChoosePlan extends React.Component {
             <input id="email" type="email" placeholder="Email address" ref="email"/>
             <label htmlFor="email">Choose a password</label>
             <input id="password" type="password" placeholder="Password" ref="password"/>
-            <button className="next" onClick={this.props.nextPage}>Next</button>
+            {this.renderNextBtn()}
           </div>
         </div>)
   }

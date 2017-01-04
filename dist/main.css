@@ -4899,6 +4899,16 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
         text-transform: capitalize; }
       .signup-modal .signup-content .right .plan-price {
         margin-bottom: 32px; }
+      .signup-modal .signup-content .right .subscribe, .signup-modal .signup-content .right .next {
+        border-radius: 4px;
+        margin-top: 8px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #27A5F9;
+        height: 56px; }
+        .signup-modal .signup-content .right .subscribe i, .signup-modal .signup-content .right .next i {
+          color: #fff; }
   .signup-modal .bottom-bar {
     width: 100%;
     background: #283544;
@@ -5134,16 +5144,6 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
           padding: 0;
           color: #49494A;
           text-decoration: underline; }
-    .billing .right .subscribe {
-      border-radius: 4px;
-      margin-top: 8px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: #27A5F9;
-      height: 56px; }
-      .billing .right .subscribe i {
-        color: #fff; }
 
 .prof-modal-container {
   position: fixed;
