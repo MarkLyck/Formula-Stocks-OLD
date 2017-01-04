@@ -154,3 +154,16 @@
     }
   }
 }
+
+@media (max-width: 1010px) {
+  .professional {
+    .prof-modal-container {
+      .signup-modal {
+        max-height: 100%;
+        .signup-content {
+          height: 100%;
+        }
+      }
+    }
+  }
+}

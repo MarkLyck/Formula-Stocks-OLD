@@ -4925,6 +4925,11 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
         color: #eeeeee;
         text-decoration: underline; }
 
+@media (max-width: 1010px) {
+  .professional .prof-modal-container .signup-modal {
+    max-height: 100%; }
+    .professional .prof-modal-container .signup-modal .signup-content {
+      height: 100%; } }
 .choose-plan .left .plan-overview {
   height: calc(100% - 72px);
   display: flex;

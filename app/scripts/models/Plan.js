@@ -45,8 +45,6 @@ const Plan = Backbone.Model.extend({
           })
         newSuggestions = _.union(newSuggestions, data.actionable)
 
-        this.set('suggestions', newSuggestions)
-        this.set('portfolio', data.portfolio)
         this.set('portfolioYields', data.logs)
 
       } else if (fileArr[i].name.indexOf('annual') > -1) {
@@ -58,17 +56,32 @@ const Plan = Backbone.Model.extend({
         this.set('stats', stats)
       }
 
-      console.log('saving file...');
-
-      let newSuggestions = this.get('suggestions').map((sug) => {
-        const fixedSug = _.omit(sug, 'data');
+      let newSuggestions = this.get('suggestions').map(sug => {
+        const fixedSug = _.omit(sug, 'data')
         return fixedSug
       })
 
-      console.log(this.get('portfolio'));
-      let fixedPortfolio = this.get('portfolio').map((stock) => {
-        const fixedStock = _.omit(stock, 'data');
+      let fixedPortfolio = this.get('portfolio').map(stock => {
+        const fixedStock = _.omit(stock, 'data')
         return fixedStock
+      })
+
+      newSuggestions = newSuggestions.reduce((suggestions, sug, i) => {
+
+        if (i === 1) {
+          return [].concat(sug)
+        } else {
+          let dupeIndex = -1
+          suggestions.forEach((suggestion, i) => {
+            if (suggestion.ticker === sug.ticker) { dupeIndex = i }
+          })
+
+          if (dupeIndex > -1) {
+            suggestions[dupeIndex].percentage_weight = suggestions[dupeIndex].percentage_weight + sug.percentage_weight
+            return suggestions
+          }
+          return suggestions.concat(sug)
+        }
       })
 
       this.set('suggestions', newSuggestions)
@@ -160,141 +173,6 @@ const Plan = Backbone.Model.extend({
           hasCanceled_ ? reject({isCancelled: true}) : reject('no data for: ', ticker)
         })
       })
-    //   query = `https://www.quandl.com/api/v1/datasets/WIKI/${ticker}.json?api_key=${store.settings.quandlKey}`
-    //   $.ajax(query)
-    //   .then((response) => {
-    //     if (!portfolioStock) {
-    //       let suggestionToUpdate = this.get('suggestions')[i]
-    //       suggestionToUpdate.data = this.parseStockData(response.data)
-    //
-    //       let newArr = this.get('suggestions').slice(0,i).concat(suggestionToUpdate, this.get('suggestions').slice(i + 1))
-    //       this.set('suggestions', newArr)
-    //       this.trigger('change')
-    //
-    //       hasCanceled_ ? reject({isCancelled: true}) : resolve()
-    //     } else {
-    //       let portfolioToUpdate = this.get('portfolio')[i]
-    //       portfolioToUpdate.data = this.parseStockData(response.data)
-    //       let newArr = this.get('portfolio').slice(0,i).concat(portfolioToUpdate, this.get('portfolio').slice(i + 1))
-    //       this.set('portfolio', newArr)
-    //       this.trigger('change')
-    //
-    //       hasCanceled_ ? reject({isCancelled: true}) : resolve(response)
-    //     }
-    //   })
-    //   .fail((error) => {
-    //     console.log('||| ERROR ||| ', error)
-    //     query = `https://www.quandl.com/api/v1/datasets/GOOG/NASDAQ_${ticker}.json?api_key=${store.settings.quandlKey}`
-    //     $.ajax({
-    //       url: query,
-    //       dataType: 'json'
-    //     })
-    //     .then((response) => {
-    //       if (!portfolioStock) {
-    //         let suggestionToUpdate = this.get('suggestions')[i]
-    //         suggestionToUpdate.data = this.parseStockData(response.data)
-    //
-    //         let newArr = this.get('suggestions').slice(0,i).concat(suggestionToUpdate, this.get('suggestions').slice(i + 1))
-    //         this.set('suggestions', newArr)
-    //         this.trigger('change')
-    //
-    //         hasCanceled_ ? reject({isCancelled: true}) : resolve()
-    //       } else {
-    //         let portfolioToUpdate = this.get('portfolio')[i]
-    //         portfolioToUpdate.data = this.parseStockData(response.data)
-    //         let newArr = this.get('portfolio').slice(0,i).concat(portfolioToUpdate, this.get('portfolio').slice(i + 1))
-    //         this.set('portfolio', newArr)
-    //         this.trigger('change')
-    //
-    //         hasCanceled_ ? reject({isCancelled: true}) : resolve(response)
-    //       }
-    //     })
-    //     .fail((error) => {
-    //       query = `https://www.quandl.com/api/v1/datasets/GOOG/NYSE_${ticker}.json?api_key=${store.settings.quandlKey}`
-    //       $.ajax({
-    //         url: query,
-    //         dataType: 'json'
-    //       })
-    //       .then((response) => {
-    //         if (!portfolioStock) {
-    //           let suggestionToUpdate = this.get('suggestions')[i]
-    //           suggestionToUpdate.data = this.parseStockData(response.data)
-    //
-    //           let newArr = this.get('suggestions').slice(0,i).concat(suggestionToUpdate, this.get('suggestions').slice(i + 1))
-    //           this.set('suggestions', newArr)
-    //           this.trigger('change')
-    //
-    //           hasCanceled_ ? reject({isCancelled: true}) : resolve(response)
-    //         } else {
-    //           let portfolioToUpdate = this.get('portfolio')[i]
-    //           portfolioToUpdate.data = this.parseStockData(response.data)
-    //           let newArr = this.get('portfolio').slice(0,i).concat(portfolioToUpdate, this.get('portfolio').slice(i + 1))
-    //           this.set('portfolio', newArr)
-    //           this.trigger('change')
-    //
-    //           hasCanceled_ ? reject({isCancelled: true}) : resolve(response)
-    //         }
-    //       })
-    //       .fail(() => {
-    //         query = `https://www.quandl.com/api/v1/datasets/GOOG/AMEX_${ticker}.json?api_key=${store.settings.quandlKey}`
-    //         $.ajax({
-    //           url: query,
-    //           dataType: 'json'
-    //         })
-    //         .then((response) => {
-    //           if (!portfolioStock) {
-    //             let suggestionToUpdate = this.get('suggestions')[i]
-    //             suggestionToUpdate.data = this.parseStockData(response.data)
-    //
-    //             let newArr = this.get('suggestions').slice(0,i).concat(suggestionToUpdate, this.get('suggestions').slice(i + 1))
-    //             this.set('suggestions', newArr)
-    //             this.trigger('change')
-    //
-    //             hasCanceled_ ? reject({isCancelled: true}) : resolve(response)
-    //           } else {
-    //             let portfolioToUpdate = this.get('portfolio')[i]
-    //             portfolioToUpdate.data = this.parseStockData(response.data)
-    //             let newArr = this.get('portfolio').slice(0,i).concat(portfolioToUpdate, this.get('portfolio').slice(i + 1))
-    //             this.set('portfolio', newArr)
-    //             this.trigger('change')
-    //
-    //             hasCanceled_ ? reject({isCancelled: true}) : resolve(response)
-    //           }
-    //         })
-    //         .fail(() => {
-    //           query = `https://www.quandl.com/api/v1/datasets/YAHOO/TSX_${ticker}.json?api_key=${store.settings.quandlKey}`
-    //           $.ajax({
-    //             url: query,
-    //             dataType: 'json'
-    //           })
-    //           .then((response) => {
-    //             if (!portfolioStock) {
-    //               let suggestionToUpdate = this.get('suggestions')[i]
-    //               suggestionToUpdate.data = this.parseStockData(response.data)
-    //
-    //               let newArr = this.get('suggestions').slice(0,i).concat(suggestionToUpdate, this.get('suggestions').slice(i + 1))
-    //               this.set('suggestions', newArr)
-    //               this.trigger('change')
-    //
-    //               hasCanceled_ ? reject({isCancelled: true}) : resolve(response)
-    //             } else {
-    //               let portfolioToUpdate = this.get('portfolio')[i]
-    //               portfolioToUpdate.data = this.parseStockData(response.data)
-    //               let newArr = this.get('portfolio').slice(0,i).concat(portfolioToUpdate, this.get('portfolio').slice(i + 1))
-    //               this.set('portfolio', newArr)
-    //               this.trigger('change')
-    //
-    //               hasCanceled_ ? reject({isCancelled: true}) : resolve(response)
-    //             }
-    //           })
-    //           .fail(() => {
-    //             // console.log('no data for: ', ticker);
-    //             hasCanceled_ ? reject({isCancelled: true}) : reject('no data for: ', ticker)
-    //           })
-    //         })
-    //       })
-    //     })
-    //   })
     })
 
     return {
