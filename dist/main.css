@@ -4814,6 +4814,10 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
       border-radius: 4px;
       padding: 16px;
       margin-bottom: 16px; }
+    .signup-modal .signup-content .red-outline {
+      border-color: #ec1b5f; }
+      .signup-modal .signup-content .red-outline .Select-control {
+        border-color: #ec1b5f !important; }
     .signup-modal .signup-content .error {
       color: #ec1b5f;
       margin: 0; }
@@ -5120,6 +5124,8 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
         .billing .right .ToC .checker:hover {
           cursor: pointer;
           border-color: #27A5F9; }
+      .billing .right .ToC .red-outline {
+        border-color: #ec1b5f; }
       .billing .right .ToC p {
         flex-grow: 1;
         width: calc(100% - 32px - 8px); }

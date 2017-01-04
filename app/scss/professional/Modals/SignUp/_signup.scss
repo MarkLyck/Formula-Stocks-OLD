@@ -10,6 +10,12 @@
       padding: 16px;
       margin-bottom: 16px;
     }
+    .red-outline {
+      border-color: $warning-color;
+      .Select-control {
+        border-color: $warning-color !important;
+      }
+    }
     .error {
       color: $warning-color;
       margin: 0;

@@ -114,9 +114,10 @@ class Billing extends React.Component {
   }
 
   renderDiscountButton() {
+    const discountClass = this.state.error.indexOf('discount') > -1 ? 'red-outline' : ''
     if (this.state.discount === 0) {
       return (<div className="discount">
-        <input type="text" placeholder="Discount code" ref="discount"/>
+        <input type="text" placeholder="Discount code" ref="discount" className={discountClass}/>
         <button className="apply-discount" onClick={this.applyDiscount}>Apply</button>
       </div>)
     }
@@ -201,7 +202,17 @@ class Billing extends React.Component {
   }
 
   render() {
-    let checkbox = <div className="checker" onClick={this.toggleCheckBox}></div>
+    const countryClass = this.state.error.indexOf('country') > -1 ? 'red-outline' : ''
+    const cityClass = this.state.error.indexOf('city') > -1 ? 'red-outline' : ''
+    const zipClass = this.state.error.indexOf('postal') > -1 ? 'red-outline' : ''
+    const addressClass = this.state.error.indexOf('address') > -1 ? 'red-outline' : ''
+    const nameClass = this.state.error.indexOf('name') > -1 ? 'red-outline' : ''
+    const cardNumberClass = this.state.error.indexOf('card number') > -1 ? 'red-outline' : ''
+    const expiryClass = this.state.error.indexOf('expiry') > -1 ? 'red-outline' : ''
+    const cvcClass = this.state.error.indexOf('security') > -1 ? 'red-outline' : ''
+    const tosClass = this.state.error.indexOf('Terms') > -1 ? 'checker red-outline' : 'checker'
+
+    let checkbox = <div className={tosClass} onClick={this.toggleCheckBox}></div>
     if (this.state.checked) { checkbox = <div className="checker" onClick={this.toggleCheckBox}><i className="fa fa-check" aria-hidden="true"></i></div> }
 
     return (
@@ -216,19 +227,21 @@ class Billing extends React.Component {
             <div className="divider"/>
 
             <div className="location-inputs">
-              <Select name="selected-country"
+              <Select
+                name="selected-country"
                 ref="countrySelect"
                 options={countries}
+                className={countryClass}
                 clearable={false}
                 value={this.state.countryName}
                 placeholder={this.state.countryName}
                 onChange={this.selectCountry}
                 />
               <div className="beside">
-                <div className="icon-input"><i className="fa fa-building" aria-hidden="true"></i><input type="text" placeholder="City" ref="city"/></div>
-                <div className="icon-input"><i className="fa fa-map" aria-hidden="true"></i><input type="text" placeholder="Postal code" ref="zip"/></div>
+                <div className="icon-input"><i className="fa fa-building" aria-hidden="true"></i><input className={cityClass} type="text" placeholder="City" ref="city"/></div>
+                <div className="icon-input"><i className="fa fa-map" aria-hidden="true"></i><input className={zipClass} type="text" placeholder="Postal code" ref="zip"/></div>
               </div>
-              <div className="icon-input"><i className="fa fa-home" aria-hidden="true"></i><input type="text" placeholder="Street address" ref="address"/></div>
+              <div className="icon-input"><i className="fa fa-home" aria-hidden="true"></i><input className={addressClass} type="text" placeholder="Street address" ref="address"/></div>
             </div>
 
             <div className="creditcard-inputs">
@@ -237,19 +250,19 @@ class Billing extends React.Component {
                 {this.renderError('payment')}
               </div>
               <div className="divider"/>
-              <div className="icon-input"><i className="fa fa-user" aria-hidden="true"></i><input type="text" placeholder="Name on card" ref="name"/></div>
+              <div className="icon-input"><i className="fa fa-user" aria-hidden="true"></i><input className={nameClass} type="text" placeholder="Name on card" ref="name"/></div>
               <div className="icon-input">
                 <i className="fa fa-credit-card-alt" aria-hidden="true"></i>
-                <input type="text" placeholder="Card number" onKeyUp={this.ccFormat} ref="cardNumber"/>
+                <input type="text" className={cardNumberClass} placeholder="Card number" onKeyUp={this.ccFormat} ref="cardNumber"/>
               </div>
               <div className="beside">
                 <div className="icon-input">
                   <i className="fa fa-calendar-times-o" aria-hidden="true"></i>
-                  <input type="text" placeholder="MM / YY" onKeyUp={this.dateFormat} ref="cardExpiry"/>
+                  <input type="text" className={expiryClass} placeholder="MM / YY" onKeyUp={this.dateFormat} ref="cardExpiry"/>
                 </div>
                 <div className="icon-input">
                   <i className="fa fa-lock" aria-hidden="true"></i>
-                  <input type="number" placeholder="CVC" onKeyUp={this.cvcFormat} ref="cardCvc"/>
+                  <input type="number" className={cvcClass} placeholder="CVC" onKeyUp={this.cvcFormat} ref="cardCvc"/>
                 </div>
               </div>
             </div>

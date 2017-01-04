@@ -131,6 +131,9 @@
           border-color: $primary-color;
         }
       }
+      .red-outline {
+        border-color: $warning-color;
+      }
       p {
         flex-grow: 1;
         width: calc(100% - 32px - 8px);
