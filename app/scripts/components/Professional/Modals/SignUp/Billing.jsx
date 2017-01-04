@@ -18,6 +18,7 @@ class Billing extends React.Component {
     this.renderTax = this.renderTax.bind(this)
     this.renderDiscount = this.renderDiscount.bind(this)
     this.renderDiscountButton = this.renderDiscountButton.bind(this)
+    this.renderPayButton = this.renderPayButton.bind(this)
 
     this.renderError = this.renderError.bind(this)
 
@@ -139,6 +140,14 @@ class Billing extends React.Component {
     )
   }
 
+  renderPayButton() {
+    if (!this.state.validatingPayment) {
+      return <button className="subscribe" onClick={this.submit}>Subscribe</button>
+    } else {
+      return <div className="subscribe"><i className="fa fa-circle-o-notch fa-spin fa-2x fa-fw"></i></div>
+    }
+  }
+
   applyDiscount() {
     let error = ''
     var code = discountCodes.filter((code) => {
@@ -186,13 +195,14 @@ class Billing extends React.Component {
     .then(() => {
       cc.checkPayment(card)
       .then(token => this.createCustomer(token))
-      .catch(error => this.setState({ error: error, errorType: 'payment' }))
+      .catch(error => this.setState({ error: error, errorType: 'payment', validatingPayment: false }))
     })
-    .catch(error => this.setState({ error: error, errorType: 'address' }))
+    .catch(error => this.setState({ error: error, errorType: 'address', validatingPayment: false }))
   }
 
   createCustomer(token) {
     console.log('create customer', token)
+    this.setState({ validatingPayment: false })
   }
 
   renderError(errorChecker) {
@@ -292,7 +302,7 @@ class Billing extends React.Component {
             {checkbox}
             <p>I've read and agree to the <button onClick={this.showTerms}>Terms of Service</button></p>
           </div>
-          <button className="subscribe" onClick={this.submit}>Subscribe</button>
+          {this.renderPayButton()}
         </div>
       </div>
     )
