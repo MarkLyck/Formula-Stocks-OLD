@@ -61,10 +61,10 @@ const AdminPanelHeader = React.createClass({
     })
     let trials = this.state.users.filter((user) => {
       if (user.stripe) {
-        if (user.stripe.subscriptions.data[0].status === 'trialing') {
-          if (!user.stripe.subscriptions.data[0].cancel_at_period_end) {
+        if (user.stripe.subscriptions.data[0].status === 'trialing'
+            && !user.stripe.subscriptions.data[0].cancel_at_period_end
+            && user.type === 1) {
             return true
-          }
         }
       }
       return false
