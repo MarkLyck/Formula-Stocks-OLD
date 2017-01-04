@@ -5136,7 +5136,14 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
           text-decoration: underline; }
     .billing .right .subscribe {
       border-radius: 4px;
-      margin-top: 8px; }
+      margin-top: 8px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #27A5F9;
+      height: 56px; }
+      .billing .right .subscribe i {
+        color: #fff; }
 
 .prof-modal-container {
   position: fixed;
