@@ -1,0 +1,67 @@
+.professional {
+  .probability-content {
+    position: relative;
+    width: 100%;
+    max-width: 1160px;
+    .probability-text {
+      width: calc(100% / 3 * 2 - 16px);
+      max-width: calc(100% - 400px);
+    }
+    .graph-container {
+      position: absolute;
+      top: 0;
+      right: 32px;
+    }
+  }
+}
+
+
+@media (max-width: 1200px) {
+  .probability-content {
+    .probability-text:nth-child(4) {
+      width: 100%;
+      max-width: 100%;
+    }
+  }
+}
+
+@media (max-width: 1000px) {
+  .probability-content {
+    .probability-text:nth-child(3) {
+      width: 100%;
+      max-width: 100%;
+    }
+  }
+}
+
+@media (max-width: 940px) {
+  .probability-content {
+    .probability-text:nth-child(2) {
+      width: 100%;
+      max-width: 100%;
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  .professional {
+    .probability-content {
+      display: flex;
+      flex-direction: column;
+      .probability-text {
+        width: 100%;
+        max-width: 100%;
+      }
+      .probability-text:nth-child(1) { order: 2 }
+      .probability-text:nth-child(2) { order: 3 }
+      .probability-text:nth-child(3) { order: 4 }
+      .probability-text:nth-child(4) { order: 5 }
+      .graph-container {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        order: 1;
+      }
+    }
+  }
+}
