@@ -4416,6 +4416,7 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
   margin-top: 32px; }
 .professional .what-is-it img {
   max-width: 640px;
+  width: 100%;
   margin-bottom: 32px;
   transition: transform 0.5s;
   box-shadow: 0 0px 4px rgba(0, 0, 0, 0.2), 0 4px 8px rgba(0, 0, 0, 0.24); }
@@ -4716,6 +4717,7 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
   display: flex;
   align-items: flex-end;
   justify-content: center;
+  flex-wrap: wrap;
   margin: 24px 0; }
   .professional .prof-pricing .prof-plans .prof-plan {
     background: #fff;
@@ -4930,115 +4932,159 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
     max-height: 100%; }
     .professional .prof-modal-container .signup-modal .signup-content {
       height: 100%; } }
-.choose-plan .left .plan-overview {
-  height: calc(100% - 72px);
-  display: flex;
-  align-content: stretch;
-  align-items: stretch;
-  flex-grow: 1;
-  box-sizing: border-box; }
-  .choose-plan .left .plan-overview .features .row {
-    padding-right: 16px; }
-    .choose-plan .left .plan-overview .features .row p {
-      color: #6A7885; }
-    .choose-plan .left .plan-overview .features .row .info-circle {
-      margin-left: 8px;
-      color: #6A7885;
-      position: relative; }
-      .choose-plan .left .plan-overview .features .row .info-circle:hover .explanation {
-        opacity: 1;
-        display: block;
-        width: 340px;
-        height: auto;
-        padding: 24px; }
-        .choose-plan .left .plan-overview .features .row .info-circle:hover .explanation h3, .choose-plan .left .plan-overview .features .row .info-circle:hover .explanation p {
-          display: block; }
-    .choose-plan .left .plan-overview .features .row .explanation {
-      display: none;
-      width: 0;
-      height: 0;
-      opacity: 0;
-      padding: 0;
-      position: absolute;
-      box-sizing: border-box;
+.choose-plan {
+  flex-direction: column; }
+  .choose-plan .beside {
+    display: flex;
+    height: 100%; }
+  .choose-plan .bottom-bar button {
+    background: none;
+    height: auto;
+    padding: 0; }
+  .choose-plan .left .plan-overview {
+    height: calc(100% - 72px);
+    display: flex;
+    align-content: stretch;
+    align-items: stretch;
+    flex-grow: 1;
+    box-sizing: border-box; }
+    .choose-plan .left .plan-overview .features .row {
+      padding-right: 16px; }
+      .choose-plan .left .plan-overview .features .row p {
+        color: #6A7885; }
+      .choose-plan .left .plan-overview .features .row .info-circle {
+        margin-left: 8px;
+        color: #6A7885;
+        position: relative; }
+        .choose-plan .left .plan-overview .features .row .info-circle:hover .explanation {
+          opacity: 1;
+          display: block;
+          width: 340px;
+          height: auto;
+          padding: 24px; }
+          .choose-plan .left .plan-overview .features .row .info-circle:hover .explanation h3, .choose-plan .left .plan-overview .features .row .info-circle:hover .explanation p {
+            display: block; }
+      .choose-plan .left .plan-overview .features .row .explanation {
+        display: none;
+        width: 0;
+        height: 0;
+        opacity: 0;
+        padding: 0;
+        position: absolute;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        bottom: 28px;
+        left: -20px;
+        background: #fff;
+        border-radius: 6px;
+        box-shadow: rgba(0, 0, 0, 0.14902) 0px 4px 18px;
+        transition: opacity 200ms;
+        box-sizing: border-box; }
+        .choose-plan .left .plan-overview .features .row .explanation h3 {
+          display: none;
+          color: #27A5F9;
+          margin: 0;
+          margin-bottom: 8px; }
+        .choose-plan .left .plan-overview .features .row .explanation p {
+          display: none;
+          margin: 0; }
+        .choose-plan .left .plan-overview .features .row .explanation::after {
+          content: '';
+          position: absolute;
+          bottom: -8px;
+          left: 18px;
+          border-left: 8px solid transparent;
+          border-right: 8px solid transparent;
+          border-top: 8px solid #fff; }
+    .choose-plan .left .plan-overview .column {
       display: flex;
       flex-direction: column;
-      bottom: 28px;
-      left: -20px;
-      background: #fff;
-      border-radius: 6px;
-      box-shadow: rgba(0, 0, 0, 0.14902) 0px 4px 18px;
-      transition: opacity 200ms;
-      box-sizing: border-box; }
-      .choose-plan .left .plan-overview .features .row .explanation h3 {
-        display: none;
-        color: #27A5F9;
-        margin: 0;
-        margin-bottom: 8px; }
-      .choose-plan .left .plan-overview .features .row .explanation p {
-        display: none;
-        margin: 0; }
-      .choose-plan .left .plan-overview .features .row .explanation::after {
-        content: '';
-        position: absolute;
-        bottom: -8px;
-        left: 18px;
-        border-left: 8px solid transparent;
-        border-right: 8px solid transparent;
-        border-top: 8px solid #fff; }
-  .choose-plan .left .plan-overview .column {
+      border-top: 2px solid #fff; }
+    .choose-plan .left .plan-overview .row {
+      display: flex;
+      flex-grow: 1;
+      border-bottom: 1px solid #E9EEF2;
+      align-items: center; }
+    .choose-plan .left .plan-overview .row:first-child {
+      height: 64px; }
+    .choose-plan .left .plan-overview .plan-columns-container {
+      display: flex;
+      flex-grow: 1; }
+      .choose-plan .left .plan-overview .plan-columns-container .plan-column {
+        width: 100%;
+        text-transform: capitalize;
+        box-sizing: border-box; }
+        .choose-plan .left .plan-overview .plan-columns-container .plan-column:hover {
+          cursor: pointer; }
+          .choose-plan .left .plan-overview .plan-columns-container .plan-column:hover .row:first-child p {
+            color: #27A5F9; }
+        .choose-plan .left .plan-overview .plan-columns-container .plan-column .row {
+          justify-content: center; }
+      .choose-plan .left .plan-overview .plan-columns-container .selected {
+        border: 2px solid #27A5F9;
+        height: calc(100% + 1px);
+        width: calc(100% - 7px); }
+        .choose-plan .left .plan-overview .plan-columns-container .selected .row p {
+          color: #2b2b4d; }
+        .choose-plan .left .plan-overview .plan-columns-container .selected .row:first-child p {
+          color: #27A5F9;
+          font-weight: 600; }
+        .choose-plan .left .plan-overview .plan-columns-container .selected .row:last-child {
+          border-bottom: none; }
+  .choose-plan .right {
+    width: 288px;
+    background: #F7FAFC;
+    padding: 36px;
+    position: relative;
     display: flex;
     flex-direction: column;
-    border-top: 2px solid #fff; }
-  .choose-plan .left .plan-overview .row {
-    display: flex;
-    flex-grow: 1;
-    border-bottom: 1px solid #E9EEF2;
-    align-items: center; }
-  .choose-plan .left .plan-overview .row:first-child {
-    height: 64px; }
-  .choose-plan .left .plan-overview .plan-columns-container {
-    display: flex;
-    flex-grow: 1; }
-    .choose-plan .left .plan-overview .plan-columns-container .plan-column {
+    justify-content: flex-end; }
+    .choose-plan .right input {
+      margin-top: 8px; }
+    .choose-plan .right .next {
+      margin-bottom: 0; }
+    .choose-plan .right button {
       width: 100%;
-      text-transform: capitalize;
-      box-sizing: border-box; }
-      .choose-plan .left .plan-overview .plan-columns-container .plan-column:hover {
-        cursor: pointer; }
-        .choose-plan .left .plan-overview .plan-columns-container .plan-column:hover .row:first-child p {
-          color: #27A5F9; }
-      .choose-plan .left .plan-overview .plan-columns-container .plan-column .row {
-        justify-content: center; }
-    .choose-plan .left .plan-overview .plan-columns-container .selected {
-      border: 2px solid #27A5F9;
-      height: calc(100% + 1px);
-      width: calc(100% - 7px); }
-      .choose-plan .left .plan-overview .plan-columns-container .selected .row p {
-        color: #2b2b4d; }
-      .choose-plan .left .plan-overview .plan-columns-container .selected .row:first-child p {
-        color: #27A5F9;
-        font-weight: 600; }
-      .choose-plan .left .plan-overview .plan-columns-container .selected .row:last-child {
-        border-bottom: none; }
-.choose-plan .right {
-  width: 288px;
-  background: #F7FAFC;
-  padding: 36px;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end; }
-  .choose-plan .right input {
-    margin-top: 8px; }
-  .choose-plan .right .next {
-    margin-bottom: 0; }
-  .choose-plan .right button {
-    width: 100%;
-    border-radius: 4px; }
-    .choose-plan .right button:hover {
-      background: #068de7; }
+      border-radius: 4px; }
+      .choose-plan .right button:hover {
+        background: #068de7; }
 
+@media (max-width: 885px) {
+  .signup-modal .choose-plan {
+    flex-direction: column;
+    overflow: auto;
+    display: block; }
+    .signup-modal .choose-plan .beside {
+      flex-direction: column;
+      height: auto; }
+    .signup-modal .choose-plan .bottom-bar {
+      padding: 0 32px; }
+    .signup-modal .choose-plan .left {
+      display: block; }
+    .signup-modal .choose-plan .right {
+      width: 100%;
+      display: block; }
+      .signup-modal .choose-plan .right .top {
+        display: none; }
+      .signup-modal .choose-plan .right form {
+        display: flex;
+        flex-direction: column; } }
+@media (max-width: 640px) {
+  .signup-modal .choose-plan .plan-overview .features {
+    display: none; }
+  .signup-modal .choose-plan .plan-overview .plan-columns-container {
+    flex-direction: column; }
+    .signup-modal .choose-plan .plan-overview .plan-columns-container .plan-column {
+      display: block; }
+      .signup-modal .choose-plan .plan-overview .plan-columns-container .plan-column .row {
+        display: none; }
+      .signup-modal .choose-plan .plan-overview .plan-columns-container .plan-column .row:first-child {
+        display: flex;
+        align-items: center;
+        max-height: 150px; }
+    .signup-modal .choose-plan .plan-overview .plan-columns-container .selected .row {
+      border-bottom: none; } }
 .billing {
   height: 100%; }
   .billing .left {
