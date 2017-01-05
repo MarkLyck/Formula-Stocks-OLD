@@ -7,7 +7,6 @@ class RiskReward extends React.Component {
         <h2 className="title">Risk vs. Reward</h2>
         <div className="divider"/>
         <div className="beside">
-          {/* <div className="left"> */}
           <div className="chart-container">
             <img src="/assets/images/omega_chart.svg"/>
             <div className="chart-indicators">
@@ -18,8 +17,6 @@ class RiskReward extends React.Component {
               <div className="chart-indicator djia">DJIA</div>
             </div>
           </div>
-          {/* </div> */}
-          {/* <div className="right"> */}
           <p className="right-text">
             Achieving a higher level of return is, of course, easy if it means accepting
             higher risk. One simply uses leverage, thus amplifying both risk and reward.<br/><br/>
@@ -34,7 +31,6 @@ class RiskReward extends React.Component {
             steeper slopes indicate lower risk. The yearly return distribution is
             significantly superior to DJIA at all thresholds and for all membership levels.
           </p>
-          {/* </div> */}
         </div>
       </section>
     )
