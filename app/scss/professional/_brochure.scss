@@ -34,3 +34,17 @@
     }
   }
 }
+
+@media (max-width: 675px) {
+  .professional {
+    .brochure {
+      .right {
+        display: none;
+      }
+      .left {
+        width: 100%;
+        max-width: 100%;
+      }
+    }
+  }
+}
