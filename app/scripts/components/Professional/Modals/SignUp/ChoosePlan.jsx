@@ -4,6 +4,7 @@ import store from '../../../../store.js'
 
 import FeatureList from './FeatureList.jsx'
 import PlanColumn from './PlanColumn.jsx'
+import Terms from '../../../global/TermsAndConditions'
 
 class ChoosePlan extends React.Component {
   constructor(props) {
@@ -12,8 +13,9 @@ class ChoosePlan extends React.Component {
     this.submit = this.submit.bind(this)
     this.renderNextBtn = this.renderNextBtn.bind(this)
     this.renderError = this.renderError.bind(this)
+    this.toggleTerms = this.toggleTerms.bind(this)
 
-    this.state = { validating: false, error: '', errorType: '' }
+    this.state = { validating: false, error: '', errorType: '', showTerms: false }
   }
 
   checkForDuplicates(email) {
@@ -60,6 +62,10 @@ class ChoosePlan extends React.Component {
     if (errorChecker === this.state.errorType) {
       return <p className="error"><i className="fa fa-exclamation" aria-hidden="true"></i>{this.state.error}</p>
     }
+  }
+
+  toggleTerms() {
+    this.setState({ showTerms: !this.state.showTerms })
   }
 
   render() {
@@ -109,8 +115,9 @@ class ChoosePlan extends React.Component {
             </div>
           </div>
           <div className="bottom-bar">
-             <p>Statistics are calculated from backtested data. We make no guarantee of future performance. See our <button>Terms of service</button></p>
+             <p>Statistics are calculated from backtested data. We make no guarantee of future performance. See our <button onClick={this.toggleTerms}>Terms of service</button></p>
           </div>
+          {this.state.showTerms ? <div className="terms-container"><button className="close-btn" onClick={this.toggleTerms}><img src="/assets/icons/ic_close.svg"/></button><Terms/></div> : ''}
         </div>)
   }
 }

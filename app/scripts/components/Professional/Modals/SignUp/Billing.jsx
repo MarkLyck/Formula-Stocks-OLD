@@ -5,6 +5,7 @@ import store from '../../../../store'
 import countries from '../../../../data/countries'
 import discountCodes from '../../../../data/discountCodes'
 import _ from 'underscore'
+import Terms from '../../../global/TermsAndConditions'
 
 function formatPrice(value) {
   while(/(\d+)(\d{3})/.test(value.toString())) {
@@ -37,6 +38,8 @@ class Billing extends React.Component {
 
     this.submit = this.submit.bind(this)
     this.createCustomer = this.createCustomer.bind(this)
+
+    this.toggleTerms = this.toggleTerms.bind(this)
 
     const plan = store.plans.get(this.props.selected).toJSON()
 
@@ -77,7 +80,8 @@ class Billing extends React.Component {
       coupon: '',
       cycle: cycle,
       error: '',
-      errorType: ''
+      errorType: '',
+      showTerms: false
     }
   }
 
@@ -235,6 +239,10 @@ class Billing extends React.Component {
     }
   }
 
+  toggleTerms() {
+    this.setState({ showTerms: !this.state.showTerms })
+  }
+
   render() {
     const countryClass = this.state.error.indexOf('country') > -1 ? 'red-outline' : ''
     const cityClass = this.state.error.indexOf('city') > -1 ? 'red-outline' : ''
@@ -324,10 +332,11 @@ class Billing extends React.Component {
           {this.renderError('tos')}
           <div className="ToC">
             {checkbox}
-            <p>I've read and agree to the <button onClick={this.showTerms}>Terms of Service</button></p>
+            <p>I've read and agree to the <button onClick={this.toggleTerms}>Terms of Service</button></p>
           </div>
           {this.renderPayButton()}
         </div>
+        {this.state.showTerms ? <div className="terms-container"><button className="close-btn" onClick={this.toggleTerms}><img src="/assets/icons/ic_close.svg"/></button><Terms/></div> : ''}
       </div>
     )
   }

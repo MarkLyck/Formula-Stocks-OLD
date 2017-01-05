@@ -4911,6 +4911,27 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
         height: 56px; }
         .signup-modal .signup-content .right .subscribe i, .signup-modal .signup-content .right .next i {
           color: #fff; }
+  .signup-modal .terms-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 64px;
+    max-height: 100vh;
+    overflow: auto;
+    background: #fff;
+    z-index: 1020; }
+    .signup-modal .terms-container .close-btn {
+      position: absolute;
+      top: 32px;
+      right: 32px;
+      background: none;
+      height: 48px;
+      width: 48px;
+      padding: 0; }
+      .signup-modal .terms-container .close-btn img {
+        height: 100%;
+        width: auto; }
   .signup-modal .bottom-bar {
     width: 100%;
     background: #283544;
