@@ -4199,12 +4199,19 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
   .prof-navbar .left img {
     height: 30px;
     width: auto; }
+  .prof-navbar .menu-btn {
+    display: none;
+    padding: 0;
+    background: none;
+    font-size: 1.5rem; }
+    .prof-navbar .menu-btn i {
+      color: #27A5F9; }
   .prof-navbar .right {
     display: flex;
     align-items: center;
     height: 100%; }
     .prof-navbar .right a {
-      margin-left: 16px;
+      margin-left: 24px;
       height: 100%;
       position: relative;
       height: 100%;
@@ -4237,6 +4244,8 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
     padding: 16px;
     border-bottom-left-radius: 4px;
     border-bottom-right-radius: 4px; }
+  .professional .static .menu-btn i {
+    color: #fff; }
   .professional .static .right a {
     color: #fff; }
     .professional .static .right a:hover::after {
@@ -4297,6 +4306,62 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
     top: -65px; }
   to {
     top: 0; } }
+.prof-navbar .right.open {
+  position: absolute;
+  top: 72px;
+  right: 0px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2), 0 0 2px rgba(0, 0, 0, 0.16);
+  padding: 24px;
+  box-sizing: border-box; }
+  .prof-navbar .right.open::after {
+    content: '';
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid #fff;
+    position: absolute;
+    top: -8px;
+    right: 17px; }
+  .prof-navbar .right.open .overview {
+    display: flex; }
+  .prof-navbar .right.open .nav-link {
+    color: #49494A;
+    margin-bottom: 16px;
+    margin-left: 0;
+    box-sizing: border-box;
+    width: 100%;
+    padding-top: 8px;
+    padding-bottom: 8px; }
+    .prof-navbar .right.open .nav-link:hover {
+      color: #27A5F9; }
+      .prof-navbar .right.open .nav-link:hover::after {
+        display: none; }
+  .prof-navbar .right.open #nav-links {
+    flex-direction: column; }
+  .prof-navbar .right.open #login-btn {
+    color: #27A5F9;
+    border-color: #27A5F9; }
+  .prof-navbar .right.open #signup-btn {
+    background: #27A5F9;
+    color: #fff; }
+    .prof-navbar .right.open #signup-btn:hover {
+      background: #068de7; }
+  .prof-navbar .right.open .nav-link:last-child {
+    margin-bottom: 0; }
+
+@media (max-width: 955px) {
+  .prof-navbar .right .overview {
+    display: none; }
+  .prof-navbar .right .nav-link {
+    margin-left: 16px; } }
+@media (max-width: 840px) {
+  .prof-navbar .menu-btn {
+    display: block; }
+  .prof-navbar .right {
+    display: none; } }
 .hero2 {
   width: 100%;
   height: 480px;
