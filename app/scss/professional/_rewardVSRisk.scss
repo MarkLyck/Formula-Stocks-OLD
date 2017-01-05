@@ -1,56 +1,95 @@
 .risk-reward {
-  .left {
+  .beside {
+    position: relative;
     display: flex;
-    align-items: center;
-    .chart-container {
-      position: relative;
+    flex-direction: column;
+  }
+  .chart-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    margin: 0;
+    img {
+      height: auto;
       width: 100%;
-      margin: 0;
-      img {
-        height: auto;
-        width: 100%;
-        max-height: 300px;
+      max-height: 280px;
+    }
+    .chart-indicators {
+      position: absolute;
+      top: 16px;
+      right: 64px;
+      .chart-indicator {
+        background: none;
+        padding-left: 25px;
+        position: relative;
+        margin-bottom: 10px;
+        &::before {
+          content: '';
+          width: 15px;
+          height: 15px;
+          left: 0;
+          top: 50%;
+          transform: translateY(-50%);
+          background: $primary-color;
+          position: absolute;
+          z-index: 2;
+        }
       }
-      .chart-indicators {
-        position: absolute;
-        top: 16px;
-        right: 64px;
-        .chart-indicator {
-          background: none;
-          padding-left: 25px;
-          position: relative;
-          margin-bottom: 10px;
-          &::before {
-            content: '';
-            width: 15px;
-            height: 15px;
-            left: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            background: $primary-color;
-            position: absolute;
-            z-index: 2;
-          }
-        }
-        .business::before {
-          background: #4C7899;
-        }
-        .fund::before {
-          background: $text-color;
-        }
-        .premium::before {
-          background: #6FCEE1;
-        }
-        .basic::before {
-          background: #AFD1E3;
-        }
-        .djia::before {
-          background: #989898;
-        }
+      .business::before {
+        background: #4C7899;
+      }
+      .fund::before {
+        background: $text-color;
+      }
+      .premium::before {
+        background: #6FCEE1;
+      }
+      .basic::before {
+        background: #AFD1E3;
+      }
+      .djia::before {
+        background: #989898;
       }
     }
   }
   .graph-explanation {
     margin-top: 32px;
+  }
+  .right-text {
+    margin-left: 50%;
+  }
+}
+
+@media (max-width: 1025px) {
+  .professional {
+    .risk-reward {
+      .beside {
+        .disclaimer {
+          margin-left: 0;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  .professional {
+    .risk-reward {
+      .beside {
+        .chart-container {
+          position: relative;
+          margin: 16px auto;
+          order: 2;
+          max-width: 100%;
+        }
+        .right-text {
+          margin-left: 0;
+          order: 0;
+          margin-bottom: 0;
+        }
+        .disclaimer { order: 3; }
+      }
+    }
   }
 }
