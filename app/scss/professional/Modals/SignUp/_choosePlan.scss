@@ -1,4 +1,16 @@
 .choose-plan {
+  flex-direction: column;
+  .beside {
+    display: flex;
+    height: 100%;
+  }
+  .bottom-bar {
+    button {
+      background: none;
+      height: auto;
+      padding: 0;
+    }
+  }
   .left {
     .plan-overview {
       height: calc(100% - 72px);
@@ -144,6 +156,68 @@
       border-radius: 4px;
       &:hover {
         background: darken($primary-color, 10%);
+      }
+    }
+  }
+}
+
+@media (max-width: 885px) {
+  .signup-modal {
+    .choose-plan {
+      flex-direction: column;
+      overflow: auto;
+      display: block;
+      .beside {
+        flex-direction: column;
+        height: auto;
+      }
+      .bottom-bar {
+        padding: 0 32px;
+      }
+      .left {
+        display: block;
+      }
+      .right {
+        width: 100%;
+        display: block;
+        .top {
+          display: none;
+        }
+        form {
+          display: flex;
+          flex-direction: column;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 640px) {
+  .signup-modal {
+    .choose-plan {
+      .plan-overview {
+        .features {
+          display: none;
+        }
+        .plan-columns-container {
+          flex-direction: column;
+          .plan-column {
+            display: block;
+            .row {
+              display: none;
+            }
+            .row:first-child {
+              display: flex;
+              align-items: center;
+              max-height: 150px;
+            }
+          }
+          .selected {
+            .row {
+              border-bottom: none;
+            }
+          }
+        }
       }
     }
   }

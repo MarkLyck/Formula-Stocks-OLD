@@ -68,43 +68,48 @@ class ChoosePlan extends React.Component {
 
     return (
         <div className="choose-plan signup-content">
-          <div className="left">
-            <h2>Choose your plan</h2>
-            <div className="plan-overview">
-              <FeatureList/>
-              <div className="plan-columns-container">
-                <PlanColumn plan={store.plans.get('premium').toJSON()} selected={this.props.selected} selectPlan={this.props.selectPlan}/>
-                <PlanColumn plan={store.plans.get('business').toJSON()} selected={this.props.selected} selectPlan={this.props.selectPlan}/>
-                <PlanColumn plan={store.plans.get('fund').toJSON()} selected={this.props.selected} selectPlan={this.props.selectPlan}/>
+          <div className="beside">
+            <div className="left">
+              <h2>Choose your plan</h2>
+              <div className="plan-overview">
+                <FeatureList/>
+                <div className="plan-columns-container">
+                  <PlanColumn plan={store.plans.get('premium').toJSON()} selected={this.props.selected} selectPlan={this.props.selectPlan}/>
+                  <PlanColumn plan={store.plans.get('business').toJSON()} selected={this.props.selected} selectPlan={this.props.selectPlan}/>
+                  <PlanColumn plan={store.plans.get('fund').toJSON()} selected={this.props.selected} selectPlan={this.props.selectPlan}/>
+                </div>
               </div>
+            </div>
+
+            <div className="right">
+              <div className="top">
+                <div className="steps">
+                  <div className="step"><div className="circle selected"/><p>Choose a plan</p></div>
+                  <div className="step"><div className="circle"/><p>Billing</p></div>
+                  <div className="step"><div className="circle"/><p>Done</p></div>
+                </div>
+                <div className="line"/>
+              </div>
+
+              <div className="plan-name info">
+                <p>Plan</p>
+                <p>{this.props.selected}</p>
+              </div>
+              <div className="plan-price info">
+                <p>Price</p>
+                <p>{this.props.renderPrice()}</p>
+              </div>
+              <form className="user-form" onSubmit={this.submit}>
+              { this.state.error.toLowerCase().indexOf('email') === -1 ? <label htmlFor="email">Enter your email</label> : this.renderError('email')}
+              <input id="email" className={emailClass} type="email" placeholder="Email address" ref="email"/>
+              { this.state.error.indexOf('password') === -1 ? <label htmlFor="password">Choose a password</label> : this.renderError('password')}
+              <input id="password" className={passwordClass} type="password" placeholder="Password" ref="password"/>
+              {this.renderNextBtn()}
+              </form>
             </div>
           </div>
-
-          <div className="right">
-            <div className="top">
-              <div className="steps">
-                <div className="step"><div className="circle selected"/><p>Choose a plan</p></div>
-                <div className="step"><div className="circle"/><p>Billing</p></div>
-                <div className="step"><div className="circle"/><p>Done</p></div>
-              </div>
-              <div className="line"/>
-            </div>
-
-            <div className="plan-name info">
-              <p>Plan</p>
-              <p>{this.props.selected}</p>
-            </div>
-            <div className="plan-price info">
-              <p>Price</p>
-              <p>{this.props.renderPrice()}</p>
-            </div>
-            <form className="user-form" onSubmit={this.submit}>
-            { this.state.error.toLowerCase().indexOf('email') === -1 ? <label htmlFor="email">Enter your email</label> : this.renderError('email')}
-            <input id="email" className={emailClass} type="email" placeholder="Email address" ref="email"/>
-            { this.state.error.indexOf('password') === -1 ? <label htmlFor="password">Choose a password</label> : this.renderError('password')}
-            <input id="password" className={passwordClass} type="password" placeholder="Password" ref="password"/>
-            {this.renderNextBtn()}
-            </form>
+          <div className="bottom-bar">
+             <p>Statistics are calculated from backtested data. We make no guarantee of future performance. See our <button>Terms of service</button></p>
           </div>
         </div>)
   }
