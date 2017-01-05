@@ -4602,20 +4602,41 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
 .machine-learning .collapsable {
   margin-bottom: 32px; }
 
-.what-we-offer a {
+.what-you-get a {
   margin-top: 16px;
   max-width: 150px; }
-.what-we-offer .right {
+  .what-you-get a:hover {
+    background: #068de7; }
+.what-you-get .beside {
   display: flex;
-  align-items: center; }
-  .what-we-offer .right .screen {
+  flex-direction: column;
+  position: relative;
+  width: 100%; }
+  .what-you-get .beside .screen {
+    position: absolute;
+    top: 0;
+    right: 0;
     height: auto;
-    width: 100%;
+    width: calc(50% - 16px);
     transition: transform 0.5s;
     box-shadow: 0 0px 4px rgba(0, 0, 0, 0.2), 0 4px 8px rgba(0, 0, 0, 0.24); }
-    .what-we-offer .right .screen:hover {
+    .what-you-get .beside .screen:hover {
       transform: scale(1.05); }
+  .what-you-get .beside .left {
+    margin-right: calc(50% + 16px); }
 
+@media (max-width: 1200px) {
+  .what-you-get .beside .screen {
+    position: relative;
+    align-self: center;
+    margin: 16px 0;
+    max-width: 640px;
+    width: 100%;
+    margin-bottom: 32px; }
+  .what-you-get .beside .left {
+    width: 100%; }
+  .what-you-get .beside a.left {
+    margin: 0 auto; } }
 .comparisons {
   justify-content: center; }
   .comparisons .comparisons-list {
