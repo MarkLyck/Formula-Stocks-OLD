@@ -25,7 +25,7 @@ class SignUp extends React.Component {
     this.lastPage = this.lastPage.bind(this)
 
     this.state = {
-      page: 1,
+      page: 2,
       selected: 'premium',
       gotInfo: false
     }

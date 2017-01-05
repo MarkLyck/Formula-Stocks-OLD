@@ -147,3 +147,24 @@
     }
   }
 }
+
+@media (max-width: 670px) {
+  .signup-modal {
+    .billing {
+      overflow: auto;
+      display: block;
+      .right {
+        width: 100%;
+        height: auto;
+        align-items: center;
+        > div, > button {
+          max-width: 480px;
+          width: 100%;
+        }
+        .top {
+          display: none;
+        }
+      }
+    }
+  }
+}
