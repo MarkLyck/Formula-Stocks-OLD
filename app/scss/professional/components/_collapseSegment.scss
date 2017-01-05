@@ -2,7 +2,7 @@
   .collapsable {
     width: 100%;
     max-width: 1160px;
-    button {
+    .toggle {
       width: 100%;
       display: flex;
       align-items: center;
@@ -13,6 +13,7 @@
       font-size: 0.9rem;
       &:hover {
         background: #f5f5f5;
+        cursor: pointer;
         i {
           color: $primary-color;
         }

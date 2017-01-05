@@ -4846,7 +4846,7 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
 .professional .collapsable {
   width: 100%;
   max-width: 1160px; }
-  .professional .collapsable button {
+  .professional .collapsable .toggle {
     width: 100%;
     display: flex;
     align-items: center;
@@ -4855,14 +4855,15 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
     padding: 16px 24px;
     position: relative;
     font-size: 0.9rem; }
-    .professional .collapsable button:hover {
-      background: #f5f5f5; }
-      .professional .collapsable button:hover i {
+    .professional .collapsable .toggle:hover {
+      background: #f5f5f5;
+      cursor: pointer; }
+      .professional .collapsable .toggle:hover i {
         color: #27A5F9; }
-    .professional .collapsable button h2 {
+    .professional .collapsable .toggle h2 {
       color: #27A5F9;
       margin: 0; }
-    .professional .collapsable button i {
+    .professional .collapsable .toggle i {
       color: #49494A; }
   .professional .collapsable p {
     margin-top: 0px; }
