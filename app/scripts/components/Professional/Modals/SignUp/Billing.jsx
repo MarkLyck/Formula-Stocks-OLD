@@ -6,6 +6,13 @@ import countries from '../../../../data/countries'
 import discountCodes from '../../../../data/discountCodes'
 import _ from 'underscore'
 
+function formatPrice(value) {
+  while(/(\d+)(\d{3})/.test(value.toString())) {
+    value = value.toString().replace(/(\d+)(\d{3})/, '$1'+','+'$2')
+  }
+  return value
+}
+
 class Billing extends React.Component {
   constructor(props) {
     super(props)
@@ -104,7 +111,7 @@ class Billing extends React.Component {
       return (
         <div className="tax info">
           <p>Tax</p>
-          <p>${price * (this.state.taxPercent / 100)}</p>
+          <p>${formatPrice(price * (this.state.taxPercent / 100))}</p>
         </div>
       )
     }
@@ -134,7 +141,7 @@ class Billing extends React.Component {
     return (
       <div className="tax info">
         <p>Total</p>
-        <p>${price} {this.state.cycle}</p>
+        <p>${formatPrice(price)} {this.state.cycle}</p>
       </div>
     )
   }
