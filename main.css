@@ -4423,6 +4423,50 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
   .professional .what-is-it img:hover {
     transform: scale(1.05); }
 
+.professional .probability-content {
+  position: relative;
+  width: 100%;
+  max-width: 1160px; }
+  .professional .probability-content .probability-text {
+    width: calc(100% / 3 * 2 - 16px);
+    max-width: calc(100% - 400px); }
+  .professional .probability-content .graph-container {
+    position: absolute;
+    top: 0;
+    right: 32px; }
+
+@media (max-width: 1200px) {
+  .probability-content .probability-text:nth-child(4) {
+    width: 100%;
+    max-width: 100%; } }
+@media (max-width: 1000px) {
+  .probability-content .probability-text:nth-child(3) {
+    width: 100%;
+    max-width: 100%; } }
+@media (max-width: 940px) {
+  .probability-content .probability-text:nth-child(2) {
+    width: 100%;
+    max-width: 100%; } }
+@media (max-width: 900px) {
+  .professional .probability-content {
+    display: flex;
+    flex-direction: column; }
+    .professional .probability-content .probability-text {
+      width: 100%;
+      max-width: 100%; }
+    .professional .probability-content .probability-text:nth-child(1) {
+      order: 2; }
+    .professional .probability-content .probability-text:nth-child(2) {
+      order: 3; }
+    .professional .probability-content .probability-text:nth-child(3) {
+      order: 4; }
+    .professional .probability-content .probability-text:nth-child(4) {
+      order: 5; }
+    .professional .probability-content .graph-container {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      order: 1; } }
 .win-rate-graph {
   height: 320px;
   display: flex;
@@ -4443,6 +4487,7 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
       align-items: center;
       justify-content: center;
       background: rgba(255, 255, 255, 0.75);
+      width: 100%;
       font-weight: 100;
       height: 45px;
       margin: 0; }
