@@ -5198,6 +5198,19 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
           color: #49494A;
           text-decoration: underline; }
 
+@media (max-width: 670px) {
+  .signup-modal .billing {
+    overflow: auto;
+    display: block; }
+    .signup-modal .billing .right {
+      width: 100%;
+      height: auto;
+      align-items: center; }
+      .signup-modal .billing .right > div, .signup-modal .billing .right > button {
+        max-width: 480px;
+        width: 100%; }
+      .signup-modal .billing .right .top {
+        display: none; } }
 .prof-modal-container {
   position: fixed;
   top: 0;
