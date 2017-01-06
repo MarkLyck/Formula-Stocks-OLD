@@ -4203,7 +4203,11 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
     display: none;
     padding: 0;
     background: none;
-    font-size: 1.5rem; }
+    font-size: 1.5rem;
+    position: absolute;
+    top: 50%;
+    right: 16px;
+    transform: translateY(-50%); }
     .prof-navbar .menu-btn i {
       color: #27A5F9; }
   .prof-navbar .right {
@@ -5569,5 +5573,27 @@ i {
 .disclaimer {
   font-weight: 100;
   font-size: 0.8rem; }
+
+.terms-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 64px;
+  max-height: 100vh;
+  overflow: auto;
+  background: #fff;
+  z-index: 1020; }
+  .terms-container .close-btn {
+    position: absolute;
+    top: 32px;
+    right: 32px;
+    background: none;
+    height: 48px;
+    width: 48px;
+    padding: 0; }
+    .terms-container .close-btn img {
+      height: 100%;
+      width: auto; }
 
 /*# sourceMappingURL=main.css.map */
