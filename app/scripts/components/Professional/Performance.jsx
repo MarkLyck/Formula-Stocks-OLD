@@ -179,7 +179,7 @@ class Performance extends React.Component {
   render() {
     const Element = Scroll.Element
     return (
-      <section className="prof-performance">
+      <section className="prof-performance section">
         <Element name="performance"/>
         <h2 className="title">Performance</h2>
         <div className="divider"/>

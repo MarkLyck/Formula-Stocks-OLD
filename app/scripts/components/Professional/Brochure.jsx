@@ -9,7 +9,7 @@ class Brochure extends React.Component {
   render() {
     const Element = Scroll.Element
     return (
-      <section className="brochure">
+      <section className="brochure section">
         <Element name="brochure"/>
         <div className="beside">
           <div className="left">

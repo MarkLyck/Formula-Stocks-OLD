@@ -37,7 +37,7 @@ const PricingTable = React.createClass({
     }
 
     return (
-      <section className="pricing-table">
+      <section className="pricing-table section">
         <Element name="pricing"/>
         <div className="content">
           <h2 className="title">Features & pricing</h2>
@@ -47,7 +47,6 @@ const PricingTable = React.createClass({
             <Product showModal={this.showModal} name="Basic" price={cc.commafy(store.plans.get('basic').get('price'))} stats={store.plans.get('basic').get('stats')} billed="Monthly" signupText="Start Free Month" info={store.plans.get('basic').get('info')}/>
             <Product showModal={this.showModal} name="Premium" price={cc.commafy(store.plans.get('premium').get('price'))} stats={store.plans.get('premium').get('stats')} billed="Monthly" signupText="Get Started" info={store.plans.get('premium').get('info')}/>
             <Product showModal={this.showModal} name="Business" price={cc.commafy(store.plans.get('business').get('price'))} stats={store.plans.get('business').get('stats')} billed="Yearly" signupText="Get Started" info={store.plans.get('business').get('info')}/>
-            <Product showModal={this.showModal} name="Fund" price={cc.commafy(store.plans.get('fund').get('price'))} stats={store.plans.get('fund').get('stats')} billed="Yearly" signupText="Get Started" info={store.plans.get('fund').get('info')}/>
           </div>
           <p className="disclaimer">
             Information in pricing tables does not represent, warrant, or guarantee any specific level of future investment performance.

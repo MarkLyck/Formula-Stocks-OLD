@@ -3,7 +3,7 @@ import React from 'react'
 class RiskReward extends React.Component {
   render() {
     return (
-      <section className="risk-reward">
+      <section className="risk-reward section">
         <h2 className="title">Risk vs. Reward</h2>
         <div className="divider"/>
         <div className="beside">

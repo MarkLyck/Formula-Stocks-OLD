@@ -8,7 +8,7 @@ import HeroTest from './components/Home/Hero2.jsx'
 import Home from './components/home/Home'
 import Professional from './components/Professional/Home.jsx'
 
-import SignUp2 from './components/Professional/Modals/SignUp/SignUp.jsx'
+import SignUp2 from './components/global/Modals/SignUp/SignUp.jsx'
 
 import Login from './components/home/Login'
 import Signup from './components/home/Signup'
@@ -31,7 +31,7 @@ const router = (
   <Router history={store.settings.history} onUpdate={() => window.scrollTo(0, 0)}>
     <Route path="/" component={Home}>
       <Route path="/login" component={Login}/>
-      <Route path="/signup" component={Signup}/>
+      <Route path="/signup" component={SignUp2}/>
     </Route>
     <Route path="/pro" component={Professional}>
       <Route path="login" component={Login}/>

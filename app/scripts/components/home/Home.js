@@ -2,8 +2,8 @@ import React from 'React'
 
 import store from '../../store'
 
-
-import Header from './Header'
+import NavBar from '../global/NavBar.jsx'
+import Hero from './Hero'
 import AboveAverageReturns from './fiveReasons/AboveAverageReturns'
 import ReachYourGoals from './fiveReasons/ReachYourGoals'
 import InformationalAdvantage from './fiveReasons/InformationalAdvantage'
@@ -12,8 +12,9 @@ import HigherPerformance from './fiveReasons/HigherPerformance'
 import OurProducts from './OurProducts'
 import PreviousRecommendations from './PreviousRecommendations'
 import TheResults from './Performance.jsx'
-import PricingTable from './PricingTable'
-// import Brochures from './Brochures'
+// import PricingTable from './PricingTable'
+import Pricing from '../global/Pricing.jsx'
+import HowWeBeatTheMarket from '../global/HowWeBeatTheMarket.jsx'
 import MoreInformation from './MoreInformation.jsx'
 import RewardVSRisk from './RewardVSRisk'
 import Quote from './Quote'
@@ -21,6 +22,7 @@ import CumulativeInterest from './CumulativeInterest'
 import Newsletter from './Newsletter'
 import AboutUs from './AboutUs'
 import ContactUs from './ContactUs'
+import BottomCTA from '../global/BottomCTA.jsx'
 import Footer from './Footer'
 
 import Modal from '../Modal'
@@ -34,70 +36,34 @@ const Home = React.createClass({
   },
   componentDidMount() {
     store.market.data.getAnnualData()
-    store.session.on('change', this.updateState)
     window.Intercom("boot", {
       app_id: "i194mpvo"
     })
   },
-  componentWillUnmount() {
-    store.session.off('change', this.updateState)
-  },
-  updateState() {
-    this.setState({showModal: store.session.get('showModal')})
-  },
-  closeModal() {
-    store.session.set('showModal', false)
-  },
   render () {
-    let modal;
-
-    if(this.state.showModal) {
-      let containerStyles = {
-        zIndex: '20'
-      }
-      let modalStyles = {
-        width: '80%',
-        top: '100px',
-        bottom: '40px',
-        left: '50%',
-        transform: 'translateX(-50%)',
-        padding: '40px',
-        position: 'absolute',
-        overflowY: 'scroll',
-      }
-      if (this.state.showModal === 'terms') {
-        modal = (<Modal modalStyles={modalStyles} closeModal={this.closeModal} containerStyles={containerStyles}>
-          <TermsAndConditions/>
-        </Modal>)
-      } else if (this.state.showModal === 'privacy') {
-        modal = (<Modal modalStyles={modalStyles} closeModal={this.closeModal} containerStyles={containerStyles}>
-          <PrivacyPolicy/>
-        </Modal>)
-      }
-
-    }
-//<PreviousRecommendations/>
     return (
-      <div id="home">
-        {modal}
-        <Header/>
+      <div id="home" className="retail">
+        <NavBar/>
+        <Hero/>
         <AboveAverageReturns/>
         <ReachYourGoals/>
         <InformationalAdvantage/>
         <OneDollar/>
         <HigherPerformance/>
-        <OurProducts/>
+        {/* <OurProducts/> */}
         <PreviousRecommendations/>
         <TheResults/>
-        <PricingTable/>
-        {/* <Brochures/> */}
-        <MoreInformation />
+        {/* <PricingTable/> */}
+        <Pricing/>
+        <HowWeBeatTheMarket/>
+        {/* <MoreInformation /> */}
         <RewardVSRisk/>
         <Quote/>
         <CumulativeInterest/>
-        <Newsletter/>
+        {/* <Newsletter/> */}
         <AboutUs/>
-        <ContactUs/>
+        <BottomCTA/>
+        {/* <ContactUs/> */}
         <Footer/>
         {this.props.children}
       </div>

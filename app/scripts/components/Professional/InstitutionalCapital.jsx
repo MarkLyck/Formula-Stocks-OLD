@@ -3,7 +3,7 @@ import React from 'react'
 class InstitutionalCapital extends React.Component {
   render() {
     return (
-      <section>
+      <section className="section">
         <h2 className="title">Institutional capital</h2>
         <div className="divider"/>
         <p>

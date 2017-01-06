@@ -1,21 +1,22 @@
 import React from 'react'
 import store from '../../store'
-import NavBar from './NavBar.jsx'
+
+import NavBar from '../global/NavBar.jsx'
 import Hero from './Hero.jsx'
 import WhatIsIt from './WhatIsIt.jsx'
 import Probabilities from './Probabilities.jsx'
 import Performance from './Performance.jsx'
 import RiskReward from './RiskReward.jsx'
-import HowWeBeatTheMarket from './HowWeBeatTheMarket.jsx'
+import HowWeBeatTheMarket from '../global/HowWeBeatTheMarket.jsx'
 import InstitutionalCapital from './InstitutionalCapital.jsx'
 import WhatYouGet from './WhatYouGet.jsx'
-import Comparisons from './Comparisons.jsx'
+import Comparisons from '../global/Comparisons.jsx'
 import Recommendations from './Recommendations.jsx'
-import Pricing from './Pricing.jsx'
+import Pricing from '../global/Pricing.jsx'
 import BacktestedPerformance from './BacktestedPerformance.jsx'
 import Brochure from './Brochure.jsx'
 import AboutUs from '../home/AboutUs'
-import BottomCTA from './BottomCTA.jsx'
+import BottomCTA from '../global/BottomCTA.jsx'
 import Footer from '../home/Footer'
 
 class Home extends React.Component {
@@ -28,9 +29,10 @@ class Home extends React.Component {
   }
 
   render() {
+    console.log(this.props);
     return (
       <div className="professional">
-        <NavBar/>
+        <NavBar path={this.props.route.path}/>
         <Hero/>
         <WhatIsIt/>
         <Probabilities/>
@@ -41,11 +43,11 @@ class Home extends React.Component {
         <Comparisons/>
         <Recommendations/>
         <BacktestedPerformance/>
-        <Pricing/>
+        <Pricing path={this.props.route.path}/>
         <InstitutionalCapital/>
         <Brochure/>
         <AboutUs/>
-        <BottomCTA/>
+        <BottomCTA path={this.props.route.path}/>
         <Footer/>
         {this.props.children}
       </div>

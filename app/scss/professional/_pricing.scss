@@ -1,72 +1,70 @@
-.professional {
-  .prof-pricing {
-    .prof-plans {
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin: 24px 0;
-      .prof-plan {
-        background: #fff;
-        .top {
-          padding: 24px;
-          border-top-left-radius: 4px;
-          border-top-right-radius: 4px;
-          border: 1px solid #E4E4E4;
-          border-bottom: none;
-          border-bottom: 2px solid #eee;
-          border-bottom-color: $primary-color;
-          h3 {
-            text-transform: capitalize;
-            font-weight: bold;
-            margin: 0;
-            margin-bottom: 4px;
-          }
-        }
-        p {
-          display: flex;
-          justify-content: space-between;
+.prof-pricing {
+  .prof-plans {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 24px 0;
+    .prof-plan {
+      background: #fff;
+      .top {
+        padding: 24px;
+        border-top-left-radius: 4px;
+        border-top-right-radius: 4px;
+        border: 1px solid #E4E4E4;
+        border-bottom: none;
+        border-bottom: 2px solid #eee;
+        border-bottom-color: $primary-color;
+        h3 {
+          text-transform: capitalize;
+          font-weight: bold;
           margin: 0;
-          .right-align {
-            text-align: right;
-            margin-left: 24px;
-          }
+          margin-bottom: 4px;
         }
-        .statistics {
-          padding: 16px 24px 8px;
-          border: 1px solid #E4E4E4;
-          border-top: none;
-          border-bottom: none;
-          box-sizing: border-box;
-          p {
-            margin-bottom: 10px;
-          }
+      }
+      p {
+        display: flex;
+        justify-content: space-between;
+        margin: 0;
+        .right-align {
+          text-align: right;
+          margin-left: 24px;
         }
-        border-radius: 4px;
-        margin: 0 32px;
-        .cta {
-          width: 100%;
-          border-top-left-radius: 0;
-          border-top-right-radius: 0;
-          padding: 24px;
-          height: auto;
-          &:hover {
-            background: darken($primary-color, 10%);
-          }
+      }
+      .statistics {
+        padding: 16px 24px 8px;
+        border: 1px solid #E4E4E4;
+        border-top: none;
+        border-bottom: none;
+        box-sizing: border-box;
+        p {
+          margin-bottom: 10px;
+        }
+      }
+      border-radius: 4px;
+      margin: 0 32px;
+      .cta {
+        width: 100%;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        padding: 24px;
+        height: auto;
+        &:hover {
+          background: darken($primary-color, 10%);
         }
       }
     }
-    .not-convinced {
-      margin-top: 16px;
-    }
-    .disclaimer {
-      margin-top: 0px;
-      text-align: center;
-    }
-    .learn-more {
-      &:hover {
-        background: darken($primary-color, 10%);
-      }
+  }
+  .not-convinced {
+    margin-top: 16px;
+  }
+  .disclaimer {
+    margin-top: 0px;
+    text-align: center;
+  }
+  .learn-more {
+    &:hover {
+      background: darken($primary-color, 10%);
     }
   }
 }

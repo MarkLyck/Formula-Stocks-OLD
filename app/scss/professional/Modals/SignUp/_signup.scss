@@ -53,6 +53,11 @@
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
+      input[type="submit"], button {
+        &:hover {
+          background: darken($primary-color, 10%);
+        }
+      }
       .right-error {
         p {
           margin-top: 16px;
@@ -125,7 +130,10 @@
         }
       }
       .plan-price {
-        margin-bottom: 32px;
+        // margin-bottom: 32px;
+      }
+      .user-form {
+        margin-top: 16px;
       }
       .subscribe, .next {
         border-radius: 4px;
@@ -162,7 +170,7 @@
 }
 
 @media (max-width: 1010px) {
-  .professional {
+  .professional, .retail {
     .prof-modal-container {
       .signup-modal {
         max-height: 100%;

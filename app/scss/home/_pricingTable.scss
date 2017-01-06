@@ -7,7 +7,7 @@
     .plans {
       width: 100%;
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
       align-items: flex-end;
       flex-wrap: wrap;
       margin-top: 40px;
@@ -23,7 +23,6 @@
 .plan {
   background: $dark-background;
   width: calc(100% / 4 - 12.5px);
-  // height: 100%;
   margin: 0 7.5px;
   transition: transform .3s;
   display: flex;

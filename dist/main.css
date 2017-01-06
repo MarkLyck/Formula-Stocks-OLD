@@ -577,85 +577,14 @@ header {
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  background: #27A5F9;
-  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#2d3a65+0,18aed6+100 */ }
-  header nav {
-    height: 75px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-    top: 0;
-    background: rgba(255, 255, 255, 0);
-    z-index: 10; }
-    header nav .content {
-      width: 80vw;
-      height: 100%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center; }
-    header nav .left {
-      height: 100%;
-      display: flex;
-      align-items: center; }
-      header nav .left:hover {
-        cursor: pointer; }
-      header nav .left .logo-container {
-        width: 274px;
-        height: 34px;
-        position: relative; }
-        header nav .left .logo-container #logo {
-          position: absolute;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          font-size: 2rem;
-          display: flex;
-          align-items: center;
-          opacity: 0;
-          background-image: url("assets/images/logo_horizontal.svg");
-          background-repeat: no-repeat;
-          transition: opacity 0.1s; }
-        header nav .left .logo-container #logo-white {
-          position: absolute;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          font-size: 2rem;
-          display: flex;
-          align-items: center;
-          opacity: 1;
-          background-image: url("assets/images/logo_horizontal_white.svg");
-          background-repeat: no-repeat;
-          transition: opacity 0.1s; }
-    header nav .right {
-      display: flex;
-      height: 100%;
-      margin-left: 20px; }
-      header nav .right #nav-links {
-        display: flex;
-        height: 100%; }
-      header nav .right a {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 100%;
-        min-width: 100px;
-        padding: 0 20px;
-        color: #fff;
-        transition: color .3s; }
-        header nav .right a i {
-          margin-right: 5px; }
-        header nav .right a:hover {
-          color: #49494A; }
+  background: #27A5F9; }
 
 #hero {
   display: flex;
   align-items: center;
   flex-direction: column;
   position: relative;
-  width: 100vw; }
+  width: 100%; }
   #hero .content {
     margin-top: 80px;
     display: flex;
@@ -1187,12 +1116,12 @@ input[type=submit] {
 
 .above-average-returns .right .container {
   position: absolute;
-  top: 0;
+  top: 50%;
   bottom: 0;
   right: 0;
   width: 100%;
   height: 100%;
-  transform: translateY(-25%);
+  transform: translateY(-50%);
   max-width: 400px; }
 .above-average-returns .right p {
   position: absolute;
@@ -1505,7 +1434,7 @@ input[type=submit] {
       margin: 0; }
   .our-products .icon-container {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     padding: 20px 0; }
     .our-products .icon-container .plan-icon {
       width: calc(25%);
@@ -1727,7 +1656,7 @@ input[type=submit] {
     .pricing-table .content .plans {
       width: 100%;
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
       align-items: flex-end;
       flex-wrap: wrap;
       margin-top: 40px; }
@@ -1987,20 +1916,20 @@ input[type=submit] {
 @media (max-width: 650px) {
   .reward-vs-risk .content {
     min-height: 700px; } }
-.quote-section {
+.retail .quote-section {
   background: url("assets/images/Albert_Einstein.jpg");
   background-size: cover;
   height: 350px; }
-  .quote-section .content {
+  .retail .quote-section .content {
     text-align: right;
     display: flex;
     flex-direction: column;
     justify-content: center;
     height: 100%; }
-    .quote-section .content .quote {
+    .retail .quote-section .content .quote {
       color: #fff;
       font-size: 1.8rem; }
-    .quote-section .content .disclaimer {
+    .retail .quote-section .content .disclaimer {
       color: rgba(255, 255, 255, 0.8);
       font-size: 1rem; }
 
@@ -4091,29 +4020,29 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
         font-weight: 400;
         padding-left: 20px; }
 
-.professional section {
+.section {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 40px 80px 40px 80px;
   margin: 0;
   background: #fff; }
-  .professional section .title {
+  .section .title {
     font-weight: 300;
     max-width: 1160px; }
-  .professional section .subtitle {
+  .section .subtitle {
     text-align: center;
     max-width: 1160px; }
-  .professional section .left-align {
+  .section .left-align {
     width: 100%; }
-  .professional section .divider {
+  .section .divider {
     margin-bottom: 32px; }
-  .professional section p {
+  .section p {
     margin-top: 0;
     font-size: 1rem;
     line-height: 1.5;
     max-width: 1160px; }
-  .professional section a {
+  .section a {
     background: #27A5F9;
     color: #fff;
     height: 48px;
@@ -4122,32 +4051,33 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
     text-align: center;
     border-radius: 4px;
     padding: 0 32px; }
-  .professional section .disclaimer {
+  .section .disclaimer {
     font-size: 0.9rem; }
-  .professional section .beside {
+  .section .beside {
     width: 100%;
     max-width: 1160px;
     display: flex;
     justify-content: space-between; }
-    .professional section .beside > div {
+    .section .beside > div {
       max-width: calc(50% - 64px); }
-    .professional section .beside > div:first-child {
+    .section .beside > div:first-child {
       margin-right: 32px; }
-    .professional section .beside > div:last-child {
+    .section .beside > div:last-child {
       margin-left: 32px; }
-  .professional section .columns {
+  .section .columns {
     display: flex;
     width: 100%;
     max-width: 1160px; }
-    .professional section .columns > div:first-child {
+    .section .columns > div:first-child {
       margin-right: 32px; }
-    .professional section .columns .columns-2 {
+    .section .columns .columns-2 {
       width: 100%;
       max-width: calc(1160px / 3 * 2); }
-    .professional section .columns .columns-1 {
+    .section .columns .columns-1 {
       width: 100%;
       max-width: calc(1160px / 3); }
-.professional section:nth-child(even) {
+
+.section:nth-child(even) {
   background: #f4f4f4; }
 
 .infoBox {
@@ -4166,23 +4096,23 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
     margin: 0;
     font-size: 1rem; }
 
-.professional .quote .content {
+.quote .content {
   display: flex;
   width: 100%;
   margin-top: 32px; }
-  .professional .quote .content i {
+  .quote .content i {
     color: #27A5F9;
     font-size: 2rem;
     margin-right: 16px; }
-  .professional .quote .content p {
+  .quote .content p {
     font-style: italic;
     padding: 0;
     margin-bottom: 8px; }
-.professional .quote .from {
+.quote .from {
   font-weight: bold;
   margin-left: 16px; }
 
-.prof-navbar {
+.new-navbar {
   padding: 15px;
   width: calc(100% - 24px);
   height: 60px;
@@ -4196,10 +4126,10 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
   margin: 0 12px;
   box-sizing: border-box; }
-  .prof-navbar .left img {
+  .new-navbar .left img {
     height: 30px;
     width: auto; }
-  .prof-navbar .menu-btn {
+  .new-navbar .menu-btn {
     display: none;
     padding: 0;
     background: none;
@@ -4208,51 +4138,51 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
     top: 50%;
     right: 16px;
     transform: translateY(-50%); }
-    .prof-navbar .menu-btn i {
+    .new-navbar .menu-btn i {
       color: #27A5F9; }
-  .prof-navbar .right {
+  .new-navbar .right {
     display: flex;
     align-items: center;
     height: 100%; }
-    .prof-navbar .right a {
+    .new-navbar .right a {
       margin-left: 24px;
       height: 100%;
       position: relative;
       height: 100%;
       display: flex;
       align-items: center; }
-      .prof-navbar .right a:hover {
+      .new-navbar .right a:hover {
         color: #27A5F9; }
-    .prof-navbar .right #nav-links {
+    .new-navbar .right #nav-links {
       display: flex; }
-      .prof-navbar .right #nav-links a:hover::after {
+      .new-navbar .right #nav-links a:hover::after {
         content: '';
         width: 0;
         height: 0; }
-    .prof-navbar .right #signup-btn, .prof-navbar .right #logout-btn {
+    .new-navbar .right #signup-btn, .new-navbar .right #logout-btn {
       background: #27A5F9;
       border: 1px solid #27A5F9;
       padding: 8px 12px;
       border-radius: 4px;
       color: #fff; }
-      .prof-navbar .right #signup-btn:hover, .prof-navbar .right #logout-btn:hover {
+      .new-navbar .right #signup-btn:hover, .new-navbar .right #logout-btn:hover {
         border-color: #068de7;
         background: #068de7; }
 
-.professional .static {
+.professional .static, .retail .static {
   position: absolute;
   background: none;
   box-shadow: none; }
-  .professional .static .left {
+  .professional .static .left, .retail .static .left {
     background: #fff;
     padding: 16px;
     border-bottom-left-radius: 4px;
     border-bottom-right-radius: 4px; }
-  .professional .static .menu-btn i {
+  .professional .static .menu-btn i, .retail .static .menu-btn i {
     color: #fff; }
-  .professional .static .right a {
+  .professional .static .right a, .retail .static .right a {
     color: #fff; }
-    .professional .static .right a:hover::after {
+    .professional .static .right a:hover::after, .retail .static .right a:hover::after {
       content: '';
       width: 100%;
       height: 2px;
@@ -4260,26 +4190,26 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
       position: absolute;
       bottom: 0;
       left: 0; }
-  .professional .static .right #login-btn, .professional .static .right #dashboard-link {
+  .professional .static .right #login-btn, .professional .static .right #dashboard-link, .retail .static .right #login-btn, .retail .static .right #dashboard-link {
     border: 1px solid #fff;
     padding: 8px 12px;
     border-radius: 4px;
     font-weight: bold; }
-    .professional .static .right #login-btn:hover, .professional .static .right #dashboard-link:hover {
+    .professional .static .right #login-btn:hover, .professional .static .right #dashboard-link:hover, .retail .static .right #login-btn:hover, .retail .static .right #dashboard-link:hover {
       background: #fff;
       color: #27A5F9; }
-  .professional .static .right #signup-btn, .professional .static .right #logout-btn {
+  .professional .static .right #signup-btn, .professional .static .right #logout-btn, .retail .static .right #signup-btn, .retail .static .right #logout-btn {
     background: #fff;
     color: #27A5F9;
     border-color: #fff; }
-    .professional .static .right #signup-btn:hover, .professional .static .right #logout-btn:hover {
+    .professional .static .right #signup-btn:hover, .professional .static .right #logout-btn:hover, .retail .static .right #signup-btn:hover, .retail .static .right #logout-btn:hover {
       background: #f7f7f7;
       border-color: #f7f7f7; }
-.professional .fixed {
+.professional .fixed, .retail .fixed {
   position: fixed;
   animation-duration: 1s;
   animation-name: slidedown; }
-  .professional .fixed a:hover::after {
+  .professional .fixed a:hover::after, .retail .fixed a:hover::after {
     content: '';
     width: 100%;
     height: 2px;
@@ -4287,20 +4217,22 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
     position: absolute;
     bottom: 0;
     left: 0; }
-  .professional .fixed .pricing, .professional .fixed #dashboard-link {
+  .professional .fixed .pricing, .professional .fixed #dashboard-link, .retail .fixed .pricing, .retail .fixed #dashboard-link {
     border: 1px solid #27A5F9;
     color: #27A5F9;
     padding: 8px 12px;
     border-radius: 4px;
     font-weight: bold; }
-    .professional .fixed .pricing:hover, .professional .fixed #dashboard-link:hover {
+    .professional .fixed .pricing:hover, .professional .fixed #dashboard-link:hover, .retail .fixed .pricing:hover, .retail .fixed #dashboard-link:hover {
       color: #068de7;
       border-color: #068de7; }
-      .professional .fixed .pricing:hover::after, .professional .fixed #dashboard-link:hover::after {
+      .professional .fixed .pricing:hover::after, .professional .fixed #dashboard-link:hover::after, .retail .fixed .pricing:hover::after, .retail .fixed #dashboard-link:hover::after {
         content: '';
         width: 0;
         height: 0; }
-  .professional .fixed #signup-btn:hover::after, .professional .fixed #logout-btn:hover::after {
+  .professional .fixed #login-btn, .retail .fixed #login-btn {
+    display: none; }
+  .professional .fixed #signup-btn:hover::after, .professional .fixed #logout-btn:hover::after, .retail .fixed #signup-btn:hover::after, .retail .fixed #logout-btn:hover::after {
     content: '';
     width: 0;
     height: 0; }
@@ -4310,7 +4242,7 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
     top: -65px; }
   to {
     top: 0; } }
-.prof-navbar .right.open {
+.prof-navbar .right.open, .retail .right.open {
   position: absolute;
   top: 72px;
   right: 0px;
@@ -4321,7 +4253,7 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
   box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2), 0 0 2px rgba(0, 0, 0, 0.16);
   padding: 24px;
   box-sizing: border-box; }
-  .prof-navbar .right.open::after {
+  .prof-navbar .right.open::after, .retail .right.open::after {
     content: '';
     border-left: 8px solid transparent;
     border-right: 8px solid transparent;
@@ -4329,9 +4261,9 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
     position: absolute;
     top: -8px;
     right: 17px; }
-  .prof-navbar .right.open .overview {
+  .prof-navbar .right.open .overview, .retail .right.open .overview {
     display: flex; }
-  .prof-navbar .right.open .nav-link {
+  .prof-navbar .right.open .nav-link, .retail .right.open .nav-link {
     color: #49494A;
     margin-bottom: 16px;
     margin-left: 0;
@@ -4339,26 +4271,26 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
     width: 100%;
     padding-top: 8px;
     padding-bottom: 8px; }
-    .prof-navbar .right.open .nav-link:hover {
+    .prof-navbar .right.open .nav-link:hover, .retail .right.open .nav-link:hover {
       color: #27A5F9; }
-      .prof-navbar .right.open .nav-link:hover::after {
+      .prof-navbar .right.open .nav-link:hover::after, .retail .right.open .nav-link:hover::after {
         display: none; }
-  .prof-navbar .right.open #nav-links {
+  .prof-navbar .right.open #nav-links, .retail .right.open #nav-links {
     flex-direction: column;
     width: 100%; }
-  .prof-navbar .right.open .pricing {
+  .prof-navbar .right.open .pricing, .retail .right.open .pricing {
     min-height: 32px; }
-  .prof-navbar .right.open #login-btn, .prof-navbar .right.open #dashboard-link {
+  .prof-navbar .right.open #login-btn, .prof-navbar .right.open #dashboard-link, .retail .right.open #login-btn, .retail .right.open #dashboard-link {
     color: #27A5F9;
     border-color: #27A5F9;
     min-height: 32px; }
-  .prof-navbar .right.open #signup-btn, .prof-navbar .right.open #logout-btn {
+  .prof-navbar .right.open #signup-btn, .prof-navbar .right.open #logout-btn, .retail .right.open #signup-btn, .retail .right.open #logout-btn {
     background: #27A5F9;
     color: #fff;
     min-height: 32px; }
-    .prof-navbar .right.open #signup-btn:hover, .prof-navbar .right.open #logout-btn:hover {
+    .prof-navbar .right.open #signup-btn:hover, .prof-navbar .right.open #logout-btn:hover, .retail .right.open #signup-btn:hover, .retail .right.open #logout-btn:hover {
       background: #068de7; }
-  .prof-navbar .right.open .nav-link:last-child {
+  .prof-navbar .right.open .nav-link:last-child, .retail .right.open .nav-link:last-child {
     margin-bottom: 0; }
 
 @media (max-width: 955px) {
@@ -4845,17 +4777,17 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
       align-self: center;
       max-width: inherit;
       margin: 0; } }
-.professional .about-us {
+.professional .about-us, .retail .about-us {
   background: #f8f8f8; }
-  .professional .about-us .content {
+  .professional .about-us .content, .retail .about-us .content {
     width: 100%;
     margin: 0;
     padding: 0; }
 
-.professional .collapsable {
+.collapsable {
   width: 100%;
   max-width: 1160px; }
-  .professional .collapsable .toggle {
+  .collapsable .toggle {
     width: 100%;
     display: flex;
     align-items: center;
@@ -4864,22 +4796,23 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
     padding: 16px 24px;
     position: relative;
     font-size: 0.9rem; }
-    .professional .collapsable .toggle:hover {
+    .collapsable .toggle:hover {
       background: #f5f5f5;
       cursor: pointer; }
-      .professional .collapsable .toggle:hover i {
+      .collapsable .toggle:hover i {
         color: #27A5F9; }
-    .professional .collapsable .toggle h2 {
+    .collapsable .toggle h2 {
       color: #27A5F9;
       margin: 0; }
-    .professional .collapsable .toggle i {
+    .collapsable .toggle i {
       color: #49494A; }
-  .professional .collapsable p {
+  .collapsable p {
     margin-top: 0px; }
-.professional .expanded {
+
+.expanded {
   background: #f5f5f5;
   margin-bottom: 16px; }
-  .professional .expanded p {
+  .expanded p {
     padding: 0 24px; }
 
 .backtested-performance #result-chart {
@@ -4887,17 +4820,17 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
   .backtested-performance #result-chart i {
     color: #27A5F9; }
 
-.professional .prof-pricing .prof-plans {
+.prof-pricing .prof-plans {
   display: flex;
   align-items: flex-end;
   justify-content: center;
   flex-wrap: wrap;
   margin: 24px 0; }
-  .professional .prof-pricing .prof-plans .prof-plan {
+  .prof-pricing .prof-plans .prof-plan {
     background: #fff;
     border-radius: 4px;
     margin: 0 32px; }
-    .professional .prof-pricing .prof-plans .prof-plan .top {
+    .prof-pricing .prof-plans .prof-plan .top {
       padding: 24px;
       border-top-left-radius: 4px;
       border-top-right-radius: 4px;
@@ -4905,56 +4838,56 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
       border-bottom: none;
       border-bottom: 2px solid #eee;
       border-bottom-color: #27A5F9; }
-      .professional .prof-pricing .prof-plans .prof-plan .top h3 {
+      .prof-pricing .prof-plans .prof-plan .top h3 {
         text-transform: capitalize;
         font-weight: bold;
         margin: 0;
         margin-bottom: 4px; }
-    .professional .prof-pricing .prof-plans .prof-plan p {
+    .prof-pricing .prof-plans .prof-plan p {
       display: flex;
       justify-content: space-between;
       margin: 0; }
-      .professional .prof-pricing .prof-plans .prof-plan p .right-align {
+      .prof-pricing .prof-plans .prof-plan p .right-align {
         text-align: right;
         margin-left: 24px; }
-    .professional .prof-pricing .prof-plans .prof-plan .statistics {
+    .prof-pricing .prof-plans .prof-plan .statistics {
       padding: 16px 24px 8px;
       border: 1px solid #E4E4E4;
       border-top: none;
       border-bottom: none;
       box-sizing: border-box; }
-      .professional .prof-pricing .prof-plans .prof-plan .statistics p {
+      .prof-pricing .prof-plans .prof-plan .statistics p {
         margin-bottom: 10px; }
-    .professional .prof-pricing .prof-plans .prof-plan .cta {
+    .prof-pricing .prof-plans .prof-plan .cta {
       width: 100%;
       border-top-left-radius: 0;
       border-top-right-radius: 0;
       padding: 24px;
       height: auto; }
-      .professional .prof-pricing .prof-plans .prof-plan .cta:hover {
+      .prof-pricing .prof-plans .prof-plan .cta:hover {
         background: #068de7; }
-.professional .prof-pricing .not-convinced {
+.prof-pricing .not-convinced {
   margin-top: 16px; }
-.professional .prof-pricing .disclaimer {
+.prof-pricing .disclaimer {
   margin-top: 0px;
   text-align: center; }
-.professional .prof-pricing .learn-more:hover {
+.prof-pricing .learn-more:hover {
   background: #068de7; }
 
 @media (max-width: 1200px) {
   .professional .prof-pricing .prof-plans .prof-plan {
     margin-bottom: 32px; } }
-.professional .bottom-cta {
+.professional .bottom-cta, .retail .bottom-cta {
   background: #fff !important; }
-  .professional .bottom-cta h1 {
+  .professional .bottom-cta h1, .retail .bottom-cta h1 {
     margin-bottom: 0; }
-  .professional .bottom-cta .to-pricing {
+  .professional .bottom-cta .to-pricing, .retail .bottom-cta .to-pricing {
     border-radius: 4px;
     margin-top: 24px;
     margin-bottom: 16px; }
-    .professional .bottom-cta .to-pricing:hover {
+    .professional .bottom-cta .to-pricing:hover, .retail .bottom-cta .to-pricing:hover {
       background: #068de7; }
-  .professional .bottom-cta .not-convinced {
+  .professional .bottom-cta .not-convinced, .retail .bottom-cta .not-convinced {
     background: none;
     color: #27A5F9;
     text-decoration: underline; }
@@ -5039,6 +4972,8 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
       display: flex;
       flex-direction: column;
       justify-content: flex-end; }
+      .signup-modal .signup-content .right input[type="submit"]:hover, .signup-modal .signup-content .right button:hover {
+        background: #068de7; }
       .signup-modal .signup-content .right .right-error p {
         margin-top: 16px; }
       .signup-modal .signup-content .right .top {
@@ -5093,8 +5028,8 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
       .signup-modal .signup-content .right .plan-name p:last-child {
         color: #27A5F9;
         text-transform: capitalize; }
-      .signup-modal .signup-content .right .plan-price {
-        margin-bottom: 32px; }
+      .signup-modal .signup-content .right .user-form {
+        margin-top: 16px; }
       .signup-modal .signup-content .right .subscribe, .signup-modal .signup-content .right .next {
         border-radius: 4px;
         margin-top: 8px;
@@ -5122,9 +5057,9 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
         text-decoration: underline; }
 
 @media (max-width: 1010px) {
-  .professional .prof-modal-container .signup-modal {
+  .professional .prof-modal-container .signup-modal, .retail .prof-modal-container .signup-modal {
     max-height: 100%; }
-    .professional .prof-modal-container .signup-modal .signup-content {
+    .professional .prof-modal-container .signup-modal .signup-content, .retail .prof-modal-container .signup-modal .signup-content {
       height: 100%; } }
 .choose-plan {
   flex-direction: column; }
@@ -5174,7 +5109,8 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
         border-radius: 6px;
         box-shadow: rgba(0, 0, 0, 0.14902) 0px 4px 18px;
         transition: opacity 200ms;
-        box-sizing: border-box; }
+        box-sizing: border-box;
+        z-index: 3000; }
         .choose-plan .left .plan-overview .features .row .explanation h3 {
           display: none;
           color: #27A5F9;
@@ -5208,13 +5144,28 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
       .choose-plan .left .plan-overview .plan-columns-container .plan-column {
         width: 100%;
         text-transform: capitalize;
-        box-sizing: border-box; }
+        box-sizing: border-box;
+        position: relative; }
         .choose-plan .left .plan-overview .plan-columns-container .plan-column:hover {
           cursor: pointer; }
           .choose-plan .left .plan-overview .plan-columns-container .plan-column:hover .row:first-child p {
             color: #27A5F9; }
         .choose-plan .left .plan-overview .plan-columns-container .plan-column .row {
           justify-content: center; }
+        .choose-plan .left .plan-overview .plan-columns-container .plan-column .free-trial {
+          position: absolute;
+          bottom: -40px;
+          left: 50%;
+          transform: translateX(-50%);
+          background: #12D99E;
+          width: 100px;
+          padding: 8px 0;
+          display: flex;
+          justify-content: center;
+          border-radius: 8px; }
+          .choose-plan .left .plan-overview .plan-columns-container .plan-column .free-trial p {
+            color: #fff;
+            margin: 0 auto; }
       .choose-plan .left .plan-overview .plan-columns-container .selected {
         border: 2px solid #27A5F9;
         height: calc(100% + 1px);
@@ -5235,7 +5186,10 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
     flex-direction: column;
     justify-content: flex-end; }
     .choose-plan .right input {
-      margin-top: 8px; }
+      margin-top: 8px;
+      width: 100%; }
+    .choose-plan .right .plan-price {
+      margin-bottom: 0; }
     .choose-plan .right .next {
       margin-bottom: 0; }
     .choose-plan .right button {
@@ -5277,6 +5231,12 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
         display: flex;
         align-items: center;
         max-height: 150px; }
+      .signup-modal .choose-plan .plan-overview .plan-columns-container .plan-column .free-trial {
+        top: 50%;
+        transform: translateY(-50%);
+        bottom: inherit;
+        right: 16px;
+        left: inherit; }
     .signup-modal .choose-plan .plan-overview .plan-columns-container .selected .row {
       border-bottom: none; } }
 .billing {

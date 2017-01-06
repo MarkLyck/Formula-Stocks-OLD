@@ -7,7 +7,7 @@ class WhatWeOffer extends React.Component {
   render() {
     let ScrollLink = Scroll.Link
     return (
-      <section className="what-you-get">
+      <section className="what-you-get section">
         <h2 className="title">What you get</h2>
         <div className="divider"/>
         <div className="beside">

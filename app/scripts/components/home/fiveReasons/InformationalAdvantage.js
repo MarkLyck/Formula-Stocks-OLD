@@ -11,7 +11,6 @@ const InformationalAdvantage = React.createClass({
       basic: 0,
       premium: 0,
       business: 0,
-      fund: 0,
       market: 0,
     })
   },
@@ -43,14 +42,12 @@ const InformationalAdvantage = React.createClass({
     this.state.basic < Math.floor(store.plans.get('basic').get('stats').WLRatio) ? bas = (this.state.basic + 1) : bas = Math.floor(store.plans.get('basic').get('stats').WLRatio)
     this.state.premium < Math.floor(store.plans.get('premium').get('stats').WLRatio) ? pre = (this.state.premium + 1) : pre = Math.floor(store.plans.get('premium').get('stats').WLRatio)
     this.state.business < Math.floor(store.plans.get('business').get('stats').WLRatio) ? bus = (this.state.business + 1) : bus = Math.floor(store.plans.get('business').get('stats').WLRatio)
-    this.state.fund < Math.floor(store.plans.get('fund').get('stats').WLRatio) ? fun = (this.state.fund + 1) : fun = Math.floor(store.plans.get('fund').get('stats').WLRatio)
     this.state.market < 59 ? mar = (this.state.market + 1) : mar = 59
 
     this.setState({
       basic: bas,
       premium: pre,
       business: bus,
-      fund: fun,
       market: mar,
     })
 
@@ -72,9 +69,6 @@ const InformationalAdvantage = React.createClass({
     let busStyle = {
       height: `calc(${this.state.business}% + 45px)`
     }
-    let funStyle = {
-      height: `calc(${this.state.fund}% + 45px)`
-    }
     let marStyle = {
       height: `calc(${this.state.market}% + 45px)`
     }
@@ -92,8 +86,7 @@ const InformationalAdvantage = React.createClass({
 
               This scientifically based approach to stock selection has predicted winners with an
                {' ' + Math.floor(store.plans.get('basic').get('stats').WLRatio)}%,
-               {' ' + Math.floor(store.plans.get('premium').get('stats').WLRatio)}%,
-               {' ' + Math.floor(store.plans.get('fund').get('stats').WLRatio)}% and
+               {' ' + Math.floor(store.plans.get('premium').get('stats').WLRatio)}% and
                {' ' + Math.floor(store.plans.get('business').get('stats').WLRatio)}%
                success rate in the past.<br/><br/>
 
@@ -108,7 +101,6 @@ const InformationalAdvantage = React.createClass({
               <div className="bar basic-bar" style={basStyle}><p>{this.state.basic}%</p><p className="plan-name">Basic</p></div>
               <div className="bar premium-bar" style={preStyle}><p>{this.state.premium}%</p><p className="plan-name">Premium</p></div>
               <div className="bar business-bar" style={busStyle}><p>{this.state.business}%</p><p className="plan-name">Business</p></div>
-              <div className="bar fund-bar" style={funStyle}><p>{this.state.fund}%</p><p className="plan-name">Fund</p></div>
               <div className="sp-bar" style={marStyle}><p>{this.state.market}%</p><p className="plan-name">Market</p></div>
             </div>
           </div>

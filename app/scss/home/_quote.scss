@@ -1,24 +1,27 @@
-.quote-section {
-  background: url('assets/images/Albert_Einstein.jpg');
-  background-size: cover;
+.retail {
+  .quote-section {
+    background: url('assets/images/Albert_Einstein.jpg');
+    background-size: cover;
 
-  height: 350px;
-  .content {
-    text-align: right;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 100%;
-    .quote {
-      color: #fff;
-      font-size: 1.8rem;
-    }
-    .disclaimer {
-      color: rgba(#fff, 0.8);
-      font-size: 1rem;
+    height: 350px;
+    .content {
+      text-align: right;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 100%;
+      .quote {
+        color: #fff;
+        font-size: 1.8rem;
+      }
+      .disclaimer {
+        color: rgba(#fff, 0.8);
+        font-size: 1rem;
+      }
     }
   }
 }
+
 
 @media (max-width: 1100px) {
   .quote-section {

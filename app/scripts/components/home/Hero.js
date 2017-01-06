@@ -31,7 +31,7 @@ const Hero = React.createClass({
     if (iOS) { iOSException = 'iOSException' }
 
     return (
-      <div id="hero" className={iOSException}>
+      <header id="hero" className={iOSException}>
         <div className="content">
           <div className="bounce-down">
             <h1 id="main-title">A better <span className="font bold">solution</span> for the <span className="font bold">stock investor</span></h1>
@@ -57,7 +57,7 @@ const Hero = React.createClass({
             </Element>
           </div>
 
-      </div>
+      </header>
     )
   }
 })

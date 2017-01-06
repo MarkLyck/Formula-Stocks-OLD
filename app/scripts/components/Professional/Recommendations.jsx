@@ -67,7 +67,7 @@ class Recommendations extends React.Component {
     }
 
     return (
-      <section className="recommendations">
+      <section className="recommendations section">
         <h2 className="title">Scatter plot of returns</h2>
         <div className="divider"/>
         <div className="beside">

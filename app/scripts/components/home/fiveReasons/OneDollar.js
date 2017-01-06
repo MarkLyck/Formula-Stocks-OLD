@@ -81,11 +81,10 @@ const OneDollar = React.createClass({
       width: `calc(${this.state.spPercent * 100 + '%'} + 1px)`
     }
 
-    let basClass, preClass, busClass, funClass;
+    let basClass, preClass, busClass;
     if (this.state.plan === 'basic') {basClass='selected'}
     if (this.state.plan === 'premium') {preClass='selected'}
     if (this.state.plan === 'business') {busClass='selected'}
-    if (this.state.plan === 'fund') {funClass='selected'}
 
     return (
       <div className="bg-gray split-section one-dollar">
@@ -95,7 +94,6 @@ const OneDollar = React.createClass({
               <button onClick={this.updateNumbers.bind(null, 'basic')} className={basClass}>Basic<div></div></button>
               <button onClick={this.updateNumbers.bind(null, 'premium')} className={preClass}>Premium<div></div></button>
               <button onClick={this.updateNumbers.bind(null, 'business')} className={busClass}>Business<div></div></button>
-              <button onClick={this.updateNumbers.bind(null, 'fund')} className={funClass}>Fund<div></div></button>
             </div>
             <div className="fs bar" style={fsStyle}><p>${cc.commafy(Math.round(this.state.fs))}</p></div>
             <p className="fs plan-name"><span className="capitalize">{this.state.plan}</span> product</p>

@@ -129,7 +129,6 @@ button {
   color: #fff;
   padding: 20px;
   border: none;
-  // border-radius: 3px;
   &:hover {
     cursor: pointer;
   }
@@ -142,9 +141,6 @@ i {
 .filled-btn {
   background: $action-color;
   color: #fff;
-  // display: flex;
-  // justify-content: center;
-  // align-items: center;
   height: 60px;
   max-width: 175px;
   width: 100%;

@@ -3,7 +3,7 @@ import React from 'react'
 const RewardVSRisk = React.createClass({
   render() {
     return (
-      <section className="split-section reward-vs-risk">
+      <section className="split-section reward-vs-risk section">
         <div className="content">
           <h2 className="title">More <span className="blue-color">reward</span>, less <span className="blue-color">risk</span></h2>
           <div className="divider"></div>

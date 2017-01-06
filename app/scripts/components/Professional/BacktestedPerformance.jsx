@@ -172,7 +172,7 @@ class BacktestedPerformance extends React.Component {
   render()  {
     const Element = Scroll.Element
     return (
-      <section className="backtested-performance">
+      <section className="backtested-performance section">
         <Element name="backtested"/>
         <h2 className="title">Long-term performance</h2>
         <div className="divider"/>

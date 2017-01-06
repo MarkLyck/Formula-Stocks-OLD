@@ -75,12 +75,13 @@ const Login = React.createClass({
     }
 
     let containerStyles = {
-      top: "75px",
-      background: "rgba(0,0,0,0.5)",
+      // top: "75px",
+      background: "rgba(0,0,0,0.2)",
+      zIndex: '2000'
     }
     if (this.state.slideOut) {
       containerStyles = {
-        top: "75px",
+        // top: "75px",
         background: 'rgba(0,0,0,0)'
       }
     }
@@ -88,7 +89,7 @@ const Login = React.createClass({
     let modalStyles;
     if (this.state.slideOut) {
       containerStyles = {
-        top: "75px",
+        // top: "75px",
         background: 'rgba(0,0,0,0)'
       }
       modalStyles = {

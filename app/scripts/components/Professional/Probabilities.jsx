@@ -4,7 +4,7 @@ import WinRateGraph from './components/WinRateGraph.jsx'
 class Probabilities extends React.Component {
   render() {
     return (
-      <section className="probabilities">
+      <section className="probabilities section">
         <h2 className="title">A matter of probabilities</h2>
         <div className="divider"/>
         <p className="left-align">

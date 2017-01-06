@@ -1,4 +1,4 @@
-.prof-navbar {
+.new-navbar {
   padding: 15px;
   width: calc(100% - 24px);
   height: 60px;
@@ -72,7 +72,7 @@
   }
 }
 
-.professional {
+.professional, .retail {
   .static {
     position: absolute;
     background: none;
@@ -157,6 +157,9 @@
         }
       }
     }
+    #login-btn {
+      display: none;
+    }
     #signup-btn, #logout-btn {
       &:hover {
         &::after {
@@ -178,7 +181,7 @@
   }
 }
 
-.prof-navbar {
+.prof-navbar, .retail {
   .right.open {
     position: absolute;
     top: 72px;

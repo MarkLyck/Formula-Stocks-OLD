@@ -48,7 +48,6 @@
             height: 0;
             opacity: 0;
             padding: 0;
-            // overflow: hidden;
             position: absolute;
             box-sizing: border-box;
             display: flex;
@@ -60,6 +59,7 @@
             box-shadow: rgba(0, 0, 0, 0.14902) 0px 4px 18px;
             transition: opacity 200ms;
             box-sizing: border-box;
+            z-index: 3000;
             h3 {
               display: none;
               color: $primary-color;
@@ -103,6 +103,7 @@
           width: 100%;
           text-transform: capitalize;
           box-sizing: border-box;
+          position: relative;
           &:hover {
             cursor: pointer;
             .row:first-child {
@@ -113,6 +114,22 @@
           }
           .row {
             justify-content: center;
+          }
+          .free-trial {
+            position: absolute;
+            bottom: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: $action-color;
+            width: 100px;
+            padding: 8px 0;
+            display: flex;
+            justify-content: center;
+            border-radius: 8px;
+            p {
+              color: #fff;
+              margin: 0 auto;
+            }
           }
         }
         .selected {
@@ -147,6 +164,10 @@
     justify-content: flex-end;
     input {
       margin-top: 8px;
+      width: 100%;
+    }
+    .plan-price {
+      margin-bottom: 0;
     }
     .next {
       margin-bottom: 0;
@@ -210,6 +231,13 @@
               display: flex;
               align-items: center;
               max-height: 150px;
+            }
+            .free-trial {
+              top: 50%;
+              transform: translateY(-50%);
+              bottom: inherit;
+              right: 16px;
+              left: inherit;
             }
           }
           .selected {

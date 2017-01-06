@@ -5,7 +5,7 @@ class WhatIsIt extends React.Component {
   render() {
     const Element = Scroll.Element
     return (
-      <section className="what-is-it">
+      <section className="what-is-it section">
         <Element name="whatIsIt"/>
         <h2 className="title">What is it?</h2>
         <div className="divider"/>

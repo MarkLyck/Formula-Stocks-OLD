@@ -53,13 +53,6 @@ const OurProducts = React.createClass({
                 <span className="bold">Business</span> is designed for CEOs, accredited or enterprising investors focusing on strong performance and a margin of safety, at the expense of diversification.
               </p>
             </div>
-            <div className="plan-icon">
-              <img src="assets/icons/icon-building.svg"/>
-              <p className="blue-color">Fund</p>
-              <p className="descr">
-                <span className="bold">Fund</span> is for institutional capital, capable of handling large AUMs, which other products cannot. It provides stronger diversification and much deeper liquidity.
-              </p>
-            </div>
           </div>
           <p className="explore-products">
             You can explore our products historical <ScrollLink className="blue-color" to="performance" smooth={true} offset={-70} duration={500}>performance</ScrollLink>, watch the outcomes of

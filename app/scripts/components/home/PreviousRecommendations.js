@@ -18,11 +18,10 @@ const PreviousRecommendations = React.createClass({
   },
   render() {
     let Element = Scroll.Element;
-    let basClass, preClass, busClass, funClass;
+    let basClass, preClass, busClass;
     if (this.state.plan === 'basic') {basClass='selected'}
     if (this.state.plan === 'premium') {preClass='selected'}
     if (this.state.plan === 'business') {busClass='selected'}
-    if (this.state.plan === 'fund') {funClass='selected'}
 
     let yAxis = (
       <ul className="y-axis">
@@ -63,7 +62,7 @@ const PreviousRecommendations = React.createClass({
     }
 
     return (
-      <div className="bg-white split-section previous-recommendations">
+      <div className="bg-white split-section previous-recommendations section">
         <Element name="recommendationsToDate"></Element>
         <div className="content" ref="content">
           <div className="left">
@@ -87,7 +86,6 @@ const PreviousRecommendations = React.createClass({
               <button onClick={this.changeVideo.bind(null, 'basic')} className={basClass}>Basic<div></div></button>
               <button onClick={this.changeVideo.bind(null, 'premium')} className={preClass}>Premium<div></div></button>
               <button onClick={this.changeVideo.bind(null, 'business')} className={busClass}>Business<div></div></button>
-              <button onClick={this.changeVideo.bind(null, 'fund')} className={funClass}>Fund<div></div></button>
             </div>
             {video}
           </div>
