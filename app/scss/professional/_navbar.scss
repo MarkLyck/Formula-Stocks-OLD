@@ -221,13 +221,18 @@
       flex-direction: column;
       width: 100%;
     }
+    .pricing {
+      min-height: 32px;
+    }
     #login-btn, #dashboard-link {
       color: $primary-color;
       border-color: $primary-color;
+      min-height: 32px;
     }
     #signup-btn, #logout-btn {
       background: $primary-color;
       color: #fff;
+      min-height: 32px;
       &:hover {
         background: darken($primary-color, 10%);
       }
