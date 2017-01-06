@@ -34,18 +34,20 @@ class NavBar extends React.Component {
 
   renderUserLinks() {
     let prefix = this.props.path === '/pro' ? '/pro' : ''
+    let signupText = this.props.path !== '/pro' ? 'Free trial' : 'Get started'
+
 
     if (!localStorage.authtoken && this.state.navbar === 1) {
       return (
         <div id="nav-links">
           <Link to={`${prefix}/login`} id="login-btn" className="nav-link">Login</Link>
-          <Link to={`${prefix}/signup`} id="signup-btn" className="nav-link">Get started</Link>
+          <Link to={`${prefix}/signup`} id="signup-btn" className="nav-link">{signupText}</Link>
         </div>)
     } else if (!localStorage.authtoken) {
       return (
         <div id="nav-links">
           <Link to={`${prefix}/login`} id="login-btn" className="nav-link">Login</Link>
-          <Link to={`${prefix}/signup`} id="signup-btn" className="nav-link">Get started</Link>
+          <Link to={`${prefix}/signup`} id="signup-btn" className="nav-link">{signupText}</Link>
         </div>)
     } else {
       return (

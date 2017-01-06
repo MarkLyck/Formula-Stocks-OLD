@@ -10,7 +10,8 @@ import InformationalAdvantage from './fiveReasons/InformationalAdvantage'
 import OneDollar from './fiveReasons/OneDollar'
 import HigherPerformance from './fiveReasons/HigherPerformance'
 import OurProducts from './OurProducts'
-import PreviousRecommendations from './PreviousRecommendations'
+import Recommendations from '../global/Recommendations.jsx'
+// import PreviousRecommendations from './PreviousRecommendations'
 import TheResults from './Performance.jsx'
 // import PricingTable from './PricingTable'
 import Pricing from '../global/Pricing.jsx'
@@ -18,6 +19,7 @@ import HowWeBeatTheMarket from '../global/HowWeBeatTheMarket.jsx'
 import MoreInformation from './MoreInformation.jsx'
 import RewardVSRisk from './RewardVSRisk'
 import Quote from './Quote'
+import Comparisons from '../global/Comparisons.jsx'
 import CumulativeInterest from './CumulativeInterest'
 import Newsletter from './Newsletter'
 import AboutUs from './AboutUs'
@@ -51,13 +53,15 @@ const Home = React.createClass({
         <OneDollar/>
         <HigherPerformance/>
         {/* <OurProducts/> */}
-        <PreviousRecommendations/>
+        {/* <PreviousRecommendations/> */}
+        <Recommendations/>
         <TheResults/>
         {/* <PricingTable/> */}
         <Pricing/>
         <HowWeBeatTheMarket/>
         {/* <MoreInformation /> */}
         <RewardVSRisk/>
+        <Comparisons/>
         <Quote/>
         <CumulativeInterest/>
         {/* <Newsletter/> */}

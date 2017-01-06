@@ -11,7 +11,7 @@ import HowWeBeatTheMarket from '../global/HowWeBeatTheMarket.jsx'
 import InstitutionalCapital from './InstitutionalCapital.jsx'
 import WhatYouGet from './WhatYouGet.jsx'
 import Comparisons from '../global/Comparisons.jsx'
-import Recommendations from './Recommendations.jsx'
+import Recommendations from '../global/Recommendations.jsx'
 import Pricing from '../global/Pricing.jsx'
 import BacktestedPerformance from './BacktestedPerformance.jsx'
 import Brochure from './Brochure.jsx'
@@ -41,7 +41,7 @@ class Home extends React.Component {
         <HowWeBeatTheMarket/>
         <WhatYouGet/>
         <Comparisons/>
-        <Recommendations/>
+        <Recommendations path={this.props.route.path}/>
         <BacktestedPerformance/>
         <Pricing path={this.props.route.path}/>
         <InstitutionalCapital/>

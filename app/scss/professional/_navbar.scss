@@ -181,7 +181,7 @@
   }
 }
 
-.prof-navbar, .retail {
+.new-navbar {
   .right.open {
     position: absolute;
     top: 72px;
@@ -248,7 +248,7 @@
 
 
 @media (max-width: 955px) {
-  .prof-navbar {
+  .new-navbar {
     .right {
       .overview {
         display: none;
@@ -261,7 +261,7 @@
 }
 
 @media (max-width: 840px) {
-  .prof-navbar {
+  .new-navbar {
     .menu-btn {
       display: block;
     }

@@ -4242,7 +4242,7 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
     top: -65px; }
   to {
     top: 0; } }
-.prof-navbar .right.open, .retail .right.open {
+.new-navbar .right.open {
   position: absolute;
   top: 72px;
   right: 0px;
@@ -4253,7 +4253,7 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
   box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2), 0 0 2px rgba(0, 0, 0, 0.16);
   padding: 24px;
   box-sizing: border-box; }
-  .prof-navbar .right.open::after, .retail .right.open::after {
+  .new-navbar .right.open::after {
     content: '';
     border-left: 8px solid transparent;
     border-right: 8px solid transparent;
@@ -4261,9 +4261,9 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
     position: absolute;
     top: -8px;
     right: 17px; }
-  .prof-navbar .right.open .overview, .retail .right.open .overview {
+  .new-navbar .right.open .overview {
     display: flex; }
-  .prof-navbar .right.open .nav-link, .retail .right.open .nav-link {
+  .new-navbar .right.open .nav-link {
     color: #49494A;
     margin-bottom: 16px;
     margin-left: 0;
@@ -4271,37 +4271,37 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
     width: 100%;
     padding-top: 8px;
     padding-bottom: 8px; }
-    .prof-navbar .right.open .nav-link:hover, .retail .right.open .nav-link:hover {
+    .new-navbar .right.open .nav-link:hover {
       color: #27A5F9; }
-      .prof-navbar .right.open .nav-link:hover::after, .retail .right.open .nav-link:hover::after {
+      .new-navbar .right.open .nav-link:hover::after {
         display: none; }
-  .prof-navbar .right.open #nav-links, .retail .right.open #nav-links {
+  .new-navbar .right.open #nav-links {
     flex-direction: column;
     width: 100%; }
-  .prof-navbar .right.open .pricing, .retail .right.open .pricing {
+  .new-navbar .right.open .pricing {
     min-height: 32px; }
-  .prof-navbar .right.open #login-btn, .prof-navbar .right.open #dashboard-link, .retail .right.open #login-btn, .retail .right.open #dashboard-link {
+  .new-navbar .right.open #login-btn, .new-navbar .right.open #dashboard-link {
     color: #27A5F9;
     border-color: #27A5F9;
     min-height: 32px; }
-  .prof-navbar .right.open #signup-btn, .prof-navbar .right.open #logout-btn, .retail .right.open #signup-btn, .retail .right.open #logout-btn {
+  .new-navbar .right.open #signup-btn, .new-navbar .right.open #logout-btn {
     background: #27A5F9;
     color: #fff;
     min-height: 32px; }
-    .prof-navbar .right.open #signup-btn:hover, .prof-navbar .right.open #logout-btn:hover, .retail .right.open #signup-btn:hover, .retail .right.open #logout-btn:hover {
+    .new-navbar .right.open #signup-btn:hover, .new-navbar .right.open #logout-btn:hover {
       background: #068de7; }
-  .prof-navbar .right.open .nav-link:last-child, .retail .right.open .nav-link:last-child {
+  .new-navbar .right.open .nav-link:last-child {
     margin-bottom: 0; }
 
 @media (max-width: 955px) {
-  .prof-navbar .right .overview {
+  .new-navbar .right .overview {
     display: none; }
-  .prof-navbar .right .nav-link {
+  .new-navbar .right .nav-link {
     margin-left: 16px; } }
 @media (max-width: 840px) {
-  .prof-navbar .menu-btn {
+  .new-navbar .menu-btn {
     display: block; }
-  .prof-navbar .right {
+  .new-navbar .right {
     display: none; } }
 .hero2 {
   width: 100%;
@@ -4510,7 +4510,7 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
 .prof-performance #result-chart {
   height: 480px;
   width: 100%;
-  max-width: 640px;
+  max-width: 720px;
   position: relative; }
   .prof-performance #result-chart i {
     color: #27A5F9; }
@@ -4875,7 +4875,7 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
   background: #068de7; }
 
 @media (max-width: 1200px) {
-  .professional .prof-pricing .prof-plans .prof-plan {
+  .professional .prof-pricing .prof-plans .prof-plan, .retail .prof-pricing .prof-plans .prof-plan {
     margin-bottom: 32px; } }
 .professional .bottom-cta, .retail .bottom-cta {
   background: #fff !important; }
@@ -5351,6 +5351,8 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
           padding: 0;
           color: #49494A;
           text-decoration: underline; }
+          .billing .right .ToC p button:hover {
+            background: none; }
 
 @media (max-width: 670px) {
   .signup-modal .billing {

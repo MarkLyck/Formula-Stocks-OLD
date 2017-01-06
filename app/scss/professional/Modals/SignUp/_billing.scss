@@ -142,6 +142,9 @@
           padding: 0;
           color: $text-color;
           text-decoration: underline;
+          &:hover {
+            background: none;
+          }
         }
       }
     }

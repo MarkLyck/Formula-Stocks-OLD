@@ -7,7 +7,7 @@ class Recommendations extends React.Component {
     this.changeVideo = this.changeVideo.bind(this)
     this.playVideo = this.playVideo.bind(this)
     this.pauseVideo = this.pauseVideo.bind(this)
-    this.state = { plan: 'business', video: 'paused' }
+    this.state = { plan: 'premium', video: 'paused' }
   }
 
   changeVideo(plan) {
@@ -24,6 +24,7 @@ class Recommendations extends React.Component {
 
   render() {
     let basClass, preClass, busClass, funClass;
+    if (this.state.plan === 'basic') { basClass='selected' }
     if (this.state.plan === 'premium') { preClass='selected' }
     if (this.state.plan === 'business') { busClass='selected' }
     if (this.state.plan === 'fund') { funClass='selected' }
@@ -90,9 +91,10 @@ class Recommendations extends React.Component {
           </div>
           <div className="right">
             <div className="plans">
+              {this.props.path !== '/pro' ? <button onClick={this.changeVideo.bind(null, 'basic')} className={basClass}>Basic</button> : ''}
               <button onClick={this.changeVideo.bind(null, 'premium')} className={preClass}>Premium</button>
               <button onClick={this.changeVideo.bind(null, 'business')} className={busClass}>Business</button>
-              <button onClick={this.changeVideo.bind(null, 'fund')} className={funClass}>Fund</button>
+              {this.props.path === '/pro' ? <button onClick={this.changeVideo.bind(null, 'fund')} className={funClass}>Fund</button> : ''}
             </div>
             {video}
           </div>

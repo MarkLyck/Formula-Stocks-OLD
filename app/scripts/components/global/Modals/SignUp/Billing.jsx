@@ -168,7 +168,7 @@ class Billing extends React.Component {
   renderPayButton() {
     if (!this.state.validatingPayment) {
       if (this.props.selected === 'basic') {
-        return <button className="subscribe" onClick={this.submit}>Start free trial</button>
+        return <button className="subscribe" onClick={this.submit}>Start free month</button>
       } else {
         return <button className="subscribe" onClick={this.submit}>Subscribe</button>
       }
