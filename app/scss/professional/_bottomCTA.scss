@@ -8,6 +8,9 @@
       border-radius: 4px;
       margin-top: 24px;
       margin-bottom: 16px;
+      &:hover {
+        background: darken($primary-color, 10%);
+      }
     }
     .not-convinced {
       background: none;

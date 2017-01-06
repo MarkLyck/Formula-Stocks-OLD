@@ -16,13 +16,11 @@ class Footer extends React.Component {
   toggleTerms() {
     console.log('toggle terms');
     this.setState({ showTerms: !this.state.showTerms })
-    // store.session.set('showModal', 'terms')
   }
 
   togglePrivacy() {
     console.log('toggle privacy');
     this.setState({ showPrivacy: !this.state.showPrivacy })
-    // store.session.set('showModal', 'privacy')
   }
 
   render() {

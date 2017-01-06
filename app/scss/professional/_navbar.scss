@@ -219,12 +219,13 @@
     }
     #nav-links {
       flex-direction: column;
+      width: 100%;
     }
-    #login-btn {
+    #login-btn, #dashboard-link {
       color: $primary-color;
       border-color: $primary-color;
     }
-    #signup-btn {
+    #signup-btn, #logout-btn {
       background: $primary-color;
       color: #fff;
       &:hover {

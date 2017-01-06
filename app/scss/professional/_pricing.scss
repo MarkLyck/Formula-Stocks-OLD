@@ -57,11 +57,16 @@
       }
     }
     .not-convinced {
-      margin-top: 32px;
+      margin-top: 16px;
     }
     .disclaimer {
       margin-top: 0px;
       text-align: center;
+    }
+    .learn-more {
+      &:hover {
+        background: darken($primary-color, 10%);
+      }
     }
   }
 }

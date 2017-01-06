@@ -1,12 +1,15 @@
 import React from 'react'
 import $ from 'jquery'
 import typed from '../../libraries/typed.js'
+import store from '../../store'
 
 let userCanSeeSection = true
 
 class Hero extends React.Component {
   componentDidMount() {
-    $('.hero2').on('mousemove', this.mousemove)
+    if (store.session.browserType() === 'Chrome' || store.session.browserType() === 'Blink') {
+      $('.hero2').on('mousemove', this.mousemove)
+    }
     this.count()
 
     $("#subtitle").typed({
