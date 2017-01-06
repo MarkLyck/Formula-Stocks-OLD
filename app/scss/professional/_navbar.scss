@@ -23,6 +23,10 @@
     padding: 0;
     background: none;
     font-size: 1.5rem;
+    position: absolute;
+    top: 50%;
+    right: 16px;
+    transform: translateY(-50%);
     i {
       color: $primary-color;
     }

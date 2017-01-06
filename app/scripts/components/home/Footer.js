@@ -1,14 +1,30 @@
 import React from 'react'
 
 import store from '../../store'
+import Terms from '../global/TermsAndConditions'
+import Privacy from '../global/PrivacyPolicy'
 
-const Footer = React.createClass({
-  showTerms() {
-    store.session.set('showModal', 'terms')
-  },
-  showPrivacy() {
-    store.session.set('showModal', 'privacy')
-  },
+class Footer extends React.Component {
+  constructor() {
+    super()
+    this.toggleTerms = this.toggleTerms.bind(this)
+    this.togglePrivacy = this.togglePrivacy.bind(this)
+
+    this.state = { showTerms: false, showPrivacy: false }
+  }
+
+  toggleTerms() {
+    console.log('toggle terms');
+    this.setState({ showTerms: !this.state.showTerms })
+    // store.session.set('showModal', 'terms')
+  }
+
+  togglePrivacy() {
+    console.log('toggle privacy');
+    this.setState({ showPrivacy: !this.state.showPrivacy })
+    // store.session.set('showModal', 'privacy')
+  }
+
   render() {
     return (
       <footer>
@@ -70,7 +86,9 @@ const Footer = React.createClass({
             Formula Stocks strategies evolve and improve on a recurring basis, and any result
             and statistic is therefore subject to change without notice.
           </p>
-          <p className="white-color disclaimer agreement">By visiting this site, you agree to our <a className="blue-color" onClick={this.showTerms}>Terms and Conditions</a> & <a className="blue-color" onClick={this.showPrivacy}>Privacy Policy</a></p>
+          <p className="white-color disclaimer agreement">By visiting this site, you agree to our <a className="blue-color" onClick={this.toggleTerms}>Terms and Conditions</a> & <a className="blue-color" onClick={this.togglePrivacy}>Privacy Policy</a></p>
+          {this.state.showTerms ? <div className="terms-container"><button className="close-btn" onClick={this.toggleTerms}><img src="/assets/icons/ic_close.svg"/></button><Terms/></div> : ''}
+          {this.state.showPrivacy ? <div className="terms-container"><button className="close-btn" onClick={this.togglePrivacy}><img src="/assets/icons/ic_close.svg"/></button><Privacy/></div> : ''}
         </div>
 
         <div className="copyright">
@@ -82,6 +100,6 @@ const Footer = React.createClass({
       </footer>
     )
   }
-})
+}
 
 export default Footer
