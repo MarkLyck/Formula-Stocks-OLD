@@ -78,6 +78,7 @@ class SignUp extends React.Component {
     return (
       <div className="prof-modal-container" onClick={this.closeModal} ref="modalContainer">
         <div className="prof-modal signup-modal">
+          <Link className="close-btn" to="/pro"><img src="/assets/icons/ic_close.svg"/></Link>
           {this.renderContent()}
         </div>
       </div>

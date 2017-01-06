@@ -1,6 +1,14 @@
 .signup-modal {
   display: flex;
   flex-direction: column;
+  position: relative;
+  .close-btn {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    z-index: 1001;
+    font-size: 1.5rem;
+  }
   .signup-content {
     display: flex;
     width: 100%;

@@ -4994,7 +4994,14 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
     max-width: 100%; } }
 .signup-modal {
   display: flex;
-  flex-direction: column; }
+  flex-direction: column;
+  position: relative; }
+  .signup-modal .close-btn {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    z-index: 1001;
+    font-size: 1.5rem; }
   .signup-modal .signup-content {
     display: flex;
     width: 100%; }
