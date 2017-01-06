@@ -15,8 +15,6 @@ const AboutUs = React.createClass({
   },
 
   render() {
-    // let classThomas, classMark, classMarie, bio;
-
     let modal
     if (this.state.showModal) {
       let selected = {}
@@ -75,7 +73,7 @@ const AboutUs = React.createClass({
     }
 
     return (
-      <section className="about-us">
+      <section className="about-us section">
         <h2>About us</h2>
         <div className="divider"></div>
 

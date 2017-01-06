@@ -24,14 +24,14 @@ const Product = ({ plan, billed, path }) => {
     : ''
   }
 
-  let ctaText = plan.name === 'basic' ? 'Start free month' : 'Sign Up'
+  let ctaText = plan.name === 'basic' ? 'Start your free month' : 'Sign Up'
   let prefix = path === '/pro' ? '/pro' : ''
 
   return (
   <div className={`prof-plan ${plan.name}`}>
     <div className="top">
       <h3>{plan.name}</h3>
-      <p>${formatPrice(plan.price)} - {billed}</p>
+      <p>${formatPrice(plan.price)} - {billed} {plan.name === 'basic' ? ' after 30 days' : ''}</p>
     </div>
     <ul className="statistics">
       {extraInfo}

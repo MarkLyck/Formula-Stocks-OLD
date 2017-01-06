@@ -36,26 +36,29 @@ class BacktestedPerformance extends React.Component {
 
   getData() {
     if (!this.state.chartData.length) {
+      const basicData = this.props.path !== '/pro' ? store.plans.get('basic').get('annualData') : []
       const premiumData = store.plans.get('premium').get('annualData')
       const businessData = store.plans.get('business').get('annualData')
-      const fundData = store.plans.get('fund').get('annualData')
+      const fundData = this.props.path === '/pro' ? store.plans.get('fund').get('annualData') : []
       const marketData = store.market.data.get('annualData')
 
-      if (premiumData.length && businessData.length && fundData.length && marketData.length) {
-        this.createChartData(premiumData, businessData, fundData, marketData)
+      if ((basicData.length && premiumData.length && businessData.length && marketData.length && this.props.path !== '/pro')
+          || (premiumData.length && businessData.length && fundData.length && marketData.length && this.props.path === '/pro')) {
+        this.createChartData(basicData, premiumData, businessData, fundData, marketData)
       }
     }
   }
 
-  createChartData(premiumData, businessData, fundData, marketData) {
-
+  createChartData(basicData, premiumData, businessData, fundData, marketData) {
     let fixedData = premiumData.map((point, i) => {
 
+      let basicBalance = 25000
       let premiumBalance = 25000
       let businessBalance = 25000
       let fundBalance = 25000
       let marketBalance = 25000
 
+      if (basicData[i]) { basicBalance = basicData[i].balance }
       if (premiumData[i]) { premiumBalance = premiumData[i].balance }
       if (businessData[i]) { businessBalance = businessData[i].balance }
       if (fundData[i]) { fundBalance = fundData[i].balance }
@@ -67,19 +70,36 @@ class BacktestedPerformance extends React.Component {
         month = '0' + point.date.month
       }
 
-      return {
-        premium: premiumBalance,
-        business: businessBalance,
-        fund: fundBalance,
-        market: marketBalance,
+      if (this.props.path !== '/pro') {
+        return {
+          basic: basicBalance,
+          premium: premiumBalance,
+          business: businessBalance,
+          market: marketBalance,
 
-        premiumBalloon: formatPrice(premiumBalance),
-        businessBalloon: formatPrice(businessBalance),
-        fundBalloon: formatPrice(fundBalance),
-        marketBalloon: formatPrice(marketBalance),
+          basicBalloon: formatPrice(basicBalance),
+          premiumBalloon: formatPrice(premiumBalance),
+          businessBalloon: formatPrice(businessBalance),
+          marketBalloon: formatPrice(marketBalance),
 
-        date: `${point.date.year}-${month}-${point.date.day}`
+          date: `${point.date.year}-${month}-${point.date.day}`
+        }
+      } else {
+        return {
+          premium: premiumBalance,
+          business: businessBalance,
+          fund: fundBalance,
+          market: marketBalance,
+
+          premiumBalloon: formatPrice(premiumBalance),
+          businessBalloon: formatPrice(businessBalance),
+          fundBalloon: formatPrice(fundBalance),
+          marketBalloon: formatPrice(marketBalance),
+
+          date: `${point.date.year}-${month}-${point.date.day}`
+        }
       }
+
     })
     this.setState({ chartData: fixedData })
   }
@@ -114,6 +134,19 @@ class BacktestedPerformance extends React.Component {
               useLineColorForBulletBorder: true,
               valueField: "market",
               "balloonText": "<div class=\"chart-balloon\"><span class=\"plan-name market-name\">S&P500</span><span class=\"balloon-value\">$[[marketBalloon]]</span></div>",
+            },
+            {
+              id: "basic",
+              lineColor: "#49494A",
+              bullet: "square",
+              bulletBorderAlpha: 1,
+              bulletColor: "#49494A",
+              bulletSize: 5,
+              hideBulletsCount: 10,
+              lineThickness: 2,
+              useLineColorForBulletBorder: true,
+              valueField: "basic",
+              balloonText: "<div class=\"chart-balloon\"><span class=\"plan-name\">Basic</span><span class=\"balloon-value\">$[[basicBalloon]]</span></div>"
             },
             {
               id: "premium",

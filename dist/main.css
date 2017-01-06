@@ -4591,19 +4591,19 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
   margin-left: 50%; }
 
 @media (max-width: 1025px) {
-  .professional .risk-reward .beside .disclaimer {
+  .professional .risk-reward .beside .disclaimer, .retail .risk-reward .beside .disclaimer {
     margin-left: 0; } }
 @media (max-width: 900px) {
-  .professional .risk-reward .beside .chart-container {
+  .professional .risk-reward .beside .chart-container, .retail .risk-reward .beside .chart-container {
     position: relative;
     margin: 16px auto;
     order: 2;
     max-width: 100%; }
-  .professional .risk-reward .beside .right-text {
+  .professional .risk-reward .beside .right-text, .retail .risk-reward .beside .right-text {
     margin-left: 0;
     order: 0;
     margin-bottom: 0; }
-  .professional .risk-reward .beside .disclaimer {
+  .professional .risk-reward .beside .disclaimer, .retail .risk-reward .beside .disclaimer {
     order: 3; } }
 .machine-learning .collapsable {
   margin-bottom: 32px; }
@@ -4816,7 +4816,8 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
     padding: 0 24px; }
 
 .backtested-performance #result-chart {
-  width: 100%; }
+  width: 100%;
+  margin-bottom: 16px; }
   .backtested-performance #result-chart i {
     color: #27A5F9; }
 
@@ -4880,7 +4881,10 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
 .professional .bottom-cta, .retail .bottom-cta {
   background: #fff !important; }
   .professional .bottom-cta h1, .retail .bottom-cta h1 {
-    margin-bottom: 0; }
+    margin-bottom: 0;
+    text-align: center; }
+  .professional .bottom-cta h3, .retail .bottom-cta h3 {
+    text-align: center; }
   .professional .bottom-cta .to-pricing, .retail .bottom-cta .to-pricing {
     border-radius: 4px;
     margin-top: 24px;

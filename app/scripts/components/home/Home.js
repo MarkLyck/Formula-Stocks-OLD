@@ -12,12 +12,14 @@ import HigherPerformance from './fiveReasons/HigherPerformance'
 import OurProducts from './OurProducts'
 import Recommendations from '../global/Recommendations.jsx'
 // import PreviousRecommendations from './PreviousRecommendations'
-import TheResults from './Performance.jsx'
+// import TheResults from './Performance.jsx'
+import BacktestedPerformance from '../global/BacktestedPerformance.jsx'
 // import PricingTable from './PricingTable'
 import Pricing from '../global/Pricing.jsx'
 import HowWeBeatTheMarket from '../global/HowWeBeatTheMarket.jsx'
 import MoreInformation from './MoreInformation.jsx'
-import RewardVSRisk from './RewardVSRisk'
+// import RewardVSRisk from './RewardVSRisk'
+import RiskReward from '../global/RiskReward.jsx'
 import Quote from './Quote'
 import Comparisons from '../global/Comparisons.jsx'
 import CumulativeInterest from './CumulativeInterest'
@@ -55,12 +57,14 @@ const Home = React.createClass({
         {/* <OurProducts/> */}
         {/* <PreviousRecommendations/> */}
         <Recommendations/>
-        <TheResults/>
+        {/* <TheResults/> */}
+        <BacktestedPerformance/>
         {/* <PricingTable/> */}
         <Pricing/>
         <HowWeBeatTheMarket/>
         {/* <MoreInformation /> */}
-        <RewardVSRisk/>
+        {/* <RewardVSRisk/> */}
+        <RiskReward/>
         <Comparisons/>
         <Quote/>
         <CumulativeInterest/>
