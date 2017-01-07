@@ -2,7 +2,7 @@ import React from 'react'
 import store from '../../store'
 
 import NavBar from '../global/NavBar.jsx'
-import Hero from './Hero.jsx'
+import Hero from '../global/Hero.jsx'
 import WhatIsIt from './WhatIsIt.jsx'
 import Probabilities from './Probabilities.jsx'
 import Performance from '../global/Performance.jsx'
@@ -33,10 +33,10 @@ class Home extends React.Component {
     return (
       <div className="professional">
         <NavBar path={this.props.route.path}/>
-        <Hero/>
+        <Hero path={this.props.route.path}/>
         <WhatIsIt/>
-        <Probabilities/>
-        <Performance/>
+        <Probabilities path={this.props.route.path}/>
+        <Performance path={this.props.route.path}/>
         <RiskReward/>
         <HowWeBeatTheMarket/>
         <WhatYouGet/>

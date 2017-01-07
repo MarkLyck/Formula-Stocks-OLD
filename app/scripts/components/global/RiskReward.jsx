@@ -18,13 +18,13 @@ class RiskReward extends React.Component {
             </div>
           </div>
           <p className="right-text">
-            Achieving a higher level of return is, of course, easy if it means accepting
-            higher risk. One simply uses leverage, thus amplifying both risk and reward.<br/><br/>
+            Achieving a higher level of return is easy if it means accepting higher risk.
+            One simply uses leverage, thus amplifying both risk and reward.<br/><br/>
 
-            But our methods generally do the exact opposite. They deliver above-average
-            returns at a below-average risk and without any form of leverage - an absolute
-            rarity. One of the best and most modern risk/reward benchmarks is the Omega
-            function, the output of which is depicted in the graph.<br/><br/>
+            Our methods generally do the exact opposite. They deliver above-average returns at
+            a below-average risk and without any leverage - an absolute rarity. One of the best
+            and most modern risk/reward benchmarks is the Omega function, depicted in the
+            graph.<br/><br/>
           </p>
           <p className="disclaimer right-text">
             The graph shows a yearly Omega Function. Higher levels indicate higher returns, and

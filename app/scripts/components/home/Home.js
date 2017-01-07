@@ -3,13 +3,17 @@ import React from 'React'
 import store from '../../store'
 
 import NavBar from '../global/NavBar.jsx'
-import Hero from './Hero'
+// import Hero from './Hero'
+import Hero from '../global/Hero.jsx'
 import AboveAverageReturns from './fiveReasons/AboveAverageReturns'
 import ReachYourGoals from './fiveReasons/ReachYourGoals'
 import InformationalAdvantage from './fiveReasons/InformationalAdvantage'
 import OneDollar from './fiveReasons/OneDollar'
 import HigherPerformance from './fiveReasons/HigherPerformance'
-import OurProducts from './OurProducts'
+import WhatIsIt from './WhatIsIt.jsx'
+import HowItWorks from './HowItWorks.jsx'
+import Performance from '../global/Performance.jsx'
+// import OurProducts from './OurProducts'
 import Recommendations from '../global/Recommendations.jsx'
 // import PreviousRecommendations from './PreviousRecommendations'
 // import TheResults from './Performance.jsx'
@@ -40,6 +44,7 @@ const Home = React.createClass({
   },
   componentDidMount() {
     store.market.data.getAnnualData()
+    store.market.data.getDJIAData()
     window.Intercom("boot", {
       app_id: "i194mpvo"
     })
@@ -49,11 +54,14 @@ const Home = React.createClass({
       <div id="home" className="retail">
         <NavBar/>
         <Hero/>
-        <AboveAverageReturns/>
-        <ReachYourGoals/>
-        <InformationalAdvantage/>
-        <OneDollar/>
-        <HigherPerformance/>
+        <WhatIsIt/>
+        <HowItWorks/>
+        {/* <AboveAverageReturns/> */}
+        {/* <ReachYourGoals/> */}
+        {/* <InformationalAdvantage/> */}
+        {/* <OneDollar/> */}
+        {/* <HigherPerformance/> */}
+        <Performance/>
         {/* <OurProducts/> */}
         {/* <PreviousRecommendations/> */}
         <Recommendations/>

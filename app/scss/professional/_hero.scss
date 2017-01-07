@@ -1,3 +1,27 @@
+.retail {
+  header {
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+    margin-bottom: 4px;
+    .hero2 {
+      overflow: hidden;
+      align-items: flex-start;
+      height: 560px;
+      .content {
+        margin-top: 80px;
+      }
+      .mockup {
+        max-width: 600px;
+        width: calc(100% - 128px);
+        position: absolute;
+        bottom: -40px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+  }
+
+}
+
 .hero2 {
   width: 100%;
   height: 480px;
@@ -5,6 +29,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
   .content {
     margin-bottom: 80px;
     display: flex;
@@ -14,21 +39,17 @@
     width: 60%;
     text-align: center;
     max-width: 835px;
-    // font-family: 'Lato';
     h1,h2 {
       color: #fff;
-      // font-size: 40px;
       font-size: 2em;
     }
     #subtitle {
       color: #fff;
-      // font-size: 40px;
       font-size: 2em;
     }
     .typed-cursor{
         opacity: 1;
         color: #fff;
-        // font-size: 40px;
         font-size: 2em;
         -webkit-animation: blink 0.7s infinite;
         -moz-animation: blink 0.7s infinite;

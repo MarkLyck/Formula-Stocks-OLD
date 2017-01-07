@@ -3,8 +3,6 @@ import { Router, Route, IndexRoute } from 'react-router'
 
 import store from './store'
 
-import HeroTest from './components/Home/Hero2.jsx'
-
 import Home from './components/home/Home'
 import Professional from './components/Professional/Home.jsx'
 
@@ -38,7 +36,6 @@ const router = (
       <Route path="signup" component={SignUp2}/>
     </Route>
     <Route path="/faq" component={FAQ}/>
-    <Route path="/hero2" component={HeroTest}/>
     <Route path="/dashboard" component={Dashboard}>
       <IndexRoute component={Portfolio}/>
       <Route path="portfolio" component={Portfolio}>

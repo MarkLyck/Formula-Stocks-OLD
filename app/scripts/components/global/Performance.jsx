@@ -5,6 +5,7 @@ import store from '../../store'
 import LineGraph from './components/LineGraph'
 
 function formatPrice(value) {
+  value = String(value)
   while(/(\d+)(\d{3})/.test(value.toString())) {
     value = value.toString().replace(/(\d+)(\d{3})/, '$1'+','+'$2')
   }
@@ -37,27 +38,32 @@ class Performance extends React.Component {
 
   getData() {
     if (!this.state.chartData.length) {
+      const basicData = this.props.path !== '/pro' ? store.plans.get('basic').get('portfolioYields') : []
       const premiumData = store.plans.get('premium').get('portfolioYields')
       const businessData = store.plans.get('business').get('portfolioYields')
-      const fundData = store.plans.get('fund').get('portfolioYields')
+      const fundData = this.props.path === '/pro' ? store.plans.get('fund').get('portfolioYields') : []
       const marketData = store.market.data.get('djia')
 
-      if (premiumData.length && businessData.length && fundData.length && marketData.length) {
-        this.createChartData(premiumData, businessData, fundData, marketData)
+      if ((basicData.length && premiumData.length && businessData.length && marketData.length && this.props.path !== '/pro')
+          || (premiumData.length && businessData.length && fundData.length && marketData.length && this.props.path === '/pro')) {
+        this.createChartData(basicData, premiumData, businessData, fundData, marketData)
       }
     }
   }
 
-  createChartData(premiumData, businessData, fundData, marketData) {
-
+  createChartData(basicData, premiumData, businessData, fundData, marketData) {
     let startValue = premiumData[0].balance
     let marketStartValue = Number(marketData[0])
 
     let fixedData = premiumData.map((point, i) => {
 
+      let basicBalance = 0
+      let fundBalance = 0
+
+      if (basicData[i]) { basicBalance = ((basicData[i].balance - startValue) / startValue * 100).toFixed(2) }
       const premiumBalance = ((premiumData[i].balance - startValue) / startValue * 100).toFixed(2)
       const businessBalance = ((businessData[i].balance - startValue) / startValue * 100).toFixed(2)
-      const fundBalance = ((fundData[i].balance - startValue) / startValue * 100).toFixed(2)
+      if (fundData[i]) { fundBalance = ((fundData[i].balance - startValue) / startValue * 100).toFixed(2) }
       const marketBalance = ((Number(marketData[i]) - marketStartValue) / marketStartValue * 100).toFixed(2)
 
       let month = point.date.month
@@ -65,18 +71,34 @@ class Performance extends React.Component {
         month = '0' + point.date.month
       }
 
-      return {
-        premium: premiumBalance,
-        business: businessBalance,
-        fund: fundBalance,
-        market: marketBalance,
+      if (this.props.path !== '/pro') {
+        return {
+          basic: basicBalance,
+          premium: premiumBalance,
+          business: businessBalance,
+          market: marketBalance,
 
-        premiumBalloon: formatPrice(premiumBalance),
-        businessBalloon: formatPrice(businessBalance),
-        fundBalloon: formatPrice(fundBalance),
-        marketBalloon: formatPrice(marketBalance),
+          basicBalloon: formatPrice(basicBalance),
+          premiumBalloon: formatPrice(premiumBalance),
+          businessBalloon: formatPrice(businessBalance),
+          marketBalloon: formatPrice(marketBalance),
 
-        date: `${point.date.year}-${month}-${point.date.day}`
+          date: `${point.date.year}-${month}-${point.date.day}`
+        }
+      } else {
+        return {
+          premium: premiumBalance,
+          business: businessBalance,
+          fund: fundBalance,
+          market: marketBalance,
+
+          premiumBalloon: formatPrice(premiumBalance),
+          businessBalloon: formatPrice(businessBalance),
+          fundBalloon: formatPrice(fundBalance),
+          marketBalloon: formatPrice(marketBalance),
+
+          date: `${point.date.year}-${month}-${point.date.day}`
+        }
       }
     })
     this.setState({ chartData: fixedData })
@@ -89,6 +111,8 @@ class Performance extends React.Component {
               </div>)
     } else {
 
+
+      const basMin = Number(_.min(this.state.chartData, (point) => Number(point.basic)).basic)
       const preMin = Number(_.min(this.state.chartData, (point) => Number(point.premium)).premium)
       const busMin = Number(_.min(this.state.chartData, (point) => Number(point.business)).business)
       const funMin = Number(_.min(this.state.chartData, (point) => Number(point.fund)).fund)
@@ -113,6 +137,19 @@ class Performance extends React.Component {
               useLineColorForBulletBorder: true,
               valueField: "market",
               "balloonText": "<div class=\"chart-balloon\"><span class=\"plan-name market-name\">DJIA</span><span class=\"balloon-value\">[[marketBalloon]]</span></div>",
+            },
+            {
+              id: "basic",
+              lineColor: "#49494A",
+              bullet: "square",
+              bulletBorderAlpha: 1,
+              bulletColor: "#49494A",
+              bulletSize: 5,
+              hideBulletsCount: 10,
+              lineThickness: 2,
+              useLineColorForBulletBorder: true,
+              valueField: "basic",
+              balloonText: "<div class=\"chart-balloon\"><span class=\"plan-name\">Basic</span><span class=\"balloon-value\">[[basicBalloon]]</span></div>"
             },
             {
               id: "premium",

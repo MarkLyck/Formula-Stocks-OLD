@@ -2,7 +2,7 @@ import React from 'react'
 import $ from 'jquery'
 import Scroll from 'react-scroll'
 
-import WhatIsIt from './WhatIsIt'
+// import WhatIsIt from './WhatIsIt'
 import store from '../../store'
 
 import typed from '../../libraries/typed.js'
@@ -14,12 +14,12 @@ const Hero = React.createClass({
   },
   componentDidMount() {
     $("#subtitle").typed({
-        stringsElement: $('#subtitles'),
-        typeSpeed: -50,
-        loop: true,
-        showCursor: true,
-        backDelay: 6000,
-        backSpeed: -100,
+      stringsElement: $('#subtitles'),
+      typeSpeed: 0,
+      loop: true,
+      showCursor: true,
+      backDelay: 2000,
+      backSpeed: 0,
     })
   },
   render() {
@@ -34,14 +34,13 @@ const Hero = React.createClass({
       <header id="hero" className={iOSException}>
         <div className="content">
           <div className="bounce-down">
-            <h1 id="main-title">A better <span className="font bold">solution</span> for the <span className="font bold">stock investor</span></h1>
+            <h1 id="main-title">A better <span className="font bold">solution</span> for the <span className="font bold">stock market</span></h1>
             <span id="subtitle"></span>
             <div id="subtitles">
-              <h2>Formula Stocks typically estimates next year’s winners with an 89-92% success rate<sup>*</sup>. Give your investments a boost – join today.</h2>
-              <h2>A human brain is not wired for evaluating hundreds of data points. We prefer stories. But stories produce bias, dampens performance.</h2>
-              <h2>Our intelligent technology delivers unbiased thinking on an expert level. Smart. Experienced. Better.</h2>
-              <h2>You can also save on fees and keep hands-on oversight on your investments.</h2>
-              <h2>Timeless and proven investment principles. We buy good businesses at fair prices, with a margin of safety.</h2>
+              <h2>Improve investment returns</h2>
+              <h2>Save time</h2>
+              <h2>Reduce costs</h2>
+              <h2>Simplify investing</h2>
             </div>
           </div>
           <div className="CTA fade-in">
@@ -49,14 +48,6 @@ const Hero = React.createClass({
             <Link className="outline-btn" to="whatIsIt" smooth={true} offset={-100} duration={500}>Learn more</Link>
           </div>
         </div>
-
-          <div id="hero-chart" className="slide-up">
-            <img className="chart-container slide-up-transform" src="/assets/images/hero-graph.svg" />
-            <Element name="whatIsIt">
-              <WhatIsIt/>
-            </Element>
-          </div>
-
       </header>
     )
   }

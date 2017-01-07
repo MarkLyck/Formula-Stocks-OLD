@@ -1,5 +1,5 @@
 import React from 'react'
-import WinRateGraph from './components/WinRateGraph.jsx'
+import WinRateGraph from '../global/components/WinRateGraph.jsx'
 
 class Probabilities extends React.Component {
   render() {
@@ -38,7 +38,7 @@ class Probabilities extends React.Component {
               success by the same measure – a staggering difference.
             </p>
             <div className="graph-container">
-              <WinRateGraph/>
+              <WinRateGraph path={this.props.path}/>
             </div>
           </div>
         <p className="disclaimer">
