@@ -172,6 +172,17 @@
   }
 }
 
+.retail {
+  .fixed {
+    .right {
+      #signup-btn {
+        background: $action-color;
+        border-color: $action-color
+      }
+    }
+  }
+}
+
 @keyframes slidedown {
   from {
     top: -65px;

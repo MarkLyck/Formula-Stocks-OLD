@@ -54,6 +54,17 @@
         }
       }
     }
+    .basic {
+      .top {
+        border-bottom-color: $action-color;
+      }
+      .cta {
+        background: $action-color;
+        &:hover {
+          background: darken($action-color, 5%);
+        }
+      }
+    }
   }
   .not-convinced {
     margin-top: 16px;
