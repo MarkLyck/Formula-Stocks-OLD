@@ -584,7 +584,8 @@ header {
   align-items: center;
   flex-direction: column;
   position: relative;
-  width: 100%; }
+  width: 100%;
+  height: 520px; }
   #hero .content {
     margin-top: 80px;
     display: flex;
@@ -600,7 +601,7 @@ header {
       color: #fff; }
     #hero .content #subtitle {
       color: #fff;
-      font-size: 1.5rem;
+      font-size: 2em;
       line-height: 1.8rem; }
     #hero .content .CTA {
       margin-top: 24px;
@@ -678,7 +679,6 @@ header {
 
 .hero {
   width: 100%;
-  height: 100%;
   background: #27A5F9;
   display: flex;
   justify-content: center;
@@ -1421,6 +1421,32 @@ input[type=submit] {
     margin-left: 0; }
   .higher-performance .right {
     display: none; } }
+.how-it-works .beside .left {
+  width: calc(50% - 16px);
+  max-width: inherit; }
+  .how-it-works .beside .left .screenshot {
+    width: 100%;
+    height: auto;
+    box-shadow: 0 0px 4px rgba(0, 0, 0, 0.2), 0 4px 8px rgba(0, 0, 0, 0.24);
+    transition: transform 0.5s; }
+    .how-it-works .beside .left .screenshot:hover {
+      transform: scale(1.05); }
+.how-it-works .beside .right {
+  max-width: calc(50% - 16px); }
+
+@media (max-width: 1100px) {
+  .how-it-works .beside {
+    flex-direction: column;
+    align-items: center; }
+    .how-it-works .beside .left {
+      width: 100%;
+      max-width: 640px;
+      order: 2;
+      margin-top: 16px; }
+    .how-it-works .beside .right {
+      max-width: inherit;
+      margin-left: 0 !important;
+      order: 1; } }
 .our-products {
   display: flex;
   justify-content: center;
@@ -4303,13 +4329,31 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
     display: block; }
   .new-navbar .right {
     display: none; } }
+.retail header {
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+  margin-bottom: 4px; }
+  .retail header .hero2 {
+    overflow: hidden;
+    align-items: flex-start;
+    height: 560px; }
+    .retail header .hero2 .content {
+      margin-top: 80px; }
+    .retail header .hero2 .mockup {
+      max-width: 600px;
+      width: calc(100% - 128px);
+      position: absolute;
+      bottom: -40px;
+      left: 50%;
+      transform: translateX(-50%); }
+
 .hero2 {
   width: 100%;
   height: 480px;
   background: #27A5F9;
   display: flex;
   justify-content: center;
-  align-items: center; }
+  align-items: center;
+  position: relative; }
   .hero2 .content {
     margin-bottom: 80px;
     display: flex;
@@ -4417,9 +4461,6 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
     .hero2 .background-numbers-container .right {
       text-align: right; }
 
-.professional .what-is-it .we-call-it {
-  font-size: 1.2rem;
-  margin-top: 32px; }
 .professional .what-is-it img {
   max-width: 640px;
   width: 100%;
@@ -4590,7 +4631,7 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
 .risk-reward .right-text {
   margin-left: 50%; }
 
-@media (max-width: 1025px) {
+@media (max-width: 940px) {
   .professional .risk-reward .beside .disclaimer, .retail .risk-reward .beside .disclaimer {
     margin-left: 0; } }
 @media (max-width: 900px) {
