@@ -1,4 +1,12 @@
 .one-dollar {
+  padding: 40px 80px 40px 80px;
+  display: flex;
+  justify-content: center;
+  .content {
+    margin: 0;
+    width: 100%;
+    max-width: 1160px;
+  }
   .left {
     .plans {
       button {
