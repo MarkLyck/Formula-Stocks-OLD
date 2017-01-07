@@ -52,6 +52,21 @@ class Performance extends React.Component {
   }
 
   createChartData(basicData, premiumData, businessData, fundData, marketData) {
+
+
+
+    // basicData = basicData.slice(-13)
+    // premiumData = premiumData.slice(-13)
+    // businessData = businessData.slice(-13)
+    // fundData = fundData.slice(-13)
+    // marketData = marketData.slice(-13)
+
+    // let basStartValue = basicData[0] ? basicData[0].balance : 0
+    // let preStartValue = premiumData[0].balance
+    // let busStartValue = businessData[0].balance
+    // let funStartValue = fundData[0].balance
+    // let marStartValue = marketData[0]
+
     let startValue = premiumData[0].balance
     let marketStartValue = Number(marketData[0])
 
@@ -65,6 +80,12 @@ class Performance extends React.Component {
       const businessBalance = ((businessData[i].balance - startValue) / startValue * 100).toFixed(2)
       if (fundData[i]) { fundBalance = ((fundData[i].balance - startValue) / startValue * 100).toFixed(2) }
       const marketBalance = ((Number(marketData[i]) - marketStartValue) / marketStartValue * 100).toFixed(2)
+
+      // if (basicData[i]) { basicBalance = ((basicData[i].balance - startValue) / startValue * 100).toFixed(2) }
+      // const premiumBalance = ((premiumData[i].balance - preStartValue) / preStartValue * 100).toFixed(2)
+      // const businessBalance = ((businessData[i].balance - busStartValue) / busStartValue * 100).toFixed(2)
+      // if (fundData[i]) { fundBalance = ((fundData[i].balance - funStartValue) / funStartValue * 100).toFixed(2) }
+      // const marketBalance = ((Number(marketData[i]) - marketStartValue) / marketStartValue * 100).toFixed(2)
 
       let month = point.date.month
       if (Number(point.date.month) <= 9) {
