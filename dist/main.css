@@ -1046,46 +1046,12 @@ input[type=submit] {
     align-items: center;
     justify-content: center; }
 
-#what-is-it {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 0 auto;
-  margin-bottom: 50px;
-  margin-top: -50px;
-  width: 80vw; }
-  #what-is-it .left {
-    max-width: 400px;
-    margin-right: 50px; }
-    #what-is-it .left .fs-title {
-      font-size: 0.8rem;
-      font-weight: 100;
-      margin: 0; }
-    #what-is-it .left .title {
-      margin-top: 10px;
-      font-size: 2rem;
-      font-weight: bold;
-      font-weight: 100; }
-    #what-is-it .left p {
-      font-size: 1.2rem;
-      font-weight: 100; }
-  #what-is-it .right {
-    max-width: 50%;
-    margin-left: 50px; }
-    #what-is-it .right img {
-      width: 100%;
-      height: auto;
-      transition: transform 1s; }
-      #what-is-it .right img:hover {
-        transform: scale(1.1); }
-
-@media (max-width: 850px) {
-  #what-is-it {
-    margin-top: 0px; }
-    #what-is-it .left {
-      max-width: 100%; }
-    #what-is-it .right {
-      display: none; } }
+@media (max-width: 920px) {
+  .what-is-it .beside {
+    flex-direction: column;
+    align-items: center; }
+    .what-is-it .beside .graph-container {
+      max-width: calc(100% - 64px); } }
 .split-section {
   width: 100%;
   padding: 50px 0;
