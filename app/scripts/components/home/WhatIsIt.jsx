@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router'
 import Scroll from 'react-scroll'
 import WinRateGraph from '../global/components/WinRateGraph.jsx'
 
@@ -8,6 +9,14 @@ class WhatIsIt extends React.Component {
     return (
       <section className="what-is-it section">
         <Element name="whatIsIt"/>
+        {/* <h2>Is there a formula for investment success? We believe there is.</h2>
+        <div className="divider sub-divider"/>
+        <p className="subtitle">If you are an intermediate to expert investor, <Link to="/pro" className="pro-link">click here.</Link></p>
+        <p>
+          We offer a rational, scientific and systematic method for winning in the stock market
+          over the long run. Not a certain outcome, mind you, other forces still affect
+          outcomes. But solid probabilities.
+        </p> */}
         <h2 className="title">What is it?</h2>
         <div className="divider"/>
         <div className="beside">

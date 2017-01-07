@@ -1,3 +1,21 @@
+.retail {
+  .what-is-it {
+    .sub-divider {
+      margin-bottom: 16px;
+    }
+    .subtitle {
+      margin-bottom: 32px;
+    }
+    .pro-link {
+      background: none;
+      color: $primary-color;
+      padding: 0;
+      width: auto;
+      display: inline;
+    }
+  }
+}
+
 @media (max-width: 920px) {
   .what-is-it {
     .beside {
