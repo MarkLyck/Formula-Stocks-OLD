@@ -79,7 +79,7 @@
 }
 
 
-@media (max-width: 850px) {
+@media (max-width: 975px) {
   .one-dollar {
     padding-bottom: 0;
     .content {
@@ -88,16 +88,18 @@
         width: 100%;
         margin-right: 0;
         order: 1;
+        margin-bottom: 16px;
         p {
           max-width: 100%;
         }
       }
       .right {
-        margin: 50px 0;
+        margin: 0 0 16px 0;;
         height: 250px;
         width: auto;
         .title, p {
           align-self: flex-start;
+          width: 100%;
         }
       }
     }
