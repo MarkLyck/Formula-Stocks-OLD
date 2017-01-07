@@ -8,10 +8,11 @@ import Hero from '../global/Hero.jsx'
 import AboveAverageReturns from './fiveReasons/AboveAverageReturns'
 import ReachYourGoals from './fiveReasons/ReachYourGoals'
 import InformationalAdvantage from './fiveReasons/InformationalAdvantage'
-import OneDollar from './fiveReasons/OneDollar'
+import OneDollar from './OneDollar'
 import HigherPerformance from './fiveReasons/HigherPerformance'
 import WhatIsIt from './WhatIsIt.jsx'
 import HowItWorks from './HowItWorks.jsx'
+import PilotTest from './PilotTest.jsx'
 import Performance from '../global/Performance.jsx'
 // import OurProducts from './OurProducts'
 import Recommendations from '../global/Recommendations.jsx'
@@ -61,6 +62,8 @@ const Home = React.createClass({
         {/* <InformationalAdvantage/> */}
         {/* <OneDollar/> */}
         {/* <HigherPerformance/> */}
+        <OneDollar/>
+        <PilotTest/>
         <Performance/>
         {/* <OurProducts/> */}
         {/* <PreviousRecommendations/> */}
