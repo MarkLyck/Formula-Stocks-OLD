@@ -1442,12 +1442,15 @@ input[type=submit] {
 .retail .experienced {
   display: flex;
   flex-direction: row;
-  justify-content: center; }
+  justify-content: center;
+  padding-top: 32px;
+  padding-bottom: 32px; }
   .retail .experienced h2 {
     display: inline;
     width: 100%;
     max-width: 1160px;
-    margin: 0; }
+    margin: 0;
+    font-size: 1.2rem; }
     .retail .experienced h2 a {
       display: inline;
       margin: 0 8px;
