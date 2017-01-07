@@ -1966,6 +1966,12 @@ input[type=submit] {
 @media (max-width: 650px) {
   .reward-vs-risk .content {
     min-height: 700px; } }
+.create-value {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 16px; }
+
 .retail .quote-section {
   background: url("assets/images/Albert_Einstein.jpg");
   background-size: cover;

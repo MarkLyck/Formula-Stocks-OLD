@@ -9,13 +9,21 @@ class WhatIsIt extends React.Component {
     return (
       <section className="what-is-it section">
         <Element name="whatIsIt"/>
-        {/* <h2>Is there a formula for investment success? We believe there is.</h2>
-        <div className="divider sub-divider"/>
+        {/* <h2>Is there a formula for investment success? </h2>
+        <div className="divider"/>
         <p className="subtitle">If you are an intermediate to expert investor, <Link to="/pro" className="pro-link">click here.</Link></p>
         <p>
+          We believe there is. Also, the mathematical laws of probability can be harnessed to your
+          benefit.<br/><br/>
+
           We offer a rational, scientific and systematic method for winning in the stock market
-          over the long run. Not a certain outcome, mind you, other forces still affect
-          outcomes. But solid probabilities.
+          over the long run.<br/><br/>
+
+          Through a dedicated member site, Formula Stocks offer advanced analysis and
+          information, which has not been discounted by the market yet – making it possible to
+          achieve above-average returns.<br/><br/>
+
+          Use it to better your investment performance.
         </p> */}
         <h2 className="title">What is it?</h2>
         <div className="divider"/>

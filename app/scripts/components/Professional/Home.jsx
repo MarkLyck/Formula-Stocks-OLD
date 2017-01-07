@@ -38,7 +38,7 @@ class Home extends React.Component {
         <Probabilities path={this.props.route.path}/>
         <Performance path={this.props.route.path}/>
         <RiskReward/>
-        <HowWeBeatTheMarket/>
+        <HowWeBeatTheMarket path={this.props.route.path}/>
         <WhatYouGet/>
         <Comparisons/>
         <Recommendations path={this.props.route.path}/>

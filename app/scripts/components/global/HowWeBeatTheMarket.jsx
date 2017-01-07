@@ -3,11 +3,42 @@ import Scroll from 'react-scroll'
 import CollapseSegment from './components/CollapseSegment.jsx'
 
 class HowWeBeatTheMarket extends React.Component {
+  renderRetailSection() {
+    return (
+      <div className="create-value">
+        <h2 className="title">How do we create value for members?</h2>
+        <div className="divider"/>
+        <p>
+          The human brain is not wired for evaluating hundreds of data points simultaneously.
+          Humans prefer stories. But stories produce bias, and bias dampens performance.<br/><br/>
+
+          We have spent 14 years developing intelligent technology that delivers unbiased
+          thinking on an expert level. This leads to decision-making devoid of emotion, fear,
+          greed, indecision. Decisions are instead based on mathematical probabilities,
+          learned experience, logic, and sound business principles.<br/><br/>
+
+          The expert capacity is derived from technology capable of learning from the outcome
+          of decisions encountered and technology capable of analyzing businesses in great
+          detail.<br/><br/>
+
+          In addition, portfolio management software specializes in knowing when to buy, hold,
+          and sell. Portfolio construction software builds a better, safer portfolio.<br/><br/>
+
+          A centerpiece is our capacity to analyze businesses in greater detail.<br/><br/>
+
+          Should you wish to dig deeper into the more technical aspects behind our service,
+          please see "How we beat the market" below for more detail.
+        </p>
+      </div>
+    )
+  }
+
   render() {
     const Element = Scroll.Element
     return (
       <section className="section">
         <Element name="howItWorks"/>
+        {this.props.path !== '/pro' ? this.renderRetailSection() : ''}
         <h2 className="title">How we beat the market</h2>
         <div className="divider"/>
         <CollapseSegment title="Overview">
