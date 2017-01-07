@@ -1,5 +1,12 @@
 .retail {
   .what-is-it {
+    h2 {
+      text-align: center;
+    }
+    .intro-text {
+      text-align: center;
+      max-width: 720px;
+    }
     .sub-divider {
       margin-bottom: 16px;
     }

@@ -19,9 +19,9 @@ class PilotTest extends React.Component {
           </div>
           <div className="right">
             <ul>
-              <li><p className="name">2009</p><p className="return">+66.54%</p></li>
-              <li><p className="name">2010</p><p className="return">+52.56%</p></li>
-              <li><p className="name">2011</p><p className="return">+16.84%</p></li>
+              <li><p className="name">Year 1</p><p className="return">+66.54%</p></li>
+              <li><p className="name">Year 2</p><p className="return">+52.56%</p></li>
+              <li><p className="name">Year 3</p><p className="return">+16.84%</p></li>
             </ul>
           </div>
         </div>

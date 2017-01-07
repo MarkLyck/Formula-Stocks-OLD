@@ -104,7 +104,7 @@ const OneDollar = React.createClass({
             <p className="plan-name">S&P 500</p>
           </div>
           <div className="right">
-            <h2 className="title">$1 and 45 years</h2>
+            <h2 className="title">$1 and 47 years</h2>
             <p>
               How much could 1 dollar have grown over the last 47 years, had it been invested
               with Formula Stocks?<br/><br/>

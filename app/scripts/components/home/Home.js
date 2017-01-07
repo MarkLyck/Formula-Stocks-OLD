@@ -4,6 +4,8 @@ import store from '../../store'
 
 import NavBar from '../global/NavBar.jsx'
 import Hero from '../global/Hero.jsx'
+import Introduction from './Introduction.jsx'
+import Experienced from './Experienced.jsx'
 import OneDollar from './OneDollar'
 import WhatIsIt from './WhatIsIt.jsx'
 import HowItWorks from './HowItWorks.jsx'
@@ -44,6 +46,8 @@ const Home = React.createClass({
       <div id="home" className="retail">
         <NavBar/>
         <Hero/>
+        <Introduction/>
+        <Experienced/>
         <WhatIsIt/>
         <HowItWorks/>
         <OneDollar/>
