@@ -1046,6 +1046,11 @@ input[type=submit] {
     align-items: center;
     justify-content: center; }
 
+.retail .what-is-it h2 {
+  text-align: center; }
+.retail .what-is-it .intro-text {
+  text-align: center;
+  max-width: 720px; }
 .retail .what-is-it .sub-divider {
   margin-bottom: 16px; }
 .retail .what-is-it .subtitle {
@@ -1426,6 +1431,22 @@ input[type=submit] {
       max-width: inherit;
       margin-left: 0 !important;
       order: 1; } }
+.retail .experienced {
+  display: flex;
+  flex-direction: row;
+  justify-content: center; }
+  .retail .experienced h2 {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 1160px; }
+    .retail .experienced h2 a {
+      margin: 0 8px;
+      background: none;
+      padding: 0;
+      color: #27A5F9;
+      text-decoration: underline; }
+
 .pilot-test .beside .left {
   width: 100%;
   max-width: calc(100% - 232px); }
