@@ -6,6 +6,11 @@ import store from '../../store'
 let userCanSeeSection = true
 
 class Hero extends React.Component {
+  constructor(props) {
+    super(props)
+
+    this.count = this.count.bind(this)
+  }
   componentDidMount() {
     if (store.session.browserType() === 'Chrome' || store.session.browserType() === 'Blink') {
       $('.hero2').on('mousemove', this.mousemove)
@@ -20,6 +25,14 @@ class Hero extends React.Component {
         backDelay: 2000,
         backSpeed: 0,
     })
+     $(window).scroll(() => {
+       if ($(window).scrollTop() < 560 && !userCanSeeSection) {
+         userCanSeeSection = true
+         this.count()
+       } else if ($(window).scrollTop() > 560) {
+         userCanSeeSection = false
+       }
+     })
   }
 
   mousemove(e) {
@@ -42,7 +55,6 @@ class Hero extends React.Component {
         $(element).find('p').text( (oldNumber - Number(Math.random() / 10) ).toFixed(2) )
         $(element).find('i').removeClass('fa-caret-up').addClass('fa-caret-down')
       }
-
       setTimeout(this.countUp.bind(this, element), Math.round((Math.random() * 3000)) )
     }
   }
