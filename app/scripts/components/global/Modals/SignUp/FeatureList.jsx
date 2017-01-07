@@ -29,7 +29,7 @@ const FeatureList = ({ path }) => (
         <i className="fa fa-info-circle" aria-hidden="true"></i>
         <div className="explanation">
           <h3>Annual growth</h3>
-            <p>The average yearly returns. Also known as CAGR (Compound Annual Growth Rate).</p>
+          <p>The average yearly returns. Also known as CAGR (Compound Annual Growth Rate).</p>
         </div>
       </div>
     </li>
@@ -48,9 +48,7 @@ const FeatureList = ({ path }) => (
         <i className="fa fa-info-circle" aria-hidden="true"></i>
         <div className="explanation">
           <h3>Avg. gain as IRR</h3>
-          <p>
-            The average increase in a winning stock's price, measured as a time weighted Internal Rate of Return.
-          </p>
+          <p>The average increase in a winning stock's price, measured as a time weighted Internal Rate of Return.</p>
         </div>
       </div>
     </li>
@@ -59,13 +57,11 @@ const FeatureList = ({ path }) => (
         <i className="fa fa-info-circle" aria-hidden="true"></i>
         <div className="explanation">
           <h3>Avg. loss as IRR</h3>
-          <p>
-            The average loss in a losing stock's price, measured as a time weighted Internal Rate of Return.
-          </p>
+          <p>The average loss in a losing stock's price, measured as a time weighted Internal Rate of Return.</p>
         </div>
       </div>
     </li>
-    <li className="row"><p>Avg. number of pos. in portfolio</p></li>
+    <li className="row"><p>Avg. positions in portfolio</p></li>
     <li className="row"><p>IRR Geometric mean</p>
       <div className="info-circle">
         <i className="fa fa-info-circle" aria-hidden="true"></i>

@@ -35,17 +35,110 @@ const Product = ({ plan, billed, path }) => {
     </div>
     <ul className="statistics">
       {extraInfo}
-      <p><span className="light-text-color">IIT formulas applied: </span><span className="right-align">{plan.info.IITFormulas}</span></p>
-      <p><span className="light-text-color">Annual growth: </span><span className="right-align">{plan.stats.CAGR.toFixed(2)}%</span></p>
-      <p><span className="light-text-color">Win/loss ratio: </span><span className="right-align">{plan.stats.WLRatio.toFixed(2)}%</span></p>
-      <p><span className="light-text-color">Avg. gain as IRR: </span><span className="right-align">{plan.info.avgGainPerPosition.toFixed(2)}%</span></p>
-      <p><span className="light-text-color">Avg. loss as IRR: </span><span className="right-align">{plan.info.avgLossPerPosition.toFixed(2)}%</span></p>
-      <p><span className="light-text-color">Avg. number of pos. in portfolio: </span><span className="right-align">{plan.info.avgNumOfPosInPortfolio}</span></p>
-      <p><span className="light-text-color">Max drawdown in 47 years: </span><span className="right-align">{plan.info.maxDrawdown45y.toFixed(2)}%</span></p>
-      <p><span className="light-text-color">Max drawdown in 36 months: </span><span className="right-align">{plan.info.maxDrawdown36m.toFixed(2)}%</span></p>
-      <p><span className="light-text-color">IRR Geometric mean: </span><span className="right-align">{plan.info.IRRGeometricMean.toFixed(2)}%</span></p>
-      <p><span className="light-text-color">Sortino ratio: </span><span className="right-align">{plan.info.sortinoRatio}</span></p>
-      <p><span className="light-text-color">Gain-to-pain ratio: </span><span className="right-align">{plan.info.gainToPainRatio}</span></p>
+      <li>
+        <p className="light-text-color">IIT formulas applied</p>
+        <div className="info-circle">
+          <i className="fa fa-info-circle" aria-hidden="true"></i>
+          <div className="explanation">
+            <h3>IIT formulas applied</h3>
+            <p>Number of Intelligent Investment Technologies used in each plan.</p>
+          </div>
+        </div>
+        <p className="right-align">{plan.info.IITFormulas}</p>
+      </li>
+      <li>
+        <p className="light-text-color">Annual growth</p>
+        <div className="info-circle">
+          <i className="fa fa-info-circle" aria-hidden="true"></i>
+          <div className="explanation">
+            <h3>Annual growth</h3>
+            <p>The average yearly returns. Also known as CAGR (Compound Annual Growth Rate).</p>
+          </div>
+        </div>
+        <p className="right-align">{plan.stats.CAGR.toFixed(2)}%</p>
+      </li>
+      <li>
+        <p className="light-text-color">Win/loss ratio</p>
+        <div className="info-circle">
+          <i className="fa fa-info-circle" aria-hidden="true"></i>
+          <div className="explanation">
+            <h3>Win / Loss ratio</h3>
+            <p>The percentage of stocks each plan has sold with a profit.</p>
+          </div>
+        </div>
+        <p className="right-align">{plan.stats.WLRatio.toFixed(2)}%</p>
+      </li>
+      <li>
+        <p className="light-text-color">Avg. gain as IRR</p>
+        <div className="info-circle">
+          <i className="fa fa-info-circle" aria-hidden="true"></i>
+          <div className="explanation">
+            <h3>Avg. gain as IRR</h3>
+            <p>The average increase in a winning stock's price, measured as a time weighted Internal Rate of Return.</p>
+          </div>
+        </div>
+        <p className="right-align">{plan.info.avgGainPerPosition.toFixed(2)}%</p>
+      </li>
+      <li>
+        <p className="light-text-color">Avg. loss as IRR</p>
+        <div className="info-circle">
+          <i className="fa fa-info-circle" aria-hidden="true"></i>
+          <div className="explanation">
+            <h3>Avg. loss as IRR</h3>
+            <p>The average decrease in a losing stock's price, measured as a time weighted Internal Rate of Return.</p>
+          </div>
+        </div>
+        <p className="right-align">{plan.info.avgLossPerPosition.toFixed(2)}%</p>
+      </li>
+      <li>
+        <p className="light-text-color">Avg. positions in portfolio</p>
+        <p className="right-align">{plan.info.avgNumOfPosInPortfolio}</p>
+      </li>
+      <li>
+        <p className="light-text-color">Max drawdown in 47 years</p>
+        <p className="right-align">{plan.info.maxDrawdown45y.toFixed(2)}%</p>
+      </li>
+      <li>
+        <p className="light-text-color">Max drawdown in 36 months</p>
+        <p className="right-align">{plan.info.maxDrawdown36m.toFixed(2)}%</p>
+      </li>
+      <li>
+        <p className="light-text-color">IRR Geometric mean</p>
+        <div className="info-circle">
+          <i className="fa fa-info-circle" aria-hidden="true"></i>
+          <div className="explanation">
+            <h3>IRR Geometric mean</h3>
+            <p>The geometric mean of all IRRs (Time weighted Internal Rate of Returns). Example: <br/><br/>Geometric mean of the following sequence: 10%, 5%, -100% is 1.10 * 1.05 * 0.0 = 0.0%</p>
+          </div>
+        </div>
+        <p className="right-align">{plan.info.IRRGeometricMean.toFixed(2)}%</p>
+      </li>
+      <li>
+        <p className="light-text-color">Sortino ratio</p>
+        <div className="info-circle">
+          <i className="fa fa-info-circle" aria-hidden="true"></i>
+          <div className="explanation">
+            <h3>Sortino ratio</h3>
+            <p>This version of the ratio is calculated based upon yearly returns. It measures the performance and risk of an investment strategy relative to the downward deviation. Higher is better.</p>
+          </div>
+        </div>
+        <p className="right-align">{plan.info.sortinoRatio}</p>
+      </li>
+      <li>
+        <p className="light-text-color">Gain-to-pain ratio</p>
+        <div className="info-circle">
+          <i className="fa fa-info-circle" aria-hidden="true"></i>
+          <div className="explanation">
+          <h3>Gain to pain ratio</h3>
+          <p>
+            Also known as GPR. <br/><br/>
+            It represents the sum of all monthly returns divided by the sum of all monthly losses.<br/><br/>A GPR value above 1.5 is considered to be
+            excellent; a GPR value of 1 is considered to be good, and a GPR value of less
+            than 0 is considered to be bad.</p>
+          </div>
+        </div>
+        <p className="right-align">{plan.info.gainToPainRatio}</p>
+      </li>
     </ul>
     <Link to={`${prefix}/signup`} className="cta">{ctaText}</Link>
   </div>
