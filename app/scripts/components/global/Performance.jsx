@@ -197,9 +197,11 @@ class Performance extends React.Component {
       return (
         <div id="result-chart" className={this.state.chartClass}>
           <div className="chart-indicators">
+
             <div className="chart-indicator business">Business</div>
-            <div className="chart-indicator fund">Fund</div>
+            {this.props.path === '/pro' ? <div className="chart-indicator fund">Fund</div> : ''}
             <div className="chart-indicator premium">Premium</div>
+            {this.props.path !== '/pro' ? <div className="chart-indicator fund">Basic</div> : ''}
             <div className="chart-indicator djia">DJIA</div>
           </div>
           <LineGraph graphs={graphs}
