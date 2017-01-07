@@ -4,7 +4,7 @@ class HowItWorks extends React.Component {
   render() {
     return (
       <section className="how-it-works section">
-        <h2 className="title">How it works</h2>
+        <h2 className="title">What you get</h2>
         <div className="divider"/>
         <div className="beside">
           <div className="left">
