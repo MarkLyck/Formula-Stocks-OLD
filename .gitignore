@@ -6,3 +6,4 @@ dist/main.css.map
 node_modules
 webpack.config.js
 .babelrc
+.DS_Store
