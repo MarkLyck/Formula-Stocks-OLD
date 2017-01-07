@@ -4293,6 +4293,10 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
     width: 0;
     height: 0; }
 
+.retail .fixed .right #signup-btn {
+  background: #12D99E;
+  border-color: #12D99E; }
+
 @keyframes slidedown {
   from {
     top: -65px; }
@@ -4938,6 +4942,12 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
       height: auto; }
       .prof-pricing .prof-plans .prof-plan .cta:hover {
         background: #068de7; }
+  .prof-pricing .prof-plans .basic .top {
+    border-bottom-color: #12D99E; }
+  .prof-pricing .prof-plans .basic .cta {
+    background: #12D99E; }
+    .prof-pricing .prof-plans .basic .cta:hover {
+      background: #10c18d; }
 .prof-pricing .not-convinced {
   margin-top: 16px; }
 .prof-pricing .disclaimer {
