@@ -24,7 +24,7 @@ class WhatIsIt extends React.Component {
         <div className="divider"/>
         <div className="beside">
             <p className="whatisit-text">
-              Formula Stocks is a service, which provide access to recommendations for stocks
+              Formula Stocks is a service, which provides access to recommendations for stocks
               and a model portfolio, that you can easily mirror in your account.<br/><br/>
 
               Historically, between 89-92% of these recommendations have shown a positive
