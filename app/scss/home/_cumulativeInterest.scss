@@ -7,8 +7,11 @@
     padding-top: 40px;
     height: 100%;
     display: flex;
+    justify-content: space-between;
   }
   .left {
+    max-width: calc(50% - 32px);
+    flex-grow: 1;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -22,7 +25,9 @@
     }
   }
   .right {
+    max-width: calc(50% - 32px);
     height: 100%;
+    flex-grow: 1;
     position: relative;
     .chart-indicators {
       position: absolute;
