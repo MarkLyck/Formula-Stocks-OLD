@@ -34,16 +34,17 @@ const AdminPanelHeader = React.createClass({
     this.setState({newsletterSubs: admin.newsletterSubs.toJSON()})
   },
   calculateVisitors() {
-    let uniqueIPs = []
-    let uniqueVisitors = this.state.visitors.filter((visitor) => {
-      if (uniqueIPs.indexOf(visitor.location.ip) === -1) {
-        uniqueIPs.push(visitor.location.ip)
-        return true
-      } else {
-        return false
-      }
-    })
-    return uniqueVisitors.length
+    // let uniqueIPs = []
+    // let uniqueVisitors = this.state.visitors.filter((visitor) => {
+    //   if (uniqueIPs.indexOf(visitor.location.ip) === -1) {
+    //     uniqueIPs.push(visitor.location.ip)
+    //     return true
+    //   } else {
+    //     return false
+    //   }
+    // })
+
+    return this.state.visitors.length ? (this.state.visitors.length - 80) : 0
   },
   render() {
     let subscribers = this.state.users.filter((user) => {
