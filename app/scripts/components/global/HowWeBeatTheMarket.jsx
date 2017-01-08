@@ -6,7 +6,7 @@ class HowWeBeatTheMarket extends React.Component {
   renderRetailSection() {
     return (
       <div className="create-value">
-        <h2 className="title">How do we create value for members?</h2>
+        <h2 className="title">How we create value for members</h2>
         <div className="divider"/>
         <p>
           The human brain is not wired for evaluating hundreds of data points simultaneously.
