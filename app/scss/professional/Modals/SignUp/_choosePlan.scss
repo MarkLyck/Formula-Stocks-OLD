@@ -1,5 +1,6 @@
 .choose-plan {
   flex-direction: column;
+  height: 100%;
   .beside {
     display: flex;
     height: 100%;
@@ -79,8 +80,10 @@
         }
         .selected {
           border: 2px solid $primary-color;
-          height: calc(100% + 1px);
+          // height: calc(100% + 1px);
+          height: auto;
           width: calc(100% - 7px);
+          margin-top: 1px;
           .row {
             p {
               color: #2b2b4d;

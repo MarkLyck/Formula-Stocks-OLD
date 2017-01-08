@@ -1068,241 +1068,6 @@ input[type=submit] {
     align-items: center; }
     .what-is-it .beside .graph-container {
       max-width: calc(100% - 64px); } }
-.split-section {
-  width: 100%;
-  padding: 50px 0;
-  overflow: hidden; }
-  .split-section .content {
-    width: 80%;
-    height: 100%;
-    margin: 0 auto;
-    display: flex;
-    position: relative; }
-    .split-section .content img {
-      position: absolute;
-      bottom: -40px; }
-  .split-section .left {
-    width: 50%;
-    margin-right: 50px;
-    position: relative; }
-    .split-section .left p {
-      max-width: 400px; }
-  .split-section .right {
-    width: 50%;
-    margin-left: 50px;
-    position: relative; }
-    .split-section .right .title {
-      font-size: 1.75rem; }
-  .split-section .title {
-    font-size: 1.75rem; }
-
-.above-average-returns .right .container {
-  position: absolute;
-  top: 50%;
-  bottom: 0;
-  right: 0;
-  width: 100%;
-  height: 100%;
-  transform: translateY(-50%);
-  max-width: 400px; }
-.above-average-returns .right p {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  opacity: 0;
-  transform: translate(-50%, -50%);
-  color: #27A5F9;
-  transition: transform .3s;
-  font-weight: 100; }
-.above-average-returns .right .p1 {
-  font-size: 3rem;
-  opacity: 1; }
-  .above-average-returns .right .p1:hover {
-    transform: translate(-50%, -50%) scale(1.2); }
-.above-average-returns .right .p2 {
-  font-size: 2.8rem;
-  opacity: 0.9;
-  transform: translate(-125%, -150%);
-  -webkit-animation-fill-mode: forwards;
-  animation: .5s p2; }
-  .above-average-returns .right .p2:hover {
-    transform: translate(-125%, -150%) scale(1.2); }
-@keyframes p2 {
-  from {
-    transform: translate(0); }
-  to {
-    transform: translate(-125%, -150%); } }
-.above-average-returns .right .p3 {
-  font-size: 2.6rem;
-  opacity: 0.8;
-  transform: translate(25%, 90%);
-  -webkit-animation-fill-mode: forwards;
-  animation: .5s p3; }
-  .above-average-returns .right .p3:hover {
-    transform: translate(25%, 90%) scale(1.2); }
-@keyframes p3 {
-  from {
-    transform: translate(0); }
-  to {
-    transform: translate(25%, 90%); } }
-.above-average-returns .right .p4 {
-  font-size: 2.4rem;
-  opacity: 0.7;
-  transform: translate(-200%, 15%);
-  -webkit-animation-fill-mode: forwards;
-  animation: .5s p4; }
-  .above-average-returns .right .p4:hover {
-    transform: translate(-200%, 15%) scale(1.2); }
-@keyframes p4 {
-  from {
-    transform: translate(0); }
-  to {
-    transform: translate(-200%, 15%); } }
-.above-average-returns .right .p5 {
-  font-size: 2.2rem;
-  opacity: 0.6;
-  transform: translate(-125%, 135%);
-  -webkit-animation-fill-mode: forwards;
-  animation: .5s p5; }
-  .above-average-returns .right .p5:hover {
-    transform: translate(-125%, 135%) scale(1.2); }
-@keyframes p5 {
-  from {
-    transform: translate(0); }
-  to {
-    transform: translate(-125%, 135%); } }
-.above-average-returns .right .p6 {
-  font-size: 2rem;
-  opacity: 0.5;
-  transform: translate(95%, -105%);
-  -webkit-animation-fill-mode: forwards;
-  animation: .5s p6; }
-  .above-average-returns .right .p6:hover {
-    transform: translate(95%, -105%) scale(1.2); }
-@keyframes p6 {
-  from {
-    transform: translate(0); }
-  to {
-    transform: translate(95%, -105%); } }
-.above-average-returns .right .p7 {
-  font-size: 1.8rem;
-  opacity: 0.4;
-  transform: translate(-20%, -230%);
-  -webkit-animation-fill-mode: forwards;
-  animation: .5s p7; }
-  .above-average-returns .right .p7:hover {
-    transform: translate(-20%, -230%) scale(1.2); }
-@keyframes p7 {
-  from {
-    transform: translate(0); }
-  to {
-    transform: translate(-20%, -230%); } }
-@media (max-width: 850px) {
-  .above-average-returns .left {
-    width: 100%;
-    margin-right: 0; }
-    .above-average-returns .left p {
-      max-width: 100%; }
-  .above-average-returns .right {
-    display: none; } }
-.reach-your-goals {
-  padding: 50px 0;
-  box-sizing: content-box; }
-  .reach-your-goals .left img {
-    max-height: 250px;
-    bottom: -160%; }
-  .reach-your-goals .left .slide-up-reach-goal-img {
-    animation: 0.75s slideUpReachGoalImg;
-    bottom: -50px; }
-@keyframes slideUpReachGoalImg {
-  from {
-    bottom: -160%; }
-  to {
-    bottom: -50px; } }
-  .reach-your-goals .right {
-    display: flex;
-    flex-direction: column; }
-    .reach-your-goals .right p {
-      width: 400px;
-      align-self: flex-end; }
-    .reach-your-goals .right .title {
-      width: 400px;
-      align-self: flex-end; }
-
-@media (max-width: 925px) {
-  .reach-your-goals .left img {
-    width: 300px; } }
-@media (max-width: 780px) {
-  .reach-your-goals .left {
-    display: none; }
-  .reach-your-goals .right {
-    width: 100%;
-    margin-left: 0; }
-    .reach-your-goals .right .title, .reach-your-goals .right p {
-      align-self: flex-start; } }
-.informational-advantage .right {
-  display: flex;
-  align-items: flex-end;
-  justify-content: flex-end; }
-  .informational-advantage .right .bar-chart {
-    display: flex;
-    align-items: flex-end;
-    height: calc(100% - 45px);
-    position: absolute;
-    bottom: 0;
-    right: 0; }
-    .informational-advantage .right .bar-chart div {
-      width: 60px;
-      margin: 0 10px;
-      background-color: #27A5F9;
-      position: relative;
-      transition: transform .5s; }
-      .informational-advantage .right .bar-chart div:hover {
-        transform: scale(1.05); }
-      .informational-advantage .right .bar-chart div p {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: rgba(255, 255, 255, 0.75);
-        font-weight: 100;
-        height: 45px;
-        margin: 0; }
-      .informational-advantage .right .bar-chart div .plan-name {
-        display: flex;
-        justify-content: center;
-        width: 60px;
-        position: absolute;
-        top: -35px;
-        background: none; }
-    .informational-advantage .right .bar-chart .basic-bar {
-      height: 84%; }
-    .informational-advantage .right .bar-chart .premium-bar {
-      height: 90%; }
-    .informational-advantage .right .bar-chart .business-bar {
-      height: 95%; }
-    .informational-advantage .right .bar-chart .fund-bar {
-      height: 87%; }
-    .informational-advantage .right .bar-chart .sp-bar {
-      background-color: #49494A;
-      height: 60%; }
-
-@media (max-width: 850px) {
-  .informational-advantage {
-    padding-bottom: 0; }
-    .informational-advantage .content {
-      flex-direction: column; }
-      .informational-advantage .content .left {
-        width: 100%;
-        margin-right: 0; }
-        .informational-advantage .content .left p {
-          max-width: 100%; }
-      .informational-advantage .content .right {
-        margin: 50px auto 0 auto;
-        height: 250px;
-        width: 100%; }
-        .informational-advantage .content .right .bar-chart {
-          height: 100%;
-          left: 0; } }
 .one-dollar {
   padding: 40px 80px 40px 80px;
   display: flex;
@@ -1386,33 +1151,6 @@ input[type=submit] {
         .one-dollar .content .right .title, .one-dollar .content .right p {
           align-self: flex-start;
           width: 100%; } }
-.higher-performance .left .cta {
-  margin-top: 25px;
-  display: flex; }
-  .higher-performance .left .cta button {
-    margin-right: 10px; }
-.higher-performance .right img {
-  width: 500px;
-  transform: translateY(100%);
-  right: 0; }
-.higher-performance .right .slide-up-mockup-img {
-  animation: 0.75s slideUpMockupImg;
-  transform: translateY(50%); }
-@keyframes slideUpMockupImg {
-  from {
-    transform: translateY(100%); }
-  to {
-    transform: translateY(50%); } }
-@media (max-width: 1100px) {
-  .higher-performance .right img {
-    width: 300px;
-    bottom: 50%; } }
-@media (max-width: 680px) {
-  .higher-performance .left {
-    width: 100%;
-    margin-left: 0; }
-  .higher-performance .right {
-    display: none; } }
 .how-it-works .beside .left {
   width: calc(50% - 16px);
   max-width: inherit; }
@@ -5234,7 +4972,8 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
     .professional .prof-modal-container .signup-modal .signup-content, .retail .prof-modal-container .signup-modal .signup-content {
       height: 100%; } }
 .choose-plan {
-  flex-direction: column; }
+  flex-direction: column;
+  height: 100%; }
   .choose-plan .beside {
     display: flex;
     height: 100%; }
@@ -5294,8 +5033,9 @@ a[href="http://www.amcharts.com/javascript-maps/"], a[href="http://www.amcharts.
             margin: 0 auto; }
       .choose-plan .left .plan-overview .plan-columns-container .selected {
         border: 2px solid #27A5F9;
-        height: calc(100% + 1px);
-        width: calc(100% - 7px); }
+        height: auto;
+        width: calc(100% - 7px);
+        margin-top: 1px; }
         .choose-plan .left .plan-overview .plan-columns-container .selected .row p {
           color: #2b2b4d; }
         .choose-plan .left .plan-overview .plan-columns-container .selected .row:first-child p {
