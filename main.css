@@ -1900,18 +1900,20 @@ input[type=range]::-moz-range-thumb {
   .cumulative-interest .right {
     width: 60%;
     margin-left: 0; } }
-@media (max-width: 900px) {
+@media (max-width: 1000px) {
   .cumulative-interest {
     height: 750px; }
     .cumulative-interest .content {
       flex-direction: column; }
       .cumulative-interest .content .left {
         width: 100%;
+        max-width: 100%;
         margin: 40px 0; }
         .cumulative-interest .content .left .slider {
           margin-bottom: 20px; }
       .cumulative-interest .content .right {
         width: 100%;
+        max-width: 100%;
         margin-top: 40px;
         margin-left: 0; }
     .cumulative-interest .disclaimer {
