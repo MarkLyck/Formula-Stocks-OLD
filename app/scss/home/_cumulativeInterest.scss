@@ -146,13 +146,14 @@ input[type=range]::-moz-range-thumb {
   }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1000px) {
   .cumulative-interest {
     height: 750px;
     .content {
       flex-direction: column;
       .left {
         width: 100%;
+        max-width: 100%;
         margin: 40px 0;
         .slider {
           margin-bottom: 20px;
@@ -160,6 +161,7 @@ input[type=range]::-moz-range-thumb {
       }
       .right {
         width: 100%;
+        max-width: 100%;
         margin-top: 40px;
         margin-left: 0;
       }
