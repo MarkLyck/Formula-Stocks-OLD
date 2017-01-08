@@ -67,7 +67,7 @@ class Hero extends React.Component {
   }
 
   render() {
-    let title = <h1 id="main-title">A better <span className="font bold">solution</span> for any <span className="font bold">investor</span></h1>
+    let title = <h1 id="main-title">A better <span className="font bold">solution</span> for <span className="font bold">investors</span></h1>
     if (this.props.path === '/pro' || this.props.path === '/pro/signup') {
       title = <h1 id="main-title">A better way for the <span className="font bold">active investor</span> to</h1>
     }

@@ -87,7 +87,7 @@ const OneDollar = React.createClass({
     if (this.state.plan === 'business') {busClass='selected'}
 
     return (
-      <div className="bg-gray split-section one-dollar">
+      <div className="split-section one-dollar">
         <div className="content" ref='content'>
           <div className="left">
             <div className="plans">
