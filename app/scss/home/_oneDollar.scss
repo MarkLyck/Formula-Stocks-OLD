@@ -6,8 +6,13 @@
     margin: 0;
     width: 100%;
     max-width: 1160px;
+    display: flex;
+    justify-content: space-between;
   }
   .left {
+    flex-grow: 1;
+    max-width: 50%;
+    margin-right: 32px;
     .plans {
       button {
         background: none;
@@ -94,6 +99,7 @@
       flex-direction: column;
       .left {
         width: 100%;
+        max-width: 100%;
         margin-right: 0;
         order: 1;
         margin-bottom: 16px;
