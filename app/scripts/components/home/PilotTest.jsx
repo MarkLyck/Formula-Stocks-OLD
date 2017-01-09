@@ -1,9 +1,12 @@
 import React from 'react'
+import Scroll from 'react-scroll'
 
 class PilotTest extends React.Component {
   render() {
+    const Element = Scroll.Element
     return (
       <section className="pilot-test section">
+        <Element name="pilotTest"/>
         <h2 className="title">Results of pilot program</h2>
         <div className="divider"/>
         <div className="beside">

@@ -15,7 +15,7 @@ const CumulativeInterest = React.createClass({
     self = this
 
     $(this.refs.cagrSlider).on("change", function() {
-      $('#cagrValue').val('CAGR: ' + this.value + "%" );
+      $('#cagrValue').val('Annual growth: ' + this.value + "%" );
       if (self.state.animate) {
         self.setState({cagr: this.value, startDuration: 0})
       } else {
@@ -153,7 +153,7 @@ const CumulativeInterest = React.createClass({
           </div>
           <div className="right">
             <div className="chart-indicators">
-              <div className="chart-indicator blue-color">CAGR: {this.state.cagr}%</div>
+              <div className="chart-indicator blue-color">Annual growth: {this.state.cagr}%</div>
               <div className="chart-indicator black">S&P 500</div>
             </div>
             {chart}

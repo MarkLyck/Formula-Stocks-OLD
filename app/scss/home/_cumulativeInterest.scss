@@ -74,6 +74,7 @@ input[type=range] {
     width: 50%;
     height: 10px;
     background-color: #eee;
+    border: 1px solid #dedede;
     background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, $primary-color), color-stop(100%, $primary-color));
     background-image: -webkit-linear-gradient($primary-color, $primary-color);
     background-image: -moz-linear-gradient($primary-color, $primary-color);

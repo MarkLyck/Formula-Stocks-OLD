@@ -8,6 +8,7 @@ import Introduction from './Introduction.jsx'
 import Experienced from './Experienced.jsx'
 import OneDollar from './OneDollar'
 import WhatIsIt from './WhatIsIt.jsx'
+import HowWeCreateValue from './HowWeCreateValue.jsx'
 import HowItWorks from './HowItWorks.jsx'
 import PilotTest from './PilotTest.jsx'
 import Performance from '../global/Performance.jsx'
@@ -48,17 +49,18 @@ const Home = React.createClass({
         <Introduction/>
         <Experienced/>
         <WhatIsIt/>
-        <HowItWorks/>
-        <OneDollar/>
-        <PilotTest/>
         <Performance/>
-        <Recommendations/>
-        <BacktestedPerformance/>
-        <Pricing/>
-        <HowWeBeatTheMarket/>
+        <HowWeCreateValue/>
+        <HowItWorks/>
         <RiskReward/>
-        <Comparisons/>
+        <BacktestedPerformance/>
+        <OneDollar/>
+        <Pricing/>
+        <PilotTest/>
+        <Recommendations/>
+        <HowWeBeatTheMarket/>
         <Quote/>
+        <Comparisons/>
         <CumulativeInterest/>
         <AboutUs/>
         <BottomCTA/>
@@ -66,6 +68,31 @@ const Home = React.createClass({
         {this.props.children}
       </div>
     )
+    // return (
+    //   <div id="home" className="retail">
+    //     <NavBar/>
+    //     <Hero/>
+    //     <Introduction/>
+    //     <Experienced/>
+    //     <WhatIsIt/>
+    //     <HowItWorks/>
+    //     <OneDollar/>
+    //     <PilotTest/>
+    //     <Performance/>
+    //     <Recommendations/>
+    //     <BacktestedPerformance/>
+    //     <Pricing/>
+    //     <HowWeBeatTheMarket/>
+    //     <RiskReward/>
+    //     <Comparisons/>
+    //     <Quote/>
+    //     <CumulativeInterest/>
+    //     <AboutUs/>
+    //     <BottomCTA/>
+    //     <Footer/>
+    //     {this.props.children}
+    //   </div>
+    // )
   }
 })
 
