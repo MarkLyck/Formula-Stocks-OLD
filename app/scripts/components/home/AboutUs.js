@@ -79,8 +79,8 @@ const AboutUs = React.createClass({
 
         <div className="content">
           <p className="about-fs">
-            Formula Stocks is a research and development company based in Denmark.
-            We started R&D operations in 2003. The basic idea was simple:
+            Formula Stocks is a research and development company, which started operations in
+            2003. The basic idea was simple:
             leveraging decades of supercomputer experience and investment acumen to create an
             informational advantage in equity investing. We specialize in being right far more often
             than we are wrong, using a scientific approach and intelligent technology to analyze
@@ -89,7 +89,6 @@ const AboutUs = React.createClass({
           <ul className="team-list">
 
             <li className="team-member" onClick={this.showModal.bind(this, 'Thomas')}>
-              {/* <div className="img-container" style={{backgroundImage: 'url(assets/images/profiles/Thomas.jpg)'}}/> */}
               <img src="/assets/images/profiles/Thomas_Square.jpg" />
               <div className="content">
                 <h3 className="name">Thomas Lyck</h3>
@@ -97,7 +96,6 @@ const AboutUs = React.createClass({
               </div>
             </li>
             <li className="team-member" onClick={this.showModal.bind(this, 'Mark')}>
-            {/* <div className="img-container" style={{backgroundImage: 'url(assets/images/profiles/Mark.jpg)'}}/> */}
               <img src="/assets/images/profiles/Mark_Square.jpg" />
               <div className="content">
                 <h3 className="name">Mark Lyck</h3>
@@ -105,7 +103,6 @@ const AboutUs = React.createClass({
               </div>
             </li>
             <li className="team-member" onClick={this.showModal.bind(this, 'Marie')}>
-            {/* <div className="img-container" style={{backgroundImage: 'url(assets/images/profiles/Marie.jpg)'}}/> */}
               <img src="/assets/images/profiles/Marie_Square.jpg" />
               <div className="content">
                 <h3 className="name">Marie Lauritzen</h3>

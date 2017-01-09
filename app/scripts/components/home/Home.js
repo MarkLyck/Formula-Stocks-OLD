@@ -11,7 +11,6 @@ import WhatIsIt from './WhatIsIt.jsx'
 import HowItWorks from './HowItWorks.jsx'
 import PilotTest from './PilotTest.jsx'
 import Performance from '../global/Performance.jsx'
-// import OurProducts from './OurProducts'
 import Recommendations from '../global/Recommendations.jsx'
 import BacktestedPerformance from '../global/BacktestedPerformance.jsx'
 import Pricing from '../global/Pricing.jsx'
@@ -53,7 +52,6 @@ const Home = React.createClass({
         <OneDollar/>
         <PilotTest/>
         <Performance/>
-        {/* <OurProducts/> */}
         <Recommendations/>
         <BacktestedPerformance/>
         <Pricing/>

@@ -49,8 +49,8 @@ const AdminPanel = React.createClass({
         "type": "circle",
         "theme": "light",
 
-        "width": 8,
-        "height": 8,
+        "width": 6,
+        "height": 6,
         "color": color,
         "longitude": visitor.location.longitude,
         "latitude": visitor.location.latitude,

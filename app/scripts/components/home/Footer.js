@@ -93,7 +93,7 @@ class Footer extends React.Component {
           <div className="contact-info">
             <p>Formula Stocks ApS     Ribe Landevej 39      DK-6100 Haderslev      Denmark.</p>
           </div>
-          <p>© Formula Stocks 2016 - All rights reserved.</p>
+          <p>© Formula Stocks 2017 - All rights reserved.</p>
         </div>
       </footer>
     )
