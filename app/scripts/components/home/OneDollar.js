@@ -109,11 +109,11 @@ const OneDollar = React.createClass({
               How much could 1 dollar have grown over the last 47 years, had it been invested
               with Formula Stocks?<br/><br/>
 
-              We calculated it and you can compare it to the S&P 500.<br/><br/>
+              We did the math, and you can compare it to the S&P 500 here.<br/><br/>
 
               Select Basic, Premium or Business, to see the difference.
             </p>
-            <p className="disclaimer"><sup>*</sup>in a tax-free account, excluding trading costs and slippage. Calculation involves backtesting. Past returns is no indication of future performance.</p>
+            <p className="disclaimer"><sup>*</sup>In a tax-free account, excluding trading costs and slippage. Calculation involves backtesting. Past returns are no indication of future performance.</p>
           </div>
           </div>
       </div>

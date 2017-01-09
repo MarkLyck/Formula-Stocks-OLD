@@ -4,7 +4,7 @@ class RiskReward extends React.Component {
   render() {
     return (
       <section className="risk-reward section">
-        <h2 className="title">Risk vs. Reward</h2>
+        <h2 className="title">Risk versus reward</h2>
         <div className="divider"/>
         <div className="beside">
           <div className="chart-container">

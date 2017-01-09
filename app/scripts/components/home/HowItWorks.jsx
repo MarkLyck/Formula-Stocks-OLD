@@ -16,11 +16,11 @@ class HowItWorks extends React.Component {
               informed investment decisions – right at your fingertips.<br/><br/>
 
               We will provide you with new attractive purchase recommendations on a weekly basis,
-              and let you know when it is about time to sell on a monthly basis. Performance stats are
+              and on a monthly basis let you know when it is time to sell. Performance stats are
               updated daily.<br/><br/>
 
               You can use these recommendations individually or simply mirror our entire model
-              portfolio. Making investing easy and saving you time.
+              portfolio, making investing easy and saving you time.
             </p>
           </div>
         </div>

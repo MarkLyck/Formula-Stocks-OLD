@@ -84,7 +84,7 @@ const AboutUs = React.createClass({
             leveraging decades of supercomputer experience and investment acumen to create an
             informational advantage in equity investing. We specialize in being right far more often
             than we are wrong, using a scientific approach and intelligent technology to analyze
-            businesses and accumulate extensive knowledge which can literaly be found nowhere else.
+            businesses and accumulate extensive knowledge which can literally be found nowhere else.
           </p>
           <ul className="team-list">
 

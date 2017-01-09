@@ -56,8 +56,8 @@ class Pricing extends React.Component {
           <Product plan={store.plans.get('business').toJSON()} billed="Annually" path={this.props.path}/>
           {this.props.path === '/pro' ? <Product plan={store.plans.get('fund').toJSON()} billed="Annually" path={this.props.path}/> : ''}
         </div>
-        <p>All memberships includes buy & sell recommendations and actively managed model portfolios.</p>
-        <p className="disclaimer"><sup>*</sup>Information in pricing tables does not represent, warrant, or guarantee any specific level of future investment performance. Historical numbers are based on backtested performance from 1975-2009, whereas data from 2009-2016 reflects following the strategies in real-time. Investing always involves varying degrees of risk.</p>
+        <p>All memberships include buy and sell recommendations and actively managed model portfolios.</p>
+        <p className="disclaimer"><sup>*</sup>The information in the pricing tables does not represent, warrant, or guarantee any specific level of future investment performance. Historical numbers are based on backtested performance from 1975-2009, whereas data from 2009-2017 reflects real-time investing following these strategies. Investing always involves varying degrees of risk.</p>
         <p className="not-convinced">Not signed up yet?</p>
         <ScrollLink className="learn-more" to={this.props.path === '/pro' ? "brochure" : 'pilotTest'} smooth={true} offset={-100} duration={1000}>Learn more</ScrollLink>
       </section>
