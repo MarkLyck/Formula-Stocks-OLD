@@ -105,7 +105,7 @@ class HowWeBeatTheMarket extends React.Component {
         </CollapseSegment>
         <CollapseSegment title="Scientific method">
           <p>
-            We develop investment strategies based on the "scientific method". A thesis is formed based on
+            We develop investment strategies based on the "scientific method"<sup>*</sup>. A thesis is formed based on
             observation and logic, and a priori investment recommendations are selected in a
             randomized double-blind controlled trial based on the thesis. A posteriori results
             determine the validity of the thesis, which is tested and compared to a baseline.<br/><br/>
@@ -117,6 +117,7 @@ class HowWeBeatTheMarket extends React.Component {
             All our scientific studies are performed in an environment specifically built
             to be non-biased in every possible respect.
           </p>
+          <p className="disclaimer"><sup>*</sup>3 Jevons, William Stanley (1874), The Principles of Science: A Treatise on Logic and Scientific Method, Dover Publications, ISBN 1-4304-8775-5. 1877, 1879. Reprinted with a foreword by Ernst Nagel, New York, NY, 1958</p>
         </CollapseSegment>
         <CollapseSegment title="Statistics">
           <p>
