@@ -68,31 +68,6 @@ const Home = React.createClass({
         {this.props.children}
       </div>
     )
-    // return (
-    //   <div id="home" className="retail">
-    //     <NavBar/>
-    //     <Hero/>
-    //     <Introduction/>
-    //     <Experienced/>
-    //     <WhatIsIt/>
-    //     <HowItWorks/>
-    //     <OneDollar/>
-    //     <PilotTest/>
-    //     <Performance/>
-    //     <Recommendations/>
-    //     <BacktestedPerformance/>
-    //     <Pricing/>
-    //     <HowWeBeatTheMarket/>
-    //     <RiskReward/>
-    //     <Comparisons/>
-    //     <Quote/>
-    //     <CumulativeInterest/>
-    //     <AboutUs/>
-    //     <BottomCTA/>
-    //     <Footer/>
-    //     {this.props.children}
-    //   </div>
-    // )
   }
 })
 

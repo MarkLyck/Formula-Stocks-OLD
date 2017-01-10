@@ -67,9 +67,28 @@ class Hero extends React.Component {
   }
 
   render() {
-    let title = <h1 id="main-title">A better <span className="font bold">solution</span> for <span className="font bold">investors</span></h1>
+    let title = <h1 id="main-title">A <span className="font bold">better</span> way to <span className="font bold">invest</span></h1>
     if (this.props.path === '/pro' || this.props.path === '/pro/signup') {
       title = <h1 id="main-title">A better way for the <span className="font bold">active investor</span> to</h1>
+    }
+    let subtitles = (
+      <div id="subtitles">
+        <h1><span className="font bold">Higher returns</span></h1>
+        <h1><span className="font bold">Less risk</span></h1>
+        <h1><span className="font bold">Easy to use</span></h1>
+        <h1><span className="font bold">Lower costs</span></h1>
+        <h1><span className="font bold">+89% win/loss ratio</span></h1>
+        <h1><span className="font bold">Saves time</span></h1>
+      </div>
+    )
+    if (this.props.path === '/pro') {
+      subtitles = (
+        <div id="subtitles">
+          <h1><span className="font bold">Improve investment returns</span></h1>
+          <h1><span className="font bold">Save time</span></h1>
+          <h1><span className="font bold">Reduce costs</span></h1>
+        </div>
+      )
     }
     return (
       <header>
@@ -78,11 +97,7 @@ class Hero extends React.Component {
             <div className="bounce-down">
               {title}
               <span id="subtitle"></span>
-              <div id="subtitles">
-                <h1><span className="font bold">Improve investment returns</span></h1>
-                <h1><span className="font bold">Save time</span></h1>
-                <h1><span className="font bold">Reduce costs</span></h1>
-              </div>
+              {subtitles}
             </div>
           </div>
           <ul className="background-numbers-container">
