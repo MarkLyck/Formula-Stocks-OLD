@@ -19,3 +19,13 @@
   justify-content: center;
   align-items: center;
 }
+
+.upgrade-your-plan {
+  background: $action-color;
+  color: #fff;
+  padding: 16px 24px;
+  border-radius: 4px;
+  &:hover {
+    background: color($action-color lightness(-5%));
+  }
+}

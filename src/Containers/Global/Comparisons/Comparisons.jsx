@@ -51,7 +51,7 @@ class Comparisons extends React.Component {
             to Formula Stocks' win ratio, which is typically around 89-92%. Using Formula Stocks may
             very well yield significant benefits in terms of increased performance and lower risk.
             Selection criteria for Formula Stocks are based on logic weighing several hundred datapoints,
-            compared to the below 10 used in the magic formula.
+            compared to the very few used in the magic formula.
           </p>
         </CollapseSegment>
         <CollapseSegment title="Value investing">

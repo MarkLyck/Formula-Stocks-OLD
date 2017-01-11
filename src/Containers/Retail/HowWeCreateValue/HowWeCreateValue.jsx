@@ -12,8 +12,8 @@ class HowWeCreateValue extends React.Component {
         <p>
           The human brain is not wired for evaluating hundreds of data points simultaneously. Humans
           prefer stories. But stories inherently produce bias, and bias dampens investment performance.
-          In everyday life, this works fine of course. But when investing, it becomes counter
-          productive, so using a tool to help, simply makes a lot of sense.<br/><br/>
+          In everyday life, this works fine of course. But when investing this becomes counter
+          productive, so using a tool to help, simply makes sense.<br/><br/>
 
           We have spent 14 years developing cognitive technology capable of decision-making devoid of
           emotion, fear, greed, indecision. Decisions are based instead on mathematical probabilities,
