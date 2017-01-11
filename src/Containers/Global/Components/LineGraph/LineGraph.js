@@ -6,8 +6,7 @@ import './lineGraph.css'
 
 const AmCharts = window.AmCharts
 
-
-export default function LineGraph({ data, graphs, chartTheme, unit, unitPosition, minimum, maximum, baseValue, logarithmic, minorGridEnabled, marginRight, marginTop, guides, axisAlpha, gridOpacity }) {
+export default function LineGraph({ data, graphs, chartTheme, unit, unitPosition, minimum, maximum, baseValue, logarithmic, minorGridEnabled, marginRight, marginTop, guides, axisAlpha, gridOpacity, cursorColor }) {
   let config = {
     type: "serial",
     theme: chartTheme ? chartTheme : "light",
@@ -41,7 +40,7 @@ export default function LineGraph({ data, graphs, chartTheme, unit, unitPosition
         valueLineEnabled: true,
         valueLineAlpha: 0.5,
         cursorAlpha: 0.5,
-        cursorColor: '#49494A',
+        cursorColor: cursorColor ? cursorColor : '#49494A',
     },
     categoryField: "date",
     categoryAxis: {

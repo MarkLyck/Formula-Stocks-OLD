@@ -77,14 +77,6 @@ const Session = Backbone.Model.extend({
           email: this.get('email'),
           created_at: moment().unix()
         })
-        // $.ajax({
-        //   url: `https://baas.kinvey.com/rpc/${store.settings.appKey}/custom/welcomeemail`,
-        //   type: 'POST',
-        //   data: {
-        //     email: this.get('email'),
-        //     name: this.get('name')
-        //   }
-        // })
       },
       error: function(model, response) {
         console.log('ERROR: ', arguments);

@@ -54,7 +54,7 @@ class StockGraph extends React.Component {
     }]
 
     return (<div id="portfolio-item-chart">
-              <LineGraph data={chartData} graphs={graphs} guides={guides} axisAlpha={0} marginTop={25}/>
+              <LineGraph data={chartData} graphs={graphs} unit="$" guides={guides} axisAlpha={0} marginTop={25}/>
             </div>)
   }
 }

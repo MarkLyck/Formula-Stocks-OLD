@@ -5,6 +5,7 @@ import FAQData from '../../../data/faqData'
 import { Link } from 'react-router'
 import './faq.css'
 
+// eslint-disable-next-line
 String.prototype.replaceAll = function(search, replacement) {
   var target = this
   return target.replace(new RegExp(search, 'g'), replacement)

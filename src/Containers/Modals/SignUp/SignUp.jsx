@@ -10,6 +10,7 @@ import './signup.css'
 
 function formatPrice(value) {
   while(/(\d+)(\d{3})/.test(value.toString())) {
+    // eslint-disable-next-line
     value = value.toString().replace(/(\d+)(\d{3})/, '$1' + ',' + '$2')
   }
   return value

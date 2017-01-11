@@ -104,6 +104,9 @@
     }
   }
   tbody {
+    .stock-name-tag {
+      margin-bottom: 8px;
+    }
     &:hover {
       cursor: pointer;
       .stock-name-tag {
@@ -120,6 +123,7 @@
       .stock-name {
         display: flex;
         align-items: center;
+
         i {
           color: $primary-color;
           font-size: 2rem;
@@ -132,6 +136,9 @@
           font-weight: 100;
           padding-left: 20px;
           position: relative;
+          display: flex;
+          align-items: center;
+          margin-top: 0;
         }
         .ticker::before {
           content: "";

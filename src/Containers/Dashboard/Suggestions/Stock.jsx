@@ -19,13 +19,19 @@ class Suggestion extends React.Component {
       this.setState({fetching: true})
       store.plans.get(this.props.planName).getStockInfo(this.props.suggestion.ticker, this.props.i)
       .promise.then(() => {
-        this.setState({fetched: true, fetching: false})
+        if (store.selectedPlan === this.props.planName) {
+          this.setState({ fetched: true, fetching: false })
+        }
       })
       .catch(() => {
-        this.setState({fetched: false, fetching: false, failed: true})
+        if (store.selectedPlan === this.props.planName) {
+          this.setState({ fetched: false, fetching: false, failed: true })
+        }
       })
     } else {
-      this.setState({fetched: true, fetching: false})
+      if (store.selectedPlan === this.props.planName) {
+        this.setState({ fetched: true, fetching: false })
+      }
     }
   }
 
@@ -38,12 +44,12 @@ class Suggestion extends React.Component {
   }
 
   moreInfo() {
-    this.setState({showModal: true})
+    this.setState({ showModal: true })
   }
 
   closeModal(e) {
     if (_.toArray(e.target.classList).indexOf('db-modal-container') !== -1) {
-      this.setState({showModal: false})
+      this.setState({ showModal: false })
     }
   }
 

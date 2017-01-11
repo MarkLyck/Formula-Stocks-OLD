@@ -22,7 +22,9 @@ class Suggestions extends React.Component {
   }
 
   updateState() {
-    this.setState({fetching: false})
+    if (store.selectedPlan === this.props.plan) {
+      this.setState({ fetching: false })
+    }
   }
 
   componentWillReceiveProps(newPlan) {
@@ -37,7 +39,7 @@ class Suggestions extends React.Component {
   }
 
   render() {
-    let suggestionsList;
+    let suggestionsList
     if(store.session.isAllowedToView(this.props.plan)) {
       let suggestions = store.plans.get(this.props.plan).get('suggestions').map((suggestion, i) => {
         return (

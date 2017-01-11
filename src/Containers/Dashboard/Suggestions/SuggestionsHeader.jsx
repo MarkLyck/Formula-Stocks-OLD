@@ -3,20 +3,22 @@ import React from 'react'
 import store from '../../../store'
 import './suggestionsHeader.css'
 
-const SuggestionHeader = React.createClass({
-  getInitialState() {
-    return {
+class SuggestionsHeader extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
       stats: store.plans.get(this.props.plan).get('stats'),
-      // suggestionsLength: store.plans.get(this.props.plan).get('buySuggestions').length + store.plans.get(this.props.plan).get('sellSuggestions').length
       suggestionsLength: store.plans.get(this.props.plan).get('suggestions').length
     }
-  },
+  }
+
   componentWillReceiveProps(newProps) {
     this.setState({
       stats: store.plans.get(newProps.plan).get('stats'),
       suggestionsLength: store.plans.get(newProps.plan).get('suggestions').length
     })
-  },
+  }
+
   render() {
     let portfolio = store.plans.get(this.props.plan).get('portfolio')
     let cashAllocation;
@@ -72,6 +74,6 @@ const SuggestionHeader = React.createClass({
       </section>
     )
   }
-})
+}
 
-export default SuggestionHeader
+export default SuggestionsHeader

@@ -89,6 +89,8 @@ class PortfolioGraph extends React.Component {
         <LineGraph
           data={fixedData}
           graphs={graphs}
+          unit="%"
+          unitPosition="right"
           minimum={minimum}
           maximum={maximum}
           baseValue={minimum}

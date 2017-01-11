@@ -11,6 +11,7 @@ import './billing.css'
 
 function formatPrice(value) {
   while(/(\d+)(\d{3})/.test(value.toString())) {
+    // eslint-disable-next-line
     value = value.toString().replace(/(\d+)(\d{3})/, '$1' + ',' + '$2')
   }
   return value
@@ -109,6 +110,7 @@ class Billing extends React.Component {
     if (this.state.taxPercent > 0) {
       let price = this.state.price
       if (this.state.discount > 0) {
+        // eslint-disable-next-line
         price = price * -(this.state.discount / 100 - 1)
       }
 
@@ -137,9 +139,11 @@ class Billing extends React.Component {
   renderPrice() {
     let price = this.state.price
     if (this.state.discount > 0) {
+      // eslint-disable-next-line
       price = price * -(this.state.discount / 100 - 1)
     }
     if (this.state.taxPercent > 0) {
+      // eslint-disable-next-line
       price = price * (this.state.taxPercent / 100 + 1)
     }
     if (this.props.selected !== 'basic') {

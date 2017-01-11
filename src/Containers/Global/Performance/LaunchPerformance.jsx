@@ -232,6 +232,7 @@ class Performance extends React.Component {
                      data={this.state.chartData}
                      unit="%"
                      unitPosition="right"
+                     axisAlpha={0.5}
                      maximum={maximum}
                      minimum={minimum}/>
         </div>

@@ -8,6 +8,8 @@ import cc from '../../../cc'
 class Stock extends React.Component {
   constructor(props) {
     super(props)
+    this.checkScreenSize = this.checkScreenSize.bind(this)
+
     let promise = store.plans.get(this.props.plan).getStockInfo(this.props.stock.ticker, this.props.number, true)
     let data = []
 

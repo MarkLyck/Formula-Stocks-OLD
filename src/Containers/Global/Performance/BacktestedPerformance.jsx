@@ -195,6 +195,7 @@ class BacktestedPerformance extends React.Component {
           <LineGraph graphs={graphs}
                      data={this.state.chartData}
                      unit="$"
+                     axisAlpha={0.5}
                      maximum={maximum}
                      minimum={minimum}
                      logarithmic={true}

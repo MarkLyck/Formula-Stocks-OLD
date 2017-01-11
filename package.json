@@ -2,7 +2,7 @@
   "name": "formula-stocks2",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://marklyck.github.io/Formula-Stocks-2",
+  "homepage": "https://marklyck.github.io/Formula-Stocks-2/",
   "devDependencies": {
     "autoprefixer": "6.5.1",
     "babel-core": "6.17.0",
@@ -67,6 +67,7 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
+    "prod": "npm run build && cp docs/index.html docs/404.html",
     "test": "node scripts/test.js --env=jsdom"
   },
   "jest": {
