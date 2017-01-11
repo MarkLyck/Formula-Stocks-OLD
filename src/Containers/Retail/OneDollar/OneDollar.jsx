@@ -118,7 +118,7 @@ const OneDollar = React.createClass({
             </p>
             <p className="disclaimer">
               <sup>*</sup>In a tax-free account, excluding trading costs and slippage. Calculation
-              involves backtesting. Past returns are no indication of future performance.
+              involves backtesting. Past performance is not neccesarily indicative of future results.
             </p>
           </div>
         </div>

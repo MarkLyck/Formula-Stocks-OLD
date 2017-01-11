@@ -85,7 +85,7 @@ const Product = ({ plan, billed, path }) => {
       <li>
         <p className="light-text-color">Sortino ratio</p>
         <Info title="Sortino ratio" explanation={<p>his version of the ratio is calculated based upon yearly returns. It measures the performance and risk of an investment strategy relative to the downward deviation. Higher is better.</p>}/>
-        <p className="right-align">{plan.info.sortinoRatio}</p>
+        <p className="right-align">{plan.info.sortinoRatio.toFixed(3)}</p>
       </li>
       <li>
         <p className="light-text-color">Gain-to-pain ratio</p>
@@ -95,7 +95,7 @@ const Product = ({ plan, billed, path }) => {
             It represents the sum of all monthly returns divided by the sum of all monthly losses.<br/><br/>A GPR value above 1.5 is considered to be
             excellent; a GPR value of 1 is considered to be good, and a GPR value of less
             than 0 is considered to be bad.</p>}/>
-        <p className="right-align">{plan.info.gainToPainRatio}</p>
+        <p className="right-align">{plan.info.gainToPainRatio.toFixed(3)}</p>
       </li>
     </ul>
     <Link to={`${prefix}/signup`} className="cta">{ctaText}</Link>

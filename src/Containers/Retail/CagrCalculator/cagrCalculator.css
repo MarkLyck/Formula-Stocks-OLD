@@ -152,9 +152,11 @@ input[type=range]::-moz-range-thumb {
 
 @media (max-width: 1000px) {
   .cumulative-interest {
-    height: 750px;
+    height: auto;
     .content {
-      flex-direction: column;
+      display: block;
+      height: 100%;
+      padding-top: 0;
       .left {
         width: 100%;
         max-width: 100%;
@@ -164,14 +166,18 @@ input[type=range]::-moz-range-thumb {
         }
       }
       .right {
+        height: 400px;
         width: 100%;
         max-width: 100%;
         margin-top: 40px;
         margin-left: 0;
+        #bar-chart {
+          height: 100%;
+        }
       }
     }
     .disclaimer {
-      margin-top: 150px;
+      margin-top: 0;
     }
   }
 }

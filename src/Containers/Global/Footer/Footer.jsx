@@ -39,17 +39,16 @@ class Footer extends React.Component {
             Formula Stocks does not manage client funds, but acts solely as an information
             supplier. Formula Stocks does not purport to tell which securities individual
             customers should buy or sell for themselves. Formula Stocks’ purchase and sales
-            recommendations are not solicitations to buy or sell, but rather information you
+            recommendations are not ssolicitations to buy or sell a securiry, but rather information you
             can use as a starting point for doing additional independent research in order to
             allow you to form your own opinion on investments and to make your own informed
             decisions.<br/><br/>
 
             Formula Stocks assumes no responsibility or liability for your investment results.
             You understand and acknowledge that there is a high degree of risk involved in
-            investing in securities. This service does not constitute an offer, a solicitation to
-            buy a security, or to open a brokerage account.<br/><br/>
+            investing in securities.<br/><br/>
 
-            The Formula Stocks product underwent a 3-year pilot test program from 2009- to 2011.
+            The Formula Stocks product underwent a 3-year pilot program from 2009- to 2011.
             In this testing period, actual performance data, under normal real
             time market conditions, was recorded, and results reviewed by a state-licensed Big
             Four auditor. Based on the BUSINESS membership in its 2009-2011
@@ -58,8 +57,8 @@ class Footer extends React.Component {
             of market liquidity, trading costs and slippage, financial risk, and human factors,
             and was not carried out with any benefit of hindsight.<br/><br/>
 
-            Due to continued development, the website displays up-to-date calculated data
-            refreshed daily and weekly. Backtested performance results have certain inherent
+            Due to continued development, the website displays up-to-date calculated data refreshed
+            daily and weekly based on backtested data. Backtested performance results have certain inherent
             limitations, as they could potentially be designed with some benefit of hindsight,
             even though efforts have been made to avoid such risk. Unlike an actual
             performance record, backtested results do not represent actual trading and may not
@@ -76,9 +75,7 @@ class Footer extends React.Component {
             investment advice. Accordingly, you should not rely solely on this information to
             make investments. Unless you are an experienced investor, one should check with a
             licensed financial advisor to determine the suitability of any investment and/or
-            read relevant stock prospectuses. Formula Stocks portfolios may or may not be
-            adequately diversified for any particular risk profile as the required level of
-            diversification differs from individual to individual.<br/><br/>
+            read relevant stock prospectuses.<br/><br/>
 
             Formula Stocks business analytics depends on the accuracy of the published accounts
             of public corporations. Such accuracy may from time to time be less than ideal.

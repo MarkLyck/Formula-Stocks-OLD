@@ -19,7 +19,7 @@ class PilotTest extends React.Component {
               employed to sustain securities trading of +66.54% in 2009,
               +52.56% in 2010 and +16.84% in 2011.<sup>*</sup><br/><br/>
             </p>
-            <p className="disclaimer"><sup>*</sup>Past performance is no indication of future performance.</p>
+            <p className="disclaimer"><sup>*</sup>Past performance is not neccesarily indicative of future results.</p>
           </div>
           <div className="right">
             <ul>

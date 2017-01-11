@@ -15,8 +15,8 @@ const PlanColumn = ({ plan, selected, selectPlan, path }) => {
       <li className="row"><p>{plan.info.avgLossPerPosition.toFixed(2)}%</p></li>
       <li className="row"><p>{plan.info.avgNumOfPosInPortfolio}</p></li>
       <li className="row"><p>{plan.info.IRRGeometricMean}%</p></li>
-      <li className="row"><p>{plan.info.sortinoRatio}</p></li>
-      <li className="row"><p>{plan.info.gainToPainRatio}</p></li>
+      <li className="row"><p>{plan.info.sortinoRatio.toFixed(3)}</p></li>
+      <li className="row"><p>{plan.info.gainToPainRatio.toFixed(3)}</p></li>
 
     </ul>)
 }
