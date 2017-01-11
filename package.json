@@ -2,7 +2,6 @@
   "name": "formula-stocks2",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://marklyck.github.io/Formula-Stocks-2/",
   "devDependencies": {
     "autoprefixer": "6.5.1",
     "babel-core": "6.17.0",
