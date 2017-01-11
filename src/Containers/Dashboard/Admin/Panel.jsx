@@ -40,7 +40,7 @@ const AdminPanel = React.createClass({
   render() {
     const filteredVisitors = this.filterVisitors(this.state.visitors)
     let images = filteredVisitors.map((visitor) => {
-      let color = '#12D99E'
+      let color = 'rgba(18, 217, 158, 0.5)'
       if (visitor.type === 4)
         color = '#da1354'
       else if (visitor.type > 0 && visitor.type < 5)
@@ -58,7 +58,6 @@ const AdminPanel = React.createClass({
         "longitude": visitor.location.longitude,
         "latitude": visitor.location.latitude,
         "title": `${visitor.location.country_name}<br/>${visitor.location.city}<br/>${moment(visitor._kmd.lmt).fromNow()}`,
-        // "value": visitor.amount
       });
     })
 
