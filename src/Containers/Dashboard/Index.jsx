@@ -55,11 +55,14 @@ class Dashboard extends React.Component {
       plan = 'basic'
     }
 
+    if (this.props.route.path === '/dashboard') {
+      store.selectedPlan = plan
+    }
+
     let notification;
     if (store.session.get('notification')) {
       notification = <Notification text={store.session.get('notification').text} type={store.session.get('notification').type}/>
     }
-
 
 
     return (

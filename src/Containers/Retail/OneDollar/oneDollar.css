@@ -4,6 +4,10 @@
   padding: 40px 80px 40px 80px;
   display: flex;
   justify-content: center;
+  .beside {
+    display: flex;
+    flex-direction: row;
+  }
   .left {
     flex-grow: 1;
     max-width: 50%;

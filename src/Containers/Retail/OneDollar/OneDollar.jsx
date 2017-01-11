@@ -31,24 +31,24 @@ const OneDollar = React.createClass({
     if ($(window).scrollTop() > (hT + hH - wH)) {
       this.updateNumbers()
       $(window).off('scroll', this.animate)
-    };
+    }
   },
 
   updateNumbers(plan) {
-    let fs = this.state.fs;
-    let sp = this.state.market;
-    let year = this.state.currYear;
+    let fs = this.state.fs
+    let sp = this.state.market
+    let year = this.state.currYear
 
     if (plan) {
-      plan = plan;
-      fs = 1;
-      sp = 1;
-      year = 0;
+      plan = plan
+      fs = 1
+      sp = 1
+      year = 0
     } else {
-      plan = this.state.plan;
+      plan = this.state.plan
     }
 
-    let multiplier = (store.plans.get(plan).get('stats').CAGR / 100 + 1);
+    let multiplier = (store.plans.get(plan).get('stats').CAGR / 100 + 1)
 
     fs = fs * multiplier;
     sp = sp * (store.market.cagr / 100 + 1)
@@ -85,9 +85,9 @@ const OneDollar = React.createClass({
     }
 
     let basClass, preClass, busClass;
-    if (this.state.plan === 'basic') {basClass='selected'}
-    if (this.state.plan === 'premium') {preClass='selected'}
-    if (this.state.plan === 'business') {busClass='selected'}
+    if (this.state.plan === 'basic') { basClass='selected' }
+    if (this.state.plan === 'premium') { preClass='selected' }
+    if (this.state.plan === 'business') { busClass='selected' }
 
     return (
       <div className="split-section one-dollar">
@@ -116,9 +116,12 @@ const OneDollar = React.createClass({
 
               Select Basic, Premium or Business, to see the difference.
             </p>
-            <p className="disclaimer"><sup>*</sup>In a tax-free account, excluding trading costs and slippage. Calculation involves backtesting. Past returns are no indication of future performance.</p>
+            <p className="disclaimer">
+              <sup>*</sup>In a tax-free account, excluding trading costs and slippage. Calculation
+              involves backtesting. Past returns are no indication of future performance.
+            </p>
           </div>
-          </div>
+        </div>
       </div>
     )
   }

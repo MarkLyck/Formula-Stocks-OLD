@@ -1,48 +1,46 @@
 @import "../../variables.css";
 
-.professional {
-  .what-you-get {
-    a {
-      margin-top: 16px;
-      max-width: 150px;
+.what-you-get-pro {
+  a {
+    margin-top: 16px;
+    max-width: 150px;
+    &:hover {
+      background: color($primary-color lightness(-10%));
+    }
+  }
+  .beside {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 100%;
+    .screen {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: auto;
+      width: calc(50% - 16px);
+      transition: transform 0.5s;
+      box-shadow: 0 0px 4px rgba(0,0,0, 0.2), 0 4px 8px rgba(0,0,0, 0.24);
       &:hover {
-        background: color($primary-color lightness(-10%));
+        transform: scale(1.05);
       }
     }
-    .beside {
+    .left {
+      margin-right: calc(50% + 16px);
+    }
+    .button {
+      max-width: 140px;
       display: flex;
-      flex-direction: column;
-      position: relative;
-      width: 100%;
-      .screen {
-        position: absolute;
-        top: 0;
-        right: 0;
-        height: auto;
-        width: calc(50% - 16px);
-        transition: transform 0.5s;
-        box-shadow: 0 0px 4px rgba(0,0,0, 0.2), 0 4px 8px rgba(0,0,0, 0.24);
-        &:hover {
-          transform: scale(1.05);
-        }
-      }
-      .left {
-        margin-right: calc(50% + 16px);
-      }
-      .button {
-        max-width: 140px;
-        display: flex;
-        justify-content: center;
-        font-size: 0.9rem;
-        padding: 16px 24px;
-      }
+      justify-content: center;
+      font-size: 0.9rem;
+      padding: 16px 24px;
     }
   }
 }
 
 
 @media (max-width: 1200px) {
-  .what-you-get {
+  .what-you-get-pro {
     .beside {
       .screen {
         position: relative;

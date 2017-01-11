@@ -1,6 +1,8 @@
 .retail {
   .what-you-get {
     .beside {
+      display: flex;
+      flex-direction: row;
       .left {
         width: calc(50% - 16px);
         max-width: inherit;

@@ -81,11 +81,13 @@ class Portfolio extends React.Component {
       }
     })
 
+    let amountOfStocks = store.plans.get(this.props.plan).get('portfolio').length ? store.plans.get(this.props.plan).get('portfolio').length - 1 : ''
+
     return (
       <section className="holdings">
         <div className="top">
           <h2>Holdings</h2>
-          <h2 className="blue-color">{store.plans.get(this.props.plan).get('portfolio').length - 1} stocks</h2>
+          <h2 className="blue-color">{amountOfStocks} stocks</h2>
         </div>
         <table className="portfolio-table">
           <thead className="labels">
