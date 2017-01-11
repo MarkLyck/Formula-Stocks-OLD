@@ -1,0 +1,142 @@
+@import "../../variables.css";
+
+.my-account-page {
+  padding: 40px;
+  .filled-btn {
+    width: 100%;
+    border-radius: 0;
+    &:hover {
+      background: color($primary-color lightness(-10%));
+    }
+  }
+  .profile-info {
+    padding: 20px;
+    margin-bottom: 40px;
+    i {
+      margin-right: 10px;
+    }
+  }
+  .change-plan-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    margin-bottom: 20px;
+    background: #fff;
+    h2 {
+      padding: 40px 20px;
+      margin: 0;
+      border-bottom: 1px solid $db-border-color;
+    }
+    button {
+      height: 90px;
+      position: relative;
+      border-radius: 0;
+      h3 {
+        margin: 0;
+        float: left;
+      }
+      h3:first-child {
+        line-height: 45px;
+      }
+      h3:last-child {
+        float: right;
+      }
+      &:hover {
+        background: color($primary-color lightness(+5%));
+        h3,p {
+          color: #fff;
+        }
+      }
+    }
+    .selected {
+      h3,p {
+        color: #fff;
+      }
+    }
+    .current {
+      background: #fff;
+      h3,p {
+        color: $light-text-color;
+      }
+      .price {
+        display: none;
+      }
+      &::after {
+        content: 'Current';
+        color: $light-text-color;
+        float: right;
+      }
+      &:hover {
+        background: #fff;
+        cursor: auto;
+        h3,p {
+          color: $light-text-color;
+        }
+      }
+    }
+    .change-plan {
+      max-width: 100%;
+      height: 90px;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      background: $action-color;
+      border-radius: 0;
+      -webkit-box-pack: center;
+          -ms-flex-pack: center;
+              justify-content: center;
+      span {
+        margin-left: 5px;
+      }
+      &:hover {
+        background: color($action-color lightness(-5%));
+      }
+    }
+  }
+  .cancel-btn {
+    margin-top: 100px;
+    background: $warning-color;
+    max-width: 100%;
+    width: 100%;
+    &:hover {
+      background: color($warning-color lightness(-5%));
+    }
+  }
+}
+
+.change-plan-confirmation {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  h2 {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    margin: 0;
+    height: 90px;
+  }
+  p {
+    margin: 20px 20px;
+    i {
+      margin-right: 10px;
+    }
+  }
+  button {
+    height: 90px;
+    max-width: 100%;
+  }
+}

@@ -1,0 +1,40 @@
+@import "../../../variables.css";
+
+.collapsable {
+  width: 100%;
+  max-width: 1160px;
+  .toggle {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: none;
+    padding: 16px 24px;
+    position: relative;
+    font-size: 0.9rem;
+    &:hover {
+      background: #f5f5f5;
+      cursor: pointer;
+      i {
+        color: $primary-color;
+      }
+    }
+    h2 {
+      color: $primary-color;
+      margin: 0;
+    }
+    i {
+      color: $text-color;
+    }
+  }
+  p {
+    margin-top: 0px;
+  }
+}
+.expanded {
+  background: #f5f5f5;
+  margin-bottom: 16px;
+  p {
+    padding: 0 24px;
+  }
+}

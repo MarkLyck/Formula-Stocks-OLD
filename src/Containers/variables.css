@@ -1,0 +1,34 @@
+$primary-color: #27A5F9;
+$action-color: #12D99E;
+$warning-color: #ec1b5f;
+
+$text-color: #49494A;
+$light-text-color: #95989E;
+$dark-color: #49494A;
+
+$dark-background: #2C323D;
+
+$dashboard-background: #F3F3F3;
+$nav-btn-background: #F3F3F3;
+
+$side-bar-background: #32323A;
+$side-border-color: #3C3C43;
+
+$side-color: #F3F3F3;
+$db-border-color: #F3F3F3;
+
+.blue-color { color: $primary-color; }
+.blue { background: $primary-color; }
+
+.white { background: #fff; }
+.white-color { color: #fff; }
+
+.green { background: $action-color; }
+.green-color { color: $action-color; }
+
+.red { background: $warning-color; }
+.red-color { color: $warning-color; }
+
+.light-text-color {
+  color: #95989E;
+}

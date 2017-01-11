@@ -1,0 +1,41 @@
+.faq-page {
+  .back-btn {
+    position: fixed;
+    top: 64px;
+    left: 64px;
+    margin-left: 64px;
+    margin-bottom: 64px;
+    font-size: 1.5rem;
+  }
+  .faq-content {
+    margin: 64px auto;
+    max-width: 900px;
+    padding: 0 64px;
+    h2 {
+      margin-bottom: 32px;
+    }
+    ol {
+      li {
+        margin-bottom: 16px;
+        padding-left: 8px;
+      }
+    }
+  }
+}
+
+@media (max-width: 1250px) {
+  .faq-page {
+    margin-top: 32px;
+    .back-btn {
+      position: relative;
+      left: 0;
+      top: 0;
+    }
+    .faq-content {
+      margin: 32px auto;
+      p {
+        line-height: 1.15rem;
+      }
+    }
+  }
+}

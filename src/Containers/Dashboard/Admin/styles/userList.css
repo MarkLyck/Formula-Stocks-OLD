@@ -1,0 +1,39 @@
+@import "../../../variables.css";
+.user-list-container {
+  background: #fff;
+  margin: 20px;
+  h2 {
+    padding: 20px 0 0 20px;
+  }
+  .user-list {
+    border-collapse: collapse;
+    width: 100%;
+    .labels {
+      tr {
+        width: 100%;
+        border-bottom: 1px solid $db-border-color;
+        th {
+          margin: 0;
+          padding: 20px 0;
+          padding-right: 25px;
+          padding-left: 20px;
+          text-align: left;
+          font-weight: 100;
+        }
+      }
+    }
+    tbody {
+      &:hover {
+        // cursor: pointer;
+      }
+      tr {
+        height: 75px;
+        border-bottom: 1px solid $db-border-color;
+        td {
+          font-weight: 400;
+          padding-left: 20px;
+        }
+      }
+    }
+  }
+}

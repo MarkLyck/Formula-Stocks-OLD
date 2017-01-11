@@ -1,0 +1,83 @@
+@import "../../../variables.css";
+.admin-panel {
+  .unqiue-visiotrs {
+    background: #fff;
+    margin: 20px auto;
+    h2 {
+      padding: 20px;
+    }
+    width: calc(100% - 40px);
+    .visitor-map {
+      height: 500px;
+      padding: 20px 0;
+      .map {
+        min-height: 300px;
+        background: red;
+      }
+    }
+  }
+}
+
+.browsers-container {
+  background: #fff;
+  margin: 20px;
+  padding: 20px;
+  h2 {
+    margin: 0;
+  }
+  .browsers {
+    display: flex;
+    flex-wrap: wrap;
+    .browserChart {
+      height: 250px;
+      width: calc(100% / 6);
+      > div {
+        height: 80% !important;
+      }
+      h3 {
+        text-align: center;
+      }
+    }
+  }
+}
+
+.DAU-container {
+  background: #fff;
+  margin: 20px;
+  padding: 20px;
+  h2 {
+    margin: 0;
+  }
+}
+
+a[href="http://www.amcharts.com/javascript-maps/"],  a[href="http://www.amcharts.com/javascript-charts/"]{
+  display: none !important;
+}
+
+@media (max-width: 800px) {
+  .browsers-container {
+    .browsers {
+      .browserChart {
+        width: calc(100% / 3);
+      }
+    }
+  }
+}
+@media (max-width: 450px) {
+  .browsers-container {
+    .browsers {
+      .browserChart {
+        width: calc(100% / 2);
+      }
+    }
+  }
+}
+@media (max-width: 400px) {
+  .browsers-container {
+    .browsers {
+      .browserChart {
+        width: calc(100%);
+      }
+    }
+  }
+}

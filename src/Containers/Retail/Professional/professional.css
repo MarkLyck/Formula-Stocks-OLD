@@ -1,0 +1,25 @@
+.retail {
+  .experienced {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding-top: 32px;
+    padding-bottom: 32px;
+    h2 {
+      display: inline;
+      width: 100%;
+      max-width: 1160px;
+      margin: 0;
+      font-size: 1.2rem;
+      text-align: center;
+      a {
+        display: inline;
+        margin: 0 8px;
+        background: none;
+        padding: 0;
+        color: $primary-color;
+        text-decoration: underline;
+      }
+    }
+  }
+}

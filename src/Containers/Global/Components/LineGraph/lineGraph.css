@@ -1,0 +1,56 @@
+@import "../../../variables.css";
+
+.chart-balloon {
+  font-family: 'proxima-nova', sans-serif;
+  display: flex;
+  flex-direction: column;
+  padding: 3px 5px;
+  .plan-name {
+    font-size: 1rem;
+    font-weight: 100;
+    margin-bottom: 5px;
+    color: $primary-color;
+  }
+  .market-name {
+    color: $text-color;
+  }
+  .balloon-value {
+    font-size: 1.25rem;
+  }
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  i {
+    color: #fff;
+  }
+}
+
+.amcharts-graph-basic, .amcharts-graph-premium, .amcharts-graph-business, .amcharts-graph-fund, .amcharts-graph-market {
+  stroke-linejoin: round;
+  stroke-linecap: round;
+  stroke-dasharray: 500%;
+  -webkit-animation: am-draw 5s;
+  animation: am-draw 5s;
+  position: relative;
+}
+
+
+@-webkit-keyframes am-draw {
+    0% {
+        stroke-dashoffset: 500%;
+    }
+    100% {
+        stroke-dashoffset: 0%;
+    }
+}
+@keyframes am-draw {
+    0% {
+        stroke-dashoffset: 500%;
+    }
+    100% {
+        stroke-dashoffset: 0%;
+    }
+}

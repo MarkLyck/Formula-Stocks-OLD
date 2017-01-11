@@ -1,0 +1,21 @@
+@import "../variables.css";
+.dashboard {
+  background: $dashboard-background;
+  height: 100vh;
+  width: 100vw;
+  .container {
+    height: calc(100% - 75px);
+    display: flex;
+    .db-content {
+      width: 100%;
+      overflow-y: scroll;
+      position: relative;
+    }
+  }
+}
+
+.upgrade-your-plan {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -1,0 +1,280 @@
+@import "../../variables.css";
+
+.form-modal-container {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background: rgba(0,0,0,0.3);
+}
+
+.form-modal {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  top: 85px;
+  right: 15px;
+  color: #fff;
+  width: 300px;
+  z-index: 5;
+  h3 {
+    padding: 20px;
+    margin: 0;
+    background: #fff;
+  }
+  input {
+    padding: 20px;
+    padding-left: 35px;
+    border: none;
+    border-top: 1px solid color(#fff lightness(-5%));
+    background: color(#fff lightness(-5%));
+    color: $text-color;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  div {
+    position: relative;
+    width: 100%;
+  }
+  .email {
+    input {
+      height: 100%;
+    }
+    &::before {
+      content: '\f0e0';
+      font-family: FontAwesome;
+      color: color(#fff lightness(-50%));
+      position: absolute;
+      top: 50%;
+      left: 10px;
+      transform: translateY(-55%);
+      z-index: 2;
+    }
+  }
+  .password {
+    &::before {
+      content: '\f023';
+      font-family: FontAwesome;
+      color: color(#fff lightness(-55%));
+      position: absolute;
+      top: 50%;
+      left: 10px;
+      transform: translateY(-58%);
+      z-index: 2;
+    }
+  }
+  .verify-password {
+    &::before {
+      content: '\f13e';
+      font-family: FontAwesome;
+      color: color(#fff lightness(-55%));
+      position: absolute;
+      top: 50%;
+      left: 10px;
+      transform: translateY(-58%);
+      z-index: 2;
+    }
+  }
+  .forgot-pw {
+    margin: 0;
+    padding: 15px;
+    font-size: 0.9rem;
+    text-align: center;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  .error::before {
+    color: $warning-color;
+  }
+  input[type="submit"] {
+    background: $primary-color;
+    border: none;
+    color: #fff;
+    &:hover {
+      background: color($primary-color lightness(-5%));
+      cursor: pointer;
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.signup {
+  background: #fff;
+  position: relative;
+  h3 {
+    margin: 0;
+    padding: 20px;
+    height: 90px;
+    display: flex;
+    align-items: center;
+  }
+  .input-wrapper {
+    position: relative;
+    input {
+      padding: 20px;
+      padding-left: 40px;
+      height: 90px;
+      border: none;
+      border-top: 1px solid darken(#fff, 10%);
+      background: darken(#fff, 5%);
+      color: $text-color;
+      width: 100%;
+      box-sizing: border-box;
+    }
+  }
+  .name {
+    &::before {
+      content: '\f007';
+      font-family: FontAwesome;
+      color: darken(#fff, 55%);
+      position: absolute;
+      top: 50%;
+      left: 10px;
+      transform: translateY(-50%);
+      z-index: 2;
+    }
+  }
+  .email {
+    &::before {
+      content: '\f0e0';
+      font-family: FontAwesome;
+      color: darken(#fff, 55%);
+      position: absolute;
+      top: 50%;
+      left: 10px;
+      transform: translateY(-50%);
+      z-index: 2;
+    }
+  }
+  .password {
+    &::before {
+      content: '\f023';
+      font-family: FontAwesome;
+      color: darken(#fff, 55%);
+      position: absolute;
+      top: 50%;
+      left: 10px;
+      transform: translateY(-50%);
+      z-index: 2;
+    }
+  }
+  .verify-password {
+    &::before {
+      content: '\f13e';
+      font-family: FontAwesome;
+      color: darken(#fff, 55%);
+      position: absolute;
+      top: 50%;
+      left: 10px;
+      transform: translateY(-50%);
+      z-index: 2;
+    }
+  }
+  .error::before {
+    color: $warning-color;
+  }
+  input[type=submit] {
+    height: 90px;
+  }
+}
+
+input[type=submit] {
+  width: 100%;
+  padding: 20px;
+  background: $primary-color;
+  color: #fff;
+  border: none;
+  &:hover {
+    background: darken($primary-color, 5%);
+    cursor: pointer;
+  }
+}
+
+.form-error {
+  background: $warning-color;
+  padding-left: 20px;
+  height: 60px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  color: #fff;
+  i {
+    margin-right: 5px;
+  }
+  h4 {
+    font-weight: 400;
+  }
+  animation: 100ms showError;
+  @keyframes showError {
+    from {
+      height: 0;
+    }
+    to {
+      height: 60px;
+    }
+  }
+}
+
+.select-plan-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+  .modal-title {
+    padding: 20px;
+  }
+  .plans {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    button {
+      background: #fff;
+      transition: background .3s, color .3s;
+      padding: 10px 40px;
+      height: 90px;
+      border-radius: 0;
+      div {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        h3:last-child {
+          text-align: right;
+        }
+
+      }
+      &:hover {
+        background: $primary-color;
+        h3 {
+          color: #fff;
+        }
+      }
+    }
+    .selected {
+      background: darken($primary-color, 5%);
+      h3 {
+        color: #fff;
+      }
+    }
+
+  }
+  .filled-btn {
+    max-width: 100%;
+    border-radius: 0;
+    height: 90px;
+  }
+}

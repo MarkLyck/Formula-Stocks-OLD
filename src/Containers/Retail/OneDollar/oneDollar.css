@@ -1,0 +1,119 @@
+@import "../../variables.css";
+
+.one-dollar {
+  padding: 40px 80px 40px 80px;
+  display: flex;
+  justify-content: center;
+  .left {
+    flex-grow: 1;
+    max-width: 50%;
+    margin-right: 32px;
+    .plans {
+      button {
+        background: none;
+        color: $text-color;
+        padding: 20px;
+        font-size: 1rem;
+        &:hover {
+          color: $primary-color;
+          div {
+            height: 2px;
+            width: 100%;
+            margin-top: 5px;
+            background: $primary-color;
+          }
+        }
+      }
+      .selected {
+        color: $primary-color;
+        div {
+          height: 2px;
+          width: 100%;
+          margin-top: 5px;
+          background: $primary-color;
+        }
+      }
+    }
+    .bar {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      width: 300px;
+      height: 50px;
+      transition: transform .3s;
+      p {
+        margin: 0 10px 0 0;
+        color: #fff;
+        font-size: 1.5rem;
+      }
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+    .fs.bar {
+      background: $primary-color;
+    }
+    .plan-name {
+      margin-top: 10px;
+    }
+    .fs.plan-name {
+      color: $primary-color;
+    }
+    .market-bar-container {
+      margin-top: 25px;
+      display: flex;
+      align-items: center;
+      .market.bar {
+        background: $dark-color;
+      }
+      p {
+        margin: 0 0 0 10px;
+        font-size: 1.5rem;
+      }
+    }
+  }
+  .right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    max-width: calc(50% - 32px);
+    p {
+      width: 100%;
+      align-self: flex-end;
+    }
+    .title {
+      width: 100%;
+      align-self: flex-end;
+    }
+  }
+}
+
+
+@media (max-width: 975px) {
+  .one-dollar {
+    .beside {
+      flex-direction: column;
+      .left {
+        width: 100%;
+        max-width: 100%;
+        margin-right: 0;
+        order: 1;
+        margin-bottom: 16px;
+        p {
+          max-width: 100%;
+        }
+      }
+      .right {
+        margin: 0 0 16px 0;;
+        height: 250px;
+        width: 100%;
+        max-width: 100%;
+        .title, p {
+          align-self: flex-start;
+          width: 100%;
+        }
+      }
+    }
+  }
+}

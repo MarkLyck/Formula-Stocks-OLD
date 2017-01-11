@@ -1,0 +1,47 @@
+@import "../../variables.css";
+
+.prof-performance {
+  #result-chart {
+    height: 480px;
+    width: 100%;
+    max-width: 720px;
+    position: relative;
+    i {
+      color: $primary-color;
+    }
+    .chart-indicators {
+      position: absolute;
+      top: 32px;
+      left: 88px;
+      .chart-indicator {
+        background: none;
+        padding-left: 25px;
+        position: relative;
+        margin-bottom: 10px;
+        &::before {
+          content: '';
+          width: 15px;
+          height: 15px;
+          left: 0;
+          top: 50%;
+          transform: translateY(-50%);
+          background: $primary-color;
+          position: absolute;
+          z-index: 2;
+        }
+      }
+      .business::before {
+        background: #3DAEFA;
+      }
+      .fund::before {
+        background: $text-color;
+      }
+      .premium::before {
+        background: #7ED3E4;
+      }
+      .djia::before {
+        background: #A3A3A3;
+      }
+    }
+  }
+}

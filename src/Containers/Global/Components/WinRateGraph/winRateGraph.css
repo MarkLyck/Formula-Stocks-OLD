@@ -1,0 +1,41 @@
+@import "../../../variables.css";
+
+.win-rate-graph {
+  height: 320px;
+  display: flex;
+  align-items: flex-end;
+  position: relative;
+  margin: 32px 0;
+  .bar, .sp-bar {
+    background: $primary-color;
+    width: 64px;
+    margin: 12px;
+    min-height: 45px;
+    transition: height 1s, transform 0.5s;
+    position: relative;
+    &:hover {
+      transform: scale(1.1);
+    }
+    p {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.75);
+      width: 100%;
+      font-weight: 100;
+      height: 45px;
+      margin: 0;
+    }
+    .plan-name {
+      display: flex;
+      justify-content: center;
+      width: 60px;
+      position: absolute;
+      top: -40px;
+      background: none;
+    }
+  }
+  .sp-bar {
+    background: $text-color;
+  }
+}

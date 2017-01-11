@@ -1,0 +1,13 @@
+@import "../../variables.css";
+
+.backtested-performance {
+  #result-chart {
+    width: 100%;
+    margin-bottom: 16px;
+    height: 65vh;
+    max-height: 800px;
+    i {
+      color: $primary-color;
+    }
+  }
+}

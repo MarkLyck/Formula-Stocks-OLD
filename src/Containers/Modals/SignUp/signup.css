@@ -1,0 +1,198 @@
+@import "../../variables.css";
+
+.signup-modal {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  .close-btn {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    z-index: 1001;
+    i {
+      font-size: 1.5rem;
+    }
+  }
+  .bottom-bar {
+    width: 100%;
+    background: #283544;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 12px;
+    height: 36px;
+    p {
+      margin: 0;
+      color: $light-text-color;
+      font-size: 12px;
+      a {
+        color: #eeeeee;
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.signup-content {
+  display: flex;
+  width: 100%;
+  input {
+    border: 1px solid #dedede;
+    border-radius: 4px;
+    padding: 16px;
+    margin-bottom: 16px;
+  }
+  .red-outline {
+    border-color: $warning-color;
+    .Select-control {
+      border-color: $warning-color !important;
+    }
+  }
+  .error {
+    color: $warning-color;
+    margin: 0;
+    i {
+      margin-right: 8px;
+    }
+  }
+  .left {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    padding: 36px;
+    h2 {
+      font-size: 100;
+      color: $primary-color;
+      font-size: 26px;
+      font-weight: 200;
+      margin: 0;
+      margin-bottom: 32px;
+    }
+  }
+  .right {
+    width: 288px;
+    background: #F7FAFC;
+    padding: 36px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    input {
+      font-size: 0.9rem;
+    }
+    input[type="submit"], button {
+      &:hover {
+        background: darken($primary-color, 10%);
+      }
+    }
+    .right-error {
+      p {
+        margin-top: 16px;
+      }
+    }
+    .top {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      .line {
+        height: 140px;
+        width: 1px;
+        background: $primary-color;
+        position: absolute;
+        top: 0;
+        left: 32px;
+        z-index: 1001;
+      }
+      .steps {
+        position: absolute;
+        top: 24px;
+        left: 0;
+        z-index: 1010;
+        .step {
+          display: flex;
+          align-items: center;
+          margin: 18px 0;
+          .circle {
+            background: #fff;
+            margin-left: 24px;
+            width: 17px;
+            height: 17px;
+            border: 1px solid $primary-color;
+            border-radius: 50%;
+            margin-right: 24px;
+          }
+          .selected {
+            background: $primary-color;
+          }
+          p {
+            margin: 0;
+          }
+          button {
+            background: none;
+            padding: 0;
+            /*margin: 16px 0;*/
+            color: $text-color;
+            &:hover {
+              color: $primary-color;
+            }
+          }
+        }
+      }
+    }
+    .info {
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid #dedede;
+      padding: 4px 0;
+      p {
+        text-transform: capitalize;
+      }
+      p:last-child {
+        font-weight: 600;
+        text-transform: none;
+        color: $text-color;
+      }
+    }
+    .plan-name {
+      p:last-child {
+        color: $primary-color;
+        text-transform: capitalize;
+      }
+    }
+    .user-form {
+      margin-top: 16px;
+    }
+    .subscribe, .next {
+      border-radius: 4px;
+      margin-top: 8px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: $primary-color;
+      color: #fff;
+      height: 56px;
+      font-size: 0.9rem;
+      border: none;
+      &:hover {
+        cursor: pointer;
+      }
+      i {
+        color: #fff;
+      }
+    }
+  }
+}
+
+@media (max-width: 1010px) {
+  .professional, .retail {
+    .prof-modal-container {
+      .signup-modal {
+        max-height: 100%;
+        .signup-content {
+          height: 100%;
+        }
+      }
+    }
+  }
+}

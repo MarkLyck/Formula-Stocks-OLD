@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="713px" height="535px" viewBox="0 0 713 535" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 39.1 (31720) - http://www.bohemiancoding.com/sketch -->
+    <title>Graph</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Front-page" transform="translate(-240.000000, -9863.000000)">
+            <g id="More-Reward,-Less-risk" transform="translate(0.000000, 9628.000000)">
+                <g id="Graph" transform="translate(240.000000, 230.000000)">
+                    <g id="Lines-Copy-2" transform="translate(32.000000, 11.000000)" stroke-width="3" stroke-linecap="square">
+                        <path d="M669.25,498.479319 C669.25,498.479319 190.278336,501.552818 110.933266,484.668588 C31.5881958,467.784357 1.25,436.435523 1.25,436.435523" id="Line" stroke="#979797"></path>
+                        <path d="M667.25,496.654501 C667.25,496.654501 238.611755,506.531449 143.873718,464.635974 C49.1356812,422.7405 1.25,277.676399 1.25,277.676399" id="Line" stroke="#A2CADF"></path>
+                        <path d="M665.25,497.262774 C665.25,497.262774 231.074295,512.190028 129.561447,437.867566 C28.0485992,363.545105 1.75,165.754258 1.75,165.754258" id="Line" stroke="#66CBDF"></path>
+                        <path d="M670.75,496.654501 C670.75,496.654501 239.89423,521.829814 139.523621,428.069679 C39.1530113,334.309543 0.25,143.248175 0.25,143.248175" id="Line" stroke="#424241"></path>
+                        <path d="M669.75,495.437956 C669.75,495.437956 333.715721,518.301748 217.487045,415.650713 C101.258369,312.999679 78.75,1.52068127 78.75,1.52068127 L3.56212773,0.569882434" id="Line" stroke="#4C7899"></path>
+                    </g>
+                    <g id="X-Labels" transform="translate(27.000000, 521.000000)" font-size="18" font-family="ProximaNova-Regular, Proxima Nova" fill="#424241" font-weight="normal">
+                        <text id="0">
+                            <tspan x="0" y="18">0</tspan>
+                        </text>
+                        <text id="5">
+                            <tspan x="48" y="18">5</tspan>
+                        </text>
+                        <text id="10">
+                            <tspan x="95" y="18">10</tspan>
+                        </text>
+                        <text id="15">
+                            <tspan x="149" y="18">15</tspan>
+                        </text>
+                        <text id="20">
+                            <tspan x="202" y="18">20</tspan>
+                        </text>
+                        <text id="25">
+                            <tspan x="260" y="18">25</tspan>
+                        </text>
+                        <text id="30">
+                            <tspan x="318" y="18">30</tspan>
+                        </text>
+                        <text id="35">
+                            <tspan x="376" y="18">35</tspan>
+                        </text>
+                        <text id="40">
+                            <tspan x="433" y="18">40</tspan>
+                        </text>
+                        <text id="45">
+                            <tspan x="491" y="18">45</tspan>
+                        </text>
+                        <text id="50">
+                            <tspan x="548" y="18">50</tspan>
+                        </text>
+                        <text id="55">
+                            <tspan x="606" y="18">55</tspan>
+                        </text>
+                        <text id="60">
+                            <tspan x="665" y="18">60</tspan>
+                        </text>
+                    </g>
+                    <g id="Y-Labels" font-size="18" font-family="ProximaNova-Regular, Proxima Nova" fill="#424241" font-weight="normal">
+                        <text id="0">
+                            <tspan x="0" y="517">0</tspan>
+                        </text>
+                        <text id="5">
+                            <tspan x="0" y="469">5</tspan>
+                        </text>
+                        <text id="10">
+                            <tspan x="0" y="428">10</tspan>
+                        </text>
+                        <text id="15">
+                            <tspan x="0" y="387">15</tspan>
+                        </text>
+                        <text id="20">
+                            <tspan x="0" y="346">20</tspan>
+                        </text>
+                        <text id="25">
+                            <tspan x="0" y="305">25</tspan>
+                        </text>
+                        <text id="30">
+                            <tspan x="0" y="264">30</tspan>
+                        </text>
+                        <text id="35">
+                            <tspan x="0" y="223">35</tspan>
+                        </text>
+                        <text id="40">
+                            <tspan x="0" y="182">40</tspan>
+                        </text>
+                        <text id="45">
+                            <tspan x="0" y="141">45</tspan>
+                        </text>
+                        <text id="50">
+                            <tspan x="0" y="100">50</tspan>
+                        </text>
+                        <text id="55">
+                            <tspan x="0" y="59">55</tspan>
+                        </text>
+                        <text id="60">
+                            <tspan x="0" y="18">60</tspan>
+                        </text>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

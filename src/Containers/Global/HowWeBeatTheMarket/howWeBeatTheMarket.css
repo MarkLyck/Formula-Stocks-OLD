@@ -1,0 +1,20 @@
+.quote {
+  .content {
+    display: flex;
+    width: 100%;
+    margin-top: 32px;
+    i {
+      color: #27A5F9;
+      font-size: 3rem;
+    }
+    p {
+      font-style: italic;
+      padding: 0;
+      margin-bottom: 8px;
+    }
+  }
+  .from {
+    font-weight: bold;
+    margin-left: 16px;
+  }
+}

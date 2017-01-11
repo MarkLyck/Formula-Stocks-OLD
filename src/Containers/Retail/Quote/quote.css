@@ -1,0 +1,50 @@
+.retail {
+  .quote-section {
+    background: url('./Albert_Einstein.jpg');
+    background-size: cover;
+    height: 350px;
+    padding: 0 80px;
+    .content {
+      text-align: right;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 100%;
+      width: 100%;
+      max-width: 1160px;
+      margin: 0 auto;
+      .quote {
+        color: #fff;
+        font-size: 1.8rem;
+      }
+      .disclaimer {
+        color: rgba(#fff, 0.8);
+        font-size: 1rem;
+      }
+    }
+  }
+}
+
+
+@media (max-width: 1100px) {
+  .quote-section {
+    .content {
+      .quote {
+        align-self: flex-end;
+        width: 50%;
+      }
+    }
+  }
+}
+
+@media (max-width: 675px) {
+  .quote-section {
+    background: linear-gradient(rgba(#000, .5),rgba(#000, .5)),url('./Albert_Einstein.jpg');
+    background-size: cover;
+    .content {
+      .quote {
+        width: 100%;
+      }
+    }
+  }
+}

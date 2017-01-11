@@ -1,0 +1,17 @@
+.md-editor {
+  height: calc(100% - 58px);
+  > div {
+    height: 100%;
+    .md-editor-header {
+      height: 51px;
+      .md-editor-menu {
+        div {
+          height: 30px !important;
+        }
+      }
+    }
+    textarea {
+      height: 100% !important;
+    }
+  }
+}
