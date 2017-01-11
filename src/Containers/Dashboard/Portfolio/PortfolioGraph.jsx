@@ -69,7 +69,7 @@ class PortfolioGraph extends React.Component {
           "balloonText": `<span class="capitalize" style='font-size:18px;'>${this.props.plan}<br/>[[fsBalloon]]%</span>`
       },
       {
-          "id": "market",
+          "id": "sp500",
           "bullet": "round",
           "bulletBorderAlpha": 1,
           "bulletColor": "#FFFFFF",
