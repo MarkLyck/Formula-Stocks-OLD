@@ -157,8 +157,9 @@ class AdminPanel extends React.Component {
       } else if (visitor.os) {
         prev.push({ title: visitor.os, value: 1 })
         if (visitor.os === 'Windows') { OSColors.push('#01BCF3') }
-        else if (visitor.os === 'OS X') { OSColors.push('#EDF4FE') }
+        else if (visitor.os === 'OS X') { OSColors.push('#cccccc') }
         else if (visitor.os === 'Linux') { OSColors.push('#020204') }
+        else if (visitor.os === 'iOS') { OSColors.push('#ee8f00') }
         else if (visitor.os === 'Android') { OSColors.push('#99CC00') }
       }
       return prev
@@ -180,7 +181,7 @@ class AdminPanel extends React.Component {
       return prev
     },[])
     .map(referer => {
-      referer.title = referer.title.replace('https://', '').replace('http://', '').split('/')[0]
+      referer.title = referer.title.replace('https://', '').replace('http://', '').replace('www.', '').split('/')[0]
 
       return referer
     })
