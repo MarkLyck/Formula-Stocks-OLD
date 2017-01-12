@@ -7,16 +7,20 @@ const Visit = Backbone.Model.extend({
   url: `https://baas.kinvey.com/appdata/kid_rJRC6m9F/visits`,
   defaults: {
     device: '',
-    os: platform.os,
+    os: '',
+    prodcut: '',
+    browser: '',
     ip: '',
     location: {},
-    browser: platform.name,
     type: -1,
-    referer: document.referrer
+    referer: ''
   },
   getData(type) {
     if (store.session.get('type') === 5)
       return null
+    if (platform.os.family === 'Linux' && document.referrer.indexOf('facebook') > -1) {
+      return null
+    }
     $.ajax('https://freegeoip.net/json/')
     .then((r) => {
       const newLocation = {
@@ -30,12 +34,12 @@ const Visit = Backbone.Model.extend({
       }
       this.set('location', newLocation)
       this.set('ip', r.ip)
+      this.set('os', platform.os.family)
+      this.set('product', platform.product)
+      this.set('browser', platform.name)
+      this.set('referer', document.referrer)
       this.set('device', store.session.deviceType())
-      if (platform.os.family) {
-        this.set('os', platform.os.family)
-      }
       this.set('type', type || -1)
-      console.log(this.toJSON())
       store.session.set('location', r)
       if (!localStorage.getItem('visitorID')) {
         this.save(null, {

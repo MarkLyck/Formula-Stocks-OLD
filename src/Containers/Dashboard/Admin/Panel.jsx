@@ -2,44 +2,71 @@
 import React from 'react'
 import moment from 'moment'
 import _ from 'underscore'
+import $ from 'jquery'
 
 import admin from '../../../admin'
 import AdminPanelHeader from './Headers'
-import BrowserPieChart from './BrowserPieChart'
 import Userlist from './UserList'
 
 import DAUGraph from './DAUGraph'
+import PieChart from '../../Global/Components/PieChart/PieChart'
 import './styles/panel.css'
 
-const AdminPanel = React.createClass({
-  getInitialState() {
-    return {visitors: admin.visits.toJSON()}
-  },
+class AdminPanel extends React.Component {
+  constructor(props) {
+    super(props)
+
+    this.updateState = this.updateState.bind(this)
+    this.cleanVisits = this.cleanVisits.bind(this)
+
+    this.state = { visitors: admin.visits.toJSON() }
+  }
+
   componentDidMount() {
-    admin.visits.on('change update', this.updateState)
+    admin.visits.on('update', this.updateState)
     admin.visits.fetch()
-  },
+  }
+
   componentWillUnmount() {
-    admin.visits.off('change update', this.updateState)
-  },
+    admin.visits.off('update', this.updateState)
+  }
+
   updateState() {
     this.setState({visitors: admin.visits.toJSON()})
-  },
-  filterVisitors(visitors) {
-    let uniqueIPs = []
-    let uniqueVisitors = visitors.filter((visitor) => {
-      if (uniqueIPs.indexOf(visitor.location.ip) === -1) {
-        uniqueIPs.push(visitor.location.ip)
-        return true
-      } else {
-        return false
+  }
+
+  destroyVisit(visit) {
+    $.ajax({
+      url: `https://baas.kinvey.com/appdata/kid_rJRC6m9F/visits/${visit.get('_id')}`,
+      type: 'DELETE'
+    })
+    .then(r => {
+      console.log('destroyed: ', r)
+    })
+  }
+
+  cleanVisits() {
+    let ips = []
+    let lastCity = ''
+    admin.visits.forEach(visit => {
+      if (visit) {
+        const ip = visit.get('location').ip
+        if (ips.indexOf(ip) > -1) {
+          this.destroyVisit(visit)
+        } else if (visit.get('location').city = lastCity) {
+          this.destroyVisit(visit)
+        } else if (visit.get('os') === 'Linux') {
+          this.destroyVisit(visit)
+        }  else {
+          ips = ips.concat(ip)
+          lastCity = visit.get('location').city
+        }
       }
     })
-    return uniqueVisitors
-  },
+  }
+
   render() {
-    const filteredVisitors = this.filterVisitors(this.state.visitors)
-    let images = filteredVisitors.map((visitor) => {
+    let images = this.state.visitors.map((visitor) => {
       let color = 'rgba(18, 217, 158, 0.5)'
       if (visitor.type === 4)
         color = '#da1354'
@@ -83,12 +110,70 @@ const AdminPanel = React.createClass({
         "buttonIconColor": "#8c8c8c",
       }
     })
-    let ChromeUsers = filteredVisitors.filter((visitor) => visitor.browser === 'Chrome' || visitor.browser === 'Blink' ? true : false).length
-    let FirefoxUsers = filteredVisitors.filter((visitor) => visitor.browser === 'Firefox' ? true : false).length
-    let IEUsers = filteredVisitors.filter((visitor) => visitor.browser === 'IE' ? true : false).length
-    let EdgeUsers = filteredVisitors.filter((visitor) => visitor.browser === 'Edge' ? true : false).length
-    let SafariUSers = filteredVisitors.filter((visitor) => visitor.browser === 'Safari' ? true : false).length
-    let OtherUsers = (filteredVisitors.length - ChromeUsers - FirefoxUsers - IEUsers - EdgeUsers - SafariUSers)
+
+    const browserColors = []
+    const browsers = this.state.visitors.reduce((prev, visitor) => {
+      let foundIndex = -1
+      if (_.find(prev, (browserType, i) => {
+        foundIndex = i
+        return browserType.title === visitor.browser || (browserType.title === 'Chrome' && visitor.browser === 'Blink')})) {
+        prev[foundIndex].value++
+      } else {
+        prev.push({ title: visitor.browser, value: 1 })
+        if (visitor.browser === 'Chrome' || visitor.browser === 'Blink') { browserColors.push('#FDD20A') }
+        else if (visitor.browser === 'Firefox') { browserColors.push('#EA5B0C') }
+        else if (visitor.browser === 'IE' || visitor.browser === 'Edge') { browserColors.push('#2C74BE') }
+        else if (visitor.browser === 'Safari') { browserColors.push('#298FDD') }
+        else if (visitor.browser === 'Android Browser') { browserColors.push('#99CC00') }
+        else if (visitor.browser === 'Opera') { browserColors.push('#FE0002') }
+      }
+
+      return prev
+    },[])
+
+    const desktop = { title: 'Desktop', value: this.state.visitors.filter(visitor => visitor.device === 'desktop').length }
+    const tablet = { title: 'Tablet', value: this.state.visitors.filter(visitor => visitor.product === 'Ipad').length }
+    const mobile = { title: 'Mobile', value: this.state.visitors.filter(visitor => visitor.device === 'mobile').length - tablet.value }
+
+    const OSColors = []
+    const operatingSystems = this.state.visitors.reduce((prev, visitor) => {
+      let foundIndex = -1
+      if (_.find(prev, (os, i) => {
+        foundIndex = i
+        return os.title === visitor.os})) {
+        prev[foundIndex].value++
+      } else if (visitor.os) {
+        prev.push({ title: visitor.os, value: 1 })
+        if (visitor.os === 'Windows') { OSColors.push('#01BCF3') }
+        else if (visitor.os === 'OS X') { OSColors.push('#EDF4FE') }
+        else if (visitor.os === 'Linux') { OSColors.push('#020204') }
+        else if (visitor.os === 'Android') { OSColors.push('#99CC00') }
+      }
+      return prev
+    },[])
+
+    const RefererColors = []
+    const referers = this.state.visitors.reduce((prev, visitor) => {
+      let foundIndex = -1
+      if (_.find(prev, (referer, i) => {
+        foundIndex = i
+        return referer.title === visitor.referer})) {
+        prev[foundIndex].value++
+      } else if (visitor.referer && visitor.referer.indexOf('localhost') === -1) {
+        prev.push({ title: visitor.referer, value: 1 })
+        if (visitor.referer.indexOf('facebook') > -1) { RefererColors.push('#3B5998') }
+        else if (visitor.referer.indexOf('disqus') > -1) { RefererColors.push('#EEEEEE') }
+        else if (visitor.referer.indexOf('ycombinator') > -1) { OSColors.push('#99CC00') }
+      }
+      return prev
+    },[])
+    .map(referer => {
+      referer.title = referer.title.replace('https://', '').replace('http://', '').split('/')[0]
+
+      return referer
+    })
+
+
 
     return (
       <div className="admin-panel">
@@ -100,26 +185,25 @@ const AdminPanel = React.createClass({
         </div>
         <div className="DAU-container">
           <h2>Daily Visitors</h2>
-          <DAUGraph data={filteredVisitors}/>
+          <DAUGraph data={this.state.visitors}/>
         </div>
         <div className="browsers-container">
-          <h2>Browsers</h2>
+          <h2>Visitor statistics</h2>
           <div className="browsers">
-            <BrowserPieChart title="Chrome" max={filteredVisitors.length} value={ChromeUsers}/>
-            <BrowserPieChart title="Safari" max={filteredVisitors.length} value={SafariUSers}/>
-            <BrowserPieChart title="Firefox" max={filteredVisitors.length} value={FirefoxUsers}/>
-            <BrowserPieChart title="IE" max={filteredVisitors.length} value={IEUsers}/>
-            <BrowserPieChart title="Edge" max={filteredVisitors.length} value={EdgeUsers}/>
-            <BrowserPieChart title="Other" max={filteredVisitors.length} value={OtherUsers}/>
+            <PieChart title="Browsers" data={browsers} colors={browserColors}/>
+            <PieChart title="Devices" data={[desktop, tablet, mobile]} colors={['#27A5F9', '#FEFEFE', '#99CC00']}/>
+            <PieChart title="OS" data={operatingSystems} colors={OSColors}/>
+            <PieChart title="Referers" data={referers} colors={RefererColors}/>
           </div>
         </div>
         <div className="user-list-container">
           <h2>Users</h2>
           <Userlist/>
         </div>
+        <button onClick={this.cleanVisits}>Clean visits</button>
       </div>
     )
   }
-})
+}
 
 export default AdminPanel

@@ -28,6 +28,7 @@
   .browsers {
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-around;
     .browserChart {
       height: 250px;
       width: calc(100% / 6);

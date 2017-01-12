@@ -42,7 +42,7 @@ const AdminPanelHeader = React.createClass({
     //   }
     // })
 
-    return this.state.visitors.length ? (this.state.visitors.length - 80) : 0
+    return this.state.visitors.length ? (this.state.visitors.length) : 0
   },
   render() {
     let subscribers = this.state.users.filter((user) => {

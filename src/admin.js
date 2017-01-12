@@ -17,7 +17,6 @@ let admin = {
   uploadImage(file, model) {
     return new Promise((resolve, reject) => {
       let fileID = ''
-      // let KinveyFile
       this.postToKinveyFile(file)
         .then((KinveyFile) => {
           fileID = KinveyFile._id
@@ -74,7 +73,7 @@ let admin = {
     })
   },
   getFromKinveyCollection(article) {
-    console.log('article from egetFromKinvey: ', article);
+    console.log('article from FromKinvey: ', article);
     return $.ajax(`https://baas.kinvey.com/appdata/kid_rJRC6m9F/articles/${article._id}`)
   }
 }
