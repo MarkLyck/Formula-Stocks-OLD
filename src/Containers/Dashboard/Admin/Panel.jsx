@@ -170,13 +170,10 @@ class AdminPanel extends React.Component {
       let foundIndex = -1
       if (_.find(prev, (referer, i) => {
         foundIndex = i
-        return referer.title === visitor.referer})) {
+        return referer.title === visitor.referer.replace('https://', '').replace('http://', '').replace('www.', '').split('/')[0]})) {
         prev[foundIndex].value++
       } else if (visitor.referer && visitor.referer.indexOf('localhost') === -1) {
-        prev.push({ title: visitor.referer, value: 1 })
-        if (visitor.referer.indexOf('facebook') > -1) { RefererColors.push('#3B5998') }
-        else if (visitor.referer.indexOf('disqus') > -1) { RefererColors.push('#EEEEEE') }
-        else if (visitor.referer.indexOf('ycombinator') > -1) { OSColors.push('#99CC00') }
+        prev.push({ title: visitor.referer.replace('https://', '').replace('http://', '').replace('www.', '').split('/')[0], value: 1 })
       }
       return prev
     },[])
