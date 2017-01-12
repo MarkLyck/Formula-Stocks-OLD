@@ -43,7 +43,7 @@ const VisitorList = ({ visitors }) => {
     return (
       <tbody key={i} className="visitor">
         <tr>
-          <td className="location-info">{visitor.location.country_name} {visitor.location.region_name ? `, ${visitor.location.region_name}` : ''}</td>
+          <td className="location-info">{visitor.location.country_name}{visitor.location.region_code ? `, ${visitor.location.region_code}` : ''}</td>
           <td>{visitor.referer.replace('https://', '').replace('http://', '').split('/')[0]}</td>
           <td>{moment(visitor._kmd.lmt).fromNow()}</td>
           <td className="device-info">
