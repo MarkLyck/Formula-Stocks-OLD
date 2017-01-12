@@ -17,12 +17,10 @@ import Android from './icons/Android_Logo.png'
 
 const VisitorList = ({ visitors }) => {
 
-  console.log('visitorlist: ', visitors)
-
   const fixedVisitors = visitors.map((visitor, i) => {
 
     let browserIcon
-    if (visitor.browser === 'Chrome' || visitor.browser === 'Blink') { browserIcon = Chrome}
+    if (visitor.browser.indexOf('Chrome') > -1 || visitor.browser === 'Blink') { browserIcon = Chrome}
     else if (visitor.browser === 'Firefox') { browserIcon = Firefox}
     else if (visitor.browser === 'Safari') { browserIcon = Safari}
     else if (visitor.browser === 'Edge') { browserIcon = Edge}
