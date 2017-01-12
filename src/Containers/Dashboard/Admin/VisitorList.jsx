@@ -12,6 +12,7 @@ import Opera from './icons/Opera_Browser_Logo.png'
 
 import Windows from './icons/Windows_Logo.png'
 import OSX from './icons/Macos_Logo.png'
+import iOS from './icons/iOS_Logo.png'
 import Android from './icons/Android_Logo.png'
 
 const VisitorList = ({ visitors }) => {
@@ -32,6 +33,7 @@ const VisitorList = ({ visitors }) => {
     let osIcon
     if (visitor.os === 'Windows') { osIcon = Windows }
     else if (visitor.os === 'OS X') { osIcon = OSX }
+    else if (visitor.os === 'iOS') { osIcon = iOS }
     else if (visitor.os === 'Android') { osIcon = Android }
 
     let device = 'fa-desktop'
@@ -41,7 +43,7 @@ const VisitorList = ({ visitors }) => {
     return (
       <tbody key={i} className="visitor">
         <tr>
-          <td>{visitor.location.country_name}</td>
+          <td className="location-info">{visitor.location.country_name} {visitor.location.region_name ? `, ${visitor.location.region_name}` : ''}</td>
           <td>{visitor.referer.replace('https://', '').replace('http://', '').split('/')[0]}</td>
           <td>{moment(visitor._kmd.lmt).fromNow()}</td>
           <td className="device-info">
@@ -60,7 +62,7 @@ const VisitorList = ({ visitors }) => {
         <tr>
           <th>Location</th>
           <th>Referer</th>
-          <th>Last seen</th>
+          <th>Visited</th>
           <th>Device</th>
         </tr>
       </thead>

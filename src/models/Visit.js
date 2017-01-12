@@ -25,16 +25,7 @@ const Visit = Backbone.Model.extend({
     }
     $.ajax('https://freegeoip.net/json/')
     .then((r) => {
-      const newLocation = {
-        city: r.city,
-        country_code: r.country_code,
-        country_name: r.country_name,
-        ip: r.ip,
-        latitude: r.latitude,
-        longitude: r.longitude,
-        zip_code: r.zip_code
-      }
-      this.set('location', newLocation)
+      this.set('location', r)
       this.set('ip', r.ip)
       this.set('os', platform.os.family)
       this.set('product', platform.product)
@@ -61,7 +52,7 @@ const Visit = Backbone.Model.extend({
           type: 'PUT',
           success: () => {
             if (store.session.get('username') !== 'anom') {
-              store.session.set('location', newLocation)
+              store.session.set('location', r)
               store.session.set('lastSeen', new Date())
               store.session.set('device', store.session.deviceType())
               store.session.set('visits', store.session.set('visits') + 1)
