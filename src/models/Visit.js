@@ -8,7 +8,7 @@ const Visit = Backbone.Model.extend({
   defaults: {
     device: '',
     os: '',
-    prodcut: '',
+    product: '',
     browser: '',
     ip: '',
     location: {},
@@ -16,9 +16,11 @@ const Visit = Backbone.Model.extend({
     referer: ''
   },
   getData(type) {
-    if (store.session.get('type') === 5)
+    if (store.session.get('type') === 5) {
       return null
-    if (platform.os.family === 'Linux' && document.referrer.indexOf('facebook') > -1) {
+    } else if (platform.os.family === 'Linux' && document.referrer.indexOf('facebook') > -1) {
+      return null
+    } else if (platform.os.family.indexOf('Server') > -1) {
       return null
     }
     $.ajax('https://freegeoip.net/json/')

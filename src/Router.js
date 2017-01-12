@@ -16,6 +16,7 @@ import MyAccount from './Containers/Dashboard/MyAccount/MyAccount'
 
 import AdminPanel from './Containers/Dashboard/Admin/Panel'
 import AdminAPI from './Containers/Dashboard/Admin/API'
+import Users from './Containers/Dashboard/Admin/Users'
 import NewArticle from './Containers/Dashboard/Admin/NewArticle'
 import NotFound from './Containers/Global/NotFound/NotFound'
 
@@ -41,6 +42,7 @@ const router = (
       </Route>
       <Route path="account" component={MyAccount}/>
       <Route path="admin" component={AdminPanel}/>
+      <Route path="admin/users" component={Users}/>
       <Route path="admin/api" component={AdminAPI}/>
       <Route path="admin/newarticle" component={NewArticle}/>
     </Route>

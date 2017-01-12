@@ -141,7 +141,7 @@ class SideBar extends React.Component {
 
     let admin
     if (store.session.get('type') === 5) {
-      let adminPanelClass, adminAPIClass, newArticleClass;
+      let adminPanelClass, adminAPIClass, newArticleClass, adminUsersClass
 
       if (this.state.selected === 'admin') {
         adminClass = 'admin side-bar-link selected'
@@ -149,6 +149,7 @@ class SideBar extends React.Component {
         if (this.props.location.indexOf('admin') !== -1) {
           if (this.props.location.indexOf('api') !== -1) {adminAPIClass = 'selected'}
           else if (this.props.location === '/dashboard/admin') {adminPanelClass = 'selected'}
+          else if (this.props.location === '/dashboard/admin/users') {adminUsersClass = 'selected'}
           else if (this.props.location === '/dashboard/admin/newarticle') {newArticleClass = 'selected'}
         }
 
@@ -156,6 +157,7 @@ class SideBar extends React.Component {
           adminDropdown = (
             <div className="dropdown admin-dd">
               <a className={'dropdown-link ' + adminPanelClass} onClick={this.gotoPath.bind(null, '/dashboard/admin')}>Panel</a>
+              <a className={'dropdown-link ' + adminUsersClass}  onClick={this.gotoPath.bind(null, '/dashboard/admin/users')}>Users</a>
               <a className={'dropdown-link ' + adminAPIClass}  onClick={this.gotoPath.bind(null, '/dashboard/admin/api')}>JSON</a>
               <a className={'dropdown-link ' + newArticleClass}  onClick={this.gotoPath.bind(null, '/dashboard/admin/newarticle')}>New Article</a>
             </div>

@@ -7,6 +7,7 @@ import $ from 'jquery'
 import admin from '../../../admin'
 import AdminPanelHeader from './Headers'
 import Userlist from './UserList'
+import VisitorList from './VisitorList'
 
 import DAUGraph from './DAUGraph'
 import PieChart from '../../Global/Components/PieChart/PieChart'
@@ -56,6 +57,17 @@ class AdminPanel extends React.Component {
         } else if (visit.get('location').city = lastCity) {
           this.destroyVisit(visit)
         } else if (visit.get('os') === 'Linux') {
+          this.destroyVisit(visit)
+        } else if (visit.get('location').country_name === 'Czechia') {
+          this.destroyVisit(visit)
+        } else if (visit.get('referer').indexOf('pwwysydh.com') > -1) {
+          this.destroyVisit(visit)
+        } else if (visit.get('os').indexOf('Server') > -1) {
+          this.destroyVisit(visit)
+        } else if (visit.get('product') === null
+          && visit.get('browser') === 'Firefox'
+          && visit.get('location').country_name === "United States"
+          && visit.get('os') === 'Windows') {
           this.destroyVisit(visit)
         }  else {
           ips = ips.concat(ip)
@@ -197,8 +209,8 @@ class AdminPanel extends React.Component {
           </div>
         </div>
         <div className="user-list-container">
-          <h2>Users</h2>
-          <Userlist/>
+          <h2>Latest visitors</h2>
+          <VisitorList visitors={this.state.visitors.slice(1).slice(-30).reverse()}/>
         </div>
         <button onClick={this.cleanVisits}>Clean visits</button>
       </div>
