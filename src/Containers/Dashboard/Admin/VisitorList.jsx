@@ -23,7 +23,7 @@ const VisitorList = ({ visitors }) => {
     if (visitor.browser.indexOf('Chrome') > -1 || visitor.browser === 'Blink') { browserIcon = Chrome}
     else if (visitor.browser === 'Firefox') { browserIcon = Firefox}
     else if (visitor.browser === 'Safari') { browserIcon = Safari}
-    else if (visitor.browser === 'Edge') { browserIcon = Edge}
+    else if (visitor.browser === 'Microsoft Edge') { browserIcon = Edge}
     else if (visitor.browser === 'IE') { browserIcon = IE}
     else if (visitor.browser === 'Android Browser') { browserIcon = AndroidBrowser}
     else if (visitor.browser === 'Opera') { browserIcon = Opera}

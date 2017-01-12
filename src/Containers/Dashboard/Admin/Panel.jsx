@@ -134,7 +134,7 @@ class AdminPanel extends React.Component {
         prev.push({ title: visitor.browser, value: 1 })
         if (visitor.browser === 'Chrome' || visitor.browser === 'Blink') { browserColors.push('#FDD20A') }
         else if (visitor.browser === 'Firefox') { browserColors.push('#EA5B0C') }
-        else if (visitor.browser === 'IE' || visitor.browser === 'Edge') { browserColors.push('#2C74BE') }
+        else if (visitor.browser === 'IE' || visitor.browser === 'Microsoft Edge') { browserColors.push('#2C74BE') }
         else if (visitor.browser === 'Safari') { browserColors.push('#298FDD') }
         else if (visitor.browser === 'Android Browser') { browserColors.push('#99CC00') }
         else if (visitor.browser === 'Opera') { browserColors.push('#FE0002') }
