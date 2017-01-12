@@ -1,5 +1,6 @@
 import React from 'react'
-import store from '../../../../store'
+// import store from '../../../../store'
+import platform from 'platform'
 import _ from 'underscore'
 import '../../../../libraries/amcharts3-react';
 import './lineGraph.css'
@@ -54,12 +55,18 @@ export default function LineGraph({ data, graphs, chartTheme, unit, unitPosition
     }
   }
 
-  if (store.session.browserType() === 'Safari') {
+  if (platform.name === 'Safari') {
     config.dataDateFormat = "YYYY-M-D"
     config.categoryAxis = {
       equalSpacing: true,
     }
   }
+  // if (store.session.browserType() === 'Safari') {
+  //   config.dataDateFormat = "YYYY-M-D"
+  //   config.categoryAxis = {
+  //     equalSpacing: true,
+  //   }
+  // }
   if (data.length && graphs.length) {
     return React.createElement(AmCharts.React, config)
   } else {

@@ -1,24 +1,41 @@
 import Backbone from 'backbone'
 import $ from 'jquery'
-
+import platform from 'platform'
 import store from '../store'
 
 const Visit = Backbone.Model.extend({
   url: `https://baas.kinvey.com/appdata/kid_rJRC6m9F/visits`,
   defaults: {
     device: '',
+    os: platform.os,
+    ip: '',
     location: {},
-    browser: '',
+    browser: platform.name,
     type: -1,
+    referer: document.referrer
   },
   getData(type) {
     if (store.session.get('type') === 5)
       return null
     $.ajax('https://freegeoip.net/json/')
     .then((r) => {
-      this.set('location', r)
-      this.set('browser', store.session.browserType())
+      const newLocation = {
+        city: r.city,
+        country_code: r.country_code,
+        country_name: r.country_name,
+        ip: r.ip,
+        latitude: r.latitude,
+        longitude: r.longitude,
+        zip_code: r.zip_code
+      }
+      this.set('location', newLocation)
+      this.set('ip', r.ip)
+      this.set('device', store.session.deviceType())
+      if (platform.os.family) {
+        this.set('os', platform.os.family)
+      }
       this.set('type', type || -1)
+      console.log(this.toJSON())
       store.session.set('location', r)
       if (!localStorage.getItem('visitorID')) {
         this.save(null, {
@@ -36,9 +53,12 @@ const Visit = Backbone.Model.extend({
         this.save(null, {
           url: `https://baas.kinvey.com/appdata/kid_rJRC6m9F/visits/${localStorage.visitorID}`,
           type: 'PUT',
-          success: (r) => {
+          success: () => {
             if (store.session.get('username') !== 'anom') {
+              store.session.set('location', newLocation)
               store.session.set('lastSeen', new Date())
+              store.session.set('device', store.session.deviceType())
+              store.session.set('visits', store.session.set('visits') + 1)
               store.session.updateUser()
             }
           },

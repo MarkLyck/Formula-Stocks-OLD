@@ -1,7 +1,7 @@
 import React from 'react'
 import $ from 'jquery'
+import platform from 'platform'
 import '../../../libraries/typed.js'
-import store from '../../../store'
 import './hero.css'
 import Mockup from './Portfolio_Mockup.png'
 
@@ -14,7 +14,7 @@ class Hero extends React.Component {
     this.count = this.count.bind(this)
   }
   componentDidMount() {
-    if (store.session.browserType() === 'Chrome' || store.session.browserType() === 'Blink') {
+    if (platform.name === 'Chrome' || platform.name === 'Blink') {
       $('.hero').on('mousemove', this.mousemove)
     }
     this.count()
