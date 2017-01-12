@@ -95,7 +95,7 @@ class DAUGraph extends React.Component {
       }]
 
     return (<div id="portfolio-item-chart">
-              <LineGraph data={chartData} graphs={graphs}/>
+              <LineGraph data={chartData.slice(1).slice(-30)} graphs={graphs}/>
             </div>)
   }
 }

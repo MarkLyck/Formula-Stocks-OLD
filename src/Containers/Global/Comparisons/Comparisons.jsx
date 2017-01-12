@@ -81,13 +81,13 @@ class Comparisons extends React.Component {
         </CollapseSegment>
         <CollapseSegment title="Active management">
           <p>
-            There is a large number of active management approaches. There may be a few
-            similarities between using Formula Stocks and investing with an active manager,
-            but with Formula Stocks you trade in
-            your own account. We conduct active management in our model portfolios, which improves
-            the performance of a portfolio of well-selected stocks by up to 6% higher performance
-            compared to passive management. A personal subscription may be a way to save money on
-            costs.
+            There is a large number of active management approaches, each with its own
+            characteristics. There may be a few similarities between using Formula Stocks and
+            investing with an active manager, but with Formula Stocks you trade in your own
+            account, and keep your funds close to home. This diversifies counterparty risk.
+            We conduct active management in our model portfolios, which improves the
+            performance of a portfolio of well-selected stocks by up to 6% compared to passive
+            management. A personal subscription may be a way to save on fees.
           </p>
         </CollapseSegment>
       </section>

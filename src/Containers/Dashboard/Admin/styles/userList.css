@@ -23,15 +23,27 @@
       }
     }
     tbody {
-      &:hover {
-        // cursor: pointer;
-      }
       tr {
         height: 75px;
         border-bottom: 1px solid $db-border-color;
         td {
           font-weight: 400;
           padding-left: 20px;
+        }
+      }
+      .device-info {
+        .icon {
+          height: 24px;
+          width: auto;
+          margin-right: 8px;
+        }
+        i {
+          font-size: 1.3rem;
+          color: #494949;
+        }
+        .fa-mobile {
+          font-size: 2rem;
+          margin-left: 4px;
         }
       }
     }
