@@ -84,7 +84,7 @@ const Product = ({ plan, billed, path }) => {
       </li>
       <li>
         <p className="light-text-color">Sortino ratio</p>
-        <Info title="Sortino ratio" explanation={<p>his version of the ratio is calculated based upon yearly returns. It measures the performance and risk of an investment strategy relative to the downward deviation. Higher is better.</p>}/>
+        <Info title="Sortino ratio" explanation={<p>This version of the ratio is calculated based upon yearly returns. It measures the performance and risk of an investment strategy relative to the downward deviation. Higher is better.</p>}/>
         <p className="right-align">{plan.info.sortinoRatio.toFixed(3)}</p>
       </li>
       <li>
