@@ -44,7 +44,7 @@ const VisitorList = ({ visitors }) => {
     else if (visitor.os === 'OS X') { osIcon = OSX }
     else if (visitor.os === 'iOS') { osIcon = iOS }
     else if (visitor.os === 'Android') { osIcon = Android }
-    else if (visitor.os === 'Linux') { osIcon = Linux }
+    else if (visitor.os === 'Linux' || visitor.os === 'Ubuntu') { osIcon = Linux }
 
     let device = 'fa-desktop'
     if (visitor.device === 'mobile') { device = 'fa-mobile' }
