@@ -39,7 +39,7 @@ class Footer extends React.Component {
             Formula Stocks does not manage client funds, but acts solely as an information
             supplier. Formula Stocks does not purport to tell which securities individual
             customers should buy or sell for themselves. Formula Stocks’ purchase and sales
-            recommendations are not ssolicitations to buy or sell a securiry, but rather information you
+            recommendations are not solicitations to buy or sell a securiry, but rather information you
             can use as a starting point for doing additional independent research in order to
             allow you to form your own opinion on investments and to make your own informed
             decisions.<br/><br/>

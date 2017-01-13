@@ -1,5 +1,6 @@
 import React from 'react'
 import moment from 'moment'
+import _ from 'underscore'
 import './styles/userList.css'
 
 import Chrome from './icons/Chrome_Logo.svg'
@@ -16,6 +17,8 @@ import iOS from './icons/iOS_Logo.png'
 import Android from './icons/Android_Logo.png'
 
 const VisitorList = ({ visitors }) => {
+
+  visitors = _.sortBy(visitors, (visitor) => visitor._kmd.lmt).reverse()
 
   const fixedVisitors = visitors.map((visitor, i) => {
 
