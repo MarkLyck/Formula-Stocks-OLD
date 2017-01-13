@@ -31,9 +31,12 @@
           padding-left: 20px;
         }
       }
+      .flag {
+        margin-right: 8px;
+      }
       .location-info {
-        max-width: 200px;
-        width: 200px;
+        max-width: 240px;
+        width: 240px;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -51,6 +54,9 @@
         .fa-mobile {
           font-size: 2rem;
           margin-left: 4px;
+        }
+        .fa-desktop {
+          transform: translateY(-3px);
         }
       }
     }

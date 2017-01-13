@@ -18,6 +18,11 @@ import iOS from './icons/iOS_Logo.png'
 import Android from './icons/Android_Logo.png'
 import Linux from './icons/Linux_Logo.png'
 
+function getFlag(country_code) {
+  const flag = require(`./icons/flags/${country_code.toLowerCase()}.png`)
+  return <img src={flag} className="flag" alt="flag"/>
+}
+
 const VisitorList = ({ visitors }) => {
 
   visitors = _.sortBy(visitors, (visitor) => visitor._kmd.lmt).reverse()
@@ -48,7 +53,7 @@ const VisitorList = ({ visitors }) => {
     return (
       <tbody key={i} className="visitor">
         <tr>
-          <td className="location-info">{visitor.location.country_name}{visitor.location.region_code ? `, ${visitor.location.region_code}` : ''}</td>
+          <td className="location-info">{getFlag(visitor.location.country_code)}{visitor.location.country_name}{visitor.location.region_code ? `, ${visitor.location.region_code}` : ''}</td>
           <td>{visitor.referer.replace('https://', '').replace('http://', '').replace('www.', '').split('/')[0]}</td>
           <td>{moment(visitor._kmd.lmt).fromNow()}</td>
           <td className="device-info">
