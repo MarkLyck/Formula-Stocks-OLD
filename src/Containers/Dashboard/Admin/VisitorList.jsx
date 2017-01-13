@@ -10,11 +10,13 @@ import Firefox from './icons/Firefox_Browser_Logo.png'
 import Safari from './icons/Safari_Browser_Logo.svg'
 import IE from './icons/IE_Browser_Logo.png'
 import Opera from './icons/Opera_Browser_Logo.png'
+import PhantomJS from './icons/PhantomJS_Browser_Logo.png'
 
 import Windows from './icons/Windows_Logo.png'
 import OSX from './icons/Macos_Logo.png'
 import iOS from './icons/iOS_Logo.png'
 import Android from './icons/Android_Logo.png'
+import Linux from './icons/Linux_Logo.png'
 
 const VisitorList = ({ visitors }) => {
 
@@ -24,18 +26,20 @@ const VisitorList = ({ visitors }) => {
 
     let browserIcon
     if (visitor.browser.indexOf('Chrome') > -1 || visitor.browser === 'Blink') { browserIcon = Chrome}
-    else if (visitor.browser === 'Firefox') { browserIcon = Firefox}
+    else if (visitor.browser.indexOf('Firefox') > -1) { browserIcon = Firefox}
     else if (visitor.browser === 'Safari') { browserIcon = Safari}
     else if (visitor.browser === 'Microsoft Edge') { browserIcon = Edge}
     else if (visitor.browser === 'IE') { browserIcon = IE}
     else if (visitor.browser === 'Android Browser') { browserIcon = AndroidBrowser}
     else if (visitor.browser === 'Opera') { browserIcon = Opera}
+    else if (visitor.browser === 'PhantomJS') { browserIcon = PhantomJS}
 
     let osIcon
     if (visitor.os === 'Windows') { osIcon = Windows }
     else if (visitor.os === 'OS X') { osIcon = OSX }
     else if (visitor.os === 'iOS') { osIcon = iOS }
     else if (visitor.os === 'Android') { osIcon = Android }
+    else if (visitor.os === 'Linux') { osIcon = Linux }
 
     let device = 'fa-desktop'
     if (visitor.device === 'mobile') { device = 'fa-mobile' }
