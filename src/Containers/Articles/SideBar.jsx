@@ -1,4 +1,6 @@
 import React from 'react'
+import _ from 'underscore'
+import { browserHistory } from 'react-router'
 var markdown = require( "markdown" ).markdown
 import ReactHtmlParser from 'react-html-parser'
 import { Link } from 'react-router'
@@ -9,25 +11,32 @@ class ArticleSideBar extends React.Component {
     super(props)
 
     this.renderArticles = this.renderArticles.bind(this)
-    this.state = { open: true }
+    this.state = { open: true, article: this.props.article }
+  }
+
+  componentWillReceiveProps(newProps) {
+    this.setState({ article: newProps.article })
   }
 
   renderArticles() {
-    return this.props.articles.map((article, i) => {
-
-
-      const preview = article.body.substring(0,100)
+    const articles = _.sortBy(this.props.articles, (art) => art._kmd.ect).reverse()
+    return articles.map((article, i) => {
+      const preview = article.body.substring(0,100).split('![')[0]
 
       let html_content = markdown.toHTML( preview )
       html_content = html_content.replaceAll('&amp;', '&').replaceAll('&quot;', '"')
       const previewHTML = ReactHtmlParser(html_content)
 
       return (
-        <li className="article-item" key={i}>
+        <li className={`article-item ${article.title === this.state.article.title ? 'selected' : ''}`} key={i} onClick={this.gotoArticle.bind(this, article.title)}>
           <h3 className="article-item-title">{article.title}</h3>
           <div className="article-preview">{previewHTML}</div>
         </li>)
     })
+  }
+
+  gotoArticle(title) {
+    browserHistory.push(`/articles/${title}`)
   }
 
   render() {

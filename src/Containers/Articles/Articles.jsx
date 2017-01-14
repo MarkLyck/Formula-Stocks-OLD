@@ -1,5 +1,6 @@
 import React from 'react'
 import { browserHistory } from 'react-router'
+import _ from 'underscore'
 import store from '../../store'
 import flaskLogo from './icons/Flask_Logo.svg'
 
@@ -17,6 +18,7 @@ class Articles extends React.Component {
   }
 
   componentDidMount() {
+    window.Intercom("shutdown")
     store.articles.data.fetch()
     store.articles.data.on('update', this.updateState)
   }
@@ -28,6 +30,8 @@ class Articles extends React.Component {
   updateState() {
     if (!this.state.articles.length) {
       this.setState({ fetched: true, articles: store.articles.data.toJSON() })
+    } else {
+      this.setState({ fetched: true })
     }
   }
 
@@ -36,13 +40,19 @@ class Articles extends React.Component {
   }
 
   render() {
+    let currentArticle = this.state.articles.reverse()[0]
+
+    if (this.props.routeParams.splat.length) {
+      currentArticle = _.find(this.state.articles, (art) => art.title.toLowerCase() === this.props.routeParams.splat.split('/')[1].toLowerCase())
+    }
+
     return (
       <div className="articles">
         <img className="flask-logo" src={flaskLogo} alt="Formula Stocks" onClick={this.goHome}/>
         <div className="content">
-          <Article article={this.state.articles[0]} style={this.state.sidebar ? { width: 'calc(100% - 320px)' } : {}}/>
+          <Article article={currentArticle} style={ this.state.sidebar ? { width: 'calc(100% - 320px)' } : {} }/>
         </div>
-        <SideBar articles={this.state.articles}/>
+        <SideBar articles={this.state.articles} article={currentArticle}/>
       </div>
     )
   }

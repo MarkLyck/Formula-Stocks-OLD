@@ -50,6 +50,8 @@
     }
     .body {
       font-size: 1.2rem;
+      width: 100%;
+      max-width: 800px;
       p {
         margin-bottom: 24px;
       }
@@ -58,6 +60,11 @@
       }
       h3 {
         font-weight: 600;
+      }
+      img {
+        height: 400px;
+        width: auto;
+        // margin: 0 auto;
       }
     }
   }

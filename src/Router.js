@@ -48,7 +48,7 @@ const router = (
       <Route path="admin/api" component={AdminAPI}/>
       <Route path="admin/newarticle" component={NewArticle}/>
     </Route>
-    <Route path="/articles" component={Articles}/>
+    <Route path="/articles*" component={Articles}/>
     <Route path="/faq" component={FAQ}/>
     <Route path="/*" component={NotFound}/>
   </Router>

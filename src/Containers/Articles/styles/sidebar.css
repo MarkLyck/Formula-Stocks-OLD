@@ -3,7 +3,6 @@
   width: 100%;
   max-width: 320px;
   padding: 24px 24px 24px 48px;
-  // background: $side-bar-background;
   background: #161F26;
   position: fixed;
   top: 0;
@@ -35,10 +34,12 @@
       p {
         color: #505C65;
         margin: 0;
+        font-size: 0.8rem;
       }
       .article-item-title {
         display: block;
         margin-bottom: 8px;
+        font-size: 1rem;
       }
       &:hover {
         cursor: pointer;
@@ -57,6 +58,11 @@
         background: #333c42;
         border-radius: 50%;
         border: 2px solid #161F26;
+      }
+    }
+    .selected {
+      &::before {
+        background: $primary-color;
       }
     }
   }
