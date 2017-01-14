@@ -31,7 +31,7 @@
     align-items: center;
     p, h1 {
       width: 100%;
-      max-width: 480px;
+      max-width: 800px;
       margin: 0;
     }
     .title {
@@ -46,6 +46,9 @@
     }
     .body {
       font-size: 1.2rem;
+      p {
+        margin-bottom: 16px;
+      }
     }
   }
 }

@@ -31,6 +31,8 @@ class Articles extends React.Component {
   }
 
   render() {
+
+
     console.log(this.state.articles)
     return (
       <div className="articles">

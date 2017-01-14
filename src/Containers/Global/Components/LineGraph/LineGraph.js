@@ -61,12 +61,7 @@ export default function LineGraph({ data, graphs, chartTheme, unit, unitPosition
       equalSpacing: true,
     }
   }
-  // if (store.session.browserType() === 'Safari') {
-  //   config.dataDateFormat = "YYYY-M-D"
-  //   config.categoryAxis = {
-  //     equalSpacing: true,
-  //   }
-  // }
+
   if (data.length && graphs.length) {
     return React.createElement(AmCharts.React, config)
   } else {
