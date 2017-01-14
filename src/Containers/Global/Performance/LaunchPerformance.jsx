@@ -56,8 +56,6 @@ class Performance extends React.Component {
 
   createChartData(basicData, premiumData, businessData, fundData, marketData) {
 
-
-
     // basicData = basicData.slice(-13)
     // premiumData = premiumData.slice(-13)
     // businessData = businessData.slice(-13)

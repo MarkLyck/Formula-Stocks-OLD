@@ -1,6 +1,8 @@
 @import "../../variables.css";
 .articles {
   position: relative;
+  display: flex;
+  font-family: serif;
   .flask-logo {
     position: absolute;
     top: 16px;
@@ -9,6 +11,9 @@
     width: auto;
     box-shadow: 0 4px 4px rgba(0,0,0, 0.2);
     border-radius: 8px;
+    &:hover {
+      cursor: pointer;
+    }
   }
   .content {
     width: 100%;
@@ -39,7 +44,6 @@
       font-weight: 600;
     }
     .info {
-      // font-style: italic;
       font-size: 1rem;
       color: $primary-color;
       margin-bottom: 24px;
@@ -47,7 +51,13 @@
     .body {
       font-size: 1.2rem;
       p {
-        margin-bottom: 16px;
+        margin-bottom: 24px;
+      }
+      h2 {
+        font-weight: bold;
+      }
+      h3 {
+        font-weight: 600;
       }
     }
   }

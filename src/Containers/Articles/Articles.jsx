@@ -1,4 +1,5 @@
 import React from 'react'
+import { browserHistory } from 'react-router'
 import store from '../../store'
 import flaskLogo from './icons/Flask_Logo.svg'
 
@@ -12,7 +13,7 @@ class Articles extends React.Component {
 
     this.updateState = this.updateState.bind(this)
 
-    this.state = { articles: [], fetched: false }
+    this.state = { articles: [], fetched: false, sidebar: true }
   }
 
   componentDidMount() {
@@ -30,15 +31,16 @@ class Articles extends React.Component {
     }
   }
 
+  goHome() {
+    browserHistory.push('/')
+  }
+
   render() {
-
-
-    console.log(this.state.articles)
     return (
       <div className="articles">
-        <img className="flask-logo" src={flaskLogo} alt="Formula Stocks"/>
+        <img className="flask-logo" src={flaskLogo} alt="Formula Stocks" onClick={this.goHome}/>
         <div className="content">
-          <Article article={this.state.articles[0]}/>
+          <Article article={this.state.articles[0]} style={this.state.sidebar ? { width: 'calc(100% - 320px)' } : {}}/>
         </div>
         <SideBar articles={this.state.articles}/>
       </div>

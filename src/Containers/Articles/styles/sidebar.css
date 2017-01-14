@@ -1,0 +1,82 @@
+@import "../../variables.css";
+.article-sidebar {
+  width: 100%;
+  max-width: 320px;
+  padding: 24px 24px 24px 48px;
+  // background: $side-bar-background;
+  background: #161F26;
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  .line-through {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 24px;
+    width: 2px;
+    background: #333c42;
+  }
+  .latest {
+    margin-bottom: 32px;
+    font-weight: bold;
+    color: $primary-color;
+    font-family: 'proxima-nova';
+  }
+  h1,h2,h3,p {
+    color: #fff;
+  }
+  .article-list {
+    .article-item {
+      position: relative;
+      h1,h2,h3,h4,h5,h6 {
+        display: none;
+      }
+      p {
+        color: #505C65;
+        margin: 0;
+      }
+      .article-item-title {
+        display: block;
+        margin-bottom: 8px;
+      }
+      &:hover {
+        cursor: pointer;
+        &::before { background: $primary-color; }
+        p {
+          color: #748088;
+        }
+      }
+      &::before {
+        content: '';
+        position: absolute;
+        left: -29px;
+        top: 4px;
+        width: 8px;
+        height: 8px;
+        background: #333c42;
+        border-radius: 50%;
+        border: 2px solid #161F26;
+      }
+    }
+  }
+  .homepage-link {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 200px;
+    bottom: 24px;
+    background: #fff;
+    color: $primary-color;
+    padding: 16px 24px;
+    border-radius: 32px;
+    display: flex;
+    justify-content: center;
+    font-family: 'proxima-nova';
+    &:hover {
+      background: $primary-color;
+      color: #fff;
+    }
+  }
+}

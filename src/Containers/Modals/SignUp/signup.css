@@ -25,8 +25,9 @@
       margin: 0;
       color: $light-text-color;
       font-size: 12px;
-      a {
+      button {
         color: #eeeeee;
+        font-size: 12px;
         text-decoration: underline;
       }
     }
