@@ -1,17 +1,39 @@
-.md-editor {
-  height: calc(100% - 58px);
-  > div {
-    height: 100%;
-    .md-editor-header {
-      height: 51px;
-      .md-editor-menu {
-        div {
-          height: 30px !important;
-        }
+.new-article {
+  .header-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 400px;
+    background-size: cover;
+    background-position: center center;
+    &:hover {
+      cursor: pointer;
+    }
+    i {
+      font-size: 4rem;
+    }
+  }
+  .title {
+    width: 100%;
+    font-size: 2rem;
+    font-weight: bold;
+    padding: 8px 16px 8px 24px;
+    border: none;
+
+  }
+  .md-editor-header {
+    height: 51px;
+    .md-editor-menu {
+      div {
+        height: 30px !important;
       }
     }
-    textarea {
-      height: 100% !important;
-    }
+  }
+  textarea {
+    height: 100% !important;
+    min-height: 800px;
+    padding-left: 24px !important;
+    font-size: 1.2rem;
   }
 }

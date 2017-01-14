@@ -11,11 +11,6 @@ if (localStorage.getItem('authtoken')) {
   store.session.retrieve()
 }
 
-store.plans.fetch({
-  success: (r) => {},
-  error: (e) => {
-    console.error('error: ', e);
-  }
-})
+store.plans.fetch()
 
 ReactDOM.render(Router, document.getElementById('container'))

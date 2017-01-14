@@ -1,6 +1,6 @@
 import React from 'react'
 import store from '../../../store.js'
-import { Link, browserHistory } from 'react-router'
+import { browserHistory } from 'react-router'
 
 import ChoosePlan from './ChoosePlan.jsx'
 import Billing from './Billing.jsx'
@@ -59,7 +59,7 @@ class SignUp extends React.Component {
   }
 
   closeModal(e) {
-    if (e.target.className === 'prof-modal-container') {
+    if ((e.target.className === 'prof-modal-container' || e.target.className.indexOf('close-btn') > -1) && !store.isSubmitting) {
       if (this.props.location.pathname === '/pro/signup') {
         browserHistory.push('/pro')
       } else {
@@ -85,9 +85,9 @@ class SignUp extends React.Component {
 
   renderCloseBtn() {
     if (this.props.location.pathname === '/pro/signup') {
-      return <Link className="close-btn" to="/pro"><i className="material-icons">close</i></Link>
+      return <button className="close-btn" onClick={this.closeModal}><i className="material-icons close-btn">close</i></button>
     } else {
-      return <Link className="close-btn" to="/"><i className="material-icons">close</i></Link>
+      return <button className="close-btn" onClick={this.closeModal}><i className="material-icons close-btn">close</i></button>
     }
   }
 

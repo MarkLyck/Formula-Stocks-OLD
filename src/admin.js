@@ -24,7 +24,6 @@ let admin = {
             .then(this.putToKinveyCollection.bind(this, model, fileID))
             .then(this.getFromKinveyCollection.bind(this))
             .then((article) => {
-              console.log('ARTICLE: ', article);
               resolve(article)
             })
         })
@@ -60,10 +59,10 @@ let admin = {
     let newModel = model.toJSON()
     this.articleID = newModel._id
 
-    newModel.images.push({
+    newModel.image = {
       _type: 'KinveyFile',
       _id: fileID
-    })
+    }
 
     return $.ajax({
       url: `https://baas.kinvey.com/appdata/kid_rJRC6m9F/articles/${newModel._id}`,
@@ -73,7 +72,6 @@ let admin = {
     })
   },
   getFromKinveyCollection(article) {
-    console.log('article from FromKinvey: ', article);
     return $.ajax(`https://baas.kinvey.com/appdata/kid_rJRC6m9F/articles/${article._id}`)
   }
 }

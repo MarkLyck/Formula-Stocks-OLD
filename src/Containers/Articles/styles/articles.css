@@ -1,0 +1,51 @@
+@import "../../variables.css";
+.articles {
+  position: relative;
+  .flask-logo {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    height: 48px;
+    width: auto;
+    box-shadow: 0 4px 4px rgba(0,0,0, 0.2);
+    border-radius: 8px;
+  }
+  .content {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+.article {
+  .header-image {
+    width: 100%;
+    height: 400px;
+    background-size: cover;
+    background-position: center center;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+  }
+  .post {
+    padding: 24px 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    p, h1 {
+      width: 100%;
+      max-width: 480px;
+      margin: 0;
+    }
+    .title {
+      margin-bottom: 16px;
+      font-weight: 600;
+    }
+    .info {
+      // font-style: italic;
+      font-size: 1rem;
+      color: $primary-color;
+      margin-bottom: 24px;
+    }
+    .body {
+      font-size: 1.2rem;
+    }
+  }
+}

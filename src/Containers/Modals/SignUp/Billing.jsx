@@ -207,11 +207,14 @@ class Billing extends React.Component {
   }
 
   submit() {
+    store.isSubmitting = true
     if (!this.state.checked) {
       this.setState({ error: 'You must read and agree to the Terms of Service', errorType: 'tos' })
+      store.isSubmitting = false
       return
     } else if (this.refs.name.value.indexOf(' ') === -1) {
       this.setState({ error: 'Please enter your full name', errorType: 'payment' })
+      store.isSubmitting = false
       return
     }
 
@@ -228,9 +231,15 @@ class Billing extends React.Component {
     .then(() => {
       cc.checkPayment(card)
       .then(token => this.createCustomer(token))
-      .catch(error => this.setState({ error: error, errorType: 'payment', validatingPayment: false }))
+      .catch(error => {
+        store.isSubmitting = false
+        this.setState({ error: error, errorType: 'payment', validatingPayment: false })
+      })
     })
-    .catch(error => this.setState({ error: error, errorType: 'address', validatingPayment: false }))
+    .catch(error => {
+      store.isSubmitting = false
+      this.setState({ error: error, errorType: 'address', validatingPayment: false })
+    })
   }
 
   createCustomer(token) {
@@ -238,9 +247,11 @@ class Billing extends React.Component {
     cc.createCustomer2(token, this.props.selected, this.state.cycle, this.state.taxPercent, this.state.coupon.code)
     .then(() => {
       console.log('||| SUCCESFUL PAYMENT |||')
+      store.isSubmitting = false
     })
     .catch((e) => {
-      this.setState({error: String(e), validatingPayment: false})
+      store.isSubmitting = false
+      this.setState({ error: String(e), validatingPayment: false })
     })
   }
 

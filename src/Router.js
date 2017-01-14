@@ -9,6 +9,8 @@ import SignUp from './Containers/Modals/SignUp/SignUp'
 import Login from './Containers/Modals/Login/Login'
 import FAQ from './Containers/Global/FAQ/FAQ'
 
+import Articles from './Containers/Articles/Articles'
+
 import Dashboard from './Containers/Dashboard/Index'
 import Portfolio from './Containers/Dashboard/Portfolio/Portfolio'
 import Suggestions from './Containers/Dashboard/Suggestions/Suggestions'
@@ -46,6 +48,7 @@ const router = (
       <Route path="admin/api" component={AdminAPI}/>
       <Route path="admin/newarticle" component={NewArticle}/>
     </Route>
+    <Route path="/articles" component={Articles}/>
     <Route path="/faq" component={FAQ}/>
     <Route path="/*" component={NotFound}/>
   </Router>

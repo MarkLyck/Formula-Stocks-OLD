@@ -25,8 +25,9 @@ const Plan = Backbone.Model.extend({
   },
   updateData(fileArr) {
     let receivedJSON = (i, e) => {
-      let lines = e.target.result;
-      var data = JSON.parse(lines);
+      let lines = e.target.result
+      var data = JSON.parse(lines)
+
       if (fileArr[i].name.indexOf('weekly') > -1) {
         let newSuggestions = this.get('suggestions')
           .filter(sug => {
@@ -39,6 +40,7 @@ const Plan = Backbone.Model.extend({
         this.set('suggestions', newSuggestions)
 
       } else if (fileArr[i].name.indexOf('monthly') > -1) {
+
         let newSuggestions = this.get('suggestions')
           .filter(sug => {
             if (sug.action === "BUY") {
@@ -46,8 +48,11 @@ const Plan = Backbone.Model.extend({
             }
             return false
           })
+
         newSuggestions = _.union(newSuggestions, data.actionable)
 
+        this.set('suggestions', newSuggestions)
+        this.set('portfolio', data.portfolio)
         this.set('portfolioYields', data.logs)
 
       } else if (fileArr[i].name.indexOf('annual') > -1) {
@@ -108,9 +113,9 @@ const Plan = Backbone.Model.extend({
     }
 
     fileArr.forEach((file, i) => {
-      let fr = new FileReader();
-      fr.onload = receivedJSON.bind(null, i);
-      fr.readAsText(file);
+      let fr = new FileReader()
+      fr.onload = receivedJSON.bind(null, i)
+      fr.readAsText(file)
     })
   },
   parseStockData(data) {
