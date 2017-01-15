@@ -15,6 +15,7 @@ class OneDollar extends React.Component {
     this.resetState = this.resetState.bind(this)
     this.animate = this.animate.bind(this)
     this.changePlan = this.changePlan.bind(this)
+    this.updateNumbers = this.updateNumbers.bind(this)
     this.state = {fs: 1, market: 1, plan: 'premium', currYear: 0, fsPercent: 0, spPercent: 0}
   }
 
