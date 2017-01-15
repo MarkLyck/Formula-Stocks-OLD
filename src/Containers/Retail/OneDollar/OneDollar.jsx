@@ -8,21 +8,30 @@ import cc from '../../../cc'
 
 import './oneDollar.css'
 
-const OneDollar = React.createClass({
-  getInitialState() {
-    return {fs: 1, market: 1, plan: 'premium', currYear: 0, fsPercent: 0, spPercent: 0}
-  },
+class OneDollar extends React.Component {
+  constructor(props) {
+    super(props)
+
+    this.resetState = this.resetState.bind(this)
+    this.animate = this.animate.bind(this)
+    this.changePlan = this.changePlan.bind(this)
+    this.state = {fs: 1, market: 1, plan: 'premium', currYear: 0, fsPercent: 0, spPercent: 0}
+  }
+
   componentDidMount() {
     $(window).on('scroll', this.animate)
     store.plans.on('change', this.resetState)
-  },
+  }
+
   componentWillUnmount() {
     $(window).off('scroll', this.animate)
     store.plans.off('change', this.resetState)
-  },
+  }
+
   resetState() {
     this.setState({fs: 1, market: 1, plan: 'premium', currYear: 0, fsPercent: 0, spPercent: 0})
-  },
+  }
+
   animate() {
     let hT = $(this.refs.content).offset().top
     let hH = $(this.refs.content).outerHeight()
@@ -32,7 +41,12 @@ const OneDollar = React.createClass({
       this.updateNumbers()
       $(window).off('scroll', this.animate)
     }
-  },
+  }
+
+  changePlan(plan) {
+    mixpanel.track("One dollar")
+    this.updateNumbers(plan)
+  }
 
   updateNumbers(plan) {
     let fs = this.state.fs
@@ -74,7 +88,8 @@ const OneDollar = React.createClass({
     if (year < 44) {
       window.setTimeout(this.updateNumbers, 20)
     }
-  },
+  }
+
   render() {
     let fsStyle = {
       width: this.state.fsPercent * 100 + '%'
@@ -94,9 +109,9 @@ const OneDollar = React.createClass({
         <div className="beside" ref='content'>
           <div className="left">
             <div className="plans">
-              <button onClick={this.updateNumbers.bind(null, 'basic')} className={basClass}>Basic<div></div></button>
-              <button onClick={this.updateNumbers.bind(null, 'premium')} className={preClass}>Premium<div></div></button>
-              <button onClick={this.updateNumbers.bind(null, 'business')} className={busClass}>Business<div></div></button>
+              <button onClick={this.changePlan.bind(null, 'basic')} className={basClass}>Basic<div></div></button>
+              <button onClick={this.changePlan.bind(null, 'premium')} className={preClass}>Premium<div></div></button>
+              <button onClick={this.changePlan.bind(null, 'business')} className={busClass}>Business<div></div></button>
             </div>
             <div className="fs bar" style={fsStyle}><p>${cc.commafy(Math.round(this.state.fs))}</p></div>
             <p className="fs plan-name"><span className="capitalize">{this.state.plan}</span> product</p>
@@ -125,6 +140,6 @@ const OneDollar = React.createClass({
       </div>
     )
   }
-})
+}
 
 export default OneDollar
