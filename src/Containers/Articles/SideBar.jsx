@@ -21,7 +21,9 @@ class ArticleSideBar extends React.Component {
   renderArticles() {
     const articles = _.sortBy(this.props.articles, (art) => art._kmd.ect).reverse()
     return articles.map((article, i) => {
-      const preview = article.body.substring(0,100).split('![')[0]
+      console.log(article.body)
+      const preview = article.body.substring(0,200).replace(`\n`, '').split('![')[0]
+      // const preview = article.body.substring(0,100).split('![')[0]
 
       let html_content = markdown.toHTML( preview )
       html_content = html_content.replaceAll('&amp;', '&').replaceAll('&quot;', '"')

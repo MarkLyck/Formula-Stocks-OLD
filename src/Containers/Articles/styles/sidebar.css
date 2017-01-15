@@ -35,6 +35,10 @@
         color: #505C65;
         margin: 0;
         font-size: 0.8rem;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
       }
       .article-item-title {
         display: block;
