@@ -13,6 +13,7 @@ class Articles extends React.Component {
     super(props)
 
     this.updateState = this.updateState.bind(this)
+    this.toggleSideBar = this.toggleSideBar.bind(this)
 
     this.state = { articles: [], fetched: false, sidebar: true }
   }
@@ -39,6 +40,10 @@ class Articles extends React.Component {
     browserHistory.push('/')
   }
 
+  toggleSideBar() {
+    this.setState({ sidebar: !this.state.sidebar })
+  }
+
   render() {
     let currentArticle = this.state.articles.reverse()[0]
 
@@ -50,9 +55,9 @@ class Articles extends React.Component {
       <div className="articles">
         <img className="flask-logo" src={flaskLogo} alt="Formula Stocks" onClick={this.goHome}/>
         <div className="content">
-          <Article article={currentArticle} style={ this.state.sidebar ? { width: 'calc(100% - 320px)' } : {} }/>
+          <Article article={currentArticle} style={ this.state.sidebar ? { marginRight: '320px' } : {} }/>
         </div>
-        <SideBar articles={this.state.articles} article={currentArticle}/>
+        <SideBar articles={this.state.articles} article={currentArticle} toggleSideBar={this.toggleSideBar} open={this.state.sidebar}/>
       </div>
     )
   }

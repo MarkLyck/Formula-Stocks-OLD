@@ -22,6 +22,7 @@
 }
 
 .article {
+  transition: margin-right 0.5s;
   .header-image {
     width: 100%;
     height: 400px;

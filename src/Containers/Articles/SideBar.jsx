@@ -11,7 +11,7 @@ class ArticleSideBar extends React.Component {
     super(props)
 
     this.renderArticles = this.renderArticles.bind(this)
-    this.state = { open: true, article: this.props.article }
+    this.state = { article: this.props.article }
   }
 
   componentWillReceiveProps(newProps) {
@@ -21,10 +21,7 @@ class ArticleSideBar extends React.Component {
   renderArticles() {
     const articles = _.sortBy(this.props.articles, (art) => art._kmd.ect).reverse()
     return articles.map((article, i) => {
-      console.log(article.body)
-      const preview = article.body.substring(0,200).replace(`\n`, '').split('![')[0]
-      // const preview = article.body.substring(0,100).split('![')[0]
-
+      const preview = article.body.substring(0,120).replace(`\n`, '').split('![')[0]
       let html_content = markdown.toHTML( preview )
       html_content = html_content.replaceAll('&amp;', '&').replaceAll('&quot;', '"')
       const previewHTML = ReactHtmlParser(html_content)
@@ -43,8 +40,9 @@ class ArticleSideBar extends React.Component {
 
   render() {
     return (
-      <div className={`article-sidebar ${this.state.open ? 'open' : 'closed'}`}>
+      <div className={`article-sidebar ${this.props.open ? 'open' : 'closed'}`}>
         <div className="line-through"/>
+        <button className="toggle" onClick={this.props.toggleSideBar}><i className={`fa fa-angle-${this.props.open ? 'right' : 'left'}`} aria-hidden="true"></i></button>
         <h3 className="latest">Latest articles</h3>
         <ul className="article-list">
           {this.renderArticles()}
