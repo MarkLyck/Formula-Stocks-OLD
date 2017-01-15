@@ -40,7 +40,7 @@ class ArticleSideBar extends React.Component {
 
   render() {
     return (
-      <div className={`article-sidebar ${this.props.open ? 'open' : 'closed'}`}>
+      <div className={`article-sidebar ${this.props.open ? 'open' : 'sidebar-closed'}`}>
         <div className="line-through"/>
         <button className="toggle" onClick={this.props.toggleSideBar}><i className={`fa fa-angle-${this.props.open ? 'right' : 'left'}`} aria-hidden="true"></i></button>
         <h3 className="latest">Latest articles</h3>

@@ -113,7 +113,7 @@
   }
 }
 
-.closed {
+.sidebar-closed {
   transform: translateX(320px);
   .toggle {
     transform: translateX(-56px);
