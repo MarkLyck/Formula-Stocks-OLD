@@ -19,7 +19,7 @@ class HowWeBeatTheMarket extends React.Component {
             participants do not possess in equal measure.<br/><br/>
 
             It is a widespread belief that the markets are efficient. They are not of
-            course. Ample evidence disproving this theory was available decades ago. Our
+            course. Ample evidence disproving this theory was widely available decades ago. Our
             favorite has to be Warren Buffetts flawless argument presented in The
             Superinvestors of Graham-and-Doddsville<sup>1</sup>.<br/><br/>
 

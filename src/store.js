@@ -40,12 +40,12 @@ store.plans.add({
     IITFormulas: 4,
     avgGainPerPosition: 65.97,
     avgLossPerPosition: 18.32,
-    maxDrawdown45y: 46.02,
-    maxDrawdown36m: 36.04,
+    maxDrawdown45y: 53.446918,
+    maxDrawdown36m: 23.174836,
     IRRArithmeticMean: 52.61,
     IRRGeometricMean: 27.18,
-    sortinoRatio: 2.618,
-    gainToPainRatio: 1.1493,
+    sortinoRatio: 3.016949,
+    gainToPainRatio: 1.317528,
   }
 })
 store.plans.add({
@@ -78,12 +78,12 @@ store.plans.add({
     IITFormulas: 53,
     avgGainPerPosition: 102.37,
     avgLossPerPosition: 16.47,
-    maxDrawdown45y: 40.61,
-    maxDrawdown36m: 7.03,
+    maxDrawdown45y: 27.47,
+    maxDrawdown36m: 22.97,
     IRRArithmeticMean: 108.01,
     IRRGeometricMean: 48.66,
-    sortinoRatio: 6.196,
-    gainToPainRatio: 2.886,
+    sortinoRatio: 7.532204,
+    gainToPainRatio: 2.39697,
   }
 })
 store.plans.add({
@@ -93,15 +93,15 @@ store.plans.add({
   type: 4,
   info: {
     roundtripTradesPerYear: 123,
-    avgNumOfPosInPortfolio: 163,
+    avgNumOfPosInPortfolio: 1400,
     IITFormulas: 93,
     avgGainPerPosition: 66.097,
     avgLossPerPosition: 16.85,
-    maxDrawdown45y: 24.64,
-    maxDrawdown36m: 22.976,
+    maxDrawdown45y: 53.389635,
+    maxDrawdown36m: 33.078412,
     IRRArithmeticMean: 67.96,
     IRRGeometricMean: 33.27,
-    sortinoRatio: 4.987,
+    sortinoRatio: 5.616460,
     gainToPainRatio: 1.9302,
   },
 })
