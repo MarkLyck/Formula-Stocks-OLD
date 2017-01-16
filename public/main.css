@@ -199,3 +199,9 @@ i {
   height: 100%;
   width: auto;
 }
+
+@media (max-width: 600px) {
+  .section {
+    padding: 40px 40px 40px 40px;
+  }
+}

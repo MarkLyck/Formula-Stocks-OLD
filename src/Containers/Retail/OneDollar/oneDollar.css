@@ -13,6 +13,7 @@
     max-width: 50%;
     margin-right: 32px;
     .plans {
+      display: flex;
       button {
         background: none;
         color: $text-color;
@@ -110,12 +111,24 @@
       }
       .right {
         margin: 0 0 16px 0;;
-        height: 250px;
+        // height: 250px;
         width: 100%;
         max-width: 100%;
         .title, p {
           align-self: flex-start;
           width: 100%;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 400px) {
+  .one-dollar {
+    .beside {
+      .left {
+        .plans {
+          flex-direction: column;
         }
       }
     }

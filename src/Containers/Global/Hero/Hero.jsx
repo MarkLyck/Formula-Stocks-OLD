@@ -122,9 +122,9 @@ class Hero extends React.Component {
             <li className="price medium layer" data-depth="0.80" id="l6" style={{top: '60%', left: '-5px'}}>
               <div className="value group1"><p className="number">10.83</p><i className="material-icons">arrow_drop_up</i></div>
             </li>
-            <li className="price small layer" data-depth="0.70" id="l7" style={{top: '70%', left: '285px'}}>
+            {this.props.path === '/pro' ? (<li className="price small layer" data-depth="0.70" id="l7" style={{top: '70%', left: '285px'}}>
               <div className="value group3"><p className="number">39.36</p><i className="material-icons">arrow_drop_up</i></div>
-            </li>
+            </li>) : '' }
             <li className="price x-small layer" data-depth="0.30" id="l8" style={{top: '95%', left: '228px'}}>
               <div className="value"><p className="number">7.06</p><i className="material-icons">arrow_drop_up</i></div>
             </li>
@@ -149,9 +149,9 @@ class Hero extends React.Component {
             <li className="price large layer right" data-depth="1.00" id="r7" style={{top: '77%', right: '117px'}}>
               <div className="value group2"><p className="number">65.22</p><i className="material-icons">arrow_drop_up</i></div>
             </li>
-            <li className="price x-small layer right" data-depth="0.5" id="r8" style={{top: '87%', right: '338px'}}>
+            {this.props.path === '/pro' ? (<li className="price x-small layer right" data-depth="0.5" id="r8" style={{top: '87%', right: '338px'}}>
               <div className="value"><p className="number">5.28</p><i className="material-icons">arrow_drop_up</i></div>
-            </li>
+            </li>) : ''}
             <li className="price x-small layer right" data-depth="0.5" id="r9" style={{top: '93%', right: '91px'}}>
               <div className="value"><p className="number">5.76</p><i className="material-icons">arrow_drop_up</i></div>
             </li>

@@ -1,5 +1,5 @@
 import React from 'react'
-// import store from '../../../../store'
+import $ from 'jquery'
 import platform from 'platform'
 import _ from 'underscore'
 import '../../../../libraries/amcharts3-react';
@@ -9,7 +9,12 @@ import './lineGraph.css'
 
 const AmCharts = window.AmCharts
 
-export default function LineGraph({ data, graphs, chartTheme, unit, unitPosition, minimum, maximum, baseValue, logarithmic, minorGridEnabled, marginRight, marginTop, guides, axisAlpha, gridOpacity, cursorColor }) {
+export default function LineGraph({ data, graphs, chartTheme, unit, unitPosition, minimum, maximum, baseValue, logarithmic, minorGridEnabled, marginRight, marginTop, guides, axisAlpha, gridOpacity, cursorColor, inside }) {
+
+  if (!inside && $(window).width() < 550) {
+    inside = true
+  }
+
   let config = {
     type: "serial",
     theme: chartTheme ? chartTheme : "light",
@@ -32,7 +37,7 @@ export default function LineGraph({ data, graphs, chartTheme, unit, unitPosition
       gridAlpha: gridOpacity ? gridOpacity : 0.15,
       minorGridEnabled: minorGridEnabled ? true : false,
       dashLength: 0,
-      inside: false,
+      inside: inside ? true : false,
       baseValue: baseValue ? baseValue : 0,
       minimum: minimum,
       maximum: maximum,

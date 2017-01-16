@@ -184,3 +184,33 @@
     50% { opacity:0; }
     100% { opacity:1; }
 }
+
+@media (max-width: 1000px) {
+  .background-numbers-container {
+    #r3, #r2, #l4, #l3 {
+      display: none;
+    }
+  }
+}
+
+@media (max-width: 650px) {
+  .retail {
+    header {
+      .hero {
+        .content {
+          width: 100%;
+          max-width: calc(100% - 64px);
+          margin-top: 140px;
+        }
+      }
+    }
+  }
+  .background-numbers-container {
+    #r6, #l1 {
+      display: none;
+    }
+    #r4 {
+      top: 40% !important;
+    }
+  }
+}

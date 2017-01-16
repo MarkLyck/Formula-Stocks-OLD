@@ -106,7 +106,7 @@ class OneDollar extends React.Component {
     if (this.state.plan === 'business') { busClass='selected' }
 
     return (
-      <div className="split-section one-dollar">
+      <section className="split-section one-dollar">
         <div className="beside" ref='content'>
           <div className="left">
             <div className="plans">
@@ -138,7 +138,7 @@ class OneDollar extends React.Component {
             </p>
           </div>
         </div>
-      </div>
+      </section>
     )
   }
 }

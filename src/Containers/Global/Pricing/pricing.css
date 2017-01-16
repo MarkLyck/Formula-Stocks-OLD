@@ -130,3 +130,20 @@
     }
   }
 }
+
+@media (max-width: 500px) {
+  .professional, .retail {
+    .prof-pricing {
+      .prof-plans {
+        .premium {
+          margin-right: 0;
+          margin-left: 0;
+        }
+        .business {
+          margin-right: 0;
+          margin-left: 0;
+        }
+      }
+    }
+  }
+}

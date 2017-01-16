@@ -140,3 +140,28 @@
     }
   }
 }
+
+@media (max-width: 560px) {
+  .recommendations {
+    .beside {
+      .right {
+        max-width: 400px;
+        width: 100%;
+        .plans {
+          width: 100%;
+        }
+        .video-container {
+          width: 100%;
+          height: auto;
+          .y-axis {
+            display: none;
+          }
+          video {
+            width: 100%;
+            height: auto;
+          }
+        }
+      }
+    }
+  }
+}
