@@ -48,13 +48,16 @@ const VisitorList = ({ visitors }) => {
 
     let device = 'fa-desktop'
     if (visitor.device === 'mobile') { device = 'fa-mobile' }
-    else if (visitor.device === 'ipad') { device = 'fa-tablet' }
+    else if (visitor.device === 'iPad') { device = 'fa-tablet' }
+
+    let referer = visitor.referer.replace('https://', '').replace('http://', '').replace('www.', '').split('/')[0]
+    if (referer === 'markdid.it') { referer = '' }
 
     return (
       <tbody key={i} className="visitor">
         <tr>
           <td className="location-info">{getFlag(visitor.location.country_code)}{visitor.location.country_name}{visitor.location.region_code ? `, ${visitor.location.region_code}` : ''}</td>
-          <td>{visitor.referer.replace('https://', '').replace('http://', '').replace('www.', '').split('/')[0]}</td>
+          <td>{referer}</td>
           <td>{moment(visitor._kmd.lmt).fromNow()}</td>
           <td className="device-info">
             <img src={browserIcon} className="icon" alt="browser"/>
