@@ -146,37 +146,6 @@ let cc = {
       }
     })
   },
-  createCustomer: function(token, planName, cycle, taxPercent) {
-    return new Promise((resolve, reject) => {
-      $.ajax({
-        type: 'POST',
-        url: `https://baas.kinvey.com/rpc/${store.settings.appKey}/custom/charge`,
-        data: {
-          plan: (planName+'-'+cycle.trim()),
-          source: token,
-          email: store.session.get('email'),
-          tax_percent: taxPercent
-        },
-        success: (customer) => {
-          store.session.set('stripe', customer)
-
-          let type = 0
-          if (planName === 'basic')         { type = 1 }
-          else if (planName === 'premium')  { type = 2 }
-          else if (planName === 'business') { type = 3 }
-          else if (planName === 'fund')     { type = 4 }
-          store.session.set('type', type)
-
-          store.session.signup(store.session.get('email'), store.session.get('password'))
-          resolve()
-        },
-        error: (response) => {
-          console.error(response)
-          reject(JSON.parse(response.responseText).error)
-        }
-      })
-    })
-  },
   createCustomer2: function(token, planName, cycle, taxPercent, coupon) {
     return new Promise((resolve, reject) => {
       let data = {

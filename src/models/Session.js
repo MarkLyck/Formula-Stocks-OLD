@@ -10,10 +10,6 @@ const Session = Backbone.Model.extend({
   urlRoot: `https://baas.kinvey.com/user/kid_rJRC6m9F/login`,
   idAttribute: '_id',
   defaults: {
-    _acl: {
-      r: [ '57d838197909a93d3863ceef', '57bdf1db65033d3044e27fa2' ],
-      w: [ '57d838197909a93d3863ceef', '57bdf1db65033d3044e27fa2' ]
-    },
     email: '',
     name: '',
     stripe: '',
@@ -74,29 +70,6 @@ const Session = Backbone.Model.extend({
       })
     })
   },
-  signup: function(email, password) {
-    store.session.save({
-      username: email,
-      password: password,
-      referer: document.referrer
-    },
-    {
-      url: `https://baas.kinvey.com/user/${store.settings.appKey}/`,
-      success: function(model, response) {
-        model.unset('password')
-        localStorage.authtoken = response._kmd.authtoken
-        store.settings.history.push('/dashboard')
-        window.Intercom("update", {
-          name: this.get('name'),
-          email: this.get('email'),
-          created_at: moment().unix()
-        })
-      },
-      error: function(model, response) {
-        console.log('ERROR: ', arguments);
-      }
-    })
-  },
   signup2: function() {
     const email = this.get('email')
     const password = this.get('password')
@@ -104,9 +77,14 @@ const Session = Backbone.Model.extend({
     const name = this.get('name')
 
     store.session.save({
+      _acl: {
+        r: [ '57d838197909a93d3863ceef', '57bdf1db65033d3044e27fa2' ],
+        w: [ '57d838197909a93d3863ceef', '57bdf1db65033d3044e27fa2' ]
+      },
       username: email,
       password: password,
-      address: address
+      address: address,
+      referer: document.referrer
     },
     {
       url: `https://baas.kinvey.com/user/${store.settings.appKey}/`,
