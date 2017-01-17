@@ -142,7 +142,6 @@ class Portfolio extends React.Component {
               <div className="wrapper">
                 <i className="fa fa-caret-up" aria-hidden="true"></i>
                 <p><span className="blue-color number">{FSPercent}%</span> since 2009</p>
-                {/* <p><span className="blue-color number">{store.plans.get(this.props.plan).get('portfolioReturn')}%</span> since 2009</p> */}
               </div>
             </div>
 

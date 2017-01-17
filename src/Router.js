@@ -18,7 +18,7 @@ import MyAccount from './Containers/Dashboard/MyAccount/MyAccount'
 
 import AdminPanel from './Containers/Dashboard/Admin/Panel'
 import AdminAPI from './Containers/Dashboard/Admin/API'
-import Users from './Containers/Dashboard/Admin/Users'
+import Users from './Containers/Dashboard/Admin/Users/Users'
 import NewArticle from './Containers/Dashboard/Admin/NewArticle'
 import NotFound from './Containers/Global/NotFound/NotFound'
 

@@ -59,6 +59,25 @@
           transform: translateY(-3px);
         }
       }
+      .trial {
+        color: $action-color;
+      }
+      .basic, .premium, .business, .fund {
+        color: $primary-color;
+      }
+      .cancelled {
+        color: $warning-color;
+      }
+      .settings {
+        .fa-cog {
+          color: $text-color;
+          padding: 10px;
+          &:hover {
+            cursor: pointer;
+            color: $primary-color;
+          }
+        }
+      }
     }
   }
 }

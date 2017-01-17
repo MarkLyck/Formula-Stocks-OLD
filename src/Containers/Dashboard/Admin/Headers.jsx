@@ -5,15 +5,20 @@ import moment from 'moment'
 
 import admin from '../../../admin'
 
-const AdminPanelHeader = React.createClass({
-  getInitialState() {
-    return {
+class AdminPanelHeader extends React.Component {
+  constructor(props) {
+    super(props)
+    this.updateState = this.updateState.bind(this)
+    this.calculateVisitors = this.calculateVisitors.bind(this)
+
+    this.state = {
       fetched: false,
       visitors: admin.visits.toJSON(),
       newsletterSubs: admin.newsletterSubs.toJSON(),
       users: []
     }
-  },
+  }
+
   componentDidMount() {
     admin.visits.on('update', this.updateState)
     admin.newsletterSubs.on('update', this.updateState)
@@ -23,47 +28,46 @@ const AdminPanelHeader = React.createClass({
     .then((users) => {
       this.setState({users: users})
     })
-  },
+  }
+
   componentWillUnmount() {
     admin.visits.off('change update', this.updateState)
-  },
+  }
+
   updateState() {
     this.setState({visitors: admin.visits.toJSON()})
     this.setState({newsletterSubs: admin.newsletterSubs.toJSON()})
-  },
-  calculateVisitors() {
-    // let uniqueIPs = []
-    // let uniqueVisitors = this.state.visitors.filter((visitor) => {
-    //   if (uniqueIPs.indexOf(visitor.location.ip) === -1) {
-    //     uniqueIPs.push(visitor.location.ip)
-    //     return true
-    //   } else {
-    //     return false
-    //   }
-    // })
+  }
 
+  calculateVisitors() {
     return this.state.visitors.length ? (this.state.visitors.length) : 0
-  },
+  }
+
   render() {
     let subscribers = this.state.users.filter((user) => {
       if (user.stripe) {
-        if (user.stripe.subscriptions.data[0].trial_end
-          && !user.stripe.subscriptions.data[0].cancel_at_period_end
-          && user.stripe.subscriptions.data[0].trial_end < moment().unix()) {
-          return true
-        }
-        if (user.type > 1 && user.type < 5 && !user.stripe.subscriptions.data[0].cancel_at_period_end) {
-          return true
+        if (user.stripe.subscriptions.data) {
+          if (user.stripe.subscriptions.data[0].trial_end
+            && !user.stripe.subscriptions.data[0].cancel_at_period_end
+            && user.stripe.subscriptions.data[0].trial_end < moment().unix()) {
+            return true
+          }
+          if (user.type > 1 && user.type < 5 && !user.stripe.subscriptions.data[0].cancel_at_period_end) {
+            return true
+          }
         }
       }
       return false
     })
     let trials = this.state.users.filter((user) => {
       if (user.stripe) {
-        if (user.stripe.subscriptions.data[0].status === 'trialing'
-            && !user.stripe.subscriptions.data[0].cancel_at_period_end
-            && user.type === 1) {
-            return true
+        if (user.stripe.subscriptions.data) {
+          if (user.stripe.subscriptions.data[0].status === 'trialing'
+              && !user.stripe.subscriptions.data[0].cancel_at_period_end
+              && user.type === 1
+              && user.stripe.subscriptions.data[0].trial_end > moment().unix()) {
+              return true
+          }
         }
       }
       return false
@@ -117,6 +121,6 @@ const AdminPanelHeader = React.createClass({
       </section>
     )
   }
-})
+}
 
 export default AdminPanelHeader

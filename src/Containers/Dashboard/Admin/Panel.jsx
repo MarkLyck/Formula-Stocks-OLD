@@ -6,7 +6,6 @@ import $ from 'jquery'
 
 import admin from '../../../admin'
 import AdminPanelHeader from './Headers'
-import Userlist from './UserList'
 import VisitorList from './VisitorList'
 
 import DAUGraph from './DAUGraph'

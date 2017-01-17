@@ -20,7 +20,7 @@ const Session = Backbone.Model.extend({
     referer: document.referrer,
     visits: 0,
     browser: platform.name,
-    os: platform.os,
+    os: platform.os.family,
     prodcut: platform.product,
     device: ''
   },
