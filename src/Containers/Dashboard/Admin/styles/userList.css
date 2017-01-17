@@ -65,7 +65,7 @@
       .basic, .premium, .business, .fund {
         color: $primary-color;
       }
-      .cancelled {
+      .cancelled, .delinquent {
         color: $warning-color;
       }
       .settings {

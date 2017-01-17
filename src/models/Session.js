@@ -10,14 +10,18 @@ const Session = Backbone.Model.extend({
   urlRoot: `https://baas.kinvey.com/user/kid_rJRC6m9F/login`,
   idAttribute: '_id',
   defaults: {
+    _acl: {
+      r: [ '57d838197909a93d3863ceef', '57bdf1db65033d3044e27fa2' ],
+      w: [ '57d838197909a93d3863ceef', '57bdf1db65033d3044e27fa2' ]
+    },
     email: '',
     name: '',
-    stripe: {},
-    location: {},
-    address: {},
+    stripe: '',
+    location: '',
+    address: '',
+    referer: '',
     type: 0,
     lastSeen: new Date(),
-    referer: document.referrer,
     visits: 0,
     browser: platform.name,
     os: platform.os.family,
@@ -32,13 +36,17 @@ const Session = Backbone.Model.extend({
         userId: response._id,
         name: response.name,
         stripe: response.stripe,
-        type: response.type
+        type: response.type,
+        location: response.location,
+        address: response.address,
+        referer: response.referer,
+        visits: response.visits
       }
     }
   },
   login: function(username, password) {
     return new Promise((resolve, reject) => {
-      this.save({username: username, password: password},
+      this.save({ username: username, password: password },
       {
         success: (model, response) => {
           localStorage.authtoken = response._kmd.authtoken
@@ -69,7 +77,8 @@ const Session = Backbone.Model.extend({
   signup: function(email, password) {
     store.session.save({
       username: email,
-      password: password
+      password: password,
+      referer: document.referrer
     },
     {
       url: `https://baas.kinvey.com/user/${store.settings.appKey}/`,

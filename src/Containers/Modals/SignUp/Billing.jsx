@@ -251,7 +251,7 @@ class Billing extends React.Component {
     })
     .catch((e) => {
       store.isSubmitting = false
-      this.setState({ error: String(e), validatingPayment: false })
+      this.setState({ error: String(e), errorType: 'payment', validatingPayment: false })
     })
   }
 

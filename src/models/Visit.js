@@ -55,7 +55,7 @@ const Visit = Backbone.Model.extend({
               store.session.set('location', r)
               store.session.set('lastSeen', new Date())
               store.session.set('device', store.session.deviceType())
-              store.session.set('visits', store.session.set('visits') + 1)
+              store.session.set('visits', store.session.get('visits') + 1)
               store.session.updateUser()
             }
           },
