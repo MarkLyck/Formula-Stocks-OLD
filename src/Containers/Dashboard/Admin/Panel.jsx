@@ -53,21 +53,10 @@ class AdminPanel extends React.Component {
         const ip = visit.get('location').ip
         if (ips.indexOf(ip) > -1) {
           this.destroyVisit(visit)
-        } else if (visit.get('location').city = lastCity) {
-          this.destroyVisit(visit)
-        } else if (visit.get('os') === 'Linux') {
-          this.destroyVisit(visit)
-        } else if (visit.get('location').country_name === 'Czechia') {
-          this.destroyVisit(visit)
-        } else if (visit.get('referer').indexOf('pwwysydh.com') > -1) {
-          this.destroyVisit(visit)
+          console.log('destroy: ', visit.toJSON().location.ip)
         } else if (visit.get('os').indexOf('Server') > -1) {
           this.destroyVisit(visit)
-        } else if (visit.get('product') === null
-          && visit.get('browser') === 'Firefox'
-          && visit.get('location').country_name === "United States"
-          && visit.get('os') === 'Windows') {
-          this.destroyVisit(visit)
+          console.log('destroy: server visit', visit.toJSON())
         }  else {
           ips = ips.concat(ip)
           lastCity = visit.get('location').city
@@ -146,7 +135,7 @@ class AdminPanel extends React.Component {
     },[])
 
     const desktop = { title: 'Desktop', value: this.state.visitors.filter(visitor => visitor.device === 'desktop').length }
-    const tablet = { title: 'Tablet', value: this.state.visitors.filter(visitor => visitor.product === 'Ipad').length }
+    const tablet = { title: 'Tablet', value: this.state.visitors.filter(visitor => visitor.product === 'iPad').length }
     const mobile = { title: 'Mobile', value: this.state.visitors.filter(visitor => visitor.device === 'mobile').length - tablet.value }
 
     const OSColors = []
@@ -155,14 +144,15 @@ class AdminPanel extends React.Component {
       if (_.find(prev, (os, i) => {
         foundIndex = i
         return os.title === visitor.os
-        || (os.title === 'Linuz' && visitor.os === 'Ubuntu')})) {
+        || (os.title === 'Linux' && visitor.os.indexOf('Ubuntu') > -1)
+        || (os.title === 'Windows' && visitor.os.indexOf('Windows') > -1)})) {
         prev[foundIndex].value++
       } else if (visitor.os) {
         prev.push({ title: visitor.os, value: 1 })
-        if (visitor.os === 'Windows') { OSColors.push('#01BCF3') }
+        if (visitor.os.indexOf('Windows') > -1) { OSColors.push('#01BCF3') }
         else if (visitor.os === 'OS X') { OSColors.push('#cccccc') }
-        else if (visitor.os === 'Linux' || visitor.os === 'Ubuntu') { OSColors.push('#020204') }
-        else if (visitor.os === 'iOS') { OSColors.push('#ee8f00') }
+        else if (visitor.os === 'Linux' || visitor.os.indexOf('Ubuntu') > -1) { OSColors.push('#020204') }
+        else if (visitor.os === 'iOS') { OSColors.push('#eeeeee') }
         else if (visitor.os === 'Android') { OSColors.push('#99CC00') }
       }
       return prev
@@ -204,7 +194,7 @@ class AdminPanel extends React.Component {
           <h2>Visitor statistics</h2>
           <div className="browsers">
             <PieChart title="Browsers" data={browsers} colors={browserColors}/>
-            <PieChart title="Devices" data={[desktop, tablet, mobile]} colors={['#27A5F9', '#FEFEFE', '#99CC00']}/>
+            <PieChart title="Devices" data={[desktop, tablet, mobile]} colors={['#27A5F9', '#cccccc', '#eeeeee']}/>
             <PieChart title="OS" data={operatingSystems} colors={OSColors}/>
             <PieChart title="Referers" data={referers} colors={RefererColors}/>
           </div>
