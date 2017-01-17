@@ -46,7 +46,6 @@ class Stock extends React.Component {
   }
 
   checkScreenSize() {
-    console.log(store.selectedPlan, this.props.plan)
     if (store.selectedPlan === this.props.plan) {
       if ($(window).width() > 850 && $(window).width() < 950 ) {
         this.setState({chartSpan: 5})

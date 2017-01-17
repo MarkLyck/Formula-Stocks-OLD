@@ -54,6 +54,7 @@ const Plan = Backbone.Model.extend({
         this.set('suggestions', newSuggestions)
         this.set('portfolio', data.portfolio)
         this.set('portfolioYields', data.logs)
+        this.set('portfolioReturn', data.statistics.total_return)
 
       } else if (fileArr[i].name.indexOf('annual') > -1) {
         this.set('annualData', data.logs)

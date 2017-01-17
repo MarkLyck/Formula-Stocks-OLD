@@ -148,15 +148,15 @@ class Portfolio extends React.Component {
               <h3 className="fs-plan blue-color"><span className="capitalize">{this.props.plan}</span> formula</h3>
               <div className="wrapper">
                 <i className="fa fa-caret-up" aria-hidden="true"></i>
-                <p><span className="blue-color">{FSPercent}%</span> since 2009</p>
+                <p><span className="blue-color number">{FSPercent}%</span> since 2009</p>
               </div>
             </div>
 
             <div className="stats">
               <h3>S&P 500</h3>
-              <div className="wrapper">
+              <div className="wrapper market-change">
                 <i className="fa fa-caret-up" aria-hidden="true"></i>
-                <p><span className="green-color">{SP500Percent}%</span> since 2009</p>
+                <p><span className="number">{SP500Percent}%</span> since 2009</p>
               </div>
             </div>
 

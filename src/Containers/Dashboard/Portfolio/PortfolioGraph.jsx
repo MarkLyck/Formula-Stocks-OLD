@@ -35,7 +35,7 @@ class PortfolioGraph extends React.Component {
       let month = Number(point.date.month) <= 9 ? ('0' + point.date.month) : point.date.month
 
       return {
-        fs: ((point.balance-startValue) / startValue * 100).toFixed(2),
+        fs: ((point.balance - startValue) / startValue * 100).toFixed(2),
         fsBalloon: formatPrice(((point.balance-startValue) / startValue * 100).toFixed(2)),
         market: ((store.market.data.get('portfolioData')[i] - marketStartValue) / marketStartValue * 100).toFixed(2),
         marketBalloon: formatPrice(((store.market.data.get('portfolioData')[i] - marketStartValue) / marketStartValue * 100).toFixed(2)),

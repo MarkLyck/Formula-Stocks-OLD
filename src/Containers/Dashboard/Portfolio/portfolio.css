@@ -33,7 +33,6 @@
     width: 200px;
     border-left: 2px solid $db-border-color;
     padding-left: 20px;
-
     margin-left: -2px;
     .stats {
       h3 {
@@ -43,6 +42,9 @@
       .wrapper {
         display: flex;
         align-items: center;
+        .number {
+          font-weight: 600;
+        }
         p {
           margin: 0;
           font-weight: 100;
@@ -53,6 +55,12 @@
         }
         .Spinner {
           font-size: 0.75rem;
+        }
+      }
+      .market-change {
+        color: $text-color;
+        i {
+          color: $text-color;
         }
       }
     }
