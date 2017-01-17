@@ -107,27 +107,20 @@ class Portfolio extends React.Component {
   }
 
   render() {
-    let startValue
     let marketStartValue
-    if (store.plans.get(this.props.plan).get('portfolioYields')[0]) {
-      startValue = store.plans.get(this.props.plan).get('portfolioYields')[0].balance
-    }
     if (store.market.data.get('portfolioData')[0]) {
       marketStartValue = store.market.data.get('portfolioData')[0]
     }
 
     let portfolioYieldsLength = store.plans.get(this.props.plan).get('portfolioYields').length
-    let lastValue = 0
+
     let lastMarketValue = 0
-    if (store.plans.get(this.props.plan).get('portfolioYields')[0]) {
-      lastValue = store.plans.get(this.props.plan).get('portfolioYields')[portfolioYieldsLength - 1].balance
-    }
     if (store.market.data.get('portfolioData')[0]) {
       lastMarketValue = store.market.data.get('portfolioData')[portfolioYieldsLength - 1]
     }
 
     let FSPercent = <i className="fa fa-circle-o-notch fa-spin fa-3x fa-fw Spinner"></i>
-    if (lastValue && startValue) {FSPercent = ((lastValue - startValue) / startValue * 100).toFixed(2)}
+    if (store.plans.get(this.props.plan).get('portfolioReturn')) { FSPercent = store.plans.get(this.props.plan).get('portfolioReturn') }
 
     let SP500Percent = <i className="fa fa-circle-o-notch fa-spin fa-3x fa-fw Spinner"></i>
     if (lastMarketValue && marketStartValue) { SP500Percent = ((lastMarketValue / marketStartValue * 100 - 100).toFixed(2)) }
@@ -149,6 +142,7 @@ class Portfolio extends React.Component {
               <div className="wrapper">
                 <i className="fa fa-caret-up" aria-hidden="true"></i>
                 <p><span className="blue-color number">{FSPercent}%</span> since 2009</p>
+                {/* <p><span className="blue-color number">{store.plans.get(this.props.plan).get('portfolioReturn')}%</span> since 2009</p> */}
               </div>
             </div>
 

@@ -38,7 +38,7 @@ class Breadcrumbs extends React.Component {
       return null
     }
 
-    let lastUpdated
+    let lastUpdated, lastRebalanced
     let lastUpdatedTag
     if (page === 'Suggestions' && store.plans.get(planName).get('suggestions')[0]) {
       let date = store.plans.get(planName).get('suggestions')[0].date
@@ -54,8 +54,9 @@ class Breadcrumbs extends React.Component {
       lastUpdatedTag = <p>Last updated: <span>{lastUpdated}</span></p>
     } else if (page === 'Portfolio' && store.plans.get(planName).get('portfolio')[0]){
       let date = store.plans.get(planName).get('portfolio')[0].date
-      lastUpdated = moment(date.year + date.month + date.date, 'YYYYMMDD').format('MMMM D, YYYY')
-      lastUpdatedTag = <p>Last rebalanced: <span>{lastUpdated}</span></p>
+      lastRebalanced = moment(date.year + date.month + date.date, 'YYYYMMDD').format('MMMM D, YYYY')
+
+      lastUpdatedTag = <p>Prices updated: <span className="semi-bold">yesterday</span>, Last rebalanced: <span className="semi-bold">{lastRebalanced}</span></p>
     }
 
     return (

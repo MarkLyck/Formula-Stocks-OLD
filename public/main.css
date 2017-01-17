@@ -27,6 +27,9 @@
 .regular {
   font-weight: 400;
 }
+.semi-bold {
+  font-weight: 600;
+}
 .bold {
   font-weight: 700;
 }
