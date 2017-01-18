@@ -9,7 +9,7 @@ const PieChart = ({ title, data, colors, unit }) => {
     dataProvider: data,
     titleField: "title",
     valueField: "value",
-    balloonText: `[[title]]<br/>[[value]]${unit}`,
+    balloonText: `[[title]]<br/>[[value]]${unit ? unit : ''}`,
     radius: "40%",
     innerRadius: "70%",
     labelsEnabled: false,

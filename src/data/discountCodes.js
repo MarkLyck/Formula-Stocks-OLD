@@ -8,9 +8,9 @@ export default [
   },
   {
     code: 'PRO_HUNT',
-    discount: 50,
+    discount: 10,
     type: 'percent',
-    period: 'once month',
+    period: 'lifetime',
     plans: ['premium']
   }
 ]

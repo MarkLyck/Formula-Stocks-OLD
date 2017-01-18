@@ -3,6 +3,7 @@ import store from '../../store'
 
 import NavBar from '../Global/Navbar/Navbar'
 import Hero from '../Global/Hero/Hero'
+import Banner from './Banner/Banner'
 import Introduction from './Introduction/Introduction'
 import Professional from './Professional/Professional'
 import WhatIsIt from './WhatIsIt/WhatIsIt'
@@ -23,7 +24,6 @@ import AboutUs from '../Global/AboutUs/AboutUs'
 import BottomCTA from '../Global/BottomCTA/BottomCTA'
 import Footer from '../Global/Footer/Footer'
 
-
 class Home extends React.Component {
   componentDidMount() {
     store.market.data.getAnnualData()
@@ -38,6 +38,7 @@ class Home extends React.Component {
       <div id="home" className="retail">
         <NavBar/>
         <Hero/>
+        <Banner/>
         <Introduction/>
         <Professional/>
         <WhatIsIt/>

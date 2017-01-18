@@ -126,12 +126,19 @@ class Billing extends React.Component {
   renderDiscount() {
     if (this.state.discount > 0) {
       if (this.state.coupon.type === 'percent') {
-        return (
-          <div className="tax info">
-            <p>Discount</p>
-            <p>- {this.state.coupon.discount}% {this.state.coupon.period} </p>
-          </div>
-        )
+        if (this.state.coupon.period === 'lifetime') {
+          return (
+            <div className="tax info">
+              <p>Discount</p>
+              <p>- {this.state.coupon.discount}% {this.state.coupon.period}</p>
+            </div>)
+        } else if (this.state.coupon.period === 'first month') {
+          return (
+            <div className="tax info">
+              <p>Discount</p>
+              <p>{this.state.coupon.discount}% off {this.state.coupon.period}</p>
+            </div>)
+        }
       }
     }
   }
