@@ -43,6 +43,7 @@ const router = (
         <Route path=":plan" component={Suggestions}/>
       </Route>
       <Route path="account" component={MyAccount}/>
+      <Route path="articles*" component={Articles}/>
       <Route path="admin" component={AdminPanel}/>
       <Route path="admin/users" component={Users}/>
       <Route path="admin/api" component={AdminAPI}/>

@@ -5,7 +5,42 @@ import store from '../../../store'
 
 import PortfolioGraph from './PortfolioGraph';
 import PortfolioItem from './Stock'
+import PieChart from '../../Global/Components/PieChart/PieChart'
 import './portfolio.css'
+
+function adjustBrightness(col, amt) {
+
+    var usePound = true
+
+    if (col[0] === "#") {
+        col = col.slice(1)
+        usePound = true
+    }
+
+    var R = parseInt(col.substring(0,2),16);
+    var G = parseInt(col.substring(2,4),16);
+    var B = parseInt(col.substring(4,6),16);
+
+    R += amt
+    G += amt
+    B += amt
+
+    if (R > 255) R = 255;
+    else if (R < 0) R = 0;
+
+    if (G > 255) G = 255;
+    else if (G < 0) G = 0;
+
+    if (B > 255) B = 255;
+    else if (B < 0) B = 0;
+
+    var RR = ((R.toString(16).length===1)?"0"+R.toString(16):R.toString(16))
+    var GG = ((G.toString(16).length===1)?"0"+G.toString(16):G.toString(16))
+    var BB = ((B.toString(16).length===1)?"0"+B.toString(16):B.toString(16))
+
+    return (usePound?"#":"") + RR + GG + BB;
+
+}
 
 class Portfolio extends React.Component {
   constructor(props) {
@@ -13,8 +48,9 @@ class Portfolio extends React.Component {
     this.updateState = this.updateState.bind(this)
     this.expandStock = this.expandStock.bind(this)
     this.renderHoldings = this.renderHoldings.bind(this)
+    this.getAllocation = this.getAllocation.bind(this)
 
-    this.state = { fetching: true, selectedStock: '' }
+    this.state = { fetching: true, selectedStock: '', allocation: [], colors: [] }
   }
 
   componentDidMount() {
@@ -26,6 +62,7 @@ class Portfolio extends React.Component {
   }
 
   componentWillReceiveProps(newPlan) {
+    this.getAllocation(newPlan)
     store.plans.get(newPlan.plan).on('update', this.updateState)
   }
 
@@ -40,6 +77,7 @@ class Portfolio extends React.Component {
   updateState() {
     if (this.props.plan === store.selectedPlan) {
       this.setState({ fetching: false })
+      this.getAllocation()
     }
   }
 
@@ -106,6 +144,27 @@ class Portfolio extends React.Component {
     }
   }
 
+  getAllocation(newPlan) {
+    if (newPlan || !this.state.allocation.length) {
+      let colors = []
+      let allocation = store.plans.get(newPlan ? newPlan.plan : this.props.plan).get('portfolio').map(stock => {
+        if (stock.latest_price > stock.purchase_price) {
+          let amount = Math.round(Math.random() * 80 - 40)
+          colors.push(adjustBrightness('#27A5F9', amount))
+        } else if (stock.ticker === 'CASH') {
+          colors.push('#12D99E')
+        } else {
+          colors.push('#49494A')
+        }
+        return {
+          title: stock.ticker,
+          value: stock.percentage_weight
+        }
+      })
+      this.setState({ allocation: allocation, colors: colors })
+    }
+  }
+
   render() {
     let marketStartValue
     if (store.market.data.get('portfolioData')[0]) {
@@ -124,6 +183,8 @@ class Portfolio extends React.Component {
 
     let SP500Percent = <i className="fa fa-circle-o-notch fa-spin fa-3x fa-fw Spinner"></i>
     if (lastMarketValue && marketStartValue) { SP500Percent = ((lastMarketValue / marketStartValue * 100 - 100).toFixed(2)) }
+
+
 
     return (
       <div className="portfolio">
@@ -152,6 +213,8 @@ class Portfolio extends React.Component {
                 <p><span className="number">{SP500Percent}%</span> since 2009</p>
               </div>
             </div>
+
+            { this.state.allocation.length && store.session.isAllowedToView(this.props.plan) ? <PieChart title="allocation" data={this.state.allocation} colors={this.state.colors} unit="%"/> : <div className="browserChart"/>}
 
           </div>
         </section>

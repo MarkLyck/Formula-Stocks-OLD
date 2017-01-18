@@ -5,5 +5,12 @@ export default [
     type: 'percent',
     period: 'lifetime',
     plans: ['basic', 'premium']
+  },
+  {
+    code: 'PRO_HUNT',
+    discount: 50,
+    type: 'percent',
+    period: 'once month',
+    plans: ['premium']
   }
 ]

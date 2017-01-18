@@ -57,7 +57,7 @@ const VisitorList = ({ visitors }) => {
       <tbody key={i} className="visitor">
         <tr>
           <td className="location-info">{getFlag(visitor.location.country_code)}{visitor.location.country_name}{visitor.location.region_code ? `, ${visitor.location.region_code}` : ''}</td>
-          <td>{referer}</td>
+          <td onClick={() => console.log(visitor.referer)}>{referer}</td>
           <td>{moment(visitor._kmd.lmt).fromNow()}</td>
           <td className="device-info">
             <img src={browserIcon} className="icon" alt="browser"/>

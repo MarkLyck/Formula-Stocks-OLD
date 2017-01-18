@@ -2,14 +2,14 @@
 import React from 'react'
 import '../../../../libraries/amcharts/pie.js'
 
-const PieChart = ({ title, data, colors }) => {
+const PieChart = ({ title, data, colors, unit }) => {
 
   const config = {
     type: "pie",
     dataProvider: data,
     titleField: "title",
     valueField: "value",
-    balloonText: `[[title]]<br/>[[value]]`,
+    balloonText: `[[title]]<br/>[[value]]${unit}`,
     radius: "40%",
     innerRadius: "70%",
     labelsEnabled: false,

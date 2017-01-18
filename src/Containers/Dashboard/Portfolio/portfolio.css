@@ -34,6 +34,9 @@
     border-left: 2px solid $db-border-color;
     padding-left: 20px;
     margin-left: -2px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     .stats {
       h3 {
         margin-bottom: 10px;
@@ -69,6 +72,38 @@
         i {
           color: $primary-color;
         }
+      }
+    }
+    .browserChart {
+      height: 180px;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      margin-top: auto;
+      margin-bottom: 16px;
+      position: relative;
+      > div {
+        position: relative;
+        &::after {
+          content: 'Allocation';
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          font-weight: 500;
+          font-size: 1rem;
+          text-align: center;
+        }
+      }
+
+      h3 {
+        order: 1;
+        display: none;
+      }
+      > div {
+        margin-left: -11px;
+        width: 100%;
+        order: 2;
       }
     }
   }
