@@ -116,7 +116,7 @@ const AboutUs = React.createClass({
               <img src={photos.Marie} alt="employee"/>
               <div className="content">
                 <h3 className="name">Marie Lauritzen</h3>
-                <h4>PhD. Research Assistant</h4>
+                <h4>PhD, Research, Linguist</h4>
               </div>
             </li>
           </ul>
