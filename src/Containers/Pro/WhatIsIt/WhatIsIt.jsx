@@ -1,7 +1,7 @@
 import React from 'react'
 import Scroll from 'react-scroll'
 
-import PortfolioScreenshot from './portfolio_page.jpg'
+import PortfolioScreenshot from './Portfolio.jpg'
 import './whatIsIt.css'
 
 class WhatIsIt extends React.Component {

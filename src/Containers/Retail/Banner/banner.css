@@ -1,0 +1,63 @@
+@import "../../variables.css";
+
+.retail {
+  .section:nth-child(even) {
+    background: #fff !important;
+  }
+  .section:nth-child(odd) {
+    background: #f4f4f4 !important;
+  }
+}
+
+
+.banner {
+  display: flex;
+  justify-content: space-between;
+  height: 64px;
+  padding: 16px 64px;
+  background: #f7f5f5;
+  margin-top: -4px;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+  margin-bottom: 4px;
+  .banner-logo {
+    height: 48px;
+    width: 48px;
+    margin-right: 16px;
+  }
+  .left {
+    display: flex;
+    align-items: center;
+    h3 {
+      color:#D34E28;
+      font-weight: bold;
+    }
+  }
+  .right {
+    display: flex;
+    align-items: center;
+    .coupon-code {
+      background: #eee;
+      background: $primary-color;
+      color: #fff;
+      border-radius: 4px;
+      padding: 8px;
+      font-weight: 600;
+      margin: 0 8px;
+    }
+  }
+}
+
+@media (max-width: 890px) {
+  .banner {
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+    .left {
+      margin-bottom: 16px;
+    }
+    .right {
+      line-height: 2rem;
+      text-align: center;
+    }
+  }
+}

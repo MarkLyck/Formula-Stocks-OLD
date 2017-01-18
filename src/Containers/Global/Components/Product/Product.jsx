@@ -4,6 +4,8 @@ import React from 'react'
 import Info from '../Info/Info'
 import { Link } from 'react-router'
 
+import PHLogo from '../../../Retail/Banner/product-hunt.png'
+
 function formatPrice(value) {
   while(/(\d+)(\d{3})/.test(value.toString())) {
     value = value.toString().replace(/(\d+)(\d{3})/, '$1' + ',' + '$2')

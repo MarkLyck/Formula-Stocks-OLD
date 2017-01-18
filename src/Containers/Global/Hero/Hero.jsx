@@ -10,9 +10,9 @@ let userCanSeeSection = true
 class Hero extends React.Component {
   constructor(props) {
     super(props)
-
     this.count = this.count.bind(this)
   }
+
   componentDidMount() {
     if (platform.name === 'Chrome' || platform.name === 'Blink') {
       $('.hero').on('mousemove', this.mousemove)
