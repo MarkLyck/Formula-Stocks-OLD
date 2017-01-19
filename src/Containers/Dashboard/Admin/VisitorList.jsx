@@ -30,14 +30,19 @@ const VisitorList = ({ visitors }) => {
   const fixedVisitors = visitors.map((visitor, i) => {
 
     let browserIcon
-    if (visitor.browser.indexOf('Chrome') > -1 || visitor.browser === 'Blink') { browserIcon = Chrome}
-    else if (visitor.browser.indexOf('Firefox') > -1) { browserIcon = Firefox}
-    else if (visitor.browser === 'Safari') { browserIcon = Safari}
-    else if (visitor.browser === 'Microsoft Edge') { browserIcon = Edge}
-    else if (visitor.browser === 'IE') { browserIcon = IE}
-    else if (visitor.browser === 'Android Browser') { browserIcon = AndroidBrowser}
-    else if (visitor.browser === 'Opera') { browserIcon = Opera}
-    else if (visitor.browser === 'PhantomJS') { browserIcon = PhantomJS}
+    if (visitor.browser) {
+      if (visitor.browser.indexOf('Chrome') > -1 || visitor.browser === 'Blink') { browserIcon = Chrome }
+      else if (visitor.browser.indexOf('Firefox') > -1) { browserIcon = Firefox}
+      else if (visitor.browser === 'Safari') { browserIcon = Safari}
+      else if (visitor.browser === 'Microsoft Edge') { browserIcon = Edge}
+      else if (visitor.browser === 'IE') { browserIcon = IE}
+      else if (visitor.browser === 'Android Browser') { browserIcon = AndroidBrowser}
+      else if (visitor.browser === 'Opera') { browserIcon = Opera}
+      else if (visitor.browser === 'PhantomJS') { browserIcon = PhantomJS}
+    } else {
+      browserIcon = Chrome
+    }
+
 
     let osIcon
     if (visitor.os === 'Windows') { osIcon = Windows }

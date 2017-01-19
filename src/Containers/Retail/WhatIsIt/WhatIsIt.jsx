@@ -17,7 +17,7 @@ class WhatIsIt extends React.Component {
               Use these in your own account. Or mirror our model portfolio, which have outperformed the
               S&P 500 88% of the time. <br/><br/>
 
-              Historically, 89-92% of all our recommendations have been succesful. If you had bought
+              Historically, 89-92% of all our recommendations have been successful. If you had bought
               random high-quality stocks, only approx. 59% of these would have earned a positive return.
               A staggering difference.<br/><br/>
 
