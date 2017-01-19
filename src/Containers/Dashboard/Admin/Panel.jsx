@@ -122,16 +122,14 @@ class AdminPanel extends React.Component {
         || (browserType.title === 'Edge' && visitor.browser === 'Microsoft Edge')})) {
         prev[foundIndex].value++
       } else {
-        prev.push({ title: visitor.browser, value: 1 })
         if (visitor.browser) {
+          prev.push({ title: visitor.browser, value: 1 })
           if (visitor.browser.indexOf('Chrome') > -1 || visitor.browser === 'Blink') { browserColors.push('#FDD20A') }
           else if (visitor.browser.indexOf('Firefox') > -1) { browserColors.push('#EA5B0C') }
           else if (visitor.browser === 'IE' || visitor.browser.indexOf('Edge') > -1) { browserColors.push('#2C74BE') }
           else if (visitor.browser === 'Safari') { browserColors.push('#298FDD') }
           else if (visitor.browser === 'Android Browser') { browserColors.push('#99CC00') }
           else if (visitor.browser === 'Opera') { browserColors.push('#FE0002') }
-        } else {
-          browserColors.push('#eeeeee')
         }
       }
 

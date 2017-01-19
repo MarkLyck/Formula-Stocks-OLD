@@ -20,8 +20,6 @@ const Visit = Backbone.Model.extend({
       return null
     } else if (platform.os.family === 'Linux' && document.referrer.indexOf('facebook') > -1) {
       return null
-    } else if (platform.os.family.indexOf('Server') > -1) {
-      return null
     }
     $.ajax('https://freegeoip.net/json/')
     .then((r) => {
