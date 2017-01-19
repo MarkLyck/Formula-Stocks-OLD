@@ -61,7 +61,7 @@ class SignUp extends React.Component {
   }
 
   closeModal(e) {
-    if ((e.target.className === 'prof-modal-container' || e.target.className.indexOf('close-btn') > -1) && !store.isSubmitting) {
+    if ((e.target.className === 'prof-modal-container' || e.target.className.indexOf('close-btn') > -1 || e.target.className.indexOf('close-icon') > -1) && !store.isSubmitting) {
       if (this.props.location.pathname === '/pro/signup') {
         browserHistory.push('/pro')
       } else {
@@ -87,9 +87,9 @@ class SignUp extends React.Component {
 
   renderCloseBtn() {
     if (this.props.location.pathname === '/pro/signup') {
-      return <button className="close-btn" onClick={this.closeModal}><i className="material-icons close-btn">close</i></button>
+      return <button className="close-btn" onClick={this.closeModal}><i className="material-icons close-icon">close</i></button>
     } else {
-      return <button className="close-btn" onClick={this.closeModal}><i className="material-icons close-btn">close</i></button>
+      return <button className="close-btn" onClick={this.closeModal}><i className="material-icons close-icon">close</i></button>
     }
   }
 
