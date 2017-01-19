@@ -132,7 +132,7 @@ class ChoosePlan extends React.Component {
             </div>
           </div>
           <div className="bottom-bar">
-             <p>Statistics are calculated from backtested data. We make no guarantee of future performance. See our <button onClick={this.toggleTerms}>Terms of service</button></p>
+             <p>Statistics based on backtested data. Past performance is not neccesarily indicative of future results. See our <button onClick={this.toggleTerms}>Terms of service</button></p>
           </div>
           {this.state.showTerms ? <div className="terms-container"><button className="close-btn" onClick={this.toggleTerms}><i className="material-icons">close</i></button><Terms/></div> : ''}
         </div>)
