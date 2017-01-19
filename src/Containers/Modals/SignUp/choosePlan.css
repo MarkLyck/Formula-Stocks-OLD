@@ -40,9 +40,12 @@
         flex-grow: 1;
         border-bottom: 1px solid #E9EEF2;
         align-items: center;
+        p {
+          margin: 0;
+        }
       }
       .row:first-child {
-        height: 64px;
+        /*height: 64px;*/
       }
       .plan-columns-container {
         display: flex;
@@ -151,6 +154,9 @@
       }
       .left {
         display: block;
+        .row {
+          min-height: 40px;
+        }
       }
       .right {
         width: 100%;
@@ -180,6 +186,7 @@
             display: block;
             .row {
               display: none;
+              min-height: 64px;
             }
             .row:first-child {
               display: flex;
