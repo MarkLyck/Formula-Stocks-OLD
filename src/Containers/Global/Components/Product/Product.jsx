@@ -2,7 +2,7 @@
 
 import React from 'react'
 import Info from '../Info/Info'
-import { Link } from 'react-router'
+import { Link, browserHistory } from 'react-router'
 
 import PHLogo from '../../../Retail/Banner/product-hunt.png'
 
@@ -11,6 +11,12 @@ function formatPrice(value) {
     value = value.toString().replace(/(\d+)(\d{3})/, '$1' + ',' + '$2')
   }
   return value
+}
+
+const gotoSignup = (plan, path) => {
+  let prefix = path === '/pro' ? '/pro' : ''
+  localStorage.selectedPlan = plan
+  browserHistory.push(`${prefix}/signup`)
 }
 
 const Product = ({ plan, billed, path }) => {
@@ -100,7 +106,8 @@ const Product = ({ plan, billed, path }) => {
         <p className="right-align">{plan.info.gainToPainRatio.toFixed(3)}</p>
       </li>
     </ul>
-    <Link to={`${prefix}/signup`} className="cta">{ctaText}</Link>
+    {/* <Link to={`${prefix}/signup`} className="cta">{ctaText}</Link> */}
+    <a onClick={gotoSignup.bind(this, plan.name, prefix)} className="cta">{ctaText}</a>
   </div>
 )}
 

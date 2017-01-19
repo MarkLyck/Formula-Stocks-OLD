@@ -1,6 +1,6 @@
 import React from 'react'
 import $ from 'jquery'
-import { Link } from 'react-router'
+import { Link, browserHistory } from 'react-router'
 import Scroll from 'react-scroll'
 import store from '../../../store'
 import './navbar.css'
@@ -16,6 +16,7 @@ class NavBar extends React.Component {
     this.closeMenu = this.closeMenu.bind(this)
     this.renderMenu = this.renderMenu.bind(this)
     this.renderUserLinks = this.renderUserLinks.bind(this)
+    this.gotoSignup = this.gotoSignup.bind(this)
 
     this.state = { navbar: 'static', showMenu: false }
   }
@@ -34,6 +35,13 @@ class NavBar extends React.Component {
     })
   }
 
+  gotoSignup() {
+    let prefix = this.props.path === '/pro' ? '/pro' : ''
+    if (this.props.path === '/pro') { localStorage.selectedPlan = 'premium' }
+    else { localStorage.selectedPlan = 'basic' }
+    browserHistory.push(`${prefix}/signup`)
+  }
+
   renderUserLinks() {
     let prefix = this.props.path === '/pro' ? '/pro' : ''
     let signupText = this.props.path !== '/pro' ? 'Free trial' : 'Get started'
@@ -43,13 +51,13 @@ class NavBar extends React.Component {
       return (
         <div id="nav-links">
           <Link to={`${prefix}/login`} id="login-btn" className="nav-link">Login</Link>
-          <Link to={`${prefix}/signup`} id="signup-btn" className="nav-link">{signupText}</Link>
+          <a onClick={this.gotoSignup} id="signup-btn" className="nav-link">{signupText}</a>
         </div>)
     } else if (!localStorage.authtoken) {
       return (
         <div id="nav-links">
           <Link to={`${prefix}/login`} id="login-btn" className="nav-link">Login</Link>
-          <Link to={`${prefix}/signup`} id="signup-btn" className="nav-link">{signupText}</Link>
+          <a onClick={this.gotoSignup} id="signup-btn" className="nav-link">{signupText}</a>
         </div>)
     } else {
       return (

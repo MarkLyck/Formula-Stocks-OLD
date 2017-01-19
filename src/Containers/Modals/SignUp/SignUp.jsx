@@ -29,9 +29,11 @@ class SignUp extends React.Component {
     this.lastPage = this.lastPage.bind(this)
     this.renderCloseBtn = this.renderCloseBtn.bind(this)
 
+    let selected = localStorage.selectedPlan ? localStorage.selectedPlan : 'basic'
+
     this.state = {
       page: 1,
-      selected: 'premium',
+      selected: selected,
       gotInfo: false
     }
   }
