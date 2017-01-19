@@ -103,10 +103,7 @@ const AboutUs = React.createClass({
             suite of tools, used in production of all LEGO A/S end user products world-wide.
             In the late 1980's to early 1990's we helped the broadcasting and film industry
             transition from analog to digital tools, and introduced a wide range of generally
-            available software products, aimed at video editing, speciel effects generation,
-            2D paint, 3D graphics, 3D paint, and so forth. We received industry wide
-            recognition, and held a global 3rd place in our niche in terms of installations
-            world-wide.<br/><br/>
+            available software products.<br/><br/>
           </p>
           <ul className="team-list">
             <li className="team-member">
