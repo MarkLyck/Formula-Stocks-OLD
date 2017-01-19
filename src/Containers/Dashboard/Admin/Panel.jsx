@@ -177,6 +177,9 @@ class AdminPanel extends React.Component {
 
       return referer
     })
+    .filter(referer => {
+      return referer.value > 1 ? true : false
+    })
 
 
 

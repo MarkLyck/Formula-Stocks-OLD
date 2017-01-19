@@ -1,5 +1,5 @@
 import React from 'react'
-import OmegaGrah from './omega_chart.svg'
+import OmegaGrah from './Omega_Chart2.svg'
 import './riskReward.css'
 
 class RiskReward extends React.Component {

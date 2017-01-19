@@ -84,7 +84,7 @@ class User extends React.Component {
     return (
       <tbody className="user">
         <tr>
-          <td>{this.props.user.email}</td>
+          <td onClick={() => console.log(this.props.user)}>{this.props.user.email}</td>
           <td>{moment(this.props.user._kmd.ect).format('MM/DD/YYYY')}</td>
           <td>{moment(this.props.user.lastSeen).fromNow()}</td>
           <td className={type.toLowerCase()}>{type}</td>
