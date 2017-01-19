@@ -106,13 +106,13 @@ const AboutUs = React.createClass({
             available software products.<br/><br/>
           </p>
           <ul className="team-list">
-            <li className="team-member">
+            {/* <li className="team-member">
               <img src={Mansion} alt="employee"/>
               <div className="content">
                 <h3 className="name">Our headquarters</h3>
                 <h4>Mayor's mansion, Haderslev</h4>
               </div>
-            </li>
+            </li> */}
             <li className="team-member" onClick={this.showModal.bind(this, 'Thomas')}>
               <img src={photos.Thomas} alt="employee"/>
               <div className="content">
@@ -132,7 +132,6 @@ const AboutUs = React.createClass({
               <div className="content">
                 <h3 className="name">Marie Lauritzen</h3>
                 <h4>PhD, Research, Linguist</h4>
-                {/* <h4>PhD, Research</h4> */}
               </div>
             </li>
           </ul>

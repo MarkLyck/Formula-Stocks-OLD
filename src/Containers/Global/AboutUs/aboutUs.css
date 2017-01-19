@@ -92,6 +92,7 @@
   // margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   max-width: 1160px;
   width: 100%;
   li {
@@ -325,6 +326,7 @@
   .team-list {
     max-width: 600px;
     margin: 0 auto;
+    justify-content: flex-start;
     li {
       margin: 0 7px 7px 0;
       flex-direction: row;
