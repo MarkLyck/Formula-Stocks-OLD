@@ -86,7 +86,7 @@ const AboutUs = React.createClass({
 
     return (
       <section className="about-us section">
-        <h2>Corporate profile</h2>
+        <h2>Company profile</h2>
         <div className="divider"></div>
 
         <div className="content">
