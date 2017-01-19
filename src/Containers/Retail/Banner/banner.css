@@ -41,8 +41,9 @@
       color: #fff;
       border-radius: 4px;
       padding: 8px;
-      font-weight: 600;
-      margin: 0 8px;
+      font-weight: 500;
+      margin: 0 4px;
+      font-size: 1rem;
     }
   }
 }

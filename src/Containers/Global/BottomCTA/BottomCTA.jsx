@@ -16,7 +16,7 @@ class BottomCTA extends React.Component {
         <h1>Now that you've scrolled all the way to the bottom...</h1>
         <h3>It can be just the right moment to stop reading and do some clicking instead.</h3>
         <Link className="to-pricing" to={`${prefix}/signup`}>I'm ready to try</Link>
-        <a id="talk-to-us" className="not-convinced" href="mailto:i194mpvo@incoming.intercom.io">Want more information? - Talk to us!</a>
+        <a id="talk-to-us" className="not-convinced" href="mailto:i194mpvo@incoming.intercom.io">Want more information? - Let's talk!</a>
       </section>
     )
   }

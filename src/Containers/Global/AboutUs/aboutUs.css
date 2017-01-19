@@ -6,11 +6,12 @@
   align-items: center;
   .content {
     margin: 0 auto;
-    width: 80%;
-    max-width: 1200px;
+    width: 100%;
+    max-width: 1160px;
     .about-fs {
-      padding: 20px 0;
+      padding: 0;
       line-height: 1.25;
+      margin-top: 0;
     }
     .employees {
       margin: 0 auto;
@@ -88,16 +89,17 @@
 }
 
 .team-list {
-  margin: 0 auto;
+  // margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
-  max-width: 1000px;
+  max-width: 1160px;
   width: 100%;
   li {
     display: flex;
     flex-direction: column;
     margin: 0 15px;
-    width: calc(100% / 3 - 30px);
+    // width: calc(100% / 3 - 30px);
+    width: calc(100% / 4 - 23px);
     margin-bottom: 30px;
     border: 1px solid #E4E4E4;
     border-radius: 4px;
@@ -131,6 +133,12 @@
         font-weight: 300;
       }
     }
+  }
+  li:first-child {
+    margin-left: 0;
+  }
+  li:last-child {
+    margin-right: 0;
   }
 }
 
@@ -313,9 +321,10 @@
   }
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 1110px) {
   .team-list {
     max-width: 600px;
+    margin: 0 auto;
     li {
       margin: 0 7px 7px 0;
       flex-direction: row;
@@ -349,7 +358,7 @@
   }
 }
 
-@media (max-width: 800px) {
+@media (max-width: 750px) {
   .team-modal-container {
     .team-modal {
       flex-direction: column;
@@ -397,7 +406,7 @@
   }
 }
 
-@media (max-width: 648px) {
+@media (max-width: 750px) {
   .team-list {
     li {
       width: 100%;

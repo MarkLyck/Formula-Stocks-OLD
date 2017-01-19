@@ -4,6 +4,8 @@ import Thomas from './photos/Thomas.jpg'
 import Mark from './photos/Mark.jpg'
 import Marie from './photos/Marie.jpg'
 
+import Mansion from './photos/Mansion.jpg'
+
 import './aboutUs.css'
 
 const photos = {
@@ -84,20 +86,36 @@ const AboutUs = React.createClass({
 
     return (
       <section className="about-us section">
-        <h2>About us</h2>
+        <h2>Corporate profile</h2>
         <div className="divider"></div>
 
         <div className="content">
           <p className="about-fs">
-            Formula Stocks is a research and development company, which started operations in
-            2003. The basic idea was simple:
-            leveraging decades of supercomputer experience and investment acumen to create an
-            informational advantage in equity investing. We specialize in being right far more often
-            than we are wrong, using a scientific approach and intelligent technology to analyze
-            businesses and accumulate extensive knowledge which can literally be found nowhere else.
+            Formula Stocks is a research and development company. Equity operations started in
+            2003. The concept centered around leveraging decades of supercomputer experience,
+            modern learning technology and investment acumen to create an informational
+            advantage in equity investing. We specialize in being right far more often than we
+            are wrong, using a scientific approach to analyze businesses and accumulate
+            extensive knowledge which can literaly be found nowhere else.<br/><br/>
+
+            Previous to current operations the management team behind Formula Stocks, was
+            responsible for the succesfull development of LEGO's 3D building instruction
+            suite of tools, used in production of all LEGO A/S end user products world-wide.
+            In the late 1980's to early 1990's we helped the broadcasting and film industry
+            transition from analog to digital tools, and introduced a wide range of generally
+            available software products, aimed at video editing, speciel effects generation,
+            2D paint, 3D graphics, 3D paint, and so forth. We received industry wide
+            recognition, and held a global 3rd place in our niche in terms of installations
+            world-wide.<br/><br/>
           </p>
           <ul className="team-list">
-
+            <li className="team-member">
+              <img src={Mansion} alt="employee"/>
+              <div className="content">
+                <h3 className="name">Our headquarters</h3>
+                <h4>Mayor's mansion, Haderslev</h4>
+              </div>
+            </li>
             <li className="team-member" onClick={this.showModal.bind(this, 'Thomas')}>
               <img src={photos.Thomas} alt="employee"/>
               <div className="content">
@@ -117,6 +135,7 @@ const AboutUs = React.createClass({
               <div className="content">
                 <h3 className="name">Marie Lauritzen</h3>
                 <h4>PhD, Research, Linguist</h4>
+                {/* <h4>PhD, Research</h4> */}
               </div>
             </li>
           </ul>

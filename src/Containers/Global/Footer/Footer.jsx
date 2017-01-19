@@ -2,6 +2,7 @@ import React from 'react'
 
 import Terms from '../Components/Legal/TermsAndConditions'
 import Privacy from '../Components/Legal/PrivacyPolicy'
+import House from './House.png'
 
 import './footer.css'
 
@@ -88,10 +89,12 @@ class Footer extends React.Component {
         </div>
 
         <div className="copyright">
+          <img className="headquarters" src={House} alt="headquarters"/>
           <div className="contact-info">
-            <p>Formula Stocks ApS     Ribe Landevej 39      DK-6100 Haderslev      Denmark.</p>
+            <p>Formula Stocks ApS - Ribe Landevej 39, 6100 Haderslev Denmark</p>
+            <p>Contact us at: <a href="mailto:info@formulastocks.com">info@formulastocks.com</a></p>
+            <p>© Formula Stocks 2017 - All rights reserved.</p>
           </div>
-          <p>© Formula Stocks 2017 - All rights reserved.</p>
         </div>
       </footer>
     )

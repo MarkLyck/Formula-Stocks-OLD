@@ -25,9 +25,22 @@ footer {
   .copyright {
     padding: 20px 0;
     background: $dark-background;
-    text-align: center;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .headquarters {
+      margin-right: 32px;
+      margin-left: 32px;
+      height: 100%;
+      width: auto;
+    }
+    .contact-info {
+      margin-right: 32px;
+    }
     p {
       color: $light-text-color;
+      margin: 8px 0;
     }
   }
 }
@@ -36,5 +49,17 @@ footer {
   i {
     color: $text-color;
     font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 580px) {
+  .copyright {
+    flex-direction: column;
+    .contact-info {
+      margin-left: 32px;
+    }
+    p {
+      text-align: center;
+    }
   }
 }
