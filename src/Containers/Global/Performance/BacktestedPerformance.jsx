@@ -215,6 +215,7 @@ class BacktestedPerformance extends React.Component {
         <h3 className="subtitle">Log scale graph 1970-2017</h3>
         {this.renderChart()}
         <p className="disclaimer">Numbers partially derived through backtesting. 2009-2017 match "live" results observed.</p>
+        <p className="disclaimer">Backtested figures have certain inherent limitations. Post-2009 results observed in realtime. See our TOS for details. </p>
       </section>
     )
   }
