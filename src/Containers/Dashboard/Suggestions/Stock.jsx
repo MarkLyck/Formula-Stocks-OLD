@@ -62,7 +62,7 @@ class Suggestion extends React.Component {
     if (this.props.suggestion.percentage_weight) {
       allocation = this.props.suggestion.percentage_weight.toFixed(2)
     }
-    let listClass = 'fade-in white'
+    let listClass = 'fade-in white suggestion'
     let actionClass = ''
     let textColor = ''
     let SuggestedPriceText = 'Buy at'

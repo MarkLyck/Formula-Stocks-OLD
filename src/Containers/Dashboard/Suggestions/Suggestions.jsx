@@ -4,7 +4,7 @@ import moment from 'moment'
 import {Link} from 'react-router'
 
 import Suggestion from './Stock'
-import FundStock from './FundStock'
+import SmallStock from './SmallStock'
 import SuggestionHeader from './SuggestionsHeader'
 import './suggestions.css'
 import store from '../../../store'
@@ -46,7 +46,7 @@ class Suggestions extends React.Component {
         if (this.props.plan !== 'fund') {
           return <Suggestion key={this.props.plan+suggestion.ticker+i} suggestion={suggestion} i={i} planName={this.props.plan}/>
         } else {
-          return <FundStock key={this.props.plan+suggestion.ticker+i} suggestion={suggestion} i={i} planName={this.props.plan}/>
+          return <SmallStock key={this.props.plan+suggestion.ticker+i} suggestion={suggestion} i={i} planName={this.props.plan}/>
         }
       })
       suggestionsList = (

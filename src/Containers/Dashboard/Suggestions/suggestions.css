@@ -12,7 +12,7 @@
   width: 100%;
   padding: 0 10px;
   margin-bottom: 10px;
-  li {
+  .suggestion, .sell-suggestion {
     width: calc(50% - 20px);
     margin: 10px;
     display: flex;

@@ -99,7 +99,7 @@ const AboutUs = React.createClass({
             extensive knowledge which can literaly be found nowhere else.<br/><br/>
 
             Previous to current operations the management team behind Formula Stocks, was
-            responsible for the succesfull development of LEGO's 3D building instruction
+            responsible for the successful development of LEGO's 3D building instruction
             suite of tools, used in production of all LEGO A/S end user products world-wide.
             In the late 1980's to early 1990's we helped the broadcasting and film industry
             transition from analog to digital tools, and introduced a wide range of generally
