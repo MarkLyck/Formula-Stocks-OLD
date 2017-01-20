@@ -68,10 +68,12 @@ class Stock extends React.Component {
     }
 
     if (!this.props.graph) {
-      let allocation = <td className="portfolio-td"><p className="blue-color">{stock.percentage_weight.toFixed(2)}%</p></td>
-      if (stock.percentage_weight < 0.006) {
-        allocation = <td className="portfolio-td"><p className="blue-color">{stock.percentage_weight.toFixed(3)}%</p></td>
-      }
+      let allocationWeight = stock.percentage_weight.toFixed(2)
+      if (this.props.plan === 'fund') { allocationWeight = stock.percentage_weight.toFixed(4) }
+      else if (allocationWeight < 0.006) { allocationWeight = stock.percentage_weight.toFixed(3) }
+      if (allocationWeight < 0.0001) { allocationWeight = 0.0001 }
+
+      let allocation = <td className="portfolio-td"><p className="blue-color">{allocationWeight}%</p></td>
 
       return (
         <tbody onClick={this.props.expandStock.bind(null, stock)}>
