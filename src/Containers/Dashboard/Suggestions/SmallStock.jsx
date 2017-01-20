@@ -104,7 +104,7 @@ class SmallStock extends React.Component {
             <h4 className="ticker">{this.props.suggestion.ticker}</h4>
           </div>
 
-          <div className="vertical">
+          <div className="vertical price">
             <h3>{SuggestedPriceText}</h3>
             <h4 className="value">${this.props.suggestion.suggested_price.toFixed(2)}</h4>
           </div>

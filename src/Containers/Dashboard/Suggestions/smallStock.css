@@ -74,6 +74,10 @@
       border: 3px solid $primary-color;
     }
   }
+  .price {
+    min-width: 100px;
+    margin-right: 32px;
+  }
   .more-info {
     align-self: flex-end;
     position: absolute;
@@ -84,6 +88,7 @@
     color: $primary-color;
     padding: 0;
     margin: 0;
+    font-weight: 500;
   }
 }
 
