@@ -68,9 +68,12 @@ class SmallStock extends React.Component {
 
   render() {
     let allocation
-    if (this.props.suggestion.percentage_weight) {
-      allocation = this.props.suggestion.percentage_weight.toFixed(7)
+    if (this.props.suggestion.percentage_weight > 0.0001) {
+      allocation = this.props.suggestion.percentage_weight.toFixed(4)
+    } else {
+      allocation = 0.0001
     }
+
     let listClass = 'fade-in white small-stock'
     let actionClass = ''
     let textColor = ''
@@ -89,22 +92,6 @@ class SmallStock extends React.Component {
       actionClass = 'sell'
       SuggestedPriceText = 'Sell at'
       allocationElement = <li></li>
-    }
-
-    let modal
-    if (this.state.showModal) {
-
-      modal = (
-        <div className="db-modal-container" onClick={this.closeModal}>
-          <div className="db-modal advanced-data-modal">
-            <div className="top">
-              <h3 className={textColor}>{this.props.suggestion.name}</h3>
-              <h3 className={`action ${actionClass}`}>{this.props.suggestion.action}</h3>
-            </div>
-
-          </div>
-        </div>
-      )
     }
 
     return (
