@@ -40,11 +40,12 @@
         p {
           margin: 0 !important;
         }
-        .right-align {
-          text-align: right;
-          margin-left: 16px !important;
-          flex-grow: 1;
-        }
+      }
+
+      .right-align {
+        text-align: right;
+        margin-left: 16px !important;
+        flex-grow: 1;
       }
       .light-text-color {
         color: #95989E;
@@ -55,9 +56,16 @@
         border-top: none;
         border-bottom: none;
         box-sizing: border-box;
+        .extra {
+          display: flex;
+          margin: 0;
+          margin-bottom: 8px;
+        }
         p {
+          margin: 0;
           margin-bottom: 10px;
         }
+
       }
       .cta {
         width: 100%;

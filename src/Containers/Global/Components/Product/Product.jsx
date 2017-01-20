@@ -29,9 +29,9 @@ const Product = ({ plan, billed, path }) => {
 
   if (path === '/pro') {
     extraInfo =
-      plan.name === 'premium' ? <div><p><span className="light-text-color">License:</span> <span className="right-align">Personal</span></p></div>
-    : plan.name === 'business' ? <div><p>Includes Premium</p><p><span className="light-text-color">License:</span> <span className="right-align">Personal/Corporate</span></p></div>
-    : plan.name === 'fund' ? <div><p><span>AUM capacity:</span><span className="right-align">$50 billion</span></p><p><span className="light-text-color">License:</span> <span className="right-align">Institutional</span></p></div>
+      plan.name === 'premium' ? <div><p className="extra"><span className="light-text-color">License:</span> <span className="right-align">Personal</span></p></div>
+    : plan.name === 'business' ? <div><p className="extra">Includes Premium</p><p className="extra"><span className="light-text-color">License:</span> <span className="right-align">Personal/Corporate</span></p></div>
+    : plan.name === 'fund' ? <div><p className="extra"><span>AUM capacity:</span><span className="right-align">up to $300 billion</span></p><p className="extra"><span className="light-text-color">License:</span> <span className="right-align">Institutional</span></p></div>
     : ''
   }
 
@@ -106,7 +106,6 @@ const Product = ({ plan, billed, path }) => {
         <p className="right-align">{plan.info.gainToPainRatio.toFixed(3)}</p>
       </li>
     </ul>
-    {/* <Link to={`${prefix}/signup`} className="cta">{ctaText}</Link> */}
     <a onClick={gotoSignup.bind(this, plan.name, prefix)} className="cta">{ctaText}</a>
   </div>
 )}

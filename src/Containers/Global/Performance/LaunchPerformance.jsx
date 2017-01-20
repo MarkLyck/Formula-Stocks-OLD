@@ -142,7 +142,13 @@ class Performance extends React.Component {
 
       let minimum = _.min([preMin, busMin, funMin, marMin])
       minimum = Math.floor(minimum / 50) * 50
+
       let maximum = _.max(this.state.chartData, (point) => Number(point.business)).business
+      if (this.props.path === '/pro') {
+        let funMaximum = _.max(this.state.chartData, (point) => Number(point.fund)).fund
+        if (funMaximum > maximum) { maximum = funMaximum }
+      }
+
       maximum = Math.ceil(maximum/100) * 100
 
       const graphs = [

@@ -93,7 +93,7 @@ store.plans.add({
   type: 4,
   info: {
     roundtripTradesPerYear: 123,
-    avgNumOfPosInPortfolio: 1400,
+    avgNumOfPosInPortfolio: 600,
     IITFormulas: 93,
     avgGainPerPosition: 66.097,
     avgLossPerPosition: 16.85,
