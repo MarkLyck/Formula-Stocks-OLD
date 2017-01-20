@@ -23,7 +23,7 @@ class Suggestions extends React.Component {
   }
 
   updateState() {
-    if (store.selectedPlan === this.props.plan) {
+    if (store.selectedPlan === this.props.plan && this.state.fetching) {
       this.setState({ fetching: false })
     }
   }

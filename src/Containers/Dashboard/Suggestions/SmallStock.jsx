@@ -3,43 +3,54 @@ import _ from 'underscore'
 import './smallStock.css'
 
 import store from '../../../store'
+import SuggestionChart from './SuggestionChart'
 
 class SmallStock extends React.Component {
   constructor(props) {
     super(props)
 
-    this.moreInfo = this.moreInfo.bind(this)
-    this.closeModal = this.closeModal.bind(this)
     this.renderBottom = this.renderBottom.bind(this)
     this.toggleMoreInfo = this.toggleMoreInfo.bind(this)
 
-    this.state = { fetched: false, fetching: false, failed: false, expanded: false }
+    this.state = { fetched: false, fetching: true, failed: false, expanded: false }
   }
 
   componentDidMount() {
     if(!store.plans.get(this.props.planName).get('suggestions')[this.props.i].data) {
-      this.setState({ fetched: true })
-    }
-  }
-
-  componentWillReceiveProps(newProps) {
-    if (newProps.planName !== this.props.planName) {
-
-    }
-  }
-
-  moreInfo() {
-    this.setState({ showModal: true })
-  }
-
-  closeModal(e) {
-    if (_.toArray(e.target.classList).indexOf('db-modal-container') !== -1) {
-      this.setState({ showModal: false })
+      this.setState({ fetched: false })
     }
   }
 
   renderBottom() {
     if (this.state.expanded) {
+
+      let chartArea
+      let loadingColor = 'blue-color'
+      if (this.props.suggestion.action === 'SELL') {
+        loadingColor = 'white-color'
+      }
+      if (this.state.fetching) {
+        chartArea = (
+          <div className="fetching-data">
+            <i className={`fa fa-circle-o-notch fa-spin fa-3x fa-fw ${loadingColor}`}></i>
+            <p className={loadingColor}>Loading data</p>
+          </div>)
+      } else if (this.state.failed) {
+        chartArea = (
+          <div className="fetching-data">
+            <p className="failed"><i className="fa fa-exclamation-circle" aria-hidden="true"></i> Couldn't find data</p>
+          </div>)
+      } else if (this.state.fetched) {
+        chartArea = (
+          <SuggestionChart
+            data={this.props.suggestion.data}
+            suggestedPrice={this.props.suggestion.suggested_price}
+            ticker={this.props.suggestion.ticker}
+            action={this.props.suggestion.action}
+            allData={this.state.showModal}/>
+        )
+      }
+
       const advancedData = this.props.suggestion.advanced_data.map((dataPoint, i) => {
         let value = dataPoint.value
         if (dataPoint.unit === 'percent') {
@@ -55,6 +66,7 @@ class SmallStock extends React.Component {
 
       return (
         <div className="bottom">
+          {chartArea}
           <ul className="advanced-data-list">
             {advancedData}
           </ul>
@@ -63,6 +75,19 @@ class SmallStock extends React.Component {
   }
 
   toggleMoreInfo() {
+    if (!this.state.expanded && !this.state.fetched) {
+      store.plans.get(this.props.planName).getStockInfo(this.props.suggestion.ticker, this.props.i)
+      .promise.then(() => {
+        if (store.selectedPlan === this.props.planName) {
+          this.setState({ fetched: true, fetching: false })
+        }
+      })
+      .catch(() => {
+        if (store.selectedPlan === this.props.planName) {
+          this.setState({ fetched: false, fetching: false, failed: true })
+        }
+      })
+    }
     this.setState({ expanded: !this.state.expanded })
   }
 

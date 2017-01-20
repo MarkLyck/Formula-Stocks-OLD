@@ -12,11 +12,13 @@
   .profile-info {
     padding: 20px;
     margin-bottom: 40px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.16);
     i {
       margin-right: 10px;
     }
   }
   .change-plan-container {
+    box-shadow: 0 2px 6px rgba(0,0,0,0.16);
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -98,6 +100,7 @@
     }
   }
   .cancel-btn {
+    box-shadow: 0 2px 6px rgba(0,0,0,0.16);
     margin-top: 100px;
     background: $warning-color;
     max-width: 100%;

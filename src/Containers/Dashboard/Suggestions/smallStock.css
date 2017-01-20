@@ -24,6 +24,23 @@
     flex-direction: column;
     width: 100%;
     border-top: 1px solid #eee;
+    #suggestion-chart {
+      height: 300px;
+    }
+    .fetching-data {
+      height: 300px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      i {
+        margin-bottom: 8px;
+      }
+    }
+    .failed {
+      color: $warning-color;
+    }
     .advanced-data-list {
       li {
         display: flex;
@@ -31,7 +48,7 @@
         padding: 12px 32px;
         .data-value { font-weight: 600; }
       }
-      li:nth-child(even) {
+      li:nth-child(odd) {
         background: #eee;
       }
     }
