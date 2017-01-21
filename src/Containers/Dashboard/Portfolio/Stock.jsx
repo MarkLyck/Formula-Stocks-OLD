@@ -30,7 +30,12 @@ class Stock extends React.Component {
     $(window).on('resize', this.checkScreenSize)
       this.state.promise.promise
       .then(r => {
-        if (store.selectedPlan === this.props.plan) { this.setState({ data: r.data, lastPrice: r.data[0][4], isLoading: false }) }
+        if (store.selectedPlan === this.props.plan) {
+          let portfolio = store.plans.get(this.props.plan).get('portfolio')
+          portfolio[this.props.number].latest_price = r.data[0][4]
+          store.plans.get(this.props.plan).set('portoflio', portfolio)
+          this.setState({ data: r.data, lastPrice: r.data[0][4], isLoading: false })
+        }
       })
       .catch(e => {
         if (store.selectedPlan === this.props.plan) { this.setState({ isLoading: false }) }
@@ -74,6 +79,11 @@ class Stock extends React.Component {
       if (allocationWeight < 0.0001) { allocationWeight = 0.0001 }
 
       let allocation = <td className="portfolio-td"><p className="blue-color">{allocationWeight}%</p></td>
+
+      // if (stock.ticker === 'DDE') {
+      //   console.log('purchase: ', stock.purchase_price.toFixed(3))
+      //   console.log('last: ', this.state.lastPrice)
+      // }
 
       return (
         <tbody onClick={this.props.expandStock.bind(null, stock)}>

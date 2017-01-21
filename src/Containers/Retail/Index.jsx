@@ -3,7 +3,7 @@ import store from '../../store'
 
 import NavBar from '../Global/Navbar/Navbar'
 import Hero from '../Global/Hero/Hero'
-import Banner from './Banner/Banner'
+// import Banner from './Banner/Banner'
 import Introduction from './Introduction/Introduction'
 import Professional from './Professional/Professional'
 import WhatIsIt from './WhatIsIt/WhatIsIt'
@@ -38,7 +38,7 @@ class Home extends React.Component {
       <div id="home" className="retail">
         <NavBar/>
         <Hero/>
-        <Banner/>
+        {/* <Banner/> */}
         <Introduction/>
         <Professional/>
         <WhatIsIt/>

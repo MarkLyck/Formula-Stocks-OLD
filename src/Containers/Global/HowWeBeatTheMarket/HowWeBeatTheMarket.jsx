@@ -90,10 +90,11 @@ class HowWeBeatTheMarket extends React.Component {
             choice: The deliberation without attention effect", Science 311 (2007): 1005-1007
           </p>
         </CollapseSegment>
-        <CollapseSegment title="Machine learning">
+        <CollapseSegment title="Cognitive computing">
           <p>
-            We use machine learning to obtain a level of experience that it is quite
-            impossible to obtain through regular career experience.<br/><br/>
+            We use cognitive computing to produce better decisionmaking. This includes machine
+            learning to obtain a level of experience that it is quite impossible to obtain
+            through regular career experience.<br/><br/>
 
             We humans usually learn through experience and mistakes.
             However, there is a limit to the amount of experience and mistakes we can make during a
