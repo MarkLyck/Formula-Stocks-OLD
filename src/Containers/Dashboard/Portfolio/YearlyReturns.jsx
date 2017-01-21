@@ -7,7 +7,6 @@ class YearlyReturns extends React.Component {
   constructor(props) {
     super(props)
     this.updateState = this.updateState.bind(this)
-
     this.state = { portfolioYields: store.plans.get(this.props.plan).toJSON().portfolioYields }
   }
 
@@ -26,7 +25,6 @@ class YearlyReturns extends React.Component {
   }
 
   updateState(plan) {
-    // console.log(plan)
     if (typeof plan === 'string') {
       store.plans.get(plan).on('update', this.updateState)
       this.setState({ portfolioYields: store.plans.get(plan).toJSON().portfolioYields })
@@ -69,7 +67,6 @@ class YearlyReturns extends React.Component {
     const oneYearStart = this.state.portfolioYields.slice(-12)[0].balance
     const lastBalance = this.state.portfolioYields[this.state.portfolioYields.length - 1].balance
 
-    console.log(fiveYearStart, lastBalance)
     return (
       <div className="yearly-returns">
         <ul className="return-list">

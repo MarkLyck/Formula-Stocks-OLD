@@ -7,8 +7,10 @@ class Stats extends React.Component {
   constructor(props) {
     super(props)
     this.updateState = this.updateState.bind(this)
-
-    this.state = { portfolio: store.plans.get(this.props.plan).toJSON().portfolio }
+    this.state = {
+      portfolio: store.plans.get(this.props.plan).toJSON().portfolio,
+      winrate: store.plans.get(this.props.plan).toJSON().stats.WLRatio
+    }
   }
 
   componentDidMount() { store.plans.get(this.props.plan).on('change', this.updateState) }
@@ -27,33 +29,34 @@ class Stats extends React.Component {
 
   updateState(plan) {
     if (typeof plan !== 'string') {
-      this.setState({ portfolio: store.plans.get(this.props.plan).toJSON().portfolio })
+      this.setState({
+        portfolio: store.plans.get(this.props.plan).toJSON().portfolio,
+        winrate: store.plans.get(this.props.plan).toJSON().stats.WLRatio
+      })
     } else {
       store.plans.get(plan).on('change', this.updateState)
-      this.setState({ portfolio: store.plans.get(plan).toJSON().portfolio })
+      this.setState({
+        portfolio: store.plans.get(plan).toJSON().portfolio,
+        winrate: store.plans.get(plan).toJSON().stats.WLRatio
+      })
     }
-
   }
 
   render() {
     const positiveStocks = this.state.portfolio.filter(stock => stock.purchase_price <= stock.latest_price ? true : false).length
     const percentPositive = (positiveStocks / (this.state.portfolio.length - 1) * 100).toFixed(2)
 
-    const avgDaysHeld = (this.state.portfolio.reduce((prev, stock) => {
-      if (prev === 0) { prev = Number(stock.days_owned) }
-      else if (stock.ticker !== 'CASH') { prev += Number(stock.days_owned) }
+    const avgSize = (this.state.portfolio.reduce((prev, stock) => {
+      if (prev === 0) { prev = Number(stock.percentage_weight) }
+      else if (stock.ticker !== 'CASH') { prev += Number(stock.percentage_weight) }
       return prev
     }, 0) / (this.state.portfolio.length - 1)).toFixed(2)
 
-    let sumOfReturns = this.state.portfolio.reduce((prev, stock) => {
+    let avgReturn = (this.state.portfolio.reduce((prev, stock) => {
       if (prev === 0) { prev = Number((stock.latest_price - stock.purchase_price) * 100 / stock.purchase_price) }
       else if (stock.ticker !== 'CASH') { prev += Number((stock.latest_price - stock.purchase_price) * 100 / stock.purchase_price) }
       return prev
-    }, 0).toFixed(2)
-
-    if (sumOfReturns >= 1000) {
-      sumOfReturns = Math.round(sumOfReturns)
-    }
+    }, 0) / (this.state.portfolio.length - 1)).toFixed(2)
 
     return (
       <ul className="stats">
@@ -62,8 +65,8 @@ class Stats extends React.Component {
               <i className="fa fa-bar-chart white-color"></i>
             </div>
             <div className="value">
-              <h3 className="white-color">{percentPositive}%</h3>
-              <p className="white-color">Curr. positive stocks</p>
+              <h3 className="white-color">{this.state.winrate.toFixed(2)}%</h3>
+              <p className="white-color">Profitable stocks</p>
             </div>
           </li>
 
@@ -72,18 +75,18 @@ class Stats extends React.Component {
               <i className="fa fa-pie-chart blue-color"></i>
             </div>
             <div className="value">
-              <h3 className="blue-color">{this.state.portfolio.length ? (100 / this.state.portfolio.length).toFixed(2) : ''}%</h3>
-              <p className="blue-color">Avg. allocation</p>
+              <h3 className="blue-color">{percentPositive}%</h3>
+              <p className="blue-color">Profitable current pos.</p>
             </div>
           </li>
 
           <li className="statistic green">
             <div className="symbol">
-              <i className="fa fa-hourglass-half white-color"></i>
+              <i className="fa fa-th-large white-color"></i>
             </div>
             <div className="value">
-              <h3 className="white-color">{avgDaysHeld}</h3>
-              <p className="white-color">Avg. days held</p>
+              <h3 className="white-color">{avgSize}%</h3>
+              <p className="white-color">Avg. size</p>
             </div>
           </li>
 
@@ -92,8 +95,8 @@ class Stats extends React.Component {
               <i className="fa fa-line-chart green-color"></i>
             </div>
             <div className="value white">
-              <h3 className="green-color">{sumOfReturns}%</h3>
-              <p className="green-color">Sum of returns</p>
+              <h3 className="green-color">{avgReturn}%</h3>
+              <p className="green-color">Avg. return</p>
             </div>
           </li>
       </ul>

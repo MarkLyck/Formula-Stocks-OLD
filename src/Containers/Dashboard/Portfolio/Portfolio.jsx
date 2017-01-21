@@ -6,7 +6,7 @@ import store from '../../../store'
 import PortfolioGraph from './PortfolioGraph';
 import PortfolioItem from './Stock'
 import PieChart from '../../Global/Components/PieChart/PieChart'
-// import Stats from './Stats'
+import Stats from './Stats'
 import YearlyReturns from './YearlyReturns'
 import './portfolio.css'
 
@@ -210,9 +210,9 @@ class Portfolio extends React.Component {
 
           </div>
         </section>
-        {/* { store.session.isAllowedToView(this.props.plan) ? <Stats plan={this.props.plan}/> : '' } */}
         { store.session.isAllowedToView(this.props.plan) ? <YearlyReturns plan={this.props.plan} /> : ''}
         {this.renderHoldings()}
+        { store.session.isAllowedToView(this.props.plan) ? <Stats plan={this.props.plan}/> : '' }
       </div>
     )
   }

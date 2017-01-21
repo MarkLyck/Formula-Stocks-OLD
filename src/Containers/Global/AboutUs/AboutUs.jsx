@@ -4,8 +4,6 @@ import Thomas from './photos/Thomas.jpg'
 import Mark from './photos/Mark.jpg'
 import Marie from './photos/Marie.jpg'
 
-import Mansion from './photos/Mansion.jpg'
-
 import './aboutUs.css'
 
 const photos = {
