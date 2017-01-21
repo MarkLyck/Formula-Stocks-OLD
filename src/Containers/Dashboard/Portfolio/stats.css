@@ -46,3 +46,19 @@
     }
   }
 }
+
+@media (max-width: 1280px) {
+  .stats {
+    .statistic {
+      width: calc(100% / 2 - 20px);
+    }
+  }
+}
+
+@media (max-width: 800px) {
+  .stats {
+    .statistic {
+      width: calc(100% - 20px);
+    }
+  }
+}
