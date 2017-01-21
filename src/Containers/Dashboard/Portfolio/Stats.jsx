@@ -66,7 +66,7 @@ class Stats extends React.Component {
             </div>
             <div className="value">
               <h3 className="white-color">{this.state.winrate.toFixed(2)}%</h3>
-              <p className="white-color">Profitable stocks</p>
+              <p className="white-color">Sold with profit</p>
             </div>
           </li>
 
@@ -76,7 +76,7 @@ class Stats extends React.Component {
             </div>
             <div className="value">
               <h3 className="blue-color">{percentPositive}%</h3>
-              <p className="blue-color">Profitable current pos.</p>
+              <p className="blue-color">Curr. profitable stocks</p>
             </div>
           </li>
 

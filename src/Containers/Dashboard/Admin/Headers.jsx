@@ -44,7 +44,7 @@ class AdminPanelHeader extends React.Component {
   }
 
   render() {
-    let subscribers = this.state.users.filter((user) => {
+    const subscribers = this.state.users.filter((user) => {
       if (user.stripe) {
         if (user.stripe.subscriptions.data) {
           if (user.stripe.subscriptions.data[0].trial_end
@@ -59,7 +59,8 @@ class AdminPanelHeader extends React.Component {
       }
       return false
     })
-    let trials = this.state.users.filter((user) => {
+
+    const trials = this.state.users.filter((user) => {
       if (user.stripe) {
         if (user.stripe.subscriptions.data) {
           if (user.stripe.subscriptions.data[0].status === 'trialing'
@@ -72,6 +73,23 @@ class AdminPanelHeader extends React.Component {
       }
       return false
     })
+
+    const stayedThroughTrial = this.state.users.filter(user => {
+      if (user.stripe && user.email !== 'demo@formulastocks.com') {
+        if (user.stripe.subscriptions.data) {
+          if (user.stripe.subscriptions.data[0].trial_end && (user.stripe.subscriptions.data[0].canceled_at > user.stripe.subscriptions.data[0].trial_end)) {
+            return true
+          } else if (
+            (!user.stripe.subscriptions.data[0].canceled_at && user.type < 5)
+            || (user.type > 1 && user.type < 5 && user.email !== 'demo@formulastocks.com')) {
+            return true
+          }
+        }
+      }
+      return false
+    }).length
+
+    const conversionRate = stayedThroughTrial / (this.state.users.length - 4) * 100
 
     return (
       <section className="suggestion-header">
@@ -98,7 +116,7 @@ class AdminPanelHeader extends React.Component {
 
           <li className="panel green">
             <div className="symbol">
-              <i className="fa fa-hourglass-start white-color"></i>
+              <i className="fa fa-hourglass-half white-color"></i>
             </div>
             <div className="value">
               <h3 className="white-color">{trials.length}</h3>
@@ -106,14 +124,13 @@ class AdminPanelHeader extends React.Component {
             </div>
           </li>
 
-
           <li className="panel white gray-border">
             <div className="symbol">
-              <i className="fa fa-paper-plane green-color"></i>
+              <i className="fa fa-hourglass-end green-color"></i>
             </div>
             <div className="value white">
-              <h3 className="green-color">{this.state.newsletterSubs.length}</h3>
-              <p className="green-color">Newsletter subs.</p>
+              <h3 className="green-color">{conversionRate ? conversionRate.toFixed(2) : ''}%</h3>
+              <p className="green-color">Trial Conversion rate</p>
             </div>
           </li>
 
