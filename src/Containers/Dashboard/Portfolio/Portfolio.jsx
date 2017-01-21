@@ -209,7 +209,8 @@ class Portfolio extends React.Component {
 
           </div>
         </section>
-        <Stats plan={this.props.plan}/>
+        {/* { store.session.isAllowedToView(this.props.plan) ? <Stats plan={this.props.plan}/> : '' } */}
+
         {this.renderHoldings()}
       </div>
     )
