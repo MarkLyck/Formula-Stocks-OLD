@@ -95,7 +95,7 @@ class Stats extends React.Component {
               <i className="fa fa-line-chart green-color"></i>
             </div>
             <div className="value white">
-              <h3 className="green-color">{avgReturn}%</h3>
+              <h3 className="green-color">+{avgReturn}%</h3>
               <p className="green-color">Avg. return</p>
             </div>
           </li>

@@ -1,5 +1,6 @@
 import React from 'react'
 import $ from 'jquery'
+import moment from 'moment'
 
 import StockGraph from './StockGraph'
 import store from '../../../store'
@@ -72,6 +73,10 @@ class Stock extends React.Component {
       changeClass = 'negative'
     }
 
+    var a = moment([Number(stock.date.year), Number(stock.date.month - 1), Number(stock.date.day)])
+    var b = moment()
+    const daysToAdd = b.diff(a, 'days')
+
     if (!this.props.graph) {
       let allocationWeight = stock.percentage_weight.toFixed(2)
       if (this.props.plan === 'fund') { allocationWeight = stock.percentage_weight.toFixed(4) }
@@ -79,11 +84,6 @@ class Stock extends React.Component {
       if (allocationWeight < 0.0001) { allocationWeight = 0.0001 }
 
       let allocation = <td className="portfolio-td"><p className="blue-color">{allocationWeight}%</p></td>
-
-      // if (stock.ticker === 'DDE') {
-      //   console.log('purchase: ', stock.purchase_price.toFixed(3))
-      //   console.log('last: ', this.state.lastPrice)
-      // }
 
       return (
         <tbody onClick={this.props.expandStock.bind(null, stock)}>
@@ -99,7 +99,7 @@ class Stock extends React.Component {
             <td className="portfolio-td"><p className={changeClass}>{((this.state.lastPrice - stock.purchase_price) * 100 / stock.purchase_price).toFixed(2)}%</p></td>
             <td className="portfolio-td"><p className="blue-color">${stock.purchase_price.toFixed(2)}</p></td>
             <td className="portfolio-td"><p className="class-checker">${this.state.lastPrice.toFixed(2)}</p></td>
-            <td className="portfolio-td"><p className="class-checker">{cc.commafy(stock.days_owned)}</p></td>
+            <td className="portfolio-td"><p className="class-checker">{cc.commafy(stock.days_owned + daysToAdd)}</p></td>
           </tr>
         </tbody>
       )
@@ -118,7 +118,7 @@ class Stock extends React.Component {
             <td className="portfolio-td"><p className={changeClass}>{((this.state.lastPrice - stock.purchase_price) * 100 / stock.purchase_price).toFixed(2)}%</p></td>
             <td className="portfolio-td"><p className="blue-color">${stock.purchase_price.toFixed(2)}</p></td>
             <td className="portfolio-td"><p className="class-checker">${this.state.lastPrice.toFixed(2)}</p></td>
-            <td className="portfolio-td"><p className="class-checker">{cc.commafy(stock.days_owned)}</p></td>
+            <td className="portfolio-td"><p className="class-checker">{cc.commafy(stock.days_owned + daysToAdd)}</p></td>
           </tr>
           <tr>
             <td colSpan={this.state.chartSpan}>
