@@ -40,17 +40,17 @@ class YearlyReturns extends React.Component {
       return (
         <div className="yearly-returns">
           <ul className="return-list">
-            <li className="return">
+            <li className="return five-year">
               <h3 className="year">5 years</h3>
               <h4 className="return"></h4>
             </li>
             <div className="vert-divider"/>
-            <li className="return">
+            <li className="return three-year">
               <h3 className="year">36 months</h3>
               <h4 className="return"></h4>
             </li>
             <div className="vert-divider"/>
-            <li className="return">
+            <li className="return two-year">
               <h3 className="year">24 months</h3>
               <h4 className="return"></h4>
             </li>
@@ -73,17 +73,17 @@ class YearlyReturns extends React.Component {
     return (
       <div className="yearly-returns">
         <ul className="return-list">
-          <li className="return">
+          <li className="return five-year">
             <h3 className="year">5 years</h3>
             <h4 className="return">+{((lastBalance - fiveYearStart) / fiveYearStart * 100).toFixed(2)}%</h4>
           </li>
           <div className="vert-divider"/>
-          <li className="return">
+          <li className="return three-year">
             <h3 className="year">36 months</h3>
             <h4 className="return">+{((lastBalance - threeYearStart) / threeYearStart * 100).toFixed(2)}%</h4>
           </li>
           <div className="vert-divider"/>
-          <li className="return">
+          <li className="return two-year">
             <h3 className="year">24 months</h3>
             <h4 className="return">+{((lastBalance - twoYearStart) / twoYearStart * 100).toFixed(2)}%</h4>
           </li>

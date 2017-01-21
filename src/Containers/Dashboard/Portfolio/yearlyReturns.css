@@ -32,3 +32,36 @@
     }
   }
 }
+
+@media (max-width: 620px) {
+  .return-list {
+    .vert-divider:nth-child(2) {
+      display: none;
+    }
+    .five-year {
+      display: none;
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .return-list {
+    .vert-divider:nth-child(4) {
+      display: none;
+    }
+    .three-year {
+      display: none;
+    }
+  }
+}
+
+@media (max-width: 400px) {
+  .return-list {
+    .vert-divider:nth-child(6) {
+      display: none;
+    }
+    .two-year {
+      display: none;
+    }
+  }
+}
