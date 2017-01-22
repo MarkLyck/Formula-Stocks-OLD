@@ -6,25 +6,19 @@ import './suggestionsHeader.css'
 class SuggestionsHeader extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {
-      stats: store.plans.get(this.props.plan).get('stats'),
-      suggestionsLength: store.plans.get(this.props.plan).get('suggestions').length
-    }
+    this.state = { plan: this.props.plan }
   }
 
   componentWillReceiveProps(newProps) {
-    this.setState({
-      stats: store.plans.get(newProps.plan).get('stats'),
-      suggestionsLength: store.plans.get(newProps.plan).get('suggestions').length
-    })
+    if (newProps.plan !== this.state.plan) { this.setState({ plan: newProps.plan }) }
   }
 
   render() {
-    let portfolio = store.plans.get(this.props.plan).get('portfolio')
-    let cashAllocation;
-    if (portfolio[0]) {
-      cashAllocation = portfolio[portfolio.length - 1].percentage_weight.toFixed(2)
-    }
+    const stats = store.plans.get(this.state.plan).get('stats')
+    const portfolio = store.plans.get(this.state.plan).get('portfolio')
+    let cashAllocation
+    if (portfolio[0]) { cashAllocation = portfolio[portfolio.length - 1].percentage_weight.toFixed(2) }
+
     return (
       <section className="suggestion-header">
         <ul>
@@ -33,8 +27,8 @@ class SuggestionsHeader extends React.Component {
               <i className="fa fa-line-chart white-color"></i>
             </div>
             <div className="value">
-              <h3 className="white-color">{this.state.stats.CAGR.toFixed(2)}%</h3>
-              <p className="white-color">CAGR</p>
+              <h3 className="white-color">{stats.CAGR.toFixed(2)}%</h3>
+              <p className="white-color">Annual growth</p>
             </div>
           </li>
 
@@ -43,7 +37,7 @@ class SuggestionsHeader extends React.Component {
               <i className="fa fa-pie-chart blue-color"></i>
             </div>
             <div className="value">
-              <h3 className="blue-color">{this.state.stats.WLRatio.toFixed(2)}%</h3>
+              <h3 className="blue-color">{stats.WLRatio.toFixed(2)}%</h3>
               <p className="blue-color">Profitable stocks</p>
             </div>
           </li>
@@ -53,19 +47,17 @@ class SuggestionsHeader extends React.Component {
               <i className="fa fa-list white-color"></i>
             </div>
             <div className="value">
-              <h3 className="white-color">{this.state.suggestionsLength}</h3>
+              <h3 className="white-color">{store.plans.get(this.state.plan).get('suggestions').length ? store.plans.get(this.state.plan).get('suggestions').length : ''}</h3>
               <p className="white-color">Suggestions</p>
             </div>
           </li>
-
-
 
           <li className="panel white gray-border">
             <div className="symbol">
               <i className="fa fa-usd green-color"></i>
             </div>
             <div className="value white">
-              <h3 className="green-color">{cashAllocation}%</h3>
+              <h3 className="green-color">{cashAllocation ? cashAllocation + '%' : ''}</h3>
               <p className="green-color">Percent in cash</p>
             </div>
           </li>

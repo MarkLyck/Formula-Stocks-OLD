@@ -116,7 +116,7 @@ let cc = {
   },
   cvcFormat: function(input) {
     let v = input.replace(/\s+/g, '').replace(/[^0-9]/gi, '')
-    if (v.length > 3) {
+    if (v.length > 4) {
       let parts = v.split('')
       parts.splice(2, 1)
       v = parts.join('')

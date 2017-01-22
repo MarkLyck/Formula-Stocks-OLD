@@ -17,11 +17,11 @@ class Pricing extends React.Component {
   }
 
   componentDidMount() {
-    store.plans.on('update', this.updateState)
+    store.plans.on('change', this.updateState)
   }
 
   componentWillUnmount() {
-    store.plans.off('update', this.updateState)
+    store.plans.off('change', this.updateState)
   }
 
   renderDescription() {

@@ -22,6 +22,9 @@ import Footer from '../Global/Footer/Footer'
 
 class Professional extends React.Component {
   componentDidMount() {
+    store.plans.get('premium').fetch()
+    store.plans.get('business').fetch()
+    store.plans.get('fund').fetch()
     store.market.data.getAnnualData()
     store.market.data.getDJIAData()
     window.Intercom("boot", {

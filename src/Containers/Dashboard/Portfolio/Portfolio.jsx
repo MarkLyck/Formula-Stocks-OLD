@@ -42,10 +42,12 @@ class Portfolio extends React.Component {
     this.renderHoldings = this.renderHoldings.bind(this)
     this.getAllocation = this.getAllocation.bind(this)
 
-    this.state = { fetching: true, selectedStock: '', allocation: [], colors: [] }
+    this.state = { plan: this.props.plan, fetching: true, selectedStock: '', allocation: [], colors: [] }
   }
 
   componentDidMount() {
+    if (store.session.isAllowedToView(this.props.plan) && !store.plans.get(this.props.plan).get('portfolio').length) { store.plans.get(this.props.plan).fetchPrivate(this.props.plan) }
+    else if (!store.session.isAllowedToView(this.props.plan) && !store.plans.get(this.props.plan).get('portfolioYields').length) { store.plans.get(this.props.plan).fetch() }
     store.plans.get(this.props.plan).on('change', this.updateState)
     store.market.data.on('update', this.updateState)
     if (!store.market.data.get('portfolioData')[0]) {
@@ -53,9 +55,14 @@ class Portfolio extends React.Component {
     }
   }
 
-  componentWillReceiveProps(newPlan) {
-    this.getAllocation(newPlan)
-    store.plans.get(newPlan.plan).on('update', this.updateState)
+  componentWillReceiveProps(newProps) {
+    if (newProps.plan !== this.state.plan) {
+      this.getAllocation(newProps)
+      if (store.session.isAllowedToView(newProps.plan) && !store.plans.get(newProps.plan).get('portfolio').length) { store.plans.get(newProps.plan).fetchPrivate(newProps.plan) }
+      else if (!store.session.isAllowedToView(newProps.plan) && !store.plans.get(newProps.plan).get('portfolioYields').length) { store.plans.get(newProps.plan).fetch() }
+      store.plans.get(newProps.plan).on('change', this.updateState)
+      this.setState({ plan: newProps.plan })
+    }
   }
 
   componentWillUnmount() {
@@ -67,7 +74,7 @@ class Portfolio extends React.Component {
   }
 
   updateState() {
-    if (this.props.plan === store.selectedPlan) {
+    if (this.state.plan === store.selectedPlan) {
       this.setState({ fetching: false })
       this.getAllocation()
     }
@@ -84,15 +91,15 @@ class Portfolio extends React.Component {
   }
 
   renderHoldings() {
-    if (!store.session.isAllowedToView(this.props.plan)) {
+    if (!store.session.isAllowedToView(this.state.plan)) {
       return (
         <section className="no-permissions">
-          <h3>Upgrade to the <span className="capitalize blue-color ">{this.props.plan} formula</span> to see this portfolio</h3>
+          <h3>Upgrade to the <span className="capitalize blue-color ">{this.state.plan} formula</span> to see this portfolio</h3>
           <Link to="/dashboard/account" className="filled-btn upgrade-your-plan">Upgrade your plan</Link>
         </section>
       )
     } else {
-      let portfolio = store.plans.get(this.props.plan).get('portfolio').map((stock, i) => {
+      let portfolio = store.plans.get(this.state.plan).get('portfolio').map((stock, i) => {
         if (stock.name === 'CASH') {
           return (
             <tbody key={i} className="cash">
@@ -105,13 +112,13 @@ class Portfolio extends React.Component {
         }
 
       if (this.state.selectedStock !== stock.ticker) {
-        return (<PortfolioItem stock={stock} plan={this.props.plan} key={stock.ticker + i} expandStock={this.expandStock} number={i}/>)
+        return (<PortfolioItem stock={stock} plan={this.state.plan} key={stock.ticker + i} expandStock={this.expandStock} number={i}/>)
       } else {
-        return (<PortfolioItem stock={stock} plan={this.props.plan} graph={true} key={stock.ticker + i} expandStock={this.expandStock} number={i}/>)
+        return (<PortfolioItem stock={stock} plan={this.state.plan} graph={true} key={stock.ticker + i} expandStock={this.expandStock} number={i}/>)
       }
     })
 
-    let amountOfStocks = store.plans.get(this.props.plan).get('portfolio').length ? store.plans.get(this.props.plan).get('portfolio').length - 1 : ''
+    let amountOfStocks = store.plans.get(this.state.plan).get('portfolio').length ? store.plans.get(this.props.plan).get('portfolio').length - 1 : ''
 
     return (
       <section className="holdings">
@@ -139,7 +146,7 @@ class Portfolio extends React.Component {
   getAllocation(newPlan) {
     if (newPlan || !this.state.allocation.length) {
       let colors = []
-      let allocation = store.plans.get(newPlan ? newPlan.plan : this.props.plan).get('portfolio').map(stock => {
+      let allocation = store.plans.get(newPlan ? newPlan.plan : this.state.plan).get('portfolio').map(stock => {
         if (stock.latest_price > stock.purchase_price) {
           let amount = Math.round(Math.random() * 80 - 40)
           colors.push(adjustBrightness('#27A5F9', amount))
@@ -159,11 +166,8 @@ class Portfolio extends React.Component {
 
   render() {
     let marketStartValue
-    if (store.market.data.get('portfolioData')[0]) {
-      marketStartValue = store.market.data.get('portfolioData')[0]
-    }
-
-    let portfolioYieldsLength = store.plans.get(this.props.plan).get('portfolioYields').length
+    if (store.market.data.get('portfolioData')[0]) { marketStartValue = store.market.data.get('portfolioData')[0] }
+    let portfolioYieldsLength = store.plans.get(this.state.plan).get('portfolioYields').length
 
     let lastMarketValue = 0
     if (store.market.data.get('portfolioData')[0]) {
@@ -171,12 +175,10 @@ class Portfolio extends React.Component {
     }
 
     let FSPercent = <i className="fa fa-circle-o-notch fa-spin fa-3x fa-fw Spinner"></i>
-    if (store.plans.get(this.props.plan).get('portfolioReturn')) { FSPercent = store.plans.get(this.props.plan).get('portfolioReturn') }
+    if (store.plans.get(this.state.plan).get('portfolioReturn')) { FSPercent = store.plans.get(this.props.plan).get('portfolioReturn') }
 
     let SP500Percent = <i className="fa fa-circle-o-notch fa-spin fa-3x fa-fw Spinner"></i>
     if (lastMarketValue && marketStartValue) { SP500Percent = ((lastMarketValue / marketStartValue * 100 - 100).toFixed(2)) }
-
-
 
     return (
       <div className="portfolio">
@@ -185,13 +187,13 @@ class Portfolio extends React.Component {
 
           <div className="left">
             <h2>Portfolio yields</h2>
-            <PortfolioGraph plan={this.props.plan}/>
+            <PortfolioGraph plan={this.state.plan}/>
           </div>
 
           <div className="right">
 
             <div className="fs stats">
-              <h3 className="fs-plan blue-color"><span className="capitalize">{this.props.plan}</span> formula</h3>
+              <h3 className="fs-plan blue-color"><span className="capitalize">{this.state.plan}</span> formula</h3>
               <div className="wrapper">
                 <i className="fa fa-caret-up" aria-hidden="true"></i>
                 <p><span className="blue-color number">{FSPercent}%</span> since 2009</p>
@@ -206,13 +208,13 @@ class Portfolio extends React.Component {
               </div>
             </div>
 
-            { this.state.allocation.length && store.session.isAllowedToView(this.props.plan) ? <PieChart title="allocation" data={this.state.allocation} colors={this.state.colors} unit="%"/> : <div className="browserChart"/>}
+            { this.state.allocation.length && store.session.isAllowedToView(this.state.plan) ? <PieChart title="allocation" data={this.state.allocation} colors={this.state.colors} unit="%"/> : <div className="browserChart"/>}
 
           </div>
         </section>
-        { store.session.isAllowedToView(this.props.plan) ? <YearlyReturns plan={this.props.plan} /> : ''}
+        { store.session.isAllowedToView(this.state.plan) ? <YearlyReturns plan={this.state.plan} /> : ''}
         {this.renderHoldings()}
-        { store.session.isAllowedToView(this.props.plan) ? <Stats plan={this.props.plan}/> : '' }
+        { store.session.isAllowedToView(this.state.plan) ? <Stats plan={this.state.plan}/> : '' }
       </div>
     )
   }

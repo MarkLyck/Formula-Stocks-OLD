@@ -97,7 +97,7 @@ class SuggestionChart extends React.Component {
     }]
 
     return (<div id="suggestion-chart">
-              <LineGraph data={chartData} graphs={graphs} cursorColor={cursorColor} guides={guides} unit="$" chartTheme={chartTheme} gridOpacity={gridOpacity}/>
+              <LineGraph data={chartData} graphs={graphs} cursorColor={cursorColor} guides={guides} unit="$" chartTheme={chartTheme} gridOpacity={gridOpacity} inside={false}/>
             </div>)
   }
 }

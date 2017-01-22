@@ -11,6 +11,6 @@ if (localStorage.getItem('authtoken')) {
   store.session.retrieve()
 }
 
-store.plans.fetch()
+// store.plans.fetch()
 
 ReactDOM.render(Router, document.getElementById('container'))

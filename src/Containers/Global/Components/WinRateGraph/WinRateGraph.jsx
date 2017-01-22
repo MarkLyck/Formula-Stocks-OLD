@@ -14,11 +14,11 @@ class WinRateGraph extends React.Component {
     if (store.plans.get('premium').get('stats').WLRatio) {
       this.updateState()
     }
-    store.plans.on('update', this.updateState)
+    store.plans.on('change', this.updateState)
   }
 
   componentWillUnmount() {
-    store.plans.off('update', this.updateState)
+    store.plans.off('change', this.updateState)
   }
 
   updateState() {

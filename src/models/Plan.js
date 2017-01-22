@@ -1,4 +1,4 @@
-/* eslint-disable */
+// /* eslint-disable */
 import $ from 'jquery'
 import _ from 'underscore'
 import Backbone from 'backbone'
@@ -7,7 +7,7 @@ import store from '../store'
 import admin from '../admin'
 
 const Plan = Backbone.Model.extend({
-  urlRoot: `https://baas.kinvey.com/appdata/kid_rJRC6m9F/api`,
+  urlRoot: `https://baas.kinvey.com/appdata/kid_rJRC6m9F/public`,
   defaults: {
     name: '',
     info: {
@@ -23,89 +23,139 @@ const Plan = Backbone.Model.extend({
     portfolio: [],
     portfolioYields: []
   },
+  fetchPrivate(plan) {
+    return new Promise(resolve => {
+      $.ajax(`https://baas.kinvey.com/appdata/kid_rJRC6m9F/private/${plan}`)
+      .then(r => {
+        this.set('portfolio', r.portfolio)
+        this.set('portfolioReturn', r.portfolioReturn)
+        this.set('portfolioYields', r.portfolioYields)
+        this.set('price', r.price)
+        this.set('stats', r.stats)
+        this.set('suggestions', r.suggestions)
+        this.set('type', r.type)
+        resolve()
+      })
+    })
+  },
   updateData(fileArr) {
+    if (!this.get('portfolio').length) {
+      this.fetchPrivate(this.get('id')).then(() => { this.updateData(fileArr) })
+    } else if (!this.get('annualData').length) {
+      this.fetch({ success: () => { this.uploadData(fileArr) } })
+    } else {
+      this.uploadData(fileArr)
+    }
+  },
+  uploadData(fileArr) {
     let receivedJSON = (i, e) => {
-      let lines = e.target.result
-      var data = JSON.parse(lines)
-
+      const lines = e.target.result
+      const data = JSON.parse(lines)
+      // Weekly file
       if (fileArr[i].name.indexOf('weekly') > -1) {
-        let newSuggestions = this.get('suggestions')
-          .filter(sug => {
-            if (sug.action === "SELL") {
-              return true
-            }
-            return false
-          })
+        let newSuggestions = this.get('suggestions').filter(sug => sug.model ? true : false)
         newSuggestions = _.union(data.actionable, newSuggestions)
         this.set('suggestions', newSuggestions)
+        console.log('after weekly: ', this.get('suggestions'))
+      // Monthly file
       } else if (fileArr[i].name.indexOf('monthly') > -1) {
+       const oldSuggestions = this.get('suggestions').filter(sug => !sug.model ? true : false)
+       let newSuggestions = data.actionable.map(sug => {
+         sug.model = true
+         return sug
+       })
+       newSuggestions = _.union(oldSuggestions, newSuggestions)
+       this.set('suggestions', newSuggestions)
+       this.set('portfolio', data.portfolio)
+       this.set('portfolioYields', data.logs)
+       this.set('portfolioReturn', data.statistics.total_return)
+       console.log('after monthly: ', this.get('suggestions'))
+      // Annual file
+     } else if (fileArr[i].name.indexOf('annual') > -1) {
+       let newStats = data.statistics
+       newStats.WLRatio = (100 - data.statistics.negatives / (data.statistics.positives + data.statistics.negatives) * 100)
+       let oldStats = this.get('stats')
+       let stats = _.extend({}, oldStats, newStats)
+       this.set('stats', stats)
+       this.set('annualData', data.logs)
+     }
 
-        let newSuggestions = this.get('suggestions')
-          .filter(sug => {
-            if (sug.action === "BUY") {
-              return true
-            }
-            return false
-          })
+     console.log('before omit: ', this.get('suggestions'))
 
-        newSuggestions = _.union(newSuggestions, data.actionable)
+     let newSuggestions = this.get('suggestions').map(sug => _.omit(sug, 'data'))
+     let fixedPortfolio = this.get('portfolio').map(stock => _.omit(stock, 'data'))
 
-        this.set('suggestions', newSuggestions)
-        this.set('portfolio', data.portfolio)
-        this.set('portfolioYields', data.logs)
-        this.set('portfolioReturn', data.statistics.total_return)
+     console.log('after omit: ', newSuggestions)
 
-      } else if (fileArr[i].name.indexOf('annual') > -1) {
-        this.set('annualData', data.logs)
-        let newStats = data.statistics
-        newStats.WLRatio = (100 - data.statistics.negatives / (data.statistics.positives + data.statistics.negatives) * 100)
-        let oldStats = this.get('stats')
-        let stats = _.extend({}, oldStats, newStats)
-        this.set('stats', stats)
-      }
-
-      let newSuggestions = this.get('suggestions').map(sug => {
-        const fixedSug = _.omit(sug, 'data')
-        return fixedSug
-      })
-
-      let fixedPortfolio = this.get('portfolio').map(stock => {
-        const fixedStock = _.omit(stock, 'data')
-        return fixedStock
-      })
-
-      newSuggestions = newSuggestions.reduce((suggestions, sug, i) => {
+     newSuggestions = newSuggestions.reduce((suggestions, sug, i) => {
         let dupeIndex = -1
         suggestions.forEach((suggestion, i) => {
-          if (suggestion.ticker === sug.ticker) { dupeIndex = i }
+          if (suggestion.model === sug.model) {
+            if (suggestion.ticker === sug.ticker) { dupeIndex = i }
+          }
         })
 
         if (dupeIndex > -1) {
-          suggestions[dupeIndex].percentage_weight = suggestions[dupeIndex].percentage_weight + sug.percentage_weight
+          if (suggestions[dupeIndex].percentage_weight && sug.percentage_weight) {
+            suggestions[dupeIndex].percentage_weight += sug.percentage_weight
+          } else if (suggestions[dupeIndex].portfolio_weight && sug.portfolio_weight) {
+            suggestions[dupeIndex].portfolio_weight += sug.portfolio_weight
+          }
           return suggestions
         }
         return suggestions.concat(sug)
       }, [])
 
-      this.set('suggestions', newSuggestions)
-      this.set('portfolio', fixedPortfolio)
+      console.log('after reduce: ', newSuggestions)
 
-      this.save(null, {
-        success: function(m, r) {
-          admin.filesUploaded++
-          store.session.set('notification', {
-            text: `Succesfully saved file: ${fileArr[i].name} (${admin.filesUploaded}/${admin.filesToUpload})`,
-            type: 'success'
-          })
-        },
-        error: function(model, error) {
-          store.session.set('notification', {
-            text: `Failed saved file: ${fileArr[i].name} Err: ${error.error || error.responseText}`,
-            type: 'error'
-          })
-          console.error('Failed saving file: ', error)
-        }
-      })
+     this.set('suggestions', newSuggestions)
+     this.set('portfolio', fixedPortfolio)
+
+     console.log('after second set: ', this.get('suggestions'))
+
+     // Public data
+     const publicData = _.omit(this.toJSON(), ['portfolio', 'suggestions', '_acl', '_kmd'] )
+     $.ajax({
+       url: `https://baas.kinvey.com/appdata/kid_rJRC6m9F/public/${this.get('_id')}`,
+       type: 'PUT',
+       data: JSON.stringify(publicData),
+       contentType: 'application/json'
+     }).then(r => {
+       admin.filesUploaded++
+       store.session.set('notification', {
+         text: `Succesfully saved file: ${fileArr[i].name} (${admin.filesUploaded / 2}/${admin.filesToUpload})`,
+         type: 'success'
+       })
+     }).catch(e => {
+       store.session.set('notification', {
+         text: `Failed saved file: ${fileArr[i].name} Err: ${e.error || e.responseText}`,
+         type: 'error'
+       })
+       console.error(e)
+     })
+
+     // Private data
+     let privateData = _.omit(this.toJSON(), ['annualData', 'info', '_acl', '_kmd'])
+     privateData.stats = { CAGR: privateData.stats.CAGR, WLRatio: privateData.stats.WLRatio }
+
+     $.ajax({
+       url: `https://baas.kinvey.com/appdata/kid_rJRC6m9F/private/${this.get('_id')}`,
+       type: 'PUT',
+       data: JSON.stringify(privateData),
+       contentType: 'application/json'
+     }).then(r => {
+       admin.filesUploaded++
+       store.session.set('notification', {
+         text: `Succesfully saved file: ${fileArr[i].name} (${admin.filesUploaded / 2}/${admin.filesToUpload})`,
+         type: 'success'
+       })
+     }).catch(e => {
+       store.session.set('notification', {
+         text: `Failed saved file: ${fileArr[i].name} Err: ${e.error || e.responseText}`,
+         type: 'error'
+       })
+       console.error(e)
+     })
     }
 
     fileArr.forEach((file, i) => {
@@ -115,11 +165,7 @@ const Plan = Backbone.Model.extend({
     })
   },
   parseStockData(data) {
-    return data.filter((point) => {
-      if (point[1] !== null && point[2] !== null && point[3] !== null) {
-        return true
-      }
-    })
+    return data.filter(point => (point[1] !== null && point[2] !== null && point[3] !== null) ? true : false)
   },
   getStockInfo(ticker, i, portfolioStock) {
     let hasCanceled_ = false;

@@ -12,24 +12,29 @@ import store from '../../../store'
 class Suggestions extends React.Component {
   constructor(props) {
     super(props)
-
     this.updateState = this.updateState.bind(this)
-
-    this.state = { fetching: true }
+    this.state = { plan: this.props.plan, fetching: true }
   }
 
   componentDidMount() {
+    if (store.session.isAllowedToView(this.props.plan) && !store.plans.get(this.props.plan).get('portfolio').length) { store.plans.get(this.props.plan).fetchPrivate(this.props.plan) }
+    else if (!store.session.isAllowedToView(this.props.plan) && !store.plans.get(this.props.plan).get('portfolioYields').length) { store.plans.get(this.props.plan).fetch() }
     store.plans.get(this.props.plan).on('change', this.updateState)
   }
 
   updateState() {
-    if (store.selectedPlan === this.props.plan && this.state.fetching) {
+    if (store.selectedPlan === this.state.plan) {
       this.setState({ fetching: false })
     }
   }
 
-  componentWillReceiveProps(newPlan) {
-    store.plans.get(newPlan.plan).on('change', this.updateState)
+  componentWillReceiveProps(newProps) {
+    if (newProps.plan !== this.state.plan) {
+      if (store.session.isAllowedToView(newProps.plan) && !store.plans.get(newProps.plan).get('suggestions').length) { store.plans.get(newProps.plan).fetchPrivate(newProps.plan) }
+      else if (!store.session.isAllowedToView(newProps.plan) && !store.plans.get(newProps.plan).get('portfolioYields').length) { store.plans.get(newProps.plan).fetch() }
+      store.plans.get(newProps.plan).on('change', this.updateState)
+      this.setState({ plan: newProps.plan })
+    }
   }
 
   componentWillUnmount() {
@@ -41,12 +46,12 @@ class Suggestions extends React.Component {
 
   render() {
     let suggestionsList
-    if(store.session.isAllowedToView(this.props.plan)) {
-      let suggestions = store.plans.get(this.props.plan).get('suggestions').map((suggestion, i) => {
-        if (this.props.plan !== 'fund') {
-          return <Suggestion key={this.props.plan+suggestion.ticker+i} suggestion={suggestion} i={i} planName={this.props.plan}/>
+    if(store.session.isAllowedToView(this.state.plan)) {
+      let suggestions = store.plans.get(this.state.plan).get('suggestions').filter(sug => sug.model && sug.action === 'BUY' ? false : true).map((suggestion, i) => {
+        if (this.state.plan !== 'fund') {
+          return <Suggestion key={this.state.plan+suggestion.ticker+i} suggestion={suggestion} i={i} planName={this.state.plan}/>
         } else {
-          return <SmallStock key={this.props.plan+suggestion.ticker+i} suggestion={suggestion} i={i} planName={this.props.plan}/>
+          return <SmallStock key={this.state.plan+suggestion.ticker+i} suggestion={suggestion} i={i} planName={this.state.plan}/>
         }
       })
       suggestionsList = (
@@ -57,17 +62,17 @@ class Suggestions extends React.Component {
     } else {
       suggestionsList = (
         <section className="no-permissions">
-          <h3>Upgrade to the <span className="capitalize blue-color ">{this.props.plan} formula</span> to see these suggestions</h3>
+          <h3>Upgrade to the <span className="capitalize blue-color ">{this.state.plan} formula</span> to see these suggestions</h3>
           <Link to="/dashboard/account" className="filled-btn upgrade-your-plan">Upgrade your plan</Link>
         </section>
       )
     }
 
-    let lastUpdatedText;
+    let lastUpdatedText
     if (!this.state.fetching) {
-      let lastUpdated = store.plans.get(this.props.plan).toJSON()
-      if (lastUpdated._kmd) {
-        let date = store.plans.get(this.props.plan).get('suggestions')[0].date
+      let lastUpdated = store.plans.get(this.state.plan).toJSON()
+      if (lastUpdated._kmd && store.plans.get(this.state.plan).get('suggestions').length) {
+        let date = store.plans.get(this.state.plan).get('suggestions')[0].date
         let month = date.month
         let fixedDate = date.day
         if (Number(date.month) <= 9) { month = '0' + date.month}
@@ -76,13 +81,11 @@ class Suggestions extends React.Component {
         let endWindowDate = moment(date.year + month + '01', 'YYYYMMDD').add(30, 'days').format('MMM D, YYYY')
         lastUpdatedText = <h3 className="timeStamp">Trading window: {lastUpdatedDate} to {endWindowDate}</h3>
       }
-
     }
-
 
     return (
       <div className="suggestions">
-        <SuggestionHeader plan={this.props.plan}/>
+        <SuggestionHeader plan={this.state.plan}/>
         {suggestionsList}
         {lastUpdatedText}
       </div>

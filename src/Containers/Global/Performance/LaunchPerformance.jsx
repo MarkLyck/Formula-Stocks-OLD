@@ -146,6 +146,7 @@ class Performance extends React.Component {
       let maximum = _.max(this.state.chartData, (point) => Number(point.business)).business
       if (this.props.path === '/pro') {
         let funMaximum = _.max(this.state.chartData, (point) => Number(point.fund)).fund
+
         if (funMaximum > maximum) { maximum = funMaximum }
       }
 
