@@ -38,7 +38,6 @@ const Plan = Backbone.Model.extend({
           })
         newSuggestions = _.union(data.actionable, newSuggestions)
         this.set('suggestions', newSuggestions)
-
       } else if (fileArr[i].name.indexOf('monthly') > -1) {
 
         let newSuggestions = this.get('suggestions')
@@ -76,21 +75,17 @@ const Plan = Backbone.Model.extend({
       })
 
       newSuggestions = newSuggestions.reduce((suggestions, sug, i) => {
-        if (i === 1) {
-          return [].concat(sug)
-        } else {
-          let dupeIndex = -1
-          suggestions.forEach((suggestion, i) => {
-            if (suggestion.ticker === sug.ticker) { dupeIndex = i }
-          })
+        let dupeIndex = -1
+        suggestions.forEach((suggestion, i) => {
+          if (suggestion.ticker === sug.ticker) { dupeIndex = i }
+        })
 
-          if (dupeIndex > -1) {
-            suggestions[dupeIndex].percentage_weight = suggestions[dupeIndex].percentage_weight + sug.percentage_weight
-            return suggestions
-          }
-          return suggestions.concat(sug)
+        if (dupeIndex > -1) {
+          suggestions[dupeIndex].percentage_weight = suggestions[dupeIndex].percentage_weight + sug.percentage_weight
+          return suggestions
         }
-      })
+        return suggestions.concat(sug)
+      }, [])
 
       this.set('suggestions', newSuggestions)
       this.set('portfolio', fixedPortfolio)
