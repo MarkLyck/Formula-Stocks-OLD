@@ -46,14 +46,16 @@ class AdminPanelHeader extends React.Component {
   render() {
     const subscribers = this.state.users.filter((user) => {
       if (user.stripe) {
-        if (user.stripe.subscriptions.data) {
-          if (user.stripe.subscriptions.data[0].trial_end
-            && !user.stripe.subscriptions.data[0].cancel_at_period_end
-            && user.stripe.subscriptions.data[0].trial_end < moment().unix()) {
-            return true
-          }
-          if (user.type > 1 && user.type < 5 && !user.stripe.subscriptions.data[0].cancel_at_period_end) {
-            return true
+        if (user.stripe.subscriptions) {
+          if (user.stripe.subscriptions.data) {
+            if (user.stripe.subscriptions.data[0].trial_end
+              && !user.stripe.subscriptions.data[0].cancel_at_period_end
+              && user.stripe.subscriptions.data[0].trial_end < moment().unix()) {
+              return true
+            }
+            if (user.type > 1 && user.type < 5 && !user.stripe.subscriptions.data[0].cancel_at_period_end) {
+              return true
+            }
           }
         }
       }
@@ -62,12 +64,14 @@ class AdminPanelHeader extends React.Component {
 
     const trials = this.state.users.filter((user) => {
       if (user.stripe) {
-        if (user.stripe.subscriptions.data) {
-          if (user.stripe.subscriptions.data[0].status === 'trialing'
-              && !user.stripe.subscriptions.data[0].cancel_at_period_end
-              && user.type === 1
-              && user.stripe.subscriptions.data[0].trial_end > moment().unix()) {
-              return true
+        if (user.stripe.subscriptions) {
+          if (user.stripe.subscriptions.data) {
+            if (user.stripe.subscriptions.data[0].status === 'trialing'
+                && !user.stripe.subscriptions.data[0].cancel_at_period_end
+                && user.type === 1
+                && user.stripe.subscriptions.data[0].trial_end > moment().unix()) {
+                return true
+            }
           }
         }
       }
@@ -76,13 +80,15 @@ class AdminPanelHeader extends React.Component {
 
     const stayedThroughTrial = this.state.users.filter(user => {
       if (user.stripe && user.email !== 'demo@formulastocks.com') {
-        if (user.stripe.subscriptions.data) {
-          if (user.stripe.subscriptions.data[0].trial_end && (user.stripe.subscriptions.data[0].canceled_at > user.stripe.subscriptions.data[0].trial_end)) {
-            return true
-          } else if (
-            (!user.stripe.subscriptions.data[0].canceled_at && user.type < 5)
-            || (user.type > 1 && user.type < 5 && user.email !== 'demo@formulastocks.com')) {
-            return true
+        if (user.stripe.subscriptions) {
+          if (user.stripe.subscriptions.data) {
+            if (user.stripe.subscriptions.data[0].trial_end && (user.stripe.subscriptions.data[0].canceled_at > user.stripe.subscriptions.data[0].trial_end)) {
+              return true
+            } else if (
+              (!user.stripe.subscriptions.data[0].canceled_at && user.type < 5)
+              || (user.type > 1 && user.type < 5 && user.email !== 'demo@formulastocks.com')) {
+              return true
+            }
           }
         }
       }

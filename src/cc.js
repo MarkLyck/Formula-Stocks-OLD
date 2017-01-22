@@ -54,7 +54,6 @@ let cc = {
         resolve(0)
       }
     })
-
   },
   ccFormat: function(input) {
     let v = input.replace(/\s+/g, '').replace(/[^0-9]/gi, '')
@@ -128,7 +127,7 @@ let cc = {
       if (String(card.number).split('').length < 16) {
         reject('Invalid card number')
       } else {
-        Stripe.setPublishableKey('pk_live_UTFEdLHeTQIAA0o2JSBM3fwL');
+        Stripe.setPublishableKey('pk_live_UTFEdLHeTQIAA0o2JSBM3fwL')
         Stripe.card.createToken({
           number: card.number,
           cvc: card.cvc,
@@ -201,8 +200,6 @@ let cc = {
     })
   },
   updateSubscription(planName, cycle) {
-    // console.log(planName, cycle);
-    // console.log(store.session.get('stripe').subscriptions.data[0].plan.metadata.plan_name);
     return new Promise((resolve, reject) => {
       if (planName !== store.session.get('stripe').subscriptions.data[0].plan.metadata.plan_name) {
         $.ajax({
@@ -238,9 +235,6 @@ let cc = {
     })
   },
   newSubscription(planName, cycle) {
-    // console.log(store.session.get('stripe').customer)
-    // console.log(planName+'-'+cycle),
-    console.log('creating a new subscription')
     return new Promise((resolve, reject) => {
       $.ajax({
         type: 'POST',
