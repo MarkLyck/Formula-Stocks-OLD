@@ -3,12 +3,33 @@
 .dashboard-nav {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: space-between;
   padding: 0 20px;
   height: 64px;
   background: #fff;
   border-bottom: 1px solid #E8E8E8;
   box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+  .left {
+    .plan {
+      margin: 0;
+      padding: 8px 16px;
+      margin-right: 16px;
+      background: #F3F3F3;
+      color: $text-color;
+      &:hover {
+        color: $primary-color;
+      }
+    }
+    .selected {
+      background: $primary-color;
+      color: #fff;
+      box-shadow: 0px 2px 4px rgba(0,0,0,0.16);
+      &:hover {
+        color: #fff;
+      }
+    }
+  }
+
   img {
     max-width: 250px;
   }

@@ -39,21 +39,13 @@ class Dashboard extends React.Component {
     if (!store.session.get('stripe').subscriptions) {
       return null
     }
-    store.selectedPlan = this.props.params.plan
 
-    let plan = this.props.params.plan
-
-    if (!plan && !store.session.get('stripe').canceled_at && store.session.get('stripe').canceled_at !== null) {
-      plan = store.session.get('stripe').subscriptions.data[0].plan.id
+    if (!store.selectedPlan && !this.props.params.plan) {
+      let plan = store.session.get('stripe').subscriptions.data[0].plan.id
       plan = plan.slice(0, plan.indexOf('-'))
-    }
-
-    if (!plan && store.session.get('stripe').canceled_at) {
-      plan = 'basic'
-    }
-
-    if (this.props.route.path === '/dashboard') {
       store.selectedPlan = plan
+    } else if (this.props.params.plan) {
+      store.selectedPlan = this.props.params.plan
     }
 
     let notification;
@@ -64,13 +56,13 @@ class Dashboard extends React.Component {
 
     return (
       <div className="dashboard">
-        <SideBar plan={plan} location={this.props.location.pathname}/>
+        <SideBar plan={store.selectedPlan} location={this.props.location.pathname}/>
         <div className="container">
-          <Nav/>
+          <Nav plan={store.selectedPlan} location={this.props.location.pathname}/>
           <div className="db-content">
             {notification}
-            <Breadcrumbs location={this.props.location.pathname} plan={plan}/>
-            {React.cloneElement(this.props.children, { plan: plan, location: this.props.location.pathname })}
+            <Breadcrumbs location={this.props.location.pathname} plan={store.selectedPlan}/>
+            {React.cloneElement(this.props.children, { plan: store.selectedPlan, location: this.props.location.pathname })}
           </div>
         </div>
       </div>

@@ -6,9 +6,10 @@ import Market from './models/Market'
 
 import Articles from './collections/Articles'
 
+
 let store = {
   session: new Session(),
-  selectedPlan: 'premium',
+  selectedPlan: '',
   isSubmitting: false,
   settings: {
     anomToken: '17dcc7f4-49f8-4d7c-8d66-d96474fa6818.tEs1/na2P9cqWKXn3ab9pgIdPpmEPAaQDIJEYNbG7E4=',

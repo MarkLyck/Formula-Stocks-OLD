@@ -7,10 +7,11 @@ class YearlyReturns extends React.Component {
   constructor(props) {
     super(props)
     this.updateState = this.updateState.bind(this)
-    this.state = { portfolioYields: store.plans.get(this.props.plan).toJSON().portfolioYields }
+    this.state = { portfolioYields: store.plans.get(store.selectedPlan).toJSON().portfolioYields }
   }
 
-  componentDidMount() { store.plans.get(this.props.plan).on('change', this.updateState) }
+  componentDidMount() { store.plans.get(store.selectedPlan).on('change', this.updateState) }
+
   componentWillUnmount() {
     store.plans.get('basic').off('change', this.updateState)
     store.plans.get('premium').off('change', this.updateState)

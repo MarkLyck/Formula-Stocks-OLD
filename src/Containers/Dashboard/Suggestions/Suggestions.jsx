@@ -13,27 +13,28 @@ class Suggestions extends React.Component {
   constructor(props) {
     super(props)
     this.updateState = this.updateState.bind(this)
-    this.state = { plan: this.props.plan, fetching: true }
+    this.state = { plan: store.selectedPlan, fetching: true }
   }
 
   componentDidMount() {
     if (store.session.isAllowedToView(this.props.plan) && !store.plans.get(this.props.plan).get('portfolio').length) { store.plans.get(this.props.plan).fetchPrivate(this.props.plan) }
     else if (!store.session.isAllowedToView(this.props.plan) && !store.plans.get(this.props.plan).get('portfolioYields').length) { store.plans.get(this.props.plan).fetch() }
     store.plans.get(this.props.plan).on('change', this.updateState)
+    store.plans.on('plan-change', this.updateState)
   }
 
   updateState() {
     if (store.selectedPlan === this.state.plan) {
-      this.setState({ fetching: false })
+      this.setState({ fetching: false, plan: store.selectedPlan })
     }
   }
 
   componentWillReceiveProps(newProps) {
     if (newProps.plan !== this.state.plan) {
-      if (store.session.isAllowedToView(newProps.plan) && !store.plans.get(newProps.plan).get('suggestions').length) { store.plans.get(newProps.plan).fetchPrivate(newProps.plan) }
-      else if (!store.session.isAllowedToView(newProps.plan) && !store.plans.get(newProps.plan).get('portfolioYields').length) { store.plans.get(newProps.plan).fetch() }
-      store.plans.get(newProps.plan).on('change', this.updateState)
-      this.setState({ plan: newProps.plan })
+      if (store.session.isAllowedToView(store.selectedPlan) && !store.plans.get(store.selectedPlan).get('suggestions').length) { store.plans.get(store.selectedPlan).fetchPrivate(store.selectedPlan) }
+      else if (!store.session.isAllowedToView(store.selectedPlan) && !store.plans.get(store.selectedPlan).get('portfolioYields').length) { store.plans.get(store.selectedPlan).fetch() }
+      store.plans.get(store.selectedPlan).on('change', this.updateState)
+      this.setState({ plan: store.selectedPlan })
     }
   }
 

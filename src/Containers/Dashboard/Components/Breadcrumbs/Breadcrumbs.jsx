@@ -24,7 +24,7 @@ class Breadcrumbs extends React.Component {
   }
 
   render() {
-    const planName = this.props.plan
+    const planName = store.selectedPlan
 
     let page
     if (this.props.location.indexOf('portfolio') > -1 || this.props.location === '/dashboard' || this.props.location.indexOf('trades') > -1) {
