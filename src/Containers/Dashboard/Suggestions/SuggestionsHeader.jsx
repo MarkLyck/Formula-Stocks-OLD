@@ -19,6 +19,11 @@ class SuggestionsHeader extends React.Component {
     let cashAllocation
     if (portfolio[0]) { cashAllocation = portfolio[portfolio.length - 1].percentage_weight.toFixed(2) }
 
+    let suggestions = store.plans.get(this.state.plan).get('suggestions').length ? store.plans.get(this.state.plan).get('suggestions').filter(sug => sug.model && sug.action === 'BUY' ? false : true).length : ''
+    if (this.props.trades) {
+      suggestions = store.plans.get(this.state.plan).get('suggestions').length ? store.plans.get(this.state.plan).get('suggestions').filter(sug => sug.model ? true : false).length : ''
+    }
+
     return (
       <section className="suggestion-header">
         <ul>
@@ -47,7 +52,7 @@ class SuggestionsHeader extends React.Component {
               <i className="fa fa-list white-color"></i>
             </div>
             <div className="value">
-              <h3 className="white-color">{store.plans.get(this.state.plan).get('suggestions').length ? store.plans.get(this.state.plan).get('suggestions').length : ''}</h3>
+              <h3 className="white-color">{suggestions}</h3>
               <p className="white-color">Suggestions</p>
             </div>
           </li>

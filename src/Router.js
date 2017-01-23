@@ -42,6 +42,10 @@ const router = (
         <IndexRoute component={Suggestions}/>
         <Route path=":plan" component={Suggestions}/>
       </Route>
+      <Route path="trades" component={Suggestions}>
+        <IndexRoute component={Suggestions}/>
+        <Route path=":plan" component={Suggestions}/>
+      </Route>
       <Route path="account" component={MyAccount}/>
       <Route path="articles*" component={Articles}/>
       <Route path="admin" component={AdminPanel}/>

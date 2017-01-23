@@ -93,8 +93,12 @@ class SmallStock extends React.Component {
 
   render() {
     let allocation
+    let allocationText = 'Cash allocation'
     if (this.props.suggestion.percentage_weight > 0.0001) {
       allocation = this.props.suggestion.percentage_weight.toFixed(4)
+    } else if (this.props.suggestion.portfolio_weight) {
+      allocationText = 'Portfolio allocation'
+      allocation = this.props.suggestion.portfolio_weight.toFixed(4)
     } else {
       allocation = 0.0001
     }
@@ -106,7 +110,7 @@ class SmallStock extends React.Component {
 
     let allocationElement = (
       <li className="vertical">
-        <h3>Cash allocation</h3>
+        <h3>{allocationText}</h3>
         <h4 className="value">{allocation}%</h4>
       </li>
     )

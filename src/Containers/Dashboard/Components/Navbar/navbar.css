@@ -3,52 +3,13 @@
 .dashboard-nav {
   display: flex;
   align-items: center;
+  justify-content: flex-end;
   padding: 0 20px;
-  justify-content: space-between;
-  height: 75px;
+  height: 64px;
   background: #fff;
   border-bottom: 1px solid #E8E8E8;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.08);
   img {
     max-width: 250px;
-  }
-  .right {
-    display: flex;
-    button, a {
-      height: 50px;
-      padding: 0 10px;
-      border-radius: 25px;
-      background: $nav-btn-background;
-      color: $light-text-color;
-      display: flex;
-      align-items: center;
-      margin-right: 20px;
-    }
-    .logout-btn {
-      width: 50px;
-      justify-content: center;
-      padding: 0;
-      margin-right: 0;
-      &:hover {
-        color: $warning-color;
-      }
-    }
-    .user-btn {
-      padding-left: 0;
-      &:hover {
-        color: $primary-color;
-      }
-      i {
-        height: 50px;
-        width: 50px;
-        border-radius: 50px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: $primary-color;
-        color: #fff;
-        margin-right: 10px;
-      }
-    }
-
   }
 }

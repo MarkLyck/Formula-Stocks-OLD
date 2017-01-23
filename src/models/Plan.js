@@ -167,7 +167,7 @@ const Plan = Backbone.Model.extend({
   parseStockData(data) {
     return data.filter(point => (point[1] !== null && point[2] !== null && point[3] !== null) ? true : false)
   },
-  getStockInfo(ticker, i, portfolioStock) {
+  getStockInfo(ticker, i, portfolioStock, trades) {
     let hasCanceled_ = false;
     let promise = new Promise((resolve, reject) => {
 
@@ -180,7 +180,8 @@ const Plan = Backbone.Model.extend({
           let suggestionToUpdate = this.get('suggestions')[i]
           suggestionToUpdate.data = this.parseStockData(response.data)
 
-          let newArr = this.get('suggestions').slice(0,i).concat(suggestionToUpdate, this.get('suggestions').slice(i + 1))
+          let newArr = []
+          newArr = this.get('suggestions').slice(0,i).concat(suggestionToUpdate, this.get('suggestions').slice(i + 1))
           this.set('suggestions', newArr)
           this.trigger('change')
 

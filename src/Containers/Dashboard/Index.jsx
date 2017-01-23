@@ -25,9 +25,6 @@ class Dashboard extends React.Component {
 
   componentDidMount() {
     store.session.on('change', this.updateState)
-    window.Intercom("boot", {
-      app_id: "i194mpvo"
-    })
   }
 
   componentWillUnmount() {
@@ -67,9 +64,9 @@ class Dashboard extends React.Component {
 
     return (
       <div className="dashboard">
-        <Nav/>
+        <SideBar plan={plan} location={this.props.location.pathname}/>
         <div className="container">
-          <SideBar plan={plan} location={this.props.location.pathname}/>
+          <Nav/>
           <div className="db-content">
             {notification}
             <Breadcrumbs location={this.props.location.pathname} plan={plan}/>

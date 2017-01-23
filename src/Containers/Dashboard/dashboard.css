@@ -3,10 +3,12 @@
   background: $dashboard-background;
   height: 100vh;
   width: 100vw;
+  display: flex;
   .container {
-    height: calc(100% - 75px);
-    display: flex;
+    height: 100vh;
+    width: 100%;
     .db-content {
+      height: calc(100% - 64px);
       width: 100%;
       overflow-y: scroll;
       position: relative;

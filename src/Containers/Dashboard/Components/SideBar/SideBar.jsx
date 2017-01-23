@@ -1,207 +1,130 @@
 import React from 'react'
-import _ from 'underscore'
-import $ from 'jquery'
-
+import MainButton from './MainButton'
 import store from '../../../../store'
+import { Link, browserHistory } from 'react-router'
 import './sidebar.css'
 
 class SideBar extends React.Component {
   constructor(props) {
     super(props)
+    this.selectMenu = this.selectMenu.bind(this)
 
-    this.toggleDropdown = this.toggleDropdown.bind(this)
-    this.gotoPath = this.gotoPath.bind(this)
-    this.gotoAccount = this.gotoAccount.bind(this)
-    this.gotoAdmin = this.gotoAdmin.bind(this)
-    this.gotoArticles = this.gotoArticles.bind(this)
+    let selected = 'portfolio'
+    if (this.props.location.indexOf('suggestions') > -1) { selected = 'suggestions' }
+    else if (this.props.location.indexOf('articles') > -1) { selected = 'articles' }
+    else if (this.props.location.indexOf('admin') > -1) { selected = 'admin' }
+    else if (this.props.location.indexOf('account') > -1) { selected = 'account' }
 
-    let selected
-    let dropDown = false
-
-    if (this.props.location.indexOf('suggestions') !== -1) {
-      selected = 'suggestions'
-      if ($(window).width() > 800) {
-        dropDown = true
-      }
-    } else if (this.props.location.indexOf('portfolio') !== -1 || this.props.location === '/dashboard') {
-      selected = 'portfolio'
-      if ($(window).width() > 800) {
-        dropDown = true
-      }
-    } else if (this.props.location.indexOf('account') !== -1) {
-      selected = 'account'
-    } else if (this.props.location.indexOf('admin') !== -1) {
-      selected = 'admin'
-      if ($(window).width() > 800) {
-        dropDown = true
-      }
-    }
-
-    this.state = { plan: this.props.plan, selected: selected, dropDown: dropDown }
+    this.state = { selected: selected, plan: this.props.plan }
   }
 
-
-  toggleDropdown(dropdown, e) {
-    if (_.toArray(e.target.classList).indexOf('dropdown-link') === -1) {
-      if (!this.state.dropDown || dropdown !== this.state.selected) {
-        this.setState({selected: dropdown, plan: this.props.plan, dropDown: true})
-      } else if ($(window).width() < 800) {
-        this.setState({dropDown: false})
-      } else {
-        this.setState({selected: dropdown, plan: this.props.plan, dropDown: true})
-      }
-    }
+  componentWillReceiveProps(newProps) {
+    this.setState({ plan: newProps.plan })
   }
 
-  componentWillReceiveProps(props) {
-    this.setState({ plan: props.plan })
+  selectMenu(selected) {
+    browserHistory.push(`/dashboard/${selected}`)
+    this.setState({ selected: selected })
   }
 
-  gotoPath(path) {
-    if ($(window).width() < 800) {
-      this.setState({dropDown: false})
-    }
-    store.settings.history.push(path)
+  renderSuggestionsMenu() {
+    return (
+      <ul className="sub-menu">
+        <li className="submenu-section">
+          <h3>BASIC</h3>
+          <Link to="/dashboard/suggestions/basic" className={this.state.plan === 'basic' ? 'selected' : ''}>Suggestions</Link>
+          <div className="submenu-divider"/>
+        </li>
+        <li className="submenu-section">
+          <h3>PREMIUM</h3>
+          <Link to="/dashboard/suggestions/premium" className={this.state.plan === 'premium' ? 'selected' : ''}>Suggestions</Link>
+          <div className="submenu-divider"/>
+        </li>
+        <li className="submenu-section">
+          <h3>BUSINESS</h3>
+          <Link to="/dashboard/suggestions/business" className={this.state.plan === 'business' ? 'selected' : ''}>Suggestions</Link>
+          <div className="submenu-divider"/>
+        </li>
+        <li className="submenu-section">
+          <h3>FUND</h3>
+          <Link to="/dashboard/suggestions/fund" className={this.state.plan === 'fund' ? 'selected' : ''}>Suggestions</Link>
+          <div className="submenu-divider"/>
+        </li>
+      </ul>
+    )
   }
 
-  gotoAccount() {
-    this.setState({selected: 'account', plan: ''})
-    store.settings.history.push('/dashboard/account')
+  renderPortfolioMenu() {
+    return (
+      <ul className="sub-menu">
+        <li className="submenu-section">
+          <h3>BASIC</h3>
+          <Link to="/dashboard/portfolio/basic" className={(this.state.plan === 'basic' && this.props.location.indexOf('portfolio') > -1) || (this.props.location === '/dashboard' && this.props.plan === 'basic') ? 'selected' : ''}>Portfolio</Link>
+          <Link to="/dashboard/trades/basic" className={this.state.plan === 'basic' && this.props.location.indexOf('trades') > -1 ? 'selected' : ''}>Recent trades</Link>
+          <div className="submenu-divider"/>
+        </li>
+        <li className="submenu-section">
+          <h3>PREMIUM</h3>
+          <Link to="/dashboard/portfolio/premium" className={(this.state.plan === 'premium' && this.props.location.indexOf('portfolio') > -1) || (this.props.location === '/dashboard' && this.props.plan === 'premium') ? 'selected' : ''}>Portfolio</Link>
+          <Link to="/dashboard/trades/premium" className={this.state.plan === 'premium' && this.props.location.indexOf('trades') > -1 ? 'selected' : ''}>Recent trades</Link>
+          <div className="submenu-divider"/>
+        </li>
+        <li className="submenu-section">
+          <h3>BUSINESS</h3>
+          <Link to="/dashboard/portfolio/business" className={(this.state.plan === 'business' && this.props.location.indexOf('portfolio') > -1) || (this.props.location === '/dashboard' && this.props.plan === 'business') ? 'selected' : ''}>Portfolio</Link>
+          <Link to="/dashboard/trades/business" className={this.state.plan === 'business' && this.props.location.indexOf('trades') > -1 ? 'selected' : ''}>Recent trades</Link>
+          <div className="submenu-divider"/>
+        </li>
+        <li className="submenu-section">
+          <h3>FUND</h3>
+          <Link to="/dashboard/portfolio/fund" className={(this.state.plan === 'fund' && this.props.location.indexOf('portfolio') > -1) || (this.props.location === '/dashboard' && this.props.plan === 'fund') ? 'selected' : ''}>Portfolio</Link>
+          <Link to="/dashboard/trades/fund" className={this.state.plan === 'fund' && this.props.location.indexOf('trades') > -1 ? 'selected' : ''}>Recent trades</Link>
+        </li>
+      </ul>
+    )
   }
 
-  gotoAdmin() {
-    this.setState({selected: 'admin', plan: ''})
-    store.settings.history.push('/dashboard/admin')
-  }
-
-  gotoArticles() {
-    this.setState({selected: 'articles', plan: ''})
-    store.settings.history.push('/dashboard/articles')
-  }
-
-  logout() {
-    store.session.logout()
+  renderAdminMenu() {
+    return (
+      <ul className="sub-menu">
+        <li className="submenu-section">
+          <h3>PANEL</h3>
+          <Link to="/dashboard/admin" className={this.props.location === '/dashboard/admin' ? 'selected' : ''}>Panel</Link>
+          <div className="submenu-divider"/>
+        </li>
+        <li className="submenu-section">
+          <h3>USERS</h3>
+          <Link to="/dashboard/admin/users" className={this.props.location.indexOf('users') > -1 ? 'selected' : ''}>Users</Link>
+          <div className="submenu-divider"/>
+        </li>
+        <li className="submenu-section">
+          <h3>API</h3>
+          <Link to="/dashboard/admin/api" className={this.props.location.indexOf('api') > -1 ? 'selected' : ''}>JSON</Link>
+          <div className="submenu-divider"/>
+        </li>
+        <li className="submenu-section">
+          <h3>Articles</h3>
+          <Link to="/dashboard/admin/newarticle" className={this.props.location.indexOf('newarticle') > -1 ? 'selected' : ''}>New Article</Link>
+        </li>
+      </ul>
+    )
   }
 
   render() {
-    let suggestionsClass = 'suggestions side-bar-link'
-    let portfoliosClass = 'portfolios side-bar-link'
-    let myAccountClass = 'myaccount side-bar-link'
-    let adminClass = 'admin side-bar-link'
-    // let articlesClass = 'articles side-bar-link'
-    let suggestionsDropdown, portfoliosDropdown, adminDropdown;
-
-    let SbasicClass, SpremiumClass, SbusinessClass, SfundClass;
-    let PbasicClass, PpremiumClass, PbusinessClass, PfundClass;
-
-    if (this.state.selected === 'suggestions') {
-      if (this.props.location.indexOf('suggestions') !== -1) {
-        if(this.state.plan === 'basic') {SbasicClass = 'selected'}
-        else if(this.state.plan === 'premium') {SpremiumClass = 'selected'}
-        else if(this.state.plan === 'business') {SbusinessClass = 'selected'}
-        else if(this.state.plan === 'fund') {SfundClass = 'selected'}
-      }
-      suggestionsClass = 'suggestions side-bar-link selected'
-
-      if (this.state.dropDown) {
-        suggestionsDropdown = (
-          <div className="dropdown plan-dd">
-            <a className={'dropdown-link ' + SbasicClass} onClick={this.gotoPath.bind(null, '/dashboard/suggestions/basic')}>Basic suggestions</a>
-            <a className={'dropdown-link ' + SpremiumClass} onClick={this.gotoPath.bind(null, '/dashboard/suggestions/premium')}>Premium suggestions</a>
-            <a className={'dropdown-link ' + SbusinessClass} onClick={this.gotoPath.bind(null, '/dashboard/suggestions/business')}>Business suggestions</a>
-            <a className={'dropdown-link ' + SfundClass} onClick={this.gotoPath.bind(null, '/dashboard/suggestions/fund')}>Fund suggestions</a>
-          </div>
-        )
-      }
-    } else if (this.state.selected === 'portfolio') {
-      if (this.props.location.indexOf('portfolio') !== -1 || this.props.location === '/dashboard') {
-        if(this.state.plan === 'basic') {PbasicClass = 'selected'}
-        else if(this.state.plan === 'premium') {PpremiumClass = 'selected'}
-        else if(this.state.plan === 'business') {PbusinessClass = 'selected'}
-        else if(this.state.plan === 'fund') {PfundClass = 'selected'}
-      }
-
-      portfoliosClass = 'portfolios side-bar-link selected'
-      if (this.state.dropDown) {
-        portfoliosDropdown = (
-          <div className="dropdown plan-dd">
-            <a className={'dropdown-link ' + PbasicClass} onClick={this.gotoPath.bind(null, '/dashboard/portfolio/basic')}>Basic portfolio</a>
-            <a className={'dropdown-link ' + PpremiumClass} onClick={this.gotoPath.bind(null, '/dashboard/portfolio/premium')}>Premium portfolio</a>
-            <a className={'dropdown-link ' + PbusinessClass} onClick={this.gotoPath.bind(null, '/dashboard/portfolio/business')}>Business portfolio</a>
-            <a className={'dropdown-link ' + PfundClass} onClick={this.gotoPath.bind(null, '/dashboard/portfolio/fund')}>Fund portfolio</a>
-          </div>
-        )
-      }
-    } else if (this.state.selected === 'account') {
-      myAccountClass = 'myaccount side-bar-link selected'
-    }
-    // else if (this.state.selected === 'articles'|| this.props.location.indexOf('articles') > -1) {
-    //   articlesClass = 'articles side-bar-link selected'
-    // }
-
-    let admin
-    if (store.session.get('type') === 5) {
-      let adminPanelClass, adminAPIClass, newArticleClass, adminUsersClass
-
-      if (this.state.selected === 'admin') {
-        adminClass = 'admin side-bar-link selected'
-
-        if (this.props.location.indexOf('admin') !== -1) {
-          if (this.props.location.indexOf('api') !== -1) {adminAPIClass = 'selected'}
-          else if (this.props.location === '/dashboard/admin') {adminPanelClass = 'selected'}
-          else if (this.props.location === '/dashboard/admin/users') {adminUsersClass = 'selected'}
-          else if (this.props.location === '/dashboard/admin/newarticle') {newArticleClass = 'selected'}
-        }
-
-        if (this.state.dropDown) {
-          adminDropdown = (
-            <div className="dropdown admin-dd">
-              <a className={'dropdown-link ' + adminPanelClass} onClick={this.gotoPath.bind(null, '/dashboard/admin')}>Panel</a>
-              <a className={'dropdown-link ' + adminUsersClass}  onClick={this.gotoPath.bind(null, '/dashboard/admin/users')}>Users</a>
-              <a className={'dropdown-link ' + adminAPIClass}  onClick={this.gotoPath.bind(null, '/dashboard/admin/api')}>JSON</a>
-              <a className={'dropdown-link ' + newArticleClass}  onClick={this.gotoPath.bind(null, '/dashboard/admin/newarticle')}>New Article</a>
-            </div>
-          )
-        }
-      }
-
-      admin = (
-        <li className={adminClass} onClick={this.toggleDropdown.bind(null, 'admin')}>
-          <button className="admin-btn"><h3><i className="fa fa-tachometer" aria-hidden="true"></i></h3><i className="fa fa-angle-down db-icon" aria-hidden="true"></i></button>
-          {adminDropdown}
-        </li>
-      )
-    }
-
     return (
-      <aside className="side-bar">
-        <ul className="side-bar-links">
-
-          <li className={suggestionsClass} onClick={this.toggleDropdown.bind(null, 'suggestions')}>
-            <button className="suggestions-btn"><h3><i className="fa fa-flask" aria-hidden="true"></i></h3> <i className="fa fa-angle-down db-icon" aria-hidden="true"></i></button>
-            {suggestionsDropdown}
-          </li>
-
-          <li className={portfoliosClass} onClick={this.toggleDropdown.bind(null, 'portfolio')}>
-            <button className="portfolios-btn"><h3><i className="fa fa-line-chart" aria-hidden="true"></i></h3> <i className="fa fa-angle-down db-icon" aria-hidden="true"></i></button>
-            {portfoliosDropdown}
-          </li>
-
-          {/* <li className={articlesClass}>
-            <button className="articles-btn" onClick={this.gotoArticles}><h3><i className="fa fa-newspaper-o" aria-hidden="true"></i></h3></button>
-          </li> */}
-
-          <li className={myAccountClass}>
-            <button className="my-account-btn" onClick={this.gotoAccount}><h3><i className="fa fa-user" aria-hidden="true"></i></h3></button>
-          </li>
-
-          {admin}
-
-          <li className="my-account side-bar-link logout">
-            <button className="logout-btn" onClick={this.logout}><h3><i className="fa fa-power-off" aria-hidden="true"></i></h3></button>
-          </li>
-
+      <aside className="dashboard-sidebar">
+        <ul className="main-menu">
+          <MainButton selected={this.state.selected === 'suggestions'} title="Suggestions" select={this.selectMenu} icon="icon-flask"/>
+          <MainButton selected={this.state.selected === 'portfolio'} title="Portfolio" select={this.selectMenu} icon="icon-chart"/>
+          {store.session.get('type') === 5 ? <MainButton selected={this.state.selected === 'articles'} title="Articles" select={this.selectMenu} icon="icon-articles"/> : ''}
+          {store.session.get('type') === 5 ? <MainButton selected={this.state.selected === 'admin'} title="Admin" select={this.selectMenu} icon="icon-dashboard"/> : ''}
+          <MainButton selected={this.state.selected === 'account'} title="Account" select={this.selectMenu} icon="icon-account"/>
+          <MainButton title="Log out" icon="icon-logout"/>
+          <MainButton title="Support" icon="icon-support"/>
         </ul>
+        {this.state.selected === 'suggestions' ? this.renderSuggestionsMenu() : ''}
+        {this.state.selected === 'portfolio' ? this.renderPortfolioMenu() : ''}
+        {this.state.selected === 'admin' ? this.renderAdminMenu() : ''}
       </aside>
     )
   }

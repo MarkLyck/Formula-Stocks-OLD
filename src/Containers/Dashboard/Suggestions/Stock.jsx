@@ -16,8 +16,9 @@ class Suggestion extends React.Component {
 
   componentDidMount() {
     if(!store.plans.get(this.props.planName).get('suggestions')[this.props.i].data) {
-      this.setState({fetching: true})
-      store.plans.get(this.props.planName).getStockInfo(this.props.suggestion.ticker, this.props.i)
+      this.setState({ fetching: true })
+
+      store.plans.get(this.props.planName).getStockInfo(this.props.suggestion.ticker, this.props.i, false, this.props.trades)
       .promise.then(() => {
         if (store.selectedPlan === this.props.planName) {
           this.setState({ fetched: true, fetching: false })
@@ -38,7 +39,8 @@ class Suggestion extends React.Component {
   componentWillReceiveProps(newProps) {
     if (newProps.planName !== this.props.planName) {
       if(!store.plans.get(newProps.planName).get('suggestions')[newProps.i].data) {
-        store.plans.get(newProps.planName).getStockInfo(newProps.suggestion.ticker, newProps.i);
+        console.log('get stock info in props')
+        store.plans.get(newProps.planName).getStockInfo(newProps.suggestion.ticker, newProps.i, false, this.props.suggestion.model)
       }
     }
   }
@@ -61,6 +63,8 @@ class Suggestion extends React.Component {
     let allocation
     if (this.props.suggestion.percentage_weight) {
       allocation = this.props.suggestion.percentage_weight.toFixed(2)
+    } else if (this.props.suggestion.portfolio_weight) {
+      allocation = this.props.suggestion.portfolio_weight.toFixed(2)
     }
     let listClass = 'fade-in white suggestion'
     let actionClass = ''
@@ -99,6 +103,7 @@ class Suggestion extends React.Component {
           <p className="failed"><i className="fa fa-exclamation-circle" aria-hidden="true"></i> Couldn't find data</p>
         </div>)
     } else if (this.state.fetched) {
+      // console.log(this.props.suggestion.data)
       chartArea = (
         <SuggestionChart
           data={this.props.suggestion.data}

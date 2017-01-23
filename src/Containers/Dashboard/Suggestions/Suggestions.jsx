@@ -47,11 +47,22 @@ class Suggestions extends React.Component {
   render() {
     let suggestionsList
     if(store.session.isAllowedToView(this.state.plan)) {
-      let suggestions = store.plans.get(this.state.plan).get('suggestions').filter(sug => sug.model && sug.action === 'BUY' ? false : true).map((suggestion, i) => {
+      let suggestions = []
+      if (this.props.location.indexOf('trades') === -1) {
+        suggestions = store.plans.get(this.state.plan).get('suggestions').filter(sug => sug.model && sug.action === 'BUY' ? false : true)
+      } else {
+        suggestions = store.plans.get(this.state.plan).get('suggestions').filter(sug => sug.model ? true : false).reverse()
+      }
+
+      suggestions = suggestions.map((suggestion, i) => {
+        let numerator = i
+        if (this.props.location.indexOf('trades') > -1) {
+          numerator = _.findIndex(store.plans.get(this.state.plan).get('suggestions'), (sug) => sug.model && sug.ticker === suggestion.ticker)
+        }
         if (this.state.plan !== 'fund') {
-          return <Suggestion key={this.state.plan+suggestion.ticker+i} suggestion={suggestion} i={i} planName={this.state.plan}/>
+          return <Suggestion key={this.state.plan+suggestion.ticker+i} suggestion={suggestion} i={numerator} trades={this.props.location.indexOf('trades') === -1 ? false : true} planName={this.state.plan}/>
         } else {
-          return <SmallStock key={this.state.plan+suggestion.ticker+i} suggestion={suggestion} i={i} planName={this.state.plan}/>
+          return <SmallStock key={this.state.plan+suggestion.ticker+i} suggestion={suggestion} i={numerator} trades={this.props.location.indexOf('trades') === -1 ? false : true} planName={this.state.plan}/>
         }
       })
       suggestionsList = (
@@ -85,7 +96,7 @@ class Suggestions extends React.Component {
 
     return (
       <div className="suggestions">
-        <SuggestionHeader plan={this.state.plan}/>
+        <SuggestionHeader plan={this.state.plan} trades={this.props.location.indexOf('trades') === -1 ? false : true}/>
         {suggestionsList}
         {lastUpdatedText}
       </div>
