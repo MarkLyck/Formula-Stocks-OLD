@@ -8,9 +8,7 @@ class SuggestionChart extends React.Component {
 
     chartData = chartData.map((point) => {
       return {
-        open: Number(point[1].toFixed(2)),
-        high: Number(point[2].toFixed(2)),
-        close: Number(point[3].toFixed(2)),
+        close: Number(point[1].toFixed(2)),
         date: point[0],
       }
     })

@@ -11,36 +11,42 @@ class Suggestion extends React.Component {
     this.moreInfo = this.moreInfo.bind(this)
     this.closeModal = this.closeModal.bind(this)
 
-    this.state = { fetched: false, fetching: false, failed: false, showModal: false }
+    this.state = { fetched: false, fetching: true, failed: false, showModal: false }
   }
 
   componentDidMount() {
-    if(!store.plans.get(this.props.planName).get('suggestions')[this.props.i].data) {
-      this.setState({ fetching: true })
+    store.plans.get(store.selectedPlan).getHistoricData(this.props.suggestion.ticker, this.props.i, 120)
+    .then(data => { this.setState({ data: data, fetching: false, fetched: true }) })
+    .catch(() => this.setState({ fetching: false }))
 
-      store.plans.get(this.props.planName).getStockInfo(this.props.suggestion.ticker, this.props.i, false, this.props.trades)
-      .promise.then(() => {
-        if (store.selectedPlan === this.props.planName) {
-          this.setState({ fetched: true, fetching: false })
-        }
-      })
-      .catch(() => {
-        if (store.selectedPlan === this.props.planName) {
-          this.setState({ fetched: false, fetching: false, failed: true })
-        }
-      })
-    } else {
-      if (store.selectedPlan === this.props.planName) {
-        this.setState({ fetched: true, fetching: false })
-      }
-    }
+    // if(!store.plans.get(this.props.planName).get('suggestions')[this.props.i].data) {
+    //   this.setState({ fetching: true })
+    //
+    //
+    //
+    //   // store.plans.get(this.props.planName).getStockInfo(this.props.suggestion.ticker, this.props.i, false, this.props.trades)
+    //   // .promise.then(() => {
+    //   //   if (store.selectedPlan === this.props.planName) {
+    //   //     this.setState({ fetched: true, fetching: false })
+    //   //   }
+    //   // })
+    //   // .catch(() => {
+    //   //   if (store.selectedPlan === this.props.planName) {
+    //   //     this.setState({ fetched: false, fetching: false, failed: true })
+    //   //   }
+    //   // })
+    // } else {
+    //   if (store.selectedPlan === this.props.planName) {
+    //     this.setState({ fetched: true, fetching: false })
+    //   }
+    // }
   }
 
   componentWillReceiveProps(newProps) {
     if (newProps.planName !== this.props.planName) {
       if(!store.plans.get(newProps.planName).get('suggestions')[newProps.i].data) {
         console.log('get stock info in props')
-        store.plans.get(newProps.planName).getStockInfo(newProps.suggestion.ticker, newProps.i, false, this.props.suggestion.model)
+        // store.plans.get(newProps.planName).getStockInfo(newProps.suggestion.ticker, newProps.i, false, this.props.suggestion.model)
       }
     }
   }
@@ -108,7 +114,7 @@ class Suggestion extends React.Component {
       // console.log(this.props.suggestion.data)
       chartArea = (
         <SuggestionChart
-          data={this.props.suggestion.data}
+          data={this.state.data}
           suggestedPrice={this.props.suggestion.suggested_price}
           ticker={this.props.suggestion.ticker}
           action={this.props.suggestion.action}

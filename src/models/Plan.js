@@ -170,7 +170,7 @@ const Plan = Backbone.Model.extend({
         if (moment(stock.date).format('DDMMYYYY') === moment().format('DDMMYYYY')) {
           resolved = true
           resolve(Lockr.get('stocks')[ticker].lastPrice)
-        }
+        } else if (stock.error) { resolved = true }
       }
       if (!resolved) {
         const query = `https://www.quandl.com/api/v3/datasets/EOD/${ticker}.json?api_key=${store.settings.quandlKey}&column_index=4&limit=1`
@@ -197,9 +197,11 @@ const Plan = Backbone.Model.extend({
       let resolved = false
       if (stocks[ticker]) {
         if (moment(stocks[ticker].date).format('DDMMYYYY') === moment().format('DDMMYYYY') && stocks[ticker].data) {
-          resolved = true
-          resolve(Lockr.get('stocks')[ticker].data)
-        }
+          if (stocks[ticker].data.length >= limit) {
+            resolved = true
+            resolve(Lockr.get('stocks')[ticker].data)
+          }
+        } else if (stocks[ticker].error) { resolved = true }
       }
       if (!resolved) {
         const query = `https://www.quandl.com/api/v3/datasets/EOD/${ticker}.json?api_key=${store.settings.quandlKey}&column_index=4${limit ? '&limit=' + limit : ''}`
@@ -222,69 +224,6 @@ const Plan = Backbone.Model.extend({
         })
       }
     })
-  },
-  getStockInfo(ticker, i, portfolioStock, trades) {
-    let hasCanceled_ = false
-    let promise = new Promise((resolve, reject) => {
-
-      ticker = ticker.replace('.', '_')
-      let query = `https://www.quandl.com/api/v3/datasets/EOD/${ticker}.json?api_key=${store.settings.quandlKey}`
-      $.ajax(query)
-      .then(output => {
-        let response = output.dataset
-        if (!portfolioStock) {
-          let suggestionToUpdate = this.get('suggestions')[i]
-          suggestionToUpdate.data = this.parseStockData(response.data)
-
-          let newArr = []
-          newArr = this.get('suggestions').slice(0,i).concat(suggestionToUpdate, this.get('suggestions').slice(i + 1))
-          this.set('suggestions', newArr)
-          this.trigger('change')
-
-          hasCanceled_ ? reject({ isCancelled: true }) : resolve()
-        } else {
-          let portfolioToUpdate = this.get('portfolio')[i]
-          portfolioToUpdate.data = this.parseStockData(response.data)
-          let newArr = this.get('portfolio').slice(0,i).concat(portfolioToUpdate, this.get('portfolio').slice(i + 1))
-          this.set('portfolio', newArr)
-          this.trigger('change')
-
-          hasCanceled_ ? reject({ isCancelled: true }) : resolve(response)
-        }
-      })
-      .fail(error => {
-        query = `https://www.quandl.com/api/v1/datasets/YAHOO/TSX_${ticker}.json?api_key=${store.settings.quandlKey}`
-        $.ajax(query)
-        .then((response) => {
-          if (!portfolioStock) {
-            let suggestionToUpdate = this.get('suggestions')[i]
-            suggestionToUpdate.data = this.parseStockData(response.data)
-
-            let newArr = this.get('suggestions').slice(0,i).concat(suggestionToUpdate, this.get('suggestions').slice(i + 1))
-            this.set('suggestions', newArr)
-            this.trigger('change')
-
-            hasCanceled_ ? reject({isCancelled: true}) : resolve(response)
-          } else {
-            let portfolioToUpdate = this.get('portfolio')[i]
-            portfolioToUpdate.data = this.parseStockData(response.data)
-            let newArr = this.get('portfolio').slice(0,i).concat(portfolioToUpdate, this.get('portfolio').slice(i + 1))
-            this.set('portfolio', newArr)
-            this.trigger('change')
-
-            hasCanceled_ ? reject({isCancelled: true}) : resolve(response)
-          }
-        })
-        .fail(() => {
-          hasCanceled_ ? reject({isCancelled: true}) : reject('no data for: ', ticker)
-        })
-      })
-    })
-
-    return {
-      promise: promise,
-      cancel() { hasCanceled_ = true }
-    }
   }
 })
 
