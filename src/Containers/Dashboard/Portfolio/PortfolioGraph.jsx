@@ -94,7 +94,7 @@ class PortfolioGraph extends React.Component {
           minimum={minimum}
           maximum={maximum}
           baseValue={minimum}
-          marginRight={-2}/>
+          marginRight={-4}/>
         </div>
     }
   }
