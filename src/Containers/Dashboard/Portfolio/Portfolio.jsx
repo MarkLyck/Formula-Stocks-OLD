@@ -42,8 +42,6 @@ class Portfolio extends React.Component {
     this.renderHoldings = this.renderHoldings.bind(this)
     this.getAllocation = this.getAllocation.bind(this)
 
-    console.log('in constructor: ', store.selectedPlan)
-
     this.state = { plan: store.selectedPlan, fetching: true, selectedStock: '', allocation: [], colors: [] }
   }
 
@@ -167,7 +165,6 @@ class Portfolio extends React.Component {
   }
 
   render() {
-    console.log(this.state.plan)
     let marketStartValue
     if (store.market.data.get('portfolioData')[0]) { marketStartValue = store.market.data.get('portfolioData')[0] }
     let portfolioYieldsLength = store.plans.get(this.state.plan).get('portfolioYields').length

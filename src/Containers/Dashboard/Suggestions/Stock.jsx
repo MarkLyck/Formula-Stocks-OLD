@@ -61,9 +61,11 @@ class Suggestion extends React.Component {
       lastPrice = this.props.suggestion.data[0][3].toFixed(2)
     }
     let allocation
+    let allocationText = 'Cash allocation'
     if (this.props.suggestion.percentage_weight) {
       allocation = this.props.suggestion.percentage_weight.toFixed(2)
     } else if (this.props.suggestion.portfolio_weight) {
+      allocationText = 'Portfolio allocation'
       allocation = this.props.suggestion.portfolio_weight.toFixed(2)
     }
     let listClass = 'fade-in white suggestion'
@@ -74,7 +76,7 @@ class Suggestion extends React.Component {
     let allocationElement = (
       <li className={actionClass}>
         <h4 className="value">{allocation}%</h4>
-        <p>Cash allocation</p>
+        <p>{allocationText}</p>
       </li>
     )
 

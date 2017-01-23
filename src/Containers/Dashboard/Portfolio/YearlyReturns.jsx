@@ -7,10 +7,22 @@ class YearlyReturns extends React.Component {
   constructor(props) {
     super(props)
     this.updateState = this.updateState.bind(this)
-    this.state = { portfolioYields: store.plans.get(store.selectedPlan).toJSON().portfolioYields }
+    this.resetState = this.resetState.bind(this)
+    this.state = { fetching: false, portfolioYields: store.plans.get(store.selectedPlan).toJSON().portfolioYields }
   }
 
-  componentDidMount() { store.plans.get(store.selectedPlan).on('change', this.updateState) }
+  componentDidMount() {
+    store.plans.get(store.selectedPlan).on('change', this.updateState)
+    store.plans.on('plan-change', this.resetState)
+  }
+
+  componentWillReceiveProps() {
+    this.updateState()
+  }
+
+  resetState() {
+    this.setState({ portfolioYields: store.plans.get(store.selectedPlan).get('portfolioYields').length })
+  }
 
   componentWillUnmount() {
     store.plans.get('basic').off('change', this.updateState)
@@ -19,18 +31,9 @@ class YearlyReturns extends React.Component {
     store.plans.get('fund').off('change', this.updateState)
   }
 
-  componentWillReceiveProps(newProps) {
-    if (newProps.plan !== this.props.plan) {
-      this.updateState(newProps.plan)
-    }
-  }
-
-  updateState(plan) {
-    if (typeof plan === 'string') {
-      store.plans.get(plan).on('update', this.updateState)
-      this.setState({ portfolioYields: store.plans.get(plan).toJSON().portfolioYields })
-    } else if (!this.state.portfolioYields.length) {
-      this.setState({ portfolioYields: store.plans.get(this.props.plan).toJSON().portfolioYields })
+  updateState() {
+    if (!this.state.portfolioYields.length && store.plans.get(store.selectedPlan).get('portfolioYields').length) {
+      this.setState({ portfolioYields: store.plans.get(store.selectedPlan).toJSON().portfolioYields })
     }
   }
 

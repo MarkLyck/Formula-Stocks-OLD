@@ -139,7 +139,7 @@
   }
 }
 
-@media (min-width: 1450px) {
+@media (min-width: 1440px) {
   .dashboard-sidebar {
     .main-menu {
       width: 210px;
@@ -149,6 +149,7 @@
         align-items: center;
         justify-content: flex-start;
         width: 100%;
+        margin-top: 32px;
         .icon {
           margin-right: 12px;
           font-size: 1.5rem;
@@ -157,7 +158,7 @@
           display: block;
           margin-top: 0;
           font-size: 1rem;
-          font-weight: 600;
+          font-weight: 500;
         }
         &:hover {
           h4 {

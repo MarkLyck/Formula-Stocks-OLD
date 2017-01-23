@@ -1,5 +1,7 @@
 import $ from 'jquery'
 import Backbone from 'backbone'
+import Lockr from 'lockr'
+import store from '../store'
 
 const Market = Backbone.Model.extend({
   defaults: {
@@ -13,9 +15,7 @@ const Market = Backbone.Model.extend({
     return new Promise((resolve, reject) => {
       $.ajax(`https://www.quandl.com/api/v1/datasets/YAHOO/INDEX_GSPC.json?trim_start=1970-01-01&collapse=monthly&column=4&auth_token=6SfHcXos6YBX51kuAq8B`)
       .then((r) => {
-        let fixedData = r.data.map((point) => {
-          return point[1].toFixed(0)
-        })
+        let fixedData = r.data.map(point => point[1].toFixed(0))
         fixedData = fixedData.reverse()
 
         let percent = null
@@ -36,16 +36,29 @@ const Market = Backbone.Model.extend({
     })
   },
   getPortfolioData() {
-    $.ajax(`https://www.quandl.com/api/v1/datasets/YAHOO/INDEX_GSPC.json?trim_start=2009-01-01&collapse=monthly&column=4&auth_token=6SfHcXos6YBX51kuAq8B`)
-    .then((r) => {
-      let fixedData = r.data.map((point) => {
-        return point[1].toFixed(0)
-      })
-      fixedData = fixedData.reverse()
-      this.set('portfolioData', fixedData)
-    })
-    .fail((e) => {
-      console.error('Failed fetching QUANDL DATA', e)
+    return new Promise((resolve,reject) => {
+      let resolved = false
+      if (Lockr.get('portfolioMarketData')) {
+        if (store.plans.get(store.selectedPlan).get('portfolioYields').length <= Lockr.get('portfolioMarketData').length) {
+          resolved = true
+          this.set('portfolioData', Lockr.get('portfolioMarketData'))
+          resolve(Lockr.get('portfolioMarketData'))
+        }
+      }
+      if (!resolved) {
+        $.ajax(`https://www.quandl.com/api/v1/datasets/YAHOO/INDEX_GSPC.json?trim_start=2009-01-01&collapse=monthly&column=4&auth_token=6SfHcXos6YBX51kuAq8B`)
+        .then(r => {
+          let fixedData = r.data.map(point => point[1].toFixed(0))
+          fixedData = fixedData.reverse()
+          Lockr.set('portfolioMarketData', fixedData)
+          this.set('portfolioData', fixedData)
+          resolve(fixedData)
+        })
+        .fail((e) => {
+          reject()
+          console.error('Failed fetching QUANDL DATA', e)
+        })
+      }
     })
   },
   getDJIAData() {

@@ -10,10 +10,8 @@ class Stock extends React.Component {
   constructor(props) {
     super(props)
     this.checkScreenSize = this.checkScreenSize.bind(this)
-
-    let promise = store.plans.get(this.props.plan).getStockInfo(this.props.stock.ticker, this.props.number, true)
+    this.renderGraph = this.renderGraph.bind(this)
     let data = []
-
     if (store.plans.get(this.props.plan).get('portfolio')[this.props.number].data) {
       data = store.plans.get(this.props.plan).get('portfolio')[this.props.number].data
     }
@@ -21,48 +19,48 @@ class Stock extends React.Component {
     this.state = {
       data: data,
       lastPrice: this.props.stock.latest_price,
-      promise: promise,
       chartSpan: 6,
       isLoading: true
-      }
+    }
   }
 
   componentDidMount() {
     $(window).on('resize', this.checkScreenSize)
-      this.state.promise.promise
-      .then(r => {
-        if (store.selectedPlan === this.props.plan) {
-          let portfolio = store.plans.get(this.props.plan).get('portfolio')
-          portfolio[this.props.number].latest_price = r.data[0][4]
-          store.plans.get(this.props.plan).set('portoflio', portfolio)
-          this.setState({ data: r.data, lastPrice: r.data[0][4], isLoading: false })
-        }
-      })
-      .catch(e => {
-        if (store.selectedPlan === this.props.plan) { this.setState({ isLoading: false }) }
-      })
+    store.plans.get(this.props.plan).getLastDayPrice(this.props.stock.ticker, this.props.number)
+    .then(lastPrice => {
+      if (this.props.plan === store.selectedPlan) {
+        if (lastPrice) { this.setState({ lastPrice: lastPrice })}
+        let portfolio = store.plans.get(this.props.plan).get('portfolio')
+        portfolio[this.props.number].latest_price = lastPrice
+        store.plans.get(this.props.plan).set('portoflio', portfolio)
+      }
+    })
     this.checkScreenSize()
   }
 
-  componentWillUnmount() {
-    $(window).off('resize', this.checkScreenSize)
-    if (typeof this.state.promise.cancel === 'function') {
-      this.state.promise.cancel()
-    }
-  }
-
+  componentWillUnmount() { $(window).off('resize', this.checkScreenSize) }
   checkScreenSize() {
     if (store.selectedPlan === this.props.plan) {
       if ($(window).width() > 850 && $(window).width() < 950 ) {
-        this.setState({chartSpan: 5})
+        this.setState({ chartSpan: 5 })
       } else if ($(window).width() > 650 && $(window).width() < 850 ) {
-        this.setState({chartSpan: 4})
+        this.setState({ chartSpan: 4 })
       } else if ($(window).width() > 525 && $(window).width() < 650 ) {
-        this.setState({chartSpan: 3})
+        this.setState({ chartSpan: 3 })
       } else if ($(window).width() > 400 && $(window).width() < 525 ) {
-        this.setState({chartSpan: 2})
+        this.setState({ chartSpan: 2 })
       }
     }
+  }
+
+  renderGraph() {
+    if (!this.state.data.length) {
+      console.log('fetch data');
+      store.plans.get(this.props.plan).getHistoricData(this.props.stock.ticker, this.props.number, this.props.stock.days_owned)
+      .then(data => { this.setState({ data: data, isLoading: false }) })
+      .catch(() => this.setState({ isLoading: false }))
+    }
+    return <StockGraph stock={this.props.stock} plan={this.props.plan} data={this.state.data} isLoading={this.state.isLoading} />
   }
 
   render() {
@@ -98,7 +96,7 @@ class Stock extends React.Component {
             {allocation}
             <td className="portfolio-td"><p className={changeClass}>{((this.state.lastPrice - stock.purchase_price) * 100 / stock.purchase_price).toFixed(2)}%</p></td>
             <td className="portfolio-td"><p className="blue-color">${stock.purchase_price.toFixed(2)}</p></td>
-            <td className="portfolio-td"><p className="class-checker">${this.state.lastPrice.toFixed(2)}</p></td>
+            <td className="portfolio-td"><p className="class-checker">${this.state.lastPrice ? this.state.lastPrice.toFixed(2) : ''}</p></td>
             <td className="portfolio-td"><p className="class-checker">{cc.commafy(stock.days_owned + daysToAdd)}</p></td>
           </tr>
         </tbody>
@@ -122,7 +120,7 @@ class Stock extends React.Component {
           </tr>
           <tr>
             <td colSpan={this.state.chartSpan}>
-              <StockGraph stock={this.props.stock} plan={this.props.plan} data={this.state.data} isLoading={this.state.isLoading} />
+              {this.renderGraph()}
             </td>
           </tr>
         </tbody>

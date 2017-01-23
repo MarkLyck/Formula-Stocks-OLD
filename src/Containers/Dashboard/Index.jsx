@@ -1,4 +1,5 @@
 import React from 'react'
+import Lockr from 'lockr'
 
 import store from '../../store'
 
@@ -12,6 +13,8 @@ import './dashboard.css'
 class Dashboard extends React.Component {
   constructor(props) {
     super(props)
+
+    if (!Lockr.get('stocks')) { Lockr.set('stocks', {}) }
 
     this.updateState = this.updateState.bind(this)
     this.state = { fetched: false }

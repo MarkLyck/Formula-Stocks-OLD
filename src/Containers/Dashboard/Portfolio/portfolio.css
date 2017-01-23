@@ -230,6 +230,9 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  i {
+    color: $primary-color;
+  }
 }
 
 @media (max-width: 1000px) {

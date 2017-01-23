@@ -2,6 +2,8 @@
 import $ from 'jquery'
 import _ from 'underscore'
 import Backbone from 'backbone'
+import Lockr from 'lockr'
+import moment from 'moment'
 
 import store from '../store'
 import admin from '../admin'
@@ -80,12 +82,8 @@ const Plan = Backbone.Model.extend({
        this.set('annualData', data.logs)
      }
 
-     console.log('before omit: ', this.get('suggestions'))
-
      let newSuggestions = this.get('suggestions').map(sug => _.omit(sug, 'data'))
      let fixedPortfolio = this.get('portfolio').map(stock => _.omit(stock, 'data'))
-
-     console.log('after omit: ', newSuggestions)
 
      newSuggestions = newSuggestions.reduce((suggestions, sug, i) => {
         let dupeIndex = -1
@@ -106,12 +104,8 @@ const Plan = Backbone.Model.extend({
         return suggestions.concat(sug)
       }, [])
 
-      console.log('after reduce: ', newSuggestions)
-
      this.set('suggestions', newSuggestions)
      this.set('portfolio', fixedPortfolio)
-
-     console.log('after second set: ', this.get('suggestions'))
 
      // Public data
      const publicData = _.omit(this.toJSON(), ['portfolio', 'suggestions', '_acl', '_kmd'] )
@@ -167,8 +161,70 @@ const Plan = Backbone.Model.extend({
   parseStockData(data) {
     return data.filter(point => (point[1] !== null && point[2] !== null && point[3] !== null) ? true : false)
   },
+  getLastDayPrice(ticker, i) {
+    return new Promise((resolve, reject) => {
+      ticker = ticker.replace('.', '_')
+      let resolved = false
+      const stock = Lockr.get('stocks')[ticker]
+      if (stock) {
+        if (moment(stock.date).format('DDMMYYYY') === moment().format('DDMMYYYY')) {
+          resolved = true
+          resolve(Lockr.get('stocks')[ticker].lastPrice)
+        }
+      }
+      if (!resolved) {
+        const query = `https://www.quandl.com/api/v3/datasets/EOD/${ticker}.json?api_key=${store.settings.quandlKey}&column_index=4&limit=1`
+        $.ajax(query)
+        .then(output => {
+          let stocks = Lockr.get('stocks')
+          stocks[ticker] = { date: new Date(), lastPrice: output.dataset.data[0][1] }
+          Lockr.set('stocks', stocks)
+          resolve(output.dataset.data[0][1])
+        })
+        .catch(e => {
+          let stocks = Lockr.get('stocks')
+          stocks[ticker] = { date: new Date(), error: true }
+          Lockr.set('stocks', stocks)
+          reject()
+        })
+      }
+    })
+  },
+  getHistoricData(ticker, i, limit) {
+    return new Promise((resolve, reject) => {
+      ticker = ticker.replace('.', '_')
+      const stocks = Lockr.get('stocks')
+      let resolved = false
+      if (stocks[ticker]) {
+        if (moment(stocks[ticker].date).format('DDMMYYYY') === moment().format('DDMMYYYY') && stocks[ticker].data) {
+          resolved = true
+          resolve(Lockr.get('stocks')[ticker].data)
+        }
+      }
+      if (!resolved) {
+        const query = `https://www.quandl.com/api/v3/datasets/EOD/${ticker}.json?api_key=${store.settings.quandlKey}&column_index=4${limit ? '&limit=' + limit : ''}`
+        $.ajax(query)
+        .then(output => {
+          let stocks = Lockr.get('stocks')
+          stocks[ticker] = {
+            date: new Date(),
+            lastPrice: output.dataset.data[0][1],
+            data: output.dataset.data
+          }
+          Lockr.set('stocks', stocks)
+          resolve(output.dataset.data)
+        })
+        .catch(e => {
+          let stocks = Lockr.get('stocks')
+          stocks[ticker] = { date: new Date(), error: true }
+          Lockr.set('stocks', stocks)
+          reject()
+        })
+      }
+    })
+  },
   getStockInfo(ticker, i, portfolioStock, trades) {
-    let hasCanceled_ = false;
+    let hasCanceled_ = false
     let promise = new Promise((resolve, reject) => {
 
       ticker = ticker.replace('.', '_')
