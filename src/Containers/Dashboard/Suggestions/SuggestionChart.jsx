@@ -12,29 +12,16 @@ class SuggestionChart extends React.Component {
         date: point[0],
       }
     })
-
-    if (!this.props.allData) {
-      chartData = chartData.slice(0,120)
-    }
     chartData.reverse()
 
     let chartTheme =  'light'
     let gridOpacity = 0.05
 
-    let color = {
-      positive: '#27A5F9',
-      negative: '#49494A'
-    }
+    let color = { positive: '#27A5F9', negative: '#49494A' }
     let cursorColor = '#49494A'
 
     if (this.props.action === 'SELL') {
-      color = {
-        negative: '#fff',
-        positive: '#49494A'
-      }
-      chartTheme =  'dark'
-      gridOpacity = 0.25
-      cursorColor = '#ffffff'
+      color = { negative: '#12D99E', positive: '#49494A' }
     }
 
     var config = {
@@ -95,7 +82,7 @@ class SuggestionChart extends React.Component {
     }]
 
     return (<div id="suggestion-chart">
-              <LineGraph data={chartData} graphs={graphs} cursorColor={cursorColor} guides={guides} unit="$" chartTheme={chartTheme} gridOpacity={gridOpacity} inside={false}/>
+              <LineGraph data={chartData} graphs={graphs} cursorColor={cursorColor} guides={guides} unit="$" chartTheme={chartTheme} gridOpacity={gridOpacity} insideY={true} insideX={false}/>
             </div>)
   }
 }

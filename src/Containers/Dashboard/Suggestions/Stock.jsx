@@ -11,22 +11,13 @@ class Suggestion extends React.Component {
     this.moreInfo = this.moreInfo.bind(this)
     this.closeModal = this.closeModal.bind(this)
 
-    this.state = { fetched: false, fetching: true, failed: false, showModal: false }
+    this.state = { fetched: false, fetching: true, failed: false, showModal: false, data: [] }
   }
 
   componentDidMount() {
     store.plans.get(store.selectedPlan).getHistoricData(this.props.suggestion.ticker, this.props.i, 120)
-    .then(data => { this.setState({ data: data, fetching: false, fetched: true }) })
-    .catch(() => this.setState({ fetching: false }))
-  }
-
-  componentWillReceiveProps(newProps) {
-    if (newProps.planName !== this.props.planName) {
-      if(!store.plans.get(newProps.planName).get('suggestions')[newProps.i].data) {
-        console.log('get stock info in props')
-        // store.plans.get(newProps.planName).getStockInfo(newProps.suggestion.ticker, newProps.i, false, this.props.suggestion.model)
-      }
-    }
+    .then(data => this.setState({ data: data, fetching: false, fetched: true }))
+    .catch(() => this.setState({ fetching: false, failed: true }))
   }
 
   moreInfo() {
@@ -41,7 +32,7 @@ class Suggestion extends React.Component {
 
   render() {
     let lastPrice
-    if (this.state.data) {
+    if (this.state.data.length) {
       lastPrice = this.state.data[0][1].toFixed(2)
     }
 
@@ -60,8 +51,8 @@ class Suggestion extends React.Component {
 
     let allocationElement = (
       <li className={actionClass}>
-        <h4 className="value">{allocation}%</h4>
         <p>{allocationText}</p>
+        <h4 className="value">{allocation}%</h4>
       </li>
     )
 
@@ -70,7 +61,11 @@ class Suggestion extends React.Component {
       textColor = 'white-color'
       actionClass = 'sell'
       SuggestedPriceText = 'Sell at'
-      allocationElement = <li></li>;
+      allocationElement = (
+        <li>
+          <p>Purchase price</p>
+          <h4 className="value">${this.props.suggestion.original_purchase.toFixed(2)}</h4>
+        </li>)
     }
 
     let chartArea;
@@ -78,7 +73,8 @@ class Suggestion extends React.Component {
     if (this.props.suggestion.action === 'SELL') {
       loadingColor = 'white-color'
     }
-    if (this.state.fetching) {
+
+    if (this.state.fetching && !this.state.fetched) {
       chartArea = (
         <div className="fetching-data">
           <i className={`fa fa-circle-o-notch fa-spin fa-3x fa-fw ${loadingColor}`}></i>
@@ -89,15 +85,14 @@ class Suggestion extends React.Component {
         <div className="fetching-data">
           <p className="failed"><i className="fa fa-exclamation-circle" aria-hidden="true"></i> Couldn't find data</p>
         </div>)
-    } else if (this.state.fetched) {
-      // console.log(this.props.suggestion.data)
+    } else if (this.state.data.length) {
       chartArea = (
         <SuggestionChart
           data={this.state.data}
           suggestedPrice={this.props.suggestion.suggested_price}
           ticker={this.props.suggestion.ticker}
           action={this.props.suggestion.action}
-          allData={this.state.showModal}/>
+          />
       )
     }
 
@@ -133,31 +128,34 @@ class Suggestion extends React.Component {
 
     return (
       <li className={listClass}>
+
         <div className="top">
-          <h3 className={textColor}>{this.props.suggestion.name}</h3>
+          <h3 className="stock-name">{this.props.suggestion.name}</h3>
           <h3 className={`action ${actionClass}`}>{this.props.suggestion.action}</h3>
         </div>
 
-        {chartArea}
-
-        <ul className="bottom">
-          <li className={actionClass}>
-            <h4 className="value">{this.props.suggestion.ticker}</h4>
-            <p>Ticker</p>
-          </li>
-
-          {allocationElement}
-
-          <li className={actionClass}>
-            <h4 className="value">${this.props.suggestion.suggested_price.toFixed(2)}</h4>
-            <p>{SuggestedPriceText}</p>
-          </li>
-          <li className={actionClass}>
-            <h4 className="value">${lastPrice}</h4>
-            <p>Last price</p>
-          </li>
-        </ul>
-        <button className={`more-info ${actionClass}`} onClick={this.moreInfo}>More info</button>
+        <div className="sugg-content">
+          <ul className="left">
+            <li className={actionClass}>
+              <p>Ticker</p>
+              <h4 className="value">{this.props.suggestion.ticker}</h4>
+            </li>
+            <li className={actionClass}>
+              <p>{SuggestedPriceText}</p>
+              <h4 className="value">${this.props.suggestion.suggested_price.toFixed(2)}</h4>
+            </li>
+            <li className={actionClass}>
+              <p>Last price</p>
+              <h4 className="value">${lastPrice}</h4>
+            </li>
+            {allocationElement}
+            <button className={`more-info ${actionClass}`} onClick={this.moreInfo}>More info</button>
+          </ul>
+          <div className="right">
+            {chartArea}
+          </div>
+        </div>
+        <div className="bottom-bar"/>
         {modal}
       </li>
     )

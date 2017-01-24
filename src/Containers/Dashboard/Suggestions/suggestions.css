@@ -17,78 +17,101 @@
     margin: 10px;
     display: flex;
     flex-direction: column;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.16);
+    background: none;
     .top {
-      h3:first-child {
-        padding-left: 20px;
-      }
-      .action {
-        color: $primary-color;
-        padding-right: 20px;
-      }
-      .sell {
-        color: #fff;
-      }
       display: flex;
       justify-content: space-between;
-    }
-    .fetching-data {
-      height: 300px;
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-    #suggestion-chart {
-      height: 300px;
-      width: 100%;
-    }
-    .failed {
-      display: flex;
-      align-items: center;
-      i {
-        font-size: 1.3rem;
-        margin-right: 8px;
+      h3 {
+        margin: 0;
+        margin-bottom: 6px;
+        font-weight: 300;
       }
-      color: $warning-color;
-    }
-    .bottom {
-      display: flex;
-      padding: 10px 10px;
-      li {
-        width: calc(100% / 4);
-        p,h4 {
-          margin: 0;
-          color: #777;
-          font-weight: 100;
-        }
-        .value {
-          margin-bottom: 5px;
-          color: #323232;
-          font-weight: 400;
-        }
+      .stock-name {
+        margin-left: 16px;
       }
-      .sell {
-        h4 {
-          color: #fff;
-        }
+      .action {
+        margin-right: 16px;
+        color: $primary-color;
+      }
+    }
+    .sugg-content {
+      background: #fff;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.16);
+      display: flex;
+      .left {
+        padding: 16px 0 0 16px;
+        border-right: 1px solid #E9ECED;
+        width: 120px;
         p {
-          color: $db-border-color;
+          font-weight: 300;
+          font-size: 14px;
+          margin: 0;
+          margin-bottom: 6px;
+          color: #95989E;
+        }
+        h4 {
+          margin: 0;
+          margin-bottom: 24px;
+          font-weight: 600;
+        }
+        .more-info {
+          background: none;
+          color: $primary-color;
+          padding: 0;
+          margin: 0;
+          margin-bottom: 16px;
+        }
+      }
+      .right {
+        width: calc(100% - 120px);
+        overflow: hidden;
+        #suggestion-chart {
+          height: 100%;
+          width: 100%;
+        }
+        .fetching-data {
+          height: 100%;
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+        }
+        .failed {
+          display: flex;
+          align-items: center;
+          i {
+            font-size: 1.3rem;
+            margin-right: 8px;
+          }
+          color: $warning-color;
         }
       }
     }
-    .more-info {
-      border-radius: 0;
+    .bottom-bar {
+      width: 100%;
+      background: $primary-color;
+      height: 6px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.16);
     }
-    .more-info.sell {
-      display: none;
-    }
+
   }
   .sell-suggestion {
-    background: $primary-color;
-    .failed {
-      color: #fff;
+    .top {
+      .action {
+        color: $action-color;
+      }
+    }
+    .sugg-content {
+      .left {
+        padding-bottom: calc(33px);
+        .more-info.sell {
+          display: none;
+        }
+      }
+    }
+    .bottom-bar {
+      background: $action-color;
     }
   }
 }
@@ -120,9 +143,28 @@
 .advanced-data-modal {
   overflow-y: scroll;
   max-height: 80%;
+  .top {
+    display: flex;
+    justify-content: space-between;
+    padding: 16px;
+    padding-bottom: 0;
+    h3 {
+      margin: 0;
+      margin-bottom: 6px;
+      font-weight: 300;
+    }
+    .stock-name {
+      margin-left: 16px;
+    }
+    .action {
+      margin-right: 16px;
+      color: $primary-color;
+    }
+  }
   #suggestion-chart {
     margin: 0 20px 0 0;
-    width: calc(100% - 20px) !important;
+    width: 100%;
+    height: 300px;
   }
   .advanced-data-list {
     margin-top: 20px;
@@ -141,10 +183,12 @@
 }
 
 
-@media (max-width: 1200px) {
+@media (max-width: 900px) {
   .suggestions-list {
-    li {
-      width: calc(100% - 20px);
+    width: 100%;
+    .suggestion, .sell-suggestion {
+      width: 100%;
+      max-width: calc(100% - 20px);
     }
   }
 }

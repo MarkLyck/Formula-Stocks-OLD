@@ -79,17 +79,6 @@ class SmallStock extends React.Component {
       store.plans.get(store.selectedPlan).getHistoricData(this.props.suggestion.ticker, this.props.i, 120)
       .then(data => { this.setState({ data: data, fetching: false, fetched: true }) })
       .catch(() => this.setState({ fetching: false }))
-      // store.plans.get(this.props.planName).getStockInfo(this.props.suggestion.ticker, this.props.i)
-      // .promise.then(() => {
-      //   if (store.selectedPlan === this.props.planName) {
-      //     this.setState({ fetched: true, fetching: false })
-      //   }
-      // })
-      // .catch(() => {
-      //   if (store.selectedPlan === this.props.planName) {
-      //     this.setState({ fetched: false, fetching: false, failed: true })
-      //   }
-      // })
     }
     this.setState({ expanded: !this.state.expanded })
   }

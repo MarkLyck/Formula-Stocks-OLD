@@ -198,7 +198,10 @@ const Plan = Backbone.Model.extend({
             resolved = true
             resolve(Lockr.get('stocks')[ticker].data)
           }
-        } else if (stocks[ticker].error) { resolved = true }
+        } else if (stocks[ticker].error) {
+          reject()
+          resolved = true
+        }
       }
       if (!resolved) {
         const query = `https://www.quandl.com/api/v3/datasets/EOD/${ticker}.json?api_key=${store.settings.quandlKey}&column_index=4${limit ? '&limit=' + limit : ''}`

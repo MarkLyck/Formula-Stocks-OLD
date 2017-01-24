@@ -29,8 +29,61 @@
       }
     }
   }
+  .right {
+    img {
+      max-width: 250px;
+    }
+  }
+}
 
-  img {
-    max-width: 250px;
+@media (max-width: 800px) {
+  .dashboard-nav {
+    .right {
+      display: block;
+      background: url('./logo.svg');
+      background-size: contain;
+      background-repeat: no-repeat;
+      height: 40px;
+      width: 40px;
+      position: relative;
+      a {
+        display: block;
+        height: 100%;
+        width: 100%;
+      }
+      img {
+        display: none;
+      }
+    }
+  }
+}
+
+@media (max-width: 550px) {
+  .dashboard-nav {
+    .left {
+      .plan:last-child {
+        display: none;
+      }
+    }
+  }
+}
+
+@media (max-width: 470px) {
+  .dashboard-nav {
+    .left {
+      .plan:nth-child(3) {
+        display: none;
+      }
+    }
+  }
+}
+
+@media (max-width: 360px) {
+  .dashboard-nav {
+    .left {
+      .plan:nth-child(2) {
+        display: none;
+      }
+    }
   }
 }

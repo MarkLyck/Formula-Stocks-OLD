@@ -32,7 +32,9 @@ class NavBar extends React.Component {
           <button onClick={this.selectPlan.bind(this, 'business')} className={`plan ${this.state.selected === 'business' ? 'selected' : ''}`}>Business</button>
           <button onClick={this.selectPlan.bind(this, 'fund')} className={`plan ${this.state.selected === 'fund' ? 'selected' : ''}`}>Fund</button>
         </div>
-        <Link to="/" className="right"><img id="logo" src={Logo} alt="logo"/></Link>
+        <div className="right">
+          <Link to="/"><img id="logo" src={Logo} alt="logo"/></Link>
+        </div>
       </nav>
     )
   }

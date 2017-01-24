@@ -9,10 +9,10 @@ import './lineGraph.css'
 
 const AmCharts = window.AmCharts
 
-export default function LineGraph({ data, graphs, chartTheme, unit, unitPosition, minimum, maximum, baseValue, logarithmic, minorGridEnabled, marginRight, marginTop, guides, axisAlpha, gridOpacity, cursorColor, inside }) {
+export default function LineGraph({ data, graphs, chartTheme, unit, unitPosition, minimum, maximum, baseValue, logarithmic, minorGridEnabled, marginRight, marginTop, guides, axisAlpha, gridOpacity, cursorColor, insideY, insideX }) {
 
-  if (!inside && $(window).width() < 550) {
-    inside = true
+  if (!insideY && $(window).width() < 550) {
+    insideY = true
   }
 
   let config = {
@@ -37,7 +37,7 @@ export default function LineGraph({ data, graphs, chartTheme, unit, unitPosition
       gridAlpha: gridOpacity ? gridOpacity : 0.15,
       minorGridEnabled: minorGridEnabled ? true : false,
       dashLength: 0,
-      inside: inside ? true : false,
+      inside: insideY ? true : false,
       baseValue: baseValue ? baseValue : 0,
       minimum: minimum,
       maximum: maximum,
@@ -54,6 +54,7 @@ export default function LineGraph({ data, graphs, chartTheme, unit, unitPosition
     categoryAxis: {
       parseDates: true,
       equalSpacing: true,
+      inside: insideX ? true : false,
       gridAlpha: gridOpacity ? gridOpacity : 0.15,
       axisAlpha: axisAlpha ? axisAlpha : 0,
     },
