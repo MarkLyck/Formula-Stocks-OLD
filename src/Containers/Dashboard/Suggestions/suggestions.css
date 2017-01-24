@@ -15,6 +15,7 @@
   .suggestion, .sell-suggestion {
     width: calc(50% - 20px);
     margin: 10px;
+    margin-bottom: 16px;
     display: flex;
     flex-direction: column;
     background: none;
@@ -26,11 +27,7 @@
         margin-bottom: 6px;
         font-weight: 300;
       }
-      .stock-name {
-        margin-left: 16px;
-      }
       .action {
-        margin-right: 16px;
         color: $primary-color;
       }
     }
