@@ -43,7 +43,7 @@ class SmallStock extends React.Component {
       } else if (this.state.fetched) {
         chartArea = (
           <SuggestionChart
-            data={this.props.suggestion.data}
+            data={this.state.data}
             suggestedPrice={this.props.suggestion.suggested_price}
             ticker={this.props.suggestion.ticker}
             action={this.props.suggestion.action}
@@ -76,17 +76,20 @@ class SmallStock extends React.Component {
 
   toggleMoreInfo() {
     if (!this.state.expanded && !this.state.fetched) {
-      store.plans.get(this.props.planName).getStockInfo(this.props.suggestion.ticker, this.props.i)
-      .promise.then(() => {
-        if (store.selectedPlan === this.props.planName) {
-          this.setState({ fetched: true, fetching: false })
-        }
-      })
-      .catch(() => {
-        if (store.selectedPlan === this.props.planName) {
-          this.setState({ fetched: false, fetching: false, failed: true })
-        }
-      })
+      store.plans.get(store.selectedPlan).getHistoricData(this.props.suggestion.ticker, this.props.i, 120)
+      .then(data => { this.setState({ data: data, fetching: false, fetched: true }) })
+      .catch(() => this.setState({ fetching: false }))
+      // store.plans.get(this.props.planName).getStockInfo(this.props.suggestion.ticker, this.props.i)
+      // .promise.then(() => {
+      //   if (store.selectedPlan === this.props.planName) {
+      //     this.setState({ fetched: true, fetching: false })
+      //   }
+      // })
+      // .catch(() => {
+      //   if (store.selectedPlan === this.props.planName) {
+      //     this.setState({ fetched: false, fetching: false, failed: true })
+      //   }
+      // })
     }
     this.setState({ expanded: !this.state.expanded })
   }
