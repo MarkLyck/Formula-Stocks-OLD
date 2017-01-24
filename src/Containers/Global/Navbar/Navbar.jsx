@@ -17,22 +17,29 @@ class NavBar extends React.Component {
     this.renderMenu = this.renderMenu.bind(this)
     this.renderUserLinks = this.renderUserLinks.bind(this)
     this.gotoSignup = this.gotoSignup.bind(this)
+    this.checkScroll = this.checkScroll.bind(this)
 
     this.state = { navbar: 'static', showMenu: false }
   }
 
   componentDidMount() {
-    $(window).scroll(() => {
-      if ($(window).scrollTop() < 560) {
-        if (this.state.navbar !== 'static') {
-          this.setState({ navbar: 'static' })
-        }
-      } else {
-        if (this.state.navbar !== 'fixed') {
-          this.setState({ navbar: 'fixed' })
-        }
+    $(window).on('scroll', this.checkScroll)
+  }
+
+  checkScroll() {
+    if ($(window).scrollTop() < 560) {
+      if (this.state.navbar !== 'static') {
+        this.setState({ navbar: 'static' })
       }
-    })
+    } else {
+      if (this.state.navbar !== 'fixed') {
+        this.setState({ navbar: 'fixed' })
+      }
+    }
+  }
+
+  componentWillUnmount() {
+    $(window).off('scroll', this.checkScroll)
   }
 
   gotoSignup() {

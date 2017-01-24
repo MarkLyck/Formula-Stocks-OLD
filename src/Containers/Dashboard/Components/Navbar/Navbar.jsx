@@ -33,7 +33,6 @@ class NavBar extends React.Component {
       && this.props.location !== '/dashboard/') {
         return <div className="left"/>
     } else if (this.props.location.indexOf('admin') > -1) {
-      console.log(this.props.location)
       return (<div className="left">
         <button onClick={this.gotoAdminPage.bind(this, '')} className={`plan ${this.props.location === '/dashboard/admin/' || this.props.location === '/dashboard/admin' ? 'selected' : ''}`}>Panel</button>
         <button onClick={this.gotoAdminPage.bind(this, 'users')} className={`plan ${this.props.location.indexOf('users') > -1 ? 'selected' : ''}`}>Users</button>

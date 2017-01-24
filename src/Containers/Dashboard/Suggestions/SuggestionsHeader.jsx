@@ -53,7 +53,7 @@ class SuggestionsHeader extends React.Component {
             </div>
             <div className="value">
               <h3 className="white-color">{suggestions}</h3>
-              <p className="white-color">Suggestions</p>
+              <p className="white-color">{!this.props.trades ? 'Suggestions' : 'Trades'}</p>
             </div>
           </li>
 

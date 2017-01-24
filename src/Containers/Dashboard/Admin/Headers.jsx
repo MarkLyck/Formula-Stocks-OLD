@@ -8,39 +8,24 @@ import admin from '../../../admin'
 class AdminPanelHeader extends React.Component {
   constructor(props) {
     super(props)
-    this.updateState = this.updateState.bind(this)
-    this.calculateVisitors = this.calculateVisitors.bind(this)
-
     this.state = {
       fetched: false,
-      visitors: admin.visits.toJSON(),
+      visitors: 0,
       newsletterSubs: admin.newsletterSubs.toJSON(),
       users: []
     }
   }
 
   componentDidMount() {
-    admin.visits.on('update', this.updateState)
-    admin.newsletterSubs.on('update', this.updateState)
     admin.visits.fetch()
-    admin.newsletterSubs.fetch()
+
+    admin.getVisitCount()
+    .then(count => this.setState({ visitors: count }))
+
     $.ajax(`https://baas.kinvey.com/user/kid_rJRC6m9F/`)
     .then((users) => {
-      this.setState({users: users})
+      this.setState({ users: users })
     })
-  }
-
-  componentWillUnmount() {
-    admin.visits.off('change update', this.updateState)
-  }
-
-  updateState() {
-    this.setState({visitors: admin.visits.toJSON()})
-    this.setState({newsletterSubs: admin.newsletterSubs.toJSON()})
-  }
-
-  calculateVisitors() {
-    return this.state.visitors.length ? (this.state.visitors.length) : 0
   }
 
   render() {
@@ -105,7 +90,7 @@ class AdminPanelHeader extends React.Component {
               <i className="fa fa-users white-color"></i>
             </div>
             <div className="value">
-              <h3 className="white-color">{this.calculateVisitors()}</h3>
+              <h3 className="white-color">{this.state.visitors}</h3>
               <p className="white-color">Unique Visitors</p>
             </div>
           </li>

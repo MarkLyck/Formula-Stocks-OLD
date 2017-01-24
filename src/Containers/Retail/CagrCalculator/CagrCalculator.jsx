@@ -8,11 +8,15 @@ import cc from '../../../cc'
 
 import './cagrCalculator.css'
 
-const CagrCalculator = React.createClass({
-  getInitialState() {
-    return {cagr: 25, investment: 10000, years: 20, animate: false, startDuration: 0.75}
-  },
-  componentDidMount: function() {
+class CagrCalculator extends React.Component{
+  constructor(props) {
+    super(props)
+    this.animate = this.animate.bind(this)
+  
+    this.state = { cagr: 25, investment: 10000, years: 20, animate: false, startDuration: 0.75 }
+  }
+
+  componentDidMount() {
     $(window).on('scroll', this.animate)
     this.refs.cagrSlider.value = 20
     this.refs.investmentSlider.value = 10000
@@ -45,7 +49,12 @@ const CagrCalculator = React.createClass({
       });
     }).trigger('input');
 
-  },
+  }
+
+  componentWillUnmount() {
+      $(window).off('scroll', this.animate)
+  }
+
   animate() {
     let hT = $(this.refs.chart).offset().top
     let hH = $(this.refs.chart).outerHeight()
@@ -55,7 +64,8 @@ const CagrCalculator = React.createClass({
       this.setState({animate: true})
       $(window).off('scroll', this.animate)
     };
-  },
+  }
+
   calculateData() {
 
     let currentValue = this.state.investment
@@ -73,7 +83,8 @@ const CagrCalculator = React.createClass({
     } else {
       return []
     }
-  },
+  }
+
   render() {
     var config = {
       type: "serial",
@@ -173,6 +184,6 @@ const CagrCalculator = React.createClass({
       </section>
     )
   }
-})
+}
 
 export default CagrCalculator

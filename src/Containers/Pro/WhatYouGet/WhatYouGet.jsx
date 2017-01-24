@@ -1,6 +1,6 @@
 import React from 'react'
 import Scroll from 'react-scroll'
-import SuggestionsScreen from './Suggestions.jpg'
+import SuggestionsScreen from './Suggestions.png'
 import './whatYouGet.css'
 
 class WhatYouGet extends React.Component {

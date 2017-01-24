@@ -73,6 +73,12 @@ let admin = {
   },
   getFromKinveyCollection(article) {
     return $.ajax(`https://baas.kinvey.com/appdata/kid_rJRC6m9F/articles/${article._id}`)
+  },
+  getVisitCount() {
+    return new Promise((resolve, reject) => {
+      $.ajax(`https://baas.kinvey.com/appdata/kid_rJRC6m9F/visits/_count`)
+      .then(r => resolve(r.count))
+    })
   }
 }
 

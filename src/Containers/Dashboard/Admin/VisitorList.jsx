@@ -27,7 +27,6 @@ function getFlag(country_code) {
 }
 
 const VisitorList = ({ visitors }) => {
-
   visitors = _.sortBy(visitors, (visitor) => visitor._kmd.lmt).reverse()
 
   const fixedVisitors = visitors.map((visitor, i) => {
