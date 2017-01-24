@@ -25,7 +25,6 @@ class NavBar extends React.Component {
   }
 
   renderPlanButtons() {
-    console.log(this.props.location)
     if (this.props.location.indexOf('portfolio') === -1
       && this.props.location.indexOf('suggestions') === -1
       && this.props.location.indexOf('trades') === -1

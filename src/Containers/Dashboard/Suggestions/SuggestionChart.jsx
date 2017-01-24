@@ -17,11 +17,13 @@ class SuggestionChart extends React.Component {
     let chartTheme =  'light'
     let gridOpacity = 0.05
 
+    let guideColor = '#27A5F9'
     let color = { positive: '#27A5F9', negative: '#49494A' }
     let cursorColor = '#49494A'
 
     if (this.props.action === 'SELL') {
       color = { negative: '#12D99E', positive: '#49494A' }
+      guideColor = '#12D99E'
     }
 
     var config = {
@@ -75,7 +77,7 @@ class SuggestionChart extends React.Component {
 
     let guides = [{
         "value" : this.props.suggestedPrice + 0.001,
-        "lineColor" : color.positive,
+        "lineColor" : guideColor,
         "lineAlpha": 0.4,
         "lineThickness": 1,
         "position" : "right"
