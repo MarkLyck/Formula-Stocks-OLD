@@ -43,7 +43,7 @@ class SuggestionsHeader extends React.Component {
             </div>
             <div className="value">
               <h3 className="blue-color">{stats.WLRatio.toFixed(2)}%</h3>
-              <p className="blue-color">Profitable stocks</p>
+              <p className="blue-color">Sold with profit</p>
             </div>
           </li>
 

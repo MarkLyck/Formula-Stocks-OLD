@@ -25,9 +25,13 @@
       h3 {
         margin: 0;
         margin-bottom: 6px;
-        font-weight: 300;
+        font-weight: 500;
+      }
+      .stock-name {
+        margin-left: 16px;
       }
       .action {
+        margin-right: 16px;
         color: $primary-color;
       }
     }
@@ -148,7 +152,6 @@
     h3 {
       margin: 0;
       margin-bottom: 6px;
-      font-weight: 300;
     }
     .stock-name {
       margin-left: 16px;

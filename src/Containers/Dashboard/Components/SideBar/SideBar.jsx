@@ -1,7 +1,7 @@
 import React from 'react'
 import MainButton from './MainButton'
 import store from '../../../../store'
-import { Link, browserHistory } from 'react-router'
+import { browserHistory } from 'react-router'
 import './sidebar.css'
 
 class SideBar extends React.Component {
@@ -33,32 +33,6 @@ class SideBar extends React.Component {
     this.setState({ selected: selected })
   }
 
-  renderAdminMenu() {
-    return (
-      <ul className="sub-menu">
-        <li className="submenu-section">
-          <h3>PANEL</h3>
-          <Link to="/dashboard/admin" className={this.props.location === '/dashboard/admin' ? 'selected' : ''}>Panel</Link>
-          <div className="submenu-divider"/>
-        </li>
-        <li className="submenu-section">
-          <h3>USERS</h3>
-          <Link to="/dashboard/admin/users" className={this.props.location.indexOf('users') > -1 ? 'selected' : ''}>Users</Link>
-          <div className="submenu-divider"/>
-        </li>
-        <li className="submenu-section">
-          <h3>API</h3>
-          <Link to="/dashboard/admin/api" className={this.props.location.indexOf('api') > -1 ? 'selected' : ''}>JSON</Link>
-          <div className="submenu-divider"/>
-        </li>
-        <li className="submenu-section">
-          <h3>Articles</h3>
-          <Link to="/dashboard/admin/newarticle" className={this.props.location.indexOf('newarticle') > -1 ? 'selected' : ''}>New Article</Link>
-        </li>
-      </ul>
-    )
-  }
-
   render() {
     return (
       <aside className="dashboard-sidebar">
@@ -72,9 +46,6 @@ class SideBar extends React.Component {
           <MainButton title="Log out" icon="icon-logout"/>
           <MainButton title="Support" icon="icon-support"/>
         </ul>
-        {/* {this.state.selected === 'suggestions' ? this.renderSuggestionsMenu() : ''}
-        {this.state.selected === 'portfolio' ? this.renderPortfolioMenu() : ''} */}
-        {this.state.selected === 'admin' ? this.renderAdminMenu() : ''}
       </aside>
     )
   }
