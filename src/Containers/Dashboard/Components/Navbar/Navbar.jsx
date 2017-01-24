@@ -25,15 +25,18 @@ class NavBar extends React.Component {
   }
 
   renderPlanButtons() {
+    console.log(this.props.location)
     if (this.props.location.indexOf('portfolio') === -1
       && this.props.location.indexOf('suggestions') === -1
       && this.props.location.indexOf('trades') === -1
-      && this.props.location.indexOf('admin') === -1) {
+      && this.props.location.indexOf('admin') === -1
+      && this.props.location !== '/dashboard'
+      && this.props.location !== '/dashboard/') {
         return <div className="left"/>
     } else if (this.props.location.indexOf('admin') > -1) {
       console.log(this.props.location)
       return (<div className="left">
-        <button onClick={this.gotoAdminPage.bind(this, '')} className={`plan ${this.props.location === '/dashboard/admin/' ? 'selected' : ''}`}>Panel</button>
+        <button onClick={this.gotoAdminPage.bind(this, '')} className={`plan ${this.props.location === '/dashboard/admin/' || this.props.location === '/dashboard/admin' ? 'selected' : ''}`}>Panel</button>
         <button onClick={this.gotoAdminPage.bind(this, 'users')} className={`plan ${this.props.location.indexOf('users') > -1 ? 'selected' : ''}`}>Users</button>
         <button onClick={this.gotoAdminPage.bind(this, 'api')} className={`plan ${this.props.location.indexOf('api') > -1 ? 'selected' : ''}`}>API</button>
         <button onClick={this.gotoAdminPage.bind(this, 'newarticle')} className={`plan ${this.props.location.indexOf('article') > -1 ? 'selected' : ''}`}>New article</button>

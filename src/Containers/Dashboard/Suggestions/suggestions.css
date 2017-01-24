@@ -65,8 +65,9 @@
       }
       .right {
         width: calc(100% - 120px);
-        overflow: hidden;
+        position: relative;
         #suggestion-chart {
+          position: absolute;
           height: 100%;
           width: 100%;
         }

@@ -165,7 +165,12 @@ const Plan = Backbone.Model.extend({
         if (moment(stock.date).format('DDMMYYYY') === moment().format('DDMMYYYY')) {
           resolved = true
           resolve(stock.lastPrice)
-        } else if (stock.error) { resolved = true }
+        } else if (stock.error) {
+          reject()
+          resolved = true
+        } else {
+          Lockr.set('stocks', {})
+        }
       }
       if (!resolved) {
         const query = `https://www.quandl.com/api/v3/datasets/EOD/${ticker}.json?api_key=${store.settings.quandlKey}&column_index=4&limit=1`
@@ -201,6 +206,8 @@ const Plan = Backbone.Model.extend({
         } else if (stocks[ticker].error) {
           reject()
           resolved = true
+        } else {
+          Lockr.set('stocks', {})
         }
       }
       if (!resolved) {
