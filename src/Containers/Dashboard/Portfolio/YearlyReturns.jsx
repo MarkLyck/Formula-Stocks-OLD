@@ -21,7 +21,8 @@ class YearlyReturns extends React.Component {
   }
 
   resetState() {
-    this.setState({ portfolioYields: store.plans.get(store.selectedPlan).get('portfolioYields').length })
+    this.setState({ portfolioYields: [] })
+    this.updateState()
   }
 
   componentWillUnmount() {
@@ -34,6 +35,11 @@ class YearlyReturns extends React.Component {
   updateState() {
     if (!this.state.portfolioYields.length && store.plans.get(store.selectedPlan).get('portfolioYields').length) {
       this.setState({ portfolioYields: store.plans.get(store.selectedPlan).toJSON().portfolioYields })
+    }
+    else if (this.state.portfolioYields.length && store.plans.get(store.selectedPlan).get('portfolioYields').length) {
+      if (this.state.portfolioYields[10] !== store.plans.get(store.selectedPlan).get('portfolioYields')[10]) {
+        this.setState({ portfolioYields: store.plans.get(store.selectedPlan).toJSON().portfolioYields })
+      }
     }
   }
 
