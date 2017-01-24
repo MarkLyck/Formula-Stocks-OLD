@@ -74,7 +74,7 @@ class YearlyReturns extends React.Component {
     const fiveYearStart = this.state.portfolioYields.slice(-(12 * 5 + 1))[0].balance
     const threeYearStart = this.state.portfolioYields.slice(-(12 * 3 + 1))[0].balance
     const twoYearStart = this.state.portfolioYields.slice(-(12 * 2 + 1))[0].balance
-    const oneYearStart = this.state.portfolioYields.slice(-12 + 1)[0].balance
+    const oneYearStart = this.state.portfolioYields.slice(-13)[0].balance
     const lastBalance = this.state.portfolioYields[this.state.portfolioYields.length - 1].balance
 
     return (
