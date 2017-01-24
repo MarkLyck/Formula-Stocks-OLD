@@ -54,7 +54,9 @@ class Stats extends React.Component {
 
     let avgReturn = (this.state.portfolio.reduce((prev, stock) => {
       if (prev === 0) { prev = Number((stock.latest_price - stock.purchase_price) * 100 / stock.purchase_price) }
-      else if (stock.ticker !== 'CASH') { prev += Number((stock.latest_price - stock.purchase_price) * 100 / stock.purchase_price) }
+      else if (stock.ticker !== 'CASH' && stock.latest_price && stock.purchase_price) {
+        prev += Number((stock.latest_price - stock.purchase_price) * 100 / stock.purchase_price)
+      }
       return prev
     }, 0) / (this.state.portfolio.length - 1)).toFixed(2)
 

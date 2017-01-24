@@ -55,6 +55,8 @@
       h4 {
         position: absolute;
         top: calc(16px + 38px);
+        left: 50%;
+        transform: translateX(-50%);
         display: block;
         color: $primary-color;
       }
@@ -174,8 +176,10 @@
         h4 {
           display: block;
           color: #fff;
-          position: relative;;
+          position: relative;
           top: 0;
+          left: 0;
+          transform: translateX(0);
         }
         &:hover {
           h4 {
@@ -192,6 +196,17 @@
       }
       .main-button:last-child {
         padding-left: 32px;
+      }
+    }
+  }
+}
+
+@media (max-height: 740px) {
+  .dashboard-sidebar {
+    .main-menu {
+      overflow-y: auto;
+      .main-button:last-child {
+        display: none;
       }
     }
   }

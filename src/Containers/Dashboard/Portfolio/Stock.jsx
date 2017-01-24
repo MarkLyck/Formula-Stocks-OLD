@@ -29,10 +29,12 @@ class Stock extends React.Component {
     store.plans.get(this.props.plan).getLastDayPrice(this.props.stock.ticker, this.props.number)
     .then(lastPrice => {
       if (this.props.plan === store.selectedPlan) {
-        if (lastPrice) { this.setState({ lastPrice: lastPrice })}
-        let portfolio = store.plans.get(this.props.plan).get('portfolio')
-        portfolio[this.props.number].latest_price = lastPrice
-        store.plans.get(this.props.plan).set('portoflio', portfolio)
+        if (lastPrice) {
+          this.setState({ lastPrice: lastPrice })
+          let portfolio = store.plans.get(this.props.plan).get('portfolio')
+          portfolio[this.props.number].latest_price = lastPrice
+          store.plans.get(this.props.plan).set('portoflio', portfolio)
+        }
       }
     })
     this.checkScreenSize()
@@ -75,6 +77,11 @@ class Stock extends React.Component {
     var b = moment()
     const daysToAdd = b.diff(a, 'days')
 
+    let percentChange = ((this.state.lastPrice - stock.purchase_price) * 100 / stock.purchase_price).toFixed(2)
+    if (!percentChange) {
+      percentChange = ((stock.latest_price - stock.purchase_price) * 100 / stock.purchase_price).toFixed(2)
+    }
+
     if (!this.props.graph) {
       let allocationWeight = stock.percentage_weight.toFixed(2)
       if (this.props.plan === 'fund') { allocationWeight = stock.percentage_weight.toFixed(4) }
@@ -94,9 +101,9 @@ class Stock extends React.Component {
               </div>
             </td>
             {allocation}
-            <td className="portfolio-td"><p className={changeClass}>{((this.state.lastPrice - stock.purchase_price) * 100 / stock.purchase_price).toFixed(2)}%</p></td>
+            <td className="portfolio-td"><p className={changeClass}>{percentChange}%</p></td>
             <td className="portfolio-td"><p className="blue-color">${stock.purchase_price.toFixed(2)}</p></td>
-            <td className="portfolio-td"><p className="class-checker">${this.state.lastPrice ? this.state.lastPrice.toFixed(2) : ''}</p></td>
+            <td className="portfolio-td"><p className="class-checker">${this.state.lastPrice ? this.state.lastPrice.toFixed(2) : stock.latest_price.toFixed(2)}</p></td>
             <td className="portfolio-td"><p className="class-checker">{cc.commafy(stock.days_owned + daysToAdd)}</p></td>
           </tr>
         </tbody>
@@ -113,9 +120,9 @@ class Stock extends React.Component {
               </div>
             </td>
             <td className="portfolio-td"><p className="blue-color">{stock.percentage_weight.toFixed(2)}%</p></td>
-            <td className="portfolio-td"><p className={changeClass}>{((this.state.lastPrice - stock.purchase_price) * 100 / stock.purchase_price).toFixed(2)}%</p></td>
+            <td className="portfolio-td"><p className={changeClass}>{percentChange}%</p></td>
             <td className="portfolio-td"><p className="blue-color">${stock.purchase_price.toFixed(2)}</p></td>
-            <td className="portfolio-td"><p className="class-checker">${this.state.lastPrice.toFixed(2)}</p></td>
+            <td className="portfolio-td"><p className="class-checker">${this.state.lastPrice ? this.state.lastPrice : stock.latest_price.toFixed(2)}</p></td>
             <td className="portfolio-td"><p className="class-checker">{cc.commafy(stock.days_owned + daysToAdd)}</p></td>
           </tr>
           <tr>

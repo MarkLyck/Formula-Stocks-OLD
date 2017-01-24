@@ -58,7 +58,6 @@ const Plan = Backbone.Model.extend({
         let newSuggestions = this.get('suggestions').filter(sug => sug.model ? true : false)
         newSuggestions = _.union(data.actionable, newSuggestions)
         this.set('suggestions', newSuggestions)
-        console.log('after weekly: ', this.get('suggestions'))
       // Monthly file
       } else if (fileArr[i].name.indexOf('monthly') > -1) {
        const oldSuggestions = this.get('suggestions').filter(sug => !sug.model ? true : false)
@@ -71,7 +70,6 @@ const Plan = Backbone.Model.extend({
        this.set('portfolio', data.portfolio)
        this.set('portfolioYields', data.logs)
        this.set('portfolioReturn', data.statistics.total_return)
-       console.log('after monthly: ', this.get('suggestions'))
       // Annual file
      } else if (fileArr[i].name.indexOf('annual') > -1) {
        let newStats = data.statistics
@@ -158,9 +156,6 @@ const Plan = Backbone.Model.extend({
       fr.readAsText(file)
     })
   },
-  parseStockData(data) {
-    return data.filter(point => (point[1] !== null && point[2] !== null && point[3] !== null) ? true : false)
-  },
   getLastDayPrice(ticker, i) {
     return new Promise((resolve, reject) => {
       ticker = ticker.replace('.', '_')
@@ -169,17 +164,19 @@ const Plan = Backbone.Model.extend({
       if (stock) {
         if (moment(stock.date).format('DDMMYYYY') === moment().format('DDMMYYYY')) {
           resolved = true
-          resolve(Lockr.get('stocks')[ticker].lastPrice)
+          resolve(stock.lastPrice)
         } else if (stock.error) { resolved = true }
       }
       if (!resolved) {
         const query = `https://www.quandl.com/api/v3/datasets/EOD/${ticker}.json?api_key=${store.settings.quandlKey}&column_index=4&limit=1`
         $.ajax(query)
         .then(output => {
-          let stocks = Lockr.get('stocks')
-          stocks[ticker] = { date: new Date(), lastPrice: output.dataset.data[0][1] }
-          Lockr.set('stocks', stocks)
-          resolve(output.dataset.data[0][1])
+          if (output.dataset.data[0][1]) {
+            let stocks = Lockr.get('stocks')
+            stocks[ticker] = { date: new Date(), lastPrice: output.dataset.data[0][1] }
+            Lockr.set('stocks', stocks)
+            resolve(output.dataset.data[0][1])
+          }
         })
         .catch(e => {
           let stocks = Lockr.get('stocks')

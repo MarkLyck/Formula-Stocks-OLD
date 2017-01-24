@@ -27,10 +27,12 @@ class Breadcrumbs extends React.Component {
     const planName = store.selectedPlan
 
     let page
-    if (this.props.location.indexOf('portfolio') > -1 || this.props.location === '/dashboard' || this.props.location.indexOf('trades') > -1) {
+    if (this.props.location.indexOf('portfolio') > -1 || this.props.location === '/dashboard') {
       page = 'Portfolio'
     } else if (this.props.location.indexOf('suggestions') > -1) {
       page = 'Suggestions'
+    } else if (this.props.location.indexOf('trades') > -1) {
+      page = 'Portfolio trades'
     } else {
       return null
     }
