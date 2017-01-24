@@ -18,28 +18,6 @@ class Suggestion extends React.Component {
     store.plans.get(store.selectedPlan).getHistoricData(this.props.suggestion.ticker, this.props.i, 120)
     .then(data => { this.setState({ data: data, fetching: false, fetched: true }) })
     .catch(() => this.setState({ fetching: false }))
-
-    // if(!store.plans.get(this.props.planName).get('suggestions')[this.props.i].data) {
-    //   this.setState({ fetching: true })
-    //
-    //
-    //
-    //   // store.plans.get(this.props.planName).getStockInfo(this.props.suggestion.ticker, this.props.i, false, this.props.trades)
-    //   // .promise.then(() => {
-    //   //   if (store.selectedPlan === this.props.planName) {
-    //   //     this.setState({ fetched: true, fetching: false })
-    //   //   }
-    //   // })
-    //   // .catch(() => {
-    //   //   if (store.selectedPlan === this.props.planName) {
-    //   //     this.setState({ fetched: false, fetching: false, failed: true })
-    //   //   }
-    //   // })
-    // } else {
-    //   if (store.selectedPlan === this.props.planName) {
-    //     this.setState({ fetched: true, fetching: false })
-    //   }
-    // }
   }
 
   componentWillReceiveProps(newProps) {
@@ -63,9 +41,10 @@ class Suggestion extends React.Component {
 
   render() {
     let lastPrice
-    if (this.props.suggestion.data) {
-      lastPrice = this.props.suggestion.data[0][3].toFixed(2)
+    if (this.state.data) {
+      lastPrice = this.state.data[0][1].toFixed(2)
     }
+
     let allocation
     let allocationText = 'Cash allocation'
     if (this.props.suggestion.percentage_weight) {
