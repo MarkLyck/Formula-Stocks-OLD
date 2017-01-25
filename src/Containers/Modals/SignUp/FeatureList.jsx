@@ -21,12 +21,14 @@ const FeatureList = ({ path }) => (
       <Info title="Win / Loss ratio" explanation={<p>The percentage of stocks each plan has sold with a profit.</p>}/>
     </li>
     <li className="row">
-      <p>Avg. gain in percent</p>
-      <Info title="Avg. gain as IRR" explanation={<p>The average increase in a winning stock's price, measured as a percentage of the purchase price.</p>}/>
-    </li>
-    <li className="row">
-      <p>Avg. loss in percent</p>
-      <Info title="Avg. loss as IRR" explanation={<p>The average loss in a losing stock's price, measured as a percentage of the purchase price.</p>}/>
+      <p>Expectancy</p>
+      <Info title="Expectancy" explanation={(
+        <p>
+          The mathematical expectancy is a measure of the average expected outcome of a
+          transaction. It is defined as the (probability of win * average win) - (probability of
+          loss * average loss).
+        </p>)}
+      />
     </li>
     <li className="row"><p>Avg. positions in portfolio</p></li>
     <li className="row">

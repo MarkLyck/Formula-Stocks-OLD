@@ -38,6 +38,8 @@ const Product = ({ plan, billed, path }) => {
   let ctaText = plan.name === 'basic' ? 'Start your free month' : 'Sign Up'
   let prefix = path === '/pro' ? '/pro' : ''
 
+  const expectancy = ((plan.stats.WLRatio / 100) * plan.info.avgGainPerPosition) - (-(plan.stats.WLRatio / 100 - 1) * plan.info.avgLossPerPosition)
+
   return (
   <div className={`prof-plan ${plan.name}`}>
     <div className="top">
@@ -62,16 +64,21 @@ const Product = ({ plan, billed, path }) => {
         <p className="right-align">{plan.stats.WLRatio.toFixed(2)}%</p>
       </li>
       <li>
-        <p className="light-text-color">Avg. gain in percent</p>
-        <Info title="Avg. gain as IRR"
-        explanation={<p>The average increase in a winning stock's price, measured as a percentage of the purchase price.</p>}/>
-        <p className="right-align">{plan.info.avgGainPerPosition.toFixed(2)}%</p>
-      </li>
-      <li>
-        <p className="light-text-color">Avg. loss in percent</p>
-        <Info title="Avg. loss as IRR"
-        explanation={<p>The average loss in a loosing stock's price, measured as a percentage of the purchase price.</p>}/>
-        <p className="right-align">{plan.info.avgLossPerPosition.toFixed(2)}%</p>
+        <p className="light-text-color">Expectancy</p>
+        <Info title="Expectancy" wide={true} explanation={(
+          <p>
+            The mathematical expectancy is a measure of the average expected outcome of a
+            transaction. It is defined as the (probability of win * average win) - (probability of
+            loss * average loss).<br/><br/>
+
+            For this plan the historical probability of a win is <span className="semi-bold">{plan.stats.WLRatio.toFixed(2)}%</span>,
+            the probability of loss hence <span className="semi-bold">{-(plan.stats.WLRatio -100).toFixed(2)}%</span>,
+            the average increase in a winning stock is +<span className="semi-bold">{plan.info.avgGainPerPosition.toFixed(2)}%</span> and the
+            average loss is -<span className="semi-bold">{plan.info.avgLossPerPosition.toFixed(2)}%</span>. The  expectancy is therefore
+            that the average occurence would have an outcome of <span className="semi-bold">
+            ({(plan.stats.WLRatio / 100).toFixed(2)} * {plan.info.avgGainPerPosition.toFixed(2)}) - ({-(plan.stats.WLRatio / 100 - 1).toFixed(2)} * {plan.info.avgLossPerPosition.toFixed(2)}) = +{expectancy.toFixed(2)}%</span>.
+          </p>)}/>
+        <p className="right-align">+{expectancy > 0 ? expectancy.toFixed(2) : ''}%</p>
       </li>
       <li>
         <p className="light-text-color">Avg. positions in portfolio</p>

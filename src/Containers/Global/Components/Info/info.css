@@ -19,6 +19,9 @@
         display: block;
       }
     }
+    .wide {
+      width: 440px;
+    }
   }
   .explanation {
     display: none;
