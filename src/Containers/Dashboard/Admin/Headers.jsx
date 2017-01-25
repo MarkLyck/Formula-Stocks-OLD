@@ -8,6 +8,8 @@ import admin from '../../../admin'
 class AdminPanelHeader extends React.Component {
   constructor(props) {
     super(props)
+    this.getVisitsCount = this.getVisitsCount.bind(this)
+    this.getUsers = this.getUsers.bind(this)
     this.state = {
       fetched: false,
       visitors: 0,
@@ -19,13 +21,22 @@ class AdminPanelHeader extends React.Component {
   componentDidMount() {
     admin.visits.fetch()
 
-    admin.getVisitCount()
-    .then(count => this.setState({ visitors: count }))
+    this.getVisitsCount()
+    this.getUsers()
+  }
 
+  getUsers() {
+    this.setState({ users: [] })
     $.ajax(`https://baas.kinvey.com/user/kid_rJRC6m9F/`)
     .then((users) => {
       this.setState({ users: users })
     })
+  }
+
+  getVisitsCount() {
+    this.setState({ visitors: 0 })
+    admin.getVisitCount()
+    .then(count => this.setState({ visitors: count }))
   }
 
   render() {
@@ -85,7 +96,7 @@ class AdminPanelHeader extends React.Component {
     return (
       <section className="suggestion-header">
         <ul>
-          <li className="panel cagr blue">
+          <li className="panel cagr blue" onClick={this.getVisitsCount}>
             <div className="symbol">
               <i className="fa fa-users white-color"></i>
             </div>
@@ -95,7 +106,7 @@ class AdminPanelHeader extends React.Component {
             </div>
           </li>
 
-          <li className="panel profitable-stocks white gray-border">
+          <li className="panel profitable-stocks white gray-border" onClick={this.getUsers}>
             <div className="symbol">
               <i className="fa fa-flask blue-color"></i>
             </div>
@@ -105,7 +116,7 @@ class AdminPanelHeader extends React.Component {
             </div>
           </li>
 
-          <li className="panel green">
+          <li className="panel green"  onClick={this.getUsers}>
             <div className="symbol">
               <i className="fa fa-hourglass-half white-color"></i>
             </div>

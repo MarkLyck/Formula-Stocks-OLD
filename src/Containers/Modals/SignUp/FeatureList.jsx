@@ -21,12 +21,12 @@ const FeatureList = ({ path }) => (
       <Info title="Win / Loss ratio" explanation={<p>The percentage of stocks each plan has sold with a profit.</p>}/>
     </li>
     <li className="row">
-      <p>Avg. gain as IRR</p>
-      <Info title="Avg. gain as IRR" explanation={<p>The average increase in a winning stock's price, measured as a time weighted Internal Rate of Return.</p>}/>
+      <p>Avg. gain in percent</p>
+      <Info title="Avg. gain as IRR" explanation={<p>The average increase in a winning stock's price, measured as a percentage of the purchase price.</p>}/>
     </li>
     <li className="row">
-      <p>Avg. loss as IRR</p>
-      <Info title="Avg. loss as IRR" explanation={<p>The average loss in a losing stock's price, measured as a time weighted Internal Rate of Return.</p>}/>
+      <p>Avg. loss in percent</p>
+      <Info title="Avg. loss as IRR" explanation={<p>The average loss in a losing stock's price, measured as a percentage of the purchase price.</p>}/>
     </li>
     <li className="row"><p>Avg. positions in portfolio</p></li>
     <li className="row">
@@ -35,15 +35,13 @@ const FeatureList = ({ path }) => (
     </li>
     <li className="row">
       <p>Sortino ratio</p>
-      <Info title="Sortino ratio" explanation={<p>This version of the ratio is calculated based upon yearly returns. It measures the performance and risk of an investment strategy relative to the downward deviation. Higher is better.</p>}/>
+      <Info title="Sortino ratio" explanation={<p>The Sortino ratio measures the performance and risk of an investment strategy relative to the downward deviation. A sortino ratio of 1 can be considered a neutral value. This version is calculated based on yearly returns. Higher is better.</p>}/>
     </li>
     <li className="row">
       <p>Gain-to-pain ratio</p>
       <Info title="Gain-to-pain ratio" explanation={<p>
-        Also known as GPR. <br/><br/>
-        It represents the sum of all monthly returns divided by the sum of all monthly losses.<br/><br/>A GPR value above 1.5 is considered to be
-        excellent; a GPR value of 1 is considered to be good, and a GPR value of less
-        than 0 is considered to be bad.
+        It represents the sum of all monthly returns divided by the sum of all monthly losses.<br/><br/>
+        A GPR value of less than 0 is considered to be bad. A GPR value of 1 is considered to be good, and a GPR value above 1.5 is considered to be excellent.
       </p>}/>
     </li>
   </ul>

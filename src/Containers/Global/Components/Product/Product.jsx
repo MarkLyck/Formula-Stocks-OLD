@@ -62,15 +62,15 @@ const Product = ({ plan, billed, path }) => {
         <p className="right-align">{plan.stats.WLRatio.toFixed(2)}%</p>
       </li>
       <li>
-        <p className="light-text-color">Avg. gain as IRR</p>
+        <p className="light-text-color">Avg. gain in percent</p>
         <Info title="Avg. gain as IRR"
-        explanation={<p>The average increase in a winning stock's price, measured as a time weighted Internal Rate of Return.</p>}/>
+        explanation={<p>The average increase in a winning stock's price, measured as a percentage of the purchase price.</p>}/>
         <p className="right-align">{plan.info.avgGainPerPosition.toFixed(2)}%</p>
       </li>
       <li>
-        <p className="light-text-color">Avg. loss as IRR</p>
+        <p className="light-text-color">Avg. loss in percent</p>
         <Info title="Avg. loss as IRR"
-        explanation={<p>The average decrease in a losing stock's price, measured as a time weighted Internal Rate of Return.</p>}/>
+        explanation={<p>The average loss in a loosing stock's price, measured as a percentage of the purchase price.</p>}/>
         <p className="right-align">{plan.info.avgLossPerPosition.toFixed(2)}%</p>
       </li>
       <li>
@@ -92,17 +92,15 @@ const Product = ({ plan, billed, path }) => {
       </li>
       <li>
         <p className="light-text-color">Sortino ratio</p>
-        <Info title="Sortino ratio" explanation={<p>This version of the ratio is calculated based upon yearly returns. It measures the performance and risk of an investment strategy relative to the downward deviation. Higher is better.</p>}/>
+        <Info title="Sortino ratio" explanation={<p>The Sortino ratio measures the performance and risk of an investment strategy relative to the downward deviation. A sortino ratio of 1 can be considered a neutral value. This version is calculated based on yearly returns. Higher is better.</p>}/>
         <p className="right-align">{plan.info.sortinoRatio.toFixed(3)}</p>
       </li>
       <li>
         <p className="light-text-color">Gain-to-pain ratio</p>
         <Info title="Gain-to-pain ratio"
           explanation={<p>
-            Also known as GPR. <br/><br/>
-            It represents the sum of all monthly returns divided by the sum of all monthly losses.<br/><br/>A GPR value above 1.5 is considered to be
-            excellent; a GPR value of 1 is considered to be good, and a GPR value of less
-            than 0 is considered to be bad.</p>}/>
+            It represents the sum of all monthly returns divided by the sum of all monthly losses.<br/><br/>
+            A GPR value of less than 0 is considered to be bad. A GPR value of 1 is considered to be good, and a GPR value above 1.5 is considered to be excellent.</p>}/>
         <p className="right-align">{plan.info.gainToPainRatio.toFixed(3)}</p>
       </li>
     </ul>
