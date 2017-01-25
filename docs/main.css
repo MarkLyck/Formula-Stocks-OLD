@@ -1,5 +1,3 @@
-@import "./variables.css";
-
 @font-face {
   font-family: 'proxima-nova';
   src: url('./proxima-nova/ProximaNova-Regular.otf');
@@ -32,13 +30,6 @@
 }
 .bold {
   font-weight: 700;
-}
-
-.font.dark {
-  color: $dark-color;
-}
-.light-text-color {
-  color: $light-text-color;
 }
 
 .capitalize {
