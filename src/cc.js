@@ -147,13 +147,11 @@ let cc = {
   },
   createCustomer2: function(token, planName, cycle, taxPercent, coupon) {
     return new Promise((resolve, reject) => {
-      localStorage.customer_key = String(Math.round(Math.random() * 10000000))
       let data = {
         plan: (planName+'-'+cycle.trim()),
         source: token,
         email: store.session.get('email'),
-        tax_percent: taxPercent,
-        metadata: { "customer_key": localStorage.customer_key }
+        tax_percent: taxPercent
       }
       if (coupon) { data.coupon = coupon }
       $.ajax({
