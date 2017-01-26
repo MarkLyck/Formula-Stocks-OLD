@@ -152,7 +152,7 @@ let cc = {
         source: token,
         email: store.session.get('email'),
         tax_percent: taxPercent,
-        metadata: { "customer_key": localStorage.visitorID ? localStorage.visitorID : 'unknown' }
+        metadata: { "customer_key": localStorage.authtoken ? localStorage.authtoken : 'unknown' }
       }
       if (coupon) { data.coupon = coupon }
       $.ajax({

@@ -94,7 +94,7 @@ const Session = Backbone.Model.extend({
         model.unset('password')
         localStorage.authtoken = response._kmd.authtoken
         store.settings.history.push('/dashboard')
-        growsumo.data.customer_key = localStorage.visitorID
+        growsumo.data.customer_key = localStorage.authtoken
         growsumo.data.name = response.name
         growsumo.data.email = response.email
         growsumo.createSignup();
