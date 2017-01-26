@@ -97,8 +97,8 @@ const Session = Backbone.Model.extend({
         growsumo.data.customer_key = localStorage.customer_key
         growsumo.data.name = response.name
         growsumo.data.email = response.email
-        growsumo.createSignup();
-        localStorage.removeItem('customer_key')
+        growsumo.createSignup()
+        // localStorage.removeItem('customer_key')
         window.Intercom("update", {
           name: name,
           email: email,
