@@ -6,6 +6,8 @@ import store from '../store'
 
 import Visit from './Visit'
 
+let growsumo = window.growsumo
+
 const Session = Backbone.Model.extend({
   urlRoot: `https://baas.kinvey.com/user/kid_rJRC6m9F/login`,
   idAttribute: '_id',
@@ -92,6 +94,10 @@ const Session = Backbone.Model.extend({
         model.unset('password')
         localStorage.authtoken = response._kmd.authtoken
         store.settings.history.push('/dashboard')
+        growsumo.data.customer_key = localStorage.visitorID
+        growsumo.data.name = response.name
+        growsumo.data.email = response.email
+        growsumo.createSignup();
         window.Intercom("update", {
           name: name,
           email: email,

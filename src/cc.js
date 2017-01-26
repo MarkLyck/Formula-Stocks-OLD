@@ -151,7 +151,8 @@ let cc = {
         plan: (planName+'-'+cycle.trim()),
         source: token,
         email: store.session.get('email'),
-        tax_percent: taxPercent
+        tax_percent: taxPercent,
+        metadata: { "customer_key": localStorage.visitorID ? localStorage.visitorID : 'unknown' }
       }
       if (coupon) { data.coupon = coupon }
       $.ajax({
