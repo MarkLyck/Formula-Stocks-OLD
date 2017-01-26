@@ -1,4 +1,3 @@
-/* eslint-disable */
 import React from 'react'
 import moment from 'moment'
 import _ from 'underscore'
@@ -7,6 +6,7 @@ import $ from 'jquery'
 import admin from '../../../admin'
 import AdminPanelHeader from './Headers'
 import VisitorList from './VisitorList'
+import VisitorMap from './VisitorMap'
 
 import DAUGraph from './DAUGraph'
 import PieChart from '../../Global/Components/PieChart/PieChart'
@@ -64,7 +64,10 @@ class AdminPanel extends React.Component {
   }
 
   render() {
-    let images = this.state.visitors.map((visitor) => {
+
+    let mapImages = []
+
+    mapImages = this.state.visitors.map(visitor => {
       let color = 'rgba(18, 217, 158, 0.5)'
       if (visitor.type === 4)
         color = '#da1354'
@@ -86,30 +89,8 @@ class AdminPanel extends React.Component {
       });
     })
 
-    let map = React.createElement(AmCharts.React, {
-      "class":"map",
-      "type": "map",
-      "theme": "light",
-      "projection": "eckert6",
-      "dataProvider": {
-        "map": "worldLow",
-        "getAreasFromMap": true,
-        "images": images,
-      },
-      "areasSettings": {
-        "autoZoom": true,
-        "rollOverColor": "#cccccc",
-        "rollOverOutlineColor": "#8c8c8c",
-        "selectedColor": "#cccccc",
-        "outlineColor": "#8c8c8c",
-        "color": "#515156",
-      },
-      "zoomControl": {
-        "buttonIconColor": "#8c8c8c",
-      }
-    })
-
     const browserColors = []
+    // const browsers = []
     const browsers = this.state.visitors.reduce((prev, visitor) => {
       let foundIndex = -1
       if (_.find(prev, (browserType, i) => {
@@ -138,7 +119,14 @@ class AdminPanel extends React.Component {
     const tablet = { title: 'Tablet', value: this.state.visitors.filter(visitor => visitor.product === 'iPad').length }
     const mobile = { title: 'Mobile', value: this.state.visitors.filter(visitor => visitor.device === 'mobile').length - tablet.value }
 
+    // const desktop = []
+    // const tablet = []
+    // const mobile = []
+
+
+
     const OSColors = []
+    // const operatingSystems = []
     const operatingSystems = this.state.visitors.reduce((prev, visitor) => {
       let foundIndex = -1
       if (_.find(prev, (os, i) => {
@@ -159,6 +147,7 @@ class AdminPanel extends React.Component {
     },[])
 
     const RefererColors = []
+    // const referers = []
     const referers = this.state.visitors.reduce((prev, visitor) => {
       let foundIndex = -1
       if (_.find(prev, (referer, i) => {
@@ -179,14 +168,12 @@ class AdminPanel extends React.Component {
       return referer.value > 1 ? true : false
     })
 
-
-
     return (
       <div className="admin-panel">
         <AdminPanelHeader/>
         <div className="unqiue-visiotrs">
           <div className="visitor-map">
-            {map}
+            <VisitorMap images={mapImages}/>
           </div>
         </div>
         <div className="DAU-container">
