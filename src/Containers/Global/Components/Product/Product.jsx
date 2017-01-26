@@ -49,7 +49,7 @@ const Product = ({ plan, billed, path }) => {
     <ul className="statistics">
       {extraInfo}
       <li>
-        <p className="light-text-color">IIT formulas applied</p>
+        <p className="light-text-color">IIT's applied</p>
         <Info title="IIT formulas applied" explanation={<p>Number of Intelligent Investment Technologies used in each plan.</p>}/>
         <p className="right-align">{plan.info.IITFormulas}</p>
       </li>

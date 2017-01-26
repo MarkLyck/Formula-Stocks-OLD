@@ -47,7 +47,6 @@ class AdminPanel extends React.Component {
 
   cleanVisits() {
     let ips = []
-    let lastCity = ''
     admin.visits.forEach(visit => {
       if (visit) {
         const ip = visit.get('location').ip
@@ -57,9 +56,8 @@ class AdminPanel extends React.Component {
         } else if (visit.get('os').indexOf('Server') > -1) {
           this.destroyVisit(visit)
           console.log('destroy: server visit', visit.toJSON())
-        }  else {
+        } else {
           ips = ips.concat(ip)
-          lastCity = visit.get('location').city
         }
       }
     })

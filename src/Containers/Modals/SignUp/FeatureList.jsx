@@ -9,7 +9,7 @@ const FeatureList = ({ path }) => (
         <Info title="Institutional capital" explanation={<p>Whether the plan can handle high liquidity investments of $50 billion or more.</p>}/>
       </li>
     ) : ''}
-    <li className="row"><p>IIT formulas applied</p>
+    <li className="row"><p>IIT's applied</p>
       <Info title="IIT formulas applied" explanation={<p>Number of Intelligent Investment Technologies used in each plan.</p>}/>
     </li>
     <li className="row">
