@@ -147,17 +147,17 @@ const TermsAndConditions = () => (
     differs from individual to individual. Set your own individual maximum position size
     accordingly or consult an advisor.<br/><br/>
 
-    TThe 2009-2016 period reflects actual investment results which have been achievable in
-    real-time. Previous period statistics (from 1970-2009) are the result of backtesting the
-    strategies in this timeframe as Formula Stocks plans only became available in 2009.
-    Backtested performance results have certain inherent limitations, as they could potentially
-    be designed with some benefit of hindsight, even though best efforts has been taken to avoid
-    such risk. Unlike an actual performance record, backtested results do not represent actual
-    trading and may not be impacted by brokerage and other slippage fees. Also, since
-    transactions may or may not actually have been executed, results may have under- or
-    over-compensated for impact, if any, of certain market factors, such as lack of market
-    liquidity or level of participation. NO REPRESENTATION IS BEING MADE THAT YOU ARE LIKELY
-    TO ACHIEVE PROFITS OR LOSSES SIMILAR TO THOSE SHOWN.<br/><br/>
+    The Formula Stocks website makes use of strategies which have been backtested. Formula
+    Stocks strategies only became available in 2009, and have performed very well in the
+    2009-2017 timeframe. Backtested performance results however, have certain inherent
+    limitations, as they could potentially be designed with some benefit of hindsight, even
+    though best efforts has been taken to avoid such risk. Unlike an actual performance
+    record, backtested results do not represent actual trading and may not be impacted by
+    brokerage and other slippage fees. Also, since transactions may or may not actually have
+    been executed, results may have under- or over-compensated for impact, if any, of certain
+    market factors, such as lack of market liquidity or level of participation.
+    NO REPRESENTATION IS BEING MADE THAT YOU ARE LIKELY TO ACHIEVE PROFITS OR LOSSES SIMILAR
+    TO THOSE SHOWN.<br/><br/>
 
     FORMULA STOCKS business analytics depend on the accuracy of the published accounts of
     public corporations. Such accuracy may from time to time be less than ideal.

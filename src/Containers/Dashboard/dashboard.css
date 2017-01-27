@@ -4,6 +4,17 @@
   height: 100vh;
   width: 100vw;
   display: flex;
+  .db-heading {
+    margin: 0;
+    margin-bottom: 6px;
+    margin-left: 16px;
+    font-weight: 500;
+  }
+  .db-card {
+    background: #fff;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.16);
+    padding: 16px;
+  }
   .container {
     height: 100vh;
     width: 100%;

@@ -13,9 +13,9 @@ class WhatIsIt extends React.Component {
         <div className="divider"/>
         <div className="beside">
             <p className="whatisit-text">
-              Formula Stocks is a service, which gives you access to high quality stock recommendations.
-              Use these in your own account. Or mirror our model portfolio, which have outperformed the
-              S&P 500 88% of the time. <br/><br/>
+              Formula Stocks is a service, which gives you access to high quality stock r
+              ecommendations. Use these in your own account. Or mirror our portfolio strategy,
+              which have outperformed the S&P 500 88% of the time.<br/><br/>
 
               Historically, 89-92% of all our recommendations have been successful. If you had bought
               random high-quality stocks, only approx. 59% of these would have earned a positive return.

@@ -71,12 +71,13 @@ const Product = ({ plan, billed, path }) => {
             transaction. It is defined as the (probability of win * average win) - (probability of
             loss * average loss).<br/><br/>
 
-            For this plan the historical probability of a win is <span className="semi-bold">{plan.stats.WLRatio.toFixed(2)}%</span>,
+            Here the historical probability of a win is <span className="semi-bold">{plan.stats.WLRatio.toFixed(2)}%</span>,
             the probability of loss hence <span className="semi-bold">{-(plan.stats.WLRatio -100).toFixed(2)}%</span>,
             the average increase in a winning stock is +<span className="semi-bold">{plan.info.avgGainPerPosition.toFixed(2)}%</span> and the
             average loss is -<span className="semi-bold">{plan.info.avgLossPerPosition.toFixed(2)}%</span>. The  expectancy is therefore
             that the average occurence would have an outcome of <span className="semi-bold">
             ({(plan.stats.WLRatio / 100).toFixed(2)} * {plan.info.avgGainPerPosition.toFixed(2)}) - ({-(plan.stats.WLRatio / 100 - 1).toFixed(2)} * {plan.info.avgLossPerPosition.toFixed(2)}) = +{expectancy.toFixed(2)}%</span>.
+            Taking an average of <span className="semi-bold">2.24 years</span>.
           </p>)}/>
         <p className="right-align">+{expectancy > 0 ? expectancy.toFixed(2) : ''}%</p>
       </li>

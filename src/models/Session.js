@@ -22,7 +22,8 @@ const Session = Backbone.Model.extend({
     browser: platform.name,
     os: platform.os.family,
     prodcut: platform.product,
-    device: ''
+    device: '',
+    cancelReason: ''
   },
   parse: function(response) {
     if (response) {
@@ -36,7 +37,8 @@ const Session = Backbone.Model.extend({
         location: response.location,
         address: response.address,
         referer: response.referer,
-        visits: response.visits
+        visits: response.visits,
+        cancelReason: response.cancelReason
       }
     }
   },

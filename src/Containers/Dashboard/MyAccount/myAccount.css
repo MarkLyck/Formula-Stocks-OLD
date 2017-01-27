@@ -2,144 +2,161 @@
 
 .my-account-page {
   padding: 40px;
-  .filled-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .account-info {
+    margin-bottom: 32px;
     width: 100%;
-    border-radius: 0;
-    &:hover {
-      background: color($primary-color lightness(-10%));
-    }
-  }
-  .profile-info {
-    padding: 20px;
-    margin-bottom: 40px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.16);
-    i {
-      margin-right: 10px;
-    }
-  }
-  .change-plan-container {
-    box-shadow: 0 2px 6px rgba(0,0,0,0.16);
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    margin-bottom: 20px;
-    background: #fff;
-    h2 {
-      padding: 40px 20px;
-      margin: 0;
-      border-bottom: 1px solid $db-border-color;
-    }
-    button {
-      height: 90px;
-      position: relative;
-      border-radius: 0;
+    max-width: 400px;
+    .db-card {
       h3 {
-        margin: 0;
-        float: left;
+        margin: 8px 0;
       }
-      h3:first-child {
-        line-height: 45px;
+      i {
+        margin-right: 10px;
       }
-      h3:last-child {
-        float: right;
+    }
+  }
+  .change-plan {
+    width: 100%;
+    max-width: 400px;
+    .db-card {
+      display: flex;
+      flex-direction: column;
+      padding: 0;
+      button, .plan {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 16px;
+        height: 72px;
+        border-radius: 0;
+        border-bottom: 1px solid #eee;
+        .price {
+          text-align: right;
+        }
+        &:hover {
+          cursor: pointer;
+          h3 {
+            color: $primary-color;
+          }
+        }
+        h3 {
+          padding: 0;
+          margin: 0;
+        }
       }
-      &:hover {
-        background: color($primary-color lightness(+5%));
-        h3,p {
+      .selected {
+        &:hover {
+          h3 { color: #fff; }
+        }
+        h3 {
           color: #fff;
         }
       }
-    }
-    .selected {
-      h3,p {
-        color: #fff;
-      }
-    }
-    .current {
-      background: #fff;
-      h3,p {
-        color: $light-text-color;
-      }
-      .price {
-        display: none;
-      }
-      &::after {
-        content: 'Current';
-        color: $light-text-color;
-        float: right;
-      }
-      &:hover {
+      .current {
         background: #fff;
-        cursor: auto;
-        h3,p {
+        .price {
+          display: none;
+        }
+        &::after {
+          content: 'Current';
+          color: $light-text-color;
+          float: right;
+        }
+        &:hover {
+          cursor: auto;
+          h3 { color: $light-text-color; }
+        }
+        h3 {
           color: $light-text-color;
         }
       }
-    }
-    .change-plan {
-      max-width: 100%;
-      height: 90px;
-      display: -webkit-box;
-      display: -ms-flexbox;
-      display: flex;
-      background: $action-color;
-      border-radius: 0;
-      -webkit-box-pack: center;
-          -ms-flex-pack: center;
-              justify-content: center;
-      span {
-        margin-left: 5px;
+      .fund {
+        border-bottom: none;
       }
-      &:hover {
-        background: color($action-color lightness(-5%));
+      .change-plan-btn {
+        background: $action-color;
+        height: 72px;
+        border-bottom: none;
+        margin: 0;
+        &:hover {
+          background: color($action-color lightness(-5%));
+        }
       }
     }
   }
+
   .cancel-btn {
-    box-shadow: 0 2px 6px rgba(0,0,0,0.16);
-    margin-top: 100px;
-    background: $warning-color;
-    max-width: 100%;
-    width: 100%;
+    justify-content: center;
+    margin-top: 32px;
+    padding: 0;
+    background: none;
+    text-align: center;
+    color: $warning-color;
+    // width: 100%;
+    text-align: center;
     &:hover {
-      background: color($warning-color lightness(-5%));
+      text-decoration: underline;
     }
   }
 }
 
 .change-plan-confirmation {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  flex-direction: column;
+  align-items: center;
   h2 {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    margin: 0;
-    height: 90px;
+    margin-top: 32px 16px;
   }
   p {
-    margin: 20px 20px;
+    margin: 16px;
     i {
       margin-right: 10px;
     }
   }
+  .card-on-file {
+    margin: 0;
+    margin-bottom: 24px;
+  }
   button {
     height: 90px;
     max-width: 100%;
+    width: 100%;
+    margin: 0;
+    border-radius: 0;
+    font-weight: 600;
+    &:hover {
+      background: color($primary-color lightness(-10%));
+    }
+  }
+}
+
+.cancel-confirmation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  h2 {
+    font-weight: 600;
+  }
+  p {
+    margin: 0 16px;
+  }
+  textarea {
+    width: calc(100% - 32px);
+    height: 120px;
+    margin: 16px;
+    border-radius: 4px;
+    padding: 16px;
+    font-size: 1rem;
+  }
+  button {
+    width: 100%;
+    border-radius: 0;
+    background: $warning-color;
+    &:hover {
+      background: color($warning-color lightness(-10%));
+    }
   }
 }
