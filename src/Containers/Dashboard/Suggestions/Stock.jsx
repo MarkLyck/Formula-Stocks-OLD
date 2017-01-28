@@ -83,7 +83,7 @@ class Suggestion extends React.Component {
     } else if (this.state.failed) {
       chartArea = (
         <div className="fetching-data">
-          <p className="failed"><i className="fa fa-exclamation-circle" aria-hidden="true"></i> Couldn't find data</p>
+          <p className="failed">Chart data not available for this stock</p>
         </div>)
     } else if (this.state.data.length) {
       chartArea = (

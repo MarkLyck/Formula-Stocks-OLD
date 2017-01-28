@@ -86,7 +86,7 @@
             font-size: 1.3rem;
             margin-right: 8px;
           }
-          color: $warning-color;
+          /*color: $warning-color;*/
         }
       }
     }

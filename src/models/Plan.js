@@ -212,9 +212,6 @@ const Plan = Backbone.Model.extend({
       }
       if (!resolved) {
         let query = `https://www.quandl.com/api/v3/datasets/EOD/${ticker}.json?api_key=${store.settings.quandlKey}&column_index=4${limit ? '&limit=' + limit : ''}`
-        // if (ticker.indexOf('_TO') > -1) {
-        //   query = `https://www.quandl.com/api/v3/datasets/XTSE/${ticker.replace('_TO', '')}.json?api_key=${store.settings.quandlKey}&column_index=4${limit ? '&limit=' + limit : ''}`
-        // }
         $.ajax(query)
         .then(output => {
           let stocks = Lockr.get('stocks')

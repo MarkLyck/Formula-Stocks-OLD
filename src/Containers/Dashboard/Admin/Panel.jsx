@@ -53,9 +53,6 @@ class AdminPanel extends React.Component {
         if (ips.indexOf(ip) > -1) {
           this.destroyVisit(visit)
           console.log('destroy: ', visit.toJSON().location.ip)
-        } else if (visit.get('os').indexOf('Server') > -1) {
-          this.destroyVisit(visit)
-          console.log('destroy: server visit', visit.toJSON())
         } else {
           ips = ips.concat(ip)
         }
