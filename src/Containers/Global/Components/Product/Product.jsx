@@ -85,10 +85,10 @@ const Product = ({ plan, billed, path }) => {
         <p className="light-text-color">Avg. positions in portfolio</p>
         <p className="right-align">{plan.info.avgNumOfPosInPortfolio}</p>
       </li>
-      <li>
+      {/* <li>
         <p className="light-text-color">Max drawdown in 47 years</p>
         <p className="right-align">{plan.info.maxDrawdown45y.toFixed(2)}%</p>
-      </li>
+      </li> */}
       <li>
         <p className="light-text-color">Max drawdown in 36 months</p>
         <p className="right-align">{plan.info.maxDrawdown36m.toFixed(2)}%</p>

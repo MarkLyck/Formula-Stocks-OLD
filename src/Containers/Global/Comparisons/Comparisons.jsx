@@ -24,14 +24,14 @@ class Comparisons extends React.Component {
         </CollapseSegment>
         <CollapseSegment title="Growth investing or Garp">
           <p>
-            Formula Stocks offers an abundance of IITs™ which are specialized in growth
-            stocks. Like any rational investor we do not want to pay too much for growth, though.
-            Or to quote Warren Buffett, value and growth are joined at the hip. Payin a reasonable price s
-            imperative, also when dealing with stocks exhibiting
-            strong growth. Growth investors may find that our calculation of what
-            constitutes a reasonable price is in fact better than the market's idea.
-            As a growth investor, we can help you find growth opportunities which have not
-            been fully discounted by the market.
+            Formula Stocks offers an abundance of IITs™ which are specialized in growth stocks.
+            Like any rational investor we do not want to pay too much for growth, though. Or to
+            quote Warren Buffett, value and growth are joined at the hip. Paying a reasonable
+            price is essential also when dealing with stocks exhibiting strong growth. Growth
+            investors may find that our calculation of what constitutes a reasonable price is
+            in fact better than the market's idea. If you are a growth investor, we can help
+            you find growth opportunities which have not been fully discounted by the market,
+            and have a more moderate risk.
           </p>
         </CollapseSegment>
         <CollapseSegment title="Graham's net nets">

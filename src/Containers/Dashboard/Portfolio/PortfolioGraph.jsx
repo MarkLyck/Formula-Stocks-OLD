@@ -50,7 +50,7 @@ class PortfolioGraph extends React.Component {
     minimum = Math.floor(minimum)
     if (minimum > -11.02) { minimum = -12 } // must be lower than market minimum or graph breaks.
     let maximum = Number(_.max(fixedData, (point) => Number(point.fs)).fs)
-    maximum = Math.ceil(maximum)
+    maximum = Math.ceil(maximum) + 50
 
     const graphs = [
         {
@@ -94,7 +94,8 @@ class PortfolioGraph extends React.Component {
           minimum={minimum}
           maximum={maximum}
           baseValue={minimum}
-          marginRight={-4}/>
+          marginRight={-4}
+          />
         </div>
     }
   }

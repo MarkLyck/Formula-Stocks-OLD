@@ -9,7 +9,8 @@ class Stats extends React.Component {
     this.updateState = this.updateState.bind(this)
     this.state = {
       portfolio: store.plans.get(this.props.plan).toJSON().portfolio,
-      winrate: store.plans.get(this.props.plan).toJSON().stats.WLRatio
+      winrate: store.plans.get(this.props.plan).toJSON().stats.WLRatio,
+      CAGR: store.plans.get(this.props.plan).toJSON().stats.CAGR
     }
   }
 
@@ -31,7 +32,8 @@ class Stats extends React.Component {
     if (typeof plan !== 'string') {
       this.setState({
         portfolio: store.plans.get(this.props.plan).toJSON().portfolio,
-        winrate: store.plans.get(this.props.plan).toJSON().stats.WLRatio
+        winrate: store.plans.get(this.props.plan).toJSON().stats.WLRatio,
+        CAGR: store.plans.get(this.props.plan).toJSON().stats.CAGR
       })
     } else {
       store.plans.get(plan).on('change', this.updateState)
@@ -52,13 +54,13 @@ class Stats extends React.Component {
       return prev
     }, 0) / (this.state.portfolio.length - 1)).toFixed(2)
 
-    let avgReturn = (this.state.portfolio.reduce((prev, stock) => {
-      if (prev === 0) { prev = Number((stock.latest_price - stock.purchase_price) * 100 / stock.purchase_price) }
-      else if (stock.ticker !== 'CASH' && stock.latest_price && stock.purchase_price) {
-        prev += Number((stock.latest_price - stock.purchase_price) * 100 / stock.purchase_price)
-      }
-      return prev
-    }, 0) / (this.state.portfolio.length - 1)).toFixed(2)
+    // let avgReturn = (this.state.portfolio.reduce((prev, stock) => {
+    //   if (prev === 0) { prev = Number((stock.latest_price - stock.purchase_price) * 100 / stock.purchase_price) }
+    //   else if (stock.ticker !== 'CASH' && stock.latest_price && stock.purchase_price) {
+    //     prev += Number((stock.latest_price - stock.purchase_price) * 100 / stock.purchase_price)
+    //   }
+    //   return prev
+    // }, 0) / (this.state.portfolio.length - 1)).toFixed(2)
 
     return (
       <ul className="stats">
@@ -97,8 +99,8 @@ class Stats extends React.Component {
               <i className="fa fa-line-chart green-color"></i>
             </div>
             <div className="value white">
-              <h3 className="green-color">+{avgReturn}%</h3>
-              <p className="green-color">Avg. return</p>
+              <h3 className="green-color">{this.state.CAGR.toFixed(2)}%</h3>
+              <p className="green-color">Annual growth</p>
             </div>
           </li>
       </ul>
