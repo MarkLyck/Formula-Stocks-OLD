@@ -95,7 +95,7 @@ const Product = ({ plan, billed, path }) => {
       </li>
       <li>
         <p className="light-text-color">IRR Geometric mean</p>
-        <Info title="IRR Geometric mean" explanation={<p>The geometric mean of all IRRs (Time weighted Internal Rate of Returns). Example: <br/><br/>Geometric mean of the following sequence: 10%, 5%, -100% is 1.10 * 1.05 * 0.0 = 0.0%</p>}/>
+        <Info title="IRR Geometric mean" explanation={<p>The geometric mean of all IRRs (Time weighted Internal Rate of Returns). It refers to the average return of an investment, normalized to a 12 month period which would have been achievable between 1970 and 2017.</p>}/>
         <p className="right-align">{plan.info.IRRGeometricMean.toFixed(2)}%</p>
       </li>
       <li>

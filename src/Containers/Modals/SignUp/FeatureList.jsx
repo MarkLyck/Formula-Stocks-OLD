@@ -33,7 +33,7 @@ const FeatureList = ({ path }) => (
     <li className="row"><p>Avg. positions in portfolio</p></li>
     <li className="row">
       <p>IRR Geometric mean</p>
-      <Info title="IRR Geometric mean" explanation={<p>The geometric mean of all IRRs (Time weighted Internal Rate of Returns). Example: Geometric mean of the following sequence: 10%, 5%, -100% is 1.10 * 1.05 * 0.0 = 0.0%</p>}/>
+      <Info title="IRR Geometric mean" explanation={<p>The geometric mean of all IRRs (Time weighted Internal Rate of Returns). It refers to the average return of an investment, normalized to a 12 month period which would have been achievable between 1970 and 2017.</p>}/>
     </li>
     <li className="row">
       <p>Sortino ratio</p>
