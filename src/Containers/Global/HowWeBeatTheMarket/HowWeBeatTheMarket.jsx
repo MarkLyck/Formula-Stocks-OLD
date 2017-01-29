@@ -20,7 +20,7 @@ class HowWeBeatTheMarket extends React.Component {
 
             It is a widespread belief that the markets are efficient. They are not of
             course. Ample evidence disproving this theory was widely available decades ago. Our
-            favorite has to be Warren Buffetts flawless argument presented in The
+            favorite has to be Warren Buffett's flawless argument presented in The
             Superinvestors of Graham-and-Doddsville<sup>1</sup>.<br/><br/>
 
             Some academics have continued to argue that the markets are efficient for
