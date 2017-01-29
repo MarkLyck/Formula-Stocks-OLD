@@ -168,37 +168,37 @@ class Portfolio extends React.Component {
   render() {
     // calculate up to date numbers
     let portfolioYields = store.plans.get(this.state.plan).get('portfolioYields')
-    if (portfolioYields[0]) {
-      if (portfolioYields[portfolioYields.length - 1].date.day !== moment().format('DD')) {
-        let portfolio = store.plans.get(this.state.plan).get('portfolio')
-        let stocks = JSON.parse(localStorage.stocks).data
-        let newBalance = 0
-
-        portfolio.forEach(stock => {
-          if (stock.ticker !== 'CASH') {
-            let lastPrice = stock.latest_price
-            if (stocks[stock.ticker]) {
-              if (stocks[stock.ticker].lastPrice) {
-                lastPrice = stocks[stock.ticker].lastPrice
-              }
-            }
-            newBalance += lastPrice * stock.number_held
-          }
-        })
-        newBalance += portfolioYields[portfolioYields.length - 1].cash
-
-        portfolioYields.push({
-          balance: Number(newBalance.toFixed(0)),
-          cash: portfolioYields[portfolioYields.length - 1].cash,
-          date: {
-            day: moment().format('DD'),
-            month: moment().format('MM'),
-            year: moment().format('YYYY')
-          }
-        })
-        store.plans.get(this.state.plan).set('portfolioYields', portfolioYields)
-      }
-    }
+    // if (portfolioYields[0]) {
+    //   if (portfolioYields[portfolioYields.length - 1].date.day !== moment().format('DD')) {
+    //     let portfolio = store.plans.get(this.state.plan).get('portfolio')
+    //     let stocks = JSON.parse(localStorage.stocks).data
+    //     let newBalance = 0
+    //
+    //     portfolio.forEach(stock => {
+    //       if (stock.ticker !== 'CASH') {
+    //         let lastPrice = stock.latest_price
+    //         if (stocks[stock.ticker]) {
+    //           if (stocks[stock.ticker].lastPrice) {
+    //             lastPrice = stocks[stock.ticker].lastPrice
+    //           }
+    //         }
+    //         newBalance += lastPrice * stock.number_held
+    //       }
+    //     })
+    //     newBalance += portfolioYields[portfolioYields.length - 1].cash
+    //
+    //     portfolioYields.push({
+    //       balance: Number(newBalance.toFixed(0)),
+    //       cash: portfolioYields[portfolioYields.length - 1].cash,
+    //       date: {
+    //         day: moment().format('DD'),
+    //         month: moment().format('MM'),
+    //         year: moment().format('YYYY')
+    //       }
+    //     })
+    //     store.plans.get(this.state.plan).set('portfolioYields', portfolioYields)
+    //   }
+    // }
 
     let marketStartValue
     if (store.market.data.get('portfolioData')[0]) { marketStartValue = store.market.data.get('portfolioData')[0] }
