@@ -1,5 +1,6 @@
 import React from 'react'
 import _ from 'underscore'
+import moment from 'moment'
 import { Link } from 'react-router'
 import store from '../../../store'
 
@@ -165,9 +166,43 @@ class Portfolio extends React.Component {
   }
 
   render() {
+    // calculate up to date numbers
+    let portfolioYields = store.plans.get(this.state.plan).get('portfolioYields')
+    if (portfolioYields[0]) {
+      if (portfolioYields[portfolioYields.length - 1].date.day !== moment().format('DD')) {
+        let portfolio = store.plans.get(this.state.plan).get('portfolio')
+        let stocks = JSON.parse(localStorage.stocks).data
+        let newBalance = 0
+
+        portfolio.forEach(stock => {
+          if (stock.ticker !== 'CASH') {
+            let lastPrice = stock.latest_price
+            if (stocks[stock.ticker]) {
+              if (stocks[stock.ticker].lastPrice) {
+                lastPrice = stocks[stock.ticker].lastPrice
+              }
+            }
+            newBalance += lastPrice * stock.number_held
+          }
+        })
+        newBalance += portfolioYields[portfolioYields.length - 1].cash
+
+        portfolioYields.push({
+          balance: Number(newBalance.toFixed(0)),
+          cash: portfolioYields[portfolioYields.length - 1].cash,
+          date: {
+            day: moment().format('DD'),
+            month: moment().format('MM'),
+            year: moment().format('YYYY')
+          }
+        })
+        store.plans.get(this.state.plan).set('portfolioYields', portfolioYields)
+      }
+    }
+
     let marketStartValue
     if (store.market.data.get('portfolioData')[0]) { marketStartValue = store.market.data.get('portfolioData')[0] }
-    let portfolioYieldsLength = store.plans.get(this.state.plan).get('portfolioYields').length
+    let portfolioYieldsLength = portfolioYields.length
 
     let lastMarketValue = 0
     if (store.market.data.get('portfolioData')[0]) {
@@ -175,64 +210,16 @@ class Portfolio extends React.Component {
     }
 
     let FSPercent = <i className="fa fa-circle-o-notch fa-spin fa-3x fa-fw Spinner"></i>
-    if (store.plans.get(this.state.plan).get('portfolioReturn')) { FSPercent = store.plans.get(this.props.plan).get('portfolioReturn') }
+
+    if (portfolioYields.length) {
+      const startSum = portfolioYields[0].balance
+      const lastSum = portfolioYields[portfolioYields.length - 1].balance
+      const increase = (lastSum - startSum) / startSum * 100
+      FSPercent = increase.toFixed(2)
+    }
 
     let SP500Percent = <i className="fa fa-circle-o-notch fa-spin fa-3x fa-fw Spinner"></i>
     if (lastMarketValue && marketStartValue) { SP500Percent = ((lastMarketValue / marketStartValue * 100 - 100).toFixed(2)) }
-
-
-    // calculate up to date numbers
-    let lastBalance = 0
-    const portfolioYields = store.plans.get(this.state.plan).get('portfolioYields')
-    if (portfolioYields[0]) {
-      lastBalance = portfolioYields[portfolioYields.length - 1].balance
-      let portfolio = store.plans.get(this.state.plan).get('portfolio')
-      let stocks = JSON.parse(localStorage.stocks).data
-
-      // let newBalance = 0
-
-      let weightedPercentChanges = []
-
-      portfolio.forEach(stock => {
-        if (stock.ticker !== 'CASH') {
-          // const portfolioValue = stock.percentage_weight * lastBalance
-          let lastPrice = stock.latest_price
-          if (stocks[stock.ticker]) {
-            if (stocks[stock.ticker].lastPrice) {
-              lastPrice = stocks[stock.ticker].lastPrice
-            }
-          }
-          const increase = lastPrice - stock.latest_price
-          const percentIncrease = (increase / stock.latest_price) + 1
-
-          const allocation = stock.percentage_weight / 100
-          // console.log(percentIncrease * (stock.percentage_weight / 100), stock)
-          // console.log(stock.ticker, percentIncrease.toFixed(2), allocation.toFixed(2))
-          weightedPercentChanges.push(percentIncrease * allocation)
-          // newBalance += (portfolioValue * percentIncrease)
-        }
-      })
-
-      // console.log(store.plans.get(this.state.plan).get('portfolioYields'))
-      // console.log(lastBalance, newBalance)
-
-      const sum = weightedPercentChanges.reduce(function(a, b) {
-        return a + b
-      }, 0)
-
-      let percentChange = sum + portfolio[portfolio.length - 1].percentage_weight / 100
-
-      const startSum = portfolioYields[0].balance
-      const newLastSum = (lastBalance * percentChange)
-      const totalReturn = (newLastSum - startSum) / startSum
-      // console.log(totalReturn * 100)
-      // console.log(newLastSum.toFixed(2))
-      console.log((percentChange - 1) * 100)
-
-    }
-
-
-    // console.log(portfolio)
 
     return (
       <div className="portfolio">
