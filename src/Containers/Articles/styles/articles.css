@@ -65,8 +65,19 @@
       img {
         height: 400px;
         width: auto;
-        // margin: 0 auto;
       }
+    }
+  }
+}
+
+.dashboard {
+  .articles {
+    .flask-logo {
+      display: none;
+    }
+    .article {
+      // margin-right: 305px !important;
+      background: #fff;
     }
   }
 }

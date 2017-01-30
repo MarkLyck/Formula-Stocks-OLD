@@ -35,7 +35,11 @@ class ArticleSideBar extends React.Component {
   }
 
   gotoArticle(title) {
-    browserHistory.push(`/articles/${title}`)
+    if (this.props.location.indexOf('dashboard') === -1) {
+      browserHistory.push(`/articles/${title}`)
+    } else {
+      browserHistory.push(`/dashboard/articles/${title}`)
+    }
   }
 
   render() {

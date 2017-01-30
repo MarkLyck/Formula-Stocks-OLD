@@ -13,8 +13,9 @@ class NewArticle extends React.Component {
     this.onDrop = this.onDrop.bind(this)
     this.handleImageUpload = this.handleImageUpload.bind(this)
     this.receivedImage = this.receivedImage.bind(this)
+    this.toggleMembersOnly = this.toggleMembersOnly.bind(this)
 
-    this.state = { uploadedImage: '', image: '' }
+    this.state = { uploadedImage: '', image: '', membersOnly: false }
   }
 
   onDrop(files) {
@@ -33,6 +34,10 @@ class NewArticle extends React.Component {
     this.setState({ image: file.srcElement.result })
   }
 
+  toggleMembersOnly() {
+    this.setState({ membersOnly: !this.state.membersOnly })
+  }
+
   publishArticle(e) {
     e.preventDefault()
     const markdown = this.refs.mdeditor.state.content
@@ -40,7 +45,8 @@ class NewArticle extends React.Component {
     store.articles.data.create({
       author: store.session.get('name'),
       title: this.refs.title.value,
-      body: markdown
+      body: markdown,
+      membersOnly: this.state.membersOnly
     },
     {
       success: (response) => {
@@ -62,7 +68,10 @@ class NewArticle extends React.Component {
           <h3>Drag and drop header image here</h3>
           <i className="fa fa-picture-o" aria-hidden="true"></i>
         </Dropzone>
-        <input type="text" className="title" placeholder="Title" ref="title"/>
+        <div className="input-container">
+          <input type="text" className="title" placeholder="Title" ref="title"/>
+          <button className={`members-toggle ${this.state.membersOnly ? 'members-only' : 'public'}`} onClick={this.toggleMembersOnly}>{this.state.membersOnly ? 'Members Only' : 'Public'}</button>
+        </div>
         <MarkdownEditor initialContent="" iconsSet="font-awesome" ref="mdeditor"/>
         <input type="submit" value="Publish"/>
       </form>

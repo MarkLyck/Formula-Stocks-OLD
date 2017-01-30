@@ -57,7 +57,7 @@ class Articles extends React.Component {
         <div className="content">
           <Article article={currentArticle} style={ this.state.sidebar ? { marginRight: '320px' } : {} }/>
         </div>
-        <SideBar articles={this.state.articles} article={currentArticle} toggleSideBar={this.toggleSideBar} open={this.state.sidebar}/>
+        <SideBar location={this.props.location} articles={this.state.articles} article={currentArticle} toggleSideBar={this.toggleSideBar} open={this.state.sidebar}/>
       </div>
     )
   }

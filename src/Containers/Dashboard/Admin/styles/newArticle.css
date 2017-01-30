@@ -1,3 +1,5 @@
+@import "../../../variables.css";
+
 .new-article {
   .header-image {
     display: flex;
@@ -14,13 +16,22 @@
       font-size: 4rem;
     }
   }
+  .input-container {
+    display: flex;
+    .members-toggle {
+      border-radius: 0;
+      min-width: 200px;
+    }
+    .public {
+      background: $action-color;
+    }
+  }
   .title {
     width: 100%;
     font-size: 2rem;
     font-weight: bold;
     padding: 8px 16px 8px 24px;
     border: none;
-
   }
   .md-editor-header {
     height: 51px;

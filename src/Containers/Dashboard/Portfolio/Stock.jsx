@@ -33,7 +33,7 @@ class Stock extends React.Component {
           this.setState({ lastPrice: lastPrice })
           let portfolio = store.plans.get(this.props.plan).get('portfolio')
           portfolio[this.props.number].latest_price = lastPrice
-          store.plans.get(this.props.plan).set('portoflio', portfolio)
+          store.plans.get(this.props.plan).set('portfolio', portfolio)
         }
       }
     })

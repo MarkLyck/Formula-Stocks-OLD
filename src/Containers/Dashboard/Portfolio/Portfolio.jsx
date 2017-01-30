@@ -189,7 +189,6 @@ class Portfolio extends React.Component {
           }
         })
         newBalance += portfolioYields[portfolioYields.length - 1].cash
-
         let newYields = portfolioYields.concat({
           balance: Number(newBalance.toFixed(0)),
           cash: portfolioYields[portfolioYields.length - 1].cash,
