@@ -3,7 +3,7 @@ import $ from 'jquery'
 import platform from 'platform'
 import _ from 'underscore'
 import '../../../../libraries/amcharts3-react';
-import '../../../../libraries/amcharts/plugins/export/export.min.js';
+// import '../../../../libraries/amcharts/plugins/export/export.min.js';
 import './lineGraph.css'
 
 

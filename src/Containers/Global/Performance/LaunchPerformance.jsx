@@ -35,6 +35,11 @@ class Performance extends React.Component {
   }
 
   componentWillUnmount() {
+    store.plans.get('basic').set('portfolioYields', [])
+    store.plans.get('premium').set('portfolioYields', [])
+    store.plans.get('business').set('portfolioYields', [])
+    store.plans.get('fund').set('portfolioYields', [])
+
     store.plans.off('update', this.getData)
     store.market.data.off('update', this.getData)
   }

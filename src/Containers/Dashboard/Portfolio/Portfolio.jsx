@@ -47,8 +47,10 @@ class Portfolio extends React.Component {
   }
 
   componentDidMount() {
-    if (store.session.isAllowedToView(this.props.plan) && !store.plans.get(this.props.plan).get('portfolio').length) { store.plans.get(this.props.plan).fetchPrivate(this.props.plan) }
-    else if (!store.session.isAllowedToView(this.props.plan) && !store.plans.get(this.props.plan).get('portfolioYields').length) { store.plans.get(this.props.plan).fetch() }
+    if ((store.session.isAllowedToView(this.props.plan) && !store.plans.get(this.props.plan).get('portfolio').length)
+        || (store.session.isAllowedToView(this.props.plan) && !store.plans.get(this.props.plan).get('portfolioYields').length)) {
+      store.plans.get(this.props.plan).fetchPrivate(this.props.plan)
+    } else if (!store.session.isAllowedToView(this.props.plan) && !store.plans.get(this.props.plan).get('portfolioYields').length) { store.plans.get(this.props.plan).fetch() }
     store.plans.get(this.props.plan).on('change', this.updateState)
     store.market.data.on('update', this.updateState)
     if (!store.market.data.get('portfolioData')[0]) {
@@ -59,7 +61,8 @@ class Portfolio extends React.Component {
   componentWillReceiveProps(newProps) {
     if (newProps.plan !== this.state.plan) {
       this.getAllocation(newProps)
-      if (store.session.isAllowedToView(newProps.plan) && !store.plans.get(newProps.plan).get('portfolio').length) { store.plans.get(newProps.plan).fetchPrivate(newProps.plan) }
+      if ((store.session.isAllowedToView(newProps.plan) && !store.plans.get(newProps.plan).get('portfolio').length)
+          || (store.session.isAllowedToView(newProps.plan) && !store.plans.get(newProps.plan).get('portfolioYields').length)) { store.plans.get(newProps.plan).fetchPrivate(newProps.plan) }
       else if (!store.session.isAllowedToView(newProps.plan) && !store.plans.get(newProps.plan).get('portfolioYields').length) { store.plans.get(newProps.plan).fetch() }
       store.plans.get(newProps.plan).on('change', this.updateState)
       this.setState({ plan: newProps.plan })
@@ -168,37 +171,37 @@ class Portfolio extends React.Component {
   render() {
     // calculate up to date numbers
     let portfolioYields = store.plans.get(this.state.plan).get('portfolioYields')
-    // if (portfolioYields[0]) {
-    //   if (portfolioYields[portfolioYields.length - 1].date.day !== moment().format('DD')) {
-    //     let portfolio = store.plans.get(this.state.plan).get('portfolio')
-    //     let stocks = JSON.parse(localStorage.stocks).data
-    //     let newBalance = 0
-    //
-    //     portfolio.forEach(stock => {
-    //       if (stock.ticker !== 'CASH') {
-    //         let lastPrice = stock.latest_price
-    //         if (stocks[stock.ticker]) {
-    //           if (stocks[stock.ticker].lastPrice) {
-    //             lastPrice = stocks[stock.ticker].lastPrice
-    //           }
-    //         }
-    //         newBalance += lastPrice * stock.number_held
-    //       }
-    //     })
-    //     newBalance += portfolioYields[portfolioYields.length - 1].cash
-    //
-    //     portfolioYields.push({
-    //       balance: Number(newBalance.toFixed(0)),
-    //       cash: portfolioYields[portfolioYields.length - 1].cash,
-    //       date: {
-    //         day: moment().format('DD'),
-    //         month: moment().format('MM'),
-    //         year: moment().format('YYYY')
-    //       }
-    //     })
-    //     store.plans.get(this.state.plan).set('portfolioYields', portfolioYields)
-    //   }
-    // }
+    if (portfolioYields.length) {
+      if (portfolioYields[portfolioYields.length - 1].date.day !== moment().format('DD')) {
+        let portfolio = store.plans.get(this.state.plan).get('portfolio')
+        let stocks = JSON.parse(localStorage.stocks).data
+        let newBalance = 0
+
+        portfolio.forEach(stock => {
+          if (stock.ticker !== 'CASH') {
+            let lastPrice = stock.latest_price
+            if (stocks[stock.ticker]) {
+              if (stocks[stock.ticker].lastPrice) {
+                lastPrice = stocks[stock.ticker].lastPrice
+              }
+            }
+            newBalance += lastPrice * stock.number_held
+          }
+        })
+        newBalance += portfolioYields[portfolioYields.length - 1].cash
+
+        let newYields = portfolioYields.concat({
+          balance: Number(newBalance.toFixed(0)),
+          cash: portfolioYields[portfolioYields.length - 1].cash,
+          date: {
+            day: moment().format('DD'),
+            month: moment().format('MM'),
+            year: moment().format('YYYY')
+          }
+        })
+        store.plans.get(this.state.plan).set('portfolioYields', newYields)
+      }
+    }
 
     let marketStartValue
     if (store.market.data.get('portfolioData')[0]) { marketStartValue = store.market.data.get('portfolioData')[0] }
