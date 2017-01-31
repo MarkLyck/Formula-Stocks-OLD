@@ -172,7 +172,8 @@ class Portfolio extends React.Component {
     // calculate up to date numbers
     let portfolioYields = store.plans.get(this.state.plan).get('portfolioYields')
     if (portfolioYields.length) {
-      if (portfolioYields[portfolioYields.length - 1].date.day !== moment().format('DD')) {
+      if (portfolioYields[portfolioYields.length - 1].date.day !== moment().format('DD')
+        || portfolioYields[portfolioYields.length - 1].date.month !== moment().format('MM')) {
         let portfolio = store.plans.get(this.state.plan).get('portfolio')
         let stocks = JSON.parse(localStorage.stocks).data
         let newBalance = 0
@@ -199,6 +200,7 @@ class Portfolio extends React.Component {
           }
         })
         store.plans.get(this.state.plan).set('portfolioYields', newYields)
+        console.log(newBalance)
       }
     }
 

@@ -89,19 +89,19 @@ const AboutUs = React.createClass({
 
         <div className="content">
           <p className="about-fs">
-            Formula Stocks is a research and development company. Equity operations started in
-            2003. The concept centered around leveraging decades of supercomputer experience,
-            modern learning technology and investment acumen to create an informational
-            advantage in equity investing. We specialize in being right far more often than we
-            are wrong, using a scientific approach to analyze businesses and accumulate
-            extensive knowledge which can literaly be found nowhere else.<br/><br/>
+            Formula Stocks started operations in 2003. Our concept centers around leveraging
+            decades of supercomputer experience, modern learning and decisionmaking technology,
+            business analytics to create an informational advantage in equity investing. We
+            specialize in being right far more often than we are wrong, using a novel
+            scientific approach and have accumulated extensive knowledge which can literaly be
+            found nowhere else.<br/><br/>
 
-            Previous to current operations the management team behind Formula Stocks, was
-            responsible for the successful development of LEGO's 3D building instruction
-            suite of tools, used in production of all LEGO A/S end user products world-wide.
-            In the late 1980's to early 1990's we helped the broadcasting and film industry
-            transition from analog to digital tools, and introduced a wide range of generally
-            available software products.<br/><br/>
+            Previous to current operations the management team was responsible for the
+            successful development of LEGO's 3D building instruction suite of tools, used in
+            production of all LEGO A/S end user products world-wide. In the late 1980's to
+            early 1990's we helped the broadcasting and film industry transition from analog
+            to digital tools, and also introduced a wide range of generally available software
+            products.<br/><br/>
           </p>
           <ul className="team-list">
             {/* <li className="team-member">

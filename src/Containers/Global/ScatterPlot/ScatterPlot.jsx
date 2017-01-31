@@ -106,20 +106,19 @@ class ScatterPlot extends React.Component {
         <div className="beside">
           <div className="left">
             <p>
-              Click play to watch the historical outcomes of all Formula Stocks recommendations.<br/><br/>
+              Click play to watch the historical outcomes of all Formula Stocks
+              recommendations.<br/><br/>
 
-              In the videos you will see price movements in white, indicating the smooth path prices
-              have taken from purchase recommendation to sale recommendation.<br/><br/>
+              In the videos you will see price movements in white, illustrating the
+              approximated path prices have taken from purchase to sale recommendation.<br/><br/>
 
-              In the resulting scatter plot, white indicates winning positions, grey losing.<br/><br/>
+              In the resulting scatter plot, white indicates winning positions and grey losing.<br/><br/>
 
-              Our recommendations are rules based, and the rules do not change.
-              So we can quantify every call ever made.<br/><br/>
+              Our recommendations are rules based. So we can quantify every call ever made.<br/><br/>
 
-              It becomes clear that risk/reward is skewed very significantly
-              in favor of reward.<br/><br/>
+              You will see that risk/reward is skewed very significantly in favor of reward.<br/><br/>
 
-              You can view a total of 10,190 recommendations.
+              A total of 10,190 recommendations can be viewed.
             </p>
           </div>
           <div className="right">
