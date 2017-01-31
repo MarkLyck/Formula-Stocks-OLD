@@ -19,7 +19,7 @@ class NewArticle extends React.Component {
   }
 
   onDrop(files) {
-    this.setState({uploadedFile: files[0]})
+    this.setState({ uploadedFile: files[0] })
     this.handleImageUpload(files[0])
   }
 

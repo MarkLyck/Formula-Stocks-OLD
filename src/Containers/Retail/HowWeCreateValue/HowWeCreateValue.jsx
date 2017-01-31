@@ -10,27 +10,24 @@ class HowWeCreateValue extends React.Component {
         <h2 className="title">How we create value for our members</h2>
         <div className="divider"/>
         <p>
-          The human brain is not wired for evaluating hundreds of data points simultaneously. Humans
-          prefer stories. But stories inherently produce bias, and bias dampens investment performance.
-          In everyday life, this works fine of course. But when investing this becomes
-          counterproductive, so using a tool to help, simply makes sense.<br/><br/>
+          The human brain is not wired for evaluating hundreds of data points simultaneously.
+          Humans prefer stories. But stories produce bias, and bias dampens performance. When
+          investing it becomes counterproductive, so using a tool to help, simply makes sense.<br/><br/>
 
-          We have spent 14 years developing cognitive technology capable of decision-making devoid of
-          emotion, fear, greed, indecision. Decisions are based instead on mathematical probabilities,
-          learned experience, logic, and sound business principles.<br/><br/>
+          We have spent 14 years developing cognitive technology capable of decision-making
+          devoid of emotion, fear, greed, indecision. Decisions are based instead on
+          mathematical probabilities, learned experience, logic, and sound business principles.
+          Science instead of emotion and biased opinion.<br/><br/>
 
-          A capacity to learn from outcomes of not only actual decisions, but also decisions never
-          actually taken, builds experience beyond that of a typical career. This is used in combination
-          with a technology that can analyze a business in great detail. Portfolio management technology
-          specializing in knowing when to buy, hold, and sell. And portfolio construction technology
-          building a better, safer portfolio.<br/><br/>
+          A capacity to learn from outcomes of not just actual decisions, but also the decisions
+          which were never taken, builds experience beyond what a typical career can provide.
+          Technology that can analyze a business in great detail, is used together with
+          portfolio management technology specializing in knowing when to buy, hold, and sell.<br/><br/>
 
-          We use these tools to select investments and portfolios with much better probabilities of
-          winning in the future, and by making these selections available to members, we create value
-          for you.<br/><br/>
-
-          Should you wish to dig deeper into the more technical aspects behind our service,
-          please see <ScrollLink className="inline-link" to="howItWorks" smooth={true} offset={-100} duration={1000}>How we beat the market</ScrollLink> for more detail.
+          We use these tools to select investments and portfolios with much better
+          probabilities of winning in the future, and by making these selections available to
+          members, we create value for you. Should you wish to dig deeper into the technical
+          aspects, please see <ScrollLink className="inline-link" to="howItWorks" smooth={true} offset={-100} duration={1000}>How we beat the market</ScrollLink> for more detail.<br/><br/>
         </p>
       </section>
     )

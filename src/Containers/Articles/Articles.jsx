@@ -54,8 +54,8 @@ class Articles extends React.Component {
     return (
       <div className="articles">
         <img className="flask-logo" src={flaskLogo} alt="Formula Stocks" onClick={this.goHome}/>
-        <div className="content">
-          <Article article={currentArticle} style={ this.state.sidebar ? { marginRight: '320px' } : {} }/>
+        <div className="content" style={ this.state.sidebar ? { width: "calc(100% - 320px)" } : { width: "100%" } }>
+          <Article article={currentArticle}/>
         </div>
         <SideBar location={this.props.location} articles={this.state.articles} article={currentArticle} toggleSideBar={this.toggleSideBar} open={this.state.sidebar}/>
       </div>

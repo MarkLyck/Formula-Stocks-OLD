@@ -12,7 +12,7 @@
   .toggle {
     position: absolute;
     top: 16px;
-    left: -40px;
+    left: -56px;
     border-radius: 4px;
     padding: 0;
     height: 32px;
@@ -116,9 +116,6 @@
 
 .sidebar-closed {
   transform: translateX(320px);
-  .toggle {
-    // transform: translateX(-8px);
-  }
 }
 
 .dashboard {
@@ -129,5 +126,8 @@
     .homepage-link {
       display: none;
     }
+  }
+  .sidebar-closed {
+
   }
 }
