@@ -30,7 +30,7 @@ class Articles extends React.Component {
 
   updateState() {
     if (!this.state.articles.length) {
-      this.setState({ fetched: true, articles: store.articles.data.toJSON() })
+      this.setState({ fetched: true, articles: store.articles.data.toJSON().reverse() })
     } else {
       this.setState({ fetched: true })
     }
@@ -45,8 +45,7 @@ class Articles extends React.Component {
   }
 
   render() {
-    let currentArticle = this.state.articles.reverse()[0]
-
+    let currentArticle = this.state.articles[0]
     if (this.props.routeParams.splat.length) {
       currentArticle = _.find(this.state.articles, (art) => art.title.toLowerCase() === this.props.routeParams.splat.split('/')[1].toLowerCase())
     }
