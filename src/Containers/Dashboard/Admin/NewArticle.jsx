@@ -15,7 +15,7 @@ class NewArticle extends React.Component {
     this.receivedImage = this.receivedImage.bind(this)
     this.toggleMembersOnly = this.toggleMembersOnly.bind(this)
 
-    this.state = { uploadedImage: '', image: '', membersOnly: false }
+    this.state = { uploadedImage: '', image: '', membersOnly: false, uploading: false }
   }
 
   onDrop(files) {
@@ -39,6 +39,10 @@ class NewArticle extends React.Component {
   }
 
   publishArticle(e) {
+    if (this.state.uploading) {
+      return
+    }
+    this.setState({ uploading: true })
     e.preventDefault()
     const markdown = this.refs.mdeditor.state.content
 

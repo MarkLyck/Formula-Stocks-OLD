@@ -205,11 +205,10 @@ class Portfolio extends React.Component {
 
     let marketStartValue
     if (store.market.data.get('portfolioData')[0]) { marketStartValue = store.market.data.get('portfolioData')[0] }
-    let portfolioYieldsLength = portfolioYields.length
 
     let lastMarketValue = 0
     if (store.market.data.get('portfolioData')[0]) {
-      lastMarketValue = store.market.data.get('portfolioData')[portfolioYieldsLength - 1]
+      lastMarketValue = store.market.data.get('portfolioData')[store.market.data.get('portfolioData').length - 1]
     }
 
     let FSPercent = <i className="fa fa-circle-o-notch fa-spin fa-3x fa-fw Spinner"></i>
@@ -223,6 +222,8 @@ class Portfolio extends React.Component {
 
     let SP500Percent = <i className="fa fa-circle-o-notch fa-spin fa-3x fa-fw Spinner"></i>
     if (lastMarketValue && marketStartValue) { SP500Percent = ((lastMarketValue / marketStartValue * 100 - 100).toFixed(2)) }
+
+    console.log(lastMarketValue, marketStartValue)
 
     return (
       <div className="portfolio">
