@@ -7,7 +7,6 @@ import LineGraph from '../../Global/Components/LineGraph/LineGraph'
 class StockGraph extends React.Component {
   render() {
     if (this.props.isLoading) {
-      console.log('loading')
       return (<div id="portfolio-item-chart" className="loading">
                 <i className="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
               </div>)

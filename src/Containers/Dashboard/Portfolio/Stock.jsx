@@ -20,7 +20,8 @@ class Stock extends React.Component {
       data: data,
       lastPrice: this.props.stock.latest_price,
       chartSpan: 6,
-      isLoading: true
+      isLoading: true,
+      failed: false
     }
   }
 
@@ -56,11 +57,11 @@ class Stock extends React.Component {
   }
 
   renderGraph() {
-    if (!this.state.data.length) {
-      console.log('fetch data');
-      store.plans.get(this.props.plan).getHistoricData(this.props.stock.ticker, this.props.number, this.props.stock.days_owned)
+    if (!this.state.data.length && !this.state.failed) {
+      const daysToFetch = this.props.stock.days_owned > 120 ? this.props.stock.days_owned : 120
+      store.plans.get(this.props.plan).getHistoricData(this.props.stock.ticker, this.props.number, daysToFetch)
       .then(data => { this.setState({ data: data, isLoading: false }) })
-      .catch(() => this.setState({ isLoading: false }))
+      .catch(() => this.setState({ isLoading: false, failed: true }))
     }
     return <StockGraph stock={this.props.stock} plan={this.props.plan} data={this.state.data} isLoading={this.state.isLoading} />
   }
