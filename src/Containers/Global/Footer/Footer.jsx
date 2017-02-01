@@ -54,7 +54,7 @@ class Footer extends React.Component {
             time market conditions, was recorded, and results reviewed by a state-licensed Big
             Four auditor. Based on the BUSINESS membership in its 2009-2011
             versions, we recorded an average return on equity employed to sustain securities
-            trading of +66,54% in 2009, +52,56% in 2010, and +16,84% in 2011. This reflects factors
+            trading of +78.94% in 2009, +44.64% in 2010, and +17.51% in 2011. This reflects factors
             of market liquidity, trading costs and slippage, financial risk, and human factors,
             and was not carried out with any benefit of hindsight.<br/><br/>
 
