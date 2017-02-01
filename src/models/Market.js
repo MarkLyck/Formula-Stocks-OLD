@@ -37,7 +37,7 @@ const Market = Backbone.Model.extend({
     return new Promise((resolve,reject) => {
       let resolved = false
       if (Lockr.get('portfolioMarketData')) {
-        if (store.plans.get(store.selectedPlan).get('portfolioYields').length === Lockr.get('portfolioMarketData').length && store.plans.get(store.selectedPlan).get('portfolioYields').length !== 0) {
+        if (store.plans.get(store.selectedPlan).get('portfolioYields').length <= Lockr.get('portfolioMarketData').length && Lockr.get('portfolioMarketData').length !== 0) {
           resolved = true
           this.set('portfolioData', Lockr.get('portfolioMarketData'))
           resolve(Lockr.get('portfolioMarketData'))
