@@ -1,4 +1,5 @@
 import React from 'react'
+import moment from 'moment'
 import store from '../../../store'
 import './yearlyReturns.css'
 
@@ -33,7 +34,8 @@ class YearlyReturns extends React.Component {
   }
 
   updateState() {
-    if (!this.state.portfolioYields.length && store.plans.get(store.selectedPlan).get('portfolioYields').length) {
+    if ((!this.state.portfolioYields.length && store.plans.get(store.selectedPlan).get('portfolioYields').length)
+        || this.state.portfolioYields.length < store.plans.get(store.selectedPlan).get('portfolioYields').length) {
       this.setState({ portfolioYields: store.plans.get(store.selectedPlan).toJSON().portfolioYields })
     }
     else if (this.state.portfolioYields.length && store.plans.get(store.selectedPlan).get('portfolioYields').length) {
@@ -71,10 +73,16 @@ class YearlyReturns extends React.Component {
         </div>
       )
     }
-    const fiveYearStart = this.state.portfolioYields.slice(-(12 * 5 + 1))[0].balance
-    const threeYearStart = this.state.portfolioYields.slice(-(12 * 3 + 1))[0].balance
-    const twoYearStart = this.state.portfolioYields.slice(-(12 * 2 + 1))[0].balance
-    const oneYearStart = this.state.portfolioYields.slice(-13)[0].balance
+
+    let additionalMonths = 1
+    if (this.state.portfolioYields.slice(-13)[0].date.month === moment().format('M')) {
+      additionalMonths = 2
+    }
+
+    const fiveYearStart = this.state.portfolioYields.slice(-(12 * 5 + additionalMonths))[0].balance
+    const threeYearStart = this.state.portfolioYields.slice(-(12 * 3 + additionalMonths))[0].balance
+    const twoYearStart = this.state.portfolioYields.slice(-(12 * 2 + additionalMonths))[0].balance
+    const oneYearStart = this.state.portfolioYields.slice(-12 - additionalMonths)[0].balance
     const lastBalance = this.state.portfolioYields[this.state.portfolioYields.length - 1].balance
 
     return (
