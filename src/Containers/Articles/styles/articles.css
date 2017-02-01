@@ -37,6 +37,15 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
+    .edit-btn {
+      position: absolute;
+      top: 0;
+      right: 0;
+      background: none;
+      color: $primary-color;
+      font-size: 1.5rem;
+    }
     p, h1 {
       width: 100%;
       max-width: 800px;
@@ -71,6 +80,19 @@
         max-width: 100%;
       }
     }
+  }
+  .edit-form {
+    textarea {
+      height: calc(100vh - 64px - 140px) !important;
+      padding-left: 24px !important;
+      font-size: 1.2rem;
+    }
+  }
+  .cancel {
+    background: none;
+    color: $warning-color;
+    margin: 0 auto;
+    padding: 8px;
   }
 }
 

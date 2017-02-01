@@ -55,7 +55,7 @@ const AboutUs = React.createClass({
       } else if (this.state.showModal === 'Marie') {
         selected = {
           name: "Marie Lauritzen",
-          position: 'PhD. Research Assistant',
+          position: 'PhD. Research, HR',
           bio: `Marie works with documentation and localization and assists with research and quality control.
           A PhD., graduate of Royal Holloway, London, and Aarhus University, Aarhus,
           Marie's focus areas have been post-modern literature, research, as well as complexity theory.
@@ -129,7 +129,7 @@ const AboutUs = React.createClass({
               <img src={photos.Marie} alt="employee"/>
               <div className="content">
                 <h3 className="name">Marie Lauritzen</h3>
-                <h4>PhD, Research, Linguist</h4>
+                <h4>PhD, Research, HR</h4>
               </div>
             </li>
           </ul>
