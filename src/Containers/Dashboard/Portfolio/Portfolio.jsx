@@ -47,13 +47,15 @@ class Portfolio extends React.Component {
   }
 
   componentDidMount() {
+    const portfolioYields = store.plans.get(this.props.plan).get('portfolioYields')
     if ((store.session.isAllowedToView(this.props.plan) && !store.plans.get(this.props.plan).get('portfolio').length)
-        || (store.session.isAllowedToView(this.props.plan) && !store.plans.get(this.props.plan).get('portfolioYields').length)) {
+        || (store.session.isAllowedToView(this.props.plan) && !portfolioYields.length)) {
       store.plans.get(this.props.plan).fetchPrivate(this.props.plan)
-    } else if (!store.session.isAllowedToView(this.props.plan) && !store.plans.get(this.props.plan).get('portfolioYields').length) { store.plans.get(this.props.plan).fetch() }
+    } else if (!store.session.isAllowedToView(this.props.plan) && !portfolioYields.length) { store.plans.get(this.props.plan).fetch() }
     store.plans.get(this.props.plan).on('change', this.updateState)
-    store.market.data.on('update', this.updateState)
-    if (!store.market.data.get('portfolioData')[0]) {
+    store.market.data.on('change', this.updateState)
+    const marketPortfolioData = store.market.data.get('portfolioData')
+    if (!marketPortfolioData.length) {
       store.market.data.getPortfolioData()
     }
   }
@@ -222,8 +224,6 @@ class Portfolio extends React.Component {
 
     let SP500Percent = <i className="fa fa-circle-o-notch fa-spin fa-3x fa-fw Spinner"></i>
     if (lastMarketValue && marketStartValue) { SP500Percent = ((lastMarketValue / marketStartValue * 100 - 100).toFixed(2)) }
-
-    console.log(lastMarketValue, marketStartValue)
 
     return (
       <div className="portfolio">

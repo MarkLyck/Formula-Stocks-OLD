@@ -19,10 +19,8 @@ const Market = Backbone.Model.extend({
         fixedData = fixedData.reverse()
 
         let percent = null
-        for(var e = 0; e < fixedData.length; e++) {
-  				if(e < 1) {
-  					percent = (25000 * 100) / fixedData[0] / 100
-  				}
+        for(let e = 0; e < fixedData.length; e++) {
+  				if (e < 1) { percent = (25000 * 100) / fixedData[0] / 100 }
   				fixedData[e] = Math.floor(percent * fixedData[e])
   			}
 
@@ -39,7 +37,7 @@ const Market = Backbone.Model.extend({
     return new Promise((resolve,reject) => {
       let resolved = false
       if (Lockr.get('portfolioMarketData')) {
-        if (store.plans.get(store.selectedPlan).get('portfolioYields').length <= Lockr.get('portfolioMarketData').length) {
+        if (store.plans.get(store.selectedPlan).get('portfolioYields').length === Lockr.get('portfolioMarketData').length && store.plans.get(store.selectedPlan).get('portfolioYields').length !== 0) {
           resolved = true
           this.set('portfolioData', Lockr.get('portfolioMarketData'))
           resolve(Lockr.get('portfolioMarketData'))
@@ -51,10 +49,21 @@ const Market = Backbone.Model.extend({
           let fixedData = r.data.map(point => point[1].toFixed(0))
           fixedData = fixedData.reverse()
           Lockr.set('portfolioMarketData', fixedData)
-          this.set('portfolioData', fixedData)
-          resolve(fixedData)
+          $.ajax(`https://www.quandl.com/api/v1/datasets/YAHOO/INDEX_GSPC.json?auth_token=6SfHcXos6YBX51kuAq8B&column=4&limit=1`)
+          .then(lastMarketPrice => {
+            let finalPoint = lastMarketPrice.data[0][1].toFixed(0)
+            fixedData.push(finalPoint)
+            Lockr.set('portfolioMarketData', fixedData)
+            this.set('portfolioData', fixedData)
+            resolve(fixedData)
+          })
+          .fail(e => {
+            console.error(e)
+            this.set('portfolioData', fixedData)
+            resolve(fixedData)
+          })
         })
-        .fail((e) => {
+        .fail(e => {
           reject()
           console.error('Failed fetching QUANDL DATA', e)
         })
