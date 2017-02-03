@@ -33,7 +33,7 @@
   .right {
     width: 200px;
     border-left: 2px solid $db-border-color;
-    padding-left: 12px;
+    padding-left: 8px;
     margin-left: -2px;
     display: flex;
     flex-direction: column;

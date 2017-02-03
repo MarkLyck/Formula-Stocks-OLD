@@ -47,6 +47,10 @@ class NewArticle extends React.Component {
     const markdown = this.refs.mdeditor.state.content
 
     store.articles.data.create({
+      _acl: {
+        r: [ '57d838197909a93d3863ceef', '57bdf1db65033d3044e27fa2' ],
+        w: [ '57d838197909a93d3863ceef', '57bdf1db65033d3044e27fa2' ]
+      },
       author: store.session.get('name'),
       title: this.refs.title.value,
       body: markdown,
