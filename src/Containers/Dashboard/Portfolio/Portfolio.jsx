@@ -175,7 +175,7 @@ class Portfolio extends React.Component {
     let portfolioYields = store.plans.get(this.state.plan).get('portfolioYields')
     if (portfolioYields.length) {
       if (portfolioYields[portfolioYields.length - 1].date.day !== moment().format('DD')
-        || portfolioYields[portfolioYields.length - 1].date.month !== moment().format('MM').replace('01', '1')) {
+        || portfolioYields[portfolioYields.length - 1].date.month !== moment().format('M')) {
         let portfolio = store.plans.get(this.state.plan).get('portfolio')
         let stocks = JSON.parse(localStorage.stocks).data
         let newBalance = 0
@@ -197,7 +197,7 @@ class Portfolio extends React.Component {
           cash: portfolioYields[portfolioYields.length - 1].cash,
           date: {
             day: moment().format('DD'),
-            month: moment().format('MM'),
+            month: moment().format('M'),
             year: moment().format('YYYY')
           }
         })
