@@ -2,7 +2,7 @@
 .articles {
   position: relative;
   display: flex;
-  font-family: serif;
+  /*font-family: serif;*/
   .flask-logo {
     position: absolute;
     top: 16px;
@@ -54,6 +54,7 @@
     .title {
       margin-bottom: 16px;
       font-weight: 600;
+      font-family: Georgia, serif;
     }
     .info {
       font-size: 1rem;
@@ -69,10 +70,12 @@
       }
       h2 {
         font-weight: bold;
+        font-family: Georgia, serif;
       }
       h3 {
         margin-top: 32px;
         font-weight: 600;
+        font-family: Georgia, serif;
       }
       img {
         height: auto;
