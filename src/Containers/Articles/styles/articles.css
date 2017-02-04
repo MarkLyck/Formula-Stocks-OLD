@@ -71,6 +71,7 @@
         font-weight: bold;
       }
       h3 {
+        margin-top: 32px;
         font-weight: 600;
       }
       img {
@@ -78,6 +79,13 @@
         max-height: 400px;
         width: auto;
         max-width: 100%;
+      }
+      .block-quote {
+        padding: 0 32px;
+        border-left: 3px solid $primary-color;
+      }
+      .small {
+        font-size: 1rem;
       }
     }
   }
