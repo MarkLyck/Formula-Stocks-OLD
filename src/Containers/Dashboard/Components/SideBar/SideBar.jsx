@@ -40,7 +40,7 @@ class SideBar extends React.Component {
           <MainButton selected={this.state.selected === 'suggestions'} title="Suggestions" select={this.selectMenu} icon="icon-flask"/>
           <MainButton selected={this.state.selected === 'portfolio'} title="Portfolio" select={this.selectMenu} icon="icon-chart"/>
           <MainButton selected={this.state.selected === 'portfolio trades'} title="Portfolio trades" select={this.selectMenu} icon="icon-trades"/>
-          {store.session.get('type') === 5 ? <MainButton selected={this.state.selected === 'articles'} title="Articles" select={this.selectMenu} icon="icon-articles"/> : ''}
+          <MainButton selected={this.state.selected === 'articles'} title="Articles" select={this.selectMenu} icon="icon-articles"/>
           {store.session.get('type') === 5 ? <MainButton selected={this.state.selected === 'admin'} title="Admin" select={this.selectMenu} icon="icon-dashboard"/> : ''}
           <MainButton selected={this.state.selected === 'account'} title="Account" select={this.selectMenu} icon="icon-account"/>
           <MainButton title="Log out" icon="icon-logout"/>

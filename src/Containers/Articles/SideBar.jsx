@@ -23,7 +23,11 @@ class ArticleSideBar extends React.Component {
     return articles.map((article, i) => {
       const preview = article.body.substring(0,120).replace(`\n`, '').split('![')[0]
       let html_content = markdown.toHTML( preview )
-      html_content = html_content.replaceAll('&amp;', '&').replaceAll('&quot;', '"').replaceAll('&lt;', '<').replaceAll('&gt;', '>').replaceAll('_', '')
+      .replaceAll('&amp;', '&')
+      .replaceAll('&quot;', '"')
+      .replaceAll('&lt;', '<')
+      .replaceAll('&gt;', '>')
+      .replaceAll('_', '')
       const previewHTML = ReactHtmlParser(html_content)
 
       return (
