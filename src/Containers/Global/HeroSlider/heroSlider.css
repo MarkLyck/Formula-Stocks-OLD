@@ -1,8 +1,72 @@
 .hero-slider {
+  position: relative;
+  .content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 5;
+    text-align: center;
+    max-width: 835px;
+    h1,h2 {
+      color: #fff;
+      font-size: 2em;
+    }
+    .bold {
+      font-weight: bold;
+    }
+    #subtitle {
+      color: #fff;
+      font-size: 2em;
+    }
+    .typed-cursor {
+        opacity: 1;
+        color: #fff;
+        font-size: 2em;
+        -webkit-animation: blink 0.7s infinite;
+        -moz-animation: blink 0.7s infinite;
+        animation: blink 0.7s infinite;
+    }
+    .learn-more {
+      background: #fff;
+      border-radius: 4px;
+      font-weight: normal;
+      margin-top: 64px;
+      color: $primary-color;
+      padding: 16px 32px;
+    }
+    .hero-disclaimer {
+      margin-top: 20px;
+      line-height: normal;
+    }
+  }
   .slider-image {
     height: 600px;
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
+  }
+  .slick-dots {
+    position: absolute;
+    bottom: 16px;
+    li {
+      button {
+        &::before {
+          color: transparent;
+          border: 1px solid #fff;
+          border-radius: 50%;
+          opacity: 1;
+          width: 12px;
+          height: 12px;
+        }
+      }
+    }
+    .slick-active {
+      button {
+        &::before {
+          background: #fff;
+        }
+      }
+    }
   }
 }

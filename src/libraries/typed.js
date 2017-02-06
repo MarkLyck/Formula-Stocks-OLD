@@ -222,7 +222,7 @@ import $ from 'jquery'
 					} else {
 
 						/* call before functions if applicable */
-						if (curStrPos === 0) {
+						if (curStrPos === 23) {
 							self.options.preStringTyped(self.arrayPos);
 						}
 
