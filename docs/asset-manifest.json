@@ -1,8 +1,15 @@
 {
-  "main.css": "static/css/main.62f59766.css",
-  "main.css.map": "static/css/main.62f59766.css.map",
-  "main.js": "static/js/main.5ae89ff6.js",
-  "main.js.map": "static/js/main.5ae89ff6.js.map",
+  "main.css": "static/css/main.c1885188.css",
+  "main.css.map": "static/css/main.c1885188.css.map",
+  "main.js": "static/js/main.3106d287.js",
+  "main.js.map": "static/js/main.3106d287.js.map",
+  "static/media/0.jpg": "static/media/0.f57beb93.jpg",
+  "static/media/1.jpg": "static/media/1.fd265926.jpg",
+  "static/media/2.jpg": "static/media/2.68d4df6a.jpg",
+  "static/media/3.jpg": "static/media/3.86741b8b.jpg",
+  "static/media/4.jpg": "static/media/4.794b3c8a.jpg",
+  "static/media/5.jpg": "static/media/5.4270f1bf.jpg",
+  "static/media/6.jpg": "static/media/6.99370b52.jpg",
   "static/media/Albert_Einstein.jpg": "static/media/Albert_Einstein.38bad8e8.jpg",
   "static/media/Android_Browser_Logo.svg": "static/media/Android_Browser_Logo.564b53ad.svg",
   "static/media/Android_Logo.png": "static/media/Android_Logo.e50fa4a7.png",
@@ -42,5 +49,6 @@
   "static/media/recommendations_basic.mp4": "static/media/recommendations_basic.725cf438.mp4",
   "static/media/recommendations_business.mp4": "static/media/recommendations_business.ad7694fa.mp4",
   "static/media/recommendations_fund.mp4": "static/media/recommendations_fund.1fa8bbe6.mp4",
-  "static/media/recommendations_premium.mp4": "static/media/recommendations_premium.75306960.mp4"
+  "static/media/recommendations_premium.mp4": "static/media/recommendations_premium.75306960.mp4",
+  "static/media/slick.svg": "static/media/slick.f97e3bbf.svg"
 }

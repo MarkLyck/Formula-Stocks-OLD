@@ -47,7 +47,7 @@ class Article extends React.Component {
     }
 
     let html_content = markdown.toHTML( article.body )
-    html_content = html_content.replaceAll('&amp;', '&').replaceAll('&quot;', '"').replaceAll('&lt;', '<').replaceAll('&gt;', '>').replaceAll('&#95;', '_')
+    html_content = html_content.replaceAll('&amp;', '&').replaceAll('&quot;', '"').replaceAll('&lt;', '<').replaceAll('&gt;', '>').replaceAll('&#95;', '_').replaceAll('&#39;', "'")
     const bodyHTML = ReactHtmlParser(html_content)
 
     return (

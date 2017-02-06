@@ -37,8 +37,9 @@ class HowWeBeatTheMarket extends React.Component {
             computer, Deep Blue, which effectively beat then grandmaster Gary Kasparov 2-1 in 1997.
             <br/><br/>
 
-            Our research has eventually enabled us to analyze a group of stocks and predict,
-            a priori, its future returns as a group a posteriori within a reasonable margin of error.
+            Our research has eventually enabled us to analyze a group of stocks and predict, a priori,
+            what its likely returns as a group will be in the future. Returns can be concluded a posteriori
+            to match earlier expectations within a reasonable margin of tolerance.
           </p>
           <p className="disclaimer">
             <sup>1</sup>Buffett, Warren E. 1984. The Superinvestors of Graham-and-Doddsville. Hermes,
