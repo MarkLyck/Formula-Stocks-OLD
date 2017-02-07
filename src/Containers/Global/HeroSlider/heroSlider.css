@@ -55,12 +55,12 @@
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4d000438', endColorstr='#007db9e8',GradientType=0 ); /* IE6-9 */
   }
   .slider-image {
-    height: calc(100vh - 120px);
-    max-height: 650px;
-    background-position: center center;
+    height: calc(90vh - 120px);
     background-repeat: no-repeat;
-    background-size: cover;
     background-attachment: fixed;
+    background-position: center center;
+    background-size: cover;
+    width: 100%;
   }
   .slick-dots {
     position: absolute;
