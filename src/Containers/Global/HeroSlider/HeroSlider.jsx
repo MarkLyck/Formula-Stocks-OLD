@@ -7,7 +7,7 @@ import '../../../libraries/typed.js'
 import './heroSlider.css'
 
 
-import img_0 from './images/0.jpg'
+import img_0 from './images/achieveGoals.jpg'
 import img_1 from './images/1.png'
 import img_2 from './images/2.jpg'
 import img_3 from './images/easyToUse.jpg'
@@ -46,7 +46,7 @@ class Hero extends React.Component {
   }
 
   render() {
-    let title = <h1 id="main-title">A <span className="font bold">better</span> way to <span className="font bold">invest</span></h1>
+    let title = <h1 id="main-title">A <span className="font bold">better</span> way to <span className="font bold">invest</span> in stocks</h1>
     let subtitles = (
       <div id="subtitles">
         <h1><span className="font bold">Achieve your goals</span></h1>
