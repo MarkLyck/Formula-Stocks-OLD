@@ -26,7 +26,7 @@
     .typed-cursor {
         opacity: 1;
         color: #fff;
-        font-size: 2em;
+        font-size: 2.5em;
         -webkit-animation: blink 0.7s infinite;
         -moz-animation: blink 0.7s infinite;
         animation: blink 0.7s infinite;

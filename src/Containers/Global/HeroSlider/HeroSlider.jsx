@@ -36,17 +36,17 @@ class Hero extends React.Component {
   componentDidMount() {
     $("#subtitle").typed({
         stringsElement: $('#subtitles'),
-        typeSpeed: 0,
+        typeSpeed: 10,
         loop: true,
         showCursor: true,
-        backDelay: 3000,
+        backDelay: 4000,
         backSpeed: 0,
         preStringTyped: this.preStringTyped
     })
   }
 
   render() {
-    let title = <h1 id="main-title">A <span className="font bold">better</span> way to <span className="font bold">invest</span> in stocks</h1>
+    let title = <h1 id="main-title">A <span className="font bold">better</span> way to <span className="font bold">invest</span></h1>
     let subtitles = (
       <div id="subtitles">
         <h1><span className="font bold">Achieve your goals</span></h1>
