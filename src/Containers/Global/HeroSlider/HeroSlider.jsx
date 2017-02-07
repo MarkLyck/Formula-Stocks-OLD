@@ -55,17 +55,18 @@ class Hero extends React.Component {
         <h1><span className="font bold">Easy to use</span></h1>
         <h1><span className="font bold">Lower costs</span></h1>
         <h1><span className="font bold">+89% win/loss ratio</span></h1>
-        <h1><span className="font bold">Saves time</span></h1>
+        <h1><span className="font bold">Save time</span></h1>
       </div>
     )
 
     const slickSettings = {
       dots: true,
+      focusOnSelect: false,
       infinite: true,
       fade: true,
-      speed: 1000,
+      speed: 1500,
       autoplay: false,
-      // autoplaySpeed: 5000,
+      swipe: false,
       arrows: false,
       slidesToShow: 1,
       slidesToScroll: 1
@@ -73,6 +74,7 @@ class Hero extends React.Component {
 
     return (
       <div className="hero-slider">
+
         <div className="content">
           <div className="bounce-down">
             {title}
@@ -80,6 +82,7 @@ class Hero extends React.Component {
             {subtitles}
           </div>
         </div>
+        <div className="overlay"/>
         <Slider {...slickSettings} ref={c => this.slider = c }>
            <div className="slider-image" style={{ backgroundImage: `url(${img_0})`}}/>
            <div className="slider-image" style={{ backgroundImage: `url(${img_1})`}}/>
