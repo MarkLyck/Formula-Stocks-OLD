@@ -9,9 +9,10 @@
     width: 100%;
     // text-align: center;
     max-width: 1160px;
+    margin: 0 32px;
     h1,h2 {
       color: #fff;
-      font-size: 2.5em;
+      font-size: 2em;
       text-shadow: 0 2px 2px rgba(0,0,0,0.3);
     }
     .bold {
@@ -19,7 +20,7 @@
     }
     #subtitle {
       color: #fff;
-      font-size: 2em;
+      font-size: 2.5em;
       text-shadow: 0 2px 2px rgba(0,0,0,0.3);
     }
     .typed-cursor {
