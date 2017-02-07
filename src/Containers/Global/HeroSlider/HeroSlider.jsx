@@ -39,7 +39,7 @@ class Hero extends React.Component {
         typeSpeed: 10,
         loop: true,
         showCursor: true,
-        backDelay: 4000,
+        backDelay: 5000,
         backSpeed: 0,
         preStringTyped: this.preStringTyped
     })
@@ -60,7 +60,6 @@ class Hero extends React.Component {
     )
 
     const slickSettings = {
-      dots: true,
       focusOnSelect: false,
       infinite: true,
       fade: true,
