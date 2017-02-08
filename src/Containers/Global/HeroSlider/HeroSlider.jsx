@@ -13,7 +13,6 @@ import img_2 from './images/2.jpg'
 import img_3 from './images/easyToUse.jpg'
 import img_4 from './images/4.jpg'
 import img_5 from './images/winRate.jpg'
-import img_6 from './images/savesTime.jpg'
 
 
 class Hero extends React.Component {
@@ -55,7 +54,6 @@ class Hero extends React.Component {
         <h1><span className="font bold">Easy to use</span></h1>
         <h1><span className="font bold">Lower costs</span></h1>
         <h1><span className="font bold">+89% win/loss ratio</span></h1>
-        <h1><span className="font bold">Save time</span></h1>
       </div>
     )
 
@@ -89,7 +87,6 @@ class Hero extends React.Component {
            <div className="slider-image" style={{ backgroundImage: `url(${img_3})`}}/>
            <div className="slider-image" style={{ backgroundImage: `url(${img_4})`}}/>
            <div className="slider-image" style={{ backgroundImage: `url(${img_5})`}}/>
-           <div className="slider-image" style={{ backgroundImage: `url(${img_6})`}}/>
         </Slider>
       </div>
     )
