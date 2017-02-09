@@ -1,0 +1,18 @@
+@import "../../variables.css";
+
+.first-month-on-us {
+  p {
+    margin-top: 0;
+  }
+  .signup-cta {
+    margin-top: 24px;
+    padding: 16px 24px;
+    background: $action-color;
+    color: #fff;
+    border-radius: 4px;
+    margin-bottom: 16px;
+    &:hover {
+      background: color($action-color lightness(-5%));
+    }
+  }
+}

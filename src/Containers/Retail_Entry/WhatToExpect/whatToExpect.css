@@ -1,0 +1,54 @@
+@import "../../variables.css";
+
+.what-to-expect {
+  .beside {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 100%;
+    .screen {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: auto;
+      width: calc(50% - 16px);
+      transition: transform 0.5s;
+      box-shadow: 0 0px 4px rgba(0,0,0, 0.2), 0 4px 8px rgba(0,0,0, 0.24);
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+    .left {
+      margin-right: calc(50% + 16px);
+    }
+  }
+  .portfolio-table {
+    max-width: 1160px;
+    margin: 0;
+    box-shadow: 0px 2px 8px rgba(0,0,0,0.16);
+    background: #fff;
+    tbody {
+      tr {
+        transition: border-color 0.15s;
+        .stock-name {
+          .wrapper {
+            .stock-name-tag {
+              font-weight: 600;
+            }
+          }
+        }
+        &:hover {
+          cursor: auto;
+          border-color: $primary-color;
+          .stock-name {
+            .wrapper {
+              .stock-name-tag {
+                color: $text-color;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

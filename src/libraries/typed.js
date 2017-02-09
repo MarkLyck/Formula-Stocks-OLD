@@ -127,7 +127,6 @@ import $ from 'jquery'
 			if (this.stringsElement) {
 				this.strings = [];
 				this.stringsElement.hide();
-				console.log(this.stringsElement.children());
 				var strings = this.stringsElement.children();
 				$.each(strings, function(key, value){
 					self.strings.push($(value).html());

@@ -1,6 +1,6 @@
 import React from 'react'
 import Scroll from 'react-scroll'
-import brochure from './business.pdf'
+import brochure from '../../Global/brochure.pdf'
 import brochureImage from './brochure-image.png'
 import './brochure.css'
 
