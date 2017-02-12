@@ -26,7 +26,7 @@ class WhatYouGet extends React.Component {
 
               You can use these suggestions individually or choose to replicate our model portfolio. Simply
               follow the instructions, and you will be handling your own account in no time at all. Login
-              weekly of monthly depending on your personal preferences.
+              weekly or monthly depending on your personal preferences.
             </p>
           </div>
         </div>

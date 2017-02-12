@@ -14,7 +14,7 @@ class FirstMonthOnUs extends React.Component {
           $50 per month.
         </p>
         <Link to="/signup" className="signup-cta">Start your free month</Link>
-        <p class="center">You can cancel at any time</p>
+        <p className="center">You can cancel at any time</p>
       </section>
     )
   }

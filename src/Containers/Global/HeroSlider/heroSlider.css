@@ -7,7 +7,6 @@
     transform: translateX(-50%);
     z-index: 5;
     width: 100%;
-    // text-align: center;
     max-width: calc(1160px + 64px);
     margin: 0 32px;
     h1,h2 {
@@ -85,6 +84,14 @@
           background: #fff;
         }
       }
+    }
+  }
+}
+
+@media (max-width: 1250px) {
+  .hero-slider {
+    .content {
+      max-width: calc(100vw - 80px);
     }
   }
 }

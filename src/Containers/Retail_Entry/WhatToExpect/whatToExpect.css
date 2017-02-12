@@ -27,26 +27,24 @@
     margin: 0;
     box-shadow: 0px 2px 8px rgba(0,0,0,0.16);
     background: #fff;
+    p {
+      margin: 8px 0;
+    }
     tbody {
       tr {
+        height: 50px;
         transition: border-color 0.15s;
         .stock-name {
           .wrapper {
+            margin: 8px 0;
             .stock-name-tag {
-              font-weight: 600;
+              margin: 0
             }
           }
         }
         &:hover {
           cursor: auto;
           border-color: $primary-color;
-          .stock-name {
-            .wrapper {
-              .stock-name-tag {
-                color: $text-color;
-              }
-            }
-          }
         }
       }
     }

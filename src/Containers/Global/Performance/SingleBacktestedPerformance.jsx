@@ -114,6 +114,10 @@ class BacktestedPerformance extends React.Component {
           ]
       return (
         <div id="result-chart" className={this.state.chartClass}>
+          <div className="chart-indicators">
+            <div className="chart-indicator business">{this.props.name}</div>
+            <div className="chart-indicator djia">S&P500</div>
+          </div>
           <LineGraph graphs={graphs}
                      data={this.state.chartData}
                      unit="$"

@@ -46,8 +46,7 @@ class Footer extends React.Component {
             decisions.<br/><br/>
 
             Formula Stocks assumes no responsibility or liability for your investment results.
-            You understand and acknowledge that there is a high degree of risk involved in
-            investing in securities.<br/><br/>
+            You understand and acknowledge that there is risk involved in investing in securities.<br/><br/>
 
             The Formula Stocks product underwent a 3-year pilot program from 2009- to 2011.
             In this testing period, actual performance data, under normal real

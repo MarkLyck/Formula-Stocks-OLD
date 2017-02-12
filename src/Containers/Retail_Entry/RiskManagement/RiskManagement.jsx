@@ -18,9 +18,9 @@ class RiskManagement extends React.Component {
           59% elsewhere.<br/><br/>
 
           Another way is to look at the so-called Gain-to-Pain Ratio, which measures exactly what the name
-          indicates. It is 1,318 for Entry, which indicates far more gain than pain.<br/><br/>
+          indicates. It is 1.318 for Entry, which indicates far more gain than pain.<br/><br/>
 
-          The Sortino Ratio is yet another way to measure risk. It is 3,017 for Formula Stocks Entry, indicating
+          The Sortino Ratio is yet another way to measure risk. It is 3.017 for Formula Stocks Entry, indicating
           much more reward than risk.<br/><br/>
 
           We can also examine the average gain from a winning stock which is +65.97%, while the average

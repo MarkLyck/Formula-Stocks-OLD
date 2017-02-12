@@ -1,0 +1,30 @@
+.performance-matters {
+  .options {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    max-width: 1160px;
+    margin-top: 24px;
+    margin-bottom: 16px;
+    .option {
+      background: #fff;
+      width: calc(100% / 3 - 16px);
+      padding: 0 16px;
+      // border-radius: 4px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+  }
+}
+
+@media (max-width: 820px) {
+  .performance-matters {
+    .options {
+      .option {
+        width: calc(100% / 2 - 16px);
+      }
+      .option:nth-child(2) {
+        display: none;
+      }
+    }
+  }
+}

@@ -11,8 +11,7 @@ class Stock extends React.Component {
         <tr className="stock-table-row">
           <td className="stock-name">
             <div className="wrapper">
-              <p className="stock-name-tag semi-bold">{stock.name}</p>
-              <p className="ticker">{stock.ticker}</p>
+              <p className="stock-name-tag"><span className="semi-bold">{stock.name}</span> ({stock.ticker})</p>
             </div>
           </td>
           <td className="portfolio-td"><p className="blue-color">${stock.purchase_price.toFixed(2)}</p></td>
