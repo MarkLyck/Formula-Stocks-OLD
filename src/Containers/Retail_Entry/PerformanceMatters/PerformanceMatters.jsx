@@ -31,7 +31,7 @@ class PerformanceMatters extends React.Component {
             </p>
           </div>
           <div className="option">
-            <h3 className="semi-bold">Leverage</h3>
+            <h3 className="semi-bold">2X Leverage</h3>
             <p>
               Using leverage. A standard return of 6-7% leveraged two times would theoretically provide 18%+.
               But with such leverage volatility becomes too high, and a crisis would likely wipe out the

@@ -51,7 +51,7 @@ class NavBar extends React.Component {
 
   renderUserLinks() {
     let prefix = this.props.path === '/pro' ? '/pro' : ''
-    let signupText = this.props.path !== '/pro' ? 'Free trial' : 'Get started'
+    let signupText = this.props.path !== '/pro' ? 'Sign up' : 'Get started'
 
 
     if (!localStorage.authtoken && this.state.navbar === 1) {

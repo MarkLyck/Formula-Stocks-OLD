@@ -12,13 +12,13 @@ class CagrCalculator extends React.Component{
   constructor(props) {
     super(props)
     this.animate = this.animate.bind(this)
-  
+
     this.state = { cagr: 25, investment: 10000, years: 20, animate: false, startDuration: 0.75 }
   }
 
   componentDidMount() {
     $(window).on('scroll', this.animate)
-    this.refs.cagrSlider.value = 20
+    this.refs.cagrSlider.value = 18
     this.refs.investmentSlider.value = 10000
     const self = this
 
