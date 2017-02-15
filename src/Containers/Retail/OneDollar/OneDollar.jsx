@@ -119,7 +119,7 @@ class OneDollar extends React.Component {
 
             <div className="market-bar-container">
               <div className="market bar" style={spStyle}></div><p>${Math.round(this.state.market)}</p>
-              </div>
+            </div>
             <p className="plan-name">S&P 500</p>
           </div>
           <div className="right">

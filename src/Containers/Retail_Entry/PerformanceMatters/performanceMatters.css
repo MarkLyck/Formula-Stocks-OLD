@@ -1,4 +1,45 @@
+@import "../../variables.css";
+
 .performance-matters {
+  .compare-bars {
+    width: 100%;
+    max-width: 1160px;
+    .bar {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      height: 50px;
+      transition: transform .3s;
+      p {
+        margin: 0 10px 0 0;
+        color: #fff;
+        font-size: 1.5rem;
+      }
+      &:hover {
+        transform: scale(1.04);
+      }
+    }
+    .fs-bar {
+      width: 100%;
+      background: $primary-color;
+    }
+    .market-bar-container {
+      display: flex;
+      align-items: center;
+      margin-bottom: 24px;
+      .market-bar {
+        background: $dark-color;
+        width: 4%;
+      }
+      p {
+        margin: 0 0 0 10px;
+        font-size: 1.5rem;
+      }
+    }
+    .description {
+      margin-bottom: 4px;
+    }
+  }
   .options {
     width: 100%;
     display: flex;

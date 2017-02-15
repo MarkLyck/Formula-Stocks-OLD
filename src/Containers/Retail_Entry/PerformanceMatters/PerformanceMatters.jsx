@@ -11,10 +11,18 @@ class PerformanceMatters extends React.Component {
           Assume that you would like to get an ~18% yearly return. After all, who would not? Through the
           effects of compounding this would be much, much more rewarding than the standard 6% you normally
           expect from stocks. Example in a tax free account:<br/><br/>
-
-          1,000 dollars over 30 years at 6% compounded is 5,743 dollars.<br/>
-          1,000 dollars over 30 years at 18% compunded is 143,370 dollars.<br/><br/>
-
+        </p>
+        <div className="compare-bars">
+          <p className="description blue-color semi-bold">$1,000 invested with an 18% yearly return over 30 years.</p>
+          <div className="bar-container">
+            <div className="fs-bar bar"><p className="dollars">$143,370</p></div>
+          </div>
+          <p className="description semi-bold">$1,000 invested with an 6% yearly return over 30 years.</p>
+          <div className="market-bar-container">
+            <div className="market-bar bar"/><p className="dollars">$5,743</p>
+          </div>
+        </div>
+        <p>
           So you see, 18% in this example is 25 times better than 6%. Compounding is an exponential function,
           that makes time work for you.<br/><br/>
 
