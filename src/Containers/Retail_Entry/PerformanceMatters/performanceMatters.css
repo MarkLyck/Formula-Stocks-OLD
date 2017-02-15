@@ -1,6 +1,9 @@
 @import "../../variables.css";
 
 .performance-matters {
+  .methods-title {
+    margin-bottom: 16px;
+  }
   .compare-bars {
     width: 100%;
     max-width: 1160px;
@@ -45,7 +48,6 @@
     display: flex;
     justify-content: space-between;
     max-width: 1160px;
-    margin-top: 24px;
     margin-bottom: 16px;
     .option {
       background: #fff;

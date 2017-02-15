@@ -30,6 +30,7 @@ class PerformanceMatters extends React.Component {
           However, we could examine ways in which it might have been possible to obtain similar results
           historically.
         </p>
+        <h3 className="methods-title">Methods to obtain 18% yearly return</h3>
         <div className="options">
           <div className="option">
             <h3 className="semi-bold">Formula Stocks</h3>
