@@ -54,8 +54,8 @@ class Home extends React.Component {
         <SingleBacktestedPerformance plan="basic" name="Entry"/>
         <RiskManagement/>
         <HowWeBeatTheMarket/>
-        <Quote/>
-        <CagrCalculator/>
+        {/* <Quote/>
+        <CagrCalculator/> */}
         <AboutUs/>
         <IntendedAudience/>
         <BottomCTA/>

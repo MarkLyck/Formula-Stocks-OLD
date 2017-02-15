@@ -25,8 +25,7 @@ class WhatYouGet extends React.Component {
               bank or broker you prefer or already have.<br/><br/>
 
               You can use these suggestions individually or choose to replicate our model portfolio. Simply
-              follow the instructions, and you will be handling your own account in no time at all. Login
-              weekly or monthly depending on your personal preferences.
+              follow the instructions, and you will be handling your own account in no time at all.
             </p>
           </div>
         </div>

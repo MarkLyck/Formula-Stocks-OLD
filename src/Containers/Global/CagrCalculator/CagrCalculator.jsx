@@ -149,7 +149,7 @@ class CagrCalculator extends React.Component{
 
     return (
       <section className="cumulative-interest split-section section">
-        <h2>Cumulative <span className="blue-color">interest</span> calculator</h2>
+        <h2>Compound <span className="blue-color">interest</span> calculator</h2>
         <div className="divider"></div>
 
         <div className="content">

@@ -4,8 +4,11 @@
   p {
     margin-top: 0;
   }
-  .signup-cta {
+  h1 {
     margin-top: 24px;
+  }
+  .signup-cta {
+
     padding: 16px 24px;
     background: $action-color;
     color: #fff;

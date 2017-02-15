@@ -8,11 +8,8 @@ class FirstMonthOnUs extends React.Component {
       <section className="first-month-on-us section">
         <h2 className="title">The first month is on us</h2>
         <div className="divider"/>
-        <p>
-          We're confident that you'll enjoy our service. Sign up for our 30 day risk free trial. A credit card
-          is required, but you will only be charged if you stay past 30 days. After 30 days, the price is
-          $50 per month.
-        </p>
+        <p>Higher probability investment opportunities for the long run. Sign up to better your returns and moderate your risk.</p>
+        <h1 className="cost">$50 monthly after 30 days</h1>
         <Link to="/signup" className="signup-cta">Start your free month</Link>
         <p className="center">You can cancel at any time</p>
       </section>

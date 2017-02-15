@@ -17,7 +17,7 @@ class PerformanceMatters extends React.Component {
           <div className="bar-container">
             <div className="fs-bar bar"><p className="dollars">$143,370</p></div>
           </div>
-          <p className="description semi-bold">$1,000 invested with an 6% yearly return over 30 years.</p>
+          <p className="description semi-bold">$1,000 invested with a 6% yearly return over 30 years.</p>
           <div className="market-bar-container">
             <div className="market-bar bar"/><p className="dollars">$5,743</p>
           </div>
@@ -30,7 +30,6 @@ class PerformanceMatters extends React.Component {
           However, we could examine ways in which it might have been possible to obtain similar results
           historically.
         </p>
-        <h3 className="methods-title">Methods to obtain 18% yearly return</h3>
         <div className="options">
           <div className="option">
             <h3 className="semi-bold">Formula Stocks</h3>
@@ -48,11 +47,11 @@ class PerformanceMatters extends React.Component {
             </p>
           </div>
           <div className="option">
-            <h3 className="semi-bold">Hedgefunds</h3>
+            <h3 className="semi-bold">Hedge funds</h3>
             <p>
-              Finding a hedge fund that has achieved 18% annual growth since inception. This would command a
-              high fee, though, typically 2% of the capital plus 20% of returns. Expect a hedge fund to employ
-              leverage, so you would in fact be taking on a higher risk too.
+              Finding a hedge fund that has achieved 18% annual growth since inception. Expect a high fee,
+              typically 2% of the capital plus 20% of returns. Expect leverage too, so you would be taking on
+              a higher risk as well.
             </p>
           </div>
         </div>

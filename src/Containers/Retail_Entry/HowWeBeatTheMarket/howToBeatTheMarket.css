@@ -9,7 +9,7 @@
       background: #fff;
       padding: 12px 16px;
       box-shadow: 0px 2px 4px rgba(0,0,0,0.16);
-      margin-bottom: 8px;
+      border-bottom: 1px solid #F3F3F3;
       transition: transform 0.5s;
       p {
         margin: 0;
