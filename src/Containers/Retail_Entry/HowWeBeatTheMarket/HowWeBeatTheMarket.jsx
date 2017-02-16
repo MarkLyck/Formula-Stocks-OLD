@@ -13,7 +13,7 @@ class HowWeBeatTheMarket extends React.Component {
         <div className="divider"/>
         <p>
           Formula Stocks uses a combination of many specific technologies which have been developed over a 14-
-          year period and aimed to solve the conumdrum put forth by Mark Twain:<br/><br/>
+          year period and aimed to solve the conundrum put forth by Mark Twain:<br/><br/>
 
           ”Buy good quality common stocks that go up. If they do not go up, do not buy them”. While Twain said
           this tongue-in-cheek, it quite accurately encapsulates what Formula Stocks strives to do.<br/><br/>
