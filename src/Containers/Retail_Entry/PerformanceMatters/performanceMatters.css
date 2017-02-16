@@ -23,7 +23,7 @@
       }
     }
     .fs-bar {
-      width: 100%;
+      width: 90%;
       background: $primary-color;
     }
     .market-bar-container {
@@ -32,7 +32,7 @@
       margin-bottom: 24px;
       .market-bar {
         background: $dark-color;
-        width: 4%;
+        width: 3.6%;
       }
       p {
         margin: 0 0 0 10px;

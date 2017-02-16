@@ -27,21 +27,21 @@ class PerformanceMatters extends React.Component {
           that makes time work for you.<br/><br/>
 
           Certainty of any future rate of return is impossible, since the future has not happened yet.
-          However, we could examine ways in which it might have been possible to obtain similar results
-          historically.
+          However, we could examine 3 different ways in which it might have been possible to obtain similar results
+          historically:
         </p>
         <div className="options">
           <div className="option">
             <h3 className="semi-bold">Formula Stocks</h3>
             <p>
-              Using Formula Stocks Entry, 18% was the average return p.a. over the last 47 years. The price
-              is USD 50 a month.
+              Using Formula Stocks Entry, 18% was the average return p.a. over the last 47 years. Zero
+              leverage keeps risks moderate for a $50 monthly subscription.
             </p>
           </div>
           <div className="option">
             <h3 className="semi-bold">2X Leverage</h3>
             <p>
-              Using leverage. A standard return of 6-7% leveraged two times would theoretically provide 18%+.
+              Using leverage. A standard 6-7% return leveraged two times would theoretically provide 18%+.
               But with such leverage volatility becomes too high, and a crisis would likely wipe out the
               capital, thus such returns are really illusory.
             </p>
