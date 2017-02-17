@@ -26,19 +26,19 @@ class Statistics extends React.Component {
 
           <div className="beside">
             <div className="left">
-              <p>
-                No text yet
-              </p>
+
             </div>
             <div className="right">
-              <p>
-                We specialize in high-probability investments – a high probability of long-term gain combined
-                with a low probability of loss. We prefer to buy good businesses at fair prices with a margin
-                of safety, shielding us from some downside, while enjoying the upside of owning businesses
-                that earn a meaningful return on capital.
-              </p>
+
             </div>
           </div>
+
+          <p>
+            We specialize in high-probability investments – a high probability of long-term gain combined
+            with a low probability of loss. We prefer to buy good businesses at fair prices with a margin
+            of safety, shielding us from some downside, while enjoying the upside of owning businesses
+            that earn a meaningful return on capital.
+          </p>
       </section>
     )
   }
