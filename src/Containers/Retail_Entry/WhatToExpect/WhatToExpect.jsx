@@ -84,7 +84,7 @@ class WhatToExpect extends React.Component {
         <div className="divider"/>
         <div className="beside">
           <p className="left">
-            Our stock recommendations are for the long term. The average holding period is 2.24 years. When you
+            Our recommendations are long term, the average holding period is 2.24 years. When you
             first buy a stock, the immediate price changes may well be random in the very short term. But over
             time the price will gradually come to reflect the value of the better choices we make.<br/><br/>
 

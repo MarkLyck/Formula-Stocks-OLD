@@ -89,28 +89,17 @@ const AboutUs = React.createClass({
 
         <div className="content">
           <p className="about-fs">
-            Formula Stocks started operations in 2003. Our concept centers around leveraging
-            decades of supercomputer experience, modern learning and decisionmaking technology,
-            business analytics to create an informational advantage in equity investing. We
-            specialize in being right far more often than we are wrong, using a novel
-            scientific approach and have accumulated extensive knowledge which can literaly be
-            found nowhere else.<br/><br/>
+            Formula Stocks started operations in 2003, leveraging decades of experience, cognitive computing
+            technology, business analytics and an array of technologies developed in-house to create an
+            informational advantage in equity investing. <br/><br/>
 
-            Previous to current operations the management team was responsible for the
-            successful development of LEGO's 3D building instruction suite of tools, used in
-            production of all LEGO A/S end user products world-wide. In the late 1980's to
-            early 1990's we helped the broadcasting and film industry transition from analog
-            to digital tools, and also introduced a wide range of generally available software
-            products.<br/><br/>
+            Previous to current operations the management team was responsible for the successful development
+            of LEGO's 3D building instruction suite of tools, used in production of all LEGO A/S end user
+            products world-wide. In the late 1980's to early 1990's we helped the broadcasting and motion
+            picture industry transition from analog to digital tools, and also introduced a wide range of
+            off-the-shelve software products.<br/><br/>
           </p>
           <ul className="team-list">
-            {/* <li className="team-member">
-              <img src={Mansion} alt="employee"/>
-              <div className="content">
-                <h3 className="name">Our headquarters</h3>
-                <h4>Mayor's mansion, Haderslev</h4>
-              </div>
-            </li> */}
             <li className="team-member" onClick={this.showModal.bind(this, 'Thomas')}>
               <img src={photos.Thomas} alt="employee"/>
               <div className="content">

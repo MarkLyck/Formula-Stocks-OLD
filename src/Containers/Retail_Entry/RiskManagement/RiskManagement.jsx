@@ -29,9 +29,8 @@ class RiskManagement extends React.Component {
           (0.89 * 65.97) - (0.11 * 18.32) = +56.95%. Taking an average of 2.24 years to achieve we can divide
           59.95 by 2.24 and get an expected annualized return of 26.76%.<br/><br/>
 
-          This is the expected return when 100% invested at all times. This is not always possible (good
-          investments are sometimes scarce), and leads to an 18.87% annual rate of growth. This is the
-          average performance of Entry as measured since 1970.
+          This is the expected return when 100% invested at all times. While not always possible (good 
+          investments can be scarce), it leads to an 18.87% annual rate of growth.
         </p>
       </section>
     )

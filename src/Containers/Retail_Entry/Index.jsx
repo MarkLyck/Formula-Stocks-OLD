@@ -8,21 +8,12 @@ import WhatIsIt from './WhatIsIt/WhatIsIt'
 import SingleLaunchPerformance from '../Global/Performance/SingleLaunchPerformance'
 import SingleBacktestedPerformance from '../Global/Performance/SingleBacktestedPerformance'
 import PerformanceMatters from './PerformanceMatters/PerformanceMatters'
-// import WhatYouGet from './WhatYouGet/WhatYouGet'
-// import RiskReward from '../Global/RiskReward/RiskReward'
-// import BacktestedPerformance from '../Global/Performance/BacktestedPerformance'
-// import OneDollar from './OneDollar/OneDollar'
-// import Pricing from '../Global/Pricing/Pricing'
 import PilotTest from '../Global/PilotTest/PilotTest'
 import FirstMonthOnUs from './FirstMonthOnUs/FirstMonthOnUs'
 import WhatToExpect from './WhatToExpect/WhatToExpect'
 import RiskManagement from './RiskManagement/RiskManagement'
-// import ScatterPlot from '../Global/ScatterPlot/ScatterPlot'
 import HowWeBeatTheMarket from './HowWeBeatTheMarket/HowWeBeatTheMarket'
 import Statistics from './Statistics/Statistics'
-import Quote from '../Global/Quote/Quote'
-// import Comparisons from '../Global/Comparisons/Comparisons'
-import CagrCalculator from '../Global/CagrCalculator/CagrCalculator'
 import AboutUs from '../Global/AboutUs/AboutUs'
 import IntendedAudience from './IntendedAudience/IntendedAudience'
 import BottomCTA from '../Global/BottomCTA/BottomCTA'
@@ -53,11 +44,9 @@ class Home extends React.Component {
         <WhatToExpect/>
         <PilotTest/>
         <SingleBacktestedPerformance plan="basic" name="Entry"/>
-        <RiskManagement/>
-        <HowWeBeatTheMarket/>
         <Statistics/>
-        {/* <Quote/>
-        <CagrCalculator/> */}
+        <HowWeBeatTheMarket/>
+        <RiskManagement/>
         <AboutUs/>
         <IntendedAudience/>
         <BottomCTA/>

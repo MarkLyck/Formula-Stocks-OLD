@@ -43,7 +43,7 @@ class Statistics extends React.Component {
               <p>
                 Recommendations and model portfolio are based on timeless and proven investment principles,
                 mathematical probabilities, and sound logic. The model portfolio has outperformed the S&P 500
-                in 66% of all years.
+                in 75% of all years.
               </p>
             </div>
           </div>

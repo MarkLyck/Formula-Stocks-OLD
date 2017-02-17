@@ -36,7 +36,7 @@ class SingleWinRateGraph extends React.Component {
           <div className="bar fs-bar" style={fsStyle}><p>{this.state.fs}%</p><p className="plan-name">{this.props.name}</p></div>
           <div className="sp-bar" style={marStyle}><p>{this.state.market}%</p><p className="plan-name">Market</p></div>
         </div>
-        <h3>Win/loss ratio</h3>
+        <h3>Win ratio</h3>
       </div>
     )
   }

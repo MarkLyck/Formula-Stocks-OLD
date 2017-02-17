@@ -8,11 +8,11 @@ import './heroSlider.css'
 
 
 import img_0 from './images/achieveGoals.jpg'
-import img_1 from './images/higherReturns.jpg'
-import img_2 from './images/2.jpg'
-import img_3 from './images/easyToUse.jpg'
-import img_4 from './images/4.jpg'
-import img_5 from './images/winRate.jpg'
+import img_1 from './images/speedster.jpg'
+import img_2 from './images/net.jpg'
+import img_3 from './images/family.jpg'
+import img_4 from './images/boat.jpg'
+import img_5 from './images/target.jpg'
 
 
 class Hero extends React.Component {
@@ -53,7 +53,7 @@ class Hero extends React.Component {
         <h1><span className="font bold">Less risk</span></h1>
         <h1><span className="font bold">Easy to use</span></h1>
         <h1><span className="font bold">Lower costs</span></h1>
-        <h1><span className="font bold">+89% win/loss ratio</span></h1>
+        <h1><span className="font bold">+89% win ratio</span></h1>
       </div>
     )
 
