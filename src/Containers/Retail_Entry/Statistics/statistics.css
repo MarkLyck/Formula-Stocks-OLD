@@ -1,7 +1,94 @@
+@import "../../variables.css";
+
 .statistics {
   .beside {
     > div {
-      max-width: 50%;
+      max-width: calc(50% - 24px);
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+  .beside:nth-child(even) {
+    margin-top: 24px;
+  }
+  .bar-graph {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    height: 320px;
+    .graph-beside {
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-end;
+      height: 100%;
+      .bar {
+        background: $primary-color;
+        width: 64px;
+        margin: 12px;
+        min-height: 45px;
+        transition: height 1s, transform 0.5s;
+        position: relative;
+        &:hover {
+          transform: scale(1.1);
+        }
+        p {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: rgba(255, 255, 255, 0.75);
+          width: 100%;
+          font-weight: 100;
+          height: 45px;
+          margin: 0;
+        }
+        .plan-name {
+          display: flex;
+          justify-content: center;
+          width: 60px;
+          position: absolute;
+          top: -40px;
+          background: none;
+        }
+      }
+      .bar.market {
+        background: $text-color;
+      }
+    }
+    .uneven {
+      flex-direction: column;
+      align-items: center;
+      .bar {
+        margin: 0;
+        transform: translateX(-32px);
+        &:hover {
+          transform: translateX(-32px);
+        }
+      }
+      .market {
+        transform: translateX(32px);
+        &:hover {
+          transform: translateX(32px);
+        }
+      }
+      .zero-line {
+        height: 1px;
+        background: $text-color;
+        width: 160px;
+      }
+      .negative {
+        display: flex;
+        p:first-child {
+          position: absolute;
+          bottom: 0;
+        }
+        .plan-name {
+          // top: auto;
+          // bottom: -40px;
+        }
+      }
     }
   }
 }
