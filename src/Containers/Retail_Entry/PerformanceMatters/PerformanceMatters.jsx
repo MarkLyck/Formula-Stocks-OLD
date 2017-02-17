@@ -34,8 +34,8 @@ class PerformanceMatters extends React.Component {
           <div className="option">
             <h3 className="semi-bold">Formula Stocks</h3>
             <p>
-              Using Formula Stocks Entry, 18% was the average return p.a. over the last 47 years. Zero
-              leverage keeps risks moderate for a $50 monthly subscription.
+              Using Formula Stocks Entry, 18% was the average return achievable p.a. over the last 47 years.
+              Zero leverage keeps risks moderate too.  A subscription is $50 monthly.
             </p>
           </div>
           <div className="option">

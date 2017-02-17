@@ -8,7 +8,7 @@ import './heroSlider.css'
 
 
 import img_0 from './images/achieveGoals.jpg'
-import img_1 from './images/HigherReturns.jpg'
+import img_1 from './images/higherReturns.jpg'
 import img_2 from './images/2.jpg'
 import img_3 from './images/easyToUse.jpg'
 import img_4 from './images/4.jpg'

@@ -1,0 +1,7 @@
+.statistics {
+  .beside {
+    > div {
+      max-width: 50%;
+    }
+  }
+}

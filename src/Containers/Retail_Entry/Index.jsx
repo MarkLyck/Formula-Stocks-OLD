@@ -19,6 +19,7 @@ import WhatToExpect from './WhatToExpect/WhatToExpect'
 import RiskManagement from './RiskManagement/RiskManagement'
 // import ScatterPlot from '../Global/ScatterPlot/ScatterPlot'
 import HowWeBeatTheMarket from './HowWeBeatTheMarket/HowWeBeatTheMarket'
+import Statistics from './Statistics/Statistics'
 import Quote from '../Global/Quote/Quote'
 // import Comparisons from '../Global/Comparisons/Comparisons'
 import CagrCalculator from '../Global/CagrCalculator/CagrCalculator'
@@ -54,6 +55,7 @@ class Home extends React.Component {
         <SingleBacktestedPerformance plan="basic" name="Entry"/>
         <RiskManagement/>
         <HowWeBeatTheMarket/>
+        <Statistics/>
         {/* <Quote/>
         <CagrCalculator/> */}
         <AboutUs/>
