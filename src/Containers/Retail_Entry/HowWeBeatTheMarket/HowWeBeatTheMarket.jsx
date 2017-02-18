@@ -12,8 +12,8 @@ class HowWeBeatTheMarket extends React.Component {
         <h2 className="title">How we beat the market</h2>
         <div className="divider"/>
         <p>
-          Formula Stocks uses a combination of many specific technologies developed over a 14- year period and
-          aimed to solve the conundrum put forth by Mark Twain:<br/><br/>
+          Formula Stocks uses a combination of many specific technologies developed over a 14- year period to
+          solve the conundrum put forth by Mark Twain:<br/><br/>
 
           ”Buy good quality common stocks that go up. If they do not go up, do not buy them”. While Twain said
           this tongue-in-cheek, it quite accurately encapsulates what Formula Stocks strives to do.<br/><br/>

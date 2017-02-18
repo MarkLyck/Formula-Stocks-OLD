@@ -25,7 +25,8 @@ class Introduction extends React.Component {
             Usually a fund product will provide you a risk adjusted, long-term return in this neighborhood. Or,
             if it is a better performing fund, demand very high fees.<br/><br/>
 
-            Sign up for a 30-day free trial to take it for a spin.
+            Join Formula Stocks to better your returns, save on fees, and moderate your risk. Sign up for a
+            30-day free trial to take it for a spin.
           </p>
           <div className="graph-container">
             <SingleWinRateGraph plan="basic" name="Entry"/>

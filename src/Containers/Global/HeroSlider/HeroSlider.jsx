@@ -10,8 +10,8 @@ import './heroSlider.css'
 import img_0 from './images/achieveGoals.jpg'
 import img_1 from './images/speedster.jpg'
 import img_2 from './images/net.jpg'
-import img_3 from './images/family.jpg'
-import img_4 from './images/boat.jpg'
+import img_3 from './images/boat.jpg'
+import img_4 from './images/family.jpg'
 import img_5 from './images/target.jpg'
 
 
