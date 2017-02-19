@@ -7,6 +7,7 @@ import Retail from './Containers/Retail/Index'
 import Retail_Entry from './Containers/Retail_Entry/Index'
 import Professional from './Containers/Pro/Index'
 import SignUp from './Containers/Modals/SignUp/SignUp'
+import SimpleSignUp from './Containers/Modals/SimpleSignUp/SignUp'
 import Login from './Containers/Modals/Login/Login'
 import FAQ from './Containers/Global/FAQ/FAQ'
 
@@ -31,7 +32,7 @@ const router = (
     </Route>
     <Route path="/basic" component={Retail_Entry}>
       <Route path="login" component={Login}/>
-      <Route path="signup" component={SignUp}/>
+      <Route path="signup" component={SimpleSignUp}/>
     </Route>
     <Route path="/pro" component={Professional}>
       <Route path="login" component={Login}/>

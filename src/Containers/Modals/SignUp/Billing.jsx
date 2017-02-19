@@ -62,7 +62,7 @@ class Billing extends React.Component {
       countryText = store.session.get('location').country_name
       countryCode = store.session.get('location').country_code
 
-      let country = _.where(countries, {value: countryCode})
+      let country = _.where(countries, { value: countryCode })
       if (country[0].taxPercent) {
         taxPercent = country[0].taxPercent
       }

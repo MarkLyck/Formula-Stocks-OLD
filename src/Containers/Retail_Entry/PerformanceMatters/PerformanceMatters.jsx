@@ -28,9 +28,17 @@ class PerformanceMatters extends React.Component {
 
           Certainty of any future rate of return is impossible, since the future has not happened yet.
           However, we could examine 3 different ways in which it might have been possible to obtain similar results
-          historically:
+          historically:<br/><br/>
+
+          1) Using leverage 2 times equity. That might have provided the return in good years, but a crisis
+          year likely would have destroyed the capital. Risk is simply too high.<br/><br/>
+          2) A hedge fund with 18% return from inception. This would likely indicate high fees, e.g. 2% of
+          capital + 20% of results. Implied leverage means a higher risk proposition.<br/><br/>
+
+          Or, you could simply have used Formula Stocks. 18% was the average return achievable the last 50
+          years. No leverage. Low fee.
         </p>
-        <div className="options">
+        {/* <div className="options">
           <div className="option">
             <h3 className="semi-bold">Formula Stocks</h3>
             <p>
@@ -55,7 +63,7 @@ class PerformanceMatters extends React.Component {
             </p>
           </div>
         </div>
-        <p>Formula Stocks offers better value, and more moderate risk.</p>
+        <p>Formula Stocks offers better value, and more moderate risk.</p> */}
       </section>
     )
   }

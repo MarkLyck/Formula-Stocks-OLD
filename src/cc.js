@@ -13,17 +13,6 @@ let cc = {
                     +s.charAt(i) +o }
     return (num<0?'-':'') + o + (parts[1] ? '.' + parts[1] : '')
   },
-  validateLocation(location) {
-    return new Promise((resolve, reject) => {
-      if (!location.country_code || !location.country_name) {
-        reject('Missing country')
-      } else if (!location.addressLine1) {
-        reject('Missing address')
-      } else {
-        resolve()
-      }
-    })
-  },
   validateNewLocation(country, city, zip, address) {
     return new Promise((resolve, reject) => {
       if (!country) {
