@@ -40,7 +40,7 @@ class AccountInfo extends React.Component {
   }
 
   calculateTax(countryCode) {
-    cc.calculateTax(countryCode).then((tax) => {
+    cc.calculateTax(countryCode).then(tax => {
       this.setState({ taxPercent: tax })
     })
   }
@@ -60,12 +60,20 @@ class AccountInfo extends React.Component {
   validateAddress() {
     return new Promise((resolve, reject) => {
       const country = _.where(countries, { value: this.state.countryCode })
-      if (!country[0] && this.state.countryCode) {
-        resolve()
-      } else if (country[0]) {
-        cc.validateNewLocation(this.state.countryCode, this.refs.city.value, this.refs.zip.value, this.refs.address.value)
-        .then(resolve)
-        .catch(reject)
+      if (country[0]) {
+        cc.calculateTax(this.state.countryCode).then(tax => {
+          if (!tax) {
+            // If country isn't taxable
+            resolve()
+          } else {
+            // If country is taxable
+            cc.validateNewLocation(this.state.countryCode, this.refs.city.value, this.refs.zip.value, this.refs.address.value)
+            .then(resolve)
+            .catch(error => {
+              reject(error)
+            })
+          }
+        })
       } else {
         reject('Select your country')
       }
@@ -88,7 +96,10 @@ class AccountInfo extends React.Component {
             store.session.set('email', email)
             store.session.set('password', password)
             this.validateAddress()
-            .then(this.props.nextPage)
+            .then(() => {
+              this.props.setTax(this.state.taxPercent)
+              this.props.nextPage()
+            })
             .catch(error => {
               store.isSubmitting = false
               this.setState({ error: error, errorType: 'address', validating: false })

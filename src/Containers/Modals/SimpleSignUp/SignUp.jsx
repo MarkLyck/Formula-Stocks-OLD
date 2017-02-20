@@ -2,17 +2,10 @@ import React from 'react'
 import store from '../../../store.js'
 import { browserHistory } from 'react-router'
 import AccountInfo from './AccountInfo'
+import Billing from './Billing'
 
 import '../modal.css'
 import './signup.css'
-
-function formatPrice(value) {
-  while(/(\d+)(\d{3})/.test(value.toString())) {
-    // eslint-disable-next-line
-    value = value.toString().replace(/(\d+)(\d{3})/, '$1' + ',' + '$2')
-  }
-  return value
-}
 
 class SignUp extends React.Component {
   constructor(props) {
@@ -20,8 +13,10 @@ class SignUp extends React.Component {
 
     this.closeModal = this.closeModal.bind(this)
     this.renderContent = this.renderContent.bind(this)
+    this.setTax = this.setTax.bind(this)
+    this.nextPage = this.nextPage.bind(this)
 
-    this.state = { page: 1 }
+    this.state = { page: 2, tax: 0 }
   }
 
   closeModal(e) {
@@ -35,11 +30,16 @@ class SignUp extends React.Component {
   }
 
   nextPage() {
-    console.log('next page')
+    this.setState({ page: 2 })
+  }
+
+  setTax(tax) {
+    this.setState({ tax: tax })
   }
 
   renderContent() {
-    if (this.state.page === 1) { return <AccountInfo nextPage={this.nextPage}/> }
+    if (this.state.page === 1) { return <AccountInfo nextPage={this.nextPage} setTax={this.setTax}/> }
+    else { return <Billing tax={this.state.tax} plan="basic"/> }
   }
 
   render() {

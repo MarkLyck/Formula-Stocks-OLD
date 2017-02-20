@@ -21,8 +21,11 @@
   width: 100%;
   max-width: calc(320px + 64px);
   box-sizing: border-box;
+  overflow-y: auto;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
   .title {
     margin: 16px 0;
+    align-self: flex-start;
   }
   .close-btn {
     position: absolute;
@@ -31,6 +34,12 @@
     z-index: 1001;
     i {
       font-size: 1.5rem;
+    }
+    &:hover {
+      background: none;
+      i {
+        color: $warning-color;
+      }
     }
   }
   input {
@@ -50,6 +59,7 @@
     margin-bottom: 4px;
     color: $warning-color;
     font-weight: 300;
+    align-self: flex-start;
   }
   .icon-input {
     position: relative;
@@ -160,5 +170,21 @@
     position: absolute;
     top: 100%;
     width: 100%;
+  }
+}
+
+.simple-billing {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .icon-input {
+    width: 100%;
+  }
+  .description, .price {
+    margin: 0;
+    margin-bottom: 16px;
+  }
+  .pay-button {
+    margin: 0;
   }
 }
