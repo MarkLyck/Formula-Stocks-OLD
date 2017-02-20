@@ -10,80 +10,79 @@
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.signup-modal {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  background: #fff;
-  padding: 16px 32px;
-  width: 100%;
-  max-width: calc(320px + 64px);
-  box-sizing: border-box;
-  overflow-y: auto;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-  .title {
-    margin: 16px 0;
-    align-self: flex-start;
-  }
-  .close-btn {
-    position: absolute;
-    top: 16px;
-    right: 16px;
-    z-index: 1001;
-    i {
-      font-size: 1.5rem;
-    }
-    &:hover {
-      background: none;
-      i {
-        color: $warning-color;
-      }
-    }
-  }
-  input {
-    border: 1px solid #dedede;
-    border-radius: 4px;
-    padding: 16px;
-    margin-bottom: 16px;
-    width: 100%;
-  }
-  input[type="submit"], button {
-    &:hover {
-      background: color($primary-color lightness(-10%));
-    }
-  }
-  .error-text {
-    margin: 0;
-    margin-bottom: 4px;
-    color: $warning-color;
-    font-weight: 300;
-    align-self: flex-start;
-  }
-  .icon-input {
+  .signup-modal {
+    display: flex;
+    flex-direction: column;
     position: relative;
-    input {
-      padding-left: 48px;
-      width: 100%;
-      &:focus {
-        border-color: $primary-color;
+    background: #fff;
+    padding: 16px 32px;
+    width: 100%;
+    max-width: calc(320px + 64px);
+    box-sizing: border-box;
+    overflow-y: auto;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    .title {
+      margin: 16px 0;
+      align-self: flex-start;
+    }
+    .close-btn {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      z-index: 1001;
+      i {
+        font-size: 1.5rem;
+      }
+      &:hover {
+        background: none;
+        i {
+          color: $warning-color;
+        }
       }
     }
-    i {
-      position: absolute;
-      left: 16px;
-      top: 50%;
-      transform: translateY(-100%);
-      color: #737373;
+    input {
+      border: 1px solid #dedede;
+      border-radius: 4px;
+      padding: 16px;
+      margin-bottom: 16px;
+      width: 100%;
     }
-  }
-  .red-outline {
-    border-color: $warning-color;
-  }
-  .beside {
-    > div  {
-      width: calc(50% - 8px);
+    input[type="submit"], button {
+      &:hover {
+        background: color($primary-color lightness(-10%));
+      }
+    }
+    .error-text {
+      margin: 0;
+      margin-bottom: 4px;
+      color: $warning-color;
+      font-weight: 300;
+      align-self: flex-start;
+    }
+    .icon-input {
+      position: relative;
+      input {
+        padding-left: 48px;
+        width: 100%;
+        &:focus {
+          border-color: $primary-color;
+        }
+      }
+      i {
+        position: absolute;
+        left: 16px;
+        top: 50%;
+        transform: translateY(-100%);
+        color: #737373;
+      }
+    }
+    .red-outline {
+      border-color: $warning-color;
+    }
+    .beside {
+      > div  {
+        width: calc(50% - 8px);
+      }
     }
   }
 }

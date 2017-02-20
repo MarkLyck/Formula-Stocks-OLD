@@ -32,8 +32,8 @@ class PerformanceMatters extends React.Component {
 
           1) Using leverage 2 times equity. That might have provided the return in good years, but a crisis
           year likely would have destroyed the capital. Risk is simply too high.<br/><br/>
-          2) A hedge fund with 18% return from inception. This would likely indicate high fees, e.g. 2% of
-          capital + 20% of results. Implied leverage means a higher risk proposition.<br/><br/>
+          2) A hedge fund with 18% return from inception, likely indicates high fees, e.g. 2% of capital + 20%
+          of results. Implied leverage means a higher risk proposition.<br/><br/>
 
           Or, you could simply have used Formula Stocks. 18% was the average return achievable the last 50
           years. No leverage. Low fee.

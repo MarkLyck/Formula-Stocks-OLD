@@ -16,7 +16,7 @@ class SignUp extends React.Component {
     this.setTax = this.setTax.bind(this)
     this.nextPage = this.nextPage.bind(this)
 
-    this.state = { page: 2, tax: 0 }
+    this.state = { page: 1, tax: 0 }
   }
 
   closeModal(e) {
