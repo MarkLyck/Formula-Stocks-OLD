@@ -31,7 +31,7 @@ class PerformanceMatters extends React.Component {
           historically:<br/><br/>
 
           1) Using leverage 2 times equity. That might have provided the return in good years, but a crisis
-          year likely would have destroyed the capital. Risk is simply too high.<br/><br/>
+          year likely would have destroyed the capital. Risk is simply too high.<br/>
           2) A hedge fund with 18% return from inception, likely indicates high fees, e.g. 2% of capital + 20%
           of results. Implied leverage means a higher risk proposition.<br/><br/>
 
