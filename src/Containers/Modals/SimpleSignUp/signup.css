@@ -19,7 +19,6 @@
     width: 100%;
     max-width: calc(320px + 64px);
     box-sizing: border-box;
-    overflow-y: auto;
     box-shadow: 0 2px 8px rgba(0,0,0,0.2);
     .title {
       margin: 16px 0;
@@ -84,6 +83,30 @@
         width: calc(50% - 8px);
       }
     }
+
+
+    .simple-billing {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      .icon-input {
+        width: 100%;
+      }
+      .description, .price {
+        margin: 0;
+        margin-bottom: 16px;
+      }
+      .pay-button {
+        margin: 0;
+      }
+      .beside {
+        > div  {
+          width: calc(50% - 8px);
+        }
+      }
+    }
+
+
   }
 }
 
@@ -170,20 +193,5 @@
     top: 100%;
     width: 100%;
   }
-}
 
-.simple-billing {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  .icon-input {
-    width: 100%;
-  }
-  .description, .price {
-    margin: 0;
-    margin-bottom: 16px;
-  }
-  .pay-button {
-    margin: 0;
-  }
 }

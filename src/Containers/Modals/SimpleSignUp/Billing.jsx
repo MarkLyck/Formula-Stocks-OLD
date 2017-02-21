@@ -22,13 +22,18 @@ class Billing extends React.Component {
     this.submit = this.submit.bind(this)
 
     const plan = store.plans.get(this.props.plan).toJSON()
+    const cycle = plan.name !== 'business' || plan.name !== 'fund' ? ' monthly' : ' annually'
 
     this.state = {
       error: '',
       errorType: '',
       showTerms: false,
       price: plan.price,
-      validatingPayment: false
+      validatingPayment: false,
+      discount: 0,
+      coupon: '',
+      cycle: cycle,
+      planName: plan.name
     }
   }
 
@@ -40,7 +45,7 @@ class Billing extends React.Component {
 
   createCustomer(token) {
     store.session.set('name', this.refs.name.value)
-    cc.createCustomer2(token, this.props.selected, this.state.cycle, this.state.taxPercent, this.state.coupon.code)
+    cc.createCustomer2(token, this.state.planName, this.state.cycle, this.props.tax, this.state.coupon.code)
     .then(() => {
       console.log('||| SUCCESFUL PAYMENT |||')
       store.isSubmitting = false
@@ -78,10 +83,9 @@ class Billing extends React.Component {
   }
 
   render() {
-    console.log(this.state.error);
     const nameClass = this.state.error.indexOf('name') > -1 ? 'red-outline' : ''
     const cardNumberClass = this.state.error.indexOf('card number') > -1 ? 'red-outline' : ''
-    const expiryClass = this.state.error.indexOf('expiry') > -1 ? 'red-outline' : ''
+    const expiryClass = this.state.error.indexOf('expi') > -1 ? 'red-outline' : ''
     const cvcClass = this.state.error.indexOf('security') > -1 ? 'red-outline' : ''
 
     return (

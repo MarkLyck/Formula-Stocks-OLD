@@ -24,12 +24,11 @@ class Hero extends React.Component {
   }
 
   preStringTyped() {
-    if (!this.state.firstLoad) {
+    if (!this.state.firstLoad && this.slider) {
       this.slider.slickNext()
     } else {
       this.setState({ firstLoad: false })
     }
-
   }
 
   componentDidMount() {
