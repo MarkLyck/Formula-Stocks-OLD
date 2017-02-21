@@ -50,3 +50,20 @@
     }
   }
 }
+
+@media (max-width: 1090px) {
+  .what-to-expect {
+    .beside {
+      .screen {
+        margin: 0 auto;
+        margin-bottom: 16px;
+        width: 80%;
+        height: auto;
+        position: relative;
+      }
+      .left {
+        width: 100%;
+      }
+    }
+  }
+}

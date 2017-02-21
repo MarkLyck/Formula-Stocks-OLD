@@ -21,7 +21,7 @@ const Session = Backbone.Model.extend({
     visits: 0,
     browser: platform.name,
     os: platform.os.family,
-    prodcut: platform.product,
+    product: platform.product,
     device: '',
     cancelReason: ''
   },

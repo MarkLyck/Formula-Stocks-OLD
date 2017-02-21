@@ -9,7 +9,7 @@ class Introduction extends React.Component {
         <h2 className="title">Invest intelligently</h2>
         <div className="divider"/>
         <div className="beside">
-          <p className="intro-text">
+          <p className="intro-text left">
             Formula Stocks offers a better way to invest. It estimates for you which stocks will go up, before
             they go up. Historically, 89% of the times that we have made such an estimate, it has proven
             successful in the long run.<br/><br/>
@@ -20,11 +20,13 @@ class Introduction extends React.Component {
             The nature of all things future is, that we cannot promise a given return. We can promise better
             odds, and let the past speak for itself. In 2016 Entry returned +43.63%. Since 2009 average
             returns have been 22.56% per year.<br/><br/>
-
+          </p>
+          <p className="left">
             Typically, when you invest in stocks, your basic expectation is to receive 6-7% p.a. on average.
             Usually a fund product will provide you a risk adjusted, long-term return in this neighborhood. Or,
-            if it is a better performing fund, demand very high fees.<br/><br/>
-
+            if it is a better performing fund, demand very high fees.
+          </p>
+          <p className="left">
             Join Formula Stocks to better your returns, save on fees, and moderate your risk. Sign up for a
             30-day free trial to take it for a spin.
           </p>

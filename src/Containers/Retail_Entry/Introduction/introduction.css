@@ -1,25 +1,54 @@
 .introduction {
+
   h2 {
     margin-top: 0;
   }
   p {
     margin-top: 0;
   }
+
+  .beside {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+
+  }
+  .left {
+    margin-right: 200px;
+  }
   .graph-container {
+    position: absolute;
+    top: 0;
+    right: 0;
     margin-left: 32px;
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 1100px) {
   .introduction {
-    .beside {
-      flex-direction: column;
-      align-items: center;
-      .graph-container {
-        margin-top: 32px;
-        margin-left: 0;
-        max-width: 100%;
-      }
+    .left:nth-child(3) {
+      margin-right: 0;
+    }
+  }
+}
+
+@media (max-width: 815px) {
+  .introduction {
+    .left:nth-child(2) {
+      margin-right: 0;
+    }
+  }
+}
+
+@media (max-width: 700px) {
+  .introduction {
+    .left {
+      margin-right: 0;
+    }
+    .graph-container {
+      position: relative;
+      margin: 0;
+      margin-top: 16px;
     }
   }
 }

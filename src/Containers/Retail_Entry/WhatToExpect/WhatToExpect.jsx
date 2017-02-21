@@ -89,13 +89,14 @@ class WhatToExpect extends React.Component {
             time the price will gradually come to reflect the value of the better choices we make.<br/><br/>
 
             Our Entry product has picked succesful investments 89% of the time. This compares to 59% for a
-            typical stock product or market index.<br/><br/>
-
+            typical stock product or market index.
+          </p>
+          <img src={PortfolioScreen} className="screen" alt="portfolio"/>
+          <p className="left math-expectation">
             The mathematical expectation from a Formula Stock's selection is very well defined, and has
             above-average odds of succes, higher than normal return characteristics, and a lower than average
             risk. This has been fully reflected in our actual results.
           </p>
-          <img src={PortfolioScreen} className="screen" alt="portfolio"/>
           <p>
             If you choose to use Formula Stocks consistently, diversified, and for a number of years, odds are
             extremely good that you will obtain better returns than offered by most investment methods.<br/><br/>
