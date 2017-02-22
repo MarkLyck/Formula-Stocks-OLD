@@ -3,7 +3,7 @@ import { Router, Route, IndexRoute } from 'react-router'
 
 import store from './store'
 
-import Retail from './Containers/Retail/Index'
+// import Retail from './Containers/Retail/Index'
 import Retail_Entry from './Containers/Retail_Entry/Index'
 import Professional from './Containers/Pro/Index'
 import SignUp from './Containers/Modals/SignUp/SignUp'
@@ -26,9 +26,13 @@ import NotFound from './Containers/Global/NotFound/NotFound'
 
 const router = (
   <Router history={store.settings.history} onUpdate={() => window.scrollTo(0, 0)}>
-    <Route path="/" component={Retail}>
+    {/* <Route path="/" component={Retail}>
       <Route path="login" component={Login}/>
       <Route path="signup" component={SignUp}/>
+    </Route> */}
+    <Route path="/" component={Retail_Entry}>
+      <Route path="login" component={Login}/>
+      <Route path="signup" component={SimpleSignUp}/>
     </Route>
     <Route path="/basic" component={Retail_Entry}>
       <Route path="login" component={Login}/>
