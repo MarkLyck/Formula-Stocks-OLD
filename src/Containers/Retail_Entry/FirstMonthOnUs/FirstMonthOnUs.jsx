@@ -9,10 +9,10 @@ class FirstMonthOnUs extends React.Component {
     return (
       <section className="first-month-on-us section">
         <Element name="pricing"/>
-        <h2 className="title">The first month is on us</h2>
+        <h2 className="title">Sign up to better your returns</h2>
         <div className="divider"/>
         <p>
-          Formula Stocks is simply a smarter way to invest. Better your returns with lower risk
+          If you decide Formula Stocks isn't for you - no problem you can cancel online at any time.
         </p>
         <h2 className="cost">$50 monthly after 30 days</h2>
         <Link to="/signup" className="signup-cta">Join free for a month</Link>
