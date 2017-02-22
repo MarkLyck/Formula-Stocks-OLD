@@ -22,7 +22,7 @@ class Introduction extends React.Component {
 
             The nature of all things future is, that we cannot promise a given return. We can promise better
             odds, and let the past speak for itself. In 2016 Entry returned +43.63%. Since 2009 average
-            returns have been 22.56% per year.<br/><br/>
+            returns have been 22.56% per year.
           </p>
           <p className="left">
             Typically, when you invest in stocks, your basic expectation is to receive 6-7% p.a. on average.
