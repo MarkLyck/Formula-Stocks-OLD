@@ -92,3 +92,26 @@
     }
   }
 }
+
+@media (max-width: 700px) {
+  .statistics {
+    .beside {
+      flex-direction: column;
+      > div {
+        margin-top: 0;
+        width: 100%;
+        max-width: 100%;
+      }
+      .graph-beside {
+        margin-top: 16px;
+      }
+      .winrate-graph {
+        display: none;
+      }
+    }
+    .beside:nth-child(even) {
+      margin-top: 0;
+    }
+  }
+
+}

@@ -59,7 +59,7 @@ class Statistics extends React.Component {
                 <h3>Avg. win/loss per stock</h3>
               </div>
             </div>
-            <div className="right">
+            <div className="right winrate-graph">
               <div className="bar-graph">
                 <div className="graph-beside">
                   <div className="bar fs-bar" style={fsWinRate}><p>{this.state.winRate}%</p><p className="plan-name">Wins</p></div>

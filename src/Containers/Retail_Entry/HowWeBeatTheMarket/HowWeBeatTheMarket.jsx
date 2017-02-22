@@ -1,4 +1,5 @@
 import React from 'react'
+import Scroll from 'react-scroll'
 import './howToBeatTheMarket.css'
 import brochure from '../../Global/brochure.pdf'
 
@@ -7,8 +8,10 @@ class HowWeBeatTheMarket extends React.Component {
     window.open(brochure)
   }
   render() {
+    const Element = Scroll.Element
     return (
       <section className="how-to-beat-the-market section">
+        <Element name="howItWorks"/>
         <h2 className="title">How we beat the market</h2>
         <div className="divider"/>
         <p>

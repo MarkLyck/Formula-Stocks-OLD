@@ -41,7 +41,7 @@ class NavBar extends React.Component {
       </div>)
     }
     return (<div className="left">
-      <button onClick={this.selectPlan.bind(this, 'basic')} className={`plan ${this.state.selected === 'basic' ? 'selected' : ''}`}>Basic</button>
+      <button onClick={this.selectPlan.bind(this, 'basic')} className={`plan ${this.state.selected === 'basic' ? 'selected' : ''}`}>Entry</button>
       <button onClick={this.selectPlan.bind(this, 'premium')} className={`plan ${this.state.selected === 'premium' ? 'selected' : ''}`}>Premium</button>
       <button onClick={this.selectPlan.bind(this, 'business')} className={`plan ${this.state.selected === 'business' ? 'selected' : ''}`}>Business</button>
       <button onClick={this.selectPlan.bind(this, 'fund')} className={`plan ${this.state.selected === 'fund' ? 'selected' : ''}`}>Fund</button>

@@ -35,7 +35,7 @@ class PerformanceMatters extends React.Component {
           2) A hedge fund with 18% return from inception, likely indicates high fees, e.g. 2% of capital + 20%
           of results. Implied leverage means a higher risk proposition.<br/><br/>
 
-          Or, you could simply have used Formula Stocks. 18% was the average return achievable the last 50
+          Or, you could simply have used Formula Stocks. 18% was the average return over the last 50
           years. No leverage. Low fee.
         </p>
         {/* <div className="options">

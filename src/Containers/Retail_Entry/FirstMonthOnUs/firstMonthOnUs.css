@@ -7,8 +7,10 @@
   h1 {
     margin-top: 24px;
   }
+  .cost {
+    font-size: 1.5rem;
+  }
   .signup-cta {
-
     padding: 16px 24px;
     background: $action-color;
     color: #fff;

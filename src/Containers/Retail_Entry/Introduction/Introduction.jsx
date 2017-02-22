@@ -1,11 +1,14 @@
 import React from 'react'
+import Scroll from 'react-scroll'
 import SingleWinRateGraph from '../../Global/Components/WinRateGraph/SingleWinRateGraph'
 import './introduction.css'
 
 class Introduction extends React.Component {
   render() {
+    const Element = Scroll.Element
     return (
       <section className="introduction section">
+        <Element name="whatIsIt"/>
         <h2 className="title">Invest intelligently</h2>
         <div className="divider"/>
         <div className="beside">

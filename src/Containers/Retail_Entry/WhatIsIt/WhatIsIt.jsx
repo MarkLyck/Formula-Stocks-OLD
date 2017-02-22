@@ -1,5 +1,5 @@
 import React from 'react'
-import Screenshot from './Suggestions.png'
+import Screenshot from './Suggestions.jpg'
 import './whatIsIt.css'
 
 class WhatYouGet extends React.Component {

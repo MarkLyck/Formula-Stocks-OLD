@@ -57,11 +57,13 @@ class User extends React.Component {
     if (this.props.user.username === 'demo@formulastocks.com') {
       type = "Demo"
     } else if (this.props.user.type === 1 && this.props.user.stripe) {
-      if (this.props.user.stripe.subscriptions.total_count) {
-        if ((this.props.user.stripe.subscriptions.data[0].status !== 'trialing'
-            || this.props.user.stripe.subscriptions.data[0].current_period_end < moment().unix())
-            && this.props.user.type === 1) {
-          type = "Basic"
+      if (this.props.user.stripe.subscriptions) {
+        if (this.props.user.stripe.subscriptions.total_count) {
+          if ((this.props.user.stripe.subscriptions.data[0].status !== 'trialing'
+              || this.props.user.stripe.subscriptions.data[0].current_period_end < moment().unix())
+              && this.props.user.type === 1) {
+            type = "Basic"
+          }
         }
       }
     } else if (this.props.user.type === 2) {
@@ -74,12 +76,14 @@ class User extends React.Component {
       type = "Unsubscribed"
     }
     if (this.props.user.stripe) {
-      if (this.props.user.stripe.subscriptions.data) {
-        if (this.props.user.stripe.subscriptions.data[0].canceled_at && this.props.user.username !== 'demo@formulastocks.com') {
-          type = "Cancelled"
+      if (this.props.user.stripe.subscriptions) {
+        if (this.props.user.stripe.subscriptions.data) {
+          if (this.props.user.stripe.subscriptions.data[0].canceled_at && this.props.user.username !== 'demo@formulastocks.com') {
+            type = "Cancelled"
+          }
+        } else if (this.props.user.stripe.delinquent) {
+          type = "Delinquent"
         }
-      } else if (this.props.user.stripe.delinquent) {
-        type = "Delinquent"
       }
     }
 
