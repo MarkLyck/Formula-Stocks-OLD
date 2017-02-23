@@ -30,7 +30,7 @@ class Introduction extends React.Component {
             if it is a better performing fund, demand very high fees.
           </p>
           <p className="left">
-            Join Formula Stocks to better your returns, save on fees, and moderate your risk. Sign up for a
+            Join to better your returns, save on fees, and moderate your risk. Sign up for a
             30-day free trial to take it for a spin.
           </p>
           <div className="graph-container">

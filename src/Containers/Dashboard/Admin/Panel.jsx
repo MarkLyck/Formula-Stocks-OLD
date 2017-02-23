@@ -6,7 +6,7 @@ import $ from 'jquery'
 import admin from '../../../admin'
 import AdminPanelHeader from './Headers'
 import VisitorList from './VisitorList'
-import VisitorMap from './VisitorMap'
+// import VisitorMap from './VisitorMap'
 
 import DAUGraph from './DAUGraph'
 import PieChart from '../../Global/Components/PieChart/PieChart'
@@ -62,29 +62,29 @@ class AdminPanel extends React.Component {
 
   render() {
 
-    let mapImages = []
-
-    mapImages = this.state.visitors.map(visitor => {
-      let color = 'rgba(18, 217, 158, 0.5)'
-      if (visitor.type === 4)
-        color = '#da1354'
-      else if (visitor.type > 0 && visitor.type < 5)
-        color = '#27A5F9'
-      else if (moment().format('YYYYMMDD') - moment(visitor._kmd.lmt).format('YYYYMMDD') <= 1)
-        color = '#f9f027'
-
-      return({
-        "type": "circle",
-        "theme": "light",
-
-        "width": 6,
-        "height": 6,
-        "color": color,
-        "longitude": visitor.location.longitude,
-        "latitude": visitor.location.latitude,
-        "title": `${visitor.location.country_name}<br/>${visitor.location.city}<br/>${moment(visitor._kmd.lmt).fromNow()}`,
-      });
-    })
+    // let mapImages = []
+    //
+    // mapImages = this.state.visitors.map(visitor => {
+    //   let color = 'rgba(18, 217, 158, 0.5)'
+    //   if (visitor.type === 4)
+    //     color = '#da1354'
+    //   else if (visitor.type > 0 && visitor.type < 5)
+    //     color = '#27A5F9'
+    //   else if (moment().format('YYYYMMDD') - moment(visitor._kmd.lmt).format('YYYYMMDD') <= 1)
+    //     color = '#f9f027'
+    //
+    //   return({
+    //     "type": "circle",
+    //     "theme": "light",
+    //
+    //     "width": 6,
+    //     "height": 6,
+    //     "color": color,
+    //     "longitude": visitor.location.longitude,
+    //     "latitude": visitor.location.latitude,
+    //     "title": `${visitor.location.country_name}<br/>${visitor.location.city}<br/>${moment(visitor._kmd.lmt).fromNow()}`,
+    //   });
+    // })
 
     const browserColors = []
     // const browsers = []
@@ -128,6 +128,7 @@ class AdminPanel extends React.Component {
       let foundIndex = -1
       if (_.find(prev, (os, i) => {
         foundIndex = i
+        if (!visitor.os) { return prev }
         return os.title === visitor.os
         || (os.title === 'Linux' && visitor.os.indexOf('Ubuntu') > -1)
         || (os.title === 'Windows' && visitor.os.indexOf('Windows') > -1)})) {
@@ -169,9 +170,9 @@ class AdminPanel extends React.Component {
       <div className="admin-panel">
         <AdminPanelHeader/>
         <div className="unqiue-visiotrs">
-          <div className="visitor-map">
+          {/* <div className="visitor-map">
             <VisitorMap images={mapImages}/>
-          </div>
+          </div> */}
         </div>
         <div className="DAU-container">
           <h2>Daily Visitors</h2>
@@ -190,7 +191,7 @@ class AdminPanel extends React.Component {
           <h2>Latest visitors</h2>
           <VisitorList visitors={this.state.visitors.slice(1).slice(-30).reverse()}/>
         </div>
-        {/* <button onClick={this.cleanVisits}>Clean visits</button> */}
+        <button onClick={this.cleanVisits}>Clean visits</button>
       </div>
     )
   }
