@@ -16,10 +16,10 @@ class HowWeBeatTheMarket extends React.Component {
         <div className="divider"/>
         <p>
           Formula Stocks uses a combination of many specific technologies developed over a 14- year period to
-          solve the conundrum put forth by Mark Twain:<br/><br/>
+          do as Mark Twain originally suggested:<br/><br/>
 
           ”Buy good quality common stocks that go up. If they do not go up, do not buy them”. While Twain said
-          this tongue-in-cheek, it quite accurately encapsulates what Formula Stocks strives to do.<br/><br/>
+          this tongue-in-cheek, it encapsulates what Formula Stocks strives to do.<br/><br/>
 
           We identify stocks that go up, before they go up, with a 89-92% probability of being correct.
           Some of the techniques employed include in no specific order:
