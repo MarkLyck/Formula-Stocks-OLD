@@ -24,7 +24,7 @@ class Breadcrumbs extends React.Component {
   }
 
   render() {
-    const planName = store.selectedPlan
+    let planName = store.selectedPlan
 
     let page
     if (this.props.location.indexOf('portfolio') > -1 || this.props.location === '/dashboard') {
@@ -56,6 +56,8 @@ class Breadcrumbs extends React.Component {
         lastUpdatedTag = <p>Prices updated - <span className="semi-bold">yesterday</span>, Last rebalanced - <span className="semi-bold">{lastRebalanced}</span></p>
       }
     }
+
+    if (planName === "basic") { planName = "entry" }
 
 
     return (

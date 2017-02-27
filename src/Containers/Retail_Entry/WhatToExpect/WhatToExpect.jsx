@@ -18,14 +18,14 @@ class WhatToExpect extends React.Component {
         {
           name: 'Brocade Communications Systems',
           ticker: 'BRCD',
-          purchase_price: 9.25,
-          sell_price: 12.47
+          purchase_price: 9.24,
+          sell_price: 12.33
         },
         {
           name: 'Western Digital Corporation',
           ticker: 'WDC',
-          purchase_price: 42.90,
-          sell_price: 79.73
+          purchase_price: 42.81,
+          sell_price: 74.65
         },
         {
           name: 'National presto ind.',
