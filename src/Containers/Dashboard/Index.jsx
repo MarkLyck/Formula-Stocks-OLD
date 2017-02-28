@@ -27,6 +27,7 @@ class Dashboard extends React.Component {
   }
 
   componentDidMount() {
+    window.Intercom("shutdown")
     store.session.on('change', this.updateState)
   }
 
