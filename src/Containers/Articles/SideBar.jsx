@@ -20,7 +20,16 @@ class ArticleSideBar extends React.Component {
 
   renderArticles() {
     const articles = _.sortBy(this.props.articles, (art) => art._kmd.ect).reverse()
-    return articles.map((article, i) => {
+    return articles
+    .filter((article, i) => {
+      if (this.props.location.indexOf('dashboard') > -1) {
+        return article.publicOnly ? false : true
+      } else {
+        return article.membersOnly ? false : true
+      }
+    })
+    .map((article, i) => {
+      console.log(article);
       const preview = article.body.substring(0,120).replace(`\n`, '').split('![')[0]
       let html_content = markdown.toHTML( preview )
       .replaceAll('&amp;', '&')

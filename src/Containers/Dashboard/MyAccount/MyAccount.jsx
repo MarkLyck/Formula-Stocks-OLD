@@ -27,6 +27,8 @@ class MyAccount extends React.Component {
       currPlan = currPlan.slice(0, currPlan.indexOf('-'))
     } else { currPlan = 'unsubscribed' }
 
+    if (currPlan === 'basic') { currPlan = "entry" }
+
     this.state = { selectedPlan: false, showModal: false, charging: false, currPlan: currPlan }
   }
 
@@ -193,8 +195,8 @@ class MyAccount extends React.Component {
           <h3 className="db-heading">My account</h3>
           <div className="db-card">
             <h3 className="name">{store.session.get('name')}</h3>
-            <h3 className="capitalize"><i className="fa fa-flask" aria-hidden="true"></i>{currPlan}</h3>
-            <h3 className="email"><i className="fa fa-envelope" aria-hidden="true"></i>{store.session.get('email')}</h3>
+            <h3 className="capitalize">{currPlan}</h3>
+            <h3 className="email">{store.session.get('email')}</h3>
             {/* <h3 className="billing-date white-color"><i className="fa fa-calendar white-color" aria-hidden="true"></i>Next billing date: {moment.unix(store.session.get('stripe').subscriptions.data[0].current_period_end).format('MMMM Do YYYY')}</h3> */}
           </div>
         </div>

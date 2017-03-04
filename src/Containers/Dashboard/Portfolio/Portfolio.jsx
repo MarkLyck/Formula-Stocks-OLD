@@ -238,7 +238,7 @@ class Portfolio extends React.Component {
           <div className="right">
 
             <div className="fs stats">
-              <h3 className="fs-plan blue-color"><span className="capitalize">{this.state.plan}</span> formula</h3>
+              <h3 className="fs-plan blue-color"><span className="capitalize">{this.state.plan !== 'basic' ? this.state.plan : 'entry' }</span> formula</h3>
               <div className="wrapper">
                 <i className="fa fa-caret-up" aria-hidden="true"></i>
                 <p><span className="blue-color number">{FSPercent}%</span> since 2009</p>

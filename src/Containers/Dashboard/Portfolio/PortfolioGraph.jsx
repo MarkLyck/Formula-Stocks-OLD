@@ -52,6 +52,8 @@ class PortfolioGraph extends React.Component {
     let maximum = Number(_.max(fixedData, (point) => Number(point.fs)).fs)
     maximum = Math.ceil(maximum) + 50
 
+    let planName = this.props.plan !== 'basic' ? this.props.plan : 'entry'
+
     const graphs = [
         {
           "id": "portfolio",
@@ -66,7 +68,7 @@ class PortfolioGraph extends React.Component {
           "title": "red line",
           "useLineColorForBulletBorder": true,
           "valueField": "fs",
-          "balloonText": `<span class="capitalize" style='font-size:18px;'>${this.props.plan}<br/>[[fsBalloon]]%</span>`
+          "balloonText": `<span class="capitalize" style='font-size:18px;'>${planName}<br/>[[fsBalloon]]%</span>`
       },
       {
           "id": "sp500",
