@@ -13,26 +13,24 @@ class Introduction extends React.Component {
         <div className="divider"/>
         <div className="beside">
           <p className="intro-text left">
-            Formula Stocks offers a better way to invest. It estimates for you which stocks will go up, before
-            they go up. Historically, 89% of the times that we have made such an estimate, it has proven
-            successful in the long run.<br/><br/>
+            Formula Stocks offers a better way to invest. It estimates which stocks will go up, before they go
+            up. 89% of the times we made such an estimate, it proved to be successful in the long run. You
+            simply buy these stocks in your own account.<br/><br/>
 
-            The technology behind Formula Stocks is groundbreaking. Historically, Entry returns 18% p.a. You
-            simply buy these stocks in your own account.
-
-            The nature of all things future is, that we cannot promise a given return. We can promise better
-            odds, and let the past speak for itself. In 2016 Entry returned +43.63%. Since 2009 average
-            returns have been 22.56% per year.
+            Investing using these estimates, our Entry portfolio returned 57.25% in 2016. Cumulative returns
+            since 2009 are 486% vs. the S&P500's 176%.<sup>(*)</sup>. It is based on groundbreaking technology, which
+            really makes a difference for our members.
           </p>
           <p className="left">
             Typically, when you invest in stocks, your basic expectation is to receive 6-7% p.a. on average.
-            Usually a fund product will provide you a risk adjusted, long-term return in this neighborhood. Or,
-            if it is a better performing fund, demand very high fees.
+            Usually a fund product will provide you a risk adjusted, long-term return in this neighborhood.
+            Or, if it is a better performing fund, demand very high fees.
           </p>
           <p className="left">
-            Join to better your returns, save on fees, and moderate your risk. Sign up for a
-            30-day free trial to take it for a spin.
+            Join to better your returns, save on fees, and moderate your risk. Sign up for a 30-day free trial
+            without any obligations.
           </p>
+          <p className="disclaimer">*Past performance is not neccesarily indicative of future results.</p>
           <div className="graph-container">
             <SingleWinRateGraph plan="basic" name="Entry"/>
           </div>

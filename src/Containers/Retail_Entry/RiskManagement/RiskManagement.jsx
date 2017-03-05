@@ -23,13 +23,13 @@ class RiskManagement extends React.Component {
           The Sortino Ratio is yet another way to measure risk. It is 3.017 for Formula Stocks Entry, indicating
           high reward and low risk.<br/><br/>
 
-          We can also examine the average gain from a winning stock which is +65.97%, while the average
-          loss from a losing stock is only -18.32%. Add to this that Entry also wins 89.29% of the time and
-          only looses 10.71% of the time. This leads us to a mathematical expectation of
-          (0.89 * 65.97) - (0.11 * 18.32) = +56.95%. Taking an average of 2.24 years to achieve we can divide
-          59.95 by 2.24 and get an expected annualized return of 26.76%. This is the expected return when 100%
+          We can also examine the average gain from a winning stock which is +56.62%, while the average loss
+          from a losing stock is only -16.90%. Add to this that Entry also wins 89.27% of the time and only
+          looses 10.73% of the time. This leads us to a mathematical expectation of
+          (0.892 * 56.62) - (0.107 * 16.90) = +48,70%. Taking an average of 2.24 years to achieve we can divide
+          48.70 by 2.24 and get an expected annualized return of 21.74%. This is the expected return when 100%
           invested at all times. While not always possible (good investments can be scarce), it leads to an
-          18.87% annual rate of growth.
+          18.97% annual rate of growth.
         </p>
       </section>
     )

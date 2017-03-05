@@ -26,7 +26,7 @@
   }
 }
 
-@media (max-width: 1100px) {
+@media (max-width: 940px) {
   .introduction {
     .left:nth-child(3) {
       margin-right: 0;
@@ -34,15 +34,7 @@
   }
 }
 
-@media (max-width: 815px) {
-  .introduction {
-    .left:nth-child(2) {
-      margin-right: 0;
-    }
-  }
-}
-
-@media (max-width: 700px) {
+@media (max-width: 800px) {
   .introduction {
     .left {
       margin-right: 0;
