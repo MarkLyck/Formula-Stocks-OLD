@@ -12,7 +12,7 @@ class FirstMonthOnUs extends React.Component {
         <h2 className="title">Sign up to better your returns</h2>
         <div className="divider"/>
         <p>
-          If you decide Formula Stocks isn't for you - simply cancel online at any time with no obligations.
+          If you decide Formula Stocks isn't for you - simply cancel online at any time without obligations.
         </p>
         <h2 className="cost">$50 monthly after 30 days</h2>
         <Link to="/signup" className="signup-cta">Join free for a month</Link>
