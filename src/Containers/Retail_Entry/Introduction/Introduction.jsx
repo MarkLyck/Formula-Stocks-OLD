@@ -18,7 +18,7 @@ class Introduction extends React.Component {
             simply buy these stocks in your own account.<br/><br/>
 
             Investing using these estimates, our Entry portfolio returned 57.25% in 2016. Cumulative returns
-            since 2009 are 486% vs. the S&P500's 176%.<sup>(*)</sup>. It is based on groundbreaking technology, which
+            since 2009 are 481% vs. the S&P500's 176%.<sup>(*)</sup>. It is based on groundbreaking technology, which
             really makes a difference for our members.
           </p>
           <p className="left">

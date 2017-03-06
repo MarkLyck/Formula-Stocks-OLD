@@ -26,7 +26,7 @@ class RiskManagement extends React.Component {
           looses 10.73% of the time. This leads us to a mathematical expectation of
           (0.892 * 56.62) - (0.107 * 16.90) = +48,70%. Taking an average of 2.24 years we correct for this to
           get an expected annualized return of 19.38%. The expectation corresponds well to the recorded 18.97%
-          annual rate of growth.
+          CAGR.
         </p>
       </section>
     )
