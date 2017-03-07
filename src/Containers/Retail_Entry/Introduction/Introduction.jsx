@@ -35,7 +35,6 @@ class Introduction extends React.Component {
             <SingleWinRateGraph plan="basic" name="Entry"/>
           </div>
         </div>
-
       </section>
     )
   }
