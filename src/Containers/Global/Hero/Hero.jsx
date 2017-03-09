@@ -89,7 +89,7 @@ class Hero extends React.Component {
         <div id="subtitles">
           <h1><span className="font bold">Outperform the market</span></h1>
           <h1><span className="font bold">Moderate your risk</span></h1>
-          <h1><span className="font bold">Go golfing by 3</span></h1>
+          <h1><span className="font bold">Artifical Intelligence equity analysis</span></h1>
         </div>
       )
     }
