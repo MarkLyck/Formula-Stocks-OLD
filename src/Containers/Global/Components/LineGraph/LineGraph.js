@@ -66,7 +66,7 @@ export default function LineGraph({ data, graphs, chartTheme, unit, unitPosition
   if (platform.name === 'Safari') {
     config.dataDateFormat = "YYYY-M-D"
     config.categoryAxis = {
-      equalSpacing: true,
+      equalSpacing: false
     }
   }
 

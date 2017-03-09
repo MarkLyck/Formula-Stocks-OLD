@@ -71,7 +71,7 @@ class Hero extends React.Component {
   render() {
     let title = <h1 id="main-title">A <span className="font bold">better</span> way to <span className="font bold">invest</span></h1>
     if (this.props.path === '/pro' || this.props.path === '/pro/signup') {
-      title = <h1 id="main-title">A better way for the <span className="bold">active investor</span> to</h1>
+      title = <h1 id="main-title">Artifical Intelligence equity analysis</h1>
     }
 
     let subtitles = (
@@ -89,7 +89,6 @@ class Hero extends React.Component {
         <div id="subtitles">
           <h1><span className="font bold">Outperform the market</span></h1>
           <h1><span className="font bold">Moderate your risk</span></h1>
-          <h1><span className="font bold">Artifical Intelligence equity analysis</span></h1>
         </div>
       )
     }
