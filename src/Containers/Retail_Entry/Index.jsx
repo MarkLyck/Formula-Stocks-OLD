@@ -22,9 +22,6 @@ import Footer from '../Global/Footer/Footer'
 class Home extends React.Component {
   componentDidMount() {
     store.plans.get('basic').fetch()
-    // store.plans.get('premium').fetch()
-    // store.plans.get('business').fetch()
-    // store.plans.get('fund').fetch()
     store.market.data.getAnnualData()
     store.market.data.getDJIAData()
     window.Intercom("boot", {
