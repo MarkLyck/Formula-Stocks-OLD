@@ -1,7 +1,7 @@
 import React from 'react'
 import Scroll from 'react-scroll'
 
-import PortfolioScreenshot from './Portfolio.jpg'
+// import PortfolioScreenshot from './Portfolio.jpg'
 import './whatIsIt.css'
 
 class WhatIsIt extends React.Component {
@@ -25,13 +25,12 @@ class WhatIsIt extends React.Component {
 
           Formula Stocks offer 3 equity products for personal, professional and institutional investors: Premium, Business and Fund.
           Each offers quantitative equity analysis, based on artificial intelligence logic developed at and available only through
-          Formula Stocks.
-        </p>
-        <img className="screenshot" src={PortfolioScreenshot} alt="portfolio"/>
-        <p>
+          Formula Stocks.<br/><br/>
+
           Join to increase your ROI and moderate your risk. Ask for a free demo account to experience the service in greater detail, or
           request more information.
         </p>
+        {/* <img className="screenshot" src={PortfolioScreenshot} alt="portfolio"/> */}
       </section>)
   }
 }
