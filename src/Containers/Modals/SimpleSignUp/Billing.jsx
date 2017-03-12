@@ -90,7 +90,8 @@ class Billing extends React.Component {
 
     return (
       <form className="simple-billing" onSubmit={this.submit}>
-        <h3 className="title">Billing</h3>
+        <h3 className="title">Billing information</h3>
+        <h5 className="subtitle">First charge after 30 days, you can cancel at any time.</h5>
         { nameClass ? <p className="error-text">{this.state.error}</p> : '' }
         <div className="icon-input"><i className="fa fa-user" aria-hidden="true"></i><input className={nameClass} type="text" placeholder="Name on card" ref="name"/></div>
         { cardNumberClass ? <p className="error-text">{this.state.error}</p> : '' }

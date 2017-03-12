@@ -54,13 +54,12 @@ const AboutUs = React.createClass({
         }
       } else if (this.state.showModal === 'Marie') {
         selected = {
-          name: "Marie Lauritzen",
-          position: 'PhD. Research, HR',
-          bio: `Marie works with documentation and localization and assists with research and quality control.
-          A PhD., graduate of Royal Holloway, London, and Aarhus University, Aarhus,
-          Marie's focus areas have been post-modern literature, research, as well as complexity theory.
-          She is a language expert and outstanding in terms of ensuring that the highest possible
-          standards are always methodically applied.`
+          name: "Marie Lauritzen, PhD.",
+          position: 'CHRO',
+          bio: `Marie is Chief Human Resources Officer and assists with research and quality control oversight. A PhD., graduate of
+          Royal Holloway, London, and Aarhus University, Aarhus, Marie's focus areas have been research, complexity theory and
+          originally post-modern literature. She is outstanding in terms of ensuring that the highest possible standards are always
+          methodically applied.`
         }
       }
 
@@ -89,15 +88,11 @@ const AboutUs = React.createClass({
 
         <div className="content">
           <p className="about-fs">
-            Formula Stocks started operations in 2003, leveraging decades of experience, cognitive computing
-            technology, business analytics and an array of technologies developed in-house to create an
-            informational advantage in equity investing. <br/><br/>
-
-            Previous to current operations the management team was responsible for the successful development
-            of LEGO's 3D building instruction suite of tools, used in production of all LEGO A/S end user
-            products world-wide. In the late 1980's to early 1990's we helped the broadcasting and motion
-            picture industry transition from analog to digital tools, and also introduced a wide range of
-            off-the-shelve software products.<br/><br/>
+            Formula Stocks develops cognitive computing technologies since 2003 designed to achieve above-average performance in
+            equity markets. Technology includes learning, business analytics, decisionmaking, probability estimation, and prediction
+            technologies. Products suites can be used as a standalone tool to assist investors, or operate as autonomous
+            decisionmakers, artificial intelligence capable of portfolio construction, active portfolio management, risk/reward
+            management.<br/><br/>
           </p>
           <ul className="team-list">
             <li className="team-member" onClick={this.showModal.bind(this, 'Thomas')}>
@@ -117,8 +112,8 @@ const AboutUs = React.createClass({
             <li className="team-member" onClick={this.showModal.bind(this, 'Marie')}>
               <img src={photos.Marie} alt="employee"/>
               <div className="content">
-                <h3 className="name">Marie Lauritzen</h3>
-                <h4>PhD, Research, HR</h4>
+                <h3 className="name">Marie Lauritzen, PhD.</h3>
+                <h4>CHRO</h4>
               </div>
             </li>
           </ul>
