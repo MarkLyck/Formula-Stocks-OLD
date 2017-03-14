@@ -94,7 +94,7 @@ const AboutUs = React.createClass({
               equity markets. Technology includes learning, business analytics, decisionmaking, probability estimation, and prediction
               technologies. Products suites can be used as a standalone tool to assist investors, or operate as autonomous
               decisionmakers, artificial intelligence capable of portfolio construction, active portfolio management, risk/reward
-              management.<br/><br/>
+              management.
             </p>
             <p>Address: Ribe Landevej 39, 6100 Haderslev Denmark</p>
             <p>Contact us at: <a href="mailto:info@formulastocks.com">info@formulastocks.com</a></p>
