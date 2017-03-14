@@ -4,6 +4,17 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  .beside {
+    .right, .left {
+      width: calc(50% - 32px);
+      .title {
+        text-align: left;
+        width: 100%;
+        font-size: 1.25rem;
+        font-weight: 600;
+      }
+    }
+  }
   .content {
     margin: 0 auto;
     width: 100%;
@@ -87,21 +98,24 @@
     }
   }
 }
-
+.right .title {
+    width: 100%;
+    max-width: 500px;
+    margin-left: auto;
+}
 .team-list {
-  // margin: 0 auto;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  flex-direction: column;
+  align-items: flex-end;
   max-width: 1160px;
   width: 100%;
   li {
     display: flex;
-    flex-direction: column;
-    margin: 0 15px;
-    // width: calc(100% / 3 - 30px);
-    width: calc(100% / 4 - 23px);
-    margin-bottom: 30px;
+    height: 75px;
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    margin-bottom: 12px;
     border: 1px solid #E4E4E4;
     border-radius: 4px;
     background: #fff;
@@ -116,8 +130,8 @@
       border-top-left-radius: 3px;
       border-top-right-radius: 3px;
       height: calc(100vw / 3 - 30px);
-      height: auto;
-      width: 100%;
+      height: 100%;
+      width: auto;
     }
     .content {
       display: flex;
@@ -323,39 +337,25 @@
   }
 }
 
-@media (max-width: 1110px) {
-  .team-list {
-    max-width: 600px;
-    margin: 0 auto;
-    justify-content: flex-start;
-    li {
-      margin: 0 7px 7px 0;
-      flex-direction: row;
-      width: calc(50% - 3.5px);
-      height: 75px;
-      position: relative;
-      &:hover {
-        transform: none;
-      }
-      img {
-        border-top-right-radius: 0;
-        border-bottom-left-radius: 3px;
-        height: 100%;
-        width: auto;
-      }
-    }
-    li:nth-child(even) {
-      margin-right: 0;
-    }
-  }
-  .team-modal-container {
-    .team-modal {
-      max-height: 300px;
-      max-width: 80%;
-      .modal-image {
-        max-height: 300px;
-        width: auto;
-        max-width: 100%;
+@media (max-width: 940px) {
+  .about-us {
+    .beside {
+      display: flex;
+      flex-direction: column;
+      .left, .right {
+        width: 100%;
+        margin: 0 auto;
+        .title {
+          text-align: center;
+          margin: 0 auto;
+          margin-bottom: 8px;
+        }
+        .team-list {
+          margin: 0 auto;
+          li {
+            margin: 8px auto;
+          }
+        }
       }
     }
   }

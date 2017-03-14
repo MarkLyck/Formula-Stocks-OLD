@@ -86,37 +86,46 @@ const AboutUs = React.createClass({
         <h2>Company profile</h2>
         <div className="divider"></div>
 
-        <div className="content">
-          <p className="about-fs">
-            Formula Stocks develops cognitive computing technologies since 2003 designed to achieve above-average performance in
-            equity markets. Technology includes learning, business analytics, decisionmaking, probability estimation, and prediction
-            technologies. Products suites can be used as a standalone tool to assist investors, or operate as autonomous
-            decisionmakers, artificial intelligence capable of portfolio construction, active portfolio management, risk/reward
-            management.<br/><br/>
-          </p>
-          <ul className="team-list">
-            <li className="team-member" onClick={this.showModal.bind(this, 'Thomas')}>
-              <img src={photos.Thomas} alt="employee"/>
-              <div className="content">
-                <h3 className="name">Thomas Lyck</h3>
-                <h4>CEO</h4>
-              </div>
-            </li>
-            <li className="team-member" onClick={this.showModal.bind(this, 'Mark')}>
-              <img src={photos.Mark} alt="employee"/>
-              <div className="content">
-                <h3 className="name">Mark Lyck</h3>
-                <h4>COO</h4>
-              </div>
-            </li>
-            <li className="team-member" onClick={this.showModal.bind(this, 'Marie')}>
-              <img src={photos.Marie} alt="employee"/>
-              <div className="content">
-                <h3 className="name">Marie Lauritzen, PhD.</h3>
-                <h4>CHRO</h4>
-              </div>
-            </li>
-          </ul>
+        <div className="beside">
+          <div className="left">
+            <h3 className="title">About us</h3>
+            <p className="about-fs">
+              Formula Stocks develops cognitive computing technologies since 2003 designed to achieve above-average performance in
+              equity markets. Technology includes learning, business analytics, decisionmaking, probability estimation, and prediction
+              technologies. Products suites can be used as a standalone tool to assist investors, or operate as autonomous
+              decisionmakers, artificial intelligence capable of portfolio construction, active portfolio management, risk/reward
+              management.<br/><br/>
+            </p>
+            <p>Address: Ribe Landevej 39, 6100 Haderslev Denmark</p>
+            <p>Contact us at: <a href="mailto:info@formulastocks.com">info@formulastocks.com</a></p>
+          </div>
+
+          <div className="right">
+            <h3 className="title">Executive team</h3>
+            <ul className="team-list">
+              <li className="team-member" onClick={this.showModal.bind(this, 'Thomas')}>
+                <img src={photos.Thomas} alt="employee"/>
+                <div className="content">
+                  <h3 className="name">Thomas Lyck</h3>
+                  <h4>CEO</h4>
+                </div>
+              </li>
+              <li className="team-member" onClick={this.showModal.bind(this, 'Mark')}>
+                <img src={photos.Mark} alt="employee"/>
+                <div className="content">
+                  <h3 className="name">Mark Lyck</h3>
+                  <h4>COO</h4>
+                </div>
+              </li>
+              <li className="team-member" onClick={this.showModal.bind(this, 'Marie')}>
+                <img src={photos.Marie} alt="employee"/>
+                <div className="content">
+                  <h3 className="name">Marie Lauritzen, PhD.</h3>
+                  <h4>CHRO</h4>
+                </div>
+              </li>
+            </ul>
+          </div>
         </div>
         {modal}
       </section>
