@@ -9,7 +9,7 @@ class FirstMonthOnUs extends React.Component {
     return (
       <section className="first-month-on-us section">
         <Element name="pricing"/>
-        <h2 className="title">First month is on us</h2>
+        <h2 className="title">The first month is on us</h2>
         <div className="divider"/>
         <p>
           If you decide Formula Stocks isn't for you - simply cancel online at any time without obligations.

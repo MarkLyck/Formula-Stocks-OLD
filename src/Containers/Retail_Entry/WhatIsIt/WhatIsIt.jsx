@@ -20,9 +20,9 @@ class WhatYouGet extends React.Component {
               Use it to better your investment performance, as these recommendations offer something unusual:
               higher expected reward along with a lower expected risk.<br/><br/>
 
-              Using Formula Stocks is easy, too. After logging in you will find purchase and sales suggestions for stocks trading on all US stock exchanges
-              including large international stocks. These can be traded from anywhere in the world, using the
-              bank or broker you prefer or already have.<br/><br/>
+              Using Formula Stocks is easy, too. After logging in you will find purchase and sales suggestions for stocks trading on
+              all US stock exchanges including large international stocks. These can be traded from anywhere in the world, through any
+              bank or broker you already use.<br/><br/>
 
               You can use these suggestions individually or choose to replicate our model portfolio. Simply
               follow the instructions, and you will be handling your own account in no time at all.
