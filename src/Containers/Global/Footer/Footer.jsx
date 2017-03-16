@@ -76,7 +76,6 @@ class Footer extends React.Component {
         <div className="copyright">
           <img className="headquarters" src={House} alt="headquarters"/>
           <div className="contact-info">
-            <p>Formula Stocks ApS - Ribe Landevej 39, 6100 Haderslev Denmark</p>
             <p>Contact us at: <a href="mailto:info@formulastocks.com">info@formulastocks.com</a></p>
             <p>© Formula Stocks 2017 - All rights reserved.</p>
           </div>
