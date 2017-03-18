@@ -34,7 +34,7 @@ class Home extends React.Component {
       <div id="home" className="retail">
         <NavBar/>
         <Hero/>
-        <Introduction/>
+        <Introduction plan="basic"/>
         <WhatIsIt/>
         <SingleLaunchPerformance plan="basic" name="Entry"/>
         <PerformanceMatters/>
@@ -42,9 +42,9 @@ class Home extends React.Component {
         <WhatToExpect/>
         <PilotTest/>
         <SingleBacktestedPerformance plan="basic" name="Entry"/>
-        <Statistics/>
+        <Statistics plan="basic"/>
         <HowWeBeatTheMarket/>
-        <RiskManagement/>
+        <RiskManagement plan="basic"/>
         <AboutUs/>
         <IntendedAudience/>
         <BottomCTA/>

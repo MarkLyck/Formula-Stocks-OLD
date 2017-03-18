@@ -1,4 +1,5 @@
 import React from 'react'
+import store from '../../../store'
 import WinRateGraph from '../../Global/Components/WinRateGraph/SingleWinRateGraph'
 import './statistics.css'
 
@@ -6,14 +7,26 @@ class Statistics extends React.Component {
   constructor(props) {
     super(props)
 
-    this.state = { fsWinYears: 36, marketWinYears: 12, avgWin: 65, avgLoss: 18, winRate: 89, lossRate: 11 }
+    this.state = { fsWinYears: 36, marketWinYears: 12, lossRate: 11, plan: false }
   }
+
+  componentDidMount() {
+    store.plans.on('change', () => { this.setState({ plan: store.plans.get(this.props.plan).toJSON() }) })
+  }
+
   render() {
-    let fsWinYearsStyle = { height: `89%` }
+    const plan = this.state.plan
+
+    let winRate = plan.stats ? plan.stats.WLRatio : 89
+
+    let fsWinYearsStyle = { height: `${winRate}%` }
     let marWinYearsStyle = { height: `30%` }
 
-    let fsAvgWinStyle = { height: `65%` }
-    let fsAvgLossStyle = { height: `18%` }
+    let avgWinPercent = plan.info ? Math.floor(plan.info.avgGainPerPosition) : 65
+    let avgLossPercent = plan.info ? Math.floor(plan.info.avgLossPerPosition) : 18
+
+    let fsAvgWinStyle = { height: `${avgWinPercent}%` }
+    let fsAvgLossStyle = { height: `${avgLossPercent}%` }
 
     let fsWinRate = { height: `89%` }
     let fsLossRate = { height: `11%` }
@@ -52,9 +65,9 @@ class Statistics extends React.Component {
             <div className="left">
               <div className="bar-graph">
                 <div className="graph-beside uneven">
-                  <div className="bar fs-bar" style={fsAvgWinStyle}><p>+{this.state.avgWin}%</p><p className="plan-name">Win</p></div>
+                  <div className="bar fs-bar" style={fsAvgWinStyle}><p>+{avgWinPercent}%</p><p className="plan-name">Win</p></div>
                   <div className="zero-line"/>
-                  <div className="bar market negative" style={fsAvgLossStyle}><p>-{this.state.avgLoss}%</p><p className="plan-name">Loss</p></div>
+                  <div className="bar market negative" style={fsAvgLossStyle}><p>-{avgLossPercent}%</p><p className="plan-name">Loss</p></div>
                 </div>
                 <h3>Avg. win/loss per stock</h3>
               </div>
@@ -62,7 +75,7 @@ class Statistics extends React.Component {
             <div className="right winrate-graph">
               <div className="bar-graph">
                 <div className="graph-beside">
-                  <div className="bar fs-bar" style={fsWinRate}><p>{this.state.winRate}%</p><p className="plan-name">Wins</p></div>
+                  <div className="bar fs-bar" style={fsWinRate}><p>{Math.floor(winRate)}%</p><p className="plan-name">Wins</p></div>
                   <div className="bar market" style={fsLossRate}><p>{this.state.lossRate}%</p><p className="plan-name">Losses</p></div>
                 </div>
                 <h3>Win/loss ratio</h3>

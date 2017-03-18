@@ -15,13 +15,8 @@ class Footer extends React.Component {
     this.state = { showTerms: false, showPrivacy: false }
   }
 
-  toggleTerms() {
-    this.setState({ showTerms: !this.state.showTerms })
-  }
-
-  togglePrivacy() {
-    this.setState({ showPrivacy: !this.state.showPrivacy })
-  }
+  toggleTerms() { this.setState({ showTerms: !this.state.showTerms }) }
+  togglePrivacy() { this.setState({ showPrivacy: !this.state.showPrivacy }) }
 
   render() {
     return (
