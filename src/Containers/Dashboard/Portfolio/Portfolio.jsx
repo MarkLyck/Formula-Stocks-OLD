@@ -47,12 +47,13 @@ class Portfolio extends React.Component {
   }
 
   componentDidMount() {
-    const portfolioYields = store.plans.get(this.props.plan).get('portfolioYields')
-    if ((store.session.isAllowedToView(this.props.plan) && !store.plans.get(this.props.plan).get('portfolio').length)
-        || (store.session.isAllowedToView(this.props.plan) && !portfolioYields.length)) {
-      store.plans.get(this.props.plan).fetchPrivate(this.props.plan)
-    } else if (!store.session.isAllowedToView(this.props.plan) && !portfolioYields.length) { store.plans.get(this.props.plan).fetch() }
-    store.plans.get(this.props.plan).on('change', this.updateState)
+    const plan = this.props.plan
+    const portfolioYields = store.plans.get(plan).get('portfolioYields')
+    if ((store.session.isAllowedToView(plan) && !store.plans.get(plan).get('portfolio').length)
+        || (store.session.isAllowedToView(plan) && !portfolioYields.length)) {
+      store.plans.get(plan).fetchPrivate(plan)
+    } else if (!store.session.isAllowedToView(plan) && !portfolioYields.length) { store.plans.get(plan).fetch() }
+    store.plans.get(plan).on('change', this.updateState)
     store.market.data.on('change', this.updateState)
     const marketPortfolioData = store.market.data.get('portfolioData')
     if (!marketPortfolioData.length) {
