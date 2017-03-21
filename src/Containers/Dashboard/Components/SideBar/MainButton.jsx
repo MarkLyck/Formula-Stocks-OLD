@@ -8,10 +8,13 @@ class MainButton extends React.Component {
     } else if (this.props.title.toLowerCase() === "log out") {
       store.session.logout()
     } else if (this.props.title.toLowerCase() === "support") {
+      console.log(store.session)
       window.Intercom("boot", {
-        app_id: "i194mpvo"
+        app_id: "i194mpvo",
+        email: store.session.get('email'),
+        name: store.session.get('name')
       })
-      window.Intercom('show');
+      window.Intercom('showNewMessage')
     }
   }
 
