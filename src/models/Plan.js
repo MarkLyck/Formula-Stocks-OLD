@@ -64,10 +64,13 @@ const Plan = Backbone.Model.extend({
       // Monthly file
       } else if (fileArr[i].name.indexOf('monthly') > -1) {
        const oldSuggestions = this.get('suggestions').filter(sug => !sug.model ? true : false)
-       let newSuggestions = data.actionable.map(sug => {
-         sug.model = true
-         return sug
-       })
+       let newSuggestions = []
+       if (data.actionable) {
+        newSuggestions = data.actionable.map(sug => {
+           sug.model = true
+           return sug
+         })
+       }
        newSuggestions = _.union(oldSuggestions, newSuggestions)
        this.set('suggestions', newSuggestions)
        this.set('portfolio', data.portfolio)
