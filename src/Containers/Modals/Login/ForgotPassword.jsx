@@ -7,6 +7,7 @@ import './forgotPassword.css'
 class ForgotPassword extends React.Component{
   constructor() {
     super()
+    this.resetPassword = this.resetPassword.bind(this)
     this.state = { posting: false, success: false, error: false, email: '' }
   }
 
@@ -14,22 +15,17 @@ class ForgotPassword extends React.Component{
     e.preventDefault()
     let email = this.refs.email.value
 
-    if (store.session.validateEmail(email)) {
-      console.log('valid email');
-      $.ajax({
-        url: `https://baas.kinvey.com/rpc/kid_rJRC6m9F/${email}/user-password-reset-initiate`,
-        type: 'POST',
-      })
-      .then((r) => {
-        this.setState({success: true, email: email})
-      })
-      .fail((e) => {
-        console.error('error: ', e)
-        this.setState({error: e})
-      })
-    } else {
-      console.error('invalid email');
-    }
+    $.ajax({
+      url: `https://baas.kinvey.com/rpc/kid_rJRC6m9F/${email}/user-password-reset-initiate`,
+      type: 'POST',
+    })
+    .then((r) => {
+      this.setState({success: true, email: email})
+    })
+    .fail((e) => {
+      console.error('error: ', e)
+      this.setState({error: e})
+    })
   }
   render() {
     let content = (
