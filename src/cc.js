@@ -142,13 +142,17 @@ let cc = {
         email: store.session.get('email'),
         tax_percent: taxPercent
       }
+      // const url = `https://baas.kinvey.com/rpc/${store.settings.appKey}/custom/charge`
+      const url = `https://h8pzebl60b.execute-api.us-west-2.amazonaws.com/prod/createCustomer`
       if (coupon) { data.coupon = coupon }
       $.ajax({
-        type: 'POST',
-        url: `https://baas.kinvey.com/rpc/${store.settings.appKey}/custom/charge`,
-        data: data,
+        type: "POST",
+        url: url,
+        crossDomain: true,
+        dataType: 'json',
+        contentType: "application/json",
+        data: JSON.stringify(data),
         success: (customer) => {
-          console.log(customer)
           store.session.set('stripe', customer)
 
           let type = 0
@@ -157,12 +161,11 @@ let cc = {
           else if (planName === 'business') { type = 3 }
           else if (planName === 'fund')     { type = 4 }
           store.session.set('type', type)
-
           store.session.signup2()
           resolve()
         },
         error: (response) => {
-          console.error(response)
+          console.error('error: ', response)
           reject(JSON.parse(response.responseText).error)
         }
       })
