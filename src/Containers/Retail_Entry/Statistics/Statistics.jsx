@@ -17,7 +17,7 @@ class Statistics extends React.Component {
   render() {
     const plan = this.state.plan
 
-    let winRate = plan.stats ? plan.stats.WLRatio : 89
+    let winRate = plan.stats ? plan.stats.WLRatio : 90
 
     let fsWinYearsStyle = { height: `${winRate}%` }
     let marWinYearsStyle = { height: `30%` }
@@ -28,8 +28,8 @@ class Statistics extends React.Component {
     let fsAvgWinStyle = { height: `${avgWinPercent}%` }
     let fsAvgLossStyle = { height: `${avgLossPercent}%` }
 
-    let fsWinRate = { height: `89%` }
-    let fsLossRate = { height: `11%` }
+    let fsWinRate = { height: `${Math.floor(winRate)}%` }
+    let fsLossRate = { height: `${Math.ceil(100 - winRate)}%` }
 
 
     return (
@@ -76,7 +76,7 @@ class Statistics extends React.Component {
               <div className="bar-graph">
                 <div className="graph-beside">
                   <div className="bar fs-bar" style={fsWinRate}><p>{Math.floor(winRate)}%</p><p className="plan-name">Wins</p></div>
-                  <div className="bar market" style={fsLossRate}><p>{this.state.lossRate}%</p><p className="plan-name">Losses</p></div>
+                  <div className="bar market" style={fsLossRate}><p>{Math.ceil(100 - winRate)}%</p><p className="plan-name">Losses</p></div>
                 </div>
                 <h3>Win/loss ratio</h3>
               </div>

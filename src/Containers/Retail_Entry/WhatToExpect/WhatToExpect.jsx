@@ -88,7 +88,7 @@ class WhatToExpect extends React.Component {
             first buy a stock, the immediate price changes may well be random in the very short term. But over
             time the price will gradually come to reflect the value of the better choices we make.<br/><br/>
 
-            Our Entry product has picked successful investments 89% of the time. This compares to 59% for
+            Our Entry product has picked successful investments 90% of the time. This compares to 59% for
             stocks generally.
           </p>
           <img src={PortfolioScreen} className="screen" alt="portfolio"/>

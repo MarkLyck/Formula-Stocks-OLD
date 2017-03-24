@@ -52,7 +52,7 @@ class Hero extends React.Component {
         <h1><span className="font bold">Less risk</span></h1>
         <h1><span className="font bold">Easy to use</span></h1>
         <h1><span className="font bold">Lower costs</span></h1>
-        <h1><span className="font bold">+89% win ratio</span></h1>
+        <h1><span className="font bold">+90% win ratio</span></h1>
       </div>
     )
 

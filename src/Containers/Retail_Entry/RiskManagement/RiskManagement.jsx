@@ -19,7 +19,7 @@ class RiskManagement extends React.Component {
     const sortinoRatio = plan.info ? plan.info.sortinoRatio : 3.017
     const avgWinPercent = plan.info ? plan.info.avgGainPerPosition : 65
     const avgLossPercent = plan.info ? plan.info.avgLossPerPosition : 18
-    const winRate = plan.stats ? plan.stats.WLRatio : 89
+    const winRate = plan.stats ? plan.stats.WLRatio : 90
     // const cagr = plan.stats ? plan.stats.CAGR : 18.97
 
     const expectation = ((winRate / 100) * avgWinPercent) - ((100 - winRate) / 100 * avgLossPercent)
@@ -34,7 +34,7 @@ class RiskManagement extends React.Component {
           perceived risk, or we have some form of margin of safety.<br/><br/>
 
           One way to measure the risk of using Formula Stocks' Entry product, is to look at its win/loose
-          ratio: 89% of all historical investments have been succesful. This is highly unusual and compares to
+          ratio: {Math.floor(winRate)}% of all historical investments have been succesful. This is highly unusual and compares to
           59% elsewhere.<br/><br/>
 
           Another way is the so-called Gain-to-Pain Ratio, which measures exactly what the name indicates.
