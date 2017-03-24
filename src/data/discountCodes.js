@@ -12,5 +12,12 @@ export default [
     type: 'percent',
     period: 'lifetime',
     plans: ['premium']
+  },
+  {
+    code: 'retroage',
+    discount: 15,
+    type: 'percent',
+    period: 'lifetime',
+    plans: ['premium']
   }
 ]

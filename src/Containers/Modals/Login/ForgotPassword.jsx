@@ -1,7 +1,6 @@
 import React from 'react'
 import $ from 'jquery'
 
-import store from '../../../store'
 import './forgotPassword.css'
 
 class ForgotPassword extends React.Component{
