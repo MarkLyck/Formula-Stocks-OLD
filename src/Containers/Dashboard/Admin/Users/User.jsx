@@ -75,13 +75,15 @@ class User extends React.Component {
     } else if (this.props.user.type === -1) {
       type = "Unsubscribed"
     }
+
     if (this.props.user.stripe) {
       if (this.props.user.stripe.subscriptions) {
         if (this.props.user.stripe.subscriptions.data) {
           if (this.props.user.stripe.subscriptions.data[0].canceled_at && this.props.user.username !== 'demo@formulastocks.com') {
             type = "Cancelled"
           }
-        } else if (this.props.user.stripe.delinquent) {
+        }
+        if (this.props.user.stripe.delinquent) {
           type = "Delinquent"
         }
       }

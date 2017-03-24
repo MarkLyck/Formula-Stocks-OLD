@@ -66,6 +66,7 @@ class AdminPanelHeader extends React.Component {
                 && !user.stripe.subscriptions.data[0].cancel_at_period_end
                 && user.type === 1
                 && user.stripe.subscriptions.data[0].trial_end > moment().unix()) {
+                  console.log('trial: ', user);
                 return true
             }
           }
