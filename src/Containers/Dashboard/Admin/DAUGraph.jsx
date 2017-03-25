@@ -16,64 +16,16 @@ class DAUGraph extends React.Component {
               </div>)
     }
 
-    let visitors = this.props.data.map(visitor => {
-      return  {
-                firstVisit: moment(visitor._kmd.ect).format('YYYY-MM-DD'),
-                lastVisit: moment(visitor._kmd.lmt).format('YYYY-MM-DD')
-              }
-    })
-
-    visitors = _.sortBy(visitors, (visitor) => {
-      return Number(visitor.firstVisit.split('-').join(''))
-    })
-
-    let chartData = visitors.reduce((prev, curr) => {
-
-      let dateFound = false
-
-      prev = prev.map(point => {
-        if (point.date === curr.firstVisit) {
-          dateFound = true
-          point.newVisitors++
-        }
-        return point
-      })
-
-      if (prev[prev.length - 1] ) {
-        let currDate = Number(curr.firstVisit.split('-').join(''))
-        let prevDate = Number(prev[prev.length - 1].date.split('-').join(''))
-
-        const missingDates = currDate - prevDate
-
-        if (missingDates > 1 && missingDates < 28) {
-            const year = curr.firstVisit.split('-')[0]
-            const month = curr.firstVisit.split('-')[1]
-            let date = Number(prev[prev.length - 1].date.split('-')[2])
-
-          _(missingDates - 1).times(() => {
-            date++
-            prev = prev.concat({
-              newVisitors: 0,
-              recurrentVisitors: 0,
-              date: `${year}-${month}-${date}` })
-          })
+    const chartData = this.props.data.reduce((prev, curr) => {
+      if (prev[prev.length - 1]) {
+        if (prev[prev.length - 1].date.split('-').join('') === moment(curr._kmd.ect).format('YYYY-MM-DD').split('-').join('')) {
+          prev[prev.length - 1].visitors++
+          return prev
         }
       }
-      if (!dateFound) {
-        return prev.concat({ newVisitors: 1, date: curr.firstVisit, recurrentVisitors: 0 })
-      } else {
-        return prev
-      }
+      prev = prev.concat({ visitors: 1, date: moment(curr._kmd.ect).format('YYYY-MM-DD') })
+      return prev
     }, [])
-
-    chartData = chartData.map(point => {
-      visitors.forEach(visitor => {
-        if (visitor.lastVisit === point.date && visitor.lastVisit !== visitor.firstVisit) {
-          point.recurrentVisitors++
-        }
-      })
-      return point
-    })
 
     let chartTheme =  'light'
     let gridOpacity = 0.05
@@ -83,19 +35,12 @@ class DAUGraph extends React.Component {
         "id": "firstVisits",
         lineColor: '#12D99E',
         "lineThickness": 2,
-        "valueField": "newVisitors",
+        "valueField": "visitors",
         "balloonText": `<div class=\"suggestion-balloon\"><p class="ticker">New visitors</p> <p>[[value]]</p></div>`
-      },
-      {
-        "id": "recVisitors",
-        lineColor: '#27A5F9',
-        "lineThickness": 2,
-        "valueField": "recurrentVisitors",
-        "balloonText": `<div class=\"suggestion-balloon\"><p class="ticker">Recurrent visitors</p> <p>[[value]]</p></div>`
       }]
 
     return (<div id="portfolio-item-chart">
-              <LineGraph data={chartData.slice(1).slice(-30)} graphs={graphs}/>
+              <LineGraph data={chartData} graphs={graphs}/>
             </div>)
   }
 }
