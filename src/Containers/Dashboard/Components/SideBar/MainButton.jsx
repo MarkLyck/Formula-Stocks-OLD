@@ -20,7 +20,9 @@ class MainButton extends React.Component {
   render() {
     return (
       <li className={`main-button ${this.props.selected ? 'selected' : ''}`} onClick={this.select.bind(this)}>
-        <i className={`icon ${this.props.icon}`}></i>
+        <i className={`icon ${this.props.icon}`}>
+          { this.props.notification ? <div className="notification-icon">{this.props.notification}</div> : ''}
+        </i>
         <h4>{this.props.title}</h4>
       </li>
     )

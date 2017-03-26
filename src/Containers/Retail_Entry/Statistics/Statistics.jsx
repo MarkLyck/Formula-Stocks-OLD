@@ -31,7 +31,6 @@ class Statistics extends React.Component {
     let fsWinRate = { height: `${Math.floor(winRate)}%` }
     let fsLossRate = { height: `${Math.ceil(100 - winRate)}%` }
 
-
     return (
       <section className="statistics section">
           <h2 className="title">Statistics</h2>

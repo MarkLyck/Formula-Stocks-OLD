@@ -1,4 +1,5 @@
 import React from 'react'
+import moment from 'moment'
 import MainButton from './MainButton'
 import store from '../../../../store'
 import { browserHistory } from 'react-router'
@@ -8,6 +9,7 @@ class SideBar extends React.Component {
   constructor(props) {
     super(props)
     this.selectMenu = this.selectMenu.bind(this)
+    this.updateState = this.updateState.bind(this)
 
     let selected = 'portfolio'
     if (this.props.location.indexOf('suggestions') > -1) { selected = 'suggestions' }
@@ -18,9 +20,9 @@ class SideBar extends React.Component {
     this.state = { selected: selected, plan: store.selectedPlan }
   }
 
-  componentWillReceiveProps(newProps) {
-    this.setState({ plan: newProps.plan })
-  }
+  componentDidMount() { store.plans.get(this.state.plan).on('change', this.updateState) }
+  updateState() { this.setState({ plan: store.selectedPlan }) }
+  componentWillReceiveProps(newProps) { this.setState({ plan: newProps.plan }) }
 
   selectMenu(selected) {
     if (selected === 'suggestions' || selected === 'portfolio') {
@@ -34,10 +36,15 @@ class SideBar extends React.Component {
   }
 
   render() {
+    let newSuggestions = 0
+    if (moment(store.plans.get(this.state.plan).toJSON().lastUpdated).unix() > moment(store.session.toJSON().lastSeenSuggestions).unix()) {
+      // TEST THIS BEFORE REALEASING
+      // newSuggestions = store.plans.get(this.state.plan).get('suggestions').filter(sugg => !sugg.model || sugg.action === "SELL").length
+    }
     return (
       <aside className="dashboard-sidebar">
         <ul className="main-menu">
-          <MainButton selected={this.state.selected === 'suggestions'} title="Suggestions" select={this.selectMenu} icon="icon-flask"/>
+          <MainButton selected={this.state.selected === 'suggestions'} title="Suggestions" select={this.selectMenu} icon="icon-flask" notification={newSuggestions}/>
           <MainButton selected={this.state.selected === 'portfolio'} title="Portfolio" select={this.selectMenu} icon="icon-chart"/>
           <MainButton selected={this.state.selected === 'portfolio trades'} title="Portfolio trades" select={this.selectMenu} icon="icon-trades"/>
           <MainButton selected={this.state.selected === 'articles'} title="Articles" select={this.selectMenu} icon="icon-articles"/>

@@ -12,6 +12,7 @@ const Plan = Backbone.Model.extend({
   urlRoot: `https://baas.kinvey.com/appdata/kid_rJRC6m9F/public`,
   defaults: {
     name: '',
+    lastUpdated: '',
     info: {
       roundtripTradesPerYear: 0,
       IITFormulas: 0,
@@ -30,6 +31,7 @@ const Plan = Backbone.Model.extend({
       $.ajax(`https://baas.kinvey.com/appdata/kid_rJRC6m9F/private/${plan}`)
       .then(r => {
         this.set('portfolio', r.portfolio)
+        this.set('lastUpdated', r._kmd.lmt)
         this.set('portfolioReturn', r.portfolioReturn)
         this.set('portfolioYields', r.portfolioYields)
         this.set('price', r.price)

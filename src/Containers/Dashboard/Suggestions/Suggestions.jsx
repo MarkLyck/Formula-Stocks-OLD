@@ -17,6 +17,8 @@ class Suggestions extends React.Component {
   }
 
   componentDidMount() {
+    store.session.set('lastSeenSuggestions', new Date())
+    store.session.updateUser()
     if (store.session.isAllowedToView(this.props.plan) && !store.plans.get(this.props.plan).get('portfolio').length) { store.plans.get(this.props.plan).fetchPrivate(this.props.plan) }
     else if (!store.session.isAllowedToView(this.props.plan) && !store.plans.get(this.props.plan).get('portfolioYields').length) { store.plans.get(this.props.plan).fetch() }
     store.plans.get(this.props.plan).on('change', this.updateState)

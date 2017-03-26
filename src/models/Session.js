@@ -17,6 +17,7 @@ const Session = Backbone.Model.extend({
     address: '',
     referer: '',
     type: 0,
+    lastSeenSuggestions: new Date(),
     lastSeen: new Date(),
     visits: 0,
     browser: platform.name,

@@ -17,6 +17,7 @@
     position: relative;
     padding-left: 2px;
     .main-button {
+      position: relative;
       margin-top: 40px;
       width: 56px;
       height: 56px;
@@ -27,9 +28,25 @@
       align-items: center;
       flex-direction: column;
       .icon {
+        position: relative;
         font-family: 'menufont';
         font-size: 30px;
         color: #747C8D;
+        .notification-icon {
+          position: absolute;
+          top: -12px;
+          right: -8px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: 0.6rem;
+          font-family: Lato;
+          background: $warning-color;
+          color: #fff;
+          border-radius: 50%;
+          height: 20px;
+          width: 20px;
+        }
       }
       h4 {
         min-width: 50px;
