@@ -138,8 +138,8 @@ class Portfolio extends React.Component {
             <tr>
               <th>Name</th>
               <th>Allocation</th>
-              <th>Change</th>
-              <th>Bought at avg.</th>
+              <th>Return</th>
+              <th>Cost basis</th>
               <th>Last price</th>
               <th>Days owned</th>
             </tr>
@@ -154,7 +154,7 @@ class Portfolio extends React.Component {
     if (newPlan || !this.state.allocation.length) {
       let colors = []
       let allocation = store.plans.get(newPlan ? newPlan.plan : this.state.plan).get('portfolio').map(stock => {
-        if (stock.latest_price > stock.purchase_price) {
+        if (stock.latest_price > (stock.purchase_price - stock.dividends)) {
           let amount = Math.round(Math.random() * 80 - 40)
           colors.push(adjustBrightness('#27A5F9', amount))
         } else if (stock.ticker === 'CASH') {

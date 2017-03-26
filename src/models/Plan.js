@@ -55,6 +55,7 @@ const Plan = Backbone.Model.extend({
     let receivedJSON = (i, e) => {
       const lines = e.target.result
       const data = JSON.parse(lines)
+      console.log('data: ', data);
       // Weekly file
       if (fileArr[i].name.indexOf('weekly') > -1) {
         let newSuggestions = this.get('suggestions').filter(sug => sug.model ? true : false)

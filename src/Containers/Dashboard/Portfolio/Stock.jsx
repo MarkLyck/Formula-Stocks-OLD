@@ -69,8 +69,10 @@ class Stock extends React.Component {
   render() {
     let stock = this.props.stock
 
+    let costBasisPrice = stock.purchase_price - stock.dividends
+
     let changeClass = 'positive'
-    if ((this.state.lastPrice - stock.purchase_price).toFixed(2) < 0) {
+    if ((this.state.lastPrice - costBasisPrice).toFixed(2) < 0) {
       changeClass = 'negative'
     }
 
@@ -78,19 +80,18 @@ class Stock extends React.Component {
     var b = moment()
     const daysToAdd = b.diff(a, 'days')
 
-    let percentChange = ((this.state.lastPrice - stock.purchase_price) * 100 / stock.purchase_price).toFixed(2)
+    let percentChange = ((this.state.lastPrice - costBasisPrice) * 100 / costBasisPrice).toFixed(2)
     if (!percentChange) {
-      percentChange = ((stock.latest_price - stock.purchase_price) * 100 / stock.purchase_price).toFixed(2)
+      percentChange = ((stock.latest_price - costBasisPrice) * 100 / costBasisPrice).toFixed(2)
     }
 
+    let allocationWeight = stock.percentage_weight.toFixed(2)
+    if (this.props.plan === 'fund') { allocationWeight = stock.percentage_weight.toFixed(4) }
+    else if (allocationWeight < 0.006) { allocationWeight = stock.percentage_weight.toFixed(3) }
+    if (allocationWeight < 0.0001) { allocationWeight = 0.0001 }
+    let allocation = <td className="portfolio-td"><p className="blue-color">{allocationWeight}%</p></td>
+
     if (!this.props.graph) {
-      let allocationWeight = stock.percentage_weight.toFixed(2)
-      if (this.props.plan === 'fund') { allocationWeight = stock.percentage_weight.toFixed(4) }
-      else if (allocationWeight < 0.006) { allocationWeight = stock.percentage_weight.toFixed(3) }
-      if (allocationWeight < 0.0001) { allocationWeight = 0.0001 }
-
-      let allocation = <td className="portfolio-td"><p className="blue-color">{allocationWeight}%</p></td>
-
       return (
         <tbody onClick={this.props.expandStock.bind(null, stock)}>
           <tr className="stock-table-row">
@@ -103,7 +104,7 @@ class Stock extends React.Component {
             </td>
             {allocation}
             <td className="portfolio-td"><p className={changeClass}>{percentChange}%</p></td>
-            <td className="portfolio-td"><p className="blue-color">${stock.purchase_price.toFixed(2)}</p></td>
+            <td className="portfolio-td"><p className="blue-color">${costBasisPrice.toFixed(2)}</p></td>
             <td className="portfolio-td"><p className="class-checker">${this.state.lastPrice ? this.state.lastPrice.toFixed(2) : stock.latest_price.toFixed(2)}</p></td>
             <td className="portfolio-td"><p className="class-checker">{cc.commafy(stock.days_owned + daysToAdd)}</p></td>
           </tr>
@@ -120,10 +121,10 @@ class Stock extends React.Component {
                 <p className="ticker">{stock.ticker}</p>
               </div>
             </td>
-            <td className="portfolio-td"><p className="blue-color">{stock.percentage_weight.toFixed(2)}%</p></td>
+            {allocation}
             <td className="portfolio-td"><p className={changeClass}>{percentChange}%</p></td>
-            <td className="portfolio-td"><p className="blue-color">${stock.purchase_price.toFixed(2)}</p></td>
-            <td className="portfolio-td"><p className="class-checker">${this.state.lastPrice ? this.state.lastPrice : stock.latest_price.toFixed(2)}</p></td>
+            <td className="portfolio-td"><p className="blue-color">${costBasisPrice.toFixed(2)}</p></td>
+            <td className="portfolio-td"><p className="class-checker">${this.state.lastPrice ? this.state.lastPrice.toFixed(2) : stock.latest_price.toFixed(2)}</p></td>
             <td className="portfolio-td"><p className="class-checker">{cc.commafy(stock.days_owned + daysToAdd)}</p></td>
           </tr>
           <tr>

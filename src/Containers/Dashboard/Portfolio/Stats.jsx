@@ -45,7 +45,7 @@ class Stats extends React.Component {
   }
 
   render() {
-    const positiveStocks = this.state.portfolio.filter(stock => stock.purchase_price <= stock.latest_price ? true : false).length
+    const positiveStocks = this.state.portfolio.filter(stock => (stock.purchase_price - stock.dividends) <= stock.latest_price ? true : false).length
     const percentPositive = (positiveStocks / (this.state.portfolio.length - 1) * 100).toFixed(2)
 
     const avgSize = (this.state.portfolio.reduce((prev, stock) => {
