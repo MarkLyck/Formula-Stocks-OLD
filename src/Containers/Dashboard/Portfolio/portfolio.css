@@ -147,6 +147,9 @@
         padding-left: 20px;
         text-align: left;
         font-weight: 100;
+        .info-circle {
+          display: inline-block;
+        }
       }
     }
   }
@@ -248,7 +251,7 @@
   }
 }
 
-@media (max-width: 950px) {
+@media (max-width: 1075px) {
   .portfolio-table {
     .labels {
       tr {
@@ -267,7 +270,7 @@
   }
 }
 
-@media (max-width: 850px) {
+@media (max-width: 940px) {
   .portfolio-table {
     .labels {
       tr {
@@ -280,6 +283,20 @@
       tr {
         .portfolio-td:last-child, .portfolio-td:nth-child(5) {
           display: none;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 810px) {
+  .portfolio-table {
+    .labels {
+      tr {
+        th {
+          .info-circle {
+            display: none;
+          }
         }
       }
     }

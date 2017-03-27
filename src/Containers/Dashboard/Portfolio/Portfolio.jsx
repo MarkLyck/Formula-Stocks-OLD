@@ -7,6 +7,7 @@ import store from '../../../store'
 import PortfolioGraph from './PortfolioGraph';
 import PortfolioItem from './Stock'
 import PieChart from '../../Global/Components/PieChart/PieChart'
+import Info from '../../Global/Components/Info/Info'
 import Stats from './Stats'
 import YearlyReturns from './YearlyReturns'
 import './portfolio.css'
@@ -138,9 +139,9 @@ class Portfolio extends React.Component {
             <tr>
               <th>Name</th>
               <th>Allocation</th>
-              <th>Return</th>
-              <th>Cost basis</th>
-              <th>Last price</th>
+              <th>Return<Info title="Return" explanation="Percent increase from Cost basis to latest price." left/></th>
+              <th>Cost basis<Info title="Cost basis" explanation="Average purchase price of stocks adjusted downward for earned dividends." left/></th>
+              <th>Last price<Info title="Last price" explanation="Latest End of day pricing for stocks." left/></th>
               <th>Days owned</th>
             </tr>
           </thead>
