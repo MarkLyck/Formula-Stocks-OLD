@@ -140,8 +140,8 @@ class Portfolio extends React.Component {
               <th>Name</th>
               <th>Allocation</th>
               <th>Return<Info title="Return" explanation="Percent increase from Cost basis to Last price." left/></th>
-              <th>Cost basis<Info title="Cost basis" explanation="Average purchase price of stocks adjusted downward for earned dividends." left/></th>
-              <th>Last price<Info title="Last price" explanation="Latest End of day pricing for stocks." left/></th>
+              <th>Cost basis<Info title="Cost basis" explanation="Averaged purchase price adjusted for dividends earned." left/></th>
+              <th>Last price<Info title="Last price" explanation="Latest End of Day pricing for stocks." left/></th>
               <th>Days owned</th>
             </tr>
           </thead>
