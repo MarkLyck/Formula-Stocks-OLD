@@ -22,11 +22,12 @@ class ArticleSideBar extends React.Component {
     const articles = _.sortBy(this.props.articles, (art) => art._kmd.ect).reverse()
     return articles
     .filter((article, i) => {
-      if (this.props.location.indexOf('dashboard') > -1) {
-        return article.publicOnly ? false : true
-      } else {
-        return article.membersOnly ? false : true
+      if (typeof this.props.location === "string") {
+        if (this.props.location.indexOf('dashboard') > -1) {
+          return article.publicOnly ? false : true
+        }
       }
+      return article.membersOnly ? false : true
     })
     .map((article, i) => {
       console.log(article);
