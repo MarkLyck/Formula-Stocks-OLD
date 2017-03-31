@@ -55,55 +55,58 @@ class BacktestedPerformance extends React.Component {
 
 
     // Generate quarterly report
-
+    
     // let startValue = 0
     // let negative = 0
     // let positive = 0
-    // console.log( fundData )
-    // fundData.forEach((point, i) => {
+    // console.log( businessData )
+    // businessData.forEach((point, i) => {
     //   if (i === 0) { startValue = point.balance }
-      // if (point.date.year >= 2007) {
-      //   if (Number(point.date.year) === 2007 && Number(point.date.month) < 12) { return undefined }
-      //   else if (Number(point.date.year) === 2007 && Number(point.date.month) === 12) { startValue = point.balance }
-
-
-
-        // const increase = (point.balance - startValue) / startValue
-        // if (point.date.month === '12') {
-        //   console.log(point.date.year + '   ' + increase.toFixed(4))
-        //   startValue = point.balance
-        // }
-        // if (point.date.month === '3') {
-        //   console.log(point.date.year + ' ' + 'Q1 ' + increase.toFixed(4))
-        //   startValue = point.balance
-        //   if (increase > 0) { positive++ }
-        //   else { negative++ }
-        // }
-        // else if (point.date.month === '6') {
-        //   console.log(point.date.year + ' ' + 'Q2 ' + increase.toFixed(4))
-        //   startValue = point.balance
-        //   if (increase > 0) { positive++ }
-        //   else { negative++ }
-        // }
-        // else if (point.date.month === '9') {
-        //   console.log(point.date.year + ' ' + 'Q3 ' + increase.toFixed(4))
-        //   startValue = point.balance
-        //   if (increase > 0) { positive++ }
-        //   else { negative++ }
-        // }
-        // else if (point.date.month === '12') {
-        //   console.log(point.date.year + ' ' + 'Q4 ' + increase.toFixed(4))
-        //   startValue = point.balance
-        //   if (increase > 0) { positive++ }
-        //   else { negative++ }
-        // }
-        // if (point.date.year === '2017' && point.date.month === '2') {
-        //   console.log(point.date.year + ' ' + 'SP ' + increase.toFixed(4))
-        //   if (increase > 0) { positive++ }
-        //   else { negative++ }
-        // }
-
-      // }
+    //   if (point.date.year >= 1979) {
+    //     if (Number(point.date.year) === 1979 && Number(point.date.month) < 12) { return undefined }
+    //     else if (Number(point.date.year) === 1979 && Number(point.date.month) === 12) {
+    //       startValue = point.balance
+    //       return undefined
+    //     }
+    //
+    //
+    //
+    //     const increase = (point.balance - startValue) / startValue
+    //     // if (point.date.month === '12') {
+    //     //   console.log(point.date.year + '   ' + increase.toFixed(4))
+    //     //   startValue = point.balance
+    //     // }
+    //     if (point.date.month === '3') {
+    //       console.log(point.date.year + ' ' + 'Q1 ' + increase.toFixed(4))
+    //       startValue = point.balance
+    //       if (increase > 0) { positive++ }
+    //       else { negative++ }
+    //     }
+    //     else if (point.date.month === '6') {
+    //       console.log(point.date.year + ' ' + 'Q2 ' + increase.toFixed(4))
+    //       startValue = point.balance
+    //       if (increase > 0) { positive++ }
+    //       else { negative++ }
+    //     }
+    //     else if (point.date.month === '9') {
+    //       console.log(point.date.year + ' ' + 'Q3 ' + increase.toFixed(4))
+    //       startValue = point.balance
+    //       if (increase > 0) { positive++ }
+    //       else { negative++ }
+    //     }
+    //     else if (point.date.month === '12') {
+    //       console.log(point.date.year + ' ' + 'Q4 ' + increase.toFixed(4))
+    //       startValue = point.balance
+    //       if (increase > 0) { positive++ }
+    //       else { negative++ }
+    //     }
+    //     if (point.date.year === '2017' && point.date.month === '2') {
+    //       console.log(point.date.year + ' ' + 'SP ' + increase.toFixed(4))
+    //       if (increase > 0) { positive++ }
+    //       else { negative++ }
+    //     }
+    //
+    //   }
     // })
     //
     // console.log('positive', positive);

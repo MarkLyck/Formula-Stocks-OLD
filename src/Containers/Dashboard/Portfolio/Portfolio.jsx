@@ -107,7 +107,8 @@ class Portfolio extends React.Component {
         </section>
       )
     } else {
-      let portfolio = store.plans.get(this.state.plan).get('portfolio').map((stock, i) => {
+      const portfolioData = store.plans.get(this.state.plan).get('portfolio')
+      let portfolio = portfolioData.map((stock, i) => {
         if (stock.name === 'CASH') {
           return (
             <tbody key={i} className="cash">

@@ -46,7 +46,7 @@ class RiskManagement extends React.Component {
           We can also examine the average gain from a winning stock which is +{avgWinPercent}%, while the average loss
           from a losing stock is only -{avgLossPercent}%. Add to this that Entry also wins {winRate.toFixed(2)}% of the
           time and only looses {(100 - winRate).toFixed(2)}% of the time. This leads us to a mathematical expectation of
-          ({winRate.toFixed(2) / 100} * {avgWinPercent}) - ({((100 - winRate) / 100).toFixed(2)} * {avgLossPercent}) =
+          ({(winRate / 100).toFixed(2)} * {avgWinPercent}) - ({((100 - winRate) / 100).toFixed(2)} * {avgLossPercent}) =
           +{expectation.toFixed(2)}%. Taking an average of 2.24 years we correct for this to get an expected annualized
           return of {(expectation / 2.24).toFixed(2)}%.
         </p>
