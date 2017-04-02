@@ -30,7 +30,6 @@ class ArticleSideBar extends React.Component {
       return article.membersOnly ? false : true
     })
     .map((article, i) => {
-      console.log(article);
       const preview = article.body.substring(0,120).replace(`\n`, '').split('![')[0]
       let html_content = markdown.toHTML( preview )
       .replaceAll('&amp;', '&')
@@ -49,10 +48,12 @@ class ArticleSideBar extends React.Component {
   }
 
   gotoArticle(title) {
-    if (this.props.location.indexOf('dashboard') === -1) {
-      browserHistory.push(`/articles/${title}`)
+    if (typeof this.props.location === "string") {
+      if (this.props.location.indexOf('dashboard') > -1) {
+        browserHistory.push(`/dashboard/articles/${title}`)
+      }
     } else {
-      browserHistory.push(`/dashboard/articles/${title}`)
+      browserHistory.push(`/articles/${title}`)
     }
   }
 
