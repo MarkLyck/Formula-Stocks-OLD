@@ -92,12 +92,13 @@ class Suggestions extends React.Component {
     let lastUpdatedText
     if (store.plans.get(this.state.plan).get('suggestions').length) {
       let date = store.plans.get(this.state.plan).get('suggestions')[0].date
+      
       let month = date.month
       let fixedDate = date.day
       if (Number(date.month) <= 9) { month = '0' + date.month}
       if (Number(date.day) <= 9) { fixedDate = '0' + date.day}
       let lastUpdatedDate = moment(date.year + month + fixedDate, 'YYYYMMDD').format('MMM D, YYYY')
-      let endWindowDate = moment(date.year + month + '01', 'YYYYMMDD').add(30, 'days').format('MMM D, YYYY')
+      let endWindowDate = moment(date.year + month + fixedDate, 'YYYYMMDD').add(30, 'days').format('MMM D, YYYY')
       lastUpdatedText = <h3 className="timeStamp">Trading window: {lastUpdatedDate} to {endWindowDate}</h3>
     }
 
