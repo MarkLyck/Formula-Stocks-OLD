@@ -55,7 +55,6 @@ const Plan = Backbone.Model.extend({
     let receivedJSON = (i, e) => {
       const lines = e.target.result
       const data = JSON.parse(lines)
-      console.log('data: ', data);
       // Weekly file
       if (fileArr[i].name.indexOf('weekly') > -1) {
         let newSuggestions = this.get('suggestions').filter(sug => sug.model ? true : false)
@@ -132,6 +131,19 @@ const Plan = Backbone.Model.extend({
        console.error(e)
      })
 
+      // $.ajax({
+      //   url: `http://localhost:3001/public/${this.get('_id')}`,
+      //   type: 'PUT',
+      //   data: JSON.stringify(publicData),
+      //   contentType: 'application/json'
+      // }).then(r => {
+      //   admin.filesUploaded++
+      //   store.session.set('notification', {
+      //     text: `Succesfully saved file to mongoDB: ${fileArr[i].name} (${admin.filesUploaded / 2}/${admin.filesToUpload})`,
+      //     type: 'success'
+      //   })
+      // })
+
      // Private data
      let privateData = _.omit(this.toJSON(), ['annualData', 'info', '_acl', '_kmd'])
      privateData.stats = { CAGR: privateData.stats.CAGR, WLRatio: privateData.stats.WLRatio }
@@ -154,6 +166,21 @@ const Plan = Backbone.Model.extend({
        })
        console.error(e)
      })
+
+
+     // mongoDB save
+    //  $.ajax({
+    //    url: `http://localhost:3001/private/${this.get('_id')}`,
+    //    type: 'PUT',
+    //    data: JSON.stringify(privateData),
+    //    contentType: 'application/json'
+    //  }).then(r => {
+    //    admin.filesUploaded++
+    //    store.session.set('notification', {
+    //      text: `Succesfully saved file to mongoDB: ${fileArr[i].name} (${admin.filesUploaded / 2}/${admin.filesToUpload})`,
+    //      type: 'success'
+    //    })
+    //  })
     }
 
     fileArr.forEach((file, i) => {

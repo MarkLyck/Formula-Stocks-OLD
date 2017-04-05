@@ -3,6 +3,10 @@ import _ from 'underscore'
 import moment from 'moment'
 import { Link } from 'react-router'
 import store from '../../../store'
+import io from 'socket.io-client/dist/socket.io.min'
+let socket
+// let socketURL = 'http://localhost:8080'
+let socketURL = 'ec2-35-166-218-217.us-west-2.compute.amazonaws.com:8080'
 
 import PortfolioGraph from './PortfolioGraph';
 import PortfolioItem from './Stock'
@@ -44,7 +48,15 @@ class Portfolio extends React.Component {
     this.renderHoldings = this.renderHoldings.bind(this)
     this.getAllocation = this.getAllocation.bind(this)
 
-    this.state = { plan: store.selectedPlan, fetching: true, selectedStock: '', allocation: [], colors: [] }
+    this.state = {
+      plan: store.selectedPlan,
+      fetching: true,
+      selectedStock: '',
+      allocation: [],
+      colors: [],
+      realtimeQuotes: {},
+      gotAllQuotes: false
+    }
   }
 
   componentDidMount() {
@@ -60,6 +72,16 @@ class Portfolio extends React.Component {
     if (!marketPortfolioData.length) {
       store.market.data.getPortfolioData()
     }
+
+
+    socket = io.connect(socketURL)
+    socket.on(`latest_${plan}_quotes`, data => { if (!this.state.gotAllQuotes) {this.setState({ realtimeQuotes: data, gotAllQuotes: true }) }})
+    socket.emit('getAllQuotes', true)
+    socket.on(`realtime_${plan}_quotes`, data => {
+      let newQuotes = this.state.realtimeQuotes
+      newQuotes[data.ticker] = data.price
+      this.setState({ realtimeQuotes: newQuotes })
+    })
   }
 
   componentWillReceiveProps(newProps) {
@@ -70,6 +92,16 @@ class Portfolio extends React.Component {
       else if (!store.session.isAllowedToView(newProps.plan) && !store.plans.get(newProps.plan).get('portfolioYields').length) { store.plans.get(newProps.plan).fetch() }
       store.plans.get(newProps.plan).on('change', this.updateState)
       this.setState({ plan: newProps.plan })
+
+      socket = io.connect(socketURL)
+      socket.on(`latest_${newProps.plan}_quotes`, data => { this.setState({ realtimeQuotes: data, gotAllQuotes: true }) })
+      socket.emit('getAllQuotes', true)
+      socket.on(`realtime_${newProps.plan}_quotes`, data => {
+        let newQuotes = this.state.realtimeQuotes
+        newQuotes[data.ticker] = data.price
+        this.setState({ realtimeQuotes: newQuotes })
+      })
+      socket.disconnect()
     }
   }
 
@@ -79,6 +111,7 @@ class Portfolio extends React.Component {
     store.plans.get('premium').off('change', this.updateState)
     store.plans.get('business').off('change', this.updateState)
     store.plans.get('fund').off('change', this.updateState)
+    socket.disconnect()
   }
 
   updateState() {
@@ -121,9 +154,9 @@ class Portfolio extends React.Component {
         }
 
       if (this.state.selectedStock !== stock.ticker) {
-        return (<PortfolioItem stock={stock} plan={this.state.plan} key={stock.ticker + i} expandStock={this.expandStock} number={i}/>)
+        return (<PortfolioItem stock={stock} plan={this.state.plan} realTimeQuotes={this.state.realtimeQuotes} key={stock.ticker + i} expandStock={this.expandStock} number={i}/>)
       } else {
-        return (<PortfolioItem stock={stock} plan={this.state.plan} graph={true} key={stock.ticker + i} expandStock={this.expandStock} number={i}/>)
+        return (<PortfolioItem stock={stock} plan={this.state.plan} realTimeQuotes={this.state.realtimeQuotes} graph={true} key={stock.ticker + i} expandStock={this.expandStock} number={i}/>)
       }
     })
 
@@ -142,7 +175,7 @@ class Portfolio extends React.Component {
               <th>Allocation</th>
               <th>Return<Info title="Return" explanation="Percent increase from Cost basis to Last price." left/></th>
               <th>Cost basis<Info title="Cost basis" explanation="Averaged purchase price adjusted for dividends earned." left/></th>
-              <th>Last price<Info title="Last price" explanation="Latest End of Day pricing for stocks." left/></th>
+              <th>Last price<Info title="Last price" explanation="Latest price available for stocks. Updated realtime or End of Day." left/></th>
               <th>Days owned</th>
             </tr>
           </thead>
@@ -262,7 +295,9 @@ class Portfolio extends React.Component {
         </section>
         { store.session.isAllowedToView(this.state.plan) ? <YearlyReturns plan={this.state.plan} /> : ''}
         {this.renderHoldings()}
+        <p className="disclaimer price-origin">Realtime prices are provided by <a href="https://intrinio.com" target="_blank">Intrinio</a></p>
         { store.session.isAllowedToView(this.state.plan) ? <Stats plan={this.state.plan}/> : '' }
+
       </div>
     )
   }

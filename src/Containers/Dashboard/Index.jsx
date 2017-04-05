@@ -1,5 +1,6 @@
 import React from 'react'
 import Lockr from 'lockr'
+// import io from 'socket.io-client/dist/socket.io.min'
 
 import store from '../../store'
 
@@ -29,6 +30,11 @@ class Dashboard extends React.Component {
   componentDidMount() {
     window.Intercom("shutdown")
     store.session.on('change', this.updateState)
+
+    // let socket = io.connect('http://localhost:8080')
+    // socket.on('new_quotes', function(data) {
+    //     console.log('Got new quote:', data)
+    // })
   }
 
   componentWillUnmount() {
