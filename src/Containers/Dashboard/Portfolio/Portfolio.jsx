@@ -5,8 +5,8 @@ import { Link } from 'react-router'
 import store from '../../../store'
 import io from 'socket.io-client/dist/socket.io.min'
 let socket
-// let socketURL = 'http://localhost:8080'
-let socketURL = 'https://ec2-35-166-218-217.us-west-2.compute.amazonaws.com'
+// let socketURL = 'wss://ec2-35-166-218-217.us-west-2.compute.amazonaws.com'
+let socketURL = 'wss://formulastocks-server.tk:8080'
 
 import PortfolioGraph from './PortfolioGraph';
 import PortfolioItem from './Stock'
