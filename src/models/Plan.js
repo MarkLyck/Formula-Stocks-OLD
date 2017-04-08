@@ -131,18 +131,24 @@ const Plan = Backbone.Model.extend({
        console.error(e)
      })
 
-      // $.ajax({
-      //   url: `http://localhost:3001/public/${this.get('_id')}`,
-      //   type: 'PUT',
-      //   data: JSON.stringify(publicData),
-      //   contentType: 'application/json'
-      // }).then(r => {
-      //   admin.filesUploaded++
-      //   store.session.set('notification', {
-      //     text: `Succesfully saved file to mongoDB: ${fileArr[i].name} (${admin.filesUploaded / 2}/${admin.filesToUpload})`,
-      //     type: 'success'
-      //   })
-      // })
+      let planName = this.get('_id')
+      if (this.get('_id') === 'basic') {
+        publicData.name = 'entry'
+        planName = 'entry'
+      }
+
+      $.ajax({
+        url: `https://formulastocks-server.tk:3001/public/${planName}`,
+        type: 'PUT',
+        data: JSON.stringify(publicData),
+        contentType: 'application/json'
+      }).then(r => {
+        admin.filesUploaded++
+        store.session.set('notification', {
+          text: `Succesfully saved file to mongoDB: ${fileArr[i].name} (${admin.filesUploaded / 2}/${admin.filesToUpload})`,
+          type: 'success'
+        })
+      })
 
      // Private data
      let privateData = _.omit(this.toJSON(), ['annualData', 'info', '_acl', '_kmd'])
@@ -167,20 +173,22 @@ const Plan = Backbone.Model.extend({
        console.error(e)
      })
 
+     if (this.get('_id') === 'basic') {
+       privateData.name = 'entry'
+     }
 
-     // mongoDB save
-    //  $.ajax({
-    //    url: `http://localhost:3001/private/${this.get('_id')}`,
-    //    type: 'PUT',
-    //    data: JSON.stringify(privateData),
-    //    contentType: 'application/json'
-    //  }).then(r => {
-    //    admin.filesUploaded++
-    //    store.session.set('notification', {
-    //      text: `Succesfully saved file to mongoDB: ${fileArr[i].name} (${admin.filesUploaded / 2}/${admin.filesToUpload})`,
-    //      type: 'success'
-    //    })
-    //  })
+     $.ajax({
+       url: `https://formulastocks-server.tk:3001/private/${planName}`,
+       type: 'PUT',
+       data: JSON.stringify(privateData),
+       contentType: 'application/json'
+     }).then(r => {
+       admin.filesUploaded++
+       store.session.set('notification', {
+         text: `Succesfully saved file to mongoDB: ${fileArr[i].name} (${admin.filesUploaded / 2}/${admin.filesToUpload})`,
+         type: 'success'
+       })
+     })
     }
 
     fileArr.forEach((file, i) => {

@@ -1,4 +1,8 @@
-import React from 'react'
+import React, { Component, PropTypes } from 'react'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { fetchPulicPlan } from './actions'
+
 import store from '../../store'
 
 import NavBar from '../Global/Navbar/Navbar'
@@ -19,17 +23,20 @@ import IntendedAudience from './IntendedAudience/IntendedAudience'
 import BottomCTA from '../Global/BottomCTA/BottomCTA'
 import Footer from '../Global/Footer/Footer'
 
-class Home extends React.Component {
+class Home extends Component {
   componentDidMount() {
+    const { actions } = this.props
+    actions.fetchPulicPlan('entry')
+
+    // REMOVE BACKBBONE when Redux is fully integrated
     store.plans.get('basic').fetch()
     store.market.data.getAnnualData()
     store.market.data.getDJIAData()
-    window.Intercom("boot", {
-      app_id: "i194mpvo"
-    })
+    window.Intercom("boot", { app_id: "i194mpvo" })
   }
 
   render() {
+    console.log(' render:' , this.props)
     return (
       <div id="home" className="retail">
         <NavBar/>
@@ -55,4 +62,29 @@ class Home extends React.Component {
   }
 }
 
-export default Home
+Home.propTypes = {
+  selectedPlan: PropTypes.string.isRequired,
+  isFetching: PropTypes.bool.isRequired
+}
+
+function mapStateToProps(state) {
+  const { retail } = state
+  const {
+    selectedPlan,
+    plans,
+    isFetching
+  } = retail
+
+  console.log(selectedPlan, plans, isFetching);
+  return {
+    selectedPlan,
+    plans,
+    isFetching
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return { actions: bindActionCreators({ fetchPulicPlan }, dispatch) }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home)

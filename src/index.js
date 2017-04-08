@@ -1,7 +1,16 @@
 import './ajax'
+import React from 'react'
 import ReactDOM from 'react-dom'
-import Router from './Router'
+require('es6-promise').polyfill()
+import 'isomorphic-fetch'
+// import { Provider } from 'react-redux'
+// import { createStore } from 'redux'
+import Root from './components/Root'
+// import reducers from './reducers'
+// import Router from './Router'
 import store from './store'
+
+// let reduxStore = createStore(reducers)
 
 if (localStorage.getItem('authtoken')) {
   store.session.set('authtoken', localStorage.authtoken)
@@ -13,4 +22,4 @@ if (localStorage.getItem('authtoken')) {
 
 // store.plans.fetch()
 
-ReactDOM.render(Router, document.getElementById('container'))
+ReactDOM.render(<Root/>, document.getElementById('container'))

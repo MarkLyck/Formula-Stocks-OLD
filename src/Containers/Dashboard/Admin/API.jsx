@@ -11,23 +11,24 @@ const AdminAPI = React.createClass({
     /* ACCEPTABLE FILENAMES */
     const filenames = [
         "annual_basic.json",
+        "annual_entry.json",
         "annual_premium.json",
         "annual_business.json",
         "annual_fund.json",
         "monthly_basic.json",
+        "monthly_entry.json",
         "monthly_premium.json",
         "monthly_business.json",
         "monthly_fund.json",
         "weekly_basic.json",
+        "weekly_entry.json",
         "weekly_premium.json",
         "weekly_business.json",
         "weekly_fund.json"
     ];
 
     let badFiles = files.filter((file,i) => {
-      if (filenames.indexOf(file.name) === -1) {
-        return true
-      }
+      if (filenames.indexOf(file.name) === -1) { return true }
       return false
     })
 
@@ -39,13 +40,13 @@ const AdminAPI = React.createClass({
       return null
     } else {
       admin.filesToUpload = files.length
-      let basicFiles = files.filter(file => { if (file.name.indexOf('basic') > -1) { return true } return false })
+      let entryFiles = files.filter(file => { if (file.name.indexOf('basic') > -1 || file.name.indexOf('entry') > -1) { return true } return false })
       let premiumFiles = files.filter(file => { if (file.name.indexOf('premium') > -1) { return true } return false })
       let businessFiles = files.filter(file => { if (file.name.indexOf('business') > -1) { return true } return false })
       let fundFiles = files.filter(file => { if (file.name.indexOf('fund') > -1) { return true } return false })
 
-      if (basicFiles.length > 0) {
-        store.plans.get('basic').updateData(basicFiles)
+      if (entryFiles.length > 0) {
+        store.plans.get('basic').updateData(entryFiles)
       }
       if (premiumFiles.length > 0) {
         store.plans.get('premium').updateData(premiumFiles)

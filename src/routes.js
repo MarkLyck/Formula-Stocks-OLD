@@ -1,9 +1,8 @@
 import React from 'react'
-import { Router, Route, IndexRoute } from 'react-router'
+import { Route, IndexRoute } from 'react-router'
 
-import store from './store'
+import App from './Containers/App'
 
-// import Retail from './Containers/Retail/Index'
 import Retail_Entry from './Containers/Retail_Entry/Index'
 import Professional from './Containers/Pro/Index'
 import SignUp from './Containers/Modals/SignUp/SignUp'
@@ -24,12 +23,12 @@ import Users from './Containers/Dashboard/Admin/Users/Users'
 import NewArticle from './Containers/Dashboard/Admin/NewArticle'
 import NotFound from './Containers/Global/NotFound/NotFound'
 
-const router = (
-  <Router history={store.settings.history} onUpdate={() => window.scrollTo(0, 0)}>
-    <Route path="/" component={Retail_Entry}>
-      <Route path="login" component={Login}/>
-      <Route path="signup" component={SimpleSignUp}/>
-    </Route>
+const routes = (
+  <Route path="/" component={App}>
+    <IndexRoute component={Retail_Entry}/>
+    <Route component={Retail_Entry}> <Route path="login" component={Login}/> </Route>
+    <Route component={Retail_Entry}> <Route path="signup" component={SimpleSignUp}/> </Route>
+
     <Route path="/basic" component={Retail_Entry}>
       <Route path="login" component={Login}/>
       <Route path="signup" component={SimpleSignUp}/>
@@ -62,7 +61,7 @@ const router = (
     <Route path="/articles*" component={Articles}/>
     <Route path="/faq" component={FAQ}/>
     <Route path="/*" component={NotFound}/>
-  </Router>
+  </Route>
 )
 
-export default router
+export default routes
