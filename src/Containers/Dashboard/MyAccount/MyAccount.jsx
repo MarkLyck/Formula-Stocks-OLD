@@ -189,6 +189,8 @@ class MyAccount extends React.Component {
       )
     }
 
+    if (currPlan === 'basic model') { currPlan = 'entry model' }
+
     return (
       <div className="my-account-page">
         <div className="account-info">
@@ -204,7 +206,7 @@ class MyAccount extends React.Component {
         <div className="change-plan">
           <h3 className="db-heading">{changeTitle}</h3>
           <div className="db-card">
-            <div className={basicClass + ' plan'} disabled={basicDisabled} onClick={this.selectPlan.bind(null, 'basic')}><h3 className="plan-name">Basic</h3><h3 className="price">$50<br/><span className="disclaimer">monthly</span></h3></div>
+            <div className={basicClass + ' plan'} disabled={basicDisabled} onClick={this.selectPlan.bind(null, 'basic')}><h3 className="plan-name">Entry</h3><h3 className="price">$50<br/><span className="disclaimer">monthly</span></h3></div>
             <div className={premiumClass + ' plan'} disabled={premiumDisabled} onClick={this.selectPlan.bind(null, 'premium')}><h3 className="plan-name">Premium</h3><h3 className="price">$100<br/><span className="disclaimer">monthly</span></h3></div>
             <div className={businessClass + ' plan'} disabled={businessDisabled} onClick={this.selectPlan.bind(null, 'business')}><h3 className="plan-name">Business</h3><h3 className="price">$20,000<br/><span className="disclaimer">yearly</span></h3></div>
             <div className={fundClass + ' plan fund'} disabled={fundDisabled} onClick={this.selectPlan.bind(null, 'fund')}><h3 className="plan-name">Fund</h3><h3 className="price">$140,000<br/><span className="disclaimer">yearly</span></h3></div>

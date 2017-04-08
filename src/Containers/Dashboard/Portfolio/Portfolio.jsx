@@ -295,9 +295,8 @@ class Portfolio extends React.Component {
         </section>
         { store.session.isAllowedToView(this.state.plan) ? <YearlyReturns plan={this.state.plan} /> : ''}
         {this.renderHoldings()}
-        <p className="disclaimer price-origin">Realtime prices are provided by <a href="https://intrinio.com" target="_blank">Intrinio</a></p>
+        { store.session.isAllowedToView(this.state.plan) ? <p className="disclaimer price-origin">Realtime prices are provided by <a href="https://intrinio.com" target="_blank">Intrinio</a></p> : '' }
         { store.session.isAllowedToView(this.state.plan) ? <Stats plan={this.state.plan}/> : '' }
-
       </div>
     )
   }

@@ -146,7 +146,7 @@ const Session = Backbone.Model.extend({
     }
   },
   isAllowedToView(plan) {
-    if (this.get('email') === 'demo@formulastocks.com' || this.get('email') === 'jmiller@ecamail.com') {
+    if (this.get('email') === 'demo@formulastocks.com' || this.get('email') === 'mads@m2film.dk') {
       return true
     }
     let type = 5
