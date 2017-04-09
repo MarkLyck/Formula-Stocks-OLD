@@ -42,7 +42,7 @@ const Introduction = ({portfolioYields, portfolioReturn, winRate, }) => {
         </p>
         <p className="disclaimer">*Past performance is not neccesarily indicative of future results.</p>
         <div className="graph-container">
-          <SingleWinRateGraph plan="basic" name="Entry"/>
+          <SingleWinRateGraph fsWinRate={winRate} marketWinRate={59} name="Entry"/>
         </div>
       </div>
     </section>

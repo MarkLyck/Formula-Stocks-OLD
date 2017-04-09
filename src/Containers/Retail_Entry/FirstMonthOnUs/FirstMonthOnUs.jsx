@@ -1,9 +1,8 @@
 import React from 'react'
-import Scroll from 'react-scroll'
+import { Element } from 'react-scroll'
 import { Link } from 'react-router'
 import './firstMonthOnUs.css'
 
-const Element = Scroll.Element
 const FirstMonthOnUs = () => (
   <section className="first-month-on-us section">
     <Element name="pricing"/>

@@ -1,9 +1,8 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { fetchPulicPlan, fetchDJIA } from './actions'
-
-import store from '../../store'
+import { fetchPulicPlan } from '../../actions/plans'
+import { fetchDJIA, fetchSP500 } from '../../actions/market'
 
 import NavBar from '../Global/Navbar/Navbar'
 // import Hero from '../Global/HeroSlider/HeroSlider'
@@ -34,17 +33,14 @@ class Home extends Component {
     const { actions } = this.props
     actions.fetchPulicPlan('entry')
     actions.fetchDJIA()
+    actions.fetchSP500()
 
-    // REMOVE BACKBBONE when Redux is fully integrated
-    store.plans.get('basic').fetch()
-    store.market.data.getAnnualData()
-    store.market.data.getDJIAData()
     window.Intercom("boot", { app_id: "i194mpvo" })
   }
 
   calculateLaunchReturns() {
-    const { selectedPlan, plans } = this.props
-    const plan = plans[selectedPlan]
+    const { selectedPlan, data } = this.props
+    const plan = data[selectedPlan]
 
     const launchBalance = plan.portfolioYields[0].balance
     const lastBalance = plan.portfolioYields[plan.portfolioYields.length - 1].balance
@@ -52,8 +48,8 @@ class Home extends Component {
   }
 
   render() {
-    const { selectedPlan, plans, DJIA } = this.props
-    const plan = plans[selectedPlan]
+    const { selectedPlan, data, DJIA, SP500 } = this.props
+    const plan = data[selectedPlan]
     const portfolioReturn = plan ? this.calculateLaunchReturns() : 450
 
     return (
@@ -65,15 +61,25 @@ class Home extends Component {
             winRate={plan ? Math.floor(plan.stats.WLRatio) : 90}
             portfolioYields={plan ? plan.portfolioYields : []}/>
         <WhatIsIt/>
-        <SingleLaunchPerformance plan="basic" name="Entry" DJIA={DJIA} portfolioYields={plan ? plan.portfolioYields : []}/>
+        <SingleLaunchPerformance
+          name={selectedPlan}
+          marketData={DJIA}
+          portfolioYields={plan ? plan.portfolioYields : []}/>
         <PerformanceMatters/>
         <FirstMonthOnUs/>
         <WhatToExpect/>
         <PilotTest/>
-        <SingleBacktestedPerformance plan="basic" name="Entry"/>
-        <Statistics plan="basic"/>
+        <SingleBacktestedPerformance
+            name={selectedPlan}
+            marketData={SP500}
+            annualData={plan ? plan.annualData : []}/>
+        <Statistics
+          stats={plan ? plan.stats : false}
+          info={plan ? plan.info : false}/>
         <HowWeBeatTheMarket/>
-        <RiskManagement plan="basic"/>
+        <RiskManagement
+          stats={plan ? plan.stats : false}
+          info={plan ? plan.info : false}/>
         <AboutUs/>
         <IntendedAudience/>
         <BottomCTA/>
@@ -90,28 +96,25 @@ Home.propTypes = {
 }
 
 function mapStateToProps(state) {
-  const { retail } = state
-  const {
-    selectedPlan,
-    plans,
-    isFetchingPlan,
-    isFetchingDJIA,
-    DJIA
-  } = retail
+  const { plans, market } = state
+  const { selectedPlan, isFetchingPlan, data } = plans
+  const { isFetchingDJIA, DJIA, SP500 } = market
 
   return {
     selectedPlan,
-    plans,
+    data,
     isFetchingPlan,
     isFetchingDJIA,
-    DJIA
+    DJIA,
+    SP500
   }
 }
 
 function mapDispatchToProps(dispatch) {
   const actions = {
     fetchPulicPlan,
-    fetchDJIA
+    fetchDJIA,
+    fetchSP500
   }
   return { actions: bindActionCreators(actions, dispatch) }
 }

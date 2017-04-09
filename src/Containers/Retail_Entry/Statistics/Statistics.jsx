@@ -1,96 +1,84 @@
 import React from 'react'
-import store from '../../../store'
-import WinRateGraph from '../../Global/Components/WinRateGraph/SingleWinRateGraph'
+import SingleWinRateGraph from '../../Global/Components/WinRateGraph/SingleWinRateGraph'
 import './statistics.css'
 
-class Statistics extends React.Component {
-  constructor(props) {
-    super(props)
+const Statistics = ({ stats, info }) => {
+  const fsWinYears = 36
+  const marketWinYears = 12
 
-    this.state = { fsWinYears: 36, marketWinYears: 12, lossRate: 11, plan: false }
-  }
+  let winRate = stats ? stats.WLRatio : 90
 
-  componentDidMount() {
-    store.plans.on('change', () => { this.setState({ plan: store.plans.get(this.props.plan).toJSON() }) })
-  }
+  let fsWinYearsStyle = { height: `${winRate}%` }
+  let marWinYearsStyle = { height: `30%` }
 
-  render() {
-    const plan = this.state.plan
+  let avgWinPercent = info ? Math.floor(info.avgGainPerPosition) : 65
+  let avgLossPercent = info ? Math.floor(info.avgLossPerPosition) : 18
 
-    let winRate = plan.stats ? plan.stats.WLRatio : 90
+  let fsAvgWinStyle = { height: `${avgWinPercent}%` }
+  let fsAvgLossStyle = { height: `${avgLossPercent}%` }
 
-    let fsWinYearsStyle = { height: `${winRate}%` }
-    let marWinYearsStyle = { height: `30%` }
+  let fsWinRate = { height: `${Math.floor(winRate)}%` }
+  let fsLossRate = { height: `${Math.ceil(100 - winRate)}%` }
 
-    let avgWinPercent = plan.info ? Math.floor(plan.info.avgGainPerPosition) : 65
-    let avgLossPercent = plan.info ? Math.floor(plan.info.avgLossPerPosition) : 18
-
-    let fsAvgWinStyle = { height: `${avgWinPercent}%` }
-    let fsAvgLossStyle = { height: `${avgLossPercent}%` }
-
-    let fsWinRate = { height: `${Math.floor(winRate)}%` }
-    let fsLossRate = { height: `${Math.ceil(100 - winRate)}%` }
-
-    return (
-      <section className="statistics section">
-          <h2 className="title">Statistics</h2>
-          <div className="divider"/>
-          <div className="beside">
-            <div className="left">
-              <WinRateGraph plan="basic" name="Entry"/>
-              <p>
-                Historically, 89-92% of our recommendations have been successful. If you had bought random
-                high-quality stocks, only approx. 59% of these would have earned a positive return. A
-                staggering difference.
-              </p>
-            </div>
-            <div className="right">
-              <div className="bar-graph">
-                <div className="graph-beside">
-                  <div className="bar fs-bar" style={fsWinYearsStyle}><p>{this.state.fsWinYears}</p><p className="plan-name">Entry</p></div>
-                  <div className="bar market" style={marWinYearsStyle}><p>{this.state.marketWinYears}</p><p className="plan-name">Market</p></div>
-                </div>
-                <h3>Outperforming years</h3>
+  return (
+    <section className="statistics section">
+        <h2 className="title">Statistics</h2>
+        <div className="divider"/>
+        <div className="beside">
+          <div className="left">
+            <SingleWinRateGraph fsWinRate={Math.floor(winRate)} marketWinRate={59} name="Entry"/>
+            <p>
+              Historically, 89-92% of our recommendations have been successful. If you had bought random
+              high-quality stocks, only approx. 59% of these would have earned a positive return. A
+              staggering difference.
+            </p>
+          </div>
+          <div className="right">
+            <div className="bar-graph">
+              <div className="graph-beside">
+                <div className="bar fs-bar" style={fsWinYearsStyle}><p>{fsWinYears}</p><p className="plan-name">Entry</p></div>
+                <div className="bar market" style={marWinYearsStyle}><p>{marketWinYears}</p><p className="plan-name">Market</p></div>
               </div>
-              <p>
-                Recommendations and model portfolio are based on timeless and proven investment principles,
-                mathematical probabilities, and sound logic. The model portfolio has outperformed the S&P 500
-                in 75% of all years.
-              </p>
+              <h3>Outperforming years</h3>
+            </div>
+            <p>
+              Recommendations and model portfolio are based on timeless and proven investment principles,
+              mathematical probabilities, and sound logic. The model portfolio has outperformed the S&P 500
+              in 75% of all years.
+            </p>
+          </div>
+        </div>
+
+        <div className="beside">
+          <div className="left">
+            <div className="bar-graph">
+              <div className="graph-beside uneven">
+                <div className="bar fs-bar" style={fsAvgWinStyle}><p>+{avgWinPercent}%</p><p className="plan-name">Win</p></div>
+                <div className="zero-line"/>
+                <div className="bar market negative" style={fsAvgLossStyle}><p>-{avgLossPercent}%</p><p className="plan-name">Loss</p></div>
+              </div>
+              <h3>Avg. win/loss per stock</h3>
             </div>
           </div>
-
-          <div className="beside">
-            <div className="left">
-              <div className="bar-graph">
-                <div className="graph-beside uneven">
-                  <div className="bar fs-bar" style={fsAvgWinStyle}><p>+{avgWinPercent}%</p><p className="plan-name">Win</p></div>
-                  <div className="zero-line"/>
-                  <div className="bar market negative" style={fsAvgLossStyle}><p>-{avgLossPercent}%</p><p className="plan-name">Loss</p></div>
-                </div>
-                <h3>Avg. win/loss per stock</h3>
+          <div className="right winrate-graph">
+            <div className="bar-graph">
+              <div className="graph-beside">
+                <div className="bar fs-bar" style={fsWinRate}><p>{Math.floor(winRate)}%</p><p className="plan-name">Wins</p></div>
+                <div className="bar market" style={fsLossRate}><p>{Math.ceil(100 - winRate)}%</p><p className="plan-name">Losses</p></div>
               </div>
-            </div>
-            <div className="right winrate-graph">
-              <div className="bar-graph">
-                <div className="graph-beside">
-                  <div className="bar fs-bar" style={fsWinRate}><p>{Math.floor(winRate)}%</p><p className="plan-name">Wins</p></div>
-                  <div className="bar market" style={fsLossRate}><p>{Math.ceil(100 - winRate)}%</p><p className="plan-name">Losses</p></div>
-                </div>
-                <h3>Win/loss ratio</h3>
-              </div>
+              <h3>Win/loss ratio</h3>
             </div>
           </div>
+        </div>
 
-          <p>
-            We specialize in high-probability investments – a high probability of long-term gain combined
-            with a low probability of loss. We prefer to buy good businesses at fair prices with a margin
-            of safety, shielding us from some downside, while enjoying the upside of owning businesses
-            that earn a meaningful return on capital.
-          </p>
-      </section>
-    )
-  }
+        <p>
+          We specialize in high-probability investments – a high probability of long-term gain combined
+          with a low probability of loss. We prefer to buy good businesses at fair prices with a margin
+          of safety, shielding us from some downside, while enjoying the upside of owning businesses
+          that earn a meaningful return on capital.
+        </p>
+    </section>
+  )
 }
 
 export default Statistics

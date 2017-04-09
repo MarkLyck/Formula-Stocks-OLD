@@ -69,7 +69,6 @@ export default function LineGraph({ data, graphs, chartTheme, unit, unitPosition
       equalSpacing: false
     }
   }
-
   if (data.length && graphs.length) {
     return React.createElement(AmCharts.React, config)
   } else {

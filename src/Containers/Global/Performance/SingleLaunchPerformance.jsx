@@ -22,45 +22,45 @@ class Performance extends Component {
 
     this.createChartData = this.createChartData.bind(this)
     this.renderChart = this.renderChart.bind(this)
-
-    this.state = { chartData: [] }
   }
 
   createChartData(data, marketData) {
-    marketData.reverse()
-    let startValue = data[0].balance
-    let marketStartValue = Number(marketData[0][1])
+    if (data.length && marketData.length) {
+      let startValue = data[0].balance
+      let marketStartValue = Number(marketData[0])
 
-    let fixedData = data.map((point, i) => {
-      const balance = ((data[i].balance - startValue) / startValue * 100).toFixed(2)
-      const marketBalance = ((Number(marketData[i][1]) - marketStartValue) / marketStartValue * 100).toFixed(2)
+      let fixedData = data.map((point, i) => {
+        const balance = ((data[i].balance - startValue) / startValue * 100).toFixed(2)
+        const marketBalance = ((Number(marketData[i]) - marketStartValue) / marketStartValue * 100).toFixed(2)
 
-      let month = Number(point.date.month) > 9 ? point.date.month : '0' + point.date.month
+        let month = Number(point.date.month) > 9 ? point.date.month : '0' + point.date.month
 
-      return {
-        market: Number(marketBalance),
-        fs: Number(balance),
-        fsBalloon: formatPrice(balance),
-        marketBalloon: formatPrice(marketBalance),
-        date: `${point.date.year}-${month}-${point.date.day}`
-      }
-    })
-    return fixedData
+        return {
+          market: Number(marketBalance),
+          fs: Number(balance),
+          fsBalloon: formatPrice(balance),
+          marketBalloon: formatPrice(marketBalance),
+          date: `${point.date.year}-${month}-${point.date.day}`
+        }
+      })
+      return fixedData
+    }
+    return []
   }
 
   renderChart() {
-    const { portfolioYields, DJIA } = this.props
-    if (!portfolioYields.length) {
-      return (<div id="result-chart" className={this.state.chartClass + ' loading'}>
+    const { portfolioYields, marketData } = this.props
+    if (!portfolioYields.length || !marketData.length) {
+      return (<div id="result-chart" className="loading">
                 <i className="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
               </div>)
     } else {
-      const chartData = this.createChartData(portfolioYields, DJIA)
-      const fsMin = _.minBy(chartData, (point) => point.fs).fs
-      const marMin = _.minBy(chartData, (point) => point.market).market
+      const chartData = this.createChartData(portfolioYields, marketData)
+      const fsMin = _.minBy(chartData, point => point.fs).fs
+      const marMin = _.minBy(chartData, point => point.market).market
 
       let minimum = Math.floor( _.min([fsMin, marMin]) / 10) * 10
-      let maximum = Math.ceil(_.maxBy(chartData, (point) => point.fs).fs / 20) * 20
+      let maximum = Math.ceil(_.maxBy(chartData, point => point.fs).fs / 20) * 20
 
       const graphs = [
             {
@@ -78,7 +78,7 @@ class Performance extends Component {
               "balloonText": "<div class=\"chart-balloon\"><span class=\"plan-name market-name\">DJIA</span><span class=\"balloon-value\">[[marketBalloon]]</span></div>",
             },
             {
-              id: this.props.name,
+              id: "launch",
               lineColor: "#27A5F9",
 
               bullet: "square",
@@ -93,7 +93,7 @@ class Performance extends Component {
             }
           ]
       return (
-        <div id="result-chart" className={this.state.chartClass}>
+        <div id="result-chart">
           <div className="chart-indicators">
             <div className="chart-indicator business">{this.props.name}</div>
             <div className="chart-indicator djia">DJIA</div>

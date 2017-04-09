@@ -5,9 +5,11 @@
 
 import { combineReducers } from 'redux'
 import { routerReducer as routing } from 'react-router-redux'
-import retail from './Containers/Retail_Entry/reducer'
+import plans from './reducers/plans'
+import market from './reducers/market'
 
 export default combineReducers({
-  retail,
+  plans,
+  market,
   routing
 })
