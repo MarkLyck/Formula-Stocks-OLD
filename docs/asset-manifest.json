@@ -1,8 +1,8 @@
 {
   "main.css": "static/css/main.aad4800e.css",
   "main.css.map": "static/css/main.aad4800e.css.map",
-  "main.js": "static/js/main.acb2ef5f.js",
-  "main.js.map": "static/js/main.acb2ef5f.js.map",
+  "main.js": "static/js/main.88500c99.js",
+  "main.js.map": "static/js/main.88500c99.js.map",
   "static/media/Android_Browser_Logo.svg": "static/media/Android_Browser_Logo.564b53ad.svg",
   "static/media/Android_Logo.png": "static/media/Android_Logo.e50fa4a7.png",
   "static/media/Chrome_Logo.svg": "static/media/Chrome_Logo.d320793b.svg",
@@ -42,7 +42,6 @@
   "static/media/menufont.svg": "static/media/menufont.d32c0026.svg",
   "static/media/net.jpg": "static/media/net.d6a12381.jpg",
   "static/media/premium.png": "static/media/premium.6cc63ba4.png",
-  "static/media/product-hunt.png": "static/media/product-hunt.b37d8153.png",
   "static/media/recommendations_basic.mp4": "static/media/recommendations_basic.725cf438.mp4",
   "static/media/recommendations_business.mp4": "static/media/recommendations_business.ad7694fa.mp4",
   "static/media/recommendations_fund.mp4": "static/media/recommendations_fund.1fa8bbe6.mp4",

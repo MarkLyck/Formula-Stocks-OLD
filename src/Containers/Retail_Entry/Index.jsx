@@ -5,7 +5,6 @@ import { fetchPulicPlan } from '../../actions/plans'
 import { fetchDJIA, fetchSP500 } from '../../actions/market'
 
 import NavBar from '../Global/Navbar/Navbar'
-// import Hero from '../Global/HeroSlider/HeroSlider'
 import Hero from './Hero/HeroSlider'
 import Introduction from './Introduction/Introduction'
 import WhatIsIt from './WhatIsIt/WhatIsIt'
