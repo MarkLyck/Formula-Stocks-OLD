@@ -1,12 +1,13 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { fetchPulicPlan } from './actions'
+import { fetchPulicPlan, fetchDJIA } from './actions'
 
 import store from '../../store'
 
 import NavBar from '../Global/Navbar/Navbar'
-import Hero from '../Global/HeroSlider/HeroSlider'
+// import Hero from '../Global/HeroSlider/HeroSlider'
+import Hero from './Hero/HeroSlider'
 import Introduction from './Introduction/Introduction'
 import WhatIsIt from './WhatIsIt/WhatIsIt'
 import SingleLaunchPerformance from '../Global/Performance/SingleLaunchPerformance'
@@ -24,9 +25,15 @@ import BottomCTA from '../Global/BottomCTA/BottomCTA'
 import Footer from '../Global/Footer/Footer'
 
 class Home extends Component {
+  constructor(props) {
+    super(props)
+
+    this.calculateLaunchReturns = this.calculateLaunchReturns.bind(this)
+  }
   componentDidMount() {
     const { actions } = this.props
     actions.fetchPulicPlan('entry')
+    actions.fetchDJIA()
 
     // REMOVE BACKBBONE when Redux is fully integrated
     store.plans.get('basic').fetch()
@@ -35,15 +42,30 @@ class Home extends Component {
     window.Intercom("boot", { app_id: "i194mpvo" })
   }
 
+  calculateLaunchReturns() {
+    const { selectedPlan, plans } = this.props
+    const plan = plans[selectedPlan]
+
+    const launchBalance = plan.portfolioYields[0].balance
+    const lastBalance = plan.portfolioYields[plan.portfolioYields.length - 1].balance
+    return (lastBalance - launchBalance) / launchBalance * 100
+  }
+
   render() {
-    console.log(' render:' , this.props)
+    const { selectedPlan, plans, DJIA } = this.props
+    const plan = plans[selectedPlan]
+    const portfolioReturn = plan ? this.calculateLaunchReturns() : 450
+
     return (
       <div id="home" className="retail">
         <NavBar/>
-        <Hero/>
-        <Introduction plan="basic"/>
+        <Hero portfolioReturn={portfolioReturn} />
+        <Introduction plan="basic"
+            portfolioReturn={portfolioReturn}
+            winRate={plan ? Math.floor(plan.stats.WLRatio) : 90}
+            portfolioYields={plan ? plan.portfolioYields : []}/>
         <WhatIsIt/>
-        <SingleLaunchPerformance plan="basic" name="Entry"/>
+        <SingleLaunchPerformance plan="basic" name="Entry" DJIA={DJIA} portfolioYields={plan ? plan.portfolioYields : []}/>
         <PerformanceMatters/>
         <FirstMonthOnUs/>
         <WhatToExpect/>
@@ -64,7 +86,7 @@ class Home extends Component {
 
 Home.propTypes = {
   selectedPlan: PropTypes.string.isRequired,
-  isFetching: PropTypes.bool.isRequired
+  isFetchingPlan: PropTypes.bool.isRequired
 }
 
 function mapStateToProps(state) {
@@ -72,19 +94,26 @@ function mapStateToProps(state) {
   const {
     selectedPlan,
     plans,
-    isFetching
+    isFetchingPlan,
+    isFetchingDJIA,
+    DJIA
   } = retail
 
-  console.log(selectedPlan, plans, isFetching);
   return {
     selectedPlan,
     plans,
-    isFetching
+    isFetchingPlan,
+    isFetchingDJIA,
+    DJIA
   }
 }
 
 function mapDispatchToProps(dispatch) {
-  return { actions: bindActionCreators({ fetchPulicPlan }, dispatch) }
+  const actions = {
+    fetchPulicPlan,
+    fetchDJIA
+  }
+  return { actions: bindActionCreators(actions, dispatch) }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home)

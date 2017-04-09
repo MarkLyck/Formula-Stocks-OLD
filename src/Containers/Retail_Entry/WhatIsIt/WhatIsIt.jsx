@@ -2,7 +2,7 @@ import React from 'react'
 import Screenshot from './Suggestions.jpg'
 import './whatIsIt.css'
 
-const WhatYouGet = () => (
+const WhatIsIt = () => (
   <section className="what-is-it section">
     <h2 className="title">What is it?</h2>
     <div className="divider"/>
@@ -30,4 +30,4 @@ const WhatYouGet = () => (
   </section>
 )
 
-export default WhatYouGet
+export default WhatIsIt

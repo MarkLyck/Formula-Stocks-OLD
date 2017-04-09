@@ -48,7 +48,7 @@ class Hero extends React.Component {
     let subtitles = (
       <div id="subtitles">
         <h1><span className="font bold">Achieve your goals</span></h1>
-        <h1><span className="font bold">+450% capital growth since 2009</span></h1>
+        <h1><span className="font bold">+{this.props.portfolioReturn}% capital growth since 2009</span></h1>
         <h1><span className="font bold">Less risk</span></h1>
         <h1><span className="font bold">Easy to use</span></h1>
         <h1><span className="font bold">Lower costs</span></h1>
