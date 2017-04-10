@@ -1,5 +1,5 @@
 import React from 'react'
-import moment from 'moment'
+// import moment from 'moment'
 import MainButton from './MainButton'
 import store from '../../../../store'
 import { browserHistory } from 'react-router'
@@ -9,7 +9,7 @@ class SideBar extends React.Component {
   constructor(props) {
     super(props)
     this.selectMenu = this.selectMenu.bind(this)
-    this.updateState = this.updateState.bind(this)
+    // this.updateState = this.updateState.bind(this)
 
     let selected = 'portfolio'
     if (this.props.location.indexOf('suggestions') > -1) { selected = 'suggestions' }
@@ -20,15 +20,15 @@ class SideBar extends React.Component {
     this.state = { selected: selected, plan: store.selectedPlan }
   }
 
-  componentDidMount() { store.plans.get(this.state.plan).on('change', this.updateState) }
-  updateState() { this.setState({ plan: store.selectedPlan }) }
-  componentWillReceiveProps(newProps) { this.setState({ plan: newProps.plan }) }
+  // componentDidMount() { store.plans.get(this.state.plan).on('change', this.updateState) }
+  // updateState() { this.setState({ plan: store.selectedPlan }) }
+  // componentWillReceiveProps(newProps) { this.setState({ plan: newProps.plan }) }
 
   selectMenu(selected) {
     if (selected === 'suggestions' || selected === 'portfolio') {
-      browserHistory.push(`/dashboard/${selected}/${store.selectedPlan}`)
+      browserHistory.push(`/dashboard/${selected}/${this.props.plan}`)
     } else if(selected === 'portfolio trades') {
-      browserHistory.push(`/dashboard/trades/${store.selectedPlan}`)
+      browserHistory.push(`/dashboard/trades/${this.props.plan}`)
     } else {
       browserHistory.push(`/dashboard/${selected}`)
     }
@@ -37,10 +37,10 @@ class SideBar extends React.Component {
 
   render() {
     let newSuggestions = 0
-    if (moment(store.plans.get(this.state.plan).toJSON().lastUpdated).unix() > moment(store.session.toJSON().lastSeenSuggestions).unix()) {
+    // if (moment(store.plans.get(this.state.plan).toJSON().lastUpdated).unix() > moment(store.session.toJSON().lastSeenSuggestions).unix()) {
       // TEST THIS BEFORE REALEASING
       // newSuggestions = store.plans.get(this.state.plan).get('suggestions').filter(sugg => !sugg.model || sugg.action === "SELL").length
-    }
+    // }
     return (
       <aside className="dashboard-sidebar">
         <ul className="main-menu">

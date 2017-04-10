@@ -7,9 +7,13 @@ import { combineReducers } from 'redux'
 import { routerReducer as routing } from 'react-router-redux'
 import plans from './reducers/plans'
 import market from './reducers/market'
+import session from './reducers/session'
+import settings from './reducers/settings'
 
 export default combineReducers({
   plans,
   market,
+  session,
+  settings,
   routing
 })

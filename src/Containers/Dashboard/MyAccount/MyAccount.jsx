@@ -1,5 +1,7 @@
 import React from 'react'
-// import moment from 'moment'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { selectNewPlan } from '../../../actions/plans'
 
 import store from '../../../store'
 import cc from '../../../cc'
@@ -21,9 +23,11 @@ class MyAccount extends React.Component {
 
     this.newSubscription = this.newSubscription.bind(this)
 
+    console.log(props)
+
     let currPlan = 'premium'
-    if (store.session.get('stripe').subscriptions && !store.session.get('stripe').subscriptions.data[0].canceled_at !== null) {
-      currPlan = store.session.get('stripe').subscriptions.data[0].plan.id
+    if (props.session.stripe.subscriptions && !props.session.stripe.subscriptions.data[0].canceled_at !== null) {
+      currPlan = props.session.stripe.subscriptions.data[0].plan.id
       currPlan = currPlan.slice(0, currPlan.indexOf('-'))
     } else { currPlan = 'unsubscribed' }
 
@@ -33,8 +37,9 @@ class MyAccount extends React.Component {
   }
 
   cancelSubscription() {
-    store.session.set('cancelReason', this.refs.cancelReason.value)
-    store.session.updateUser()
+    // FIXME This won't work with redux
+    // store.session.set('cancelReason', this.refs.cancelReason.value)
+    // store.session.updateUser()
     cc.cancelSubscription()
     this.closeModal()
   }
@@ -106,6 +111,7 @@ class MyAccount extends React.Component {
   }
 
   render() {
+    const { session } = this.props
     let basicClass, premiumClass, businessClass, fundClass = 'white'
     if      (this.state.selectedPlan === 'basic')    { basicClass = 'blue selected' }
     else if (this.state.selectedPlan === 'premium')  { premiumClass = 'blue selected' }
@@ -113,12 +119,12 @@ class MyAccount extends React.Component {
     else if (this.state.selectedPlan === 'fund')     { fundClass = 'blue selected' }
 
     let currPlan
-    if (store.session.get('stripe').subscriptions && store.session.get('stripe').subscriptions.data[0]) {
-      currPlan = store.session.get('stripe').subscriptions.data[0].plan.id
+    if (session.stripe.subscriptions && session.stripe.subscriptions.data[0]) {
+      currPlan = session.stripe.subscriptions.data[0].plan.id
       currPlan = currPlan.slice(0, currPlan.indexOf('-'))
       currPlan += ' model'
     }
-    if (store.session.get('stripe').subscriptions.data[0].canceled_at) {
+    if (session.stripe.subscriptions.data[0].canceled_at) {
       currPlan = 'Unsubscribed'
     }
 
@@ -126,7 +132,7 @@ class MyAccount extends React.Component {
 
     let bottomBtn = <button onClick={this.showCancelModal} className="filled-btn cancel-btn red">Cancel subscription</button>
     let changeTitle = 'Change your subscription'
-    if (store.session.get('stripe').subscriptions.data[0].canceled_at !== null) {
+    if (session.stripe.subscriptions.data[0].canceled_at !== null) {
       changePlanBtn = <button onClick={this.showConfirmationModal} className="change-plan-btn">Subscribe to: <span className="capitalize"> {this.state.selectedPlan}</span></button>
       bottomBtn = undefined
       changeTitle = 'Select a plan'
@@ -143,7 +149,7 @@ class MyAccount extends React.Component {
 
       let cycle = 'monthly'
       let price
-      if      (this.state.selectedPlan === 'basic')    { price = 50 }
+      if      (this.state.selectedPlan === 'basic' || this.state.selectedPlan === 'entry') { price = 50 }
       else if (this.state.selectedPlan === 'premium')  { price = 100 }
       else if (this.state.selectedPlan === 'business') { price = 20000; cycle="annually" }
       else if (this.state.selectedPlan === 'fund')     { price = 140000; cycle="annually" }
@@ -196,9 +202,9 @@ class MyAccount extends React.Component {
         <div className="account-info">
           <h3 className="db-heading">My account</h3>
           <div className="db-card">
-            <h3 className="name">{store.session.get('name')}</h3>
+            <h3 className="name">{session.name}</h3>
             <h3 className="capitalize">{currPlan}</h3>
-            <h3 className="email">{store.session.get('email')}</h3>
+            <h3 className="email">{session.email}</h3>
             {/* <h3 className="billing-date white-color"><i className="fa fa-calendar white-color" aria-hidden="true"></i>Next billing date: {moment.unix(store.session.get('stripe').subscriptions.data[0].current_period_end).format('MMMM Do YYYY')}</h3> */}
           </div>
         </div>
@@ -221,4 +227,20 @@ class MyAccount extends React.Component {
   }
 }
 
-export default MyAccount
+function mapStateToProps(state) {
+  const { plans, session } = state
+  const { selectedPlan } = plans
+
+  return {
+    selectedPlan,
+    session
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  const actions = { selectNewPlan }
+  return { actions: bindActionCreators(actions, dispatch) }
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(MyAccount)

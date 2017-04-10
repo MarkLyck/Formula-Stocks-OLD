@@ -1,6 +1,10 @@
-import React from 'react'
+import React, { Component, PropTypes } from 'react'
+import { browserHistory } from 'react-router'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { selectNewPlan } from '../../actions/plans'
+import { fetchSession } from '../../actions/session'
 import Lockr from 'lockr'
-// import io from 'socket.io-client/dist/socket.io.min'
 
 import store from '../../store'
 
@@ -11,51 +15,47 @@ import Breadcrumbs from './Components/Breadcrumbs/Breadcrumbs'
 import Notification from './Components/Notification/Notification'
 import './dashboard.css'
 
-class Dashboard extends React.Component {
+class Dashboard extends Component {
   constructor(props) {
     super(props)
 
     if (!Lockr.get('stocks')) { Lockr.set('stocks', {}) }
 
-    this.updateState = this.updateState.bind(this)
+    // this.updateState = this.updateState.bind(this)
     this.state = { fetched: false }
   }
 
   componentWillMount() {
     if (!localStorage.authtoken) {
-      store.settings.history.push('/')
+      browserHistory.push('/')
     }
   }
 
   componentDidMount() {
+    const { actions } = this.props
+    actions.fetchSession()
     window.Intercom("shutdown")
-    store.session.on('change', this.updateState)
-
-    // let socket = io.connect('http://localhost:8080')
-    // socket.on('new_quotes', function(data) {
-    //     console.log('Got new quote:', data)
-    // })
+    // store.session.on('change', this.updateState)
   }
 
-  componentWillUnmount() {
-    store.session.off('change', this.updateState)
-  }
+  // componentWillUnmount() {
+  //   store.session.off('change', this.updateState)
+  // }
 
-  updateState() {
-    this.setState({ fetched: true })
-  }
+  // updateState() {
+  //   this.setState({ fetched: true })
+  // }
 
   render() {
-    if (!store.session.get('stripe').subscriptions) {
-      return null
-    }
+    let { selectedPlan, session, actions } = this.props
+    if (!session.stripe) { return null }
 
-    if (!store.selectedPlan && !this.props.params.plan) {
-      let plan = store.session.get('stripe').subscriptions.data[0].plan.id
+    if (!this.props.params.plan) {
+      let plan = session.stripe.subscriptions.data[0].plan.id
       plan = plan.slice(0, plan.indexOf('-'))
-      store.selectedPlan = plan
+      actions.selectNewPlan = plan
     } else if (this.props.params.plan) {
-      store.selectedPlan = this.props.params.plan
+      actions.selectNewPlan = this.props.params.plan
     }
 
     let notification;
@@ -66,13 +66,13 @@ class Dashboard extends React.Component {
 
     return (
       <div className="dashboard">
-        <SideBar plan={store.selectedPlan} location={this.props.location.pathname}/>
+        <SideBar plan={selectedPlan} location={this.props.location.pathname}/>
         <div className="container">
-          <Nav plan={store.selectedPlan} location={this.props.location.pathname}/>
+          <Nav plan={selectedPlan} location={this.props.location.pathname}/>
           <div className="db-content">
             {notification}
-            <Breadcrumbs location={this.props.location.pathname} plan={store.selectedPlan}/>
-            {React.cloneElement(this.props.children, { plan: store.selectedPlan, location: this.props.location.pathname })}
+            <Breadcrumbs location={this.props.location.pathname} plan={selectedPlan}/>
+            {React.cloneElement(this.props.children, { plan: selectedPlan, location: this.props.location.pathname })}
           </div>
         </div>
       </div>
@@ -80,4 +80,24 @@ class Dashboard extends React.Component {
   }
 }
 
-export default Dashboard
+Dashboard.propTypes = {
+  selectedPlan: PropTypes.string.isRequired,
+  session: PropTypes.object.isRequired
+}
+
+function mapStateToProps(state) {
+  const { plans, session } = state
+  const { selectedPlan } = plans
+
+  return {
+    selectedPlan,
+    session
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  const actions = { fetchSession, selectNewPlan }
+  return { actions: bindActionCreators(actions, dispatch) }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard)

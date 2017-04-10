@@ -1,5 +1,6 @@
 export const FETCHING_PUBLIC_PLAN = 'FETCHING_PUBLIC_PLAN'
 export const RECEIVE_PUBLIC_PLAN = 'RECEIVE_PUBLIC_PLAN'
+export const SELECT_NEW_PLAN = 'SELECT_NEW_PLAN'
 
 function fetchingPublicPlan(plan) {
   return {
@@ -21,5 +22,12 @@ function receivePublicPlan(plan, json) {
     type: RECEIVE_PUBLIC_PLAN,
     plan,
     data: json
+  }
+}
+
+export function selectNewPlan(newPlan) {
+  return {
+    type: SELECT_NEW_PLAN,
+    newPlan
   }
 }

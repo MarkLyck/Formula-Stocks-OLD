@@ -2,8 +2,22 @@ import { createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 import reducers from './reducers.js'
 
+const initialState = {
+  plans: {
+    selectedPlan: localStorage.getItem('selectedPlan') ? localStorage.getItem('selectedPlan') : 'entry'
+  },
+  market: {},
+  settings: {
+    anomToken: '17dcc7f4-49f8-4d7c-8d66-d96474fa6818.tEs1/na2P9cqWKXn3ab9pgIdPpmEPAaQDIJEYNbG7E4=',
+    quandlKey: 'YjZ14NUXoyAGAPRDomS5',
+    appKey: 'kid_rJRC6m9F',
+    basicAuth: btoa('kid_rJRC6m9F:e6688b599fca47e1bf150d99a786132d')
+  }
+}
+
 const store = createStore(
   reducers,
+  initialState,
   applyMiddleware(thunk)
 )
 
