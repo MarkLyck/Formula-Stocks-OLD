@@ -12,15 +12,8 @@ import Suggestion from './Stock'
 import SmallStock from './SmallStock'
 import SuggestionHeader from './SuggestionsHeader'
 import './suggestions.css'
-import store from '../../../store'
 
 class Suggestions extends React.Component {
-  constructor(props) {
-    super(props)
-    this.updateState = this.updateState.bind(this)
-    this.state = { plan: store.selectedPlan, fetching: false }
-  }
-
   componentDidMount() {
     const { selectedPlan, actions } = this.props
     actions.fetchPlanIfNeeded(selectedPlan)
@@ -28,12 +21,6 @@ class Suggestions extends React.Component {
     // FIXME
     // store.session.set('lastSeenSuggestions', new Date())
     // store.session.updateUser()
-  }
-
-  updateState() {
-    if (store.selectedPlan === this.state.plan) {
-      this.setState({ fetching: false, plan: store.selectedPlan })
-    }
   }
 
   render() {
@@ -47,7 +34,7 @@ class Suggestions extends React.Component {
                         isPortfolioTrades={this.props.location.indexOf('trades') === -1 ? false : true}/>
 
     let suggestionsList
-    if (isAllowedToView(this.state.plan)) {
+    if (isAllowedToView(selectedPlan)) {
       if (!plan) { return ( <div className="suggestions"> {SuggHeader} </div> ) }
       else if (!plan.suggestions.length) { return ( <div className="suggestions"> {SuggHeader} </div> ) }
       let suggestions = []
@@ -62,19 +49,19 @@ class Suggestions extends React.Component {
         if (this.props.location.indexOf('trades') > -1) {
           numerator = _.findIndex(plan.suggestions, (sug) => sug.model && sug.ticker === suggestion.ticker)
         }
-        if (this.state.plan !== 'fund') {
+        if (selectedPlan !== 'fund') {
           return <Suggestion
                     key={plan.name+suggestion.ticker+i}
                     suggestion={suggestion} i={numerator}
                     trades={this.props.location.indexOf('trades') === -1 ? false : true}
-                    planName={this.state.plan}
+                    planName={selectedPlan}
                     fetchHistoricStockData={actions.fetchHistoricStockData}/>
         } else {
           return <SmallStock
                     key={plan.name+suggestion.ticker+i}
                     suggestion={suggestion} i={numerator}
                     trades={this.props.location.indexOf('trades') === -1 ? false : true}
-                    planName={this.state.plan}
+                    planName={selectedPlan}
                     fetchHistoricStockData={actions.fetchHistoricStockData}/>
         }
       })

@@ -2,7 +2,6 @@ import React from 'react'
 import _ from 'underscore'
 import './smallStock.css'
 
-import store from '../../../store'
 import SuggestionChart from './SuggestionChart'
 
 class SmallStock extends React.Component {
@@ -12,41 +11,33 @@ class SmallStock extends React.Component {
     this.renderBottom = this.renderBottom.bind(this)
     this.toggleMoreInfo = this.toggleMoreInfo.bind(this)
 
-    this.state = { fetched: false, fetching: true, failed: false, expanded: false }
-  }
-
-  componentDidMount() {
-    if(!store.plans.get(this.props.planName).get('suggestions')[this.props.i].data) {
-      this.setState({ fetched: false })
-    }
+    this.state = { expanded: false }
   }
 
   renderBottom() {
+    const { suggestion } = this.props
     if (this.state.expanded) {
-
       let chartArea
-      let loadingColor = 'blue-color'
-      if (this.props.suggestion.action === 'SELL') {
-        loadingColor = 'white-color'
-      }
-      if (this.state.fetching) {
+      let loadingColor = suggestion.action === 'SELL' ? 'white-color' : 'blue-color'
+
+      if (!suggestion.data && !suggestion.fetchFailed) {
         chartArea = (
           <div className="fetching-data">
             <i className={`fa fa-circle-o-notch fa-spin fa-3x fa-fw ${loadingColor}`}></i>
             <p className={loadingColor}>Loading data</p>
           </div>)
-      } else if (this.state.failed) {
+      } else if (suggestion.fetchFailed) {
         chartArea = (
           <div className="fetching-data">
             <p className="failed"><i className="fa fa-exclamation-circle" aria-hidden="true"></i> Couldn't find data</p>
           </div>)
-      } else if (this.state.fetched) {
+      } else {
         chartArea = (
           <SuggestionChart
-            data={this.state.data}
-            suggestedPrice={this.props.suggestion.suggested_price}
-            ticker={this.props.suggestion.ticker}
-            action={this.props.suggestion.action}
+            data={suggestion.data}
+            suggestedPrice={suggestion.suggested_price}
+            ticker={suggestion.ticker}
+            action={suggestion.action}
             allData={this.state.showModal}/>
         )
       }
@@ -75,22 +66,20 @@ class SmallStock extends React.Component {
   }
 
   toggleMoreInfo() {
-    if (!this.state.expanded && !this.state.fetched) {
-      store.plans.get(store.selectedPlan).getHistoricData(this.props.suggestion.ticker, this.props.i, 120)
-      .then(data => { this.setState({ data: data, fetching: false, fetched: true }) })
-      .catch(() => this.setState({ fetching: false }))
-    }
+    const { suggestion } = this.props
     this.setState({ expanded: !this.state.expanded })
+    this.props.fetchHistoricStockData(suggestion.ticker, this.props.i, 120)
   }
 
   render() {
+    const { suggestion } = this.props
     let allocation
     let allocationText = 'Cash allocation'
-    if (this.props.suggestion.percentage_weight > 0.0001) {
-      allocation = this.props.suggestion.percentage_weight.toFixed(4)
+    if (suggestion.percentage_weight > 0.0001) {
+      allocation = suggestion.percentage_weight.toFixed(4)
     } else if (this.props.suggestion.portfolio_weight) {
       allocationText = 'Portfolio allocation'
-      allocation = this.props.suggestion.portfolio_weight.toFixed(4)
+      allocation = suggestion.portfolio_weight.toFixed(4)
     } else {
       allocation = 0.0001
     }
@@ -107,7 +96,7 @@ class SmallStock extends React.Component {
       </li>
     )
 
-    if (this.props.suggestion.action === 'SELL') {
+    if (suggestion.action === 'SELL') {
       listClass = 'fade-in small-stock small-stock-sell'
       textColor = 'white-color'
       actionClass = 'sell'
@@ -118,16 +107,16 @@ class SmallStock extends React.Component {
     return (
       <div className={listClass}>
         <div className="top">
-          <h3 className={`action ${actionClass}`}>{this.props.suggestion.action}</h3>
+          <h3 className={`action ${actionClass}`}>{suggestion.action}</h3>
 
           <div className="vertical name">
-            <h3 className={textColor}>{this.props.suggestion.name}</h3>
-            <h4 className="ticker">{this.props.suggestion.ticker}</h4>
+            <h3 className={textColor}>{suggestion.name}</h3>
+            <h4 className="ticker">{suggestion.ticker}</h4>
           </div>
 
           <div className="vertical price">
             <h3>{SuggestedPriceText}</h3>
-            <h4 className="value">${this.props.suggestion.suggested_price.toFixed(2)}</h4>
+            <h4 className="value">${suggestion.suggested_price.toFixed(2)}</h4>
           </div>
 
           {allocationElement}
