@@ -2,9 +2,15 @@ import { createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 import reducers from './reducers.js'
 
+let selectedPlan = (localStorage.getItem('selectedPlan') && localStorage.getItem('selectedPlan') !== 'basic')
+    ? localStorage.getItem('selectedPlan')
+    : 'entry'
+
 const initialState = {
   plans: {
-    selectedPlan: localStorage.getItem('selectedPlan') ? localStorage.getItem('selectedPlan') : 'entry'
+    isFetchingPlan: false,
+    selectedPlan: selectedPlan,
+    data: {}
   },
   market: {},
   settings: {
