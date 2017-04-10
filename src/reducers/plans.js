@@ -4,7 +4,8 @@ import Lockr from 'lockr'
 import {
   FETCHING_PLAN,
   RECEIVE_PLAN,
-  RECEIVE_HISTORIC_STOCK_DATA
+  RECEIVE_HISTORIC_STOCK_DATA,
+  SELECT_NEW_PLAN
 } from '../actions/plans'
 
 const initialState = {
@@ -38,7 +39,7 @@ export default function reducer(state = initialState, action = {}) {
       stocks[action.ticker] = {
         date: new Date(),
         lastPrice: action.data.dataset.data[0][1],
-        data: action.data.dataset.data
+        data: action.data.dataset.data.reverse()
       }
       let newSuggestions = state.data[state.selectedPlan].suggestions
       const stockIndex = _.findIndex(newSuggestions, (sugg) => sugg.ticker === action.ticker)
@@ -49,6 +50,8 @@ export default function reducer(state = initialState, action = {}) {
       Lockr.set('stocks', stocks)
 
       return Object.assign({}, state)
+    case SELECT_NEW_PLAN:
+      return Object.assign({}, state, { selectedPlan: action.plan })
     default:
       return state
   }

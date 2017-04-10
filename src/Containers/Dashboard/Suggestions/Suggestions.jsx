@@ -3,7 +3,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { isAllowedToView } from '../helpers'
-import { fetchPlan, fetchHistoricStockData } from '../../../actions/plans'
+import { fetchPlanIfNeeded, fetchHistoricStockData } from '../../../actions/plans'
 import { sawSuggestions } from '../../../actions/session'
 import moment from 'moment'
 import {Link} from 'react-router'
@@ -23,7 +23,7 @@ class Suggestions extends React.Component {
 
   componentDidMount() {
     const { selectedPlan, actions } = this.props
-    actions.fetchPlan(selectedPlan, 'private')
+    actions.fetchPlanIfNeeded(selectedPlan)
     actions.sawSuggestions()
     // FIXME
     // store.session.set('lastSeenSuggestions', new Date())
@@ -124,7 +124,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  const actions = { fetchPlan, fetchHistoricStockData, sawSuggestions }
+  const actions = { fetchPlanIfNeeded, fetchHistoricStockData, sawSuggestions }
   return { actions: bindActionCreators(actions, dispatch) }
 }
 

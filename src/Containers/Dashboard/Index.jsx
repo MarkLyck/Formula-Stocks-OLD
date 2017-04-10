@@ -21,7 +21,6 @@ class Dashboard extends Component {
 
     if (!Lockr.get('stocks')) { Lockr.set('stocks', {}) }
 
-    // this.updateState = this.updateState.bind(this)
     this.state = { fetched: false }
   }
 
@@ -35,27 +34,14 @@ class Dashboard extends Component {
     const { actions } = this.props
     actions.fetchSession()
     window.Intercom("shutdown")
-    // store.session.on('change', this.updateState)
   }
-
-  // componentWillUnmount() {
-  //   store.session.off('change', this.updateState)
-  // }
-
-  // updateState() {
-  //   this.setState({ fetched: true })
-  // }
 
   render() {
     let { selectedPlan, session, actions } = this.props
     if (!session.stripe) { return null }
 
-    if (!this.props.params.plan) {
-      let plan = session.stripe.subscriptions.data[0].plan.id
-      plan = plan.slice(0, plan.indexOf('-'))
-      actions.selectNewPlan = plan
-    } else if (this.props.params.plan) {
-      actions.selectNewPlan = this.props.params.plan
+    if (this.props.params.plan !== selectedPlan) {
+      actions.selectNewPlan(this.props.params.plan)
     }
 
     let notification;
@@ -68,7 +54,7 @@ class Dashboard extends Component {
       <div className="dashboard">
         <SideBar plan={selectedPlan} location={this.props.location.pathname}/>
         <div className="container">
-          <Nav plan={selectedPlan} location={this.props.location.pathname}/>
+          <Nav selectedPlan={selectedPlan} selectNewPlan={actions.selectNewPlan} location={this.props.location.pathname}/>
           <div className="db-content">
             {notification}
             <Breadcrumbs location={this.props.location.pathname} plan={selectedPlan}/>

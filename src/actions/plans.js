@@ -5,6 +5,25 @@ export const RECEIVE_HISTORIC_STOCK_DATA = 'RECEIVE_HISTORIC_STOCK_DATA'
 export const SELECT_NEW_PLAN = 'SELECT_NEW_PLAN'
 
 
+export function fetchPlanIfNeeded(plan) {
+  return (dispatch) => {
+    if (window.location.pathname.indexOf('dashboard') > -1) {
+      if (store.getState().plans.data[plan]) {
+        if (store.getState().plans.data[plan].suggestions.length && store.getState().plans.data[plan].portfolio.length) {
+          dispatch({ type: "PLAN_ALREADY_EXISTS" })
+          return false
+        }
+      }
+      dispatch(fetchPlan(plan, 'private'))
+    } else {
+      if (store.getState().plans.data[plan]) {
+        dispatch({ type: "PLAN_ALREADY_EXISTS" })
+        return false
+      }
+      dispatch(fetchPlan(plan, 'public'))
+    }
+  }
+}
 export function fetchPlan(plan, type) {
   return (dispatch) => {
     dispatch(fetchingPlan(plan))
@@ -41,9 +60,9 @@ function receiveHistoricData(ticker, index, json) {
 }
 
 
-export function selectNewPlan(newPlan) {
-  return {
-    type: SELECT_NEW_PLAN,
-    newPlan: newPlan
+export function selectNewPlan(plan) {
+  return (dispatch) => {
+    dispatch(fetchPlanIfNeeded(plan))
+    dispatch({ type: SELECT_NEW_PLAN, plan: plan })
   }
 }
