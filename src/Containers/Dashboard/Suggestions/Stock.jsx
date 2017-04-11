@@ -14,7 +14,7 @@ class Suggestion extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchHistoricStockDataIfNeeded(this.props.suggestion.ticker, this.props.i, 120)
+    this.props.fetchHistoricStockDataIfNeeded(this.props.suggestion.ticker, 120)
   }
 
   moreInfo() {

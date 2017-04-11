@@ -1,6 +1,13 @@
 import React from 'react'
-import _ from 'underscore'
+import _ from 'lodash'
 import moment from 'moment'
+import Lockr from 'lockr'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { fetchPlanIfNeeded } from '../../../actions/plans'
+import { fetchSP500 } from '../../../actions/market'
+import { fetchHistoricStockDataIfNeeded, fetchLastPriceIfNeeded } from '../../../actions/stocks'
+import { isAllowedToView } from '../helpers'
 import { Link } from 'react-router'
 import store from '../../../store'
 import io from 'socket.io-client/dist/socket.io.min'
@@ -43,10 +50,10 @@ function adjustBrightness(col, amt) {
 class Portfolio extends React.Component {
   constructor(props) {
     super(props)
-    this.updateState = this.updateState.bind(this)
+    // this.updateState = this.updateState.bind(this)
     this.expandStock = this.expandStock.bind(this)
     this.renderHoldings = this.renderHoldings.bind(this)
-    this.getAllocation = this.getAllocation.bind(this)
+    // this.getAllocation = this.getAllocation.bind(this)
 
     this.state = {
       plan: store.selectedPlan,
@@ -60,65 +67,27 @@ class Portfolio extends React.Component {
   }
 
   componentDidMount() {
-    const plan = this.props.plan
-    const portfolioYields = store.plans.get(plan).get('portfolioYields')
-    if ((store.session.isAllowedToView(plan) && !store.plans.get(plan).get('portfolio').length)
-        || (store.session.isAllowedToView(plan) && !portfolioYields.length)) {
-      store.plans.get(plan).fetchPrivate(plan)
-    } else if (!store.session.isAllowedToView(plan) && !portfolioYields.length) { store.plans.get(plan).fetch() }
-    store.plans.get(plan).on('change', this.updateState)
-    store.market.data.on('change', this.updateState)
-    const marketPortfolioData = store.market.data.get('portfolioData')
-    if (!marketPortfolioData.length) {
-      store.market.data.getPortfolioData()
-    }
-
+    const { selectedPlan, actions } = this.props
+    actions.fetchPlanIfNeeded(selectedPlan)
+    actions.fetchSP500('2009-01-01')
 
     socket = io.connect(socketURL)
-    socket.on(`latest_${plan}_quotes`, data => { if (!this.state.gotAllQuotes) {this.setState({ realtimeQuotes: data, gotAllQuotes: true }) }})
+    socket.on(`latest_${selectedPlan}_quotes`, data => {
+      if (!this.state.gotAllQuotes) {
+        this.setState({ realtimeQuotes: data, gotAllQuotes: true })
+      }
+    })
     socket.emit('getAllQuotes', true)
-    socket.on(`realtime_${plan}_quotes`, data => {
-      let newQuotes = this.state.realtimeQuotes
-      newQuotes[data.ticker] = data.price
-      this.setState({ realtimeQuotes: newQuotes })
+    socket.on(`realtime_${selectedPlan}_quotes`, data => {
+      // FIXME realtime qotes actions here
+      // let newQuotes = this.state.realtimeQuotes
+      // newQuotes[data.ticker] = data.price
+      // this.setState({ realtimeQuotes: newQuotes })
     })
   }
 
-  componentWillReceiveProps(newProps) {
-    if (newProps.plan !== this.state.plan) {
-      this.getAllocation(newProps)
-      if ((store.session.isAllowedToView(newProps.plan) && !store.plans.get(newProps.plan).get('portfolio').length)
-          || (store.session.isAllowedToView(newProps.plan) && !store.plans.get(newProps.plan).get('portfolioYields').length)) { store.plans.get(newProps.plan).fetchPrivate(newProps.plan) }
-      else if (!store.session.isAllowedToView(newProps.plan) && !store.plans.get(newProps.plan).get('portfolioYields').length) { store.plans.get(newProps.plan).fetch() }
-      store.plans.get(newProps.plan).on('change', this.updateState)
-      this.setState({ plan: newProps.plan })
-
-      socket = io.connect(socketURL)
-      socket.on(`latest_${newProps.plan}_quotes`, data => { this.setState({ realtimeQuotes: data, gotAllQuotes: true }) })
-      socket.emit('getAllQuotes', true)
-      socket.on(`realtime_${newProps.plan}_quotes`, data => {
-        let newQuotes = this.state.realtimeQuotes
-        newQuotes[data.ticker] = data.price
-        this.setState({ realtimeQuotes: newQuotes })
-      })
-      socket.disconnect()
-    }
-  }
-
   componentWillUnmount() {
-    store.market.data.off('update', this.updateState)
-    store.plans.get('basic').off('change', this.updateState)
-    store.plans.get('premium').off('change', this.updateState)
-    store.plans.get('business').off('change', this.updateState)
-    store.plans.get('fund').off('change', this.updateState)
     socket.disconnect()
-  }
-
-  updateState() {
-    if (this.state.plan === store.selectedPlan) {
-      this.setState({ fetching: false })
-      this.getAllocation()
-    }
   }
 
   expandStock(stock,e) {
@@ -132,35 +101,55 @@ class Portfolio extends React.Component {
   }
 
   renderHoldings() {
-    if (!store.session.isAllowedToView(this.state.plan)) {
+    const { plans, stocks, selectedPlan, actions} = this.props
+    if (!isAllowedToView(selectedPlan)) {
       return (
         <section className="no-permissions">
-          <h3>Upgrade to the <span className="capitalize blue-color ">{this.state.plan} formula</span> to see this portfolio</h3>
+          <h3>Upgrade to <span className="capitalize blue-color ">{selectedPlan}</span> to see this portfolio</h3>
           <Link to="/dashboard/account" className="filled-btn upgrade-your-plan">Upgrade your plan</Link>
         </section>
       )
     } else {
-      const portfolioData = store.plans.get(this.state.plan).get('portfolio')
-      let portfolio = portfolioData.map((stock, i) => {
-        if (stock.name === 'CASH') {
+      const portfolioData = plans.data[selectedPlan].portfolio
+      let portfolio = portfolioData.map((portfolioItem, i) => {
+        if (portfolioItem.name === 'CASH') {
           return (
             <tbody key={i} className="cash">
               <tr>
-                <td className="stock-name"><i className="fa fa-usd" aria-hidden="true"></i>{stock.name}</td>
-                <td>{stock.percentage_weight.toFixed(2)}%</td>
+                <td className="stock-name"><i className="fa fa-usd" aria-hidden="true"></i>{portfolioItem.name}</td>
+                <td>{portfolioItem.percentage_weight.toFixed(2)}%</td>
               </tr>
             </tbody>
           )
         }
 
-      if (this.state.selectedStock !== stock.ticker) {
-        return (<PortfolioItem stock={stock} plan={this.state.plan} realTimeQuotes={this.state.realtimeQuotes} key={stock.ticker + i} expandStock={this.expandStock} number={i}/>)
+      if (this.state.selectedStock !== portfolioItem.ticker) {
+        return (<PortfolioItem
+          portfolioItem={portfolioItem}
+          stock={stocks[portfolioItem.ticker]}
+          fetchLastPriceIfNeeded={actions.fetchLastPriceIfNeeded}
+          fetchHistoricStockDataIfNeeded={actions.fetchHistoricStockDataIfNeeded}
+          selectedPlan={selectedPlan}
+          realTimeQuotes={this.state.realtimeQuotes}
+          key={portfolioItem.ticker + i}
+          expandStock={this.expandStock}
+          number={i}/>)
       } else {
-        return (<PortfolioItem stock={stock} plan={this.state.plan} realTimeQuotes={this.state.realtimeQuotes} graph={true} key={stock.ticker + i} expandStock={this.expandStock} number={i}/>)
+        return (<PortfolioItem
+          portfolioItem={portfolioItem}
+          stock={stocks[portfolioItem.ticker]}
+          fetchLastPriceIfNeeded={actions.fetchLastPriceIfNeeded}
+          fetchHistoricStockDataIfNeeded={actions.fetchHistoricStockDataIfNeeded}
+          selectedPlan={selectedPlan}
+          realTimeQuotes={this.state.realtimeQuotes}
+          graph={true}
+          key={portfolioItem.ticker + i}
+          expandStock={this.expandStock}
+          number={i}/>)
       }
     })
 
-    let amountOfStocks = store.plans.get(this.state.plan).get('portfolio').length ? store.plans.get(this.props.plan).get('portfolio').length - 1 : ''
+    let amountOfStocks = plans.data[selectedPlan].portfolio.length ? plans.data[selectedPlan].portfolio.length - 1 : ''
 
     return (
       <section className="holdings">
@@ -185,35 +174,38 @@ class Portfolio extends React.Component {
     }
   }
 
-  getAllocation(newPlan) {
-    if (newPlan || !this.state.allocation.length) {
-      let colors = []
-      let allocation = store.plans.get(newPlan ? newPlan.plan : this.state.plan).get('portfolio').map(stock => {
-        if (stock.latest_price > (stock.purchase_price - stock.dividends)) {
-          let amount = Math.round(Math.random() * 80 - 40)
-          colors.push(adjustBrightness('#27A5F9', amount))
-        } else if (stock.ticker === 'CASH') {
-          colors.push('#12D99E')
-        } else {
-          colors.push('#49494A')
-        }
-        return {
-          title: stock.ticker,
-          value: stock.percentage_weight
-        }
-      })
-      this.setState({ allocation: allocation, colors: colors })
-    }
+  calculateAllocationData() {
+    const { plans, selectedPlan } = this.props
+    let colors = []
+    let allocation = plans.data[selectedPlan].portfolio.map(stock => {
+      if (stock.latest_price > (stock.purchase_price - stock.dividends)) {
+        let amount = Math.round(Math.random() * 80 - 40)
+        colors.push(adjustBrightness('#27A5F9', amount))
+      } else if (stock.ticker === 'CASH') {
+        colors.push('#12D99E')
+      } else {
+        colors.push('#49494A')
+      }
+      return {
+        title: stock.ticker,
+        value: stock.percentage_weight
+      }
+    })
+
+    return { colors: colors, allocation: allocation }
   }
 
   render() {
+    const { plans, selectedPlan, market } = this.props
+    if (!plans.data[selectedPlan]) { return null }
+
     // calculate up to date numbers
-    let portfolioYields = store.plans.get(this.state.plan).get('portfolioYields')
+    let portfolioYields = plans.data[selectedPlan].portfolioYields
     if (portfolioYields.length) {
       if (portfolioYields[portfolioYields.length - 1].date.day !== moment().format('DD')
         || portfolioYields[portfolioYields.length - 1].date.month !== moment().format('M')) {
-        let portfolio = store.plans.get(this.state.plan).get('portfolio')
-        let stocks = JSON.parse(localStorage.stocks).data
+        let portfolio = plans.data[selectedPlan].portfolio
+        let stocks = Lockr.get('stocks')
         let newBalance = 0
 
         portfolio.forEach(stock => {
@@ -228,7 +220,7 @@ class Portfolio extends React.Component {
           }
         })
         newBalance += portfolioYields[portfolioYields.length - 1].cash
-        let newYields = portfolioYields.concat({
+        portfolioYields = portfolioYields.concat({
           balance: Number(newBalance.toFixed(0)),
           cash: portfolioYields[portfolioYields.length - 1].cash,
           date: {
@@ -237,20 +229,10 @@ class Portfolio extends React.Component {
             year: moment().format('YYYY')
           }
         })
-        store.plans.get(this.state.plan).set('portfolioYields', newYields)
       }
     }
 
-    let marketStartValue
-    if (store.market.data.get('portfolioData')[0]) { marketStartValue = store.market.data.get('portfolioData')[0] }
-
-    let lastMarketValue = 0
-    if (store.market.data.get('portfolioData')[0]) {
-      lastMarketValue = store.market.data.get('portfolioData')[store.market.data.get('portfolioData').length - 1]
-    }
-
     let FSPercent = <i className="fa fa-circle-o-notch fa-spin fa-3x fa-fw Spinner"></i>
-
     if (portfolioYields.length) {
       const startSum = portfolioYields[0].balance
       const lastSum = portfolioYields[portfolioYields.length - 1].balance
@@ -258,8 +240,17 @@ class Portfolio extends React.Component {
       FSPercent = increase.toFixed(2)
     }
 
+    let marketStartValue, lastMarketValue
+    if (market.SP500) {
+      if (market.SP500.length) {
+        marketStartValue = market.SP500[0]
+        lastMarketValue = market.SP500[market.SP500.length - 1]
+      }
+    }
     let SP500Percent = <i className="fa fa-circle-o-notch fa-spin fa-3x fa-fw Spinner"></i>
     if (lastMarketValue && marketStartValue) { SP500Percent = ((lastMarketValue / marketStartValue * 100 - 100).toFixed(2)) }
+
+    const allocationData = this.calculateAllocationData()
 
     return (
       <div className="portfolio">
@@ -268,7 +259,7 @@ class Portfolio extends React.Component {
 
           <div className="left">
             <h2>Portfolio yields</h2>
-            <PortfolioGraph plan={this.state.plan}/>
+            <PortfolioGraph portfolioYields={portfolioYields} plan={selectedPlan} marketData={market.SP500 ? market.SP500 : []}/>
           </div>
 
           <div className="right">
@@ -289,17 +280,36 @@ class Portfolio extends React.Component {
               </div>
             </div>
 
-            { this.state.allocation.length && store.session.isAllowedToView(this.state.plan) ? <PieChart title="allocation" data={this.state.allocation} colors={this.state.colors} unit="%"/> : <div className="browserChart"/>}
+            { allocationData.allocation.length && isAllowedToView(selectedPlan)
+              ? <PieChart title="allocation" data={allocationData.allocation} colors={allocationData.colors} unit="%"/>
+              : <div className="browserChart"/>}
 
           </div>
         </section>
-        { store.session.isAllowedToView(this.state.plan) ? <YearlyReturns plan={this.state.plan} /> : ''}
+        { isAllowedToView(selectedPlan) ? <YearlyReturns portfolioYields={portfolioYields} /> : ''}
         {this.renderHoldings()}
-        { store.session.isAllowedToView(this.state.plan) ? <p className="disclaimer price-origin">Realtime prices are provided by <a href="https://intrinio.com" target="_blank">Intrinio</a></p> : '' }
-        { store.session.isAllowedToView(this.state.plan) ? <Stats plan={this.state.plan}/> : '' }
+        { isAllowedToView(selectedPlan)
+          ? <p className="disclaimer price-origin">Realtime prices are provided by <a href="https://intrinio.com" target="_blank">Intrinio</a></p>
+          : '' }
+        { isAllowedToView(selectedPlan)
+          ? <Stats stats={plans.data[selectedPlan].stats} portfolio={plans.data[selectedPlan].portfolio}/>
+          : '' }
       </div>
     )
   }
 }
 
-export default Portfolio
+function mapStateToProps(state) {
+  const { plans, stocks, market } = state
+  const { selectedPlan } = plans
+
+  return { plans, selectedPlan, stocks, market }
+}
+
+function mapDispatchToProps(dispatch) {
+  const actions = { fetchPlanIfNeeded, fetchHistoricStockDataIfNeeded, fetchLastPriceIfNeeded, fetchSP500 }
+  return { actions: bindActionCreators(actions, dispatch) }
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Portfolio)

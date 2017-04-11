@@ -7,7 +7,7 @@ import { fetchPlanIfNeeded } from '../../../actions/plans'
 import { fetchHistoricStockDataIfNeeded } from '../../../actions/stocks'
 import { sawSuggestions } from '../../../actions/session'
 import moment from 'moment'
-import {Link} from 'react-router'
+import { Link } from 'react-router'
 
 import Suggestion from './Stock'
 import SmallStock from './SmallStock'

@@ -1,3 +1,4 @@
+/* eslint-disable */
 import store from '../../rstore'
 
 export function isAllowedToView(plan) {
@@ -18,4 +19,14 @@ export function isAllowedToView(plan) {
   } else {
     return false
   }
+}
+
+
+export function formatPrice(value) {
+  while(/(\d+)(\d{3})/.test(value.toString())) {
+    value = value.toString().replace(/(\d+)(\d{3})/, '$1'+','+'$2')
+  }
+  let price = value
+  if (Number(value.replace(',','')) > 0) { price = '+' + price }
+  return price
 }

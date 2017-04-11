@@ -10,10 +10,8 @@ class StockGraph extends React.Component {
       return (<div id="portfolio-item-chart" className="loading">
                 <i className="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
               </div>)
-    } else if (!this.props.isLoading && !this.props.data.length) {
-      return (<div id="portfolio-item-chart">
-                <h3>No data found.</h3>
-              </div>)
+    } else if (!this.props.isLoading && !this.props.data) {
+      return (<div id="portfolio-item-chart"> <h3>No data found.</h3> </div>)
     }
 
     let chartData = this.props.data

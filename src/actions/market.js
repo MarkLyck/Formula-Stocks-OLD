@@ -21,10 +21,10 @@ function receiveDJIA(json) {
   }
 }
 
-export function fetchSP500() {
+export function fetchSP500(startTrim = '1970-01-01') {
   return (dispatch) => {
     dispatch(fetchingSP500())
-    fetch(`https://www.quandl.com/api/v1/datasets/YAHOO/INDEX_GSPC.json?trim_start=1970-01-01&collapse=monthly&column=4&auth_token=6SfHcXos6YBX51kuAq8B`)
+    fetch(`https://www.quandl.com/api/v1/datasets/YAHOO/INDEX_GSPC.json?trim_start=${startTrim}&collapse=monthly&column=4&auth_token=6SfHcXos6YBX51kuAq8B`)
       .then(response => response.json())
       .then(json => dispatch(receiveSP500(json)))
   }

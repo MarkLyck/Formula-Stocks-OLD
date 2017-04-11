@@ -1,58 +1,59 @@
 import React from 'react'
-import store from '../../../store'
+// import store from '../../../store'
 import './stats.css'
 
 class Stats extends React.Component {
 
-  constructor(props) {
-    super(props)
-    this.updateState = this.updateState.bind(this)
-    this.state = {
-      portfolio: store.plans.get(this.props.plan).toJSON().portfolio,
-      winrate: store.plans.get(this.props.plan).toJSON().stats.WLRatio,
-      CAGR: store.plans.get(this.props.plan).toJSON().stats.CAGR
-    }
-  }
+  // constructor(props) {
+  //   super(props)
+  //   this.updateState = this.updateState.bind(this)
+  //   this.state = {
+  //     // portfolio: store.plans.get(this.props.plan).toJSON().portfolio,
+  //     // winrate: store.plans.get(this.props.plan).toJSON().stats.WLRatio,
+  //     // CAGR: store.plans.get(this.props.plan).toJSON().stats.CAGR
+  //   }
+  // }
 
-  componentDidMount() { store.plans.get(this.props.plan).on('change', this.updateState) }
-  componentWillUnmount() {
-    store.plans.get('basic').off('change', this.updateState)
-    store.plans.get('premium').off('change', this.updateState)
-    store.plans.get('business').off('change', this.updateState)
-    store.plans.get('fund').off('change', this.updateState)
-  }
+  // componentDidMount() { store.plans.get(this.props.plan).on('change', this.updateState) }
+  // componentWillUnmount() {
+  //   store.plans.get('basic').off('change', this.updateState)
+  //   store.plans.get('premium').off('change', this.updateState)
+  //   store.plans.get('business').off('change', this.updateState)
+  //   store.plans.get('fund').off('change', this.updateState)
+  // }
 
-  componentWillReceiveProps(newProps) {
-    if (newProps.plan !== this.props.plan) {
-      this.updateState(newProps.plan)
-    }
-  }
+  // componentWillReceiveProps(newProps) {
+  //   if (newProps.plan !== this.props.plan) {
+  //     this.updateState(newProps.plan)
+  //   }
+  // }
 
-  updateState(plan) {
-    if (typeof plan !== 'string') {
-      this.setState({
-        portfolio: store.plans.get(this.props.plan).toJSON().portfolio,
-        winrate: store.plans.get(this.props.plan).toJSON().stats.WLRatio,
-        CAGR: store.plans.get(this.props.plan).toJSON().stats.CAGR
-      })
-    } else {
-      store.plans.get(plan).on('change', this.updateState)
-      this.setState({
-        portfolio: store.plans.get(plan).toJSON().portfolio,
-        winrate: store.plans.get(plan).toJSON().stats.WLRatio
-      })
-    }
-  }
+  // updateState(plan) {
+  //   if (typeof plan !== 'string') {
+  //     this.setState({
+  //       portfolio: store.plans.get(this.props.plan).toJSON().portfolio,
+  //       winrate: store.plans.get(this.props.plan).toJSON().stats.WLRatio,
+  //       CAGR: store.plans.get(this.props.plan).toJSON().stats.CAGR
+  //     })
+  //   } else {
+  //     store.plans.get(plan).on('change', this.updateState)
+  //     this.setState({
+  //       portfolio: store.plans.get(plan).toJSON().portfolio,
+  //       winrate: store.plans.get(plan).toJSON().stats.WLRatio
+  //     })
+  //   }
+  // }
 
   render() {
-    const positiveStocks = this.state.portfolio.filter(stock => (stock.purchase_price - stock.dividends) <= stock.latest_price ? true : false).length
-    const percentPositive = (positiveStocks / (this.state.portfolio.length - 1) * 100).toFixed(2)
+    const { stats, portfolio } = this.props
+    const positiveStocks = portfolio.filter(stock => (stock.purchase_price - stock.dividends) <= stock.latest_price ? true : false).length
+    const percentPositive = (positiveStocks / (portfolio.length - 1) * 100).toFixed(2)
 
-    const avgSize = (this.state.portfolio.reduce((prev, stock) => {
+    const avgSize = (portfolio.reduce((prev, stock) => {
       if (prev === 0) { prev = Number(stock.percentage_weight) }
       else if (stock.ticker !== 'CASH') { prev += Number(stock.percentage_weight) }
       return prev
-    }, 0) / (this.state.portfolio.length - 1)).toFixed(2)
+    }, 0) / (portfolio.length - 1)).toFixed(2)
 
     // let avgReturn = (this.state.portfolio.reduce((prev, stock) => {
     //   if (prev === 0) { prev = Number((stock.latest_price - stock.purchase_price) * 100 / stock.purchase_price) }
@@ -69,7 +70,7 @@ class Stats extends React.Component {
               <i className="fa fa-bar-chart white-color"></i>
             </div>
             <div className="value">
-              <h3 className="white-color">{this.state.winrate.toFixed(2)}%</h3>
+              <h3 className="white-color">{stats.WLRatio.toFixed(2)}%</h3>
               <p className="white-color">Sold with profit</p>
             </div>
           </li>
@@ -99,7 +100,7 @@ class Stats extends React.Component {
               <i className="fa fa-line-chart green-color"></i>
             </div>
             <div className="value white">
-              <h3 className="green-color">{this.state.CAGR.toFixed(2)}%</h3>
+              <h3 className="green-color">{stats.CAGR.toFixed(2)}%</h3>
               <p className="green-color">Annual growth</p>
             </div>
           </li>
