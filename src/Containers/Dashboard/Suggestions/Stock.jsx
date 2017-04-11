@@ -14,7 +14,7 @@ class Suggestion extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchHistoricStockData(this.props.suggestion.ticker, this.props.i, 120)
+    this.props.fetchHistoricStockDataIfNeeded(this.props.suggestion.ticker, this.props.i, 120)
   }
 
   moreInfo() {
@@ -28,7 +28,7 @@ class Suggestion extends React.Component {
   }
 
   render() {
-    const { suggestion } = this.props
+    const { suggestion, stock } = this.props
 
     let allocation
     let allocationText = 'Cash allocation'
@@ -65,21 +65,21 @@ class Suggestion extends React.Component {
     let chartArea
     let loadingColor = suggestion.action === 'SELL' ? 'white-color' : 'blue-color'
 
-    if (!suggestion.data && !suggestion.fetchFailed) {
+    if (!stock.data && !stock.fetchFailed) {
       chartArea = (
         <div className="fetching-data">
           <i className={`fa fa-circle-o-notch fa-spin fa-3x fa-fw ${loadingColor}`}></i>
           <p className={loadingColor}>Loading data</p>
         </div>)
-    } else if (suggestion.fetchFailed) {
+    } else if (stock.fetchFailed) {
       chartArea = (
         <div className="fetching-data">
           <p className="failed">Chart data not available for this stock</p>
         </div>)
-    } else if (suggestion.data.length) {
+    } else if (stock.data.length) {
       chartArea = (
         <SuggestionChart
-          data={suggestion.data}
+          data={stock.data}
           suggestedPrice={suggestion.suggested_price}
           ticker={suggestion.ticker}
           action={suggestion.action}
@@ -137,7 +137,7 @@ class Suggestion extends React.Component {
             </li>
             <li className={actionClass}>
               <p>Last price</p>
-              <h4 className="value">${suggestion.lastPrice}</h4>
+              <h4 className="value">${stock.lastPrice ? stock.lastPrice : suggestion.suggested_price.toFixed(2)}</h4>
             </li>
             {allocationElement}
             <button className={`more-info ${actionClass}`} onClick={this.moreInfo}>More info</button>

@@ -3,7 +3,8 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { isAllowedToView } from '../helpers'
-import { fetchPlanIfNeeded, fetchHistoricStockData } from '../../../actions/plans'
+import { fetchPlanIfNeeded } from '../../../actions/plans'
+import { fetchHistoricStockDataIfNeeded } from '../../../actions/stocks'
 import { sawSuggestions } from '../../../actions/session'
 import moment from 'moment'
 import {Link} from 'react-router'
@@ -24,14 +25,15 @@ class Suggestions extends React.Component {
   }
 
   render() {
-    const { plans, selectedPlan, actions } = this.props
+    const { plans, selectedPlan, actions, stocks } = this.props
     const plan = plans.data[selectedPlan]
 
     let SuggHeader = <SuggestionHeader
                         stats={plan ? plan.stats : {}}
                         portfolio={plan ? plan.portfolio : []}
                         suggestions={plan ? plan.suggestions : []}
-                        isPortfolioTrades={this.props.location.indexOf('trades') === -1 ? false : true}/>
+                        isPortfolioTrades={this.props.location.indexOf('trades') === -1 ? false : true}
+                      />
 
     let suggestionsList
     if (isAllowedToView(selectedPlan)) {
@@ -55,14 +57,16 @@ class Suggestions extends React.Component {
                     suggestion={suggestion} i={numerator}
                     trades={this.props.location.indexOf('trades') === -1 ? false : true}
                     planName={selectedPlan}
-                    fetchHistoricStockData={actions.fetchHistoricStockData}/>
+                    stock={stocks[suggestion.ticker] ? stocks[suggestion.ticker] : {} }
+                    fetchHistoricStockDataIfNeeded={actions.fetchHistoricStockDataIfNeeded} />
         } else {
           return <SmallStock
                     key={plan.name+suggestion.ticker+i}
                     suggestion={suggestion} i={numerator}
                     trades={this.props.location.indexOf('trades') === -1 ? false : true}
                     planName={selectedPlan}
-                    fetchHistoricStockData={actions.fetchHistoricStockData}/>
+                    stock={stocks[suggestion.ticker] ? stocks[suggestion.ticker] : {} }
+                    fetchHistoricStockDataIfNeeded={actions.fetchHistoricStockDataIfNeeded} />
         }
       })
       suggestionsList = (
@@ -104,14 +108,14 @@ class Suggestions extends React.Component {
 
 
 function mapStateToProps(state) {
-  const { plans, session } = state
+  const { plans, session, stocks } = state
   const { selectedPlan } = plans
 
-  return { plans, selectedPlan, session }
+  return { plans, selectedPlan, stocks, session }
 }
 
 function mapDispatchToProps(dispatch) {
-  const actions = { fetchPlanIfNeeded, fetchHistoricStockData, sawSuggestions }
+  const actions = { fetchPlanIfNeeded, sawSuggestions, fetchHistoricStockDataIfNeeded }
   return { actions: bindActionCreators(actions, dispatch) }
 }
 

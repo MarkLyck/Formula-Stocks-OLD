@@ -15,18 +15,18 @@ class SmallStock extends React.Component {
   }
 
   renderBottom() {
-    const { suggestion } = this.props
+    const { suggestion, stock } = this.props
     if (this.state.expanded) {
       let chartArea
       let loadingColor = suggestion.action === 'SELL' ? 'white-color' : 'blue-color'
 
-      if (!suggestion.data && !suggestion.fetchFailed) {
+      if (!stock.data && !stock.fetchFailed) {
         chartArea = (
           <div className="fetching-data">
             <i className={`fa fa-circle-o-notch fa-spin fa-3x fa-fw ${loadingColor}`}></i>
             <p className={loadingColor}>Loading data</p>
           </div>)
-      } else if (suggestion.fetchFailed) {
+      } else if (stock.fetchFailed) {
         chartArea = (
           <div className="fetching-data">
             <p className="failed"><i className="fa fa-exclamation-circle" aria-hidden="true"></i> Couldn't find data</p>
@@ -34,7 +34,7 @@ class SmallStock extends React.Component {
       } else {
         chartArea = (
           <SuggestionChart
-            data={suggestion.data}
+            data={stock.data}
             suggestedPrice={suggestion.suggested_price}
             ticker={suggestion.ticker}
             action={suggestion.action}
@@ -68,7 +68,7 @@ class SmallStock extends React.Component {
   toggleMoreInfo() {
     const { suggestion } = this.props
     this.setState({ expanded: !this.state.expanded })
-    this.props.fetchHistoricStockData(suggestion.ticker, this.props.i, 120)
+    this.props.fetchHistoricStockDataIfNeeded(suggestion.ticker, this.props.i, 120)
   }
 
   render() {

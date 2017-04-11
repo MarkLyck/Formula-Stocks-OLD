@@ -1,4 +1,5 @@
 import { createStore, applyMiddleware } from 'redux'
+import Lockr from 'lockr'
 import thunk from 'redux-thunk'
 import reducers from './reducers.js'
 
@@ -13,6 +14,7 @@ const initialState = {
     data: {}
   },
   market: {},
+  stocks: Lockr.get('stocks') ? Lockr.get('stocks') : {},
   settings: {
     anomToken: '17dcc7f4-49f8-4d7c-8d66-d96474fa6818.tEs1/na2P9cqWKXn3ab9pgIdPpmEPAaQDIJEYNbG7E4=',
     quandlKey: 'YjZ14NUXoyAGAPRDomS5',
