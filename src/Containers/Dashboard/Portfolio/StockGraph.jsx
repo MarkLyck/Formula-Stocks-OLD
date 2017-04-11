@@ -1,7 +1,4 @@
-/* eslint-disable */
 import React from 'react'
-import _ from 'underscore'
-import store from '../../../store'
 import LineGraph from '../../Global/Components/LineGraph/LineGraph'
 
 class StockGraph extends React.Component {
@@ -24,9 +21,6 @@ class StockGraph extends React.Component {
     chartData = chartData.slice(0,this.props.stock.days_owned)
     chartData = chartData.reverse()
 
-    let chartTheme =  'light'
-    let gridOpacity = 0.05
-
     let color = {
       positive: '#27A5F9',
       negative: '#49494A'
@@ -40,7 +34,7 @@ class StockGraph extends React.Component {
           "negativeLineColor": color.positive,
           "negativeBase": this.props.stock.purchase_price + 0.001,
           "valueField": "close",
-          "balloonText": `<div class=\"suggestion-balloon\"><p class="ticker">${this.props.stock.ticker}</p> <p>$[[value]]</p></div>`
+          "balloonText": `<div class="suggestion-balloon"><p class="ticker">${this.props.stock.ticker}</p> <p>$[[value]]</p></div>`
       }]
 
     const guides = [{

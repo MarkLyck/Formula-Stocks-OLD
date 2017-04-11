@@ -33,6 +33,9 @@
           font-weight: 100;
         }
         h3 {
+          animation-name: textHeight;
+          animation-duration: 0.5s;
+          height: 100%;
           font-size: 36px;
         }
         p {
@@ -47,6 +50,11 @@
       }
     }
   }
+}
+
+@keyframes textHeight {
+    from { font-size: 0px; }
+    to { font-size: 36px; }
 }
 
 

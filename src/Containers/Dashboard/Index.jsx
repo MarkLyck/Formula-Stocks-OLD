@@ -25,9 +25,7 @@ class Dashboard extends Component {
   }
 
   componentWillMount() {
-    if (!localStorage.authtoken) {
-      browserHistory.push('/')
-    }
+    if (!localStorage.authtoken) { browserHistory.push('/') }
   }
 
   componentDidMount() {
@@ -48,7 +46,9 @@ class Dashboard extends Component {
 
     let notification;
     if (store.session.get('notification')) {
-      notification = <Notification text={store.session.get('notification').text} type={store.session.get('notification').type}/>
+      notification = <Notification
+                        text={store.session.get('notification').text}
+                        type={store.session.get('notification').type}/>
     }
 
 
@@ -77,10 +77,7 @@ function mapStateToProps(state) {
   const { plans, session } = state
   const { selectedPlan } = plans
 
-  return {
-    selectedPlan,
-    session
-  }
+  return { selectedPlan, session }
 }
 
 function mapDispatchToProps(dispatch) {
