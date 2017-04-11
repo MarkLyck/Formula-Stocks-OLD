@@ -6,13 +6,17 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { fetchPlanIfNeeded } from '../../../actions/plans'
 import { fetchSP500 } from '../../../actions/market'
-import { fetchHistoricStockDataIfNeeded, fetchLastPriceIfNeeded } from '../../../actions/stocks'
+import {
+  fetchHistoricStockDataIfNeeded,
+  fetchLastPriceIfNeeded,
+  receiveRealTimeQuote,
+  receiveAllRealTimeQuotes } from '../../../actions/stocks'
 import { isAllowedToView } from '../helpers'
 import { Link } from 'react-router'
-import store from '../../../store'
+import { adjustBrightness } from '../helpers'
+
 import io from 'socket.io-client/dist/socket.io.min'
 let socket
-// let socketURL = 'wss://ec2-35-166-218-217.us-west-2.compute.amazonaws.com'
 let socketURL = 'wss://formulastocks-server.tk:8080'
 
 import PortfolioGraph from './PortfolioGraph';
@@ -23,47 +27,13 @@ import Stats from './Stats'
 import YearlyReturns from './YearlyReturns'
 import './portfolio.css'
 
-function adjustBrightness(col, amt) {
-    var usePound = true
-    if (col[0] === "#") {
-        col = col.slice(1)
-        usePound = true
-    }
-    var R = parseInt(col.substring(0,2),16)
-    var G = parseInt(col.substring(2,4),16)
-    var B = parseInt(col.substring(4,6),16)
-    R += amt
-    G += amt
-    B += amt
-    if (R > 255) R = 255
-    else if (R < 0) R = 0
-    if (G > 255) G = 255
-    else if (G < 0) G = 0
-    if (B > 255) B = 255
-    else if (B < 0) B = 0
-    var RR = ((R.toString(16).length===1)?"0"+R.toString(16):R.toString(16))
-    var GG = ((G.toString(16).length===1)?"0"+G.toString(16):G.toString(16))
-    var BB = ((B.toString(16).length===1)?"0"+B.toString(16):B.toString(16))
-    return (usePound?"#":"") + RR + GG + BB;
-}
-
 class Portfolio extends React.Component {
   constructor(props) {
     super(props)
-    // this.updateState = this.updateState.bind(this)
     this.expandStock = this.expandStock.bind(this)
     this.renderHoldings = this.renderHoldings.bind(this)
-    // this.getAllocation = this.getAllocation.bind(this)
 
-    this.state = {
-      plan: store.selectedPlan,
-      fetching: true,
-      selectedStock: '',
-      allocation: [],
-      colors: [],
-      realtimeQuotes: {},
-      gotAllQuotes: false
-    }
+    this.state = { selectedStock: '', receivedAllQuotes: false }
   }
 
   componentDidMount() {
@@ -71,24 +41,19 @@ class Portfolio extends React.Component {
     actions.fetchPlanIfNeeded(selectedPlan)
     actions.fetchSP500('2009-01-01')
 
+    // FIXME sockets don't change with new plan. & not functional yet
     socket = io.connect(socketURL)
     socket.on(`latest_${selectedPlan}_quotes`, data => {
-      if (!this.state.gotAllQuotes) {
-        this.setState({ realtimeQuotes: data, gotAllQuotes: true })
+      if (!this.state.receivedAllQuotes) {
+        actions.receiveAllRealTimeQuotes(data)
+        this.setState({ receivedAllQuotes: true })
       }
     })
     socket.emit('getAllQuotes', true)
-    socket.on(`realtime_${selectedPlan}_quotes`, data => {
-      // FIXME realtime qotes actions here
-      // let newQuotes = this.state.realtimeQuotes
-      // newQuotes[data.ticker] = data.price
-      // this.setState({ realtimeQuotes: newQuotes })
-    })
+    socket.on(`realtime_${selectedPlan}_quotes`, data => { actions.receiveRealTimeQuote(data) })
   }
 
-  componentWillUnmount() {
-    socket.disconnect()
-  }
+  componentWillUnmount() { socket.disconnect() }
 
   expandStock(stock,e) {
     if(_.toArray(e.target.classList)[0]) {
@@ -123,30 +88,16 @@ class Portfolio extends React.Component {
           )
         }
 
-      if (this.state.selectedStock !== portfolioItem.ticker) {
-        return (<PortfolioItem
+        return <PortfolioItem
           portfolioItem={portfolioItem}
           stock={stocks[portfolioItem.ticker]}
           fetchLastPriceIfNeeded={actions.fetchLastPriceIfNeeded}
           fetchHistoricStockDataIfNeeded={actions.fetchHistoricStockDataIfNeeded}
           selectedPlan={selectedPlan}
-          realTimeQuotes={this.state.realtimeQuotes}
+          graph={this.state.selectedStock === portfolioItem.ticker ? true : false }
           key={portfolioItem.ticker + i}
           expandStock={this.expandStock}
-          number={i}/>)
-      } else {
-        return (<PortfolioItem
-          portfolioItem={portfolioItem}
-          stock={stocks[portfolioItem.ticker]}
-          fetchLastPriceIfNeeded={actions.fetchLastPriceIfNeeded}
-          fetchHistoricStockDataIfNeeded={actions.fetchHistoricStockDataIfNeeded}
-          selectedPlan={selectedPlan}
-          realTimeQuotes={this.state.realtimeQuotes}
-          graph={true}
-          key={portfolioItem.ticker + i}
-          expandStock={this.expandStock}
-          number={i}/>)
-      }
+          number={i}/>
     })
 
     let amountOfStocks = plans.data[selectedPlan].portfolio.length ? plans.data[selectedPlan].portfolio.length - 1 : ''
@@ -163,8 +114,12 @@ class Portfolio extends React.Component {
               <th>Name</th>
               <th>Allocation</th>
               <th>Return<Info title="Return" explanation="Percent increase from Cost basis to Last price." left/></th>
-              <th>Cost basis<Info title="Cost basis" explanation="Averaged purchase price adjusted for dividends earned." left/></th>
-              <th>Last price<Info title="Last price" explanation="Latest price available for stocks. Updated realtime or End of Day." left/></th>
+              <th>Cost basis<Info title="Cost basis"
+                              explanation="Averaged purchase price adjusted for dividends earned."
+                              left/></th>
+              <th>Last price<Info title="Last price"
+                              explanation="Latest price available for stocks. Updated realtime or End of Day."
+                              left/></th>
               <th>Days owned</th>
             </tr>
           </thead>
@@ -186,12 +141,8 @@ class Portfolio extends React.Component {
       } else {
         colors.push('#49494A')
       }
-      return {
-        title: stock.ticker,
-        value: stock.percentage_weight
-      }
+      return { title: stock.ticker, value: stock.percentage_weight }
     })
-
     return { colors: colors, allocation: allocation }
   }
 
@@ -254,18 +205,21 @@ class Portfolio extends React.Component {
 
     return (
       <div className="portfolio">
-
         <section className="portfolio-yields">
 
           <div className="left">
             <h2>Portfolio yields</h2>
-            <PortfolioGraph portfolioYields={portfolioYields} plan={selectedPlan} marketData={market.SP500 ? market.SP500 : []}/>
+            <PortfolioGraph
+                portfolioYields={portfolioYields}
+                selectedPlan={selectedPlan}
+                marketData={market.SP500 ? market.SP500 : []}/>
           </div>
 
           <div className="right">
-
             <div className="fs stats">
-              <h3 className="fs-plan blue-color"><span className="capitalize">{this.state.plan !== 'basic' ? this.state.plan : 'entry' }</span> formula</h3>
+              <h3 className="fs-plan blue-color">
+                <span className="capitalize">{this.state.plan !== 'basic' ? this.state.plan : 'entry' }</span> formula
+              </h3>
               <div className="wrapper">
                 <i className="fa fa-caret-up" aria-hidden="true"></i>
                 <p><span className="blue-color number">{FSPercent}%</span> since 2009</p>
@@ -286,11 +240,16 @@ class Portfolio extends React.Component {
 
           </div>
         </section>
+
         { isAllowedToView(selectedPlan) ? <YearlyReturns portfolioYields={portfolioYields} /> : ''}
         {this.renderHoldings()}
+
         { isAllowedToView(selectedPlan)
-          ? <p className="disclaimer price-origin">Realtime prices are provided by <a href="https://intrinio.com" target="_blank">Intrinio</a></p>
+          ? (<p className="disclaimer price-origin">Realtime prices are provided by
+              <a href="https://intrinio.com" target="_blank">Intrinio</a>
+            </p>)
           : '' }
+
         { isAllowedToView(selectedPlan)
           ? <Stats stats={plans.data[selectedPlan].stats} portfolio={plans.data[selectedPlan].portfolio}/>
           : '' }
@@ -307,7 +266,14 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  const actions = { fetchPlanIfNeeded, fetchHistoricStockDataIfNeeded, fetchLastPriceIfNeeded, fetchSP500 }
+  const actions = {
+    fetchPlanIfNeeded,
+    fetchHistoricStockDataIfNeeded,
+    fetchLastPriceIfNeeded,
+    fetchSP500,
+    receiveRealTimeQuote,
+    receiveAllRealTimeQuotes
+  }
   return { actions: bindActionCreators(actions, dispatch) }
 }
 

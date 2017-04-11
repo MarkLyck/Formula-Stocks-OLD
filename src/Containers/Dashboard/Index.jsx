@@ -40,7 +40,9 @@ class Dashboard extends Component {
     let { selectedPlan, session, actions } = this.props
     if (!session.stripe) { return null }
 
-    if (this.props.params.plan !== selectedPlan) {
+    let planNames = ['entry', 'basic', 'premium', 'busiess', 'fund']
+
+    if (this.props.params.plan !== selectedPlan && planNames.indexOf(this.props.params.plan) > -1) {
       actions.selectNewPlan(this.props.params.plan)
     }
 
@@ -57,7 +59,7 @@ class Dashboard extends Component {
           <Nav selectedPlan={selectedPlan} selectNewPlan={actions.selectNewPlan} location={this.props.location.pathname}/>
           <div className="db-content">
             {notification}
-            <Breadcrumbs location={this.props.location.pathname} plan={selectedPlan}/>
+            <Breadcrumbs location={this.props.location.pathname}/>
             {React.cloneElement(this.props.children, { plan: selectedPlan, location: this.props.location.pathname })}
           </div>
         </div>

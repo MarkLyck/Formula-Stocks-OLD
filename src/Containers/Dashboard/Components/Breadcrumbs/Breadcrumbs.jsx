@@ -1,4 +1,5 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import moment from 'moment'
 
 import store from '../../../../store'
@@ -24,7 +25,7 @@ class Breadcrumbs extends React.Component {
   }
 
   render() {
-    let planName = store.selectedPlan
+    const { plans, selectedPlan } = this.props
 
     let page
     if (this.props.location.indexOf('portfolio') > -1 || this.props.location === '/dashboard') {
@@ -39,9 +40,9 @@ class Breadcrumbs extends React.Component {
 
     let lastUpdated, lastRebalanced
     let lastUpdatedTag
-    if (planName) {
-      if (page === 'Suggestions' && store.plans.get(planName).get('suggestions')[0]) {
-        let date = store.plans.get(planName).get('suggestions')[0].date
+    if (plans.data[selectedPlan]) {
+      if (page === 'Suggestions' && plans.data[selectedPlan].suggestions) {
+        let date = plans.data[selectedPlan].suggestions[0].date
         let month = date.month
         let fixedDate = date.day
         if (Number(date.month) <= 9) { month = '0' + date.month}
@@ -49,24 +50,28 @@ class Breadcrumbs extends React.Component {
         lastUpdated = moment(date.year + month + fixedDate, 'YYYYMMDD').format('MMM D, YYYY')
 
         lastUpdatedTag = <p>Last updated - <span className="semi-bold">{lastUpdated}</span></p>
-      } else if (page === 'Portfolio' && store.plans.get(planName).get('portfolio')[0]){
-        let date = store.plans.get(planName).get('portfolio')[0].date
+      } else if (page === 'Portfolio' && plans.data[selectedPlan].portfolio){
+        let date = plans.data[selectedPlan].portfolio[0].date
         lastRebalanced = moment(date.year + date.month + date.date, 'YYYYMMDD').format('MMMM D, YYYY')
 
         lastUpdatedTag = <p>Prices updated - <span className="semi-bold">yesterday</span>, Last rebalanced - <span className="semi-bold">{lastRebalanced}</span></p>
       }
     }
 
-    if (planName === "basic") { planName = "entry" }
-
-
     return (
       <div className="breadcrumbs">
-        <p>{page} <i className="fa fa-chevron-right" aria-hidden="true"></i> <span className="blue-color capitalize">{planName}</span></p>
+        <p>{page} <i className="fa fa-chevron-right" aria-hidden="true"></i> <span className="blue-color capitalize">{selectedPlan}</span></p>
         {lastUpdatedTag}
       </div>
     )
   }
 }
 
-export default Breadcrumbs
+function mapStateToProps(state) {
+  const { plans } = state
+  const { selectedPlan } = plans
+
+  return { plans, selectedPlan }
+}
+
+export default connect(mapStateToProps)(Breadcrumbs)

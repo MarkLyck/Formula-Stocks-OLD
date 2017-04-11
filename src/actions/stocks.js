@@ -5,6 +5,8 @@ export const RECEIVE_HISTORIC_STOCK_DATA = 'RECEIVE_HISTORIC_STOCK_DATA'
 export const HISTORIC_DATA_ALREADY_EXISTS = 'HISTORIC_DATA_ALREADY_EXISTS'
 export const RECEIVE_LAST_PRICE = 'RECEIVE_LAST_PRICE'
 export const LAST_PRICE_ALREADY_EXISTS = 'LAST_PRICE_ALREADY_EXISTS'
+export const RECEIVE_REALTIME_QUOTE = 'RECEIVE_REALTIME_QUOTE'
+export const RECEIVE_ALL_REALTIME_QUOTES = 'RECEIVE_ALL_REALTIME_QUOTES'
 
 
 export function fetchHistoricStockDataIfNeeded(ticker, limit) {
@@ -67,6 +69,21 @@ export function fetchLastPrice(ticker) {
 function receiveLastPrice(ticker, json) {
   return {
     type: RECEIVE_LAST_PRICE,
+    ticker: ticker,
+    data: json
+  }
+}
+
+export function receiveRealTimeQuote(ticker, json) {
+  return {
+    type: RECEIVE_REALTIME_QUOTE,
+    ticker: ticker,
+    data: json
+  }
+}
+export function receiveAllRealTimeQuotes(ticker, json) {
+  return {
+    type: RECEIVE_ALL_REALTIME_QUOTES,
     ticker: ticker,
     data: json
   }

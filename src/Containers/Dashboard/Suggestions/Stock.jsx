@@ -137,7 +137,7 @@ class Suggestion extends React.Component {
             </li>
             <li className={actionClass}>
               <p>Last price</p>
-              <h4 className="value">${stock.lastPrice ? stock.lastPrice : suggestion.suggested_price.toFixed(2)}</h4>
+              <h4 className="value">${stock.newPrice ? stock.newPrice : suggestion.suggested_price.toFixed(2)}</h4>
             </li>
             {allocationElement}
             <button className={`more-info ${actionClass}`} onClick={this.moreInfo}>More info</button>

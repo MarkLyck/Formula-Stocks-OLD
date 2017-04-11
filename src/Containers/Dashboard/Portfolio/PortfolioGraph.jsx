@@ -40,7 +40,7 @@ class PortfolioGraph extends React.Component {
     let maximum = _.maxBy(fixedData, (point) => Number(point.fs)).fs
     maximum = Math.ceil(maximum) + 50
 
-    let planName = this.props.plan !== 'basic' ? this.props.plan : 'entry'
+    let planName = this.props.selectedPlan !== 'basic' ? this.props.selectedPlan : 'entry'
 
     const graphs = [
         {

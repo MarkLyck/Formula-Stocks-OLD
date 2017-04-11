@@ -3,8 +3,8 @@ import Lockr from 'lockr'
 import thunk from 'redux-thunk'
 import reducers from './reducers.js'
 
-let selectedPlan = (localStorage.getItem('selectedPlan') && localStorage.getItem('selectedPlan') !== 'basic')
-    ? localStorage.getItem('selectedPlan')
+let selectedPlan = (Lockr.get('selectedPlan') && Lockr.get('selectedPlan') !== 'basic')
+    ? Lockr.get('selectedPlan')
     : 'entry'
 
 const initialState = {
