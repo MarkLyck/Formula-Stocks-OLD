@@ -1,46 +1,24 @@
 import React from 'react'
-import $ from 'jquery'
 import _ from 'underscore'
 import moment from 'moment'
-
-import admin from '../../../admin'
 
 class AdminPanelHeader extends React.Component {
   constructor(props) {
     super(props)
     this.getVisitsCount = this.getVisitsCount.bind(this)
-    this.getUsers = this.getUsers.bind(this)
-    this.state = {
-      fetched: false,
-      visitors: 0,
-      newsletterSubs: admin.newsletterSubs.toJSON(),
-      users: []
-    }
-  }
-
-  componentDidMount() {
-    admin.visits.fetch()
-
-    this.getVisitsCount()
-    this.getUsers()
-  }
-
-  getUsers() {
-    this.setState({ users: [] })
-    $.ajax(`https://baas.kinvey.com/user/kid_rJRC6m9F/`)
-    .then((users) => {
-      this.setState({ users: users })
-    })
+    this.fetchUsers = this.fetchUsers.bind(this)
   }
 
   getVisitsCount() {
-    this.setState({ visitors: 0 })
-    admin.getVisitCount()
-    .then(count => this.setState({ visitors: count }))
+    this.props.fetchVisitsCount()
+  }
+  fetchUsers() {
+    this.props.fetchUsers()
   }
 
   render() {
-    const subscribers = this.state.users.filter((user) => {
+    const { users, visitsCount } = this.props
+    const subscribers = users.filter((user) => {
       if (user.stripe) {
         if (user.stripe.subscriptions) {
           if (user.stripe.subscriptions.data) {
@@ -58,7 +36,7 @@ class AdminPanelHeader extends React.Component {
       return false
     })
 
-    const trials = this.state.users.filter((user) => {
+    const trials = users.filter((user) => {
       if (user.stripe) {
         if (user.stripe.subscriptions) {
           if (user.stripe.subscriptions.data) {
@@ -74,7 +52,7 @@ class AdminPanelHeader extends React.Component {
       return false
     })
 
-    const stayedThroughTrial = this.state.users.filter(user => {
+    const stayedThroughTrial = users.filter(user => {
       if (user.stripe && user.email !== 'demo@formulastocks.com') {
         if (user.stripe.subscriptions) {
           if (user.stripe.subscriptions.data) {
@@ -91,7 +69,7 @@ class AdminPanelHeader extends React.Component {
       return false
     }).length
 
-    const conversionRate = stayedThroughTrial / (this.state.users.length - 4) * 100
+    const conversionRate = stayedThroughTrial / (users.length) * 100
 
     return (
       <section className="suggestion-header">
@@ -101,12 +79,12 @@ class AdminPanelHeader extends React.Component {
               <i className="fa fa-users white-color"></i>
             </div>
             <div className="value">
-              <h3 className="white-color">{this.state.visitors}</h3>
+              <h3 className="white-color">{visitsCount}</h3>
               <p className="white-color">Unique Visitors</p>
             </div>
           </li>
 
-          <li className="panel profitable-stocks white gray-border" onClick={this.getUsers}>
+          <li className="panel profitable-stocks white gray-border" onClick={this.fetchUsers}>
             <div className="symbol">
               <i className="fa fa-flask blue-color"></i>
             </div>
@@ -116,7 +94,7 @@ class AdminPanelHeader extends React.Component {
             </div>
           </li>
 
-          <li className="panel green"  onClick={this.getUsers}>
+          <li className="panel green" onClick={this.getUsers}>
             <div className="symbol">
               <i className="fa fa-hourglass-half white-color"></i>
             </div>

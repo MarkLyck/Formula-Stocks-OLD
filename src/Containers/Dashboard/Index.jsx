@@ -54,7 +54,7 @@ class Dashboard extends Component {
 
     return (
       <div className="dashboard">
-        <SideBar plan={selectedPlan} location={this.props.location.pathname}/>
+        <SideBar selectedPlan={selectedPlan} userType={session.type} location={this.props.location.pathname}/>
         <div className="container">
           <Nav selectedPlan={selectedPlan} selectNewPlan={actions.selectNewPlan} location={this.props.location.pathname}/>
           <div className="db-content">

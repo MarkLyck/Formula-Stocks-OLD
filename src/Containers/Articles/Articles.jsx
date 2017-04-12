@@ -1,7 +1,9 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { fetchArticlesIfNeeded, updateArticle } from '../../actions/articles'
 import { browserHistory } from 'react-router'
-import _ from 'underscore'
-import store from '../../store'
+import _ from 'lodash'
 import flaskLogo from './icons/Flask_Logo.svg'
 
 import Article from './Article'
@@ -11,56 +13,48 @@ import './styles/articles.css'
 class Articles extends React.Component {
   constructor(props) {
     super(props)
-
-    this.updateState = this.updateState.bind(this)
     this.toggleSideBar = this.toggleSideBar.bind(this)
-
-    this.state = { articles: [], fetched: false, sidebar: true }
+    this.state = { sidebar: true }
   }
 
   componentDidMount() {
     window.Intercom("shutdown")
-    store.articles.data.fetch()
-    store.articles.data.on('update', this.updateState)
+    this.props.actions.fetchArticlesIfNeeded()
   }
 
-  componentWillUnmount() {
-    store.articles.data.off('update', this.updateState)
-  }
-
-  updateState() {
-    if (!this.state.articles.length) {
-      this.setState({ fetched: true, articles: store.articles.data.toJSON().reverse() })
-    } else {
-      this.setState({ fetched: true })
-    }
-  }
-
-  goHome() {
-    browserHistory.push('/')
-  }
+  goHome() { browserHistory.push('/') }
 
   toggleSideBar() {
     this.setState({ sidebar: !this.state.sidebar })
   }
 
   render() {
-    console.log(this.props)
-    let currentArticle = this.state.articles.reverse()[0]
-    if (this.props.routeParams.splat.length) {
-      currentArticle = _.find(this.state.articles, (art) => art.title.toLowerCase() === this.props.routeParams.splat.split('/')[1].toLowerCase())
+    const { articles, session, routeParams, actions } = this.props
+    let currentArticle = articles.data.reverse()[0]
+    if (routeParams.splat.length) {
+      currentArticle = _.find(articles.data, (art) => art.title.toLowerCase() === routeParams.splat.split('/')[1].toLowerCase())
     }
 
     return (
       <div className="articles">
         <img className="flask-logo" src={flaskLogo} alt="Formula Stocks" onClick={this.goHome}/>
         <div className="content" style={ this.state.sidebar ? { width: "calc(100% - 320px)" } : { width: "100%" } }>
-          <Article article={currentArticle}/>
+          <Article article={currentArticle} session={session} updateArticle={actions.updateArticle}/>
         </div>
-        <SideBar location={this.props.location} articles={this.state.articles} article={currentArticle} toggleSideBar={this.toggleSideBar} open={this.state.sidebar}/>
+        <SideBar location={this.props.location} articles={articles.data} article={currentArticle} toggleSideBar={this.toggleSideBar} open={this.state.sidebar}/>
       </div>
     )
   }
 }
 
-export default Articles
+function mapStateToProps(state) {
+  const { articles, session } = state
+  return { articles, session }
+}
+
+function mapDispatchToProps(dispatch) {
+  const actions = { fetchArticlesIfNeeded, updateArticle }
+  return { actions: bindActionCreators(actions, dispatch) }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Articles)

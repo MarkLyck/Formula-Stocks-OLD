@@ -1,32 +1,39 @@
 import React from 'react'
-import $ from 'jquery'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { fetchVisits, fetchVisitsCount, fetchUsers } from '../../../../actions/admin'
 import UserList from './UserList'
 import Headers from '../Headers'
 
 class Users extends React.Component {
-  constructor(props) {
-    super(props)
-
-    this.state = { users: []}
-  }
-
   componentDidMount() {
-    $.ajax(`https://baas.kinvey.com/user/kid_rJRC6m9F/`)
-    .then((r) => {
-      this.setState({ users: r })
-    })
+    this.props.actions.fetchVisitsCount()
+    this.props.actions.fetchVisits()
+    this.props.actions.fetchUsers()
   }
 
   render() {
+    const { actions, users, visitsCount } = this.props
     return (
       <div className="users">
-        <Headers/>
+        <Headers visitsCount={visitsCount} users={users} fetchVisitsCount={actions.fetchVisitsCount} fetchUsers={actions.fetchUsers}/>
         <div className="user-list-container">
-          <UserList users={this.state.users}/>
+          <UserList users={users}/>
         </div>
       </div>
     )
   }
 }
 
-export default Users
+function mapStateToProps(state) {
+  const { admin } = state
+  const { users, visitsCount } = admin
+  return { users, visitsCount }
+}
+
+function mapDispatchToProps(dispatch) {
+  const actions = { fetchVisits, fetchVisitsCount, fetchUsers }
+  return { actions: bindActionCreators(actions, dispatch) }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Users)
