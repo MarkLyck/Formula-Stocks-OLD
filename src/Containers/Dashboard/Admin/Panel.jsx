@@ -52,7 +52,6 @@ class AdminPanel extends React.Component {
 
   render() {
     const { visits, visitsCount, users, actions } = this.props
-    console.log(this.props)
     const browserColors = []
     const browsers = visits.reduce((prev, visitor) => {
       let foundIndex = -1
@@ -126,7 +125,7 @@ class AdminPanel extends React.Component {
 
     return (
       <div className="admin-panel">
-        <AdminPanelHeader visitsCount={visitsCount} users={users} fetchVisitsCount={actions.fetchVisitsCount}/>
+        <AdminPanelHeader visitsCount={visitsCount} users={users} fetchVisitsCount={actions.fetchVisitsCount} fetchUsers={actions.fetchUsers}/>
         <div className="unqiue-visiotrs">
         </div>
         <div className="DAU-container">

@@ -69,7 +69,7 @@ class AdminPanelHeader extends React.Component {
       return false
     }).length
 
-    const conversionRate = stayedThroughTrial / (users.length) * 100
+    const conversionRate = stayedThroughTrial / (users.length - 4) * 100
 
     return (
       <section className="suggestion-header">
