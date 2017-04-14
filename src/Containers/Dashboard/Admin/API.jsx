@@ -3,9 +3,8 @@ import Dropzone from 'react-dropzone'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { showNotification } from '../../../actions/notifications'
+import { updatePlan } from '../../../actions/plans'
 
-import store from '../../../store'
-import admin from '../../../admin'
 import JSONIcon from './icons/json_icon.svg'
 import './styles/api.css'
 
@@ -37,24 +36,16 @@ class AdminAPI extends Component {
       actions.showNotification(`Invalid file name: ${badFiles[0].name}`, 'error')
       return null
     } else {
-      admin.filesToUpload = files.length
+      actions.showNotification(`uploading ${files.length} file(s)`)
       let entryFiles = files.filter(file => (file.name.indexOf('basic') > -1 || file.name.indexOf('entry') > -1) ? true : false)
       let premiumFiles = files.filter(file => file.name.indexOf('premium') > -1 ? true : false)
       let businessFiles = files.filter(file => file.name.indexOf('business') > -1 ? true : false)
       let fundFiles = files.filter(file => file.name.indexOf('fund') > -1 ? true : false)
 
-      if (entryFiles.length > 0) {
-        store.plans.get('basic').updateData(entryFiles)
-      }
-      if (premiumFiles.length > 0) {
-        store.plans.get('premium').updateData(premiumFiles)
-      }
-      if (businessFiles.length > 0) {
-        store.plans.get('business').updateData(businessFiles)
-      }
-      if (fundFiles.length > 0) {
-        store.plans.get('fund').updateData(fundFiles)
-      }
+      if (entryFiles.length > 0) { actions.updatePlan(entryFiles, 'entry') }
+      if (premiumFiles.length > 0) { actions.updatePlan(premiumFiles, 'premium') }
+      if (businessFiles.length > 0) { actions.updatePlan(businessFiles, 'business') }
+      if (fundFiles.length > 0) { actions.updatePlan(fundFiles, 'fund') }
     }
   }
 
@@ -70,14 +61,13 @@ class AdminAPI extends Component {
             </div>
           </Dropzone>
         </div>
-
       </div>
     )
   }
 }
 
 function mapDispatchToProps(dispatch) {
-  const actions = { showNotification }
+  const actions = { showNotification, updatePlan }
   return { actions: bindActionCreators(actions, dispatch) }
 }
 

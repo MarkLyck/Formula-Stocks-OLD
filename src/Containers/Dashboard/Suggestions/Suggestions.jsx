@@ -26,19 +26,19 @@ class Suggestions extends React.Component {
 
   render() {
     const { plans, selectedPlan, actions, stocks } = this.props
-    const plan = plans.data[selectedPlan]
+    const plan = plans.data[selectedPlan] || {}
 
     let SuggHeader = <SuggestionHeader
-                        stats={plan ? plan.stats : {}}
-                        portfolio={plan ? plan.portfolio : []}
-                        suggestions={plan ? plan.suggestions : []}
+                        stats={plan.stats ? plan.stats : {}}
+                        portfolio={plan.portfolio ? plan.portfolio : []}
+                        suggestions={plan.suggestions ? plan.suggestions : []}
                         isPortfolioTrades={this.props.location.indexOf('trades') === -1 ? false : true}
                       />
 
     let suggestionsList
     if (isAllowedToView(selectedPlan)) {
       if (!plan) { return ( <div className="suggestions"> {SuggHeader} </div> ) }
-      else if (!plan.suggestions.length) { return ( <div className="suggestions"> {SuggHeader} </div> ) }
+      else if (!plan.suggestions || !plan.portfolio) { return ( <div className="suggestions"> {SuggHeader} </div> ) }
       let suggestions = []
       if (this.props.location.indexOf('trades') === -1) {
         suggestions = plan.suggestions.filter(sug => sug.model && sug.action === 'BUY' ? false : true)

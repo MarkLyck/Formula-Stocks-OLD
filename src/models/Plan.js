@@ -191,11 +191,7 @@ const Plan = Backbone.Model.extend({
      })
     }
 
-    fileArr.forEach((file, i) => {
-      let fr = new FileReader()
-      fr.onload = receivedJSON.bind(null, i)
-      fr.readAsText(file)
-    })
+
   },
   getLastDayPrice(ticker, i) {
     return new Promise((resolve, reject) => {

@@ -19,3 +19,6 @@
 .notification.error {
   background: $warning-color;
 }
+.notification.warning {
+  background: #FF9E38;
+}

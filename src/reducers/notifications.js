@@ -1,13 +1,7 @@
 import _ from 'lodash'
-import {
-  SHOW_NOTIFICATION,
-  DISMISS_NOTIFICATION
-} from '../actions/notifications'
+import { SHOW_NOTIFICATION, DISMISS_NOTIFICATION } from '../actions/notifications'
 
-
-const initialState = {
-  data: []
-}
+const initialState = { data: [] }
 
 export default function reducer(state = initialState, action = {}) {
   switch (action.type) {
