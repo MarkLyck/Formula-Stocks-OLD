@@ -6,13 +6,11 @@ import { selectNewPlan } from '../../actions/plans'
 import { fetchSession } from '../../actions/session'
 import Lockr from 'lockr'
 
-import store from '../../store'
-
 import Nav from './Components/Navbar/Navbar'
 import SideBar from './Components/SideBar/SideBar'
 
 import Breadcrumbs from './Components/Breadcrumbs/Breadcrumbs'
-import Notification from './Components/Notification/Notification'
+import Notifications from './Components/Notifications/Notifications'
 import './dashboard.css'
 
 class Dashboard extends Component {
@@ -20,8 +18,6 @@ class Dashboard extends Component {
     super(props)
 
     if (!Lockr.get('stocks')) { Lockr.set('stocks', {}) }
-
-    this.state = { fetched: false }
   }
 
   componentWillMount() {
@@ -44,21 +40,13 @@ class Dashboard extends Component {
       actions.selectNewPlan(this.props.params.plan)
     }
 
-    let notification;
-    if (store.session.get('notification')) {
-      notification = <Notification
-                        text={store.session.get('notification').text}
-                        type={store.session.get('notification').type}/>
-    }
-
-
     return (
       <div className="dashboard">
         <SideBar selectedPlan={selectedPlan} userType={session.type} location={this.props.location.pathname}/>
         <div className="container">
           <Nav selectedPlan={selectedPlan} selectNewPlan={actions.selectNewPlan} location={this.props.location.pathname}/>
           <div className="db-content">
-            {notification}
+            <Notifications/>
             <Breadcrumbs location={this.props.location.pathname}/>
             {React.cloneElement(this.props.children, { plan: selectedPlan, location: this.props.location.pathname })}
           </div>

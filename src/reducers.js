@@ -11,6 +11,7 @@ import stocks from './reducers/stocks'
 import articles from './reducers/articles'
 import session from './reducers/session'
 import settings from './reducers/settings'
+import notifications from './reducers/notifications'
 import admin from './reducers/admin'
 
 export default combineReducers({
@@ -20,6 +21,7 @@ export default combineReducers({
   articles,
   session,
   settings,
+  notifications,
   admin,
   routing
 })

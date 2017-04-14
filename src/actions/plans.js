@@ -14,13 +14,11 @@ export function fetchPlanIfNeeded(plan) {
         }
       }
       dispatch(fetchPlan(plan, 'private'))
-    } else {
-      if (store.getState().plans.data[plan]) {
-        dispatch({ type: "PLAN_ALREADY_EXISTS" })
-        return false
-      }
-      dispatch(fetchPlan(plan, 'public'))
+    } else if (store.getState().plans.data[plan]) {
+      dispatch({ type: "PLAN_ALREADY_EXISTS" })
+      return false
     }
+    dispatch(fetchPlan(plan, 'public'))
   }
 }
 
@@ -34,11 +32,7 @@ export function fetchPlan(plan, type) {
 }
 function fetchingPlan(plan) { return { type: FETCHING_PLAN, plan } }
 function receivePlan(plan, json) {
-  return {
-    type: RECEIVE_PLAN,
-    plan: plan,
-    data: json
-  }
+  return { type: RECEIVE_PLAN, plan: plan, data: json }
 }
 
 

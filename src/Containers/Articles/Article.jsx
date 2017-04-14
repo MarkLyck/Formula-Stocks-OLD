@@ -12,9 +12,7 @@ class Article extends React.Component {
     this.state = { editing: false }
   }
 
-  toggleEdit() {
-    this.setState({ editing: !this.state.editing })
-  }
+  toggleEdit() { this.setState({ editing: !this.state.editing }) }
 
   submitEdit(e) {
     e.preventDefault()
