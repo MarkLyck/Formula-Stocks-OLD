@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { fetchPlan } from '../../actions/plans'
+import { fetchPlanIfNeeded } from '../../actions/plans'
 import { fetchDJIA, fetchSP500 } from '../../actions/market'
 
 import NavBar from '../Global/Navbar/Navbar'
@@ -30,7 +30,7 @@ class Home extends Component {
   }
   componentDidMount() {
     const { actions } = this.props
-    actions.fetchPlan('entry', 'public')
+    actions.fetchPlanIfNeeded('entry')
     actions.fetchDJIA()
     actions.fetchSP500()
 
@@ -111,7 +111,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   const actions = {
-    fetchPlan,
+    fetchPlanIfNeeded,
     fetchDJIA,
     fetchSP500
   }

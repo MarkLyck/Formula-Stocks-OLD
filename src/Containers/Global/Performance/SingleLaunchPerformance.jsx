@@ -49,7 +49,7 @@ class Performance extends Component {
   }
 
   renderChart() {
-    const { portfolioYields, marketData } = this.props
+    const { portfolioYields = [], marketData = [] } = this.props
     if (!portfolioYields.length || !marketData.length) {
       return (<div id="result-chart" className="loading">
                 <i className="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>

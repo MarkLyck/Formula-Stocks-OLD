@@ -52,30 +52,27 @@ export function updatePlan(fileArr, planName) {
             && store.getState().plans.data[planName].portfolio
             && store.getState().plans.data[planName].annualData
           ) {
-        dispatch(uploadPlanData(fileArr, planName))
+        dispatch( uploadPlanData(fileArr, planName) )
         return
       }
     }
     if (!store.getState().plans.data[planName]) {
-      dispatch(showNotification('Fetching private API'))
-      fetch(`https://formulastocks-server.tk:3001/private/${planName}`)
-        .then(response => response.json())
-        .then(json => dispatch(receivePlan(planName, json)))
-        .then(() => dispatch(updatePlan(fileArr, planName)))
+        fetch(`https://formulastocks-server.tk:3001/private/${planName}`)
+          .then(response => response.json())
+          .then(json => dispatch( receivePlan(planName, json)) )
+          .then(() => dispatch( updatePlan(fileArr, planName)) )
     }
     else if (!store.getState().plans.data[planName].suggestions) {
-      dispatch(showNotification('Fetching private API'))
-      fetch(`https://formulastocks-server.tk:3001/private/${planName}`)
-        .then(response => response.json())
-        .then(json => dispatch(receivePlan(planName, json)))
-        .then(() => dispatch(updatePlan(fileArr, planName)))
+        fetch(`https://formulastocks-server.tk:3001/private/${planName}`)
+          .then(response => response.json())
+          .then(json => dispatch( receivePlan(planName, json)) )
+          .then(() => dispatch( updatePlan(fileArr, planName)) )
     }
     else if (!store.getState().plans.data[planName].annualData) {
-      dispatch(showNotification('Fetching public API'))
       fetch(`https://formulastocks-server.tk:3001/public/${planName}`)
         .then(response => response.json())
-        .then(json => dispatch(receivePlan(planName, json)))
-        .then(() => dispatch(updatePlan(fileArr, planName)))
+        .then(json => dispatch( receivePlan(planName, json)) )
+        .then(() => dispatch( updatePlan(fileArr, planName)) )
     }
   }
 }
@@ -83,7 +80,6 @@ export function updatePlan(fileArr, planName) {
 function uploadPlanData(fileArr, planName) {
   return (dispatch) => {
     dispatch(showNotification(`Uploading ${planName} data`))
-
     let plan = store.getState().plans.data[planName]
 
     let receivedJSON = (i, e) => {
@@ -97,6 +93,7 @@ function uploadPlanData(fileArr, planName) {
       } else if (fileArr[i].name.indexOf('monthly') > -1) {
         // Monthly file
          const weeklySuggestions = plan.suggestions.filter(sug => sug.model ? false : true)
+
          let newSuggestions = []
          if (data.actionable) {
           newSuggestions = data.actionable.map(sug => {
@@ -115,35 +112,37 @@ function uploadPlanData(fileArr, planName) {
         newStats.WLRatio = (100 - data.statistics.negatives / (data.statistics.positives + data.statistics.negatives) * 100)
         plan.stats = _.extend({}, plan.stats, newStats)
         plan.annualData = data.logs
+      } else {
+        dispatch(showNotification(`Couldn't find file type`, 'error'))
       }
+
+      // Remove same-type duplicates
+      plan.suggestions = plan.suggestions.reduce((suggestions, sug, i) => {
+         let dupeIndex = -1
+         suggestions.forEach((suggestion, i) => {
+           if (suggestion.model === sug.model) {
+             if (suggestion.ticker === sug.ticker) { dupeIndex = i }
+           }
+         })
+
+         if (dupeIndex > -1) {
+           if (suggestions[dupeIndex].percentage_weight && sug.percentage_weight) {
+             suggestions[dupeIndex].percentage_weight += sug.percentage_weight
+           } else if (suggestions[dupeIndex].portfolio_weight && sug.portfolio_weight) {
+             suggestions[dupeIndex].portfolio_weight += sug.portfolio_weight
+           }
+           return suggestions
+         }
+         return suggestions.concat(sug)
+       }, [])
+
+      const publicData = _.omit(plan, ['portfolio', 'suggestions', '_acl', '_kmd', '__v'] )
+      dispatch( updatePublicPlan(publicData, planName) )
+
+      let privateData = _.omit(plan, ['annualData', 'info', '_acl', '_kmd', '__v'])
+      privateData.stats = { CAGR: privateData.stats.CAGR, WLRatio: privateData.stats.WLRatio }
+      dispatch( updatePrivatePlan(privateData, planName) )
     }
-
-    // Remove same-type duplicates
-    plan.suggestions = plan.suggestions.reduce((suggestions, sug, i) => {
-       let dupeIndex = -1
-       suggestions.forEach((suggestion, i) => {
-         if (suggestion.model === sug.model) {
-           if (suggestion.ticker === sug.ticker) { dupeIndex = i }
-         }
-       })
-
-       if (dupeIndex > -1) {
-         if (suggestions[dupeIndex].percentage_weight && sug.percentage_weight) {
-           suggestions[dupeIndex].percentage_weight += sug.percentage_weight
-         } else if (suggestions[dupeIndex].portfolio_weight && sug.portfolio_weight) {
-           suggestions[dupeIndex].portfolio_weight += sug.portfolio_weight
-         }
-         return suggestions
-       }
-       return suggestions.concat(sug)
-     }, [])
-
-    const publicData = _.omit(plan, ['portfolio', 'suggestions', '_acl', '_kmd', '__v'] )
-    dispatch( updatePublicPlan(publicData, planName) )
-
-    let privateData = _.omit(plan, ['annualData', 'info', '_acl', '_kmd', '__v'])
-    privateData.stats = { CAGR: privateData.stats.CAGR, WLRatio: privateData.stats.WLRatio }
-    dispatch( updatePrivatePlan(privateData, planName) )
 
     fileArr.forEach((file, i) => {
       let fr = new FileReader()
