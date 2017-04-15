@@ -1,7 +1,7 @@
 import React from 'react'
 import './stats.css'
 
-const Stats = ({ stats, portfolio }) => {
+const Stats = ({ stats, portfolio = [] }) => {
   const positiveStocks = portfolio.filter(stock => (stock.purchase_price - stock.dividends) <= stock.latest_price ? true : false).length
   const percentPositive = (positiveStocks / (portfolio.length - 1) * 100).toFixed(2)
 

@@ -1,8 +1,11 @@
 import React from 'react'
 import $ from 'jquery'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { fetchSession, logOut } from '../../../actions/session'
 import { Link, browserHistory } from 'react-router'
 import Scroll from 'react-scroll'
-import store from '../../../store'
+// import store from '../../../store'
 import './navbar.css'
 import Logo from './logo_horizontal.svg'
 
@@ -23,6 +26,7 @@ class NavBar extends React.Component {
   }
 
   componentDidMount() {
+    this.props.actions.fetchSession()
     $(window).on('scroll', this.checkScroll)
   }
 
@@ -53,7 +57,6 @@ class NavBar extends React.Component {
     let prefix = this.props.path === '/pro' ? '/pro' : ''
     let signupText = this.props.path !== '/pro' ? 'Sign up' : 'Get started'
 
-
     if (!localStorage.authtoken && this.state.navbar === 1) {
       return (
         <div id="nav-links">
@@ -70,7 +73,7 @@ class NavBar extends React.Component {
       return (
         <div id="nav-links">
           <Link to="/dashboard" id="dashboard-link" className="nav-link">Dashboard</Link>
-          <a href="#" id="logout-btn" onClick={store.session.logout.bind(store.session)} className="nav-link">Logout</a>
+          <a href="#" id="logout-btn" onClick={this.props.actions.logOut} className="nav-link">Logout</a>
         </div>)
     }
   }
@@ -94,6 +97,7 @@ class NavBar extends React.Component {
     let menuState = this.state.showMenu ? 'right open' : 'right closed'
     let navbarClass = 'new-navbar ' + this.state.navbar
     let faqLink = this.state.navbar === 'fixed' ? <Link onClick={this.closeMenu} className="nav-link faq-link" to="/faq" >FAQ</Link> : ''
+
     return (
       <nav className={navbarClass}>
         <div className="left" onClick={() => {scroll.scrollToTop()}}>
@@ -113,4 +117,14 @@ class NavBar extends React.Component {
   }
 }
 
-export default NavBar
+function mapStateToProps(state) {
+  const { session } = state
+  return { session }
+}
+
+function mapDispatchToProps(dispatch) {
+  const actions = { fetchSession, logOut }
+  return { actions: bindActionCreators(actions, dispatch) }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(NavBar)

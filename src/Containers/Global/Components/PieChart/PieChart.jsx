@@ -1,6 +1,6 @@
-/* eslint-disable */
 import React from 'react'
-import '../../../../libraries/amcharts/pie.js'
+import AmCharts from "@amcharts/amcharts3-react"
+// import '../../../../libraries/amcharts/pie.js'
 
 const PieChart = ({ title, data, colors, unit }) => {
 
@@ -18,7 +18,7 @@ const PieChart = ({ title, data, colors, unit }) => {
 
   return (
     <div className="browserChart">
-      {React.createElement(AmCharts.React, config)}
+      <AmCharts.React {...config} />
       <h3>{title}</h3>
     </div>
   )

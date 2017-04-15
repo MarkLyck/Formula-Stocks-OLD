@@ -1,4 +1,4 @@
-import store from '../rstore'
+import store, { anomToken } from '../rstore'
 export const FETCHING_ARTICLES = 'FETCHING_ARTICLES'
 export const RECEIVE_ARTICLES = 'RECEIVE_ARTICLES'
 export const UPDATE_ARTICLE = 'UPDATE_ARTICLE'
@@ -6,7 +6,7 @@ export const ARTICLE_UPDATED = 'ARTICLE_UPDATED'
 export const POSTING_ARTICLE = 'POSTING_ARTICLE'
 
 let articleHeaders = new Headers();
-const authToken = localStorage.getItem('authtoken') ? localStorage.authtoken : store.getState().settings.anomToken
+const authToken = localStorage.getItem('authtoken') ? localStorage.authtoken : anomToken
 articleHeaders.append('Authorization', `Kinvey ${authToken}`)
 articleHeaders.append('Content-type', `application/json`)
 

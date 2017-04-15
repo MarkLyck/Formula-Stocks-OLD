@@ -3,6 +3,8 @@ import Lockr from 'lockr'
 import thunk from 'redux-thunk'
 import reducers from './reducers.js'
 
+export const anomToken = '17dcc7f4-49f8-4d7c-8d66-d96474fa6818.tEs1/na2P9cqWKXn3ab9pgIdPpmEPAaQDIJEYNbG7E4='
+
 let selectedPlan = (Lockr.get('selectedPlan') && Lockr.get('selectedPlan') !== 'basic')
     ? Lockr.get('selectedPlan')
     : 'entry'

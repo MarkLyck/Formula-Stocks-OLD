@@ -66,7 +66,8 @@ class Portfolio extends React.Component {
   }
 
   renderHoldings() {
-    const { plans, stocks, selectedPlan, actions} = this.props
+    const { plans, stocks, selectedPlan, actions } = this.props
+    const portfolio = plans.data[selectedPlan].portfolio || []
     if (!isAllowedToView(selectedPlan)) {
       return (
         <section className="no-permissions">
@@ -75,8 +76,7 @@ class Portfolio extends React.Component {
         </section>
       )
     } else {
-      const portfolioData = plans.data[selectedPlan].portfolio
-      let portfolio = portfolioData.map((portfolioItem, i) => {
+      let portfolioItems = portfolio.map((portfolioItem, i) => {
         if (portfolioItem.name === 'CASH') {
           return (
             <tbody key={i} className="cash">
@@ -100,7 +100,9 @@ class Portfolio extends React.Component {
           number={i}/>
     })
 
-    let amountOfStocks = plans.data[selectedPlan].portfolio.length ? plans.data[selectedPlan].portfolio.length - 1 : ''
+
+
+    let amountOfStocks = portfolio.length ? plans.data[selectedPlan].portfolio.length - 1 : ''
 
     return (
       <section className="holdings">
@@ -123,7 +125,7 @@ class Portfolio extends React.Component {
               <th>Days owned</th>
             </tr>
           </thead>
-          {portfolio}
+          {portfolioItems}
         </table>
       </section>)
     }
@@ -132,7 +134,8 @@ class Portfolio extends React.Component {
   calculateAllocationData() {
     const { plans, selectedPlan } = this.props
     let colors = []
-    let allocation = plans.data[selectedPlan].portfolio.map(stock => {
+    const portfolio = plans.data[selectedPlan].portfolio || []
+    let allocation = portfolio.map(stock => {
       if (stock.latest_price > (stock.purchase_price - stock.dividends)) {
         let amount = Math.round(Math.random() * 80 - 40)
         colors.push(adjustBrightness('#27A5F9', amount))
@@ -155,7 +158,7 @@ class Portfolio extends React.Component {
     if (portfolioYields.length) {
       if (portfolioYields[portfolioYields.length - 1].date.day !== moment().format('DD')
         || portfolioYields[portfolioYields.length - 1].date.month !== moment().format('M')) {
-        let portfolio = plans.data[selectedPlan].portfolio
+        let portfolio = plans.data[selectedPlan].portfolio || []
         let stocks = Lockr.get('stocks')
         let newBalance = 0
 
@@ -210,7 +213,7 @@ class Portfolio extends React.Component {
           <div className="left">
             <h2>Portfolio yields</h2>
             <PortfolioGraph
-                portfolioYields={portfolioYields}
+                portfolioYields={portfolioYields ? portfolioYields : []}
                 selectedPlan={selectedPlan}
                 marketData={market.SP500 ? market.SP500 : []}/>
           </div>
@@ -246,7 +249,7 @@ class Portfolio extends React.Component {
 
         { isAllowedToView(selectedPlan)
           ? (<p className="disclaimer price-origin">Realtime prices are provided by
-              <a href="https://intrinio.com" target="_blank">Intrinio</a>
+              <a href="https://intrinio.com" target="_blank"> Intrinio</a>
             </p>)
           : '' }
 

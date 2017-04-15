@@ -1,4 +1,4 @@
-import store from '../rstore'
+import { anomToken } from '../rstore'
 import moment from 'moment'
 export const FETCHING_USERS = 'FETCHING_USERS'
 export const RECEIVE_USERS = 'RECEIVE_USERS'
@@ -7,7 +7,7 @@ export const RECEIVE_VISITS = 'RECEIVE_VISITS'
 export const RECEIVE_VISITS_COUNT = 'RECEIVE_VISITS_COUNT'
 
 let fetchHeaders = new Headers();
-const authToken = localStorage.getItem('authtoken') ? localStorage.authtoken : store.getState().settings.anomToken
+const authToken = localStorage.getItem('authtoken') ? localStorage.authtoken : anomToken
 fetchHeaders.append('Authorization', `Kinvey ${authToken}`)
 let options = { method: 'GET', headers: fetchHeaders }
 

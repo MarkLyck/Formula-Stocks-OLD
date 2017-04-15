@@ -1,14 +1,18 @@
-import React from 'react'
+import React, { Component } from 'react'
 import Transition from 'react-addons-css-transition-group'
+import { browserHistory } from 'react-router'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { fetchSession, logIn } from '../../../actions/session'
 import _ from 'underscore'
 
-import store from '../../../store'
+import store from '../../../rstore'
 import Modal from '../Modal'
 import ForgotPassword from './ForgotPassword'
 
 import './login.css'
 
-class Login extends React.Component {
+class Login extends Component {
   constructor() {
     super()
     this.closeModal = this.closeModal.bind(this)
@@ -21,6 +25,9 @@ class Login extends React.Component {
       showForgotPasswordModal: false
     }
   }
+
+  componentDidMount() { this.props.actions.fetchSession() }
+
   closeModal(e) {
     if (e) {
       if ((_.toArray(e.target.classList).indexOf('modal-container') !== -1
@@ -29,7 +36,7 @@ class Login extends React.Component {
         this.setState({slideOut: true, formClasses: 'form-modal login slide-out'})
 
         window.setTimeout(() => {
-          store.settings.history.push('/')
+          browserHistory.push('/')
         }, 300)
       } else if ((_.toArray(e.target.classList).indexOf('modal-container') !== -1
       || _.toArray(e.target.classList).indexOf('close-modal') !== -1
@@ -40,27 +47,30 @@ class Login extends React.Component {
     }
   }
 
-  showForgotPasswordModal() {
-    this.setState({showForgotPasswordModal: true})
-  }
+  showForgotPasswordModal() { this.setState({ showForgotPasswordModal: true }) }
 
   login(e) {
     e.preventDefault()
     this.refs.password.blur()
     this.refs.email.blur()
+
     let email = this.refs.email.value.toLowerCase()
     let password = this.refs.password.value
-    store.session.login(email, password)
-    .then(() => {
-      this.closeModal()
-    })
-    .catch((errMsg) => {
-      console.log('ERROR: ', errMsg);
-      this.setState({formClasses: 'form-modal login login-shake', error: errMsg})
-      window.setTimeout(() => {
-        this.setState({formClasses: 'form-modal login', error: errMsg})
-      }, 300)
-    })
+
+    store.dispatch( logIn(email, password) )
+
+
+    // store.session.login(email, password)
+    // .then(() => {
+    //   this.closeModal()
+    // })
+    // .catch((errMsg) => {
+    //   console.log('ERROR: ', errMsg);
+    //   this.setState({formClasses: 'form-modal login login-shake', error: errMsg})
+    //   window.setTimeout(() => {
+    //     this.setState({formClasses: 'form-modal login', error: errMsg})
+    //   }, 300)
+    // })
   }
 
   render() {
@@ -83,32 +93,20 @@ class Login extends React.Component {
         </div>)
     }
 
-    let containerStyles = {
-      background: "rgba(0,0,0,0.2)",
-      zIndex: '2000'
-    }
+    let containerStyles = { background: "rgba(0,0,0,0.2)", zIndex: '2000' }
     if (this.state.slideOut) {
-      containerStyles = {
-        background: 'rgba(0,0,0,0)'
-      }
+      containerStyles = { background: 'rgba(0,0,0,0)' }
     }
 
     let modalStyles;
     if (this.state.slideOut) {
-      containerStyles = {
-        background: 'rgba(0,0,0,0)'
-      }
-      modalStyles = {
-        animation: '300ms FormSlideOut'
-      }
+      containerStyles = { background: 'rgba(0,0,0,0)' }
+      modalStyles = { animation: '300ms FormSlideOut' }
     }
 
     let forgotPasswordModal;
     if (this.state.showForgotPasswordModal) {
-      let modalStyles = {
-        maxWidth: '400px',
-
-      }
+      let modalStyles = { maxWidth: '400px' }
 
       forgotPasswordModal = (
         <Modal modalStyles={modalStyles} closeModal={() => {}}>
@@ -148,4 +146,9 @@ class Login extends React.Component {
   }
 }
 
-export default Login
+function mapDispatchToProps(dispatch) {
+  const actions = { fetchSession, logIn }
+  return { actions: bindActionCreators(actions, dispatch) }
+}
+
+export default connect(null, mapDispatchToProps)(Login)

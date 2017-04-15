@@ -2,14 +2,28 @@ import React from 'react'
 import $ from 'jquery'
 import platform from 'platform'
 import _ from 'underscore'
-import '../../../../libraries/amcharts3-react';
-// import '../../../../libraries/amcharts/plugins/export/export.min.js';
+import AmCharts from "@amcharts/amcharts3-react"
 import './lineGraph.css'
 
-
-const AmCharts = window.AmCharts
-
-export default function LineGraph({ data, graphs, chartTheme, unit, unitPosition, minimum, maximum, baseValue, logarithmic, minorGridEnabled, marginRight, marginTop, guides, axisAlpha, gridOpacity, cursorColor, insideY, insideX }) {
+export default function LineGraph({
+  data,
+  graphs,
+  chartTheme,
+  unit,
+  unitPosition,
+  minimum,
+  maximum,
+  baseValue,
+  logarithmic,
+  minorGridEnabled,
+  marginRight,
+  marginTop,
+  guides,
+  axisAlpha,
+  gridOpacity, cursorColor,
+  insideY,
+  insideX
+}) {
 
   if (!insideY && $(window).width() < 550) {
     insideY = true
@@ -70,7 +84,7 @@ export default function LineGraph({ data, graphs, chartTheme, unit, unitPosition
     }
   }
   if (data.length && graphs.length) {
-    return React.createElement(AmCharts.React, config)
+    return <AmCharts.React {...config} />
   } else {
     return <div></div>
   }

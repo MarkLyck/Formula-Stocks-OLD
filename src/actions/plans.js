@@ -12,7 +12,7 @@ export function fetchPlanIfNeeded(plan) {
   return (dispatch) => {
     if (window.location.pathname.indexOf('dashboard') > -1) {
       if (store.getState().plans.data[plan]) {
-        if (store.getState().plans.data[plan].suggestions.length && store.getState().plans.data[plan].portfolio.length) {
+        if (store.getState().plans.data[plan].suggestions && store.getState().plans.data[plan].portfolio) {
           dispatch({ type: "PLAN_ALREADY_EXISTS" })
           return false
         }

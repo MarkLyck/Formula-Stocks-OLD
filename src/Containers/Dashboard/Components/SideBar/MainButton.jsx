@@ -1,17 +1,20 @@
 import React from 'react'
-import store from '../../../../store'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { logOut } from '../../../../actions/session'
+import store from '../../../../rstore'
 
 class MainButton extends React.Component {
   select() {
     if (this.props.select) {
       this.props.select(this.props.title.toLowerCase())
     } else if (this.props.title.toLowerCase() === "log out") {
-      store.session.logout()
+      this.props.actions.logOut()
     } else if (this.props.title.toLowerCase() === "support") {
       window.Intercom("boot", {
         app_id: "i194mpvo",
-        email: store.session.get('email'),
-        name: store.session.get('name')
+        email: store.getState().session.email,
+        name: store.getState().session.name
       })
       window.Intercom('showNewMessage')
     }
@@ -29,4 +32,9 @@ class MainButton extends React.Component {
   }
 }
 
-export default MainButton
+function mapDispatchToProps(dispatch) {
+  const actions = { logOut }
+  return { actions: bindActionCreators(actions, dispatch) }
+}
+
+export default connect(null, mapDispatchToProps)(MainButton)
