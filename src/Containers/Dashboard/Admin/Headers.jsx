@@ -17,7 +17,7 @@ class AdminPanelHeader extends React.Component {
   }
 
   render() {
-    const { users, visitsCount } = this.props
+    const { users = [], visitsCount } = this.props
     const subscribers = users.filter((user) => {
       if (user.stripe) {
         if (user.stripe.subscriptions) {

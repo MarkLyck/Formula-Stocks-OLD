@@ -1,7 +1,7 @@
 import React from 'react'
 import './suggestionsHeader.css'
 
-const SuggestionsHeader= ({ stats, portfolio, suggestions,  isPortfolioTrades}) => {
+const SuggestionsHeader= ({ stats, portfolio, suggestions = [],  isPortfolioTrades}) => {
   let cashAllocation = ''
   if (portfolio.length) { cashAllocation = portfolio[portfolio.length - 1].percentage_weight.toFixed(2) }
 

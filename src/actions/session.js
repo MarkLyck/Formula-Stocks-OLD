@@ -13,6 +13,7 @@ export const LOG_OUT = 'LOG_OUT'
 export const SIGN_UP = 'SIGN_UP'
 export const SIGN_UP_ERROR = 'SIGN_UP_ERROR'
 export const CANCEL_SUBSCRIPTION = 'CANCEL_SUBSCRIPTION'
+export const UPDATE_SUBSCRIPTION = 'UPDATE_SUBSCRIPTION'
 
 function fetchingSession() { return { type: FETCHING_SESSION } }
 export function fetchSession() {
@@ -41,8 +42,6 @@ export function setSessionItem(key, value) {
 export function updateUser() {
   return (dispatch) => {
     let newSession = _.omit(store.getState().session, ['isFetching', 'loginError', 'signupError'])
-
-    console.log('update user', newSession)
 
     let sessionHeaders = new Headers()
     let authToken = localStorage.getItem('authtoken')
@@ -169,5 +168,69 @@ export function cancelSubscription() {
       .then(response => response.json())
       .then(json => dispatch( { type: CANCEL_SUBSCRIPTION, subscription: json } ))
       .then(() => dispatch(updateUser()) )
+  }
+}
+
+export function updateSubscription(planName, cycle) {
+  return (dispatch) => {
+    let updateHeaders = new Headers()
+    const authToken = localStorage.getItem('authtoken')
+    updateHeaders.append('Authorization', `Kinvey ${authToken}`)
+    updateHeaders.append('Content-Type', `application/json`)
+
+    const options = {
+      method: 'POST',
+      headers: updateHeaders,
+      body: JSON.stringify({
+        plan: (planName+'-'+cycle),
+        subId: store.getState().session.stripe.subscriptions.data[0].id
+      })
+    }
+    fetch(`https://baas.kinvey.com/rpc/${store.getState().settings.appKey}/custom/updatesub`, options)
+      .then(response => response.json())
+      .then(json => {
+        let type = 0
+        if (planName === 'entry')         { type = 1 }
+        else if (planName === 'premium')  { type = 2 }
+        else if (planName === 'business') { type = 3 }
+        else if (planName === 'fund')     { type = 4 }
+        setSessionItem('type', type)
+
+        return json
+      })
+      .then(json => dispatch( { type: UPDATE_SUBSCRIPTION, subscription: json } ))
+      .then(() => dispatch( updateUser()) )
+  }
+}
+
+export function newSubscription(planName, cycle) {
+  return (dispatch) => {
+    let newSubHeaders = new Headers()
+    const authToken = localStorage.getItem('authtoken')
+    newSubHeaders.append('Authorization', `Kinvey ${authToken}`)
+    newSubHeaders.append('Content-Type', `application/json`)
+
+    const options = {
+      method: 'POST',
+      headers: newSubHeaders,
+      body: JSON.stringify({
+        plan: (planName+'-'+cycle),
+        customer: store.getState().session.stripe.sources.data[0].customer
+      })
+    }
+    fetch(`https://baas.kinvey.com/rpc/${store.settings.appKey}/custom/newsub`, options)
+      .then(response => response.json())
+      .then(json => {
+        let type = 0
+        if (planName === 'entry')         { type = 1 }
+        else if (planName === 'premium')  { type = 2 }
+        else if (planName === 'business') { type = 3 }
+        else if (planName === 'fund')     { type = 4 }
+        setSessionItem('type', type)
+
+        return json
+      })
+      .then(json => dispatch( { type: UPDATE_SUBSCRIPTION, subscription: json } ))
+      .then(() => dispatch( updateUser()) )
   }
 }

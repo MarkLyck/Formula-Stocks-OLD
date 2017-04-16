@@ -19,13 +19,10 @@ class Suggestions extends React.Component {
     const { selectedPlan, actions } = this.props
     actions.fetchPlanIfNeeded(selectedPlan)
     actions.sawSuggestions()
-    // FIXME
-    // store.session.set('lastSeenSuggestions', new Date())
-    // store.session.updateUser()
   }
 
   render() {
-    const { plans, selectedPlan, actions, stocks } = this.props
+    const { plans, selectedPlan, actions, stocks = {} } = this.props
     const plan = plans.data[selectedPlan] || {}
 
     let SuggHeader = <SuggestionHeader
@@ -77,14 +74,14 @@ class Suggestions extends React.Component {
     } else {
       suggestionsList = (
         <section className="no-permissions">
-          <h3>Upgrade to the <span className="capitalize blue-color ">{this.state.plan} formula</span> to see these suggestions</h3>
+          <h3>Upgrade to the <span className="capitalize blue-color ">{selectedPlan} formula</span> to see these suggestions</h3>
           <Link to="/dashboard/account" className="filled-btn upgrade-your-plan">Upgrade your plan</Link>
         </section>
       )
     }
 
     let lastUpdatedText
-    if (plan.suggestions.length) {
+    if (plan.suggestions) {
       let date = plan.suggestions[0].date
 
       let month = date.month

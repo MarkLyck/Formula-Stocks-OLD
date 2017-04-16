@@ -11,6 +11,7 @@ import {
   LOG_OUT,
   SIGN_UP_ERROR,
   CANCEL_SUBSCRIPTION,
+  UPDATE_SUBSCRIPTION,
 } from '../actions/session'
 
 const initialState = {
@@ -47,7 +48,9 @@ export default function reducer(state = initialState, action = {}) {
       state = initialState
       return Object.assign({}, state)
     case CANCEL_SUBSCRIPTION:
-      console.log('cancelling ', action);
+      state.stripe.subscriptions = { data: [action.subscription] }
+      return Object.assign({}, state)
+    case UPDATE_SUBSCRIPTION:
       state.stripe.subscriptions = { data: [action.subscription] }
       return Object.assign({}, state)
     default:

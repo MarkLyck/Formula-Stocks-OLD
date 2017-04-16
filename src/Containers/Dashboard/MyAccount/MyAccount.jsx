@@ -1,16 +1,16 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { selectNewPlan } from '../../../actions/plans'
-import { cancelSubscription, updateUser, setSessionItem } from '../../../actions/session'
+import { cancelSubscription, updateSubscription, newSubscription, updateUser, setSessionItem } from '../../../actions/session'
+import { showNotification } from '../../../actions/notifications'
 
-import store from '../../../store'
 import cc from '../../../cc'
 
 import Modal from '../../Modals/Modal'
 import './myAccount.css'
 
-class MyAccount extends React.Component {
+class MyAccount extends Component {
   constructor(props) {
     super(props)
 
@@ -22,122 +22,62 @@ class MyAccount extends React.Component {
     this.showCancelModal = this.showCancelModal.bind(this)
     this.closeModal = this.closeModal.bind(this)
 
-    this.newSubscription = this.newSubscription.bind(this)
-
-    console.log(props)
-
-    let currPlan = 'premium'
-    if (props.session.stripe.subscriptions && !props.session.stripe.subscriptions.data[0].canceled_at !== null) {
-      currPlan = props.session.stripe.subscriptions.data[0].plan.id
-      currPlan = currPlan.slice(0, currPlan.indexOf('-'))
-    } else { currPlan = 'unsubscribed' }
-
+    let currPlan = !props.session.stripe.subscriptions.data[0].canceled_at
+      ? props.session.stripe.subscriptions.data[0].plan.id.split('-')[0]
+      : 'unsubscribed'
     if (currPlan === 'basic') { currPlan = "entry" }
 
-    this.state = { selectedPlan: false, showModal: false, charging: false, currPlan: currPlan }
+    this.state = { selectedPlan: '', showModal: false, currPlan: currPlan }
   }
 
   cancelSubscription() {
     const { actions } = this.props
     actions.setSessionItem('cancelReason', this.refs.cancelReason.value)
     actions.cancelSubscription()
-
-    // cc.cancelSubscription()
     this.closeModal()
   }
 
   selectPlan(plan) { this.setState({ selectedPlan: plan }) }
 
   changePlan() {
-    this.setState({ charging: true })
-    let cycle = 'monthly'
-    if (this.state.selectedPlan === 'business' || this.state.selectedPlan === 'fund') { cycle = 'annually' }
+    const { actions } = this.props
+    let cycle = this.state.selectedPlan === 'business' || this.state.selectedPlan === 'fund' ? 'annually' : 'monthly'
 
     if (this.state.currPlan !== 'unsubscribed') {
-      cc.updateSubscription(this.state.selectedPlan, cycle)
-      .then(() => {
-        let type = 2
-        if (this.state.selectedPlan === 'basic') { type = 1 }
-        else if (this.state.selectedPlan === 'business') { type = 3 }
-        else if (this.state.selectedPlan === 'fund') { type = 4 }
-
-        store.session.set('notification', {
-          text: `You are now subscribed to the ${this.state.selectedPlan} model`,
-          type: 'notification'
-        })
-        store.session.set('type', type)
-        store.session.updateUser()
-        this.setState({ charging: false, showModal: false })
-      })
-      .catch(() => {
-        store.session.set('notification', {
-          text: `Failed to change plan`,
-          type: 'error'
-        })
-        this.setState({ charging: false, showModal: false })
-      })
+      actions.updateSubscription(this.state.selectedPlan, cycle)
     } else {
-      cc.newSubscription(this.state.selectedPlan, cycle)
-      .then(() => {
-        store.session.set('notification', {
-          text: `You are now subscribed to the ${this.state.selectedPlan} model`,
-          type: 'notification'
-        })
-        this.setState({charging: false, showModal: false})
-      })
-      .catch(() => {
-        store.session.set('notification', {
-          text: `Failed to subscribe to the ${this.state.selectedPlan} model`,
-          type: 'error'
-        })
-        this.setState({ charging: false, showModal: false })
-      })
+      actions.newSubscription(this.state.selectedPlan, cycle)
     }
   }
 
-  showConfirmationModal() {
-    if (this.state.selectedPlan) { this.setState({ showModal: 'confirmation' }) }
-  }
-
+  showConfirmationModal() { if (this.state.selectedPlan) { this.setState({ showModal: 'confirmation' }) } }
   showCancelModal() { this.setState({ showModal: 'cancelling' }) }
   closeModal() { this.setState({ showModal: false }) }
 
-  newSubscription() {
-    let cycle = 'monthly'
-    if (this.state.selectedPlan === 'business' || this.state.selectedPlan === 'fund') {
-      cycle = 'annually'
-    }
-    cc.newSubscription(this.state.selectedPlan, cycle)
-  }
-
   render() {
     const { session } = this.props
-    let basicClass, premiumClass, businessClass, fundClass = 'white'
-    if      (this.state.selectedPlan === 'basic')    { basicClass = 'blue selected' }
+    let entryClass, premiumClass, businessClass, fundClass = 'white'
+    if      (this.state.selectedPlan === 'entry')    { entryClass = 'blue selected' }
     else if (this.state.selectedPlan === 'premium')  { premiumClass = 'blue selected' }
     else if (this.state.selectedPlan === 'business') { businessClass = 'blue selected' }
     else if (this.state.selectedPlan === 'fund')     { fundClass = 'blue selected' }
 
-    let currPlan
-    if (session.stripe.subscriptions.data[0]) {
-      currPlan = session.stripe.subscriptions.data[0].plan.id
-      currPlan = currPlan.slice(0, currPlan.indexOf('-'))
-      currPlan += ' model'
-    }
-    if (session.stripe.subscriptions.data[0].canceled_at) { currPlan = 'Unsubscribed' }
+    let currPlan = this.state.currPlan
 
     let changePlanBtn = <button onClick={this.showConfirmationModal} className="change-plan-btn">Next</button>
+    let cancelBtn = <button onClick={this.showCancelModal} className="filled-btn cancel-btn red">Cancel subscription</button>
 
-    let bottomBtn = <button onClick={this.showCancelModal} className="filled-btn cancel-btn red">Cancel subscription</button>
     let changeTitle = 'Change your subscription'
-    if (session.stripe.subscriptions.data[0].canceled_at !== null) {
-      changePlanBtn = <button onClick={this.showConfirmationModal} className="change-plan-btn">Subscribe to: <span className="capitalize"> {this.state.selectedPlan}</span></button>
-      bottomBtn = undefined
+    if (currPlan === 'unsubscribed') {
+      cancelBtn = undefined
       changeTitle = 'Select a plan'
+      changePlanBtn = <button onClick={this.showConfirmationModal} className="change-plan-btn">Subscribe to:
+                        <span className="capitalize">{this.state.selectedPlan}</span>
+                      </button>
     }
 
-    let basicDisabled, premiumDisabled, businessDisabled, fundDisabled = false
-    if      (currPlan === 'basic model' || currPlan === 'entry model')    { basicClass = 'current'; basicDisabled = true }
+    let entryDisabled, premiumDisabled, businessDisabled, fundDisabled = false
+    if      (currPlan === 'entry model')    { entryClass = 'current'; entryDisabled = true }
     else if (currPlan === 'premium model')  { premiumClass = 'current'; premiumDisabled = true }
     else if (currPlan === 'business model') { businessClass = 'current'; businessDisabled = true }
     else if (currPlan === 'fund model')     { fundClass = 'current'; fundDisabled = true }
@@ -147,18 +87,14 @@ class MyAccount extends React.Component {
 
       let cycle = 'monthly'
       let price
-      if      (this.state.selectedPlan === 'basic' || this.state.selectedPlan === 'entry') { price = 50 }
+      if      (this.state.selectedPlan === 'entry')    { price = 50 }
       else if (this.state.selectedPlan === 'premium')  { price = 100 }
       else if (this.state.selectedPlan === 'business') { price = 20000; cycle="annually" }
       else if (this.state.selectedPlan === 'fund')     { price = 140000; cycle="annually" }
 
       const modalStyles = { maxWidth: '400px' }
 
-      let chargeText = <p>We will charge <span className="bold">${cc.commafy(price)}</span> to the card on file.</p>
-      if(store.plans.get(this.state.selectedPlan).get('type') < store.session.get('type')) {
-        chargeText = <p>on your next billing date we will charge <span className="bold">${cc.commafy(price)}</span> to the card on file.</p>
-      }
-
+      let chargeText = <p>You will be charge <span className="bold">${cc.commafy(price)}</span> to the card on file.</p>
       let chargeBtn = <button className="filled-btn" onClick={this.changePlan}>Subscribe for ${cc.commafy(price)} {cycle}</button>
       if (this.state.charging) {
         chargeBtn = <button className="filled-btn"><i className="fa fa-spinner fa-pulse fa-2x fa-fw white-color"></i></button>
@@ -169,7 +105,10 @@ class MyAccount extends React.Component {
           <div className="change-plan-confirmation">
             <h2>Confirm plan change</h2>
             {chargeText}
-            <p className="card-on-file"><i className="fa fa-credit-card-alt" aria-hidden="true"></i>{store.session.get('stripe').sources.data[0].last4}</p>
+            <p className="card-on-file">
+              <i className="fa fa-credit-card-alt" aria-hidden="true"></i>
+              {session.stripe.sources.data[0].last4}
+            </p>
             {chargeBtn}
           </div>
         </Modal>
@@ -193,32 +132,41 @@ class MyAccount extends React.Component {
       )
     }
 
-    if (currPlan === 'basic model') { currPlan = 'entry model' }
-
     return (
       <div className="my-account-page">
         <div className="account-info">
           <h3 className="db-heading">My account</h3>
           <div className="db-card">
             <h3 className="name">{session.name}</h3>
-            <h3 className="capitalize">{currPlan}</h3>
+            <h3 className="capitalize">{currPlan !== 'unsubscribed' ? currPlan + ' model' : currPlan}</h3>
             <h3 className="email">{session.email}</h3>
-            {/* <h3 className="billing-date white-color"><i className="fa fa-calendar white-color" aria-hidden="true"></i>Next billing date: {moment.unix(store.session.get('stripe').subscriptions.data[0].current_period_end).format('MMMM Do YYYY')}</h3> */}
           </div>
         </div>
 
         <div className="change-plan">
           <h3 className="db-heading">{changeTitle}</h3>
           <div className="db-card">
-            <div className={basicClass + ' plan'} disabled={basicDisabled} onClick={this.selectPlan.bind(null, 'basic')}><h3 className="plan-name">Entry</h3><h3 className="price">$50<br/><span className="disclaimer">monthly</span></h3></div>
-            <div className={premiumClass + ' plan'} disabled={premiumDisabled} onClick={this.selectPlan.bind(null, 'premium')}><h3 className="plan-name">Premium</h3><h3 className="price">$100<br/><span className="disclaimer">monthly</span></h3></div>
-            <div className={businessClass + ' plan'} disabled={businessDisabled} onClick={this.selectPlan.bind(null, 'business')}><h3 className="plan-name">Business</h3><h3 className="price">$20,000<br/><span className="disclaimer">yearly</span></h3></div>
-            <div className={fundClass + ' plan fund'} disabled={fundDisabled} onClick={this.selectPlan.bind(null, 'fund')}><h3 className="plan-name">Fund</h3><h3 className="price">$140,000<br/><span className="disclaimer">yearly</span></h3></div>
+            <div className={entryClass + ' plan'} disabled={entryDisabled} onClick={this.selectPlan.bind(null, 'entry')}>
+              <h3 className="plan-name">Entry</h3>
+              <h3 className="price">$50<br/><span className="disclaimer">monthly</span></h3>
+            </div>
+            <div className={premiumClass + ' plan'} disabled={premiumDisabled} onClick={this.selectPlan.bind(null, 'premium')}>
+              <h3 className="plan-name">Premium</h3>
+              <h3 className="price">$100<br/><span className="disclaimer">monthly</span></h3>
+            </div>
+            <div className={businessClass + ' plan'} disabled={businessDisabled} onClick={this.selectPlan.bind(null, 'business')}>
+              <h3 className="plan-name">Business</h3>
+              <h3 className="price">$20,000<br/><span className="disclaimer">yearly</span></h3>
+            </div>
+            <div className={fundClass + ' plan fund'} disabled={fundDisabled} onClick={this.selectPlan.bind(null, 'fund')}>
+              <h3 className="plan-name">Fund</h3>
+              <h3 className="price">$140,000<br/><span className="disclaimer">yearly</span></h3>
+            </div>
             {changePlanBtn}
           </div>
         </div>
 
-        {bottomBtn}
+        {cancelBtn}
         {modal}
       </div>
     )
@@ -229,16 +177,20 @@ function mapStateToProps(state) {
   const { plans, session } = state
   const { selectedPlan } = plans
 
-  return {
-    selectedPlan,
-    session
-  }
+  return { plans, selectedPlan, session }
 }
 
 function mapDispatchToProps(dispatch) {
-  const actions = { selectNewPlan, cancelSubscription, setSessionItem, updateUser }
+  const actions = {
+    selectNewPlan,
+    cancelSubscription,
+    setSessionItem,
+    updateUser,
+    updateSubscription,
+    newSubscription,
+    showNotification
+  }
   return { actions: bindActionCreators(actions, dispatch) }
 }
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(MyAccount)

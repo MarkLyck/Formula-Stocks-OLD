@@ -4,6 +4,7 @@ import $ from 'jquery'
 import _ from 'underscore'
 
 import store from './store'
+import rstore from './rstore'
 import countries from './data/countries'
 
 let cc = {
@@ -181,7 +182,7 @@ let cc = {
       success: (subscription) => {
 
         let customer = store.session.get('stripe')
-        customer.subscriptions = {data: [subscription]}
+        customer.subscriptions = { data: [subscription] }
         store.session.set('stripe', customer)
 
         store.session.updateUser()
@@ -243,7 +244,7 @@ let cc = {
           store.session.set('stripe', customer)
 
           let type = 0
-          if (planName === 'basic')         { type = 1 }
+          if (planName === 'entry')         { type = 1 }
           else if (planName === 'premium')  { type = 2 }
           else if (planName === 'business') { type = 3 }
           else if (planName === 'fund')     { type = 4 }

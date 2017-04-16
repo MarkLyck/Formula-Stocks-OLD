@@ -51,7 +51,7 @@ class AdminPanel extends React.Component {
   }
 
   render() {
-    const { visits, visitsCount, users, actions } = this.props
+    const { visits = [] , visitsCount, users = [], actions } = this.props
     const browserColors = []
     const browsers = visits.reduce((prev, visitor) => {
       let foundIndex = -1
