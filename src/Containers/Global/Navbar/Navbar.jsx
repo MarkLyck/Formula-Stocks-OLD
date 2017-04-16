@@ -25,10 +25,7 @@ class NavBar extends React.Component {
     this.state = { navbar: 'static', showMenu: false }
   }
 
-  componentDidMount() {
-    this.props.actions.fetchSession()
-    $(window).on('scroll', this.checkScroll)
-  }
+  componentDidMount() { $(window).on('scroll', this.checkScroll) }
 
   checkScroll() {
     if ($(window).scrollTop() < 560) {

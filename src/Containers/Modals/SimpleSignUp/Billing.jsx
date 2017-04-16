@@ -21,19 +21,17 @@ class Billing extends React.Component {
     this.toggleTerms = this.toggleTerms.bind(this)
     this.submit = this.submit.bind(this)
 
-    const plan = store.plans.get(this.props.plan).toJSON()
+    const plan = props.plan
     const cycle = plan.name !== 'business' || plan.name !== 'fund' ? ' monthly' : ' annually'
 
     this.state = {
       error: '',
       errorType: '',
       showTerms: false,
-      price: plan.price,
       validatingPayment: false,
       discount: 0,
       coupon: '',
       cycle: cycle,
-      planName: plan.name
     }
   }
 
@@ -44,16 +42,17 @@ class Billing extends React.Component {
   toggleTerms() { this.setState({ showTerms: !this.state.showTerms }) }
 
   createCustomer(token) {
-    store.session.set('name', this.refs.name.value)
-    cc.createCustomer2(token, this.state.planName, this.state.cycle, this.props.tax, this.state.coupon.code)
-    .then(() => {
-      console.log('||| SUCCESFUL PAYMENT |||')
-      store.isSubmitting = false
-    })
-    .catch((e) => {
-      store.isSubmitting = false
-      this.setState({ error: String(e), errorType: 'payment', validatingPayment: false })
-    })
+    let { plan, signUp, tax } = this.props
+
+    let type = 1
+    if (plan.name === 'premium') { type = 2 }
+    else if (plan.name === 'business') { type = 3 }
+    else if (plan.name === 'fund') { type = 4 }
+
+    this.props.setSessionItem('type', type)
+    this.props.setSessionItem('name', this.refs.name.value)
+
+    signUp(token, plan.name, this.state.cycle, tax, this.state.coupon.code)
   }
 
   submit(e) {
@@ -76,13 +75,15 @@ class Billing extends React.Component {
 
     cc.checkPayment(card)
     .then(token => this.createCustomer(token))
-    .catch(error => {
-      store.isSubmitting = false
-      this.setState({ error: error, errorType: 'payment', validatingPayment: false })
-    })
+    // .catch(error => {
+    //   store.isSubmitting = false
+    //   this.setState({ error: error, errorType: 'payment', validatingPayment: false })
+    // })
   }
 
   render() {
+    const { plan, tax } = this.props
+    console.log(this.state)
     const nameClass = this.state.error.indexOf('name') > -1 ? 'red-outline' : ''
     const cardNumberClass = this.state.error.indexOf('card number') > -1 ? 'red-outline' : ''
     const expiryClass = this.state.error.indexOf('expi') > -1 ? 'red-outline' : ''
@@ -104,12 +105,12 @@ class Billing extends React.Component {
 
         { this.props.tax ? <div className="beside">
           <p className="description">Tax</p>
-          <p className="price semi-bold">${ formatPrice(this.state.price * (this.props.tax / 100 + 1) - this.state.price) }</p>
+          <p className="price semi-bold">${ formatPrice(plan.price * (tax / 100 + 1) - plan.price) }</p>
         </div> : ''}
 
         <div className="beside">
           <p className="description">Price after 30 days:</p>
-          <p className="price semi-bold">${ formatPrice(this.state.price * (this.props.tax / 100 + 1)) } monthly</p>
+          <p className="price semi-bold">${ formatPrice(plan.price * (tax / 100 + 1)) } monthly</p>
         </div>
 
         <input className="pay-button" type="submit" value="Start free trial"/>

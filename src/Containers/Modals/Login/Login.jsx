@@ -3,10 +3,9 @@ import Transition from 'react-addons-css-transition-group'
 import { browserHistory } from 'react-router'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { fetchSession, logIn } from '../../../actions/session'
+import { fetchSession, logIn, logInError } from '../../../actions/session'
 import _ from 'underscore'
 
-import store from '../../../rstore'
 import Modal from '../Modal'
 import ForgotPassword from './ForgotPassword'
 
@@ -19,11 +18,7 @@ class Login extends Component {
     this.showForgotPasswordModal = this.showForgotPasswordModal.bind(this)
     this.login = this.login.bind(this)
 
-    this.state = {
-      formClasses: 'form-modal login form-bounce-down',
-      error: '',
-      showForgotPasswordModal: false
-    }
+    this.state = { formClasses: 'form-modal login form-bounce-down', showForgotPasswordModal: false }
   }
 
   componentDidMount() { this.props.actions.fetchSession() }
@@ -51,45 +46,35 @@ class Login extends Component {
 
   login(e) {
     e.preventDefault()
+    const { actions } = this.props
     this.refs.password.blur()
     this.refs.email.blur()
 
     let email = this.refs.email.value.toLowerCase()
     let password = this.refs.password.value
 
-    store.dispatch( logIn(email, password) )
-
-
-    // store.session.login(email, password)
-    // .then(() => {
-    //   this.closeModal()
-    // })
-    // .catch((errMsg) => {
-    //   console.log('ERROR: ', errMsg);
-    //   this.setState({formClasses: 'form-modal login login-shake', error: errMsg})
-    //   window.setTimeout(() => {
-    //     this.setState({formClasses: 'form-modal login', error: errMsg})
-    //   }, 300)
-    // })
+    if (email && password) { actions.logIn(email, password) }
+    else if (!email) { actions.logInError('Missing email') }
+    else if (!password) { actions.logInError('Missing password') }
   }
 
   render() {
+    const { session } = this.props
     let errorMsg
     let emailClasses = 'email'
     let passwordClasses = 'password'
 
-    if (this.state.error) {
-      if (this.state.error.indexOf('Email') !== -1) {
-        emailClasses = 'email error'
-      } else if (this.state.error.indexOf('Password') !== -1) {
-        passwordClasses = 'password error'
-      } else if (this.state.error.indexOf('Wrong') !== -1) {
+    if (session.loginError) {
+      if (session.loginError.indexOf('email') !== -1) { emailClasses = 'email error' }
+      else if (session.loginError.indexOf('password') !== -1) { passwordClasses = 'password error' }
+      else if (session.loginError.indexOf('Invalid') !== -1) {
         emailClasses = 'email error'
         passwordClasses = 'password error'
       }
+
       errorMsg = (
         <div className="form-error">
-          <h4><i className="fa fa-exclamation-circle" aria-hidden="true"></i>{this.state.error}</h4>
+          <h4><i className="fa fa-exclamation-circle" aria-hidden="true"></i>{session.loginError}</h4>
         </div>)
     }
 
@@ -146,9 +131,14 @@ class Login extends Component {
   }
 }
 
+function mapStateToProps(state) {
+  const { session } = state
+  return { session }
+}
+
 function mapDispatchToProps(dispatch) {
-  const actions = { fetchSession, logIn }
+  const actions = { fetchSession, logIn, logInError }
   return { actions: bindActionCreators(actions, dispatch) }
 }
 
-export default connect(null, mapDispatchToProps)(Login)
+export default connect(mapStateToProps, mapDispatchToProps)(Login)

@@ -1,4 +1,7 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { createCustomer, setSessionItem } from '../../../actions/session'
 import store from '../../../store.js'
 import { browserHistory } from 'react-router'
 import AccountInfo from './AccountInfo'
@@ -29,17 +32,21 @@ class SignUp extends React.Component {
     }
   }
 
-  nextPage() {
-    this.setState({ page: 2 })
-  }
-
-  setTax(tax) {
-    this.setState({ tax: tax })
-  }
+  nextPage() { this.setState({ page: 2 }) }
+  setTax(tax) { this.setState({ tax: tax }) }
 
   renderContent() {
-    if (this.state.page === 1) { return <AccountInfo nextPage={this.nextPage} setTax={this.setTax}/> }
-    else { return <Billing tax={this.state.tax} plan="basic"/> }
+    const { plans, actions } = this.props
+    if (this.state.page === 1) { return <AccountInfo
+                                          nextPage={this.nextPage}
+                                          setData={this.setData}
+                                          setTax={this.setTax}
+                                          setSessionItem={actions.setSessionItem} />
+                                        }
+    else { return <Billing tax={this.state.tax}
+                    plan={plans.data[plans.selectedPlan]}
+                    signUp={actions.createCustomer}
+                    setSessionItem={actions.setSessionItem} /> }
   }
 
   render() {
@@ -54,4 +61,14 @@ class SignUp extends React.Component {
   }
 }
 
-export default SignUp
+function mapStateToProps(state) {
+  const { plans } = state
+  return { plans }
+}
+
+function mapDispatchToProps(dispatch) {
+  const actions = { createCustomer, setSessionItem }
+  return { actions: bindActionCreators(actions, dispatch) }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignUp)

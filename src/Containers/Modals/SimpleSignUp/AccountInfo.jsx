@@ -1,10 +1,9 @@
 import React from 'react'
 import Select from 'react-select'
 import cc from '../../../cc'
-import store from '../../../store'
+import store from '../../../rstore'
 import countries from '../../../data/countries'
 import _ from 'underscore'
-import $ from 'jquery'
 
 class AccountInfo extends React.Component {
   constructor(props) {
@@ -19,9 +18,9 @@ class AccountInfo extends React.Component {
     let countryText = 'Country'
     let countryCode
     let taxPercent = 0
-    if (store.session.get('location').country_code && store.session.get('location').country_name) {
-      countryText = store.session.get('location').country_name
-      countryCode = store.session.get('location').country_code
+    if (store.getState().session.location.country_code && store.getState().session.location.country_name) {
+      countryText = store.getState().session.location.country_name
+      countryCode = store.getState().session.location.country_code
 
       let country = _.where(countries, { value: countryCode })
       if (country[0].taxPercent) {
@@ -54,7 +53,16 @@ class AccountInfo extends React.Component {
   }
 
   checkForDuplicates(email) {
-    return $.ajax(`https://baas.kinvey.com/user/kid_rJRC6m9F/?query={"email":"${email}"}`)
+
+    const headers = new Headers()
+    headers.append('Authorization', `Basic ${store.getState().settings.basicAuth}`)
+    headers.append('Content-Type', `application/json`)
+    const options = {
+      method: 'POST',
+      headers: headers,
+      body: JSON.stringify({ username: this.refs.email.value.toLowerCase() })
+    }
+    return fetch(`https://baas.kinvey.com/rpc/kid_rJRC6m9F/check-username-exists`, options)
   }
 
   validateAddress() {
@@ -91,19 +99,28 @@ class AccountInfo extends React.Component {
       var emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       if (emailRegex.test(email)) {
         this.checkForDuplicates(email)
-        .then(response => {
-          if (response.length === 0) {
-            store.session.set('email', email)
-            store.session.set('password', password)
+        .then(response => response.json())
+        .then(json => {
+          if (!json.usernameExists) {
+            this.props.setSessionItem('email', email)
+            this.props.setSessionItem('username', email)
+            this.props.setSessionItem('password', password)
+
             this.validateAddress()
             .then(() => {
+
+              this.props.setSessionItem('address', {
+                countryName: this.state.countryName,
+                countryCode: this.state.countryCode,
+                city: this.refs.city ? this.refs.city.value : '',
+                zip: this.refs.zip ? this.refs.zip.value : '',
+                address: this.refs.address ? this.refs.address.value : ''
+              })
+
               this.props.setTax(this.state.taxPercent)
               this.props.nextPage()
             })
-            .catch(error => {
-              store.isSubmitting = false
-              this.setState({ error: error, errorType: 'address', validating: false })
-            })
+            .catch(error => { this.setState({ error: error, errorType: 'address', validating: false }) })
           } else {
             this.setState({ validating: false, error: 'Email already exists', errorType: 'email' })
           }
@@ -120,6 +137,7 @@ class AccountInfo extends React.Component {
 
   renderAddressInfo() {
     if (!this.state.taxPercent) { return null }
+
 
     const cityClass = this.state.error.indexOf('city') > -1 ? 'red-outline' : ''
     const zipClass = this.state.error.indexOf('postal') > -1 ? 'red-outline' : ''
@@ -139,9 +157,10 @@ class AccountInfo extends React.Component {
   }
 
   render() {
-    const emailClass = this.state.error.indexOf('email') > -1 ? 'red-outline' : ''
-    const passwordClass = this.state.error.indexOf('password') > -1 ? 'red-outline' : ''
-    const countryClass = this.state.error.indexOf('country') > -1 ? 'red-outline' : ''
+    console.log(this.state)
+    const emailClass = this.state.errorType === 'email' ? 'red-outline' : ''
+    const passwordClass = this.state.errorType === 'password' ? 'red-outline' : ''
+    const countryClass = this.state.errorType.indexOf('country') > -1 ? 'red-outline' : ''
 
     return (
       <form className="account-info" onSubmit={this.submit}>

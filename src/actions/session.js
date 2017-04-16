@@ -1,13 +1,17 @@
+import _ from 'lodash'
 import store, { anomToken } from '../rstore'
 import { browserHistory } from 'react-router'
 
 export const FETCHING_SESSION = 'FETCHING_SESSION'
 export const RECEIVE_SESSION = 'RECEIVE_SESSION'
 export const SAW_SUGGESTIONS = 'SAW_SUGGESTIONS'
+export const SET_SESSION_ITEM = 'SET_SESSION_ITEM'
 export const UPDATE_USER = 'UPDATE_USER'
 export const LOG_IN = 'LOG_IN'
+export const LOG_IN_ERROR = 'LOG_IN_ERROR'
 export const LOG_OUT = 'LOG_OUT'
 export const SIGN_UP = 'SIGN_UP'
+export const SIGN_UP_ERROR = 'SIGN_UP_ERROR'
 
 function fetchingSession() { return { type: FETCHING_SESSION } }
 export function fetchSession() {
@@ -32,6 +36,10 @@ function receiveSession(json) {
   }
 }
 
+export function setSessionItem(key, value) {
+  return { type: SET_SESSION_ITEM, key: key, value: value }
+}
+
 export function updateUser() {
   // FIXME this should actually update the user obj on Kinvery
   return { type: UPDATE_USER }
@@ -44,20 +52,51 @@ export function sawSuggestions() {
   }
 }
 
-export function signUp(username, password) {
+export function createCustomer(token, planName, cycle, taxPercent, coupon) {
   return (dispatch) => {
+
+    let data = {
+      plan: (planName+'-'+cycle.trim()),
+      source: token,
+      email: store.getState().session.email,
+      tax_percent: taxPercent
+    }
+
+    const serverHeaders = new Headers()
+    serverHeaders.append('Content-Type', `application/json`)
+    const options = { method: 'POST', headers: serverHeaders, body: JSON.stringify(data) }
+    fetch(`https://h8pzebl60b.execute-api.us-west-2.amazonaws.com/prod/createCustomer`, options)
+      .then(response => response.json())
+      .then(stripe => dispatch( setSessionItem('stripe', stripe)) )
+      .then(stripe => dispatch( signUp()) )
+  }
+}
+
+function signUp(stripe) {
+  return (dispatch) => {
+    const newUser = _.omit(store.getState().session, ['isFetching', 'loginError', 'signupError'])
+
     const signUpHeaders = new Headers()
     signUpHeaders.append('Authorization', `Basic ${store.getState().settings.basicAuth}`)
     signUpHeaders.append('Content-Type', `application/json`)
     const options = {
       method: 'POST',
       headers: signUpHeaders,
-      body: JSON.stringify({ username: username, password: password })
+      body: JSON.stringify(newUser)
     }
+
     fetch(`https://baas.kinvey.com/user/${store.getState().settings.appKey}`, options)
       .then(response => response.json())
-      .then(json => dispatch(dispatch({ type: SIGN_UP, data: json }) ))
+      .then(json => {
+        localStorage.setItem('authtoken', json._kmd.authtoken)
+        browserHistory.push('/dashboard')
+        dispatch(receiveSession(json))
+      })
   }
+}
+
+export function signUpError(error) {
+  return { type: SIGN_UP_ERROR, error: error }
 }
 
 export function logIn(username, password) {
@@ -72,9 +111,20 @@ export function logIn(username, password) {
     }
     fetch(`https://baas.kinvey.com/user/${store.getState().settings.appKey}/login`, options)
       .then(response => response.json())
-      .then(json => dispatch(dispatch({ type: LOG_IN, data: json }) ))
-      .then(() => browserHistory.push('/dashboard'))
+      .then(json => {
+        if (!json.error) {
+          dispatch({ type: LOG_IN, data: json })
+          browserHistory.push('/dashboard')
+        } else {
+          dispatch(logInError(json.error))
+        }
+      })
   }
+}
+
+export function logInError(error) {
+  if (error === 'InvalidCredentials') { error = 'Invalid login' }
+  return { type: LOG_IN_ERROR, error: error }
 }
 
 export function logOut() {
