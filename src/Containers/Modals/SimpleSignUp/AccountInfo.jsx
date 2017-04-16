@@ -157,7 +157,6 @@ class AccountInfo extends React.Component {
   }
 
   render() {
-    console.log(this.state)
     const emailClass = this.state.errorType === 'email' ? 'red-outline' : ''
     const passwordClass = this.state.errorType === 'password' ? 'red-outline' : ''
     const countryClass = this.state.errorType.indexOf('country') > -1 ? 'red-outline' : ''

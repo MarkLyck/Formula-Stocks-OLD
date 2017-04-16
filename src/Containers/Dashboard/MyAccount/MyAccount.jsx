@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { selectNewPlan } from '../../../actions/plans'
+import { cancelSubscription, updateUser, setSessionItem } from '../../../actions/session'
 
 import store from '../../../store'
 import cc from '../../../cc'
@@ -37,10 +38,11 @@ class MyAccount extends React.Component {
   }
 
   cancelSubscription() {
-    // FIXME This won't work with redux
-    // store.session.set('cancelReason', this.refs.cancelReason.value)
-    // store.session.updateUser()
-    cc.cancelSubscription()
+    const { actions } = this.props
+    actions.setSessionItem('cancelReason', this.refs.cancelReason.value)
+    actions.cancelSubscription()
+
+    // cc.cancelSubscription()
     this.closeModal()
   }
 
@@ -49,9 +51,7 @@ class MyAccount extends React.Component {
   changePlan() {
     this.setState({ charging: true })
     let cycle = 'monthly'
-    if (this.state.selectedPlan === 'business' || this.state.selectedPlan === 'fund') {
-      cycle = 'annually'
-    }
+    if (this.state.selectedPlan === 'business' || this.state.selectedPlan === 'fund') { cycle = 'annually' }
 
     if (this.state.currPlan !== 'unsubscribed') {
       cc.updateSubscription(this.state.selectedPlan, cycle)
@@ -119,14 +119,12 @@ class MyAccount extends React.Component {
     else if (this.state.selectedPlan === 'fund')     { fundClass = 'blue selected' }
 
     let currPlan
-    if (session.stripe.subscriptions && session.stripe.subscriptions.data[0]) {
+    if (session.stripe.subscriptions.data[0]) {
       currPlan = session.stripe.subscriptions.data[0].plan.id
       currPlan = currPlan.slice(0, currPlan.indexOf('-'))
       currPlan += ' model'
     }
-    if (session.stripe.subscriptions.data[0].canceled_at) {
-      currPlan = 'Unsubscribed'
-    }
+    if (session.stripe.subscriptions.data[0].canceled_at) { currPlan = 'Unsubscribed' }
 
     let changePlanBtn = <button onClick={this.showConfirmationModal} className="change-plan-btn">Next</button>
 
@@ -139,7 +137,7 @@ class MyAccount extends React.Component {
     }
 
     let basicDisabled, premiumDisabled, businessDisabled, fundDisabled = false
-    if      (currPlan === 'basic model')    { basicClass = 'current'; basicDisabled = true }
+    if      (currPlan === 'basic model' || currPlan === 'entry model')    { basicClass = 'current'; basicDisabled = true }
     else if (currPlan === 'premium model')  { premiumClass = 'current'; premiumDisabled = true }
     else if (currPlan === 'business model') { businessClass = 'current'; businessDisabled = true }
     else if (currPlan === 'fund model')     { fundClass = 'current'; fundDisabled = true }
@@ -238,7 +236,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  const actions = { selectNewPlan }
+  const actions = { selectNewPlan, cancelSubscription, setSessionItem, updateUser }
   return { actions: bindActionCreators(actions, dispatch) }
 }
 

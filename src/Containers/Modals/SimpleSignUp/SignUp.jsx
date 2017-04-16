@@ -36,7 +36,7 @@ class SignUp extends React.Component {
   setTax(tax) { this.setState({ tax: tax }) }
 
   renderContent() {
-    const { plans, actions } = this.props
+    const { plans, actions, signupError } = this.props
     if (this.state.page === 1) { return <AccountInfo
                                           nextPage={this.nextPage}
                                           setData={this.setData}
@@ -46,6 +46,7 @@ class SignUp extends React.Component {
     else { return <Billing tax={this.state.tax}
                     plan={plans.data[plans.selectedPlan]}
                     signUp={actions.createCustomer}
+                    signupError={signupError}
                     setSessionItem={actions.setSessionItem} /> }
   }
 
@@ -62,8 +63,9 @@ class SignUp extends React.Component {
 }
 
 function mapStateToProps(state) {
-  const { plans } = state
-  return { plans }
+  const { plans, session } = state
+  const { signupError } = session
+  return { plans, signupError }
 }
 
 function mapDispatchToProps(dispatch) {

@@ -75,19 +75,19 @@ class Billing extends React.Component {
 
     cc.checkPayment(card)
     .then(token => this.createCustomer(token))
-    // .catch(error => {
-    //   store.isSubmitting = false
-    //   this.setState({ error: error, errorType: 'payment', validatingPayment: false })
-    // })
+    .catch(error => { this.setState({ error: error, errorType: 'payment', validatingPayment: false }) })
   }
 
   render() {
     const { plan, tax } = this.props
-    console.log(this.state)
+
     const nameClass = this.state.error.indexOf('name') > -1 ? 'red-outline' : ''
-    const cardNumberClass = this.state.error.indexOf('card number') > -1 ? 'red-outline' : ''
-    const expiryClass = this.state.error.indexOf('expi') > -1 ? 'red-outline' : ''
-    const cvcClass = this.state.error.indexOf('security') > -1 ? 'red-outline' : ''
+    const cardNumberClass = this.state.error.indexOf('card number') > -1 || this.props.signupError ? 'red-outline' : ''
+    const expiryClass = this.state.error.indexOf('expi') > -1 || this.props.signupError ? 'red-outline' : ''
+    const cvcClass = this.state.error.indexOf('security') > -1 || this.props.signupError ? 'red-outline' : ''
+
+    let errorText = this.state.error
+    if (this.props.signUpError) { errorText =  this.props.signUpError }
 
     return (
       <form className="simple-billing" onSubmit={this.submit}>
@@ -95,9 +95,9 @@ class Billing extends React.Component {
         <h5 className="subtitle">First charge after 30 days, you can cancel at any time.</h5>
         { nameClass ? <p className="error-text">{this.state.error}</p> : '' }
         <div className="icon-input"><i className="fa fa-user" aria-hidden="true"></i><input className={nameClass} type="text" placeholder="Name on card" ref="name"/></div>
-        { cardNumberClass ? <p className="error-text">{this.state.error}</p> : '' }
+        { cardNumberClass ? <p className="error-text">{errorText}</p> : '' }
         <div className="icon-input"><i className="fa fa-credit-card-alt" aria-hidden="true"></i><input type="text" className={cardNumberClass} placeholder="Card number" onKeyUp={this.ccFormat} ref="cardNumber"/></div>
-        { expiryClass || cvcClass ? <p className="error-text">{this.state.error}</p> : '' }
+        { expiryClass || cvcClass ? <p className="error-text">{errorText}</p> : '' }
         <div className="beside">
           <div className="icon-input"><i className="fa fa-calendar-times-o" aria-hidden="true"></i><input type="text" className={expiryClass} placeholder="MM / YY" onKeyUp={this.dateFormat} ref="cardExpiry"/></div>
           <div className="icon-input"><i className="fa fa-lock" aria-hidden="true"></i><input type="number" className={cvcClass} placeholder="CVC" onKeyUp={this.cvcFormat} ref="cardCvc"/></div>

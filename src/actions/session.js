@@ -1,5 +1,5 @@
 import _ from 'lodash'
-import store, { anomToken } from '../rstore'
+import store from '../rstore'
 import { browserHistory } from 'react-router'
 
 export const FETCHING_SESSION = 'FETCHING_SESSION'
@@ -12,6 +12,7 @@ export const LOG_IN_ERROR = 'LOG_IN_ERROR'
 export const LOG_OUT = 'LOG_OUT'
 export const SIGN_UP = 'SIGN_UP'
 export const SIGN_UP_ERROR = 'SIGN_UP_ERROR'
+export const CANCEL_SUBSCRIPTION = 'CANCEL_SUBSCRIPTION'
 
 function fetchingSession() { return { type: FETCHING_SESSION } }
 export function fetchSession() {
@@ -19,21 +20,18 @@ export function fetchSession() {
     dispatch(fetchingSession())
 
     let sessionHeaders = new Headers()
-    let authToken = localStorage.getItem('authtoken') ? localStorage.authtoken : anomToken
+    let authToken = localStorage.getItem('authtoken')
     sessionHeaders.append('Authorization', `Kinvey ${authToken}`)
     sessionHeaders.append('Content-Type', `application/json`)
 
     const options = { method: 'GET', headers: sessionHeaders }
     fetch(`https://baas.kinvey.com/user/${store.getState().settings.appKey}/_me`, options)
       .then(response => response.json())
-      .then(json => dispatch(receiveSession(json)))
+      .then(json => dispatch( receiveSession(json) ))
   }
 }
 function receiveSession(json) {
-  return {
-    type: RECEIVE_SESSION,
-    data: json
-  }
+  return (dispatch) => dispatch({ type: RECEIVE_SESSION, data: json })
 }
 
 export function setSessionItem(key, value) {
@@ -41,8 +39,20 @@ export function setSessionItem(key, value) {
 }
 
 export function updateUser() {
-  // FIXME this should actually update the user obj on Kinvery
-  return { type: UPDATE_USER }
+  return (dispatch) => {
+    let newSession = _.omit(store.getState().session, ['isFetching', 'loginError', 'signupError'])
+
+    console.log('update user', newSession)
+
+    let sessionHeaders = new Headers()
+    let authToken = localStorage.getItem('authtoken')
+    sessionHeaders.append('Authorization', `Kinvey ${authToken}`)
+    sessionHeaders.append('Content-Type', `application/json`)
+    const options = { method: 'PUT', headers: sessionHeaders, body: JSON.stringify(newSession) }
+    fetch(`https://baas.kinvey.com/user/${store.getState().settings.appKey}/${newSession._id}`, options)
+      .then(response => response.json())
+      .then(json => dispatch( receiveSession(json) ))
+  }
 }
 
 export function sawSuggestions() {
@@ -88,9 +98,13 @@ function signUp(stripe) {
     fetch(`https://baas.kinvey.com/user/${store.getState().settings.appKey}`, options)
       .then(response => response.json())
       .then(json => {
-        localStorage.setItem('authtoken', json._kmd.authtoken)
-        browserHistory.push('/dashboard')
-        dispatch(receiveSession(json))
+        if (!json.statusCode || json.statusCode === 200) {
+          localStorage.setItem('authtoken', json._kmd.authtoken)
+          browserHistory.push('/dashboard')
+          dispatch(receiveSession(json))
+        } else {
+          dispatch(signUpError(json.message))
+        }
       })
   }
 }
@@ -130,12 +144,30 @@ export function logInError(error) {
 export function logOut() {
   return (dispatch) => {
     let logOutHeaders = new Headers()
-    const authToken = localStorage.getItem('authtoken') ? localStorage.authtoken : anomToken
+    const authToken = localStorage.getItem('authtoken')
     logOutHeaders.append('Authorization', `Kinvey ${authToken}`)
     logOutHeaders.append('Content-Type', `application/json`)
     const options = { method: 'POST', headers: logOutHeaders }
     fetch(`https://baas.kinvey.com/user/${store.getState().settings.appKey}/_logout`, options)
       .then(response => dispatch(dispatch({ type: LOG_OUT }) ))
       .then(() => browserHistory.push('/'))
+  }
+}
+
+export function cancelSubscription() {
+  return (dispatch) => {
+    let cancelHeaders = new Headers()
+    const authToken = localStorage.getItem('authtoken')
+    cancelHeaders.append('Authorization', `Kinvey ${authToken}`)
+    cancelHeaders.append('Content-Type', `application/json`)
+    const options = {
+      method: 'POST',
+      headers: cancelHeaders,
+      body: JSON.stringify({ subId: store.getState().session.stripe.subscriptions.data[0].id })
+    }
+    fetch(`https://baas.kinvey.com/rpc/${store.getState().settings.appKey}/custom/cancelsub`, options)
+      .then(response => response.json())
+      .then(json => dispatch( { type: CANCEL_SUBSCRIPTION, subscription: json } ))
+      .then(() => dispatch(updateUser()) )
   }
 }

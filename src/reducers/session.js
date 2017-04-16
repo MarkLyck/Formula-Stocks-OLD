@@ -8,7 +8,9 @@ import {
   SAW_SUGGESTIONS,
   LOG_IN,
   LOG_IN_ERROR,
-  LOG_OUT
+  LOG_OUT,
+  SIGN_UP_ERROR,
+  CANCEL_SUBSCRIPTION,
 } from '../actions/session'
 
 const initialState = {
@@ -30,6 +32,8 @@ export default function reducer(state = initialState, action = {}) {
       return Object.assign({}, state)
     case SAW_SUGGESTIONS:
       return Object.assign({}, state, { lastSeenSuggestions: action.time })
+    case SIGN_UP_ERROR:
+      return Object.assign({}, state, { signupError: action.error })
     case LOG_IN:
       if (!action.data.error) {
         action.data.authtoken = action.data._kmd.authtoken
@@ -41,6 +45,10 @@ export default function reducer(state = initialState, action = {}) {
     case LOG_OUT:
       localStorage.removeItem('authtoken')
       state = initialState
+      return Object.assign({}, state)
+    case CANCEL_SUBSCRIPTION:
+      console.log('cancelling ', action);
+      state.stripe.subscriptions = { data: [action.subscription] }
       return Object.assign({}, state)
     default:
       return state
