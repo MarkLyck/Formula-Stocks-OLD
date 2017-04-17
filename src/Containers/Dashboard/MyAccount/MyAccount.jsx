@@ -22,12 +22,9 @@ class MyAccount extends Component {
     this.showCancelModal = this.showCancelModal.bind(this)
     this.closeModal = this.closeModal.bind(this)
 
-    let currPlan = !props.session.stripe.subscriptions.data[0].canceled_at
-      ? props.session.stripe.subscriptions.data[0].plan.id.split('-')[0]
-      : 'unsubscribed'
-    if (currPlan === 'basic') { currPlan = "entry" }
 
-    this.state = { selectedPlan: '', showModal: false, currPlan: currPlan }
+
+    this.state = { selectedPlan: '', showModal: false }
   }
 
   cancelSubscription() {
@@ -64,7 +61,10 @@ class MyAccount extends Component {
     else if (this.state.selectedPlan === 'business') { businessClass = 'blue selected' }
     else if (this.state.selectedPlan === 'fund')     { fundClass = 'blue selected' }
 
-    let currPlan = this.state.currPlan
+    let currPlan = !session.stripe.subscriptions.data[0].canceled_at
+      ? session.stripe.subscriptions.data[0].plan.id.split('-')[0]
+      : 'unsubscribed'
+    if (currPlan === 'basic') { currPlan = "entry" }
 
     let changePlanBtn = <button onClick={this.showConfirmationModal} className="change-plan-btn">Next</button>
     let cancelBtn = <button onClick={this.showCancelModal} className="filled-btn cancel-btn red">Cancel subscription</button>
