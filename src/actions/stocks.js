@@ -74,17 +74,16 @@ function receiveLastPrice(ticker, json) {
   }
 }
 
-export function receiveRealTimeQuote(ticker, json) {
+export function receiveRealTimeQuote(quote) {
   return {
     type: RECEIVE_REALTIME_QUOTE,
-    ticker: ticker,
-    data: json
+    ticker: quote.ticker,
+    price: quote.price
   }
 }
-export function receiveAllRealTimeQuotes(ticker, json) {
+export function receiveAllRealTimeQuotes(quotes) {
   return {
     type: RECEIVE_ALL_REALTIME_QUOTES,
-    ticker: ticker,
-    data: json
+    quotes: quotes
   }
 }

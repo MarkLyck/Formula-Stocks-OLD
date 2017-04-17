@@ -41,7 +41,6 @@ class Portfolio extends React.Component {
     actions.fetchPlanIfNeeded(selectedPlan)
     actions.fetchSP500('2009-01-01')
 
-    // FIXME sockets don't change with new plan. & not functional yet
     socket = io.connect(socketURL)
     socket.on(`latest_${selectedPlan}_quotes`, data => {
       if (!this.state.receivedAllQuotes) {
@@ -50,7 +49,9 @@ class Portfolio extends React.Component {
       }
     })
     socket.emit('getAllQuotes', true)
-    socket.on(`realtime_${selectedPlan}_quotes`, data => { actions.receiveRealTimeQuote(data) })
+    socket.on(`realtime_${selectedPlan}_quotes`, data => {
+      actions.receiveRealTimeQuote(data)
+    })
   }
 
   componentWillUnmount() { socket.disconnect() }
