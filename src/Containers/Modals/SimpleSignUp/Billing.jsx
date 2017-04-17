@@ -1,5 +1,4 @@
 import React from 'react'
-import store from '../../../store.js'
 import cc from '../../../cc'
 import Terms from '../../Global/Components/Legal/TermsAndConditions'
 
@@ -28,7 +27,6 @@ class Billing extends React.Component {
       error: '',
       errorType: '',
       showTerms: false,
-      validatingPayment: false,
       discount: 0,
       coupon: '',
       cycle: cycle,
@@ -57,14 +55,14 @@ class Billing extends React.Component {
 
   submit(e) {
     e.preventDefault()
-    store.isSubmitting = true
+
     if (this.refs.name.value.indexOf(' ') === -1) {
       this.setState({ error: 'Please enter your full name', errorType: 'payment' })
-      store.isSubmitting = false
       return
     }
+    this.props.signingUp()
 
-    this.setState({ validatingPayment: true, error: '', errorType: '' })
+    this.setState({ error: '', errorType: '' })
 
     const card = {
       number: this.refs.cardNumber.value.replace(/\s+/g, ''),
@@ -75,19 +73,26 @@ class Billing extends React.Component {
 
     cc.checkPayment(card)
     .then(token => this.createCustomer(token))
-    .catch(error => { this.setState({ error: error, errorType: 'payment', validatingPayment: false }) })
+    .catch(error => {
+      this.props.doneSigningUp()
+      this.setState({ error: error, errorType: 'payment' })
+    })
   }
 
   render() {
-    const { plan, tax } = this.props
+    const { plan, tax, isCurrentlySigningUp } = this.props
 
     const nameClass = this.state.error.indexOf('name') > -1 ? 'red-outline' : ''
     const cardNumberClass = this.state.error.indexOf('card number') > -1 || this.props.signupError ? 'red-outline' : ''
     const expiryClass = this.state.error.indexOf('expi') > -1 || this.props.signupError ? 'red-outline' : ''
-    const cvcClass = this.state.error.indexOf('security') > -1 || this.props.signupError ? 'red-outline' : ''
+    const cvcClass = this.state.error.indexOf('cvc') > -1 || this.props.signupError ? 'red-outline' : ''
 
     let errorText = this.state.error
-    if (this.props.signUpError) { errorText =  this.props.signUpError }
+    if (this.props.signupError) { errorText =  this.props.signupError }
+
+    let payButton = isCurrentlySigningUp
+                      ? <div className="pay-button"><i className="fa fa-circle-o-notch fa-spin fa-2x fa-fw"></i></div>
+                      : <input className="pay-button" type="submit" value="Start free trial"/>
 
     return (
       <form className="simple-billing" onSubmit={this.submit}>
@@ -113,7 +118,7 @@ class Billing extends React.Component {
           <p className="price semi-bold">${ formatPrice(plan.price * (tax / 100 + 1)) } monthly</p>
         </div>
 
-        <input className="pay-button" type="submit" value="Start free trial"/>
+        {payButton}
         <p className="disclaimer">By signing up you agree to our <a onClick={this.toggleTerms}>Terms of Service</a></p>
         {this.state.showTerms ? <div className="terms-container"><button className="close-btn" onClick={this.toggleTerms}><i className="material-icons">close</i></button><Terms/></div> : ''}
       </form>

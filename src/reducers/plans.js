@@ -51,6 +51,7 @@ export default function reducer(state = initialState, action = {}) {
 
       return Object.assign({}, state)
     case SELECT_NEW_PLAN:
+      localStorage.setItem('selectedPlan', action.plan)
       return Object.assign({}, state, { selectedPlan: action.plan })
     default:
       return state

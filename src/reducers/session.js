@@ -9,6 +9,8 @@ import {
   LOG_IN,
   LOG_IN_ERROR,
   LOG_OUT,
+  SIGNING_UP,
+  DONE_SIGNING_UP,
   SIGN_UP_ERROR,
   CANCEL_SUBSCRIPTION,
   UPDATE_SUBSCRIPTION,
@@ -17,7 +19,8 @@ import {
 const initialState = {
   isFetching: false,
   location: {},
-  lastSeen: new Date()
+  lastSeen: new Date(),
+  signingUp: false
 }
 
 export default function reducer(state = initialState, action = {}) {
@@ -25,7 +28,7 @@ export default function reducer(state = initialState, action = {}) {
     case FETCHING_SESSION:
       return Object.assign({}, state, { isFetching: true })
     case RECEIVE_SESSION:
-      return Object.assign({}, state, { isFetching: false }, action.data)
+      return Object.assign({}, state, { isFetching: false, signingUp: false }, action.data)
     case SET_SESSION_ITEM:
       state[action.key] = action.value
       return Object.assign({}, state)
@@ -33,8 +36,12 @@ export default function reducer(state = initialState, action = {}) {
       return Object.assign({}, state)
     case SAW_SUGGESTIONS:
       return Object.assign({}, state, { lastSeenSuggestions: action.time })
+    case SIGNING_UP:
+      return Object.assign({}, state, { signingUp: true })
+    case DONE_SIGNING_UP:
+      return Object.assign({}, state, { signingUp: false })
     case SIGN_UP_ERROR:
-      return Object.assign({}, state, { signupError: action.error })
+      return Object.assign({}, state, { signupError: action.error, signingUp: false })
     case LOG_IN:
       if (!action.data.error) {
         action.data.authtoken = action.data._kmd.authtoken

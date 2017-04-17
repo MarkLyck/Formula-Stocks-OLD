@@ -10,6 +10,8 @@ export const UPDATE_USER = 'UPDATE_USER'
 export const LOG_IN = 'LOG_IN'
 export const LOG_IN_ERROR = 'LOG_IN_ERROR'
 export const LOG_OUT = 'LOG_OUT'
+export const SIGNING_UP = 'SIGNING_UP'
+export const DONE_SIGNING_UP = 'DONE_SIGNING_UP'
 export const SIGN_UP = 'SIGN_UP'
 export const SIGN_UP_ERROR = 'SIGN_UP_ERROR'
 export const CANCEL_SUBSCRIPTION = 'CANCEL_SUBSCRIPTION'
@@ -76,13 +78,21 @@ export function createCustomer(token, planName, cycle, taxPercent, coupon) {
     const options = { method: 'POST', headers: serverHeaders, body: JSON.stringify(data) }
     fetch(`https://h8pzebl60b.execute-api.us-west-2.amazonaws.com/prod/createCustomer`, options)
       .then(response => response.json())
-      .then(stripe => dispatch( setSessionItem('stripe', stripe)) )
-      .then(stripe => dispatch( signUp()) )
+      .then(stripe => {
+        if (!stripe.statusCode || stripe.statusCode === 200) {
+          dispatch( setSessionItem('stripe', stripe))
+          dispatch( signUp(stripe))
+        } else {
+          dispatch( signUpError('Payment failed'))
+        }
+      })
+
   }
 }
 
 function signUp(stripe) {
   return (dispatch) => {
+    dispatch(signingUp())
     const newUser = _.omit(store.getState().session, ['isFetching', 'loginError', 'signupError'])
 
     const signUpHeaders = new Headers()
@@ -108,9 +118,10 @@ function signUp(stripe) {
   }
 }
 
-export function signUpError(error) {
-  return { type: SIGN_UP_ERROR, error: error }
-}
+export function doneSigningUp() { return { type: DONE_SIGNING_UP } }
+export function signingUp() { return { type: SIGNING_UP } }
+
+export function signUpError(error) { return { type: SIGN_UP_ERROR, error: error } }
 
 export function logIn(username, password) {
   return (dispatch) => {

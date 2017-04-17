@@ -45,8 +45,10 @@ class MyAccount extends Component {
 
     if (this.state.currPlan !== 'unsubscribed') {
       actions.updateSubscription(this.state.selectedPlan, cycle)
+      this.closeModal()
     } else {
       actions.newSubscription(this.state.selectedPlan, cycle)
+      this.closeModal()
     }
   }
 
@@ -77,10 +79,10 @@ class MyAccount extends Component {
     }
 
     let entryDisabled, premiumDisabled, businessDisabled, fundDisabled = false
-    if      (currPlan === 'entry model')    { entryClass = 'current'; entryDisabled = true }
-    else if (currPlan === 'premium model')  { premiumClass = 'current'; premiumDisabled = true }
-    else if (currPlan === 'business model') { businessClass = 'current'; businessDisabled = true }
-    else if (currPlan === 'fund model')     { fundClass = 'current'; fundDisabled = true }
+    if      (currPlan === 'entry')    { entryClass = 'current'; entryDisabled = true }
+    else if (currPlan === 'premium')  { premiumClass = 'current'; premiumDisabled = true }
+    else if (currPlan === 'business') { businessClass = 'current'; businessDisabled = true }
+    else if (currPlan === 'fund')     { fundClass = 'current'; fundDisabled = true }
 
     let modal
     if (this.state.showModal === 'confirmation') {

@@ -120,7 +120,10 @@ class AccountInfo extends React.Component {
               this.props.setTax(this.state.taxPercent)
               this.props.nextPage()
             })
-            .catch(error => { this.setState({ error: error, errorType: 'address', validating: false }) })
+            .catch(error => {
+              console.log(error)
+              this.setState({ error: error, errorType: 'address', validating: false })
+            })
           } else {
             this.setState({ validating: false, error: 'Email already exists', errorType: 'email' })
           }

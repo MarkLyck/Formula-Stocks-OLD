@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { createCustomer, setSessionItem } from '../../../actions/session'
+import { createCustomer, setSessionItem, signingUp, doneSigningUp } from '../../../actions/session'
 import store from '../../../store.js'
 import { browserHistory } from 'react-router'
 import AccountInfo from './AccountInfo'
@@ -36,7 +36,7 @@ class SignUp extends React.Component {
   setTax(tax) { this.setState({ tax: tax }) }
 
   renderContent() {
-    const { plans, actions, signupError } = this.props
+    const { plans, actions, session } = this.props
     if (this.state.page === 1) { return <AccountInfo
                                           nextPage={this.nextPage}
                                           setData={this.setData}
@@ -46,7 +46,10 @@ class SignUp extends React.Component {
     else { return <Billing tax={this.state.tax}
                     plan={plans.data[plans.selectedPlan]}
                     signUp={actions.createCustomer}
-                    signupError={signupError}
+                    signupError={session.signupError}
+                    isCurrentlySigningUp={session.signingUp}
+                    signingUp={actions.signingUp}
+                    doneSigningUp={actions.doneSigningUp}
                     setSessionItem={actions.setSessionItem} /> }
   }
 
@@ -64,12 +67,11 @@ class SignUp extends React.Component {
 
 function mapStateToProps(state) {
   const { plans, session } = state
-  const { signupError } = session
-  return { plans, signupError }
+  return { plans, session }
 }
 
 function mapDispatchToProps(dispatch) {
-  const actions = { createCustomer, setSessionItem }
+  const actions = { createCustomer, setSessionItem, signingUp, doneSigningUp }
   return { actions: bindActionCreators(actions, dispatch) }
 }
 

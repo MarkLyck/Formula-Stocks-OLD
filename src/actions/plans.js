@@ -40,7 +40,7 @@ function receivePlan(plan, json) { return { type: RECEIVE_PLAN, plan: plan, data
 
 export function selectNewPlan(plan) {
   return (dispatch) => {
-    dispatch(fetchPlanIfNeeded(plan))
+    dispatch( fetchPlanIfNeeded(plan) )
     dispatch({ type: SELECT_NEW_PLAN, plan: plan })
   }
 }

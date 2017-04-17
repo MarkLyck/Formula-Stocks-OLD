@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux'
 import { fetchVisits, fetchVisitsCount, fetchUsers } from '../../../actions/admin'
 import _ from 'lodash'
 
-import admin from '../../../admin'
+// import admin from '../../../admin'
 import AdminPanelHeader from './Headers'
 import VisitorList from './VisitorList'
 
@@ -13,11 +13,11 @@ import PieChart from '../../Global/Components/PieChart/PieChart'
 import './styles/panel.css'
 
 class AdminPanel extends React.Component {
-  constructor(props) {
-    super(props)
-
-    this.cleanVisits = this.cleanVisits.bind(this)
-  }
+  // constructor(props) {
+  //   super(props)
+  //
+  //   this.cleanVisits = this.cleanVisits.bind(this)
+  // }
 
   componentDidMount() {
     this.props.actions.fetchVisitsCount()
@@ -25,7 +25,7 @@ class AdminPanel extends React.Component {
     this.props.actions.fetchUsers()
   }
 
-  destroyVisit(visit) {
+  // destroyVisit(visit) {
     // $.ajax({
     //   url: `https://baas.kinvey.com/appdata/kid_rJRC6m9F/visits/${visit.get('_id')}`,
     //   type: 'DELETE'
@@ -33,26 +33,27 @@ class AdminPanel extends React.Component {
     // .then(r => {
     //   console.log('destroyed: ', r)
     // })
-  }
+  // }
 
-  cleanVisits() {
-    let ips = []
-    admin.visits.forEach(visit => {
-      if (visit) {
-        const ip = visit.get('location').ip
-        if (ips.indexOf(ip) > -1) {
-          this.destroyVisit(visit)
-          console.log('destroy: ', visit.toJSON().location.ip)
-        } else {
-          ips = ips.concat(ip)
-        }
-      }
-    })
-  }
+  // cleanVisits() {
+  //   let ips = []
+  //   admin.visits.forEach(visit => {
+  //     if (visit) {
+  //       const ip = visit.get('location').ip
+  //       if (ips.indexOf(ip) > -1) {
+  //         this.destroyVisit(visit)
+  //         console.log('destroy: ', visit.toJSON().location.ip)
+  //       } else {
+  //         ips = ips.concat(ip)
+  //       }
+  //     }
+  //   })
+  // }
 
   render() {
-    const { visits = [] , visitsCount, users = [], actions } = this.props
-    const browserColors = []
+    const { visits = [], visitsCount, users = [], actions } = this.props
+    if (!visits.length) { return null }
+    let browserColors = []
     const browsers = visits.reduce((prev, visitor) => {
       let foundIndex = -1
       if (_.find(prev, (browserType, i) => {
@@ -145,7 +146,7 @@ class AdminPanel extends React.Component {
           <h2>Latest visitors</h2>
           <VisitorList visitors={visits.slice(1).slice(-30).reverse()}/>
         </div>
-        <button onClick={this.cleanVisits}>Clean visits</button>
+        {/* <button onClick={this.cleanVisits}>Clean visits</button> */}
       </div>
     )
   }

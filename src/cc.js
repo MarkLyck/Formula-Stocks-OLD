@@ -126,7 +126,7 @@ let cc = {
         }, (status, response) => {
           if (status === 200) {
             resolve(response.id)
-          } else if (response.error.message.indexOf('required param: exp_year') !== -1) {
+          } else if (response.error.message.indexOf('exp_year') !== -1) {
             reject('Missing expiry year')
           } else {
             reject(response.error.message)
