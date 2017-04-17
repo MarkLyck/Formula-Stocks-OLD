@@ -44,12 +44,14 @@ class Portfolio extends React.Component {
     socket = io.connect(socketURL)
     socket.on(`latest_${selectedPlan}_quotes`, data => {
       if (!this.state.receivedAllQuotes) {
+
         actions.receiveAllRealTimeQuotes(data)
         this.setState({ receivedAllQuotes: true })
       }
     })
     socket.emit('getAllQuotes', true)
     socket.on(`realtime_${selectedPlan}_quotes`, data => {
+      console.log(data)
       actions.receiveRealTimeQuote(data)
     })
   }

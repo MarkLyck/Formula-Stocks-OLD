@@ -5,15 +5,13 @@ import moment from 'moment'
 import StockGraph from './StockGraph'
 import cc from '../../../cc'
 
-let useAltClass = false
-
 class Stock extends React.Component {
   constructor(props) {
     super(props)
     this.checkScreenSize = this.checkScreenSize.bind(this)
     this.renderGraph = this.renderGraph.bind(this)
 
-    this.state = { chartSpan: 6 }
+    this.state = { chartSpan: 6, useAlt: false }
   }
 
   componentDidMount() {
@@ -25,7 +23,7 @@ class Stock extends React.Component {
   componentWillReceiveProps(newProps) {
     if (newProps.stock && this.props.stock) {
       if (newProps.stock.newPrice !== this.props.stock.newPrice) {
-        useAltClass = !useAltClass
+        this.setState({ useAlt: !this.state.useAlt })
       }
     }
   }
@@ -89,9 +87,9 @@ class Stock extends React.Component {
 
     if (priceUpdate) {
       if (stock.lastPrice < stock.newPrice) {
-        lastPriceClass += !useAltClass ? ' realtime-positive' : ' realtime-positive-alt'
+        lastPriceClass += !this.state.useAlt ? ' realtime-positive' : ' realtime-positive-alt'
       } else {
-        lastPriceClass += !useAltClass ? ' realtime-negative' : ' realtime-negative-alt'
+        lastPriceClass += !this.state.useAlt ? ' realtime-negative' : ' realtime-negative-alt'
       }
     }
 

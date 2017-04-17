@@ -41,6 +41,8 @@ export default function reducer(state = initialState, action = {}) {
       action.ticker = action.ticker.replace('_', '.')
       if (!stocks[action.ticker]) { stocks[action.ticker] = {} }
 
+
+
       stocks[action.ticker].lastPrice = stocks[action.ticker] ? stocks[action.ticker].newPrice : action.price
       stocks[action.ticker].newPrice = action.price
       stocks[action.ticker].date = new Date()
