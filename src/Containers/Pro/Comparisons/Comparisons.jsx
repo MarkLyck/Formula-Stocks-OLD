@@ -1,5 +1,5 @@
 import React from 'react'
-import CollapseSegment from '../Components/CollapseSegment/CollapseSegment'
+import CollapseSegment from '../../../components/CollapseSegment/CollapseSegment'
 
 class Comparisons extends React.Component {
   render() {

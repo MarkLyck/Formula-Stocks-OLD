@@ -1,11 +1,10 @@
-@import "../../variables.css";
+@import "../../../Containers/variables.css";
 
-.backtested-performance {
+.prof-performance {
   #result-chart {
+    height: 480px;
     width: 100%;
-    margin-bottom: 16px;
-    height: 65vh;
-    max-height: 800px;
+    max-width: 720px;
     position: relative;
     i {
       color: $primary-color;
@@ -13,7 +12,7 @@
     .chart-indicators {
       position: absolute;
       top: 32px;
-      left: 120px;
+      left: 88px;
       .chart-indicator {
         background: none;
         padding-left: 25px;

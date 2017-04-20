@@ -3,7 +3,7 @@
 import React, { Component } from 'react'
 import { Element } from 'react-scroll'
 import _ from 'lodash'
-import LineGraph from '../Components/LineGraph/LineGraph'
+import LineGraph from '../LineGraph/LineGraph'
 import './launchPerformance.css'
 
 function formatPrice(value) {

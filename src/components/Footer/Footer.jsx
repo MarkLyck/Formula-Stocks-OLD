@@ -1,7 +1,7 @@
 import React from 'react'
 
-import Terms from '../Components/Legal/TermsAndConditions'
-import Privacy from '../Components/Legal/PrivacyPolicy'
+import Terms from '../Legal/TermsAndConditions'
+import Privacy from '../Legal/PrivacyPolicy'
 import House from './House.png'
 
 import './footer.css'

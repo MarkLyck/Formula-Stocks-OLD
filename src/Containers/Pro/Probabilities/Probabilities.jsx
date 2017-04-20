@@ -1,5 +1,5 @@
 import React from 'react'
-import WinRateGraph from '../../Global/Components/WinRateGraph/WinRateGraph'
+import WinRateGraph from '../../../components/Graphs/WinRateGraph/WinRateGraph'
 import './probabilities.css'
 
 class Probabilities extends React.Component {

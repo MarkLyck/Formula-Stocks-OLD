@@ -4,17 +4,20 @@ import React from 'react'
 import Scroll from 'react-scroll'
 import _ from 'underscore'
 import store from '../../../OLD_store'
-import LineGraph from '../Components/LineGraph/LineGraph'
-import './backtestedPerformance.css'
+import LineGraph from '../LineGraph/LineGraph'
+import './launchPerformance.css'
 
 function formatPrice(value) {
+  value = String(value)
   while(/(\d+)(\d{3})/.test(value.toString())) {
-    value = value.toString().replace(/(\d+)(\d{3})/, '$1'+','+'$2')
+    value = value.toString().replace(/(\d+)(\d{3})/, '$1' + ',' + '$2')
   }
-  return value
+  let price = value + '%'
+  if (Number(value.replace(',','')) > 0) { price = '+' + price }
+  return price
 }
 
-class BacktestedPerformance extends React.Component {
+class Performance extends React.Component {
   constructor(props) {
     super(props)
 
@@ -32,17 +35,22 @@ class BacktestedPerformance extends React.Component {
   }
 
   componentWillUnmount() {
+    store.plans.get('basic').set('portfolioYields', [])
+    store.plans.get('premium').set('portfolioYields', [])
+    store.plans.get('business').set('portfolioYields', [])
+    store.plans.get('fund').set('portfolioYields', [])
+
     store.plans.off('update', this.getData)
     store.market.data.off('update', this.getData)
   }
 
   getData() {
     if (!this.state.chartData.length) {
-      const basicData = this.props.path !== '/pro' ? store.plans.get('basic').get('annualData') : []
-      const premiumData = store.plans.get('premium').get('annualData')
-      const businessData = store.plans.get('business').get('annualData')
-      const fundData = this.props.path === '/pro' ? store.plans.get('fund').get('annualData') : []
-      const marketData = store.market.data.get('annualData')
+      const basicData = this.props.path !== '/pro' ? store.plans.get('basic').get('portfolioYields') : []
+      const premiumData = store.plans.get('premium').get('portfolioYields')
+      const businessData = store.plans.get('business').get('portfolioYields')
+      const fundData = this.props.path === '/pro' ? store.plans.get('fund').get('portfolioYields') : []
+      const marketData = store.market.data.get('djia')
 
       if ((basicData.length && premiumData.length && businessData.length && marketData.length && this.props.path !== '/pro')
           || (premiumData.length && businessData.length && fundData.length && marketData.length && this.props.path === '/pro')) {
@@ -53,80 +61,37 @@ class BacktestedPerformance extends React.Component {
 
   createChartData(basicData, premiumData, businessData, fundData, marketData) {
 
+    // basicData = basicData.slice(-13)
+    // premiumData = premiumData.slice(-13)
+    // businessData = businessData.slice(-13)
+    // fundData = fundData.slice(-13)
+    // marketData = marketData.slice(-13)
 
-    // Generate quarterly report
+    // let basStartValue = basicData[0] ? basicData[0].balance : 0
+    // let preStartValue = premiumData[0].balance
+    // let busStartValue = businessData[0].balance
+    // let funStartValue = fundData[0].balance
+    // let marStartValue = marketData[0]
 
-    // let startValue = 0
-    // let negative = 0
-    // let positive = 0
-    // console.log( businessData )
-    // businessData.forEach((point, i) => {
-    //   if (i === 0) { startValue = point.balance }
-    //   if (point.date.year >= 1979) {
-    //     if (Number(point.date.year) === 1979 && Number(point.date.month) < 12) { return undefined }
-    //     else if (Number(point.date.year) === 1979 && Number(point.date.month) === 12) {
-    //       startValue = point.balance
-    //       return undefined
-    //     }
-    //
-    //
-    //
-    //     const increase = (point.balance - startValue) / startValue
-    //     // if (point.date.month === '12') {
-    //     //   console.log(point.date.year + '   ' + increase.toFixed(4))
-    //     //   startValue = point.balance
-    //     // }
-    //     if (point.date.month === '3') {
-    //       console.log(point.date.year + ' ' + 'Q1 ' + increase.toFixed(4))
-    //       startValue = point.balance
-    //       if (increase > 0) { positive++ }
-    //       else { negative++ }
-    //     }
-    //     else if (point.date.month === '6') {
-    //       console.log(point.date.year + ' ' + 'Q2 ' + increase.toFixed(4))
-    //       startValue = point.balance
-    //       if (increase > 0) { positive++ }
-    //       else { negative++ }
-    //     }
-    //     else if (point.date.month === '9') {
-    //       console.log(point.date.year + ' ' + 'Q3 ' + increase.toFixed(4))
-    //       startValue = point.balance
-    //       if (increase > 0) { positive++ }
-    //       else { negative++ }
-    //     }
-    //     else if (point.date.month === '12') {
-    //       console.log(point.date.year + ' ' + 'Q4 ' + increase.toFixed(4))
-    //       startValue = point.balance
-    //       if (increase > 0) { positive++ }
-    //       else { negative++ }
-    //     }
-    //     if (point.date.year === '2017' && point.date.month === '2') {
-    //       console.log(point.date.year + ' ' + 'SP ' + increase.toFixed(4))
-    //       if (increase > 0) { positive++ }
-    //       else { negative++ }
-    //     }
-    //
-    //   }
-    // })
-    //
-    // console.log('positive', positive);
-    // console.log('negative', negative);
-
+    let startValue = premiumData[0].balance
+    let marketStartValue = Number(marketData[0])
 
     let fixedData = premiumData.map((point, i) => {
 
-      let basicBalance = 25000
-      let premiumBalance = 25000
-      let businessBalance = 25000
-      let fundBalance = 25000
-      let marketBalance = 25000
+      let basicBalance = 0
+      let fundBalance = 0
 
-      if (basicData[i]) { basicBalance = basicData[i].balance }
-      if (premiumData[i]) { premiumBalance = premiumData[i].balance }
-      if (businessData[i]) { businessBalance = businessData[i].balance }
-      if (fundData[i]) { fundBalance = fundData[i].balance }
-      if (marketData[i]) { marketBalance = marketData[i] }
+      if (basicData[i]) { basicBalance = ((basicData[i].balance - startValue) / startValue * 100).toFixed(2) }
+      const premiumBalance = ((premiumData[i].balance - startValue) / startValue * 100).toFixed(2)
+      const businessBalance = ((businessData[i].balance - startValue) / startValue * 100).toFixed(2)
+      if (fundData[i]) { fundBalance = ((fundData[i].balance - startValue) / startValue * 100).toFixed(2) }
+      const marketBalance = ((Number(marketData[i]) - marketStartValue) / marketStartValue * 100).toFixed(2)
 
+      // if (basicData[i]) { basicBalance = ((basicData[i].balance - startValue) / startValue * 100).toFixed(2) }
+      // const premiumBalance = ((premiumData[i].balance - preStartValue) / preStartValue * 100).toFixed(2)
+      // const businessBalance = ((businessData[i].balance - busStartValue) / busStartValue * 100).toFixed(2)
+      // if (fundData[i]) { fundBalance = ((fundData[i].balance - funStartValue) / funStartValue * 100).toFixed(2) }
+      // const marketBalance = ((Number(marketData[i]) - marketStartValue) / marketStartValue * 100).toFixed(2)
 
       let month = point.date.month
       if (Number(point.date.month) <= 9) {
@@ -162,7 +127,6 @@ class BacktestedPerformance extends React.Component {
           date: `${point.date.year}-${month}-${point.date.day}`
         }
       }
-
     })
     this.setState({ chartData: fixedData })
   }
@@ -174,6 +138,8 @@ class BacktestedPerformance extends React.Component {
               </div>)
     } else {
 
+
+      const basMin = Number(_.min(this.state.chartData, (point) => Number(point.basic)).basic)
       const preMin = Number(_.min(this.state.chartData, (point) => Number(point.premium)).premium)
       const busMin = Number(_.min(this.state.chartData, (point) => Number(point.business)).business)
       const funMin = Number(_.min(this.state.chartData, (point) => Number(point.fund)).fund)
@@ -181,13 +147,21 @@ class BacktestedPerformance extends React.Component {
 
       let minimum = _.min([preMin, busMin, funMin, marMin])
       minimum = Math.floor(minimum / 50) * 50
+
       let maximum = _.max(this.state.chartData, (point) => Number(point.business)).business
-      maximum = Math.ceil(maximum/10000000000) * 10000000000
+      if (this.props.path === '/pro') {
+        let funMaximum = _.max(this.state.chartData, (point) => Number(point.fund)).fund
+
+        if (funMaximum > maximum) { maximum = funMaximum }
+      }
+
+      maximum = Math.ceil(maximum/100) * 100
 
       const graphs = [
             {
               id: "market",
               lineColor: "#989898",
+
               bullet: "square",
               bulletBorderAlpha: 1,
               bulletColor: "#989898",
@@ -196,7 +170,7 @@ class BacktestedPerformance extends React.Component {
               lineThickness: 2,
               useLineColorForBulletBorder: true,
               valueField: "market",
-              "balloonText": "<div class=\"chart-balloon\"><span class=\"plan-name market-name\">S&P500</span><span class=\"balloon-value\">$[[marketBalloon]]</span></div>",
+              "balloonText": "<div class=\"chart-balloon\"><span class=\"plan-name market-name\">DJIA</span><span class=\"balloon-value\">[[marketBalloon]]</span></div>",
             },
             {
               id: "basic",
@@ -209,11 +183,12 @@ class BacktestedPerformance extends React.Component {
               lineThickness: 2,
               useLineColorForBulletBorder: true,
               valueField: "basic",
-              balloonText: "<div class=\"chart-balloon\"><span class=\"plan-name\">Basic</span><span class=\"balloon-value\">$[[basicBalloon]]</span></div>"
+              balloonText: "<div class=\"chart-balloon\"><span class=\"plan-name\">Basic</span><span class=\"balloon-value\">[[basicBalloon]]</span></div>"
             },
             {
               id: "premium",
               lineColor: "#6FCEE1",
+
               bullet: "square",
               bulletBorderAlpha: 1,
               bulletColor: "#6FCEE1",
@@ -222,11 +197,12 @@ class BacktestedPerformance extends React.Component {
               lineThickness: 2,
               useLineColorForBulletBorder: true,
               valueField: "premium",
-              balloonText: "<div class=\"chart-balloon\"><span class=\"plan-name\">Premium</span><span class=\"balloon-value\">$[[premiumBalloon]]</span></div>"
+              balloonText: "<div class=\"chart-balloon\"><span class=\"plan-name\">Premium</span><span class=\"balloon-value\">[[premiumBalloon]]</span></div>"
             },
             {
               id: "business",
               lineColor: "#27A5F9",
+
               bullet: "square",
               bulletBorderAlpha: 1,
               bulletColor: "#27A5F9",
@@ -235,11 +211,12 @@ class BacktestedPerformance extends React.Component {
               lineThickness: 2,
               useLineColorForBulletBorder: true,
               valueField: "business",
-              "balloonText": "<div class=\"chart-balloon\"><span class=\"plan-name\">Business</span><span class=\"balloon-value\">$[[businessBalloon]]</span></div>",
+              "balloonText": "<div class=\"chart-balloon\"><span class=\"plan-name\">Business</span><span class=\"balloon-value\">[[businessBalloon]]</span></div>",
             },
             {
               id: "fund",
               lineColor: "#49494A",
+
               bullet: "square",
               bulletBorderAlpha: 1,
               bulletColor: "#49494A",
@@ -248,37 +225,43 @@ class BacktestedPerformance extends React.Component {
               lineThickness: 2,
               useLineColorForBulletBorder: true,
               valueField: "fund",
-              "balloonText": "<div class=\"chart-balloon\"><span class=\"plan-name\">Fund</span><span class=\"balloon-value\">$[[fundBalloon]]</span></div>",
+              "balloonText": "<div class=\"chart-balloon\"><span class=\"plan-name\">Fund</span><span class=\"balloon-value\">[[fundBalloon]]</span></div>",
             }
           ]
       return (
         <div id="result-chart" className={this.state.chartClass}>
+          <div className="chart-indicators">
+
+            <div className="chart-indicator business">Business</div>
+            {this.props.path === '/pro' ? <div className="chart-indicator fund">Fund</div> : ''}
+            <div className="chart-indicator premium">Premium</div>
+            {this.props.path !== '/pro' ? <div className="chart-indicator fund">Basic</div> : ''}
+            <div className="chart-indicator djia">DJIA</div>
+          </div>
           <LineGraph graphs={graphs}
                      data={this.state.chartData}
-                     unit="$"
+                     unit="%"
+                     unitPosition="right"
                      axisAlpha={0.5}
                      maximum={maximum}
-                     minimum={minimum}
-                     logarithmic={true}
-                     minorGridEnabled={true}/>
+                     minimum={minimum}/>
         </div>
       )
     }
   }
 
-  render()  {
+  render() {
     const Element = Scroll.Element
     return (
-      <section className="backtested-performance section">
-        <Element name="backtested"/>
-        <h2 className="title">Long-term performance</h2>
+      <section className="prof-performance section">
+        <Element name="performance"/>
+        <h2 className="title">Performance</h2>
         <div className="divider"/>
-        <h3 className="subtitle">Log scale graph 1970-2017</h3>
+        <h3 className="subtitle">Unleveraged, calculated performance in %, 3 strategies since 2009 launch, with DJIA as a baseline.</h3>
         {this.renderChart()}
-        <p className="disclaimer">Historical numbers are based on backtested data. Since our 2009 launch we have observed similar results in real time. See our ToS for details.</p>
       </section>
     )
   }
 }
 
-export default BacktestedPerformance
+export default Performance

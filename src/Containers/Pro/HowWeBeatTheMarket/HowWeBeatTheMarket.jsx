@@ -1,6 +1,6 @@
 import React from 'react'
 import Scroll from 'react-scroll'
-import CollapseSegment from '../Components/CollapseSegment/CollapseSegment'
+import CollapseSegment from '../../../components/CollapseSegment/CollapseSegment'
 import './howWeBeatTheMarket.css'
 
 class HowWeBeatTheMarket extends React.Component {

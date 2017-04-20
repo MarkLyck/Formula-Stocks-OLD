@@ -1,5 +1,5 @@
 import React from 'react'
-import store from '../../../../OLD_store'
+import store from '../../../OLD_store'
 import './winRateGraph.css'
 
 class WinRateGraph extends React.Component {

@@ -8,7 +8,7 @@ import Professional from './Containers/Pro/Index'
 import SignUp from './Containers/Modals/SignUp/SignUp'
 import SimpleSignUp from './Containers/Modals/SimpleSignUp/SignUp'
 import Login from './Containers/Modals/Login/Login'
-import FAQ from './Containers/Global/FAQ/FAQ'
+import FAQ from './components/FAQ/FAQ'
 
 import Articles from './Containers/Articles/Articles'
 
@@ -21,7 +21,7 @@ import AdminPanel from './Containers/Dashboard/Admin/Panel'
 import AdminAPI from './Containers/Dashboard/Admin/API'
 import Users from './Containers/Dashboard/Admin/Users/Users'
 import NewArticle from './Containers/Dashboard/Admin/NewArticle'
-import NotFound from './Containers/components/NotFound/NotFound'
+import NotFound from './components/NotFound/NotFound'
 
 const routes = (
   <Route path="/" component={App}>

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Element } from 'react-scroll'
-import SingleWinRateGraph from '../../Global/Components/WinRateGraph/SingleWinRateGraph'
+import SingleWinRateGraph from '../../../components/Graphs/WinRateGraph/WinRateGraph'
 import './introduction.css'
 
 const Introduction = ({portfolioYields, portfolioReturn, winRate, }) => {

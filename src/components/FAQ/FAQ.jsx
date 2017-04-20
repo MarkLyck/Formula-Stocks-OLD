@@ -1,7 +1,7 @@
 import React from 'react'
 var markdown = require( "markdown" ).markdown
 import ReactHtmlParser from 'react-html-parser'
-import FAQData from '../../../data/faqData'
+import FAQData from '../../data/faqData'
 import { Link } from 'react-router'
 import './faq.css'
 

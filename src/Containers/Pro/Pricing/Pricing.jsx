@@ -1,7 +1,7 @@
 import React from 'react'
 import Scroll from 'react-scroll'
 import store from '../../../OLD_store'
-import Product from '../Components/Product/Product'
+import Product from '../Product/Product'
 import './pricing.css'
 
 class Pricing extends React.Component {

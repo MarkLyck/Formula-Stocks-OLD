@@ -1,7 +1,7 @@
 /* eslint-disable */
 
 import React from 'react'
-import Info from '../Info/Info'
+import Info from '../../../components/Info/Info'
 import { Link, browserHistory } from 'react-router'
 
 function formatPrice(value) {

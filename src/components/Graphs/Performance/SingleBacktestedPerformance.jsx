@@ -4,7 +4,7 @@ import React from 'react'
 import { Element } from 'react-scroll'
 import _ from 'lodash'
 import store from '../../../OLD_store'
-import LineGraph from '../Components/LineGraph/LineGraph'
+import LineGraph from '../LineGraph/LineGraph'
 import './backtestedPerformance.css'
 
 function formatPrice(value) {
