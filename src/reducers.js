@@ -12,6 +12,7 @@ import articles from './reducers/articles'
 import session from './reducers/session'
 import settings from './reducers/settings'
 import notifications from './reducers/notifications'
+import visits from './reducers/visits'
 import admin from './reducers/admin'
 
 export default combineReducers({
@@ -23,5 +24,6 @@ export default combineReducers({
   settings,
   notifications,
   admin,
+  visits,
   routing
 })
