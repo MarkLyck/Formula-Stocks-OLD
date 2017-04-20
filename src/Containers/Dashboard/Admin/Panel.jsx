@@ -115,7 +115,6 @@ class AdminPanel extends React.Component {
           <h2>Latest visitors</h2>
           <VisitorList visitors={visits.slice(1).slice(-30).reverse()}/>
         </div>
-        {/* <button onClick={this.cleanVisits}>Clean visits</button> */}
       </div>
     )
   }

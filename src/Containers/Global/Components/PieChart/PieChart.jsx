@@ -1,6 +1,5 @@
 import React from 'react'
 import AmCharts from "@amcharts/amcharts3-react"
-// import '../../../../libraries/amcharts/pie.js'
 
 const PieChart = ({ title, data, colors, unit }) => {
 

@@ -1,10 +1,7 @@
 import { anomToken } from '../store'
-// import moment from 'moment'
+
 export const FETCHING_USERS = 'FETCHING_USERS'
 export const RECEIVE_USERS = 'RECEIVE_USERS'
-export const FETCHING_VISITS = 'FETCHING_VISITS'
-export const RECEIVE_VISITS = 'RECEIVE_VISITS'
-export const RECEIVE_VISITS_COUNT = 'RECEIVE_VISITS_COUNT'
 
 let fetchHeaders = new Headers();
 const authToken = localStorage.getItem('authtoken') ? localStorage.authtoken : anomToken
