@@ -1,7 +1,7 @@
 import Backbone from 'backbone'
 import $ from 'jquery'
 import platform from 'platform'
-import store from '../store'
+import store from '../OLD_store'
 
 const Visit = Backbone.Model.extend({
   url: `https://baas.kinvey.com/appdata/kid_rJRC6m9F/visits`,

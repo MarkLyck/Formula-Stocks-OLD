@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom'
 require('es6-promise').polyfill()
 import 'isomorphic-fetch'
 import Root from './components/Root'
-// import store from './store'
+// import store from './OLD_store'
 
 // if (localStorage.getItem('authtoken')) {
 //   store.session.set('authtoken', localStorage.authtoken)

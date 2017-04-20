@@ -1,6 +1,6 @@
 import React from 'react'
 import Scroll from 'react-scroll'
-import store from '../../../store'
+import store from '../../../OLD_store'
 import Product from '../Components/Product/Product'
 import './pricing.css'
 

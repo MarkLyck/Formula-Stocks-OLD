@@ -1,6 +1,6 @@
 import React from 'react'
 import $ from 'jquery'
-import store from '../../../store.js'
+import store from '../../../OLD_store'
 
 import FeatureList from './FeatureList.jsx'
 import PlanColumn from './PlanColumn.jsx'

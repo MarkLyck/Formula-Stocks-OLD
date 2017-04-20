@@ -2,7 +2,7 @@ import $ from 'jquery'
 import Backbone from 'backbone'
 import moment from 'moment'
 import platform from 'platform'
-import store from '../store'
+import store from '../OLD_store'
 
 import Visit from './Visit'
 

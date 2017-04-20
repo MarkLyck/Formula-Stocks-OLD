@@ -1,12 +1,12 @@
 import $ from 'jquery'
-import store from './store'
+import store from './OLD_store'
 
 import Visits from './collections/Visits'
-import NewsletterSubs from './collections/NewsletterSubs'
+// import NewsletterSubs from './collections/NewsletterSubs'
 
 let admin = {
   visits: new Visits(),
-  newsletterSubs: new NewsletterSubs(),
+  // newsletterSubs: new NewsletterSubs(),
   file: {},
   fileID: '',
   articleID: '',

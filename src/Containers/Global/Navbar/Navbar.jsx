@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux'
 import { fetchSession, logOut } from '../../../actions/session'
 import { Link, browserHistory } from 'react-router'
 import Scroll from 'react-scroll'
-// import store from '../../../store'
+// import store from '../../../OLD_store'
 import './navbar.css'
 import Logo from './logo_horizontal.svg'
 

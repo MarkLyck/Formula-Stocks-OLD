@@ -1,5 +1,5 @@
 import React from 'react'
-import store from '../../store'
+import store from '../../OLD_store'
 
 import NavBar from '../Global/Navbar/Navbar'
 import Hero from '../Global/Hero/Hero'

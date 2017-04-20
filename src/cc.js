@@ -3,7 +3,7 @@
 import $ from 'jquery'
 import _ from 'underscore'
 
-import store from './store'
+import store from './OLD_store'
 import rstore from './rstore'
 import countries from './data/countries'
 

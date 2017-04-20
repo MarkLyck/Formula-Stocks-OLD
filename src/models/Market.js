@@ -1,7 +1,7 @@
 import $ from 'jquery'
 import Backbone from 'backbone'
 import Lockr from 'lockr'
-import store from '../store'
+import store from '../OLD_store'
 
 const Market = Backbone.Model.extend({
   defaults: {

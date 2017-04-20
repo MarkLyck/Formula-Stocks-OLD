@@ -1,7 +1,7 @@
 import React from 'react'
 import $ from 'jquery'
 import moment from 'moment'
-import store from '../../../../store'
+import store from '../../../../OLD_store'
 
 class User extends React.Component {
 

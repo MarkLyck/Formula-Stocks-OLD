@@ -3,7 +3,7 @@
 import React from 'react'
 import $ from 'jquery'
 
-import store from '../../../store'
+import store from '../../../OLD_store'
 import cc from '../../../cc'
 
 import './cagrCalculator.css'

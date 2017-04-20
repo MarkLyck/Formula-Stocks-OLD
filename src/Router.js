@@ -1,7 +1,7 @@
 import React from 'react'
 import { Router, Route, IndexRoute } from 'react-router'
 
-import store from './store'
+import store from './OLD_store'
 
 // import Retail from './Containers/Retail/Index'
 import Retail_Entry from './Containers/Retail_Entry/Index'

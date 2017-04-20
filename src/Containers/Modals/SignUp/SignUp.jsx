@@ -1,5 +1,5 @@
 import React from 'react'
-import store from '../../../store.js'
+import store from '../../../OLD_store'
 import { browserHistory } from 'react-router'
 
 import ChoosePlan from './ChoosePlan.jsx'

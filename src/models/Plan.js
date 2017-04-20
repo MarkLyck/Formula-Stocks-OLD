@@ -5,7 +5,7 @@ import Backbone from 'backbone'
 import Lockr from 'lockr'
 import moment from 'moment'
 
-import store from '../store'
+import store from '../OLD_store'
 import admin from '../admin'
 
 const Plan = Backbone.Model.extend({

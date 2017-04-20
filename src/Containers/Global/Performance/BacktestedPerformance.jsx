@@ -3,7 +3,7 @@
 import React from 'react'
 import Scroll from 'react-scroll'
 import _ from 'underscore'
-import store from '../../../store'
+import store from '../../../OLD_store'
 import LineGraph from '../Components/LineGraph/LineGraph'
 import './backtestedPerformance.css'
 
@@ -55,7 +55,7 @@ class BacktestedPerformance extends React.Component {
 
 
     // Generate quarterly report
-    
+
     // let startValue = 0
     // let negative = 0
     // let positive = 0

@@ -1,5 +1,5 @@
 import $ from 'jquery'
-import store from './store'
+import store from './OLD_store'
 
 $(document).ajaxSend(function(e, xhrAjax, jqueryAjax) {
   if (jqueryAjax.url.indexOf('kinvey') !== -1 && jqueryAjax.url.indexOf('blob') === -1) {
