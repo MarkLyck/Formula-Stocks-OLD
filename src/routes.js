@@ -3,7 +3,7 @@ import { Route, IndexRoute } from 'react-router'
 
 import App from './Containers/App'
 
-import Retail_Entry from './Containers/Retail_Entry/Index'
+import Retail_Entry from './Containers/Retail/Index'
 import Professional from './Containers/Pro/Index'
 import SignUp from './Containers/Modals/SignUp/SignUp'
 import SimpleSignUp from './Containers/Modals/SimpleSignUp/SignUp'
