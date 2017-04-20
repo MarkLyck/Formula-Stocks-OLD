@@ -4,6 +4,8 @@ import store from '../store'
 
 export const RECEIVE_SINGLE_VISIT = 'RECEIVE_SINGLE_VISIT'
 export const RECEIVE_VISITS = 'RECEIVE_VISITS'
+export const FETCHING_VISITS = 'FETCHING_VISITS'
+export const RECEIVE_VISITS_COUNT = 'RECEIVE_VISITS_COUNT'
 
 export function createVisitIfNeeded() {
   return (dispatch) => { if (!localStorage.getItem('authtoken') && !localStorage.getItem('visit_ID')) { dispatch(getLocation()) } }
@@ -45,6 +47,7 @@ function receiveSingleVisit(visit) { return { type: RECEIVE_SINGLE_VISIT, visit:
 
 export function fetchVisits() {
   return (dispatch) => {
+    dispatch(fetchingVisits())
     let visitsHeaders = new Headers()
     let authToken = localStorage.getItem('authToken')
     visitsHeaders.append('Authorization', `Kinvey ${authToken}`)
@@ -58,5 +61,20 @@ export function fetchVisits() {
       .then( (json) => dispatch(receiveVisits(json)) )
   }
 }
-
+function fetchingVisits() { return { type: FETCHING_VISITS } }
 function receiveVisits(visits) { return { type: RECEIVE_VISITS, visits: visits } }
+
+export function fetchVisitsCount() {
+  return (dispatch) => {
+    let visitsHeaders = new Headers()
+    let authToken = localStorage.getItem('authToken')
+    visitsHeaders.append('Authorization', `Kinvey ${authToken}`)
+    visitsHeaders.append('Content-Type', `application/json`)
+    const options = { method: 'GET', headers: visitsHeaders }
+
+    fetch(`https://baas.kinvey.com/appdata/kid_rJRC6m9F/visits/_count`, options)
+      .then(response => response.json())
+      .then(json => dispatch(receiveVisitsCount(json)))
+  }
+}
+function receiveVisitsCount(json) { return { type: RECEIVE_VISITS_COUNT, data: json } }

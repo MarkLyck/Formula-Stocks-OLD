@@ -1,10 +1,10 @@
 import React from 'react'
+import _ from 'lodash'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { fetchVisits, fetchVisitsCount, fetchUsers } from '../../../actions/admin'
-import _ from 'lodash'
+import { fetchUsers } from '../../../actions/admin'
+import { fetchVisits, fetchVisitsCount } from '../../../actions/visits'
 
-// import admin from '../../../admin'
 import AdminPanelHeader from './Headers'
 import VisitorList from './VisitorList'
 
@@ -13,42 +13,11 @@ import PieChart from '../../Global/Components/PieChart/PieChart'
 import './styles/panel.css'
 
 class AdminPanel extends React.Component {
-  // constructor(props) {
-  //   super(props)
-  //
-  //   this.cleanVisits = this.cleanVisits.bind(this)
-  // }
-
   componentDidMount() {
     this.props.actions.fetchVisitsCount()
     this.props.actions.fetchVisits()
     this.props.actions.fetchUsers()
   }
-
-  // destroyVisit(visit) {
-    // $.ajax({
-    //   url: `https://baas.kinvey.com/appdata/kid_rJRC6m9F/visits/${visit.get('_id')}`,
-    //   type: 'DELETE'
-    // })
-    // .then(r => {
-    //   console.log('destroyed: ', r)
-    // })
-  // }
-
-  // cleanVisits() {
-  //   let ips = []
-  //   admin.visits.forEach(visit => {
-  //     if (visit) {
-  //       const ip = visit.get('location').ip
-  //       if (ips.indexOf(ip) > -1) {
-  //         this.destroyVisit(visit)
-  //         console.log('destroy: ', visit.toJSON().location.ip)
-  //       } else {
-  //         ips = ips.concat(ip)
-  //       }
-  //     }
-  //   })
-  // }
 
   render() {
     const { visits = [], visitsCount, users = [], actions } = this.props
@@ -154,9 +123,10 @@ class AdminPanel extends React.Component {
 
 
 function mapStateToProps(state) {
-  const { admin } = state
-  const { visits, visitsCount, users } = admin
-  return { visits, visitsCount, users }
+  const { admin, visits } = state
+  const { users } = admin
+  const { visitsData, visitsCount } = visits
+  return { visitsData, visitsCount, users }
 }
 
 function mapDispatchToProps(dispatch) {

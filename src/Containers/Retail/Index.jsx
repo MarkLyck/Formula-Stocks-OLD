@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { fetchPlanIfNeeded } from '../../actions/plans'
 import { fetchDJIA, fetchSP500 } from '../../actions/market'
+import { createVisitIfNeeded } from '../../actions/visits'
 
 import NavBar from '../Global/Navbar/Navbar'
 import Hero from './Hero/HeroSlider'
@@ -33,6 +34,7 @@ class Home extends Component {
     actions.fetchPlanIfNeeded('entry')
     actions.fetchDJIA()
     actions.fetchSP500()
+    actions.createVisitIfNeeded()
 
     window.Intercom("boot", { app_id: "i194mpvo" })
   }
@@ -113,7 +115,8 @@ function mapDispatchToProps(dispatch) {
   const actions = {
     fetchPlanIfNeeded,
     fetchDJIA,
-    fetchSP500
+    fetchSP500,
+    createVisitIfNeeded
   }
   return { actions: bindActionCreators(actions, dispatch) }
 }

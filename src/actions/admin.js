@@ -1,5 +1,5 @@
 import { anomToken } from '../store'
-import moment from 'moment'
+// import moment from 'moment'
 export const FETCHING_USERS = 'FETCHING_USERS'
 export const RECEIVE_USERS = 'RECEIVE_USERS'
 export const FETCHING_VISITS = 'FETCHING_VISITS'
@@ -10,26 +10,6 @@ let fetchHeaders = new Headers();
 const authToken = localStorage.getItem('authtoken') ? localStorage.authtoken : anomToken
 fetchHeaders.append('Authorization', `Kinvey ${authToken}`)
 let options = { method: 'GET', headers: fetchHeaders }
-
-export function fetchVisits() {
-  return (dispatch) => {
-    dispatch(fetchingVisits())
-    fetch(`https://baas.kinvey.com/appdata/kid_rJRC6m9F/visits?query={"_kmd.ect":{"$gte": "${moment().subtract(1, 'months').format('YYYY-MM-DD')}T00:00:00.000Z"}}&sort={"_kmd.ect": 1}`, options)
-      .then(response => response.json())
-      .then(json => dispatch(receiveVisits(json)))
-  }
-}
-function fetchingVisits() { return { type: FETCHING_VISITS } }
-function receiveVisits(json) { return { type: RECEIVE_VISITS, data: json } }
-
-export function fetchVisitsCount() {
-  return (dispatch) => {
-    fetch(`https://baas.kinvey.com/appdata/kid_rJRC6m9F/visits/_count`, options)
-      .then(response => response.json())
-      .then(json => dispatch(receiveVisitsCount(json)))
-  }
-}
-function receiveVisitsCount(json) { return { type: RECEIVE_VISITS_COUNT, data: json } }
 
 export function fetchUsers() {
   return (dispatch) => {
