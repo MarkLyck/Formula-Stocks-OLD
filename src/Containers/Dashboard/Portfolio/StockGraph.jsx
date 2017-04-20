@@ -1,5 +1,5 @@
 import React from 'react'
-import LineGraph from '../../Global/Components/LineGraph/LineGraph'
+import LineGraph from '../../../components/Graphs/LineGraph/LineGraph'
 
 class StockGraph extends React.Component {
   render() {

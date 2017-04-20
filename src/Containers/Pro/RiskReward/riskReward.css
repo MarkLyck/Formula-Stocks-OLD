@@ -1,0 +1,102 @@
+@import "../../variables.css";
+
+.risk-reward {
+  .beside {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+  .chart-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    margin: 0;
+    margin-right: 32px;
+    max-width: calc(50% - 64px);
+    img {
+      height: auto;
+      width: 100%;
+      max-height: 270px;
+    }
+    .chart-indicators {
+      position: absolute;
+      top: 0;
+      right: 64px;
+      .chart-indicator {
+        background: none;
+        padding-left: 25px;
+        position: relative;
+        margin-bottom: 10px;
+        &::before {
+          content: '';
+          width: 15px;
+          height: 15px;
+          left: 0;
+          top: 50%;
+          transform: translateY(-50%);
+          background: $primary-color;
+          position: absolute;
+          z-index: 2;
+        }
+      }
+      .business::before {
+        background: #4C7899;
+      }
+      .fund::before {
+        background: $text-color;
+      }
+      .premium::before {
+        background: #6FCEE1;
+      }
+      .basic::before {
+        background: #AFD1E3;
+      }
+      .djia::before {
+        background: #989898;
+      }
+    }
+  }
+  .graph-explanation {
+    margin-top: 32px;
+
+  }
+  .right-text {
+    margin-top: 0;
+    margin-left: calc(50% + 32px);
+  }
+}
+
+@media (max-width: 940px) {
+  .professional, .retail {
+    .risk-reward {
+      .beside {
+        .disclaimer {
+          margin-left: 0;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  .professional, .retail {
+    .risk-reward {
+      .beside {
+        .chart-container {
+          position: relative;
+          margin: 16px auto;
+          order: 2;
+          max-width: 100%;
+        }
+        .right-text {
+          margin-left: 0;
+          order: 0;
+          margin-bottom: 0;
+        }
+        .disclaimer { order: 3; }
+      }
+    }
+  }
+}

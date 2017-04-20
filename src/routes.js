@@ -21,7 +21,7 @@ import AdminPanel from './Containers/Dashboard/Admin/Panel'
 import AdminAPI from './Containers/Dashboard/Admin/API'
 import Users from './Containers/Dashboard/Admin/Users/Users'
 import NewArticle from './Containers/Dashboard/Admin/NewArticle'
-import NotFound from './Containers/Global/NotFound/NotFound'
+import NotFound from './Containers/components/NotFound/NotFound'
 
 const routes = (
   <Route path="/" component={App}>

@@ -1,0 +1,30 @@
+@import "../../variables.css";
+
+.professional, .retail {
+  .bottom-cta {
+    h1 {
+      margin-bottom: 0;
+      text-align: center;
+    }
+    h3 {
+      text-align: center;
+    }
+    .to-pricing {
+      border-radius: 4px;
+      margin-top: 8px;
+      margin-bottom: 16px;
+      background: $primary-color;
+      color: #fff;
+      padding: 16px 24px;
+      &:hover {
+        background: color($primary-color lightness(-10%));
+      }
+    }
+    .not-convinced {
+      background: none;
+      color: $primary-color;
+      text-decoration: underline;
+    }
+  }
+
+}

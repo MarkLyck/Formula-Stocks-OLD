@@ -21,8 +21,8 @@ let socketURL = 'wss://formulastocks-server.tk:8080'
 
 import PortfolioGraph from './PortfolioGraph';
 import PortfolioItem from './Stock'
-import PieChart from '../../Global/Components/PieChart/PieChart'
-import Info from '../../Global/Components/Info/Info'
+import PieChart from '../../../components/Graphs/PieChart/PieChart'
+import Info from '../../../components/Info/Info'
 import Stats from './Stats'
 import YearlyReturns from './YearlyReturns'
 import './portfolio.css'

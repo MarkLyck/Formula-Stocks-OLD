@@ -9,7 +9,7 @@ import AdminPanelHeader from './Headers'
 import VisitorList from './VisitorList'
 
 import DAUGraph from './DAUGraph'
-import PieChart from '../../Global/Components/PieChart/PieChart'
+import PieChart from '../../../components/Graphs/PieChart/PieChart'
 import './styles/panel.css'
 
 class AdminPanel extends React.Component {

@@ -1,6 +1,6 @@
 /* eslint-disable */
 import React from 'react'
-import LineGraph from '../../Global/Components/LineGraph/LineGraph'
+import LineGraph from '../../../components/Graphs/LineGraph/LineGraph'
 
 class SuggestionChart extends React.Component {
   render() {

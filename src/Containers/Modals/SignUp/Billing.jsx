@@ -5,7 +5,7 @@ import store from '../../../OLD_store'
 import countries from '../../../data/countries'
 import discountCodes from '../../../data/discountCodes'
 import _ from 'underscore'
-import Terms from '../../Global/Components/Legal/TermsAndConditions'
+import Terms from '../../../components/Legal/TermsAndConditions'
 
 import './billing.css'
 

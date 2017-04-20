@@ -2,7 +2,7 @@
 import React from 'react'
 import moment from 'moment'
 import _ from 'underscore'
-import LineGraph from '../../Global/Components/LineGraph/LineGraph'
+import LineGraph from '../../../components/Graphs/LineGraph/LineGraph'
 
 class DAUGraph extends React.Component {
   render() {

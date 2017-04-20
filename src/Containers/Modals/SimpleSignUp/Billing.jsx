@@ -1,6 +1,6 @@
 import React from 'react'
 import cc from '../../../cc'
-import Terms from '../../Global/Components/Legal/TermsAndConditions'
+import Terms from '../../../components/Legal/TermsAndConditions'
 
 function formatPrice(value) {
   while(/(\d+)(\d{3})/.test(value.toString())) {

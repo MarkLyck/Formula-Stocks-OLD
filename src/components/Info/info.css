@@ -1,0 +1,74 @@
+@import "../../../variables.css";
+
+.info-circle {
+  margin-left: 8px;
+  color: #6A7885;
+  position: relative;
+  i {
+    font-size: 1rem;
+  }
+  &:hover {
+    cursor: default;
+    .explanation {
+      opacity: 1;
+      display: block;
+      width: 340px;
+      height: auto;
+      padding: 24px;
+      font-size: 1rem;
+      h3, p {
+        display: block;
+      }
+    }
+    .wide {
+      width: 440px;
+    }
+  }
+  .explanation {
+    display: none;
+    font-size: 0;
+    width: 0;
+    height: 0;
+    opacity: 0;
+    padding: 0;
+    position: absolute;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    bottom: 28px;
+    left: -20px;
+    background: #fff;
+    border-radius: 6px;
+    box-shadow: rgba(0, 0, 0, 0.14902) 0px 4px 18px;
+    transition: opacity 200ms;
+    box-sizing: border-box;
+    z-index: 3000;
+    h3 {
+      display: none;
+      color: $primary-color;
+      margin: 0;
+      margin-bottom: 8px;
+    }
+    p {
+      display: none;
+      margin: 0;
+    }
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 18px;
+      border-left: 8px solid transparent;
+      border-right: 8px solid transparent;
+      border-top: 8px solid #fff;
+    }
+  }
+  .left {
+    right: -20px;
+    left: auto;
+    &::after {
+      left: auto;
+      right: 18px;
+    }
+  }
+}

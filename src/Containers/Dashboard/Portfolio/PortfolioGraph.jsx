@@ -1,7 +1,7 @@
 import React from 'react'
 import _ from 'lodash'
 import { formatPrice } from '../helpers'
-import LineGraph from '../../Global/Components/LineGraph/LineGraph'
+import LineGraph from '../../../components/Graphs/LineGraph/LineGraph'
 
 class PortfolioGraph extends React.Component {
   render() {

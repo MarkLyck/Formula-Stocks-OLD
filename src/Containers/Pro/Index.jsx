@@ -1,23 +1,23 @@
 import React from 'react'
 import store from '../../OLD_store'
 
-import NavBar from '../Global/Navbar/Navbar'
-import Hero from '../Global/Hero/Hero'
+import NavBar from '../../components/Navbar/Navbar'
+import Hero from './Hero/Hero'
 import WhatIsIt from './WhatIsIt/WhatIsIt'
 import Probabilities from './Probabilities/Probabilities'
 import LaunchPerformance from '../Global/Performance/LaunchPerformance'
-import RiskReward from '../Global/RiskReward/RiskReward'
+import RiskReward from './RiskReward/RiskReward'
 import BacktestedPerformance from '../Global/Performance/BacktestedPerformance'
-import Pricing from '../Global/Pricing/Pricing'
-import ScatterPlot from '../Global/ScatterPlot/ScatterPlot'
-import HowWeBeatTheMarket from '../Global/HowWeBeatTheMarket/HowWeBeatTheMarket'
+import Pricing from './Pricing/Pricing'
+import ScatterPlot from './ScatterPlot/ScatterPlot'
+import HowWeBeatTheMarket from './HowWeBeatTheMarket/HowWeBeatTheMarket'
 import WhatYouGet from './WhatYouGet/WhatYouGet'
-import Comparisons from '../Global/Comparisons/Comparisons'
+import Comparisons from './Comparisons/Comparisons'
 import InstitutionalCapital from './InstitutionalCapital/InstitutionalCapital'
 import Brochure from './Brochure/Brochure'
 import AboutUs from '../Global/AboutUs/AboutUs'
 import BottomCTA from '../Global/BottomCTA/BottomCTA'
-import Footer from '../Global/Footer/Footer'
+import Footer from '../../components/Footer/Footer'
 
 
 class Professional extends React.Component {
@@ -27,9 +27,7 @@ class Professional extends React.Component {
     store.plans.get('fund').fetch()
     store.market.data.getAnnualData()
     store.market.data.getDJIAData()
-    window.Intercom("boot", {
-      app_id: "i194mpvo"
-    })
+    window.Intercom("boot", { app_id: "i194mpvo" })
   }
 
   render() {

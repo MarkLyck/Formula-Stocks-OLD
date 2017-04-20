@@ -1,0 +1,157 @@
+@import "../../variables.css";
+
+.prof-pricing {
+  padding-right: 32px;
+  padding-left: 32px;
+  .prof-plans {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 24px 0;
+    .prof-plan {
+      background: #fff;
+      border-radius: 4px;
+      display: flex;
+      flex-direction: column;
+      .top {
+        padding: 24px;
+        border-top-left-radius: 4px;
+        border-top-right-radius: 4px;
+        border: 1px solid #E4E4E4;
+        border-bottom: none;
+        border-bottom: 2px solid #eee;
+        border-bottom-color: $primary-color;
+        h3 {
+          text-transform: capitalize;
+          font-weight: bold;
+          margin: 0;
+          margin-bottom: 4px;
+        }
+        p {
+          margin-bottom: 0;
+        }
+      }
+      li {
+        display: flex;
+        align-items: center;
+        margin: 0;
+        margin-bottom: 8px;
+        p {
+          margin: 0 !important;
+        }
+      }
+
+      .right-align {
+        text-align: right;
+        margin-left: 16px !important;
+        flex-grow: 1;
+      }
+      .light-text-color {
+        color: #95989E;
+      }
+      .statistics {
+        padding: 16px 24px 8px;
+        border: 1px solid #E4E4E4;
+        border-top: none;
+        border-bottom: none;
+        box-sizing: border-box;
+        .extra {
+          display: flex;
+          margin: 0;
+          margin-bottom: 8px;
+        }
+        p {
+          margin: 0;
+          margin-bottom: 10px;
+        }
+
+      }
+      .cta {
+        width: 100%;
+        border-radius: 4px;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        padding: 24px;
+        height: auto;
+        background: $primary-color;
+        color: #fff;
+        &:hover {
+          background: color($primary-color lightness(-10%));
+        }
+      }
+    }
+    .basic {
+      .top {
+        border-bottom-color: $action-color;
+      }
+      .cta {
+        background: $action-color;
+        &:hover {
+          background: color($action-color lightness(-5%));
+        }
+      }
+    }
+    .premium {
+      margin: 0 32px;
+    }
+  }
+  .not-convinced {
+    margin: 16px 0;
+  }
+  .disclaimer {
+    margin-top: 16px;
+    text-align: center;
+  }
+  .learn-more {
+    background: $primary-color;
+    color: #fff;
+    padding: 16px 24px;
+    &:hover {
+      background: color($primary-color lightness(-10%));
+    }
+  }
+}
+
+.professional {
+  .prof-pricing {
+    .prof-plans {
+      .premium {
+        margin: 0;
+      }
+      .business {
+        margin: 0 32px;
+      }
+    }
+  }
+}
+
+
+@media (max-width: 1200px) {
+  .professional, .retail {
+    .prof-pricing {
+      .prof-plans {
+        .prof-plan {
+          margin-bottom: 32px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .professional, .retail {
+    .prof-pricing {
+      .prof-plans {
+        .premium {
+          margin-right: 0;
+          margin-left: 0;
+        }
+        .business {
+          margin-right: 0;
+          margin-left: 0;
+        }
+      }
+    }
+  }
+}

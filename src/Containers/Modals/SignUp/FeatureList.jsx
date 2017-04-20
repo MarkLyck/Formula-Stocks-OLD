@@ -1,5 +1,5 @@
 import React from 'react'
-import Info from '../../Global/Components/Info/Info'
+import Info from '../../../components/Info/Info'
 
 const FeatureList = ({ path }) => (
   <ul className="features column">

@@ -4,7 +4,7 @@ import store from '../../../OLD_store'
 
 import FeatureList from './FeatureList.jsx'
 import PlanColumn from './PlanColumn.jsx'
-import Terms from '../../Global/Components/Legal/TermsAndConditions'
+import Terms from '../../../components/Legal/TermsAndConditions'
 
 import './choosePlan.css'
 

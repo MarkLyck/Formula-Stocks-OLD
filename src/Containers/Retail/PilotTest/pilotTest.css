@@ -1,0 +1,68 @@
+@import "../../variables.css";
+
+.pilot-test {
+  .beside {
+    .left {
+      width: 100%;
+      max-width: calc(100% - 232px);
+    }
+    .right {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      align-items: center;
+      width: 100%;
+      max-width: 200px;
+      ul {
+        width: 100%;
+        margin-bottom: 8px;
+        margin-top: -16px;
+        li {
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+          border-bottom: 1px solid $text-color;
+          padding: 16px 0;
+          p {
+            margin: 0;
+          }
+          .year {
+            font-weight: 600;
+          }
+          .return {
+            color: $action-color;
+            font-weight: 600;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 720px) {
+  .retail {
+    .pilot-test {
+      .beside {
+        flex-direction: column;
+        .left {
+          width: 100%;
+          max-width: 100%;
+          order: 2;
+          margin: 0;
+        }
+        .right {
+          height: auto;
+          width: 100%;
+          max-width: 100%;
+          justify-content: center;
+          order: 1;
+          margin-bottom: 16px;
+          margin-left: 0;
+          ul {
+            max-width: 200px;
+          }
+        }
+      }
+    }
+  }
+}
