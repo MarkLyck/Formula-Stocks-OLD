@@ -1,5 +1,5 @@
 import React from 'react'
-import brochure from '../../Global/brochure.pdf'
+import brochure from '../brochure.pdf'
 
 function downloadBrochure() { window.open(brochure) }
 

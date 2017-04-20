@@ -1,7 +1,7 @@
 import React from 'react'
 import { Element } from 'react-scroll'
 import './howToBeatTheMarket.css'
-import brochure from '../../Global/brochure.pdf'
+import brochure from '../brochure.pdf'
 
 
 function downloadBrochure() {
