@@ -12,6 +12,7 @@ const initialState = {
 export default function reducer(state = initialState, action = {}) {
   switch (action.type) {
     case RECEIVE_SINGLE_VISIT:
+      localStorage.setItem('visit_ID', action.visit._id)
       return Object.assign({}, state, { visit: action.visit })
     case RECEIVE_VISITS:
       return Object.assign({}, state, { isFetching: false, visits: action.visits })

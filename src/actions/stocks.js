@@ -1,6 +1,6 @@
 import Lockr from 'lockr'
 import moment from 'moment'
-import store from '../rstore'
+import store from '../store'
 export const RECEIVE_HISTORIC_STOCK_DATA = 'RECEIVE_HISTORIC_STOCK_DATA'
 export const HISTORIC_DATA_ALREADY_EXISTS = 'HISTORIC_DATA_ALREADY_EXISTS'
 export const RECEIVE_LAST_PRICE = 'RECEIVE_LAST_PRICE'

@@ -1,4 +1,4 @@
-import { anomToken } from '../rstore'
+import { anomToken } from '../store'
 import moment from 'moment'
 export const FETCHING_USERS = 'FETCHING_USERS'
 export const RECEIVE_USERS = 'RECEIVE_USERS'

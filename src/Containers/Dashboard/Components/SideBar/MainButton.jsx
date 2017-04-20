@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { logOut } from '../../../../actions/session'
-import store from '../../../../rstore'
+import store from '../../../../store'
 
 class MainButton extends React.Component {
   select() {

@@ -1,4 +1,4 @@
-import store, { anomToken } from '../rstore'
+import store, { anomToken } from '../store'
 export const FETCHING_ARTICLES = 'FETCHING_ARTICLES'
 export const RECEIVE_ARTICLES = 'RECEIVE_ARTICLES'
 export const UPDATE_ARTICLE = 'UPDATE_ARTICLE'

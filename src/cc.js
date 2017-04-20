@@ -4,7 +4,7 @@ import $ from 'jquery'
 import _ from 'underscore'
 
 import store from './OLD_store'
-import rstore from './rstore'
+import rstore from './store'
 import countries from './data/countries'
 
 let cc = {

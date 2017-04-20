@@ -1,12 +1,12 @@
 import platform from 'platform'
 import moment from 'moment'
-import store from '../rstore'
+import store from '../store'
 
 export const RECEIVE_SINGLE_VISIT = 'RECEIVE_SINGLE_VISIT'
 export const RECEIVE_VISITS = 'RECEIVE_VISITS'
 
 export function createVisitIfNeeded() {
-  return (dispatch) => { if (!localStorage.getItem('authtoken')) { dispatch(getLocation()) } }
+  return (dispatch) => { if (!localStorage.getItem('authtoken') && !localStorage.getItem('visit_ID')) { dispatch(getLocation()) } }
 }
 
 function getLocation() {

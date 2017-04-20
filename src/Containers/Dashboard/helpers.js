@@ -1,5 +1,5 @@
 /* eslint-disable */
-import store from '../../rstore'
+import store from '../../store'
 
 export function isAllowedToView(plan) {
   const demoAccounts = [ 'demo@formulastocks.com', 'mads@m2film.dk' ]

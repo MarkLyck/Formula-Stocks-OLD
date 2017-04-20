@@ -1,7 +1,7 @@
 import React from 'react'
 import Select from 'react-select'
 import cc from '../../../cc'
-import store from '../../../rstore'
+import store from '../../../store'
 import countries from '../../../data/countries'
 import _ from 'underscore'
 

@@ -1,5 +1,5 @@
 import _ from 'lodash'
-import store from '../rstore'
+import store from '../store'
 import { browserHistory } from 'react-router'
 
 export const FETCHING_SESSION = 'FETCHING_SESSION'

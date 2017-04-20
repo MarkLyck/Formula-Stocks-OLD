@@ -1,5 +1,5 @@
 import React from 'react'
-import store from '../rstore'
+import store from '../store'
 import routes from '../routes'
 import { Provider } from 'react-redux'
 import { Router, browserHistory } from 'react-router'

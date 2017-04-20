@@ -1,4 +1,4 @@
-import store from '../rstore'
+import store from '../store'
 import _ from 'lodash'
 import { showNotification } from './notifications'
 
