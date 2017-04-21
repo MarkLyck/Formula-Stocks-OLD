@@ -1,9 +1,24 @@
 /* eslint-disable */
 import store from '../../store'
+import moment from 'moment'
 
 export function isAllowedToView(plan) {
   const demoAccounts = [ 'demo@formulastocks.com', 'mads@m2film.dk' ]
   if (demoAccounts.indexOf(store.getState().session.email) > -1) { return true }
+
+  if (store.getState().session.stripe.subscriptions) {
+    if (store.getState().session.stripe.subscriptions.data) {
+      if (store.getState().session.stripe.subscriptions.data[0]) {
+        if (store.getState().session.stripe.subscriptions.data[0].canceled_at) {
+          if (store.getState().session.stripe.subscriptions.data[0].current_period_end < moment().unix()) {
+            return false
+          }
+        }
+      }
+    }
+  }
+
+
 
   let planLevel = 1
   if (plan === 'premium') { planLevel = 2 }
