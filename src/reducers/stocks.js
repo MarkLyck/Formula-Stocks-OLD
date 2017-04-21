@@ -41,8 +41,10 @@ export default function reducer(state = initialState, action = {}) {
       action.ticker = action.ticker.replace('_', '.')
       if (!stocks[action.ticker]) { stocks[action.ticker] = {} }
 
+      let newPrice = action.price
       stocks[action.ticker].lastPrice = stocks[action.ticker] ? stocks[action.ticker].newPrice : action.price
-      stocks[action.ticker].newPrice = action.price
+      if (newPrice === stocks[action.ticker].lastPrice) { newPrice += 0.001 }
+      stocks[action.ticker].newPrice = newPrice
       stocks[action.ticker].date = new Date()
 
       Lockr.set('stocks', stocks)
