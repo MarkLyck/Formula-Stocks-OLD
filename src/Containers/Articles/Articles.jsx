@@ -29,7 +29,7 @@ class Articles extends React.Component {
   }
 
   render() {
-    const { articles, session, routeParams, actions } = this.props
+    const { articles = [], session, routeParams, actions } = this.props
     let currentArticle = articles.data.reverse()[0]
     if (routeParams.splat.length) {
       currentArticle = _.find(articles.data, (art) => art.title.toLowerCase() === routeParams.splat.split('/')[1].toLowerCase())

@@ -37,9 +37,9 @@ let cc = {
   },
   calculateTax(countryCode) {
     return new Promise((resolve, reject) => {
-      let country = _.where(countries, { value: countryCode })
-      if (country[0].taxPercent) {
-        resolve(country[0].taxPercent)
+      let country = _.find(countries, (country) => country.value === countryCode)
+      if (country.taxPercent) {
+        resolve(country.taxPercent)
       } else {
         resolve(0)
       }
