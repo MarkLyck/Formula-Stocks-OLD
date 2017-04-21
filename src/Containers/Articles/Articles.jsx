@@ -23,14 +23,10 @@ class Articles extends React.Component {
   }
 
   goHome() { browserHistory.push('/') }
-
-  toggleSideBar() {
-    this.setState({ sidebar: !this.state.sidebar })
-  }
+  toggleSideBar() { this.setState({ sidebar: !this.state.sidebar }) }
 
   render() {
     const { articlesData = [], session, routeParams, actions } = this.props
-    console.log(articlesData)
     let currentArticle = articlesData.reverse()[0]
     if (routeParams.splat.length) {
       currentArticle = _.find(articlesData, (art) => art.title.toLowerCase() === routeParams.splat.split('/')[1].toLowerCase())
