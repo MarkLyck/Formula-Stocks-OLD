@@ -9,6 +9,7 @@ import { sawSuggestions } from '../../../actions/session'
 import moment from 'moment'
 import { Link } from 'react-router'
 
+import Loader from '../../../components/Loader/Loader'
 import Suggestion from './Stock'
 import SmallStock from './SmallStock'
 import SuggestionHeader from './SuggestionsHeader'
@@ -34,7 +35,13 @@ class Suggestions extends React.Component {
 
     let suggestionsList
     if (isAllowedToView(selectedPlan)) {
-      if (!plan) { return ( <div className="suggestions"> {SuggHeader} </div> ) }
+      if (!plan.stats) {
+        return (
+        <div className="suggestions">
+          {SuggHeader}
+          <Loader/>
+        </div>)
+      }
       else if (!plan.suggestions || !plan.portfolio) { return ( <div className="suggestions"> {SuggHeader} </div> ) }
       let suggestions = []
       if (this.props.location.indexOf('trades') === -1) {

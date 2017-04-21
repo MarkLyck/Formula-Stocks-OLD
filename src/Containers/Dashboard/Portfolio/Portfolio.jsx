@@ -19,6 +19,7 @@ import io from 'socket.io-client/dist/socket.io.min'
 let socket
 let socketURL = 'wss://formulastocks-server.tk:8080'
 
+import Loader from '../../../components/Loader/Loader'
 import PortfolioGraph from './PortfolioGraph';
 import PortfolioItem from './Stock'
 import PieChart from '../../../components/Graphs/PieChart/PieChart'
@@ -154,7 +155,9 @@ class Portfolio extends React.Component {
 
   render() {
     const { plans, selectedPlan, market } = this.props
-    if (!plans.data[selectedPlan]) { return null }
+    if (!plans.data[selectedPlan]) {
+      return ( <div><Loader/></div> )
+    }
 
     // calculate up to date numbers
     let portfolioYields = plans.data[selectedPlan].portfolioYields

@@ -5,6 +5,7 @@ import { bindActionCreators } from 'redux'
 import { fetchUsers } from '../../../actions/admin'
 import { fetchVisits, fetchVisitsCount } from '../../../actions/visits'
 
+import Loader from '../../../components/Loader/Loader'
 import AdminPanelHeader from './Headers'
 import VisitorList from './VisitorList'
 
@@ -21,7 +22,23 @@ class AdminPanel extends React.Component {
 
   render() {
     const { visitsData = [], visitsCount, users = [], actions } = this.props
-    if (!visitsData.length) { return null }
+
+
+
+    if (!visitsData.length) {
+      return (
+        <div className="admin-panel">
+          <AdminPanelHeader
+              visitsCount={visitsCount}
+              users={users}
+              fetchVisitsCount={actions.fetchVisitsCount}
+              fetchUsers={actions.fetchUsers}/>
+          <Loader/>
+        </div>
+      )
+    }
+
+
     let browserColors = []
     const browsers = visitsData.reduce((prev, visitor) => {
       let foundIndex = -1
