@@ -1,6 +1,6 @@
 import platform from 'platform'
 import moment from 'moment'
-import store from '../store'
+import store, { anomToken } from '../store'
 
 export const RECEIVE_SINGLE_VISIT = 'RECEIVE_SINGLE_VISIT'
 export const RECEIVE_VISITS = 'RECEIVE_VISITS'
@@ -37,7 +37,7 @@ function createVisit(locationData = {}) {
     }
 
     const options = { method: 'POST', headers: visitHeaders, body: JSON.stringify(visit) }
-    fetch(`https://baas.kinvey.com/${store.getState().settings.appKey}/visits`, options)
+    fetch(`https://baas.kinvey.com/appdata/${store.getState().settings.appKey}/visits`, options)
       .then( (response) => response.json() )
       .then( (json) => dispatch(receiveSingleVisit(json)) )
   }
@@ -48,15 +48,16 @@ function receiveSingleVisit(visit) { return { type: RECEIVE_SINGLE_VISIT, visit:
 export function fetchVisits() {
   return (dispatch) => {
     dispatch(fetchingVisits())
+
     let visitsHeaders = new Headers()
-    let authToken = localStorage.getItem('authToken')
+    let authToken = localStorage.getItem('authToken') || anomToken
     visitsHeaders.append('Authorization', `Kinvey ${authToken}`)
     visitsHeaders.append('Content-Type', `application/json`)
     const options = { method: 'GET', headers: visitsHeaders }
 
     // Fetches all visits that's newer than 1 month
     const query = `{"_kmd.ect":{"$gte": "${moment().subtract(1, 'months').format('YYYY-MM-DD')}T00:00:00.000Z"}}&sort={"_kmd.ect": 1}`
-    fetch(`https://baas.kinvey.com/${store.getState().settings.appKey}/visits?query=${query}`, options)
+    fetch(`https://baas.kinvey.com/appdata/${store.getState().settings.appKey}/visits?query=${query}`, options)
       .then( (response) => response.json() )
       .then( (json) => dispatch(receiveVisits(json)) )
   }
@@ -67,7 +68,7 @@ function receiveVisits(visits) { return { type: RECEIVE_VISITS, visits: visits }
 export function fetchVisitsCount() {
   return (dispatch) => {
     let visitsHeaders = new Headers()
-    let authToken = localStorage.getItem('authToken')
+    let authToken = localStorage.getItem('authToken') || anomToken
     visitsHeaders.append('Authorization', `Kinvey ${authToken}`)
     visitsHeaders.append('Content-Type', `application/json`)
     const options = { method: 'GET', headers: visitsHeaders }

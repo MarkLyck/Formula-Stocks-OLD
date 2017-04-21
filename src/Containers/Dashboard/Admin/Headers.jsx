@@ -9,12 +9,8 @@ class AdminPanelHeader extends React.Component {
     this.fetchUsers = this.fetchUsers.bind(this)
   }
 
-  getVisitsCount() {
-    this.props.fetchVisitsCount()
-  }
-  fetchUsers() {
-    this.props.fetchUsers()
-  }
+  getVisitsCount() { this.props.fetchVisitsCount() }
+  fetchUsers() { this.props.fetchUsers() }
 
   render() {
     const { users = [], visitsCount } = this.props

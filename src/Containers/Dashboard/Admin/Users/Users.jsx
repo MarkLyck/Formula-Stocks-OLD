@@ -1,14 +1,14 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { fetchVisits, fetchVisitsCount, fetchUsers } from '../../../../actions/admin'
+import { fetchVisitsCount } from '../../../../actions/visits'
+import { fetchUsers } from '../../../../actions/admin'
 import UserList from './UserList'
 import Headers from '../Headers'
 
 class Users extends React.Component {
   componentDidMount() {
     this.props.actions.fetchVisitsCount()
-    this.props.actions.fetchVisits()
     this.props.actions.fetchUsers()
   }
 
@@ -26,13 +26,14 @@ class Users extends React.Component {
 }
 
 function mapStateToProps(state) {
-  const { admin } = state
-  const { users, visitsCount } = admin
+  const { admin, visits } = state
+  const { users } = admin
+  const { visitsCount } = visits
   return { users, visitsCount }
 }
 
 function mapDispatchToProps(dispatch) {
-  const actions = { fetchVisits, fetchVisitsCount, fetchUsers }
+  const actions = { fetchVisitsCount, fetchUsers }
   return { actions: bindActionCreators(actions, dispatch) }
 }
 

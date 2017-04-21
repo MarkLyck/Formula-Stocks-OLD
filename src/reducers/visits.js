@@ -20,9 +20,9 @@ export default function reducer(state = initialState, action = {}) {
     case FETCHING_VISITS:
       return Object.assign({}, state, { isFetching: true })
     case RECEIVE_VISITS:
-      return Object.assign({}, state, { isFetching: false, visits: action.visits })
+      return Object.assign({}, state, { isFetching: false, visitsData: action.visits })
     case RECEIVE_VISITS_COUNT:
-      return Object.assign({}, state, { visitsCount: action.data })
+      return Object.assign({}, state, { visitsCount: action.data.count })
     default:
       return state
   }

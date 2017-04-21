@@ -1,5 +1,5 @@
 import React from 'react'
-import SingleWinRateGraph from '../../../components/Graphs/WinRateGraph/WinRateGraph'
+import SingleWinRateGraph from '../../../components/Graphs/WinRateGraph/SingleWinRateGraph'
 import './statistics.css'
 
 const Statistics = ({ stats, info }) => {

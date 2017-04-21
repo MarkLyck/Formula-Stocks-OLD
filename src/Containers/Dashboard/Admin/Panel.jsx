@@ -20,10 +20,10 @@ class AdminPanel extends React.Component {
   }
 
   render() {
-    const { visits = [], visitsCount, users = [], actions } = this.props
-    if (!visits.length) { return null }
+    const { visitsData = [], visitsCount, users = [], actions } = this.props
+    if (!visitsData.length) { return null }
     let browserColors = []
-    const browsers = visits.reduce((prev, visitor) => {
+    const browsers = visitsData.reduce((prev, visitor) => {
       let foundIndex = -1
       if (_.find(prev, (browserType, i) => {
         foundIndex = i
@@ -47,12 +47,12 @@ class AdminPanel extends React.Component {
       return prev
     },[])
 
-    const desktop = { title: 'Desktop', value: visits.filter(visitor => visitor.device === 'desktop').length }
-    const tablet = { title: 'Tablet', value: visits.filter(visitor => visitor.product === 'iPad').length }
-    const mobile = { title: 'Mobile', value: visits.filter(visitor => visitor.device === 'mobile').length - tablet.value }
+    const desktop = { title: 'Desktop', value: visitsData.filter(visitor => visitor.device === 'desktop').length }
+    const tablet = { title: 'Tablet', value: visitsData.filter(visitor => visitor.product === 'iPad').length }
+    const mobile = { title: 'Mobile', value: visitsData.filter(visitor => visitor.device === 'mobile').length - tablet.value }
 
     const OSColors = []
-    const operatingSystems = visits.reduce((prev, visitor) => {
+    const operatingSystems = visitsData.reduce((prev, visitor) => {
       let foundIndex = -1
       if (_.find(prev, (os, i) => {
         foundIndex = i
@@ -73,7 +73,7 @@ class AdminPanel extends React.Component {
     },[])
 
     const RefererColors = []
-    const referers = visits.reduce((prev, visitor) => {
+    const referers = visitsData.reduce((prev, visitor) => {
       let foundIndex = -1
       if (_.find(prev, (referer, i) => {
         foundIndex = i
@@ -89,18 +89,20 @@ class AdminPanel extends React.Component {
 
       return referer
     })
-    .filter(referer => {
-      return referer.value > 1 ? true : false
-    })
+    .filter(referer => referer.value > 1 ? true : false)
 
     return (
       <div className="admin-panel">
-        <AdminPanelHeader visitsCount={visitsCount} users={users} fetchVisitsCount={actions.fetchVisitsCount} fetchUsers={actions.fetchUsers}/>
+        <AdminPanelHeader
+            visitsCount={visitsCount}
+            users={users}
+            fetchVisitsCount={actions.fetchVisitsCount}
+            fetchUsers={actions.fetchUsers}/>
         <div className="unqiue-visiotrs">
         </div>
         <div className="DAU-container">
           <h2>Daily Visitors</h2>
-          <DAUGraph data={visits}/>
+          <DAUGraph data={visitsData}/>
         </div>
         <div className="browsers-container">
           <h2>Visitor statistics</h2>
@@ -113,7 +115,7 @@ class AdminPanel extends React.Component {
         </div>
         <div className="user-list-container">
           <h2>Latest visitors</h2>
-          <VisitorList visitors={visits.slice(1).slice(-30).reverse()}/>
+          <VisitorList visitors={visitsData.slice(1).slice(-30).reverse()}/>
         </div>
       </div>
     )

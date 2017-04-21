@@ -1,7 +1,7 @@
 /* eslint-disable */
 
 import $ from 'jquery'
-import _ from 'underscore'
+import _ from 'lodash'
 
 import store from './OLD_store'
 import rstore from './store'
