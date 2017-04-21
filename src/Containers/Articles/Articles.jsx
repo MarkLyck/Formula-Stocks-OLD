@@ -29,10 +29,11 @@ class Articles extends React.Component {
   }
 
   render() {
-    const { articles = [], session, routeParams, actions } = this.props
-    let currentArticle = articles.data.reverse()[0]
+    const { articlesData = [], session, routeParams, actions } = this.props
+    console.log(articlesData)
+    let currentArticle = articlesData.reverse()[0]
     if (routeParams.splat.length) {
-      currentArticle = _.find(articles.data, (art) => art.title.toLowerCase() === routeParams.splat.split('/')[1].toLowerCase())
+      currentArticle = _.find(articlesData, (art) => art.title.toLowerCase() === routeParams.splat.split('/')[1].toLowerCase())
     }
 
     return (
@@ -41,7 +42,7 @@ class Articles extends React.Component {
         <div className="content" style={ this.state.sidebar ? { width: "calc(100% - 320px)" } : { width: "100%" } }>
           <Article article={currentArticle} session={session} updateArticle={actions.updateArticle}/>
         </div>
-        <SideBar location={this.props.location} articles={articles.data} article={currentArticle} toggleSideBar={this.toggleSideBar} open={this.state.sidebar}/>
+        <SideBar location={this.props.location} articles={articlesData} article={currentArticle} toggleSideBar={this.toggleSideBar} open={this.state.sidebar}/>
       </div>
     )
   }
@@ -49,7 +50,8 @@ class Articles extends React.Component {
 
 function mapStateToProps(state) {
   const { articles, session } = state
-  return { articles, session }
+  const articlesData = articles.data
+  return { articlesData, session }
 }
 
 function mapDispatchToProps(dispatch) {

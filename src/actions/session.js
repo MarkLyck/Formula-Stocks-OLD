@@ -43,7 +43,7 @@ export function setSessionItem(key, value) {
 
 export function updateUser() {
   return (dispatch) => {
-    let newSession = _.omit(store.getState().session, ['isFetching', 'loginError', 'signupError'])
+    let newSession = _.omit(store.getState().session, ['isFetching', 'loginError', 'signupError', 'signingUp'])
 
     let sessionHeaders = new Headers()
     let authToken = localStorage.getItem('authtoken')
@@ -93,7 +93,7 @@ export function createCustomer(token, planName, cycle, taxPercent, coupon) {
 function signUp(stripe) {
   return (dispatch) => {
     dispatch(signingUp())
-    const newUser = _.omit(store.getState().session, ['isFetching', 'loginError', 'signupError'])
+    const newUser = _.omit(store.getState().session, ['isFetching', 'loginError', 'signupError', 'signingUp'])
 
     const signUpHeaders = new Headers()
     signUpHeaders.append('Authorization', `Basic ${store.getState().settings.basicAuth}`)

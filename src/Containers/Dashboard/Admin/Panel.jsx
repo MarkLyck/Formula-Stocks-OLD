@@ -23,8 +23,6 @@ class AdminPanel extends React.Component {
   render() {
     const { visitsData = [], visitsCount, users = [], actions } = this.props
 
-
-
     if (!visitsData.length) {
       return (
         <div className="admin-panel">

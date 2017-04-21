@@ -5,10 +5,7 @@ export const UPDATE_ARTICLE = 'UPDATE_ARTICLE'
 export const ARTICLE_UPDATED = 'ARTICLE_UPDATED'
 export const POSTING_ARTICLE = 'POSTING_ARTICLE'
 
-let articleHeaders = new Headers();
-const authToken = localStorage.getItem('authtoken') ? localStorage.authtoken : anomToken
-articleHeaders.append('Authorization', `Kinvey ${authToken}`)
-articleHeaders.append('Content-type', `application/json`)
+
 
 
 export function fetchArticlesIfNeeded() {
@@ -24,6 +21,10 @@ export function fetchArticlesIfNeeded() {
 export function fetchArticles() {
   return (dispatch) => {
     dispatch(fetchingArticles())
+    let articleHeaders = new Headers();
+    const authToken = localStorage.getItem('authtoken') ? localStorage.authtoken : anomToken
+    articleHeaders.append('Authorization', `Kinvey ${authToken}`)
+    articleHeaders.append('Content-type', `application/json`)
     const options = { method: 'GET', headers: articleHeaders }
     fetch(`https://baas.kinvey.com/appdata/kid_rJRC6m9F/articles`, options)
       .then(response => response.json())
@@ -38,6 +39,10 @@ function receiveArticles(json) {
 
 export function updateArticle(article) {
   return (dispatch) => {
+    let articleHeaders = new Headers();
+    const authToken = localStorage.getItem('authtoken') ? localStorage.authtoken : anomToken
+    articleHeaders.append('Authorization', `Kinvey ${authToken}`)
+    articleHeaders.append('Content-type', `application/json`)
     const options = {
       method: 'PUT',
       headers: articleHeaders,
@@ -61,6 +66,11 @@ export function postArticle(markdown, title, author = store.getState().session.n
       body: markdown,
       membersOnly: membersOnly
     }
+
+    let articleHeaders = new Headers();
+    const authToken = localStorage.getItem('authtoken') ? localStorage.authtoken : anomToken
+    articleHeaders.append('Authorization', `Kinvey ${authToken}`)
+    articleHeaders.append('Content-type', `application/json`)
 
     const options = {
       method: 'POST',
@@ -94,6 +104,7 @@ function uploadImage(file, article) {
 function postToKinveyFile(file) {
   return new Promise((resolve, reject) => {
     let postToKinveyHeaders = new Headers()
+    const authToken = localStorage.getItem('authtoken') ? localStorage.authtoken : anomToken
     postToKinveyHeaders.append('Authorization', `Kinvey ${authToken}`)
     postToKinveyHeaders.append('X-Kinvey-Content-Type', file.type)
     const options = {
@@ -130,13 +141,16 @@ function putToKinveyCollection(article, fileID) {
 
     newArticle.image = { _type: 'KinveyFile', _id: fileID }
 
+    let articleHeaders = new Headers();
+    const authToken = localStorage.getItem('authtoken') ? localStorage.authtoken : anomToken
+    articleHeaders.append('Authorization', `Kinvey ${authToken}`)
+    articleHeaders.append('Content-type', `application/json`)
+
     const options = {
       method: 'PUT',
       headers: articleHeaders,
       body: JSON.stringify(newArticle)
     }
-    console.log('article id in put', article._id)
-    console.log('article in put', newArticle)
     fetch(`https://baas.kinvey.com/appdata/kid_rJRC6m9F/articles/${newArticle._id}`, options)
       .then((data) => resolve( data.json() ))
   })
@@ -144,6 +158,11 @@ function putToKinveyCollection(article, fileID) {
 
 function getFromKinveyCollection(article) {
   return new Promise((resolve, reject) => {
+    let articleHeaders = new Headers();
+    const authToken = localStorage.getItem('authtoken') ? localStorage.authtoken : anomToken
+    articleHeaders.append('Authorization', `Kinvey ${authToken}`)
+    articleHeaders.append('Content-type', `application/json`)
+
     const options = { method: 'GET', headers: articleHeaders }
     fetch(`https://baas.kinvey.com/appdata/kid_rJRC6m9F/articles/${article._id}`, options)
       .then((data) => resolve(data.json()))

@@ -1,4 +1,5 @@
 import _ from 'lodash'
+import platform from 'platform'
 
 import {
   FETCHING_SESSION,
@@ -20,7 +21,12 @@ const initialState = {
   isFetching: false,
   location: {},
   lastSeen: new Date(),
-  signingUp: false
+  signingUp: false,
+  os: platform.os.family,
+  product: platform.product,
+  browser: platform.name,
+  referer: document.referrer,
+  visits: 1
 }
 
 export default function reducer(state = initialState, action = {}) {

@@ -20,7 +20,7 @@ class Billing extends React.Component {
     this.toggleTerms = this.toggleTerms.bind(this)
     this.submit = this.submit.bind(this)
 
-    const plan = props.plan
+    const plan = props.plan || {}
     const cycle = plan.name !== 'business' || plan.name !== 'fund' ? ' monthly' : ' annually'
 
     this.state = {
