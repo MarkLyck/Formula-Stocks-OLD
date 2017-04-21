@@ -10,11 +10,19 @@ class Suggestion extends React.Component {
     this.moreInfo = this.moreInfo.bind(this)
     this.closeModal = this.closeModal.bind(this)
 
-    this.state = { fshowModal: false }
+    this.state = { fshowModal: false, useAlt: false }
   }
 
   componentDidMount() {
     this.props.fetchHistoricStockDataIfNeeded(this.props.suggestion.ticker, 120)
+  }
+
+  componentWillReceiveProps(newProps) {
+    if (newProps.stock && this.props.stock) {
+      if (newProps.stock.newPrice !== this.props.stock.newPrice) {
+        this.setState({ useAlt: !this.state.useAlt })
+      }
+    }
   }
 
   moreInfo() {
@@ -28,7 +36,18 @@ class Suggestion extends React.Component {
   }
 
   render() {
-    const { suggestion, stock } = this.props
+    const { suggestion, stock = {} } = this.props
+
+    let priceUpdate = stock.newPrice !== stock.lastPrice ? true : false
+    let lastPriceClass = 'class-checker'
+
+    if (priceUpdate) {
+      if (stock.lastPrice < stock.newPrice) {
+        lastPriceClass += !this.state.useAlt ? ' realtime-positive' : ' realtime-positive-alt'
+      } else {
+        lastPriceClass += !this.state.useAlt ? ' realtime-negative' : ' realtime-negative-alt'
+      }
+    }
 
     let allocation
     let allocationText = 'Cash allocation'
@@ -137,7 +156,7 @@ class Suggestion extends React.Component {
             </li>
             <li className={actionClass}>
               <p>Last price</p>
-              <h4 className="value">${stock.newPrice ? stock.newPrice : suggestion.suggested_price.toFixed(2)}</h4>
+              <h4 className={lastPriceClass + ' value'}>${stock.newPrice ? stock.newPrice.toFixed(2) : suggestion.suggested_price.toFixed(2)}</h4>
             </li>
             {allocationElement}
             <button className={`more-info ${actionClass}`} onClick={this.moreInfo}>More info</button>

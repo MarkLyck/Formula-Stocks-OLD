@@ -96,6 +96,70 @@
     min-width: 100px;
     margin-right: 32px;
   }
+  .realtime-positive {
+    color: $text-color;
+    animation-name: RTPOSITIVE;
+    animation-duration: 25s;
+    &::after {
+      position: relative;
+      content: '\f106';
+      font-family: "FontAwesome";
+      color: $action-color;
+      font-size: 1.25rem;
+      margin-left: 8px;
+      opacity: 0;
+      animation-name: OPACITY;
+      animation-duration: 25s;
+    }
+  }
+  .realtime-positive-alt {
+    color: $text-color;
+    animation-name: RTPOSITIVEALT;
+    animation-duration: 25s;
+    &::after {
+      position: relative;
+      content: '\f106';
+      font-family: "FontAwesome";
+      color: $action-color;
+      font-size: 1.25rem;
+      margin-left: 8px;
+      opacity: 0;
+      animation-name: OPACITYALT;
+      animation-duration: 25s;
+    }
+  }
+  .realtime-negative {
+    color: $text-color;
+    animation-name: RTNEGATIVE;
+    animation-duration: 25s;
+    &::after {
+      position: relative;
+      content: '\f107';
+      font-family: "FontAwesome";
+      color: $warning-color;
+      font-size: 1.25rem;
+      margin-left: 8px;
+      opacity: 0;
+      animation-name: OPACITY;
+      animation-duration: 25s;
+    }
+  }
+  .realtime-negative-alt {
+    color: $text-color;
+    animation-name: RTNEGATIVEALT;
+    animation-duration: 25s;
+    &::after {
+      position: relative;
+      content: '\f107';
+      font-family: "FontAwesome";
+      color: $warning-color;
+      font-size: 1.25rem;
+      margin-left: 8px;
+      opacity: 0;
+      animation-name: OPACITYALT;
+      animation-duration: 25s;
+    }
+  }
   .more-info {
     align-self: flex-end;
     position: absolute;
@@ -120,4 +184,32 @@
       border-color: #fff;
     }
   }
+}
+
+@keyframes RTPOSITIVE {
+  from { color: $action-color; }
+  to { color: $text-color; }
+}
+
+@keyframes RTNEGATIVE {
+  from {color: $warning-color; }
+  to {color: $text-color; }
+}
+@keyframes RTPOSITIVEALT {
+  from { color: $action-color; }
+  to { color: $text-color; }
+}
+
+@keyframes RTNEGATIVEALT {
+  from {color: $warning-color; }
+  to {color: $text-color; }
+}
+
+@keyframes OPACITY {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+@keyframes OPACITYALT {
+  from { opacity: 1; }
+  to { opacity: 0; }
 }

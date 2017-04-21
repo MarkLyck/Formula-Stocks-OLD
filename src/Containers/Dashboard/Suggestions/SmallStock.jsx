@@ -11,11 +11,19 @@ class SmallStock extends React.Component {
     this.renderBottom = this.renderBottom.bind(this)
     this.toggleMoreInfo = this.toggleMoreInfo.bind(this)
 
-    this.state = { expanded: false }
+    this.state = { expanded: false, useAlt: false }
+  }
+
+  componentWillReceiveProps(newProps) {
+    if (newProps.stock && this.props.stock) {
+      if (newProps.stock.newPrice !== this.props.stock.newPrice) {
+        this.setState({ useAlt: !this.state.useAlt })
+      }
+    }
   }
 
   renderBottom() {
-    const { suggestion, stock } = this.props
+    const { suggestion, stock = {} } = this.props
     if (this.state.expanded) {
       let chartArea
       let loadingColor = suggestion.action === 'SELL' ? 'white-color' : 'blue-color'

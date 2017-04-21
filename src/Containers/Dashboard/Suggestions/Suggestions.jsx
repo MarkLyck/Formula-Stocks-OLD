@@ -4,10 +4,14 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { isAllowedToView } from '../helpers'
 import { fetchPlanIfNeeded } from '../../../actions/plans'
-import { fetchHistoricStockDataIfNeeded } from '../../../actions/stocks'
+import { fetchHistoricStockDataIfNeeded, receiveRealTimeQuote, receiveAllRealTimeQuotes } from '../../../actions/stocks'
 import { sawSuggestions } from '../../../actions/session'
 import moment from 'moment'
 import { Link } from 'react-router'
+
+import io from 'socket.io-client/dist/socket.io.min'
+let socket
+let socketURL = 'wss://formulastocks-server.tk:8080'
 
 import Loader from '../../../components/Loader/Loader'
 import Suggestion from './Stock'
@@ -16,11 +20,31 @@ import SuggestionHeader from './SuggestionsHeader'
 import './suggestions.css'
 
 class Suggestions extends React.Component {
+  constructor(props) {
+    super(props)
+
+    this.state = { receivedAllQuotes: false }
+  }
+
   componentDidMount() {
     const { selectedPlan, actions } = this.props
     actions.fetchPlanIfNeeded(selectedPlan)
     actions.sawSuggestions()
+
+    socket = io.connect(socketURL)
+    socket.on(`latest_${selectedPlan}_quotes`, data => {
+      if (!this.state.receivedAllQuotes) {
+        actions.receiveAllRealTimeQuotes(data)
+        this.setState({ receivedAllQuotes: true })
+      }
+    })
+    socket.emit('getAllQuotes', true)
+    socket.on(`realtime_${selectedPlan}_quotes`, data => {
+      console.log(data)
+      actions.receiveRealTimeQuote(data)
+    })
   }
+  componentWillUnmount() { socket.disconnect() }
 
   render() {
     const { plans, selectedPlan, actions, stocks = {} } = this.props
@@ -61,7 +85,7 @@ class Suggestions extends React.Component {
                     suggestion={suggestion} i={numerator}
                     trades={this.props.location.indexOf('trades') === -1 ? false : true}
                     planName={selectedPlan}
-                    stock={stocks[suggestion.ticker] ? stocks[suggestion.ticker] : {} }
+                    stock={stocks[suggestion.ticker]}
                     fetchHistoricStockDataIfNeeded={actions.fetchHistoricStockDataIfNeeded} />
         } else {
           return <SmallStock
@@ -69,7 +93,7 @@ class Suggestions extends React.Component {
                     suggestion={suggestion} i={numerator}
                     trades={this.props.location.indexOf('trades') === -1 ? false : true}
                     planName={selectedPlan}
-                    stock={stocks[suggestion.ticker] ? stocks[suggestion.ticker] : {} }
+                    stock={stocks[suggestion.ticker]}
                     fetchHistoricStockDataIfNeeded={actions.fetchHistoricStockDataIfNeeded} />
         }
       })
@@ -119,7 +143,13 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  const actions = { fetchPlanIfNeeded, sawSuggestions, fetchHistoricStockDataIfNeeded }
+  const actions = {
+    fetchPlanIfNeeded,
+    sawSuggestions,
+    fetchHistoricStockDataIfNeeded,
+    receiveRealTimeQuote,
+    receiveAllRealTimeQuotes
+ }
   return { actions: bindActionCreators(actions, dispatch) }
 }
 
