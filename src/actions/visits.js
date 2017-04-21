@@ -37,7 +37,7 @@ function createVisit(locationData = {}) {
     }
 
     const options = { method: 'POST', headers: visitHeaders, body: JSON.stringify(visit) }
-    fetch(`https://baas.kinvey.com/appdata/${store.getState().settings.appKey}/visits`, options)
+    fetch(`https://baas.kinvey.com/appdata/kid_rJRC6m9F/visits`, options)
       .then( (response) => response.json() )
       .then( (json) => dispatch(receiveSingleVisit(json)) )
   }

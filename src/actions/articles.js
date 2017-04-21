@@ -5,9 +5,6 @@ export const UPDATE_ARTICLE = 'UPDATE_ARTICLE'
 export const ARTICLE_UPDATED = 'ARTICLE_UPDATED'
 export const POSTING_ARTICLE = 'POSTING_ARTICLE'
 
-
-
-
 export function fetchArticlesIfNeeded() {
   return (dispatch) => {
     if (store.getState().articles.length) {
