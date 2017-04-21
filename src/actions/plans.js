@@ -20,8 +20,10 @@ export function fetchPlanIfNeeded(plan) {
       dispatch(fetchPlan(plan, 'private'))
       return true
     } else if (store.getState().plans.data[plan]) {
-      dispatch({ type: "PLAN_ALREADY_EXISTS" })
-      return false
+      if (store.getState().plans.data[plan].annualData) {
+        dispatch({ type: "PLAN_ALREADY_EXISTS" })
+        return false
+      }
     }
     dispatch(fetchPlan(plan, 'public'))
   }
