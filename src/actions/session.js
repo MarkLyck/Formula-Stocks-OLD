@@ -124,7 +124,6 @@ export function signingUp() { return { type: SIGNING_UP } }
 export function signUpError(error) { return { type: SIGN_UP_ERROR, error: error } }
 
 export function logIn(username, password) {
-  console.log(store.getState())
   return (dispatch) => {
     const logInHeaders = new Headers()
     logInHeaders.append('Authorization', `Basic ${store.getState().settings.basicAuth}`)

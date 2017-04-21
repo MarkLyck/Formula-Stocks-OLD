@@ -11,9 +11,7 @@ class Userlist extends React.Component {
   }
 
   render() {
-    let sortedUsers = _.sortBy(this.props.users, (user) => {
-      return user._kmd.ect
-    }).reverse()
+    let sortedUsers = _.sortBy(this.props.users, (user) => user._kmd.ect).reverse()
 
     let userlist = sortedUsers.map((user, i) => {
       if (user.username === 'anom' || user.type === 5) { return undefined }

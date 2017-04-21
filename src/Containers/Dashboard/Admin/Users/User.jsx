@@ -58,7 +58,7 @@ class User extends React.Component {
       type = "Demo"
     } else if (this.props.user.type === 1 && this.props.user.stripe) {
       if (this.props.user.stripe.subscriptions) {
-        if (this.props.user.stripe.subscriptions.total_count) {
+        if (this.props.user.stripe.subscriptions.total_count && this.props.user.stripe.subscriptions.data) {
           if ((this.props.user.stripe.subscriptions.data[0].status !== 'trialing'
               || this.props.user.stripe.subscriptions.data[0].current_period_end < moment().unix())
               && this.props.user.type === 1) {
