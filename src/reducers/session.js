@@ -34,7 +34,16 @@ export default function reducer(state = initialState, action = {}) {
     case FETCHING_SESSION:
       return Object.assign({}, state, { isFetching: true })
     case RECEIVE_SESSION:
-      return Object.assign({}, state, { isFetching: false, signingUp: false }, action.data)
+      if (action.data._kmd) {
+        if (action.data._kmd.authtoken) { localStorage.setItem('authtoken', action.data._kmd.authtoken) }
+      }
+      if (!action.data.error) {
+        return Object.assign({}, state, { isFetching: false, signingUp: false }, action.data)
+      } else {
+        console.error(action.data.error)
+        return Object.assign({}, state, { isFetching: false, signingUp: false })
+      }
+
     case SET_SESSION_ITEM:
       state[action.key] = action.value
       return Object.assign({}, state)
@@ -52,8 +61,11 @@ export default function reducer(state = initialState, action = {}) {
       if (!action.data.error) {
         action.data.authtoken = action.data._kmd.authtoken
         localStorage.setItem('authtoken', action.data._kmd.authtoken)
+        return Object.assign({}, state, action.data)
+      } else {
+        console.error(action.data.error)
+        return Object.assign({}, state)
       }
-      return Object.assign({}, state, action.data)
     case LOG_IN_ERROR:
       return Object.assign({}, state, { loginError: action.error })
     case LOG_OUT:
