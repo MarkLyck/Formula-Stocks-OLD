@@ -6,14 +6,12 @@ import 'slick-carousel/slick/slick-theme.css'
 import '../../../libraries/typed.js'
 import './heroSlider.css'
 
-
 import img_0 from './images/achieveGoals.jpg'
 import img_1 from './images/speedster.jpg'
 import img_2 from './images/net.jpg'
 import img_3 from './images/boat.jpg'
 import img_4 from './images/family.jpg'
 import img_5 from './images/target.jpg'
-
 
 class Hero extends React.Component {
   constructor(props) {
@@ -31,7 +29,7 @@ class Hero extends React.Component {
     }
   }
 
-  componentDidMount() {
+  componentWillReceiveProps(newProps) {
     $("#subtitle").typed({
         stringsElement: $('#subtitles'),
         typeSpeed: 10,
@@ -52,7 +50,7 @@ class Hero extends React.Component {
         <h1><span className="font bold">Less risk</span></h1>
         <h1><span className="font bold">Easy to use</span></h1>
         <h1><span className="font bold">Lower costs</span></h1>
-        <h1><span className="font bold">+90% win ratio</span></h1>
+        <h1><span className="font bold">+89% win ratio</span></h1>
       </div>
     )
 

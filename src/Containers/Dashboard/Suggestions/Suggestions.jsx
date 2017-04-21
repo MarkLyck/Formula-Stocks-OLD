@@ -128,6 +128,11 @@ class Suggestions extends React.Component {
       <div className="suggestions">
         {SuggHeader}
         {suggestionsList}
+        { isAllowedToView(selectedPlan)
+          ? (<p className="disclaimer price-origin">Realtime prices are provided by
+              <a href="https://intrinio.com" target="_blank"> Intrinio</a>
+            </p>)
+          : '' }
         {lastUpdatedText}
       </div>
     )

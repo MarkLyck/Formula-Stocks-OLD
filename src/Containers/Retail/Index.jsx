@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { fetchPlanIfNeeded } from '../../actions/plans'
+import { fetchPlanIfNeeded, selectNewPlan } from '../../actions/plans'
 import { fetchDJIA, fetchSP500 } from '../../actions/market'
 import { createVisitIfNeeded } from '../../actions/visits'
 
@@ -26,11 +26,12 @@ import Footer from  '../../components/Footer/Footer'
 class Home extends Component {
   constructor(props) {
     super(props)
-
     this.calculateLaunchReturns = this.calculateLaunchReturns.bind(this)
   }
+
   componentDidMount() {
     const { actions } = this.props
+    actions.selectNewPlan('entry')
     actions.fetchPlanIfNeeded('entry')
     actions.fetchDJIA()
     actions.fetchSP500()
@@ -40,8 +41,8 @@ class Home extends Component {
   }
 
   calculateLaunchReturns() {
-    const { selectedPlan, data } = this.props
-    const plan = data[selectedPlan]
+    const { data } = this.props
+    const plan = data['entry']
 
     const launchBalance = plan.portfolioYields[0].balance
     const lastBalance = plan.portfolioYields[plan.portfolioYields.length - 1].balance
@@ -50,7 +51,7 @@ class Home extends Component {
 
   render() {
     const { selectedPlan, data, DJIA, SP500 } = this.props
-    const plan = data ? data[selectedPlan] : false
+    const plan = data ? data['entry'] : false
     const portfolioReturn = plan ? this.calculateLaunchReturns() : 450
 
     return (
@@ -116,7 +117,8 @@ function mapDispatchToProps(dispatch) {
     fetchPlanIfNeeded,
     fetchDJIA,
     fetchSP500,
-    createVisitIfNeeded
+    createVisitIfNeeded,
+    selectNewPlan
   }
   return { actions: bindActionCreators(actions, dispatch) }
 }

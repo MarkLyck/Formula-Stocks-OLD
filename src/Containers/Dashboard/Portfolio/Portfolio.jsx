@@ -226,7 +226,7 @@ class Portfolio extends React.Component {
           <div className="right">
             <div className="fs stats">
               <h3 className="fs-plan blue-color">
-                <span className="capitalize">{this.state.plan !== 'basic' ? this.state.plan : 'entry' }</span> formula
+                <span className="capitalize">{selectedPlan}</span> formula
               </h3>
               <div className="wrapper">
                 <i className="fa fa-caret-up" aria-hidden="true"></i>

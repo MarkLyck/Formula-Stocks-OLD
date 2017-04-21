@@ -4,6 +4,9 @@
   .timeStamp {
     text-align: center;
   }
+  .price-origin {
+    margin-left: 20px;
+  }
 }
 
 .suggestions-list {
