@@ -26,15 +26,16 @@ export function fetchSP500(startTrim = '1970-01-01') {
     dispatch(fetchingSP500())
     fetch(`https://www.quandl.com/api/v1/datasets/YAHOO/INDEX_GSPC.json?trim_start=${startTrim}&collapse=monthly&column=4&auth_token=6SfHcXos6YBX51kuAq8B`)
       .then(response => response.json())
-      .then(json => dispatch(receiveSP500(json)))
+      .then(json => dispatch(receiveSP500(json, startTrim)))
   }
 }
 function fetchingSP500() {
   return { type: FETCHING_SP500 }
 }
-function receiveSP500(json) {
+function receiveSP500(json, startTrim) {
   return {
     type: RECEIVE_SP500,
-    data: json
+    data: json,
+    startTrim: startTrim
   }
 }

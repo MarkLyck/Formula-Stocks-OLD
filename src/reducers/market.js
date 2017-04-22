@@ -11,7 +11,8 @@ const initialState = {
   isFetchingDJIA: false,
   isFetchingSP: false,
   DJIA: [],
-  SP500: []
+  SP500: [],
+  annualSP500: []
 }
 
 export default function reducer(state = initialState, action = {}) {
@@ -29,7 +30,11 @@ export default function reducer(state = initialState, action = {}) {
         if (i < 1) { percent = (25000 * 100) / point[1] / 100 }
         return Math.floor(percent * point[1].toFixed(0))
       })
-      return Object.assign({}, state, { isFetchingSP: false, SP500: SPData })
+      if (action.startTrim.indexOf('1970') > -1) {
+        return Object.assign({}, state, { isFetchingSP: false, annualSP500: SPData })
+      } else {
+        return Object.assign({}, state, { isFetchingSP: false, SP500: SPData })
+      }
     default:
       return state
   }

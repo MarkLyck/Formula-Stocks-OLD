@@ -50,7 +50,7 @@ class Home extends Component {
   }
 
   render() {
-    const { selectedPlan, data, DJIA, SP500 } = this.props
+    const { selectedPlan, data, DJIA, annualSP500 } = this.props
     const plan = data ? data['entry'] : false
     const portfolioReturn = plan ? this.calculateLaunchReturns() : 450
 
@@ -73,7 +73,7 @@ class Home extends Component {
         <PilotTest/>
         <SingleBacktestedPerformance
             name={selectedPlan}
-            marketData={SP500}
+            marketData={annualSP500}
             annualData={plan ? plan.annualData : []}/>
         <Statistics
           stats={plan ? plan.stats : false}
@@ -100,7 +100,7 @@ Home.propTypes = {
 function mapStateToProps(state) {
   const { plans, market } = state
   const { selectedPlan, isFetchingPlan, data } = plans
-  const { isFetchingDJIA, DJIA, SP500 } = market
+  const { isFetchingDJIA, DJIA, annualSP500 } = market
 
   return {
     selectedPlan,
@@ -108,7 +108,7 @@ function mapStateToProps(state) {
     isFetchingPlan,
     isFetchingDJIA,
     DJIA,
-    SP500
+    annualSP500
   }
 }
 
