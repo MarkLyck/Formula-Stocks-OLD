@@ -16,7 +16,7 @@ export default function reducer(state = initialState, action = {}) {
     case RECEIVE_HISTORIC_STOCK_DATA:
       action.ticker = action.ticker.replace('_', '.')
       if (!stocks[action.ticker]) { stocks[action.ticker] = {} }
-      if (!action.data.dataset) {
+      if (!action.data.dataset || action.data.quandl_error) {
         stocks[action.ticker].fetchFailed = true
         return Object.assign({}, state, stocks)
       }
