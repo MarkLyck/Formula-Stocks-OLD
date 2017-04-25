@@ -1,4 +1,5 @@
 import _ from 'lodash'
+import moment from 'moment'
 import store from '../store'
 import { browserHistory } from 'react-router'
 
@@ -31,6 +32,7 @@ export function fetchSession() {
     fetch(`https://baas.kinvey.com/user/${store.getState().settings.appKey}/_me`, options)
       .then(response => response.json())
       .then(json => dispatch( receiveSession(json) ))
+      .then(() => dispatch( updateUser() ))
   }
 }
 function receiveSession(json) {
@@ -44,6 +46,8 @@ export function setSessionItem(key, value) {
 export function updateUser() {
   return (dispatch) => {
     let newSession = _.omit(store.getState().session, ['isFetching', 'loginError', 'signupError', 'signingUp', 'error', 'debug', 'description'])
+    if (moment(newSession.lastSeen).format('YYYYMMDD') < moment().format('YYYYMMDD')) { newSession.visits++ }
+    newSession.lastSeen = new Date()
 
     let sessionHeaders = new Headers()
     let authToken = localStorage.getItem('authtoken')
@@ -139,6 +143,7 @@ export function logIn(username, password) {
         if (!json.error) {
           dispatch({ type: LOG_IN, data: json })
           browserHistory.push('/dashboard')
+          dispatch( updateUser() )
         } else {
           dispatch(logInError(json.error))
         }

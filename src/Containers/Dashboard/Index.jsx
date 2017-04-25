@@ -3,7 +3,7 @@ import { browserHistory } from 'react-router'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { selectNewPlan } from '../../actions/plans'
-import { fetchSession } from '../../actions/session'
+import { fetchSession, updateUser } from '../../actions/session'
 import Lockr from 'lockr'
 
 import Nav from './Components/Navbar/Navbar'
