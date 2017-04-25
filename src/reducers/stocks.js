@@ -16,36 +16,45 @@ export default function reducer(state = initialState, action = {}) {
     case RECEIVE_HISTORIC_STOCK_DATA:
       action.ticker = action.ticker.replace('_', '.')
       if (!stocks[action.ticker]) { stocks[action.ticker] = {} }
+      stocks[action.ticker].date = new Date()
+
       if (!action.data.dataset || action.data.quandl_error) {
         stocks[action.ticker].fetchFailed = true
+        Lockr.set('stocks', stocks)
         return Object.assign({}, state, stocks)
+      } else {
+        stocks[action.ticker].lastPrice = stocks[action.ticker] ? stocks[action.ticker].newPrice : action.data.dataset.data[0][1]
+        stocks[action.ticker].newPrice = action.data.dataset.data[0][1]
+        stocks[action.ticker].data = action.data.dataset.data
+        Lockr.set('stocks', stocks)
       }
 
-      stocks[action.ticker].date = new Date()
-      stocks[action.ticker].lastPrice = stocks[action.ticker] ? stocks[action.ticker].newPrice : action.data.dataset.data[0][1]
-      stocks[action.ticker].newPrice = action.data.dataset.data[0][1]
-      stocks[action.ticker].data = action.data.dataset.data
-
-      Lockr.set('stocks', stocks)
       return Object.assign({}, state, stocks)
     case RECEIVE_LAST_PRICE:
+      action.ticker = action.ticker.replace('_', '.')
       if (!stocks[action.ticker]) { stocks[action.ticker] = {} }
-      if (action.data.dataset) {
-        stocks[action.ticker].date = new Date()
+      stocks[action.ticker].date = new Date()
+
+      if (!action.data.dataset || action.data.quandl_error) {
+        stocks[action.ticker].fetchFailed = true
+        Lockr.set('stocks', stocks)
+        return Object.assign({}, state, stocks)
+      } else {
         stocks[action.ticker].lastPrice = stocks[action.ticker] ? stocks[action.ticker].newPrice : action.data.dataset.data[0][1]
         stocks[action.ticker].newPrice = action.data.dataset.data[0][1]
         Lockr.set('stocks', stocks)
       }
+
       return Object.assign({}, state, stocks)
     case RECEIVE_REALTIME_QUOTE:
       action.ticker = action.ticker.replace('_', '.')
       if (!stocks[action.ticker]) { stocks[action.ticker] = {} }
+      stocks[action.ticker].date = new Date()
 
       let newPrice = action.price
       stocks[action.ticker].lastPrice = stocks[action.ticker] ? stocks[action.ticker].newPrice : action.price
       if (newPrice === stocks[action.ticker].lastPrice) { newPrice += 0.001 }
       stocks[action.ticker].newPrice = newPrice
-      stocks[action.ticker].date = new Date()
 
       Lockr.set('stocks', stocks)
 
