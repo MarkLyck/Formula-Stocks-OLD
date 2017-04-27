@@ -3,7 +3,7 @@ import store from '../../store'
 import moment from 'moment'
 
 export function isAllowedToView(plan) {
-  const demoAccounts = [ 'demo@formulastocks.com', 'mads@m2film.dk' ]
+  const demoAccounts = [ 'demo@formulastocks.com', 'mads@m2film.dk' , 'falster@lp.dk', 'jmiller@ecamail.com']
   if (demoAccounts.indexOf(store.getState().session.email) > -1) { return true }
 
   if (store.getState().session.stripe.subscriptions) {
@@ -17,8 +17,6 @@ export function isAllowedToView(plan) {
       }
     }
   }
-
-
 
   let planLevel = 1
   if (plan === 'premium') { planLevel = 2 }

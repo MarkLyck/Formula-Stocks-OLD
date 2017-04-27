@@ -1,7 +1,7 @@
 /* eslint-disable */
 
 import React from 'react'
-import Scroll from 'react-scroll'
+import { Element } from 'react-scroll'
 import _ from 'underscore'
 import store from '../../../OLD_store'
 import LineGraph from '../LineGraph/LineGraph'
@@ -18,46 +18,46 @@ function formatPrice(value) {
 }
 
 class Performance extends React.Component {
-  constructor(props) {
-    super(props)
+  // constructor(props) {
+  //   super(props)
+  //
+  //   this.getData = this.getData.bind(this)
+  //   this.createChartData = this.createChartData.bind(this)
+  //   this.renderChart = this.renderChart.bind(this)
+  //
+  //   this.state = { chartData: [] }
+  // }
 
-    this.getData = this.getData.bind(this)
-    this.createChartData = this.createChartData.bind(this)
-    this.renderChart = this.renderChart.bind(this)
+  // componentDidMount() {
+  //   this.getData()
+  //   store.plans.on('update', this.getData.bind(this, 'plans'))
+  //   store.market.data.on('change', this.getData.bind(this, 'market'))
+  // }
 
-    this.state = { chartData: [] }
-  }
+  // componentWillUnmount() {
+  //   store.plans.get('basic').set('portfolioYields', [])
+  //   store.plans.get('premium').set('portfolioYields', [])
+  //   store.plans.get('business').set('portfolioYields', [])
+  //   store.plans.get('fund').set('portfolioYields', [])
+  //
+  //   store.plans.off('update', this.getData)
+  //   store.market.data.off('update', this.getData)
+  // }
 
-  componentDidMount() {
-    this.getData()
-    store.plans.on('update', this.getData.bind(this, 'plans'))
-    store.market.data.on('change', this.getData.bind(this, 'market'))
-  }
-
-  componentWillUnmount() {
-    store.plans.get('basic').set('portfolioYields', [])
-    store.plans.get('premium').set('portfolioYields', [])
-    store.plans.get('business').set('portfolioYields', [])
-    store.plans.get('fund').set('portfolioYields', [])
-
-    store.plans.off('update', this.getData)
-    store.market.data.off('update', this.getData)
-  }
-
-  getData() {
-    if (!this.state.chartData.length) {
-      const basicData = this.props.path !== '/pro' ? store.plans.get('basic').get('portfolioYields') : []
-      const premiumData = store.plans.get('premium').get('portfolioYields')
-      const businessData = store.plans.get('business').get('portfolioYields')
-      const fundData = this.props.path === '/pro' ? store.plans.get('fund').get('portfolioYields') : []
-      const marketData = store.market.data.get('djia')
-
-      if ((basicData.length && premiumData.length && businessData.length && marketData.length && this.props.path !== '/pro')
-          || (premiumData.length && businessData.length && fundData.length && marketData.length && this.props.path === '/pro')) {
-        this.createChartData(basicData, premiumData, businessData, fundData, marketData)
-      }
-    }
-  }
+  // getData() {
+  //   if (!this.state.chartData.length) {
+  //     const basicData = this.props.path !== '/pro' ? store.plans.get('basic').get('portfolioYields') : []
+  //     const premiumData = store.plans.get('premium').get('portfolioYields')
+  //     const businessData = store.plans.get('business').get('portfolioYields')
+  //     const fundData = this.props.path === '/pro' ? store.plans.get('fund').get('portfolioYields') : []
+  //     const marketData = store.market.data.get('djia')
+  //
+  //     if ((basicData.length && premiumData.length && businessData.length && marketData.length && this.props.path !== '/pro')
+  //         || (premiumData.length && businessData.length && fundData.length && marketData.length && this.props.path === '/pro')) {
+  //       this.createChartData(basicData, premiumData, businessData, fundData, marketData)
+  //     }
+  //   }
+  // }
 
   createChartData(basicData, premiumData, businessData, fundData, marketData) {
 
@@ -131,9 +131,9 @@ class Performance extends React.Component {
     this.setState({ chartData: fixedData })
   }
 
-  renderChart() {
-    if (!this.state.chartData.length) {
-      return (<div id="result-chart" className={this.state.chartClass + ' loading'}>
+  renderChart(planData, marketData) {
+    if (!planData['premium'] || !planData['business'] || !planData['fund'] || !marketData) {
+      return (<div id="result-chart" className="loading">
                 <i className="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
               </div>)
     } else {
@@ -251,14 +251,17 @@ class Performance extends React.Component {
   }
 
   render() {
-    const Element = Scroll.Element
+    const { planData, DJIA } = this.props
+
+    console.log(this.props)
+
     return (
       <section className="prof-performance section">
         <Element name="performance"/>
         <h2 className="title">Performance</h2>
         <div className="divider"/>
         <h3 className="subtitle">Unleveraged, calculated performance in %, 3 strategies since 2009 launch, with DJIA as a baseline.</h3>
-        {this.renderChart()}
+        {this.renderChart(planData, DJIA)}
       </section>
     )
   }

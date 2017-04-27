@@ -1,5 +1,9 @@
 import React from 'react'
-import store from '../../OLD_store'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { fetchPlanIfNeeded, selectNewPlan } from '../../actions/plans'
+import { fetchDJIA, fetchSP500 } from '../../actions/market'
+import { createVisitIfNeeded } from '../../actions/visits'
 
 import NavBar from '../../components/Navbar/Navbar'
 import Hero from './Hero/Hero'
@@ -22,29 +26,35 @@ import Footer from '../../components/Footer/Footer'
 
 class Professional extends React.Component {
   componentDidMount() {
-    store.plans.get('premium').fetch()
-    store.plans.get('business').fetch()
-    store.plans.get('fund').fetch()
-    store.market.data.getAnnualData()
-    store.market.data.getDJIAData()
+    const { actions } = this.props
+
+    actions.fetchPlanIfNeeded('premium')
+    actions.fetchPlanIfNeeded('business')
+    actions.fetchPlanIfNeeded('fund')
+    actions.fetchDJIA()
+    actions.fetchSP500()
+    actions.createVisitIfNeeded()
+
     window.Intercom("boot", { app_id: "i194mpvo" })
   }
 
   render() {
+    const { planData, DJIA, annualSP500 } = this.props
+
     return (
       <div id="professional" className="professional">
         <NavBar path={this.props.route.path}/>
         <Hero path={this.props.route.path}/>
         <WhatIsIt path={this.props.route.path}/>
-        <Probabilities path={this.props.route.path}/>
-        <LaunchPerformance path={this.props.route.path}/>
+        <Probabilities path={this.props.route.path} planData={planData}/>
+        <LaunchPerformance path={this.props.route.path} planData={planData} DJIA={DJIA}/>
         <RiskReward path={this.props.route.path}/>
         <HowWeBeatTheMarket path={this.props.route.path}/>
         <WhatYouGet/>
         <Comparisons path={this.props.route.path}/>
         <ScatterPlot path={this.props.route.path}/>
-        <BacktestedPerformance path={this.props.route.path}/>
-        <Pricing path={this.props.route.path}/>
+        <BacktestedPerformance path={this.props.route.path} planData={planData} annualSP500={annualSP500}/>
+        <Pricing path={this.props.route.path} planData={planData}/>
         <InstitutionalCapital/>
         <Brochure/>
         <AboutUs path={this.props.route.path}/>
@@ -56,4 +66,32 @@ class Professional extends React.Component {
   }
 }
 
-export default Professional
+function mapStateToProps(state) {
+  const { plans, market } = state
+  const { selectedPlan, isFetchingPlan, data } = plans
+  const { isFetchingDJIA, DJIA, annualSP500 } = market
+
+  const planData = data
+
+  return {
+    selectedPlan,
+    planData,
+    isFetchingPlan,
+    isFetchingDJIA,
+    DJIA,
+    annualSP500
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  const actions = {
+    fetchPlanIfNeeded,
+    fetchDJIA,
+    fetchSP500,
+    createVisitIfNeeded,
+    selectNewPlan
+  }
+  return { actions: bindActionCreators(actions, dispatch) }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Professional)

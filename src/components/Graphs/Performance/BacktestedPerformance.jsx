@@ -1,7 +1,7 @@
 /* eslint-disable */
 
 import React from 'react'
-import Scroll from 'react-scroll'
+import { Element } from 'react-scroll'
 import _ from 'underscore'
 import store from '../../../OLD_store'
 import LineGraph from '../LineGraph/LineGraph'
@@ -18,38 +18,38 @@ class BacktestedPerformance extends React.Component {
   constructor(props) {
     super(props)
 
-    this.getData = this.getData.bind(this)
-    this.createChartData = this.createChartData.bind(this)
+    // this.getData = this.getData.bind(this)
+    // this.createChartData = this.createChartData.bind(this)
     this.renderChart = this.renderChart.bind(this)
 
-    this.state = { chartData: [] }
+    // this.state = { chartData: [] }
   }
 
-  componentDidMount() {
-    this.getData()
-    store.plans.on('update', this.getData.bind(this, 'plans'))
-    store.market.data.on('change', this.getData.bind(this, 'market'))
-  }
+  // componentDidMount() {
+  //   this.getData()
+  //   store.plans.on('update', this.getData.bind(this, 'plans'))
+  //   store.market.data.on('change', this.getData.bind(this, 'market'))
+  // }
+  //
+  // componentWillUnmount() {
+  //   store.plans.off('update', this.getData)
+  //   store.market.data.off('update', this.getData)
+  // }
 
-  componentWillUnmount() {
-    store.plans.off('update', this.getData)
-    store.market.data.off('update', this.getData)
-  }
-
-  getData() {
-    if (!this.state.chartData.length) {
-      const basicData = this.props.path !== '/pro' ? store.plans.get('basic').get('annualData') : []
-      const premiumData = store.plans.get('premium').get('annualData')
-      const businessData = store.plans.get('business').get('annualData')
-      const fundData = this.props.path === '/pro' ? store.plans.get('fund').get('annualData') : []
-      const marketData = store.market.data.get('annualData')
-
-      if ((basicData.length && premiumData.length && businessData.length && marketData.length && this.props.path !== '/pro')
-          || (premiumData.length && businessData.length && fundData.length && marketData.length && this.props.path === '/pro')) {
-        this.createChartData(basicData, premiumData, businessData, fundData, marketData)
-      }
-    }
-  }
+  // getData() {
+  //   if (!this.state.chartData.length) {
+  //     const basicData = this.props.path !== '/pro' ? store.plans.get('basic').get('annualData') : []
+  //     const premiumData = store.plans.get('premium').get('annualData')
+  //     const businessData = store.plans.get('business').get('annualData')
+  //     const fundData = this.props.path === '/pro' ? store.plans.get('fund').get('annualData') : []
+  //     const marketData = store.market.data.get('annualData')
+  //
+  //     if ((basicData.length && premiumData.length && businessData.length && marketData.length && this.props.path !== '/pro')
+  //         || (premiumData.length && businessData.length && fundData.length && marketData.length && this.props.path === '/pro')) {
+  //       this.createChartData(basicData, premiumData, businessData, fundData, marketData)
+  //     }
+  //   }
+  // }
 
   createChartData(basicData, premiumData, businessData, fundData, marketData) {
 
@@ -167,13 +167,13 @@ class BacktestedPerformance extends React.Component {
     this.setState({ chartData: fixedData })
   }
 
-  renderChart() {
-    if (!this.state.chartData.length) {
-      return (<div id="result-chart" className={this.state.chartClass + ' loading'}>
+  renderChart(planData, marketData) {
+    if (!planData['premium'] || !planData['business'] || !planData['fund'] || !marketData) {
+      return (<div id="result-chart" className="loading">
                 <i className="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
               </div>)
     } else {
-
+      console.log('else');
       const preMin = Number(_.min(this.state.chartData, (point) => Number(point.premium)).premium)
       const busMin = Number(_.min(this.state.chartData, (point) => Number(point.business)).business)
       const funMin = Number(_.min(this.state.chartData, (point) => Number(point.fund)).fund)
@@ -267,14 +267,15 @@ class BacktestedPerformance extends React.Component {
   }
 
   render()  {
-    const Element = Scroll.Element
+    const { planData, annualSP500 } = this.props
+
     return (
       <section className="backtested-performance section">
         <Element name="backtested"/>
         <h2 className="title">Long-term performance</h2>
         <div className="divider"/>
         <h3 className="subtitle">Log scale graph 1970-2017</h3>
-        {this.renderChart()}
+        {this.renderChart(planData, annualSP500)}
         <p className="disclaimer">Historical numbers are based on backtested data. Since our 2009 launch we have observed similar results in real time. See our ToS for details.</p>
       </section>
     )

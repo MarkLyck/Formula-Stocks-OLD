@@ -1,29 +1,9 @@
 import React from 'react'
-import Scroll from 'react-scroll'
-import store from '../../../OLD_store'
+import { Element, Link } from 'react-scroll'
 import Product from '../Product/Product'
 import './pricing.css'
 
 class Pricing extends React.Component {
-  constructor(props) {
-    super(props)
-
-    this.updateState = this.updateState.bind(this)
-    this.state = { gotInfo: false }
-  }
-
-  updateState() {
-    this.setState({ gotInfo: true })
-  }
-
-  componentDidMount() {
-    store.plans.on('change', this.updateState)
-  }
-
-  componentWillUnmount() {
-    store.plans.off('change', this.updateState)
-  }
-
   renderDescription() {
     if (this.props.path === '/pro') {
       return (
@@ -43,8 +23,8 @@ class Pricing extends React.Component {
   }
 
   render() {
-    const Element = Scroll.Element
-    const ScrollLink = Scroll.Link
+    const { planData } = this.props
+
     return (
       <section className="prof-pricing section">
         <Element name="pricing"/>
@@ -52,15 +32,14 @@ class Pricing extends React.Component {
         <div className="divider"/>
         {this.renderDescription()}
         <div className="prof-plans">
-          {this.props.path !== '/pro' ? <Product plan={store.plans.get('basic').toJSON()} billed="Monthly" path={this.props.path}/> : ''}
-          <Product plan={store.plans.get('premium').toJSON()} billed="Monthly" path={this.props.path}/>
-          <Product plan={store.plans.get('business').toJSON()} billed="Annually" path={this.props.path}/>
-          {this.props.path === '/pro' ? <Product plan={store.plans.get('fund').toJSON()} billed="Annually" path={this.props.path}/> : ''}
+          <Product plan={planData['premium']} billed="Monthly" path={this.props.path}/>
+          <Product plan={planData['business']} billed="Annually" path={this.props.path}/>
+          <Product plan={planData['fund']} billed="Annually" path={this.props.path}/>
         </div>
         <p>All memberships include buy and sell recommendations and actively managed model portfolios.</p>
         <p className="disclaimer"><sup>*</sup>The information in the pricing tables does not represent, warrant, or guarantee any specific level of future investment performance. Historical numbers are based on backtested data. Since our 2009 launch we have observed similar results in real time. Investing always involves varying degrees of risk.</p>
         <p className="not-convinced">Not signed up yet?</p>
-        <ScrollLink className="learn-more button" to={this.props.path === '/pro' ? "brochure" : 'pilotTest'} smooth={true} offset={-100} duration={1000}>Learn more</ScrollLink>
+        <Link className="learn-more button" to={this.props.path === '/pro' ? "brochure" : 'pilotTest'} smooth={true} offset={-100} duration={1000}>Learn more</Link>
       </section>
     )
   }

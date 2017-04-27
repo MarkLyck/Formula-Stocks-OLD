@@ -40,7 +40,7 @@ class Probabilities extends React.Component {
               compared to Formula Stocks’ 92%.
             </p>
             <div className="graph-container">
-              <WinRateGraph path={this.props.path}/>
+              <WinRateGraph path={this.props.path} planData={this.props.planData}/>
             </div>
           </div>
         <p className="disclaimer">
