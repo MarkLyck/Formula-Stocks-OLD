@@ -64,7 +64,7 @@ class Stock extends React.Component {
     const { portfolioItem, stock = {}, selectedPlan } = this.props
 
     let latestPrice = stock.newPrice ? stock.newPrice : portfolioItem.latest_price
-    let priceUpdate = stock.newPrice !== stock.lastPrice ? true : false
+    let priceUpdate = stock.newPrice !== stock.lastPrice && stock.lastPrice ? true : false
 
     let costBasisPrice = portfolioItem.purchase_price - portfolioItem.dividends
 
