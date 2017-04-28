@@ -3,7 +3,6 @@
 import React from 'react'
 import { Element } from 'react-scroll'
 import _ from 'underscore'
-import store from '../../../OLD_store'
 import LineGraph from '../LineGraph/LineGraph'
 import './backtestedPerformance.css'
 
@@ -17,42 +16,18 @@ function formatPrice(value) {
 class BacktestedPerformance extends React.Component {
   constructor(props) {
     super(props)
-
-    // this.getData = this.getData.bind(this)
-    // this.createChartData = this.createChartData.bind(this)
     this.renderChart = this.renderChart.bind(this)
-
-    // this.state = { chartData: [] }
   }
 
-  // componentDidMount() {
-  //   this.getData()
-  //   store.plans.on('update', this.getData.bind(this, 'plans'))
-  //   store.market.data.on('change', this.getData.bind(this, 'market'))
-  // }
-  //
-  // componentWillUnmount() {
-  //   store.plans.off('update', this.getData)
-  //   store.market.data.off('update', this.getData)
-  // }
+  createChartData(planData, marketData) {
 
-  // getData() {
-  //   if (!this.state.chartData.length) {
-  //     const basicData = this.props.path !== '/pro' ? store.plans.get('basic').get('annualData') : []
-  //     const premiumData = store.plans.get('premium').get('annualData')
-  //     const businessData = store.plans.get('business').get('annualData')
-  //     const fundData = this.props.path === '/pro' ? store.plans.get('fund').get('annualData') : []
-  //     const marketData = store.market.data.get('annualData')
-  //
-  //     if ((basicData.length && premiumData.length && businessData.length && marketData.length && this.props.path !== '/pro')
-  //         || (premiumData.length && businessData.length && fundData.length && marketData.length && this.props.path === '/pro')) {
-  //       this.createChartData(basicData, premiumData, businessData, fundData, marketData)
-  //     }
-  //   }
-  // }
+    let premiumData = planData['premium'].annualData
+    let businessData = planData['business'].annualData
+    let fundData = planData['fund'].annualData
 
-  createChartData(basicData, premiumData, businessData, fundData, marketData) {
-
+    // let startValue = premiumData[0].balance
+    // let fundStartValue = fundData[0].balance
+    // let marketStartValue = Number(marketData[0])
 
     // Generate quarterly report
 
@@ -113,76 +88,55 @@ class BacktestedPerformance extends React.Component {
     // console.log('negative', negative);
 
 
-    let fixedData = premiumData.map((point, i) => {
+    return premiumData.map((point, i) => {
 
-      let basicBalance = 25000
       let premiumBalance = 25000
       let businessBalance = 25000
       let fundBalance = 25000
       let marketBalance = 25000
 
-      if (basicData[i]) { basicBalance = basicData[i].balance }
-      if (premiumData[i]) { premiumBalance = premiumData[i].balance }
-      if (businessData[i]) { businessBalance = businessData[i].balance }
-      if (fundData[i]) { fundBalance = fundData[i].balance }
-      if (marketData[i]) { marketBalance = marketData[i] }
-
-
-      let month = point.date.month
-      if (Number(point.date.month) <= 9) {
-        month = '0' + point.date.month
+      if (i !== 0) {
+        if (premiumData[i]) { premiumBalance = premiumData[i].balance }
+        if (businessData[i]) { businessBalance = businessData[i].balance }
+        if (fundData[i]) { fundBalance = fundData[i].balance }
+        if (marketData[i]) { marketBalance = marketData[i] }
       }
 
-      if (this.props.path !== '/pro') {
-        return {
-          basic: basicBalance,
-          premium: premiumBalance,
-          business: businessBalance,
-          market: marketBalance,
+      let month = Number(point.date.month) <= 9 ? '0' + point.date.month : point.date.month
 
-          basicBalloon: formatPrice(basicBalance),
-          premiumBalloon: formatPrice(premiumBalance),
-          businessBalloon: formatPrice(businessBalance),
-          marketBalloon: formatPrice(marketBalance),
+      return {
+        premium: premiumBalance,
+        business: businessBalance,
+        fund: fundBalance,
+        market: marketBalance,
 
-          date: `${point.date.year}-${month}-${point.date.day}`
-        }
-      } else {
-        return {
-          premium: premiumBalance,
-          business: businessBalance,
-          fund: fundBalance,
-          market: marketBalance,
+        premiumBalloon: formatPrice(premiumBalance),
+        businessBalloon: formatPrice(businessBalance),
+        fundBalloon: formatPrice(fundBalance),
+        marketBalloon: formatPrice(marketBalance),
 
-          premiumBalloon: formatPrice(premiumBalance),
-          businessBalloon: formatPrice(businessBalance),
-          fundBalloon: formatPrice(fundBalance),
-          marketBalloon: formatPrice(marketBalance),
-
-          date: `${point.date.year}-${month}-${point.date.day}`
-        }
+        date: `${point.date.year}-${month}-${point.date.day}`
       }
-
     })
-    this.setState({ chartData: fixedData })
   }
 
-  renderChart(planData, marketData) {
-    if (!planData['premium'] || !planData['business'] || !planData['fund'] || !marketData) {
+  renderChart(planData = {}, marketData = []) {
+    if (!planData['premium'] || !planData['business'] || !planData['fund'] || !marketData.length ) {
       return (<div id="result-chart" className="loading">
                 <i className="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
               </div>)
     } else {
-      console.log('else');
-      const preMin = Number(_.min(this.state.chartData, (point) => Number(point.premium)).premium)
-      const busMin = Number(_.min(this.state.chartData, (point) => Number(point.business)).business)
-      const funMin = Number(_.min(this.state.chartData, (point) => Number(point.fund)).fund)
-      const marMin = Number(_.min(this.state.chartData, (point) => Number(point.market)).market)
+      const chartData = this.createChartData(planData, marketData)
+
+      const preMin = _.min(chartData, point => point.premium).premium
+      const busMin = _.min(chartData, point => point.business).business
+      const funMin = _.min(chartData, point => point.fund).fund
+      const marMin = _.min(chartData, point => point.market).market
 
       let minimum = _.min([preMin, busMin, funMin, marMin])
       minimum = Math.floor(minimum / 50) * 50
-      let maximum = _.max(this.state.chartData, (point) => Number(point.business)).business
-      maximum = Math.ceil(maximum/10000000000) * 10000000000
+      let maximum = _.max(chartData, point => point.business).business
+      maximum = Math.ceil(maximum / 10000000000) * 10000000000
 
       const graphs = [
             {
@@ -252,9 +206,9 @@ class BacktestedPerformance extends React.Component {
             }
           ]
       return (
-        <div id="result-chart" className={this.state.chartClass}>
+        <div id="result-chart">
           <LineGraph graphs={graphs}
-                     data={this.state.chartData}
+                     data={chartData}
                      unit="$"
                      axisAlpha={0.5}
                      maximum={maximum}

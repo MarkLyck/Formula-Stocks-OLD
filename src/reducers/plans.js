@@ -19,6 +19,7 @@ export default function reducer(state = initialState, action = {}) {
     case FETCHING_PLAN:
       return Object.assign({}, state, { isFetchingPlan: true })
     case RECEIVE_PLAN:
+      console.log('receive', action)
       let newData = state.data
       if (!newData[action.plan]) {
         newData[action.plan] = action.data

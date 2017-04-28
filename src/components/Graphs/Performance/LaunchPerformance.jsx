@@ -2,8 +2,7 @@
 
 import React from 'react'
 import { Element } from 'react-scroll'
-import _ from 'underscore'
-import store from '../../../OLD_store'
+import _ from 'lodash'
 import LineGraph from '../LineGraph/LineGraph'
 import './launchPerformance.css'
 
@@ -18,144 +17,63 @@ function formatPrice(value) {
 }
 
 class Performance extends React.Component {
-  // constructor(props) {
-  //   super(props)
-  //
-  //   this.getData = this.getData.bind(this)
-  //   this.createChartData = this.createChartData.bind(this)
-  //   this.renderChart = this.renderChart.bind(this)
-  //
-  //   this.state = { chartData: [] }
-  // }
-
-  // componentDidMount() {
-  //   this.getData()
-  //   store.plans.on('update', this.getData.bind(this, 'plans'))
-  //   store.market.data.on('change', this.getData.bind(this, 'market'))
-  // }
-
-  // componentWillUnmount() {
-  //   store.plans.get('basic').set('portfolioYields', [])
-  //   store.plans.get('premium').set('portfolioYields', [])
-  //   store.plans.get('business').set('portfolioYields', [])
-  //   store.plans.get('fund').set('portfolioYields', [])
-  //
-  //   store.plans.off('update', this.getData)
-  //   store.market.data.off('update', this.getData)
-  // }
-
-  // getData() {
-  //   if (!this.state.chartData.length) {
-  //     const basicData = this.props.path !== '/pro' ? store.plans.get('basic').get('portfolioYields') : []
-  //     const premiumData = store.plans.get('premium').get('portfolioYields')
-  //     const businessData = store.plans.get('business').get('portfolioYields')
-  //     const fundData = this.props.path === '/pro' ? store.plans.get('fund').get('portfolioYields') : []
-  //     const marketData = store.market.data.get('djia')
-  //
-  //     if ((basicData.length && premiumData.length && businessData.length && marketData.length && this.props.path !== '/pro')
-  //         || (premiumData.length && businessData.length && fundData.length && marketData.length && this.props.path === '/pro')) {
-  //       this.createChartData(basicData, premiumData, businessData, fundData, marketData)
-  //     }
-  //   }
-  // }
-
-  createChartData(basicData, premiumData, businessData, fundData, marketData) {
-
-    // basicData = basicData.slice(-13)
-    // premiumData = premiumData.slice(-13)
-    // businessData = businessData.slice(-13)
-    // fundData = fundData.slice(-13)
-    // marketData = marketData.slice(-13)
-
-    // let basStartValue = basicData[0] ? basicData[0].balance : 0
-    // let preStartValue = premiumData[0].balance
-    // let busStartValue = businessData[0].balance
-    // let funStartValue = fundData[0].balance
-    // let marStartValue = marketData[0]
-
-    let startValue = premiumData[0].balance
-    let marketStartValue = Number(marketData[0])
-
-    let fixedData = premiumData.map((point, i) => {
-
-      let basicBalance = 0
-      let fundBalance = 0
-
-      if (basicData[i]) { basicBalance = ((basicData[i].balance - startValue) / startValue * 100).toFixed(2) }
-      const premiumBalance = ((premiumData[i].balance - startValue) / startValue * 100).toFixed(2)
-      const businessBalance = ((businessData[i].balance - startValue) / startValue * 100).toFixed(2)
-      if (fundData[i]) { fundBalance = ((fundData[i].balance - startValue) / startValue * 100).toFixed(2) }
-      const marketBalance = ((Number(marketData[i]) - marketStartValue) / marketStartValue * 100).toFixed(2)
-
-      // if (basicData[i]) { basicBalance = ((basicData[i].balance - startValue) / startValue * 100).toFixed(2) }
-      // const premiumBalance = ((premiumData[i].balance - preStartValue) / preStartValue * 100).toFixed(2)
-      // const businessBalance = ((businessData[i].balance - busStartValue) / busStartValue * 100).toFixed(2)
-      // if (fundData[i]) { fundBalance = ((fundData[i].balance - funStartValue) / funStartValue * 100).toFixed(2) }
-      // const marketBalance = ((Number(marketData[i]) - marketStartValue) / marketStartValue * 100).toFixed(2)
-
-      let month = point.date.month
-      if (Number(point.date.month) <= 9) {
-        month = '0' + point.date.month
-      }
-
-      if (this.props.path !== '/pro') {
-        return {
-          basic: basicBalance,
-          premium: premiumBalance,
-          business: businessBalance,
-          market: marketBalance,
-
-          basicBalloon: formatPrice(basicBalance),
-          premiumBalloon: formatPrice(premiumBalance),
-          businessBalloon: formatPrice(businessBalance),
-          marketBalloon: formatPrice(marketBalance),
-
-          date: `${point.date.year}-${month}-${point.date.day}`
-        }
-      } else {
-        return {
-          premium: premiumBalance,
-          business: businessBalance,
-          fund: fundBalance,
-          market: marketBalance,
-
-          premiumBalloon: formatPrice(premiumBalance),
-          businessBalloon: formatPrice(businessBalance),
-          fundBalloon: formatPrice(fundBalance),
-          marketBalloon: formatPrice(marketBalance),
-
-          date: `${point.date.year}-${month}-${point.date.day}`
-        }
-      }
-    })
-    this.setState({ chartData: fixedData })
+  constructor(props) {
+    super(props)
+    this.renderChart = this.renderChart.bind(this)
   }
 
-  renderChart(planData, marketData) {
-    if (!planData['premium'] || !planData['business'] || !planData['fund'] || !marketData) {
+  createChartData(planData, marketData) {
+
+    let premiumData = planData['premium'].portfolioYields
+    let businessData = planData['business'].portfolioYields
+    let fundData = planData['fund'].portfolioYields
+
+    let startValue = premiumData[0].balance
+    let fundStartValue = fundData[0].balance
+    let marketStartValue = Number(marketData[0])
+
+    return premiumData.map((point, i) => {
+
+      const premiumBalance = ((premiumData[i].balance - startValue) / startValue * 100).toFixed(2)
+      const businessBalance = ((businessData[i].balance - startValue) / startValue * 100).toFixed(2)
+      const fundBalance = ((fundData[i].balance - fundStartValue) / fundStartValue * 100).toFixed(2)
+      const marketBalance = ((Number(marketData[i]) - marketStartValue) / marketStartValue * 100).toFixed(2)
+
+      const month = Number(point.date.month) <= 9 ? '0' + point.date.month : point.date.month
+
+      return {
+        premium: Number(premiumBalance),
+        business: Number(businessBalance),
+        fund: Number(fundBalance),
+        market: Number(marketBalance),
+
+        premiumBalloon: formatPrice(premiumBalance),
+        businessBalloon: formatPrice(businessBalance),
+        fundBalloon: formatPrice(fundBalance),
+        marketBalloon: formatPrice(marketBalance),
+
+        date: `${point.date.year}-${month}-${point.date.day}`
+      }
+    })
+  }
+
+  renderChart(planData = {}, marketData = []) {
+    if (!planData['premium'] || !planData['business'] || !planData['fund'] || !marketData.length) {
       return (<div id="result-chart" className="loading">
                 <i className="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
               </div>)
     } else {
+      const chartData = this.createChartData(planData, marketData)
 
-
-      const basMin = Number(_.min(this.state.chartData, (point) => Number(point.basic)).basic)
-      const preMin = Number(_.min(this.state.chartData, (point) => Number(point.premium)).premium)
-      const busMin = Number(_.min(this.state.chartData, (point) => Number(point.business)).business)
-      const funMin = Number(_.min(this.state.chartData, (point) => Number(point.fund)).fund)
-      const marMin = Number(_.min(this.state.chartData, (point) => Number(point.market)).market)
+      const preMin = _.minBy(chartData, point => point.premium).premium
+      const busMin = _.minBy(chartData, point => point.business).business
+      const funMin = _.minBy(chartData, point => point.fund).fund
+      const marMin = _.minBy(chartData, point => point.market).market
 
       let minimum = _.min([preMin, busMin, funMin, marMin])
       minimum = Math.floor(minimum / 50) * 50
-
-      let maximum = _.max(this.state.chartData, (point) => Number(point.business)).business
-      if (this.props.path === '/pro') {
-        let funMaximum = _.max(this.state.chartData, (point) => Number(point.fund)).fund
-
-        if (funMaximum > maximum) { maximum = funMaximum }
-      }
-
-      maximum = Math.ceil(maximum/100) * 100
+      let maximum = _.maxBy(chartData, point => point.business).business
+      maximum = Math.ceil(maximum / 100) * 100
 
       const graphs = [
             {
@@ -171,19 +89,6 @@ class Performance extends React.Component {
               useLineColorForBulletBorder: true,
               valueField: "market",
               "balloonText": "<div class=\"chart-balloon\"><span class=\"plan-name market-name\">DJIA</span><span class=\"balloon-value\">[[marketBalloon]]</span></div>",
-            },
-            {
-              id: "basic",
-              lineColor: "#49494A",
-              bullet: "square",
-              bulletBorderAlpha: 1,
-              bulletColor: "#49494A",
-              bulletSize: 5,
-              hideBulletsCount: 10,
-              lineThickness: 2,
-              useLineColorForBulletBorder: true,
-              valueField: "basic",
-              balloonText: "<div class=\"chart-balloon\"><span class=\"plan-name\">Basic</span><span class=\"balloon-value\">[[basicBalloon]]</span></div>"
             },
             {
               id: "premium",
@@ -229,17 +134,15 @@ class Performance extends React.Component {
             }
           ]
       return (
-        <div id="result-chart" className={this.state.chartClass}>
+        <div id="result-chart">
           <div className="chart-indicators">
-
             <div className="chart-indicator business">Business</div>
-            {this.props.path === '/pro' ? <div className="chart-indicator fund">Fund</div> : ''}
+            <div className="chart-indicator fund">Fund</div>
             <div className="chart-indicator premium">Premium</div>
-            {this.props.path !== '/pro' ? <div className="chart-indicator fund">Basic</div> : ''}
             <div className="chart-indicator djia">DJIA</div>
           </div>
           <LineGraph graphs={graphs}
-                     data={this.state.chartData}
+                     data={chartData}
                      unit="%"
                      unitPosition="right"
                      axisAlpha={0.5}
@@ -252,8 +155,6 @@ class Performance extends React.Component {
 
   render() {
     const { planData, DJIA } = this.props
-
-    console.log(this.props)
 
     return (
       <section className="prof-performance section">

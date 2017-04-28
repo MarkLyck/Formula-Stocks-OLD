@@ -37,8 +37,6 @@ const Product = ({ plan = {}, billed, path }) => {
   let ctaText = plan.name === 'basic' ? 'Start your free month' : 'Sign Up'
   let prefix = path === '/pro' ? '/pro' : ''
 
-  console.log(plan)
-
   const expectancy = ((plan.stats.WLRatio / 100) * plan.info.avgGainPerPosition) - (-(plan.stats.WLRatio / 100 - 1) * plan.info.avgLossPerPosition)
 
   return (
