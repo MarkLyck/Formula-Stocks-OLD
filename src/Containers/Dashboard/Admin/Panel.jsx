@@ -117,7 +117,7 @@ class AdminPanel extends React.Component {
         </div>
         <div className="DAU-container">
           <h2>Daily Visitors</h2>
-          <DAUGraph data={visitsData}/>
+          <DAUGraph data={visitsData} users={users}/>
         </div>
         <div className="browsers-container">
           <h2>Visitor statistics</h2>

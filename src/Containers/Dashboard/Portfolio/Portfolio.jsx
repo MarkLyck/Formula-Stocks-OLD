@@ -163,22 +163,25 @@ class Portfolio extends React.Component {
     if (portfolioYields.length) {
       if (portfolioYields[portfolioYields.length - 1].date.day !== moment().format('DD')
         || portfolioYields[portfolioYields.length - 1].date.month !== moment().format('M')) {
+
         let portfolio = plans.data[selectedPlan].portfolio || []
         let stocks = Lockr.get('stocks')
         let newBalance = 0
 
         portfolio.forEach(stock => {
           if (stock.ticker !== 'CASH') {
-            let lastPrice = stock.latest_price
+            let newestPrice = stock.latest_price
             if (stocks[stock.ticker]) {
-              if (stocks[stock.ticker].lastPrice) {
-                lastPrice = stocks[stock.ticker].lastPrice
+              if (stocks[stock.ticker].newPrice) {
+                newestPrice = stocks[stock.ticker].newPrice
               }
             }
-            newBalance += lastPrice * stock.number_held
+            const dividends = stock.dividends * stock.number_held
+            newBalance += newestPrice * stock.number_held + dividends
           }
         })
         newBalance += portfolioYields[portfolioYields.length - 1].cash
+
         portfolioYields = portfolioYields.concat({
           balance: Number(newBalance.toFixed(0)),
           cash: portfolioYields[portfolioYields.length - 1].cash,
