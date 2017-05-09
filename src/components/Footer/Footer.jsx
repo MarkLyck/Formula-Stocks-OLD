@@ -72,7 +72,7 @@ class Footer extends React.Component {
           <img className="headquarters" src={House} alt="headquarters"/>
           <div className="contact-info">
             <p>Contact us at: <a href="mailto:info@formulastocks.com">info@formulastocks.com</a></p>
-            <p>© Formula Stocks 2017 - All rights reserved.</p>
+            <p>© Formula Stocks ApS 2017 - All rights reserved.</p>
           </div>
         </div>
       </footer>

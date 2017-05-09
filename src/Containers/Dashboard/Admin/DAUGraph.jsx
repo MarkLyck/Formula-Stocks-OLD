@@ -17,7 +17,8 @@ class DAUGraph extends React.Component {
     }
 
     // gets signup dates from all users
-    let signUpDays = _.countBy(users, user => moment(user._kmd.ect).format('YYYY-MM-DD') )
+    let signUpDays = _.countBy( users, user => moment(user._kmd.ect).format('YYYY-MM-DD') )
+    let cancelDays = _.countBy( users, user => moment.unix(_.get(user, 'stripe.subscriptions.data[0].canceled_at')).format('YYYY-MM-DD') )
 
     const chartData = data.reduce((prev, curr) => {
       if (prev[prev.length - 1]) {
@@ -27,8 +28,9 @@ class DAUGraph extends React.Component {
         }
       }
       const signUps = signUpDays[moment(curr._kmd.ect).format('YYYY-MM-DD')] ? signUpDays[moment(curr._kmd.ect).format('YYYY-MM-DD')] : 0
+      const cancelations = cancelDays[moment(curr._kmd.ect).format('YYYY-MM-DD')] ? cancelDays[moment(curr._kmd.ect).format('YYYY-MM-DD')] : 0
 
-      prev = prev.concat({ visitors: 1, date: moment(curr._kmd.ect).format('YYYY-MM-DD'), signUps: signUps })
+      prev = prev.concat({ visitors: 1, date: moment(curr._kmd.ect).format('YYYY-MM-DD'), signUps: signUps, cancelations: cancelations })
       return prev
     }, [])
 
@@ -47,7 +49,19 @@ class DAUGraph extends React.Component {
         "fillAlphas": 1,
         "type": "column",
         "valueField": "signUps",
-      }]
+      },
+      {
+        "alphaField": "alpha",
+        "balloonText": `<div class="suggestion-balloon"><p class="ticker">cancelled:</p> <p>[[value]]</p></div>`,
+        lineColor: '#EC1B5F',
+        "fillAlphas": 0.5,
+        "clustered": false,
+        "columnWidth": 0.5,
+        "type": "column",
+        "valueField": "cancelations",
+      },
+
+    ]
 
     return (<div id="portfolio-item-chart">
               <LineGraph data={chartData} graphs={graphs}/>
