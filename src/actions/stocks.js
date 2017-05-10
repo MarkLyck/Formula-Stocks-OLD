@@ -11,6 +11,7 @@ export const RECEIVE_ALL_REALTIME_QUOTES = 'RECEIVE_ALL_REALTIME_QUOTES'
 
 
 export function fetchHistoricStockDataIfNeeded(ticker, limit) {
+  console.log('fetchHistoricStockDataIfNeeded');
   let stocks = Lockr.get('stocks')
   return (dispatch) => {
     let shouldFetch = true
@@ -25,6 +26,7 @@ export function fetchHistoricStockDataIfNeeded(ticker, limit) {
         dispatch({ type: INVALID_QUANDL_CODE, ticker: ticker })
       }
     }
+    console.log('should fetch historic data, ', shouldFetch)
     if (shouldFetch) { dispatch(fetchHistoricStockData(ticker, limit)) }
   }
 }

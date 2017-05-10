@@ -57,6 +57,13 @@ class Stock extends React.Component {
       return <StockGraph stock={portfolioItem} data={[]} isLoading={false} />
     }
 
+    // FIXME this will run unnecasarilly in weekends and holidays!
+    if (stock.data) {
+      if (Number(stock.data[0][0].split('-').join('')) < Number(moment(stock.date).format('YYYYMMDD') - 1) ) {
+        this.props.fetchHistoricStockDataIfNeeded(portfolioItem.ticker, daysToFetch)
+      }
+    }
+
     return <StockGraph stock={portfolioItem} data={stock.data} isLoading={startLoading} />
   }
 

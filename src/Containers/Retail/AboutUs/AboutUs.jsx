@@ -96,7 +96,7 @@ const AboutUs = React.createClass({
               decisionmakers, artificial intelligence capable of portfolio construction, active portfolio management, risk/reward
               management.
             </p>
-            <p>Address: Ribe Landevej 39, DK-6100 Haderslev. Denmark</p>
+            <p>Address: Formula Stocks ApS | Ribe Landevej 39, DK-6100 Haderslev. Denmark</p>
             <p>Contact us at: <a href="mailto:info@formulastocks.com">info@formulastocks.com</a></p>
           </div>
 
