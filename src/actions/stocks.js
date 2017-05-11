@@ -9,17 +9,17 @@ export const LAST_PRICE_ALREADY_EXISTS = 'LAST_PRICE_ALREADY_EXISTS'
 export const RECEIVE_REALTIME_QUOTE = 'RECEIVE_REALTIME_QUOTE'
 export const RECEIVE_ALL_REALTIME_QUOTES = 'RECEIVE_ALL_REALTIME_QUOTES'
 
-
 export function fetchHistoricStockDataIfNeeded(ticker, limit) {
-  console.log('fetchHistoricStockDataIfNeeded');
   let stocks = Lockr.get('stocks')
   return (dispatch) => {
     let shouldFetch = true
     if (stocks[ticker]) {
       if (moment(stocks[ticker].date).format('DDMMYYYY') === moment().format('DDMMYYYY') && stocks[ticker].data) {
         if (stocks[ticker].data.length >= limit) {
-          shouldFetch = false
-          dispatch({ type: HISTORIC_DATA_ALREADY_EXISTS, ticker: ticker })
+          if (Number(stocks[ticker].data[0][0].split('-').join('')) > Number(moment(stocks[ticker].date).format('YYYYMMDD') - 1) ) {
+            shouldFetch = false
+            dispatch({ type: HISTORIC_DATA_ALREADY_EXISTS, ticker: ticker })
+          }
         }
       } else if (stocks[ticker].fetchFailed) {
         shouldFetch = false

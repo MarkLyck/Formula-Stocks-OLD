@@ -40,7 +40,6 @@ class Suggestions extends React.Component {
     })
     socket.emit('getAllQuotes', true)
     socket.on(`realtime_${selectedPlan}_quotes`, data => {
-      console.log(data)
       actions.receiveRealTimeQuote(data)
     })
   }
@@ -97,11 +96,7 @@ class Suggestions extends React.Component {
                     fetchHistoricStockDataIfNeeded={actions.fetchHistoricStockDataIfNeeded} />
         }
       })
-      suggestionsList = (
-        <ul className="suggestions-list">
-          {suggestions}
-        </ul>
-      )
+      suggestionsList = (<ul className="suggestions-list">{suggestions}</ul>)
     } else {
       suggestionsList = (
         <section className="no-permissions">
