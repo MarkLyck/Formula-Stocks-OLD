@@ -10,7 +10,7 @@ class PortfolioGraph extends React.Component {
     let startValue
     let marketStartValue
 
-    if (portfolioYields.length && marketData.length) {
+    if (portfolioYields.length) {
       startValue = portfolioYields[0].balance
     } else {
       return (<div id="portfolio-chart" className="loading">
@@ -33,7 +33,7 @@ class PortfolioGraph extends React.Component {
     })
 
     const fsMin = _.minBy(fixedData, (point) => point.fs).fs
-    const marketMin = _.minBy(fixedData, (point) => point.market).market
+    const marketMin = fixedData[0].market ? _.minBy(fixedData, (point) => point.market).market : 0
 
     let minimum = _.min([Number(fsMin), marketMin])
     minimum = Math.floor(minimum)

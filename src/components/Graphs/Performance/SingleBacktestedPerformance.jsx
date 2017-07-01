@@ -23,7 +23,7 @@ class BacktestedPerformance extends React.Component {
   }
 
 
-  createChartData(data, marketData) {
+  createChartData(data = [], marketData = []) {
     let fixedData = data.map((point, i) => {
 
       let balance = 25000
@@ -51,33 +51,20 @@ class BacktestedPerformance extends React.Component {
 
   renderChart() {
     const { annualData = [], marketData = [] } = this.props
-    if (!annualData.length || !marketData.length) {
+    if (!annualData.length) {
       return (<div id="result-chart" className="loading">
                 <i className="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
               </div>)
     } else {
       const chartData = this.createChartData(annualData, marketData)
       const fsMin =  _.minBy(chartData, point => point.fs).fs
-      const marMin = _.minBy(chartData, point => point.market).market
+      const marMin = chartData[0].market ? _.minBy(chartData, point => point.market).market : 0
 
       let minimum = Math.floor(_.min([fsMin, marMin]) / 10) * 10
       let maximum = _.maxBy(chartData, point => point.fs).fs
       maximum = Math.ceil(maximum / 120000000) * 120000000
 
-      const graphs = [
-            {
-              id: "market",
-              lineColor: "#989898",
-              bullet: "square",
-              bulletBorderAlpha: 1,
-              bulletColor: "#989898",
-              bulletSize: 5,
-              hideBulletsCount: 10,
-              lineThickness: 2,
-              useLineColorForBulletBorder: true,
-              valueField: "market",
-              "balloonText": "<div class=\"chart-balloon\"><span class=\"plan-name market-name\">S&P500</span><span class=\"balloon-value\">$[[marketBalloon]]</span></div>",
-            },
+      let graphs = [
             {
               id: 'backtested',
               lineColor: "#27A5F9",
@@ -92,6 +79,23 @@ class BacktestedPerformance extends React.Component {
               "balloonText": `<div class=\"chart-balloon\"><span class=\"plan-name\">${this.props.name}</span><span class=\"balloon-value\">$[[fsBalloon]]</span></div>`,
             }
           ]
+  
+      if (marketData.length) {
+        graphs.unshift({
+          id: "market",
+          lineColor: "#989898",
+          bullet: "square",
+          bulletBorderAlpha: 1,
+          bulletColor: "#989898",
+          bulletSize: 5,
+          hideBulletsCount: 10,
+          lineThickness: 2,
+          useLineColorForBulletBorder: true,
+          valueField: "market",
+          "balloonText": "<div class=\"chart-balloon\"><span class=\"plan-name market-name\">S&P500</span><span class=\"balloon-value\">$[[marketBalloon]]</span></div>",
+        })
+      }
+
       return (
         <div id="result-chart">
           <div className="chart-indicators">

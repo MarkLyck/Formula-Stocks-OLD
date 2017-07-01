@@ -16,7 +16,7 @@ const initialState = {
 }
 
 export default function reducer(state = initialState, action = {}) {
-  const data = action.data ? action.data.data : []
+  const data = action.data && action.data.data ? action.data.data : []
   switch (action.type) {
     case FETCHING_DJIA:
       return Object.assign({}, state, { isFetchingDJIA: true })

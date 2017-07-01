@@ -25,9 +25,9 @@ class Performance extends Component {
   }
 
   createChartData(data, marketData) {
-    if (data.length && marketData.length) {
+    if (data.length) {
       let startValue = data[0].balance
-      let marketStartValue = Number(marketData[0])
+      let marketStartValue = Number(marketData[0]) || 0
 
       let fixedData = data.map((point, i) => {
         const balance = ((data[i].balance - startValue) / startValue * 100).toFixed(2)
@@ -36,7 +36,7 @@ class Performance extends Component {
         let month = Number(point.date.month) > 9 ? point.date.month : '0' + point.date.month
 
         return {
-          market: Number(marketBalance),
+          market: Number(marketBalance) || 0,
           fs: Number(balance),
           fsBalloon: formatPrice(balance),
           marketBalloon: formatPrice(marketBalance),
@@ -50,33 +50,20 @@ class Performance extends Component {
 
   renderChart() {
     const { portfolioYields = [], marketData = [] } = this.props
-    if (!portfolioYields.length || !marketData.length) {
+    if (!portfolioYields.length) {
       return (<div id="result-chart" className="loading">
                 <i className="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
               </div>)
     } else {
       const chartData = this.createChartData(portfolioYields, marketData)
+
       const fsMin = _.minBy(chartData, point => point.fs).fs
-      const marMin = _.minBy(chartData, point => point.market).market
+      const marMin = chartData[0].market ? _.minBy(chartData, point => point.market).market : 0;
 
       let minimum = Math.floor( _.min([fsMin, marMin]) / 10) * 10
       let maximum = Math.ceil(_.maxBy(chartData, point => point.fs).fs / 20) * 20
 
-      const graphs = [
-            {
-              id: "market",
-              lineColor: "#989898",
-
-              bullet: "square",
-              bulletBorderAlpha: 1,
-              bulletColor: "#989898",
-              bulletSize: 5,
-              hideBulletsCount: 10,
-              lineThickness: 2,
-              useLineColorForBulletBorder: true,
-              valueField: "market",
-              "balloonText": "<div class=\"chart-balloon\"><span class=\"plan-name market-name\">DJIA</span><span class=\"balloon-value\">[[marketBalloon]]</span></div>",
-            },
+      let graphs = [
             {
               id: "launch",
               lineColor: "#27A5F9",
@@ -92,6 +79,22 @@ class Performance extends Component {
               "balloonText": `<div class=\"chart-balloon\"><span class=\"plan-name\">${this.props.name}</span><span class=\"balloon-value\">[[fsBalloon]]</span></div>`,
             }
           ]
+      if (marketData.length) {
+        graphs.unshift({
+          id: "market",
+          lineColor: "#989898",
+
+          bullet: "square",
+          bulletBorderAlpha: 1,
+          bulletColor: "#989898",
+          bulletSize: 5,
+          hideBulletsCount: 10,
+          lineThickness: 2,
+          useLineColorForBulletBorder: true,
+          valueField: "market",
+          "balloonText": "<div class=\"chart-balloon\"><span class=\"plan-name market-name\">DJIA</span><span class=\"balloon-value\">[[marketBalloon]]</span></div>",
+        })
+      }
       return (
         <div id="result-chart">
           <div className="chart-indicators">
