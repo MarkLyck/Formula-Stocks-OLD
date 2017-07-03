@@ -13,7 +13,8 @@ const Market = Backbone.Model.extend({
   },
   getAnnualData() {
     return new Promise((resolve, reject) => {
-      $.ajax(`https://www.quandl.com/api/v1/datasets/YAHOO/INDEX_GSPC.json?trim_start=1970-01-01&collapse=monthly&column=4&auth_token=6SfHcXos6YBX51kuAq8B`)
+      // $.ajax(`https://www.quandl.com/api/v1/datasets/YAHOO/INDEX_GSPC.json?trim_start=1970-01-01&collapse=monthly&column=4&auth_token=6SfHcXos6YBX51kuAq8B`)
+      $.ajax(`https://www.quandl.com/api/v3/datasets/EOD/SPY.json?api_key=YjZ14NUXoyAGAPRDomS5&trim_start=1970-01-01&collapse=monthly&column_index=4`)
       .then((r) => {
         let fixedData = r.data.map(point => point[1].toFixed(0))
         fixedData = fixedData.reverse()
@@ -44,12 +45,13 @@ const Market = Backbone.Model.extend({
         }
       }
       if (!resolved) {
-        $.ajax(`https://www.quandl.com/api/v1/datasets/YAHOO/INDEX_GSPC.json?trim_start=2009-01-01&collapse=monthly&column=4&auth_token=6SfHcXos6YBX51kuAq8B`)
+        // $.ajax(`https://www.quandl.com/api/v1/datasets/YAHOO/INDEX_GSPC.json?trim_start=2009-01-01&collapse=monthly&column=4&auth_token=6SfHcXos6YBX51kuAq8B`)
+        $.ajax(`https://www.quandl.com/api/v3/datasets/EOD/SPY.json?api_key=YjZ14NUXoyAGAPRDomS5&trim_start=2009-01-01&collapse=monthly&column_index=4`)
         .then(r => {
           let fixedData = r.data.map(point => point[1].toFixed(0))
           fixedData = fixedData.reverse()
           Lockr.set('portfolioMarketData', fixedData)
-          $.ajax(`https://www.quandl.com/api/v1/datasets/YAHOO/INDEX_GSPC.json?auth_token=6SfHcXos6YBX51kuAq8B&column=4&limit=1`)
+          $.ajax(`https://www.quandl.com/api/v3/datasets/EOD/SPY.json?api_key=YjZ14NUXoyAGAPRDomS5&column_index=4&limit=1`)
           .then(lastMarketPrice => {
             let finalPoint = lastMarketPrice.data[0][1].toFixed(0)
             fixedData.push(finalPoint)
@@ -71,7 +73,8 @@ const Market = Backbone.Model.extend({
     })
   },
   getDJIAData() {
-    $.ajax(`https://www.quandl.com/api/v1/datasets/YAHOO/INDEX_DJI.json?trim_start=2009-01-01&collapse=monthly&column=4&auth_token=6SfHcXos6YBX51kuAq8B`)
+    // $.ajax(`https://www.quandl.com/api/v1/datasets/YAHOO/INDEX_DJI.json?trim_start=2009-01-01&collapse=monthly&column=4&auth_token=6SfHcXos6YBX51kuAq8B`)
+    $.ajax(`https://www.quandl.com/api/v3/datasets/EOD/DIA.json?api_key=YjZ14NUXoyAGAPRDomS5&trim_start=2009-01-01&collapse=monthly&column_index=4`)
     .then((r) => {
       let fixedData = r.data.map((point) => {
         return point[1].toFixed(0)
@@ -84,7 +87,7 @@ const Market = Backbone.Model.extend({
     })
   },
   getAnnualDJIAData() {
-    $.ajax(`https://www.quandl.com/api/v1/datasets/YAHOO/INDEX_DJI.json?trim_start=1970-01-01&collapse=monthly&column=4&auth_token=6SfHcXos6YBX51kuAq8B`)
+    $.ajax(`https://www.quandl.com/api/v3/datasets/EOD/DIA.json?api_key=YjZ14NUXoyAGAPRDomS5&trim_start=1970-01-01&collapse=monthly&column_index=4`)
     .then((r) => {
       let fixedData = r.data.map((point) => {
         return point[1].toFixed(0)

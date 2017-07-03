@@ -79,22 +79,22 @@ class BacktestedPerformance extends React.Component {
               "balloonText": `<div class=\"chart-balloon\"><span class=\"plan-name\">${this.props.name}</span><span class=\"balloon-value\">$[[fsBalloon]]</span></div>`,
             }
           ]
-  
-      if (marketData.length) {
-        graphs.unshift({
-          id: "market",
-          lineColor: "#989898",
-          bullet: "square",
-          bulletBorderAlpha: 1,
-          bulletColor: "#989898",
-          bulletSize: 5,
-          hideBulletsCount: 10,
-          lineThickness: 2,
-          useLineColorForBulletBorder: true,
-          valueField: "market",
-          "balloonText": "<div class=\"chart-balloon\"><span class=\"plan-name market-name\">S&P500</span><span class=\"balloon-value\">$[[marketBalloon]]</span></div>",
-        })
-      }
+
+      // if (marketData.length) {
+      //   graphs.unshift({
+      //     id: "market",
+      //     lineColor: "#989898",
+      //     bullet: "square",
+      //     bulletBorderAlpha: 1,
+      //     bulletColor: "#989898",
+      //     bulletSize: 5,
+      //     hideBulletsCount: 10,
+      //     lineThickness: 2,
+      //     useLineColorForBulletBorder: true,
+      //     valueField: "market",
+      //     "balloonText": "<div class=\"chart-balloon\"><span class=\"plan-name market-name\">S&P500</span><span class=\"balloon-value\">$[[marketBalloon]]</span></div>",
+      //   })
+      // }
 
       return (
         <div id="result-chart">

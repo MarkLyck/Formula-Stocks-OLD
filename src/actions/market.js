@@ -6,7 +6,7 @@ export const RECEIVE_SP500 = 'RECEIVE_SP500'
 export function fetchDJIA() {
   return (dispatch) => {
     dispatch(fetchingDJIA())
-    fetch(`https://www.quandl.com/api/v1/datasets/YAHOO/INDEX_DJI.json?trim_start=2009-01-01&collapse=monthly&column=4&auth_token=6SfHcXos6YBX51kuAq8B`)
+    fetch(`https://www.quandl.com/api/v3/datasets/EOD/DIA.json?api_key=YjZ14NUXoyAGAPRDomS5&trim_start=2009-01-01&collapse=monthly&column_index=4`)
       .then(response => response.json())
       .then(json => dispatch(receiveDJIA(json)))
   }
@@ -17,14 +17,14 @@ function fetchingDJIA() {
 function receiveDJIA(json) {
   return {
     type: RECEIVE_DJIA,
-    data: json
+    data: json.dataset.data
   }
 }
 
 export function fetchSP500(startTrim = '1970-01-01') {
   return (dispatch) => {
     dispatch(fetchingSP500())
-    fetch(`https://www.quandl.com/api/v1/datasets/YAHOO/INDEX_GSPC.json?trim_start=${startTrim}&collapse=monthly&column=4&auth_token=6SfHcXos6YBX51kuAq8B`)
+    fetch(`https://www.quandl.com/api/v3/datasets/EOD/SPY.json?api_key=YjZ14NUXoyAGAPRDomS5&trim_start=${startTrim}&collapse=monthly&column_index=4`)
       .then(response => response.json())
       .then(json => dispatch(receiveSP500(json, startTrim)))
   }
@@ -35,7 +35,7 @@ function fetchingSP500() {
 function receiveSP500(json, startTrim) {
   return {
     type: RECEIVE_SP500,
-    data: json,
+    data: json.dataset.data,
     startTrim: startTrim
   }
 }

@@ -16,18 +16,20 @@ const initialState = {
 }
 
 export default function reducer(state = initialState, action = {}) {
-  const data = action.data && action.data.data ? action.data.data : []
+  // const data = action.data && action.data.data ? action.data.data : []
   switch (action.type) {
     case FETCHING_DJIA:
       return Object.assign({}, state, { isFetchingDJIA: true })
     case RECEIVE_DJIA:
-      let DJIAData = data.reverse().map(point => point[1].toFixed(0))
+      // console.log(action);
+      let DJIAData = action.data.reverse().map(point => point[1].toFixed(0))
+      // console.log(DJIAData);
       return Object.assign({}, state, { isFetchingDJIA: false, DJIA: DJIAData })
     case FETCHING_SP500:
       return Object.assign({}, state, { isFetchingSP: true })
     case RECEIVE_SP500:
       let percent = 0
-      let SPData = data.reverse().map((point, i) => {
+      let SPData = action.data.reverse().map((point, i) => {
         if (i < 1) { percent = (25000 * 100) / point[1] / 100 }
         return Math.floor(percent * point[1].toFixed(0))
       })
