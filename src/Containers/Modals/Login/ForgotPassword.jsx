@@ -1,5 +1,5 @@
 import React from 'react'
-import $ from 'jquery'
+import store from '../../../store'
 
 import './forgotPassword.css'
 
@@ -14,17 +14,24 @@ class ForgotPassword extends React.Component{
     e.preventDefault()
     let email = this.refs.email.value
 
-    $.ajax({
-      url: `https://baas.kinvey.com/rpc/kid_rJRC6m9F/${email}/user-password-reset-initiate`,
-      type: 'POST',
-    })
-    .then((r) => {
-      this.setState({success: true, email: email})
-    })
-    .fail((e) => {
-      console.error('error: ', e)
-      this.setState({error: e})
-    })
+    const resetPasswordHeaders = new Headers()
+    resetPasswordHeaders.append('Authorization', `Basic ${store.getState().settings.basicAuth}`)
+    resetPasswordHeaders.append('Content-Type', `application/json`)
+    const options = {
+      method: 'POST',
+      headers: resetPasswordHeaders,
+    }
+
+    console.log('### fetching');
+
+    fetch(`https://baas.kinvey.com/rpc/${store.getState().settings.appKey}/${email}/user-password-reset-initiate`, options)
+      .then(r => {
+        this.setState({success: true, email: email})
+        this.props.closeModal()
+      })
+      .catch(() => {
+        this.setState({success: true, email: email})
+      })
   }
   render() {
     let content = (
