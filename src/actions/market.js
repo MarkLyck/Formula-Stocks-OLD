@@ -24,7 +24,7 @@ function receiveDJIA(json) {
 export function fetchSP500(startTrim = '1970-01-01') {
   return (dispatch) => {
     dispatch(fetchingSP500())
-    fetch(`https://www.quandl.com/api/v3/datasets/EOD/SPY.json?api_key=YjZ14NUXoyAGAPRDomS5&trim_start=${startTrim}&collapse=monthly&column_index=4`)
+    fetch(`https://www.quandl.com/api/v3/datasets/MULTPL/SP500_REAL_PRICE_MONTH.json?api_key=zP2W-4snDLyygfZVpw2v&start_date=${startTrim}`)
       .then(response => response.json())
       .then(json => dispatch(receiveSP500(json, startTrim)))
   }

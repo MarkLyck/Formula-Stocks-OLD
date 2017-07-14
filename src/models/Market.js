@@ -12,10 +12,12 @@ const Market = Backbone.Model.extend({
     cagr: 10.47
   },
   getAnnualData() {
+    // console.log('get ANnual data');
     return new Promise((resolve, reject) => {
       // $.ajax(`https://www.quandl.com/api/v1/datasets/YAHOO/INDEX_GSPC.json?trim_start=1970-01-01&collapse=monthly&column=4&auth_token=6SfHcXos6YBX51kuAq8B`)
-      $.ajax(`https://www.quandl.com/api/v3/datasets/EOD/SPY.json?api_key=YjZ14NUXoyAGAPRDomS5&trim_start=1970-01-01&collapse=monthly&column_index=4`)
+      $.ajax(`https://www.quandl.com/api/v3/datasets/MULTPL/SP500_REAL_PRICE_MONTH.json?api_key=zP2W-4snDLyygfZVpw2v&start_date=1970-01-01`)
       .then((r) => {
+        // console.log('data', r);
         let fixedData = r.data.map(point => point[1].toFixed(0))
         fixedData = fixedData.reverse()
 

@@ -46,7 +46,7 @@ class Professional extends React.Component {
         <NavBar path={this.props.route.path}/>
         <Hero path={this.props.route.path}/>
         <WhatIsIt path={this.props.route.path}/>
-        <Probabilities path={this.props.route.path} planData={planData}/>
+        <Probabilities path={this.props.route.path} planData={planData} />
         <LaunchPerformance path={this.props.route.path} planData={planData} DJIA={DJIA}/>
         <RiskReward path={this.props.route.path}/>
         <HowWeBeatTheMarket path={this.props.route.path}/>
@@ -71,11 +71,12 @@ function mapStateToProps(state) {
   const { selectedPlan, isFetchingPlan, data } = plans
   const { isFetchingDJIA, DJIA, annualSP500 } = market
 
-  const planData = data
-
   return {
     selectedPlan,
-    planData,
+    planData: state.plans.data,
+    premiunData: data.premium,
+    businessData: data.business,
+    fundData: data.fund,
     isFetchingPlan,
     isFetchingDJIA,
     DJIA,
