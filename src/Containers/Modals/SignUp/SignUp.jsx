@@ -1,6 +1,9 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 import store from '../../../OLD_store'
 import { browserHistory } from 'react-router'
+import { createCustomer, signingUp, doneSigningUp, setSessionItem } from '../../../actions/session'
 
 import ChoosePlan from './ChoosePlan.jsx'
 import Billing from './Billing.jsx'
@@ -42,18 +45,13 @@ class SignUp extends React.Component {
     this.setState({ gotInfo: true })
   }
 
-  componentDidMount() {
-    store.plans.on('update', this.updateState)
-  }
-
-  componentWillUnmount() {
-    store.plans.off('update', this.updateState)
-  }
-
   renderPrice() {
-    const plan = store.plans.get(this.state.selected).toJSON()
-    let period = plan.name === 'basic' || plan.name === 'premium' ? 'monthly' : 'annually'
-    return '$' + formatPrice(String(plan.price)) + ' ' + period
+    const { plans } = this.props
+    const plan = plans.data[this.state.selected]
+    if (plan) {
+        let period = plan.name === 'basic' || plan.name === 'premium' ? 'monthly' : 'annually'
+        return '$' + formatPrice(String(plan.price)) + ' ' + period
+    }
   }
 
   selectPlan(plan) {
@@ -78,10 +76,29 @@ class SignUp extends React.Component {
   }
 
   renderContent() {
+    const { actions, location, session, plans } = this.props
     if (this.state.page === 1) {
-      return <ChoosePlan selected={this.state.selected} selectPlan={this.selectPlan} renderPrice={this.renderPrice} nextPage={this.nextPage} path={this.props.location.pathname}/>
+      return <ChoosePlan
+              selected={this.state.selected}
+              selectPlan={this.selectPlan}
+              renderPrice={this.renderPrice}
+              nextPage={this.nextPage}
+              path={location.pathname}
+            />
     } else {
-      return <Billing selected={this.state.selected} renderPrice={this.renderPrice} nextPage={this.nextPage} lastPage={this.lastPage} path={this.props.location.pathname}/>
+      return <Billing
+                  selected={this.state.selected}
+                  renderPrice={this.renderPrice}
+                  signUp={actions.createCustomer}
+                  signingUp={actions.signingUp}
+                  doneSigningUp={actions.doneSigningUp}
+                  nextPage={this.nextPage}
+                  lastPage={this.lastPage}
+                  path={location.pathname}
+                  session={session}
+                  setSessionItem={actions.setSessionItem}
+                  plans={plans}
+              />
     }
   }
 
@@ -105,4 +122,14 @@ class SignUp extends React.Component {
   }
 }
 
-export default SignUp
+function mapStateToProps(state) {
+  const { plans, session } = state
+  return { plans, session }
+}
+
+function mapDispatchToProps(dispatch) {
+  const actions = { createCustomer, signingUp, doneSigningUp, setSessionItem }
+  return { actions: bindActionCreators(actions, dispatch) }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignUp)

@@ -43,14 +43,18 @@ class SignUp extends React.Component {
                                           setTax={this.setTax}
                                           setSessionItem={actions.setSessionItem} />
                                         }
-    else { return <Billing tax={this.state.tax}
-                    plan={plans.data[plans.selectedPlan]}
-                    signUp={actions.createCustomer}
-                    signupError={session.signupError}
-                    isCurrentlySigningUp={session.signingUp}
-                    signingUp={actions.signingUp}
-                    doneSigningUp={actions.doneSigningUp}
-                    setSessionItem={actions.setSessionItem} /> }
+    else {
+      return <Billing
+                tax={this.state.tax}
+                plan={plans.data[plans.selectedPlan]}
+                signUp={actions.createCustomer}
+                signupError={session.signupError}
+                isCurrentlySigningUp={session.signingUp}
+                signingUp={actions.signingUp}
+                doneSigningUp={actions.doneSigningUp}
+                setSessionItem={actions.setSessionItem}
+              />
+      }
   }
 
   render() {

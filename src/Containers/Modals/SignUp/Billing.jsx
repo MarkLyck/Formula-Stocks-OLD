@@ -42,7 +42,9 @@ class Billing extends React.Component {
 
     this.toggleTerms = this.toggleTerms.bind(this)
 
-    const plan = store.plans.get(this.props.selected).toJSON()
+    const { plans, session } = this.props
+
+    const plan = plans.data[this.props.selected]
 
     let cycle = ' monthly'
     if (plan.name === 'business' || plan.name === 'fund') {
@@ -57,10 +59,11 @@ class Billing extends React.Component {
     let countryText = 'Country'
     let countryCode
     let taxPercent = 0
+
     if (store.session.get('location').country_code
         && store.session.get('location').country_name) {
-      countryText = store.session.get('location').country_name
-      countryCode = store.session.get('location').country_code
+      countryText = session.location.country_name
+      countryCode = session.location.country_code
 
       let country = _.where(countries, { value: countryCode })
       if (country[0].taxPercent) {
@@ -226,6 +229,7 @@ class Billing extends React.Component {
     }
 
     this.setState({ validatingPayment: true, error: '', errorType: '' })
+    this.props.signingUp()
 
     const card = {
       number: this.refs.cardNumber.value.replace(/\s+/g, ''),
@@ -239,7 +243,7 @@ class Billing extends React.Component {
       cc.checkPayment(card)
       .then(token => this.createCustomer(token))
       .catch(error => {
-        store.isSubmitting = false
+        this.props.doneSigningUp()
         this.setState({ error: error, errorType: 'payment', validatingPayment: false })
       })
     })
@@ -250,16 +254,18 @@ class Billing extends React.Component {
   }
 
   createCustomer(token) {
-    store.session.set('name', this.refs.name.value)
-    cc.createCustomer2(token, this.props.selected, this.state.cycle, this.state.taxPercent, this.state.coupon.code)
-    .then(() => {
-      console.log('||| SUCCESFUL PAYMENT |||')
-      store.isSubmitting = false
-    })
-    .catch((e) => {
-      store.isSubmitting = false
-      this.setState({ error: String(e), errorType: 'payment', validatingPayment: false })
-    })
+    const { cycle, taxPercent, coupon } = this.state
+    const { signUp, selected, setSessionItem } = this.props
+
+    let type = 1
+    if (selected === 'premium') { type = 2 }
+    else if (selected === 'business') { type = 3 }
+    else if (selected === 'fund') { type = 4 }
+
+    setSessionItem('type', type)
+    setSessionItem('name', this.refs.name.value)
+
+    signUp(token, selected, cycle, taxPercent, coupon.code)
   }
 
   renderError(errorChecker) {

@@ -1,5 +1,7 @@
 import React from 'react'
-import $ from 'jquery'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { setSessionItem } from '../../../actions/session'
 import store from '../../../OLD_store'
 
 import FeatureList from './FeatureList.jsx'
@@ -22,26 +24,37 @@ class ChoosePlan extends React.Component {
   }
 
   checkForDuplicates(email) {
-    return $.ajax(`https://baas.kinvey.com/user/kid_rJRC6m9F/?query={"email":"${email}"}`)
+      const headers = new Headers()
+      headers.append('Authorization', `Basic ${store.settings.basicAuth}`)
+      headers.append('Content-Type', `application/json`)
+      const options = {
+        method: 'POST',
+        headers: headers,
+        body: JSON.stringify({ username: email.toLowerCase() })
+      }
+      return fetch(`https://baas.kinvey.com/rpc/kid_rJRC6m9F/check-username-exists`, options)
   }
 
   submit(e) {
     e.preventDefault()
     this.setState({ validating: true, error: '', errorType: '' })
+    const { actions } = this.props
     const email = this.refs.email.value.toLowerCase()
     const password = this.refs.password.value
     if (email && password) {
       var emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       if (emailRegex.test(email)) {
         this.checkForDuplicates(email)
-        .then(response => {
-          if (response.length === 0) {
-            store.session.set('email', email)
-            store.session.set('password', password)
-            this.props.nextPage()
-          } else {
-            this.setState({ validating: false, error: 'Email already exists', errorType: 'email'})
-          }
+        .then(response => response.json())
+        .then(json => {
+           if (!json.usernameExists) {
+             actions.setSessionItem('email', email)
+             actions.setSessionItem('username', email)
+             actions.setSessionItem('password', password)
+             this.props.nextPage()
+           } else {
+              this.setState({ validating: false, error: 'Email already exists', errorType: 'email'})
+           }
         })
       } else {
         this.setState({ validating: false, error: 'Invalid email', errorType: 'email'})
@@ -87,6 +100,7 @@ class ChoosePlan extends React.Component {
   }
 
   render() {
+    const { plans } = this.props;
     const emailClass = this.state.error.toLowerCase().indexOf('email') > -1 ? 'red-outline' : ''
     const passwordClass = this.state.error.indexOf('password') > -1 ? 'red-outline' : ''
     let leftStyle = this.props.path !== '/pro/signup' ? { paddingBottom: '56px' } : {}
@@ -99,10 +113,9 @@ class ChoosePlan extends React.Component {
               <div className="plan-overview">
                 <FeatureList path={this.props.path}/>
                 <div className="plan-columns-container">
-                  {this.props.path !== '/pro/signup' ? <PlanColumn plan={store.plans.get('basic').toJSON()} selected={this.props.selected} selectPlan={this.props.selectPlan} path={this.props.path}/> : ''}
-                  <PlanColumn plan={store.plans.get('premium').toJSON()} selected={this.props.selected} selectPlan={this.props.selectPlan} path={this.props.path}/>
-                  <PlanColumn plan={store.plans.get('business').toJSON()} selected={this.props.selected} selectPlan={this.props.selectPlan} path={this.props.path}/>
-                  {this.props.path === '/pro/signup' ? <PlanColumn plan={store.plans.get('fund').toJSON()} selected={this.props.selected} selectPlan={this.props.selectPlan} path={this.props.path}/> : ''}
+                  {plans.data.premium ? <PlanColumn plan={plans.data.premium} selected={this.props.selected} selectPlan={this.props.selectPlan} path={this.props.path}/> : '' }
+                  {plans.data.business ? <PlanColumn plan={plans.data.business} selected={this.props.selected} selectPlan={this.props.selectPlan} path={this.props.path}/> : '' }
+                  {plans.data.fund ? <PlanColumn plan={plans.data.fund} selected={this.props.selected} selectPlan={this.props.selectPlan} path={this.props.path}/> : '' }
                 </div>
               </div>
             </div>
@@ -139,4 +152,14 @@ class ChoosePlan extends React.Component {
   }
 }
 
-export default ChoosePlan
+function mapStateToProps(state) {
+  const { plans, session } = state
+  return { plans, session }
+}
+
+function mapDispatchToProps(dispatch) {
+  const actions = { setSessionItem }
+  return { actions: bindActionCreators(actions, dispatch) }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ChoosePlan)
