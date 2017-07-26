@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { fetchArticlesIfNeeded, updateArticle } from '../../actions/articles'
@@ -10,20 +10,16 @@ import Article from './Article'
 import SideBar from './SideBar'
 import './styles/articles.css'
 
-class Articles extends React.Component {
-  constructor(props) {
-    super(props)
-    this.toggleSideBar = this.toggleSideBar.bind(this)
-    this.state = { sidebar: true }
-  }
+class Articles extends Component {
+  state = { sidebar: true }
 
   componentDidMount() {
     window.Intercom("shutdown")
     this.props.actions.fetchArticlesIfNeeded()
   }
 
-  goHome() { browserHistory.push('/') }
-  toggleSideBar() { this.setState({ sidebar: !this.state.sidebar }) }
+  goHome = () => browserHistory.push('/')
+  toggleSideBar = () => this.setState({ sidebar: !this.state.sidebar })
 
   render() {
     const { articlesData = [], session, routeParams, actions } = this.props

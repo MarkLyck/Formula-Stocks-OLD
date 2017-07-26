@@ -1,8 +1,6 @@
 import React from 'react'
 
-class InstitutionalCapital extends React.Component {
-  render() {
-    return (
+const InstitutionalCapital = () => (
       <section className="section">
         <h2 className="title">Institutional capital</h2>
         <div className="divider"/>
@@ -21,8 +19,6 @@ class InstitutionalCapital extends React.Component {
           tailormade to client specifications. Contact us for more information.
         </p>
       </section>
-    )
-  }
-}
+)
 
 export default InstitutionalCapital

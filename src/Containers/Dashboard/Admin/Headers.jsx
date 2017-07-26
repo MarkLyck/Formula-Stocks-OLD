@@ -1,17 +1,11 @@
-import React from 'react'
+import React, { Component } from 'react'
 import _ from 'underscore'
 import moment from 'moment'
 import '../Suggestions/suggestionsHeader.css'
 
-class AdminPanelHeader extends React.Component {
-  constructor(props) {
-    super(props)
-    this.getVisitsCount = this.getVisitsCount.bind(this)
-    this.fetchUsers = this.fetchUsers.bind(this)
-  }
-
-  getVisitsCount() { this.props.fetchVisitsCount() }
-  fetchUsers() { this.props.fetchUsers() }
+class AdminPanelHeader extends Component {
+  getVisitsCount = () => this.props.fetchVisitsCount()
+  fetchUsers = () => this.props.fetchUsers()
 
   render() {
     const { users = [], visitsCount } = this.props

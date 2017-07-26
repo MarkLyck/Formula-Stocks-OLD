@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import _ from 'underscore'
 import { browserHistory } from 'react-router'
 var markdown = require( "markdown" ).markdown
@@ -6,19 +6,14 @@ import ReactHtmlParser from 'react-html-parser'
 import { Link } from 'react-router'
 import './styles/sidebar.css'
 
-class ArticleSideBar extends React.Component {
-  constructor(props) {
-    super(props)
-
-    this.renderArticles = this.renderArticles.bind(this)
-    this.state = { article: this.props.article }
-  }
+class ArticleSideBar extends Component {
+  state = { article: this.props.article }
 
   componentWillReceiveProps(newProps) {
     this.setState({ article: newProps.article })
   }
 
-  renderArticles() {
+  renderArticles = () => {
     const articles = _.sortBy(this.props.articles, (art) => art._kmd.ect).reverse()
     return articles
     .filter((article, i) => {
@@ -47,7 +42,7 @@ class ArticleSideBar extends React.Component {
     })
   }
 
-  gotoArticle(title) {
+  gotoArticle = (title) => {
     if (typeof this.props.location === "string") {
       if (this.props.location.indexOf('dashboard') > -1) {
         browserHistory.push(`/dashboard/articles/${title}`)

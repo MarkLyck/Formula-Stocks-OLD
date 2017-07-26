@@ -12,18 +12,11 @@ import ForgotPassword from './ForgotPassword'
 import './login.css'
 
 class Login extends Component {
-  constructor() {
-    super()
-    this.closeModal = this.closeModal.bind(this)
-    this.showForgotPasswordModal = this.showForgotPasswordModal.bind(this)
-    this.login = this.login.bind(this)
-
-    this.state = { formClasses: 'form-modal login form-bounce-down', showForgotPasswordModal: false }
-  }
+  state = { formClasses: 'form-modal login form-bounce-down', showForgotPasswordModal: false }
 
   componentDidMount() { this.props.actions.fetchSession() }
 
-  closeModal(e) {
+  closeModal = (e) => {
     if (e) {
       if ((_.toArray(e.target.classList).indexOf('modal-container') !== -1
       || _.toArray(e.target.classList).indexOf('form-modal-container') !== -1)
@@ -42,9 +35,9 @@ class Login extends Component {
     }
   }
 
-  showForgotPasswordModal() { this.setState({ showForgotPasswordModal: true }) }
+  showForgotPasswordModal = () => this.setState({ showForgotPasswordModal: true })
 
-  login(e) {
+  login = (e) => {
     e.preventDefault()
     const { actions } = this.props
     this.refs.password.blur()

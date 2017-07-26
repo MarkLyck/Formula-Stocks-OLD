@@ -21,27 +21,6 @@ class Billing extends React.Component {
   constructor(props) {
     super(props)
 
-    this.toggleCheckBox = this.toggleCheckBox.bind(this)
-    this.selectCountry = this.selectCountry.bind(this)
-    this.calculateTax = this.calculateTax.bind(this)
-    this.applyDiscount = this.applyDiscount.bind(this)
-
-    this.renderTax = this.renderTax.bind(this)
-    this.renderDiscount = this.renderDiscount.bind(this)
-    this.renderDiscountButton = this.renderDiscountButton.bind(this)
-    this.renderPayButton = this.renderPayButton.bind(this)
-
-    this.renderError = this.renderError.bind(this)
-
-    this.ccFormat = this.ccFormat.bind(this)
-    this.dateFormat = this.dateFormat.bind(this)
-    this.cvcFormat = this.cvcFormat.bind(this)
-
-    this.submit = this.submit.bind(this)
-    this.createCustomer = this.createCustomer.bind(this)
-
-    this.toggleTerms = this.toggleTerms.bind(this)
-
     const { plans, session } = this.props
 
     const plan = plans.data[this.props.selected]
@@ -89,19 +68,19 @@ class Billing extends React.Component {
     }
   }
 
-  calculateTax(countryCode) {
+  calculateTax = (countryCode) => {
     cc.calculateTax(countryCode).then((tax) => {
       this.setState({ taxPercent: tax })
     })
   }
 
-  toggleCheckBox() { this.setState({ checked: !this.state.checked }) }
+  toggleCheckBox = () => this.setState({ checked: !this.state.checked })
 
-  ccFormat() { this.refs.cardNumber.value = cc.ccFormat(this.refs.cardNumber.value) }
-  dateFormat(e) { this.refs.cardExpiry.value = cc.dateFormat(e, this.refs.cardExpiry.value) }
-  cvcFormat() { this.refs.cardCvc.value = cc.cvcFormat(this.refs.cardCvc.value) }
+  ccFormat = () => { this.refs.cardNumber.value = cc.ccFormat(this.refs.cardNumber.value) }
+  dateFormat = (e) => { this.refs.cardExpiry.value = cc.dateFormat(e, this.refs.cardExpiry.value) }
+  cvcFormat = () => { this.refs.cardCvc.value = cc.cvcFormat(this.refs.cardCvc.value) }
 
-  selectCountry(country) {
+  selectCountry = (country) => {
     this.setState({
       countryName: country.label,
       countryCode: country.value,
@@ -109,7 +88,7 @@ class Billing extends React.Component {
     this.calculateTax(country.value)
   }
 
-  renderTax() {
+  renderTax = () => {
     if (this.state.taxPercent > 0) {
       let price = this.state.price
       if (this.state.discount > 0) {
@@ -126,7 +105,7 @@ class Billing extends React.Component {
     }
   }
 
-  renderDiscount() {
+  renderDiscount = () => {
     if (this.state.discount > 0) {
       if (this.state.coupon.type === 'percent') {
         if (this.state.coupon.period === 'lifetime') {
@@ -146,7 +125,7 @@ class Billing extends React.Component {
     }
   }
 
-  renderPrice() {
+  renderPrice = () => {
     let price = this.state.price
     if (this.state.discount > 0) {
       // eslint-disable-next-line
@@ -171,7 +150,7 @@ class Billing extends React.Component {
 
   }
 
-  renderDiscountButton() {
+  renderDiscountButton = () => {
     const discountClass = this.state.error.indexOf('discount') > -1 ? 'red-outline' : ''
     if (this.state.discount === 0 && this.props.selected !== 'business' && this.props.selected !== 'fund') {
       return (<div className="discount">
@@ -181,7 +160,7 @@ class Billing extends React.Component {
     }
   }
 
-  renderPayButton() {
+  renderPayButton = () => {
     if (!this.state.validatingPayment) {
       if (this.props.selected === 'basic') {
         return <button className="subscribe" onClick={this.submit}>Start free month</button>
@@ -194,7 +173,7 @@ class Billing extends React.Component {
     }
   }
 
-  applyDiscount() {
+  applyDiscount = () => {
     let error = ''
     var coupon = discountCodes.filter(coupon => {
       if (coupon.code === this.refs.discount.value) {
@@ -216,7 +195,7 @@ class Billing extends React.Component {
     }
   }
 
-  submit() {
+  submit = () => {
     store.isSubmitting = true
     if (!this.state.checked) {
       this.setState({ error: 'You must read and agree to the Terms of Service', errorType: 'tos' })
@@ -253,7 +232,7 @@ class Billing extends React.Component {
     })
   }
 
-  createCustomer(token) {
+  createCustomer = (token) => {
     const { cycle, taxPercent, coupon } = this.state
     const { signUp, selected, setSessionItem } = this.props
 
@@ -268,15 +247,13 @@ class Billing extends React.Component {
     signUp(token, selected, cycle, taxPercent, coupon.code)
   }
 
-  renderError(errorChecker) {
+  renderError = (errorChecker) => {
     if (errorChecker === this.state.errorType) {
       return <p className="error"><i className="fa fa-exclamation" aria-hidden="true"></i>{this.state.error}</p>
     }
   }
 
-  toggleTerms() {
-    this.setState({ showTerms: !this.state.showTerms })
-  }
+  toggleTerms = () => this.setState({ showTerms: !this.state.showTerms })
 
   render() {
     const countryClass = this.state.error.indexOf('country') > -1 ? 'red-outline' : ''

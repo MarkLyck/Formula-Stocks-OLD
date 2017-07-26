@@ -5,16 +5,11 @@ var MarkdownEditor = require('react-markdown-editor').MarkdownEditor
 import ReactHtmlParser from 'react-html-parser'
 
 class Article extends React.Component {
-  constructor(props) {
-    super(props)
-    this.toggleEdit = this.toggleEdit.bind(this)
-    this.submitEdit = this.submitEdit.bind(this)
-    this.state = { editing: false }
-  }
+  state = { editing: false }
 
-  toggleEdit() { this.setState({ editing: !this.state.editing }) }
+  toggleEdit = () => this.setState({ editing: !this.state.editing })
 
-  submitEdit(e) {
+  submitEdit = (e) => {
     e.preventDefault()
     let newArticle = this.props.article
     const markdown = this.refs.mdeditor.state.content

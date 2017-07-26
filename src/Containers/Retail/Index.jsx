@@ -50,7 +50,7 @@ class Home extends Component {
   }
 
   render() {
-    const { selectedPlan, data, DJIA, annualSP500 } = this.props
+    const { selectedPlan, data, DJIA, annualSP500, location } = this.props
     const plan = data ? data['entry'] : false
     const portfolioReturn = plan ? this.calculateLaunchReturns() : 450
 
@@ -84,7 +84,7 @@ class Home extends Component {
           info={plan ? plan.info : false}/>
         <AboutUs/>
         <IntendedAudience/>
-        <BottomCTA/>
+        <BottomCTA path={location.pathname}/>
         <Footer/>
         {this.props.children}
       </div>

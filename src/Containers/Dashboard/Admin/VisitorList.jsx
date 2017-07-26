@@ -19,6 +19,9 @@ import Android from './icons/Android_Logo.png'
 import Linux from './icons/Linux_Logo.png'
 
 function getFlag(country_code) {
+  if (country_code === 'gg') {
+    return
+  }
   const flag = require(`./icons/flags/${country_code.toLowerCase()}.png`)
   if (flag) {
     return <img src={flag} className="flag" alt="flag"/>

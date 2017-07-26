@@ -1,7 +1,8 @@
 import React from 'react'
+import { Link } from 'react-router'
 import brochure from '../brochure.pdf'
 
-function downloadBrochure() { window.open(brochure) }
+const downloadBrochure = () => window.open(brochure)
 
 const IntendedAudience = () => (
   <section className="section">
@@ -15,7 +16,7 @@ const IntendedAudience = () => (
 
       For deeper technical information <a onClick={downloadBrochure}>click here to download our brochure</a>.<br/><br/>
 
-      {/* For institutional and professional services please <Link to="/pro">click here</Link>. */}
+      For institutional and professional services please <Link to="/pro">click here</Link>.
     </p>
   </section>
 )

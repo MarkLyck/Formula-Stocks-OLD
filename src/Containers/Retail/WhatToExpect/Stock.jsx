@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { Component } from 'react'
 
-class Stock extends React.Component {
+class Stock extends Component {
   render() {
     const stock = this.props.stock
     const percentChange = ((stock.sell_price - stock.purchase_price) * 100 / stock.purchase_price).toFixed(2)

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import store from '../../../OLD_store'
@@ -19,18 +19,9 @@ function formatPrice(value) {
   return value
 }
 
-class SignUp extends React.Component {
+class SignUp extends Component {
   constructor(props) {
     super(props)
-
-    this.updateState = this.updateState.bind(this)
-    this.selectPlan = this.selectPlan.bind(this)
-    this.renderPrice = this.renderPrice.bind(this)
-    this.closeModal = this.closeModal.bind(this)
-    this.renderContent = this.renderContent.bind(this)
-    this.nextPage = this.nextPage.bind(this)
-    this.lastPage = this.lastPage.bind(this)
-    this.renderCloseBtn = this.renderCloseBtn.bind(this)
 
     let selected = localStorage.selectedPlan ? localStorage.selectedPlan : 'basic'
 
@@ -41,11 +32,9 @@ class SignUp extends React.Component {
     }
   }
 
-  updateState() {
-    this.setState({ gotInfo: true })
-  }
+  updateState = () => this.setState({ gotInfo: true })
 
-  renderPrice() {
+  renderPrice = () => {
     const { plans } = this.props
     const plan = plans.data[this.state.selected]
     if (plan) {
@@ -54,11 +43,9 @@ class SignUp extends React.Component {
     }
   }
 
-  selectPlan(plan) {
-    this.setState({ selected: plan })
-  }
+  selectPlan = (plan) => this.setState({ selected: plan })
 
-  closeModal(e) {
+  closeModal = (e) => {
     if ((e.target.className === 'prof-modal-container' || e.target.className.indexOf('close-btn') > -1 || e.target.className.indexOf('close-icon') > -1) && !store.isSubmitting) {
       if (this.props.location.pathname === '/pro/signup') {
         browserHistory.push('/pro')
@@ -68,14 +55,10 @@ class SignUp extends React.Component {
     }
   }
 
-  nextPage() {
-    this.setState({ page: this.state.page + 1 })
-  }
-  lastPage() {
-    this.setState({ page: this.state.page - 1 })
-  }
+  nextPage = () => this.setState({ page: this.state.page + 1 })
+  lastPage = () => this.setState({ page: this.state.page - 1 })
 
-  renderContent() {
+  renderContent = () => {
     const { actions, location, session, plans } = this.props
     if (this.state.page === 1) {
       return <ChoosePlan
@@ -102,7 +85,7 @@ class SignUp extends React.Component {
     }
   }
 
-  renderCloseBtn() {
+  renderCloseBtn = () => {
     if (this.props.location.pathname === '/pro/signup') {
       return <button className="close-btn" onClick={this.closeModal}><i className="material-icons close-icon">close</i></button>
     } else {

@@ -1,16 +1,12 @@
-import React from 'react'
+import React, { Component } from 'react'
 import store from '../../../store'
 
 import './forgotPassword.css'
 
-class ForgotPassword extends React.Component{
-  constructor() {
-    super()
-    this.resetPassword = this.resetPassword.bind(this)
-    this.state = { posting: false, success: false, error: false, email: '' }
-  }
+class ForgotPassword extends Component {
+  state = { posting: false, success: false, error: false, email: '' }
 
-  resetPassword(e) {
+  resetPassword = (e) => {
     e.preventDefault()
     let email = this.refs.email.value
 
@@ -21,8 +17,6 @@ class ForgotPassword extends React.Component{
       method: 'POST',
       headers: resetPasswordHeaders,
     }
-
-    console.log('### fetching');
 
     fetch(`https://baas.kinvey.com/rpc/${store.getState().settings.appKey}/${email}/user-password-reset-initiate`, options)
       .then(r => {

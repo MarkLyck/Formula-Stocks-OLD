@@ -1,19 +1,13 @@
-import React from 'react'
+import React, { Component } from 'react'
 import Select from 'react-select'
 import cc from '../../../cc'
 import store from '../../../store'
 import countries from '../../../data/countries'
 import _ from 'underscore'
 
-class AccountInfo extends React.Component {
+class AccountInfo extends Component {
   constructor(props) {
     super(props)
-
-    this.selectCountry = this.selectCountry.bind(this)
-    this.calculateTax = this.calculateTax.bind(this)
-    this.renderAddressInfo = this.renderAddressInfo.bind(this)
-    this.validateAddress = this.validateAddress.bind(this)
-    this.submit = this.submit.bind(this)
 
     let countryText = 'Country'
     let countryCode
@@ -38,13 +32,13 @@ class AccountInfo extends React.Component {
     }
   }
 
-  calculateTax(countryCode) {
+  calculateTax = (countryCode) => {
     cc.calculateTax(countryCode).then(tax => {
       this.setState({ taxPercent: tax })
     })
   }
 
-  selectCountry(country) {
+  selectCountry = (country) => {
     this.setState({
       countryName: country.label,
       countryCode: country.value,
@@ -52,8 +46,7 @@ class AccountInfo extends React.Component {
     this.calculateTax(country.value)
   }
 
-  checkForDuplicates(email) {
-
+  checkForDuplicates = (email) => {
     const headers = new Headers()
     headers.append('Authorization', `Basic ${store.getState().settings.basicAuth}`)
     headers.append('Content-Type', `application/json`)
@@ -65,7 +58,7 @@ class AccountInfo extends React.Component {
     return fetch(`https://baas.kinvey.com/rpc/kid_rJRC6m9F/check-username-exists`, options)
   }
 
-  validateAddress() {
+  validateAddress = () => {
     return new Promise((resolve, reject) => {
       const country = _.where(countries, { value: this.state.countryCode })
       if (country[0]) {
@@ -88,7 +81,7 @@ class AccountInfo extends React.Component {
     })
   }
 
-  submit(e) {
+  submit = (e) => {
     e.preventDefault()
 
     this.setState({ validating: true, error: '', errorType: '' })
@@ -138,9 +131,8 @@ class AccountInfo extends React.Component {
     }
   }
 
-  renderAddressInfo() {
+  renderAddressInfo = () => {
     if (!this.state.taxPercent) { return null }
-
 
     const cityClass = this.state.error.indexOf('city') > -1 ? 'red-outline' : ''
     const zipClass = this.state.error.indexOf('postal') > -1 ? 'red-outline' : ''

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import $ from 'jquery'
 import platform from 'platform'
 import '../../../libraries/typed.js'
@@ -7,12 +7,7 @@ import Mockup from './Portfolio_Mockup.png'
 
 let userCanSeeSection = true
 
-class Hero extends React.Component {
-  constructor(props) {
-    super(props)
-    this.count = this.count.bind(this)
-  }
-
+class Hero extends Component {
   componentDidMount() {
     if (platform.name === 'Chrome' || platform.name === 'Blink') {
       $('.hero').on('mousemove', this.mousemove)
@@ -37,7 +32,7 @@ class Hero extends React.Component {
      })
   }
 
-  mousemove(e) {
+  mousemove = (e) => {
     let offsetX = e.offsetX - ($(window).width() / 2)
     let offsetY = 0
 
@@ -47,7 +42,7 @@ class Hero extends React.Component {
     $('.large').css('transform', `translate3d(${offsetX / 5}px, ${offsetY / 25}px, 0px)`)
   }
 
-  countUp(element) {
+  countUp = (element) => {
     if (userCanSeeSection) {
       let oldNumber = Number( $(element).find('.number').text() )
       if (Math.random() > 0.45 || Number( $(element).find('.number').text() ) < 1) {
@@ -61,7 +56,7 @@ class Hero extends React.Component {
     }
   }
 
-  count() {
+  count = () => {
     const self = this
     $('.value').each(function(i) {
       self.countUp(this)

@@ -3,7 +3,7 @@ import { Element } from 'react-scroll'
 import SingleWinRateGraph from '../../../components/Graphs/WinRateGraph/SingleWinRateGraph'
 import './introduction.css'
 
-const Introduction = ({portfolioYields, portfolioReturn, winRate, }) => {
+const Introduction = ({ portfolioYields, portfolioReturn, winRate }) => {
   let lastYearReturns = 57.00
   if (portfolioYields.length) {
     let janBalance, decBalance

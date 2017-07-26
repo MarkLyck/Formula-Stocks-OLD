@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import $ from 'jquery'
 import Slider from 'react-slick'
 import 'slick-carousel/slick/slick.css'
@@ -13,15 +13,10 @@ import img_3 from './images/boat.jpg'
 import img_4 from './images/family.jpg'
 import img_5 from './images/target.jpg'
 
-class Hero extends React.Component {
-  constructor(props) {
-    super(props)
-    this.preStringTyped = this.preStringTyped.bind(this)
+class Hero extends Component {
+  state = { firstLoad: true }
 
-    this.state = { firstLoad: true }
-  }
-
-  preStringTyped() {
+  preStringTyped = () => {
     if (!this.state.firstLoad && this.slider) {
       this.slider.slickNext()
     } else {
@@ -68,7 +63,6 @@ class Hero extends React.Component {
 
     return (
       <div className="hero-slider">
-
         <div className="content">
           <div className="bounce-down">
             {title}

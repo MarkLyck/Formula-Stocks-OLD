@@ -1,79 +1,75 @@
-import React from 'react'
+import React, { Component } from 'react'
 import './whatToExpect.css'
 import PortfolioScreen from './Portfolio.jpg'
 import Stock from './Stock'
 
-class WhatToExpect extends React.Component {
-  constructor() {
-    super()
-
-    this.state = {
-      latestSells: [
-        {
-          name: 'Gentex Corporation',
-          ticker: 'GNTX',
-          purchase_price: 15.30,
-          sell_price: 20.89
-        },
-        {
-          name: 'Brocade Communications Systems',
-          ticker: 'BRCD',
-          purchase_price: 9.24,
-          sell_price: 12.33
-        },
-        {
-          name: 'Western Digital Corporation',
-          ticker: 'WDC',
-          purchase_price: 42.81,
-          sell_price: 74.65
-        },
-        {
-          name: 'National presto ind.',
-          ticker: 'NPK',
-          purchase_price: 85.34,
-          sell_price: 106.40
-        },
-        {
-          name: 'Cubic Corporation',
-          ticker: 'CUB',
-          purchase_price: 42.50,
-          sell_price: 47.95
-        },
-        {
-          name: 'Ingram micro',
-          ticker: 'IM',
-          purchase_price: 23.12,
-          sell_price: 37.44
-        },
-        {
-          name: 'KMG Chemicals, Inc.',
-          ticker: 'KMG',
-          purchase_price: 19.67,
-          sell_price: 33.78
-        },
-        {
-          name: 'Kadant Inc.',
-          ticker: 'KAI',
-          purchase_price: 41.34,
-          sell_price: 62.60
-        },
-        {
-          name: 'Hurco Companies',
-          ticker: 'HURC',
-          purchase_price: 28.69,
-          sell_price: 32.60
-        },
-        {
-          name: 'Applied Industrial Technologies',
-          ticker: 'AIT',
-          purchase_price: 41.73,
-          sell_price: 59.85
-        }
-      ]
-    }
+class WhatToExpect extends Component {
+  state = {
+    latestSells: [
+      {
+        name: 'Gentex Corporation',
+        ticker: 'GNTX',
+        purchase_price: 15.30,
+        sell_price: 20.89
+      },
+      {
+        name: 'Brocade Communications Systems',
+        ticker: 'BRCD',
+        purchase_price: 9.24,
+        sell_price: 12.33
+      },
+      {
+        name: 'Western Digital Corporation',
+        ticker: 'WDC',
+        purchase_price: 42.81,
+        sell_price: 74.65
+      },
+      {
+        name: 'National presto ind.',
+        ticker: 'NPK',
+        purchase_price: 85.34,
+        sell_price: 106.40
+      },
+      {
+        name: 'Cubic Corporation',
+        ticker: 'CUB',
+        purchase_price: 42.50,
+        sell_price: 47.95
+      },
+      {
+        name: 'Ingram micro',
+        ticker: 'IM',
+        purchase_price: 23.12,
+        sell_price: 37.44
+      },
+      {
+        name: 'KMG Chemicals, Inc.',
+        ticker: 'KMG',
+        purchase_price: 19.67,
+        sell_price: 33.78
+      },
+      {
+        name: 'Kadant Inc.',
+        ticker: 'KAI',
+        purchase_price: 41.34,
+        sell_price: 62.60
+      },
+      {
+        name: 'Hurco Companies',
+        ticker: 'HURC',
+        purchase_price: 28.69,
+        sell_price: 32.60
+      },
+      {
+        name: 'Applied Industrial Technologies',
+        ticker: 'AIT',
+        purchase_price: 41.73,
+        sell_price: 59.85
+      }
+    ]
   }
-  render() {
 
+  render() {
     let portfolio = this.state.latestSells.map((stock, i) => {
       return <Stock stock={stock} key={i}/>
     })

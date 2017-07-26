@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 
 import Thomas from './photos/Thomas.jpg'
 import Mark from './photos/Mark.jpg'
@@ -12,75 +12,73 @@ const photos = {
   Marie: Marie
 }
 
-const AboutUs = React.createClass({
-  getInitialState() {
-    return {selectedEmployee: 'Thomas', showModal: false}
-  },
-  selectEmployee(name) {
-    this.setState({selectedEmployee: name})
-  },
+class AboutUs extends Component {
+  state = { showModal: false }
 
-  showModal(name) {
-    this.setState({showModal: name})
-  },
+  showModal = (name) => this.setState({ showModal: name })
 
-  render() {
-    let modal
-    if (this.state.showModal) {
-      let selected = {}
-      if (this.state.showModal === 'Thomas') {
+  renderModal = (employee) => {
+    let selected = {}
+    switch (employee) {
+      case 'Thomas':
         selected = {
           name: "Thomas Lyck",
           position: 'CEO',
           bio: `Thomas Lyck is the founder of eight businesses since 1990.
-          Some of the more well-known include the system which created the building instructions for all
-          LEGO products for more than a decade, and many pioneering computer graphics solutions for the movie
-          industry in the early 1990s facilitating the analog to digital industry transition. Besides being
-          CEO and an accomplished investor, Thomas is a specialist in parallel supercomputing, complex data,
-          and artificial intelligence, and he has recently spent a decade developing the advanced technology
-          behind Formula Stocks.`
+                Some of the more well-known include the system which created the building instructions for all
+                LEGO products for more than a decade, and many pioneering computer graphics solutions for the movie
+                industry in the early 1990s facilitating the analog to digital industry transition. Besides being
+                CEO and an accomplished investor, Thomas is a specialist in parallel supercomputing, complex data,
+                and artificial intelligence, and he has recently spent a decade developing the advanced technology
+                behind Formula Stocks.`
         }
-      } else if (this.state.showModal === 'Mark') {
+        break;
+      case 'Mark':
         selected = {
           name: "Mark Lyck",
           position: 'COO',
-          bio: `It is possible to beat the market. Our portfolio service is the product of a decade's worth
-           of advanced equity research. We know how to gain an edge over the market, and we want to share
-           our results with you.
-           Mark Lyck is an entrepreneur who has brought his experience and edge to Formula Stocks through
-           collaboration with Thomas. With a background in Business Administration and
-           web-based user interface design, he makes complex technology easily accessible for everyone
-           in a user-friendly manner.`
+          bio: `Mark Lyck is an entrepreneur who has brought his experience and edge to Formula Stocks.
+                With a background in Economics, Business Administration and software-engineering, he makes complex technology easily
+                accessible for everyone in a user-friendly manner.`
         }
-      } else if (this.state.showModal === 'Marie') {
+        break;
+      case 'Marie':
         selected = {
           name: "Marie Lauritzen, PhD.",
           position: 'CHRO',
           bio: `Marie is Chief Human Resources Officer and assists with research and quality control oversight. A PhD., graduate of
-          Royal Holloway, London, and Aarhus University, Aarhus, Marie's focus areas have been research, complexity theory and
-          originally post-modern literature. She is outstanding in terms of ensuring that the highest possible standards are always
-          methodically applied.`
+                Royal Holloway, London, and Aarhus University, Aarhus, Marie's focus areas have been research, complexity theory and
+                originally post-modern literature. She is outstanding in terms of ensuring that the highest possible standards are always
+                methodically applied.`
         }
-      }
-
-      modal = (
-        <div className="team-modal-container">
-          <div className="team-modal">
-            <button className="close-button" onClick={() => this.setState({showModal: false})}><i className="fa fa-times" aria-hidden="true"></i></button>
-            <img className="modal-image" src={photos[this.state.showModal]} alt="employee"/>
-            <div className="wrapper">
-              <div className="main-info">
-                <h3>{selected.name}</h3>
-                <h4>{selected.position}</h4>
-              </div>
-              <div className="content">
-                <p>{selected.bio}</p>
-              </div>
-            </div>
-          </div>
-        </div>)
+        break;
+      default:
+        break;
     }
 
+    return (
+      <div className="team-modal-container">
+        <div className="team-modal">
+          <button className="close-button" onClick={() => this.setState({ showModal: false })}>
+            <i className="fa fa-times" aria-hidden="true"></i>
+          </button>
+          <img className="modal-image" src={photos[this.state.showModal]} alt="employee"/>
+          <div className="wrapper">
+            <div className="main-info">
+              <h3>{selected.name}</h3>
+              <h4>{selected.position}</h4>
+            </div>
+            <div className="content">
+              <p>{selected.bio}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
+  render() {
+    const { showModal } = this.state
     return (
       <section className="about-us section">
         <h2>Corporate profile</h2>
@@ -127,10 +125,10 @@ const AboutUs = React.createClass({
             </ul>
           </div>
         </div>
-        {modal}
+        {showModal && this.renderModal(showModal)}
       </section>
     )
   }
-})
+}
 
 export default AboutUs

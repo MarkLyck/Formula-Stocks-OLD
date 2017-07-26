@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import cc from '../../../cc'
 import Terms from '../../../components/Legal/TermsAndConditions'
 
@@ -10,7 +10,7 @@ function formatPrice(value) {
   return value
 }
 
-class Billing extends React.Component {
+class Billing extends Component {
   constructor(props) {
     super(props)
 
@@ -33,13 +33,13 @@ class Billing extends React.Component {
     }
   }
 
-  ccFormat() { this.refs.cardNumber.value = cc.ccFormat(this.refs.cardNumber.value) }
-  dateFormat(e) { this.refs.cardExpiry.value = cc.dateFormat(e, this.refs.cardExpiry.value) }
-  cvcFormat() { this.refs.cardCvc.value = cc.cvcFormat(this.refs.cardCvc.value) }
+  ccFormat = () => { this.refs.cardNumber.value = cc.ccFormat(this.refs.cardNumber.value) }
+  dateFormat = (e) => { this.refs.cardExpiry.value = cc.dateFormat(e, this.refs.cardExpiry.value) }
+  cvcFormat = () => { this.refs.cardCvc.value = cc.cvcFormat(this.refs.cardCvc.value) }
 
-  toggleTerms() { this.setState({ showTerms: !this.state.showTerms }) }
+  toggleTerms = () => this.setState({ showTerms: !this.state.showTerms })
 
-  createCustomer(token) {
+  createCustomer = (token) => {
     let { plan, signUp, tax } = this.props
 
     let type = 1
@@ -53,7 +53,7 @@ class Billing extends React.Component {
     signUp(token, plan.name, this.state.cycle, tax, this.state.coupon.code)
   }
 
-  submit(e) {
+  submit = (e) => {
     e.preventDefault()
 
     if (this.refs.name.value.indexOf(' ') === -1) {

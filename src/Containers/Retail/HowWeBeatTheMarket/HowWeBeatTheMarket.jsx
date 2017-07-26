@@ -4,9 +4,7 @@ import './howToBeatTheMarket.css'
 import brochure from '../brochure.pdf'
 
 
-function downloadBrochure() {
-  window.open(brochure)
-}
+const downloadBrochure = () => window.open(brochure)
 
 const HowWeBeatTheMarket = () => (
   <section className="how-to-beat-the-market section">

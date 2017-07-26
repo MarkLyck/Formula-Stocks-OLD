@@ -1,9 +1,7 @@
 import React from 'react'
 import CollapseSegment from '../../../components/CollapseSegment/CollapseSegment'
 
-class Comparisons extends React.Component {
-  render() {
-    return (
+const Comparisons = () => (
       <section className="comparisons section">
         <h2 className="title">Compare Formula Stocks to:</h2>
         <div className="divider"/>
@@ -91,8 +89,6 @@ class Comparisons extends React.Component {
           </p>
         </CollapseSegment>
       </section>
-    )
-  }
-}
+)
 
 export default Comparisons

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import './scatterPlot.css'
 
 import basic from './videos/recommendations_basic.mp4'
@@ -30,24 +30,17 @@ const videos = {
   }
 }
 
-class ScatterPlot extends React.Component {
-  constructor() {
-    super()
+class ScatterPlot extends Component {
+  state = { plan: 'premium', video: 'paused' }
 
-    this.changeVideo = this.changeVideo.bind(this)
-    this.playVideo = this.playVideo.bind(this)
-    this.pauseVideo = this.pauseVideo.bind(this)
-    this.state = { plan: 'premium', video: 'paused' }
-  }
+  changeVideo = (plan) => this.setState({plan: plan, video: 'paused'});
 
-  changeVideo(plan) {
-    this.setState({plan: plan, video: 'paused'});
-  }
-  playVideo() {
+  playVideo = () => {
     this.refs.video.play();
     this.setState({video: 'playing'});
   }
-  pauseVideo() {
+
+  pauseVideo = () => {
     this.refs.video.pause();
     this.setState({video: 'paused'});
   }

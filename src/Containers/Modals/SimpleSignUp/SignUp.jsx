@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { createCustomer, setSessionItem, signingUp, doneSigningUp } from '../../../actions/session'
@@ -10,19 +10,10 @@ import Billing from './Billing'
 import '../modal.css'
 import './signup.css'
 
-class SignUp extends React.Component {
-  constructor(props) {
-    super(props)
+class SignUp extends Component {
+  state = { page: 1, tax: 0 }
 
-    this.closeModal = this.closeModal.bind(this)
-    this.renderContent = this.renderContent.bind(this)
-    this.setTax = this.setTax.bind(this)
-    this.nextPage = this.nextPage.bind(this)
-
-    this.state = { page: 1, tax: 0 }
-  }
-
-  closeModal(e) {
+  closeModal = (e) => {
     if ((e.target.className === 'simple-signup-modal-container' || e.target.className.indexOf('close-btn') > -1 || e.target.className.indexOf('close-icon') > -1) && !store.isSubmitting) {
       if (this.props.location.pathname === '/pro/signup') {
         browserHistory.push('/pro')
@@ -32,10 +23,10 @@ class SignUp extends React.Component {
     }
   }
 
-  nextPage() { this.setState({ page: 2 }) }
-  setTax(tax) { this.setState({ tax: tax }) }
+  nextPage = () => this.setState({ page: 2 })
+  setTax = (tax) => this.setState({ tax: tax })
 
-  renderContent() {
+  renderContent = () => {
     const { plans, actions, session } = this.props
     if (this.state.page === 1) { return <AccountInfo
                                           nextPage={this.nextPage}

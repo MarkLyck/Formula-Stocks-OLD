@@ -3,10 +3,9 @@ import Scroll from 'react-scroll'
 import CollapseSegment from '../../../components/CollapseSegment/CollapseSegment'
 import './howWeBeatTheMarket.css'
 
-class HowWeBeatTheMarket extends React.Component {
-  render() {
-    const Element = Scroll.Element
-    return (
+const Element = Scroll.Element
+
+const HowWeBeatTheMarket = () => (
       <section className="section">
         <Element name="howItWorks"/>
         <h2 className="title">How we beat the market</h2>
@@ -173,8 +172,7 @@ class HowWeBeatTheMarket extends React.Component {
             <p className="from">- Thomas Lyck</p>
           </p>
         </CollapseSegment>
-      </section>)
-  }
-}
+      </section>
+)
 
 export default HowWeBeatTheMarket

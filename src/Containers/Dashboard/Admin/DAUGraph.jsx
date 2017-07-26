@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { Component } from 'react'
 import moment from 'moment'
 import _ from 'lodash'
 import LineGraph from '../../../components/Graphs/LineGraph/LineGraph'
 
-class DAUGraph extends React.Component {
+class DAUGraph extends Component {
   render() {
     const { data, users = [], isLoading } = this.props
     if (isLoading) {

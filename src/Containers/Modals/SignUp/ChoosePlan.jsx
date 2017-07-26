@@ -11,19 +11,9 @@ import Terms from '../../../components/Legal/TermsAndConditions'
 import './choosePlan.css'
 
 class ChoosePlan extends React.Component {
-  constructor(props) {
-    super(props)
+  state = { validating: false, error: '', errorType: '', showTerms: false }
 
-    this.submit = this.submit.bind(this)
-    this.renderNextBtn = this.renderNextBtn.bind(this)
-    this.renderError = this.renderError.bind(this)
-    this.toggleTerms = this.toggleTerms.bind(this)
-    this.renderPrice = this.renderPrice.bind(this)
-
-    this.state = { validating: false, error: '', errorType: '', showTerms: false }
-  }
-
-  checkForDuplicates(email) {
+  checkForDuplicates = (email) => {
       const headers = new Headers()
       headers.append('Authorization', `Basic ${store.settings.basicAuth}`)
       headers.append('Content-Type', `application/json`)
@@ -35,7 +25,7 @@ class ChoosePlan extends React.Component {
       return fetch(`https://baas.kinvey.com/rpc/kid_rJRC6m9F/check-username-exists`, options)
   }
 
-  submit(e) {
+  submit = (e) => {
     e.preventDefault()
     this.setState({ validating: true, error: '', errorType: '' })
     const { actions } = this.props
@@ -66,7 +56,7 @@ class ChoosePlan extends React.Component {
     }
   }
 
-  renderNextBtn() {
+  renderNextBtn = () => {
     let text = this.props.selected === 'basic' ? 'Start free month' : 'Next'
     if (!this.state.validating) {
       return <input type="submit" className="next" value={text}/>
@@ -75,13 +65,13 @@ class ChoosePlan extends React.Component {
     }
   }
 
-  renderError(errorChecker) {
+  renderError = (errorChecker) => {
     if (errorChecker === this.state.errorType) {
       return <p className="error"><i className="fa fa-exclamation" aria-hidden="true"></i>{this.state.error}</p>
     }
   }
 
-  renderPrice() {
+  renderPrice = () => {
     if (this.props.selected !== 'basic') {
       return (<div className="plan-price info">
         <p>Price</p>
@@ -95,9 +85,7 @@ class ChoosePlan extends React.Component {
 
   }
 
-  toggleTerms() {
-    this.setState({ showTerms: !this.state.showTerms })
-  }
+  toggleTerms = () => this.setState({ showTerms: !this.state.showTerms })
 
   render() {
     const { plans } = this.props;
