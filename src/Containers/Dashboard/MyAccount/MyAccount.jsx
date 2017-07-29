@@ -11,32 +11,18 @@ import Modal from '../../Modals/Modal'
 import './myAccount.css'
 
 class MyAccount extends Component {
-  constructor(props) {
-    super(props)
+  state = { selectedPlan: '', showModal: false }
 
-    this.selectPlan = this.selectPlan.bind(this)
-    this.changePlan = this.changePlan.bind(this)
-    this.cancelSubscription = this.cancelSubscription.bind(this)
-
-    this.showConfirmationModal = this.showConfirmationModal.bind(this)
-    this.showCancelModal = this.showCancelModal.bind(this)
-    this.closeModal = this.closeModal.bind(this)
-
-
-
-    this.state = { selectedPlan: '', showModal: false }
-  }
-
-  cancelSubscription() {
+  cancelSubscription = () => {
     const { actions } = this.props
     actions.setSessionItem('cancelReason', this.refs.cancelReason.value)
     actions.cancelSubscription()
     this.closeModal()
   }
 
-  selectPlan(plan) { this.setState({ selectedPlan: plan }) }
+  selectPlan = (plan) => this.setState({ selectedPlan: plan })
 
-  changePlan() {
+  changePlan = () => {
     const { actions } = this.props
     let cycle = this.state.selectedPlan === 'business' || this.state.selectedPlan === 'fund' ? 'annually' : 'monthly'
 
@@ -49,9 +35,9 @@ class MyAccount extends Component {
     }
   }
 
-  showConfirmationModal() { if (this.state.selectedPlan) { this.setState({ showModal: 'confirmation' }) } }
-  showCancelModal() { this.setState({ showModal: 'cancelling' }) }
-  closeModal() { this.setState({ showModal: false }) }
+  showConfirmationModal = () => { if (this.state.selectedPlan) { this.setState({ showModal: 'confirmation' }) } }
+  showCancelModal = () => this.setState({ showModal: 'cancelling' })
+  closeModal = () => this.setState({ showModal: false })
 
   render() {
     const { session } = this.props

@@ -9,12 +9,18 @@ const closeModal = (e, closeModal) => {
   }
 }
 
-const Modal = (props) => (
-  <div onClick={(e) => closeModal(e, props.closeModal)} className="modal-container" style={props.containerStyles}>
-    <div className="modal" style={props.modalStyles} ref="modal">
-      {props.children}
-    </div>
-  </div>
-)
+class Modal extends React.Component {
+  render() {
+    const { containerStyles, modalStyles, children } = this.props
+
+    return (
+      <div onClick={(e) => closeModal(e, this.props.closeModal)} className="modal-container" style={containerStyles}>
+        <div className="modal" style={modalStyles} ref="modal">
+          {children}
+        </div>
+      </div>
+    )
+  }
+}
 
 export default Modal
