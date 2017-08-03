@@ -6,8 +6,8 @@ const PerformanceMatters = () => (
     <h2 className="title">Why performance matters</h2>
     <div className="divider"/>
     <p>
-      Assume that you would like to get an ~18% yearly return. After all, who would not? Through the
-      effects of compounding this would be much, much more rewarding than the standard 6% you normally
+      Assume that you would like to get an ~18% yearly return. After all, who would't? Through the
+      effects of compounding this would be much more rewarding than the standard 6% you normally
       expect from stocks. Example in a tax free account:<br/><br/>
     </p>
     <div className="compare-bars">

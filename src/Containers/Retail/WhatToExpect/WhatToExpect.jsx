@@ -90,7 +90,7 @@ class WhatToExpect extends Component {
           <img src={PortfolioScreen} className="screen" alt="portfolio"/>
           <p className="left math-expectation">
             The mathematical expectation from a Formula Stock's selection is very well defined, and has
-            above-average odds of succes, higher than normal return characteristics, and a lower than average
+            above-average odds of success, higher than normal return characteristics, and a lower than average
             risk. This has been fully reflected in our actual results.
           </p>
           <p>

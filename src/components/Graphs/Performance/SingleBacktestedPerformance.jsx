@@ -31,6 +31,7 @@ class BacktestedPerformance extends React.Component {
 
       if (data[i] && i !== 0) { balance = data[i].balance }
       if (marketData[i]) { marketBalance = marketData[i] }
+      else if (i !== 0 && data[i - 1] !== 25000) { marketBalance = data[i - 1] }
 
       let month = point.date.month
       if (Number(point.date.month) <= 9) {

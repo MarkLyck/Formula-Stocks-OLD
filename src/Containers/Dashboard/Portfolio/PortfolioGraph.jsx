@@ -20,14 +20,19 @@ class PortfolioGraph extends React.Component {
 
     if (marketData[0]) { marketStartValue = marketData[0] }
 
+    let lastMarketValue
     let fixedData = portfolioYields.map((point, i) => {
       let month = Number(point.date.month) <= 9 ? ('0' + point.date.month) : point.date.month
-
+      let marketValue = Number(((marketData[i] - marketStartValue) / marketStartValue * 100).toFixed(2))
+      if (!marketValue && lastMarketValue) {
+          marketValue = lastMarketValue
+      }
+      lastMarketValue = marketValue
       return {
         fs: Number(((point.balance - startValue) / startValue * 100).toFixed(2)),
         fsBalloon: formatPrice(((point.balance-startValue) / startValue * 100).toFixed(2)),
-        market: Number(((marketData[i] - marketStartValue) / marketStartValue * 100).toFixed(2)),
-        marketBalloon: formatPrice(((marketData[i] - marketStartValue) / marketStartValue * 100).toFixed(2)),
+        market: marketValue,
+        marketBalloon: formatPrice(String(marketValue)),
         date:  `${point.date.year}-${month}-${point.date.day}`
       }
     })
@@ -75,6 +80,7 @@ class PortfolioGraph extends React.Component {
           "balloonText": "<span style='font-size:18px;'>S&P 500<br/>[[marketBalloon]]%</span>"
       }]
 
+    console.log(fixedData);
     if (fixedData.length) {
       return <div id="portfolio-chart">
         <LineGraph

@@ -231,7 +231,7 @@ function updatePublicPlan(publicData, planName) {
     }
     fetch(`https://formulastocks-server.tk:3001/public/${planName}`, options)
       .then(() => dispatch( { type: UPDATED_PLAN }) )
-      .then(() => dispatch( showNotification(`succesfully updated public API: ${planName}`)) )
+      .then(() => dispatch( showNotification(`successfully updated public API: ${planName}`)) )
       .then(() => dispatch( receivePlan(planName, publicData)) )
   }
 }

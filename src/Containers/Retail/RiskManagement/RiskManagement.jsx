@@ -19,7 +19,7 @@ const RiskManagement = ({ info, stats }) => {
         perceived risk, or we have some form of margin of safety.<br/><br/>
 
         One way to measure the risk of using Formula Stocks' Entry product, is to look at its win/loose
-        ratio: {Math.floor(winRate)}% of all historical investments have been succesful. This is highly unusual and compares to
+        ratio: {Math.floor(winRate)}% of all historical investments have been successful. This is highly unusual and compares to
         59% elsewhere.<br/><br/>
 
         Another way is the so-called Gain-to-Pain Ratio, which measures exactly what the name indicates.

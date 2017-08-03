@@ -24,7 +24,7 @@ const Introduction = ({ portfolioYields, portfolioReturn, winRate }) => {
       <div className="beside">
         <p className="intro-text left">
           Formula Stocks offers a better way to invest. It estimates which stocks will go up, before they go
-          up. {winRate}% of the times we made such an estimate, it proved to be successful in the long run. You
+          up. {winRate}% of the time we made such an estimate, it proved to be successful in the long run. You
           simply buy these stocks in your own account.<br/><br/>
 
           Investing using these estimates, our Entry portfolio returned {lastYearReturns.toFixed(2)}% in 2016. Cumulative returns

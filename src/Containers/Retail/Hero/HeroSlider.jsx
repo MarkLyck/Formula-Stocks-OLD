@@ -18,13 +18,14 @@ class Hero extends Component {
 
   preStringTyped = () => {
     if (!this.state.firstLoad && this.slider) {
+      console.log('next slide');
       this.slider.slickNext()
     } else {
       this.setState({ firstLoad: false })
     }
   }
 
-  componentWillReceiveProps(newProps) {
+  componentDidMount(newProps) {
     $("#subtitle").typed({
         stringsElement: $('#subtitles'),
         typeSpeed: 10,
