@@ -98,7 +98,11 @@ function signUp(stripe) {
   return (dispatch) => {
     dispatch(signingUp())
     const newUser = _.omit(store.getState().session, ['isFetching', 'loginError', 'signupError', 'signingUp', 'error', 'debug', 'description'])
-
+    if (localStorage.getItem('reference')) {
+        newUser.reference = localStorage.getItem('reference');
+    }
+    console.log(newUser);
+    console.log(localStorage);
     const signUpHeaders = new Headers()
     signUpHeaders.append('Authorization', `Basic ${store.getState().settings.basicAuth}`)
     signUpHeaders.append('Content-Type', `application/json`)

@@ -4,6 +4,16 @@ import { formatPrice } from '../helpers'
 import LineGraph from '../../../components/Graphs/LineGraph/LineGraph'
 
 class PortfolioGraph extends React.Component {
+  shouldComponentUpdate(newProps) {
+      if (
+          newProps.portfolioYields.length === this.props.portfolioYields.length
+          && newProps.marketData.length === this.props.marketData.length
+          && newProps.selectedPlan === this.props.selectedPlan
+      ) {
+          return false
+      }
+      return true
+  }
   render() {
     const { portfolioYields = [], marketData = [] } = this.props
 
@@ -80,7 +90,6 @@ class PortfolioGraph extends React.Component {
           "balloonText": "<span style='font-size:18px;'>S&P 500<br/>[[marketBalloon]]%</span>"
       }]
 
-    console.log(fixedData);
     if (fixedData.length) {
       return <div id="portfolio-chart">
         <LineGraph

@@ -24,11 +24,6 @@ import BottomCTA from './BottomCTA/BottomCTA'
 import Footer from  '../../components/Footer/Footer'
 
 class Home extends Component {
-  constructor(props) {
-    super(props)
-    this.calculateLaunchReturns = this.calculateLaunchReturns.bind(this)
-  }
-
   componentDidMount() {
     const { actions } = this.props
     actions.selectNewPlan('entry')
@@ -36,17 +31,25 @@ class Home extends Component {
     actions.fetchDJIA()
     actions.fetchSP500()
     actions.createVisitIfNeeded()
+    this.checkAffiliate()
 
     window.Intercom("boot", { app_id: "i194mpvo" })
   }
 
-  calculateLaunchReturns() {
+  calculateLaunchReturns = () => {
     const { data } = this.props
     const plan = data['entry']
 
     const launchBalance = plan.portfolioYields[0].balance
     const lastBalance = plan.portfolioYields[plan.portfolioYields.length - 1].balance
     return (lastBalance - launchBalance) / launchBalance * 100
+  }
+
+  checkAffiliate = () => {
+      const hash = window.location.hash;
+      if (hash.indexOf('ref=') > -1) {
+          localStorage.setItem('reference', hash.split('=')[1])
+      }
   }
 
   render() {
@@ -118,7 +121,7 @@ function mapDispatchToProps(dispatch) {
     fetchDJIA,
     fetchSP500,
     createVisitIfNeeded,
-    selectNewPlan
+    selectNewPlan,
   }
   return { actions: bindActionCreators(actions, dispatch) }
 }
