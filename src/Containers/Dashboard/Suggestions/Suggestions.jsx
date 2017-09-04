@@ -73,6 +73,13 @@ class Suggestions extends React.Component {
         suggestions = plan.suggestions.filter(sug => sug.model ? true : false).reverse()
       }
 
+      const percentageSum = suggestions.reduce((acc, curr) => acc + curr.percentage_weight, 0)
+
+      suggestions = suggestions.map(sugg => {
+          sugg.percentage_weight = (sugg.percentage_weight / percentageSum) * 100
+          return sugg
+      })
+
       suggestions = suggestions.map((suggestion, i) => {
         let numerator = i
         if (this.props.location.indexOf('trades') > -1) {
