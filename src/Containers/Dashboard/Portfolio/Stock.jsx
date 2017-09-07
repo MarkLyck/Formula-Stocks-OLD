@@ -113,7 +113,7 @@ class Stock extends React.Component {
           {allocation}
           <td className="portfolio-td"><p className={changeClass}>{percentChange}%</p></td>
           <td className="portfolio-td"><p className="blue-color">${costBasisPrice.toFixed(2)}</p></td>
-          <td className="portfolio-td"><p className={lastPriceClass}>${latestPrice.toFixed(2)}</p></td>
+          <td className="portfolio-td"><p className={lastPriceClass}>${typeof latestPrice === 'number' ? latestPrice.toFixed(2) : portfolioItem.latest_price}</p></td>
           <td className="portfolio-td"><p className="class-checker">{cc.commafy(portfolioItem.days_owned + daysToAdd)}</p></td>
         </tr>
         {this.props.graph
