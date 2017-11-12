@@ -136,8 +136,6 @@ class Suggestion extends React.Component {
       )
     }
 
-    console.log(stock);
-
     return (
       <li className={listClass}>
 
@@ -158,7 +156,7 @@ class Suggestion extends React.Component {
             </li>
             <li className={actionClass}>
               <p>Last price</p>
-              <h4 className={lastPriceClass + ' value'}>${stock.newPrice && typeof stock.newPrice === 'number '? stock.newPrice.toFixed(2) : suggestion.suggested_price.toFixed(2)}</h4>
+              <h4 className={lastPriceClass + ' value'}>${stock.newPrice && typeof stock.newPrice === 'number' ? stock.newPrice.toFixed(2) : suggestion.suggested_price.toFixed(2)}</h4>
             </li>
             {allocationElement}
             <button className={`more-info ${actionClass}`} onClick={this.moreInfo}>More info</button>
