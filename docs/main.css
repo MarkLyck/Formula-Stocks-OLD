@@ -36,6 +36,10 @@
   text-transform: capitalize;
 }
 
+a[href="http://www.amcharts.com"],  a[href="http://www.amcharts.com/javascript-charts/"]{
+  display: none !important;
+}
+
 * {
   box-sizing: border-box;
 }
