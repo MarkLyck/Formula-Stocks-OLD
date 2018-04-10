@@ -12,14 +12,15 @@ const HowWeBeatTheMarket = () => (
     <h2 className="title">How we beat the market</h2>
     <div className="divider"/>
     <p>
-      Formula Stocks uses a combination of many specific technologies developed over a 14- year period to
-      do as Mark Twain originally suggested:<br/><br/>
+      Formula Stocks uses a combination of many specific technologies developed over a 15- year period to do as
+      Mark Twain originally suggested:<br/><br/>
 
-      ”Buy good quality common stocks that go up. If they do not go up, do not buy them”. While Twain said
-      this tongue-in-cheek, it encapsulates what Formula Stocks strives to do.<br/><br/>
+      ”Buy good quality common stocks that go up. If they do not go up, do not buy them”. While Twain said this
+      tongue-in-cheek, it encapsulates what Formula Stocks strives to do. We use novel artificial intelligence
+      software developed in-house to achieve this goal.<br/><br/>
 
-      We identify stocks that go up, before they go up, with a 89-92% probability of being correct.
-      Some of the techniques employed include in no specific order:
+      We identify stocks that go up, before they go up, with a 89-92% probability of being correct. Some of the
+      techniques employed include in no specific order:
     </p>
     <ul className="beat-the-market-list">
       <li><p><span className="semi-bold">Cognitive computing</span> – the capability to learn from experience, and reason based upon it.</p></li>
