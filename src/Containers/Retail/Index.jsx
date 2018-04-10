@@ -55,7 +55,7 @@ class Home extends Component {
   render() {
     const { selectedPlan, data, DJIA, annualSP500, location } = this.props
     const plan = data ? data['entry'] : false
-    const portfolioReturn = plan ? this.calculateLaunchReturns() : 450
+    const portfolioReturn = plan ? this.calculateLaunchReturns() : 700
 
     return (
       <div id="home" className="retail">

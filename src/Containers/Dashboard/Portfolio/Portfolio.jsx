@@ -15,9 +15,9 @@ import { isAllowedToView } from '../helpers'
 import { Link } from 'react-router'
 import { adjustBrightness } from '../helpers'
 
-import io from 'socket.io-client/dist/socket.io.min'
-let socket
-let socketURL = 'wss://formulastocks-server.tk:8080'
+// import io from 'socket.io-client/dist/socket.io.min'
+// let socket
+// let socketURL = 'wss://formulastocks-server.ga:8080'
 
 import Loader from '../../../components/Loader/Loader'
 import PortfolioGraph from './PortfolioGraph';
@@ -42,21 +42,21 @@ class Portfolio extends React.Component {
     actions.fetchPlanIfNeeded(selectedPlan)
     actions.fetchSP500('2009-01-01')
 
-    socket = io.connect(socketURL)
-    socket.on(`latest_${selectedPlan}_quotes`, data => {
-      if (!this.state.receivedAllQuotes) {
-        actions.receiveAllRealTimeQuotes(data)
-        this.setState({ receivedAllQuotes: true })
-      }
-    })
-    socket.emit('getAllQuotes', true)
-    socket.on(`realtime_${selectedPlan}_quotes`, data => {
-      console.log(data)
-      actions.receiveRealTimeQuote(data)
-    })
+    // socket = io.connect(socketURL)
+    // socket.on(`latest_${selectedPlan}_quotes`, data => {
+    //   if (!this.state.receivedAllQuotes) {
+    //     actions.receiveAllRealTimeQuotes(data)
+    //     this.setState({ receivedAllQuotes: true })
+    //   }
+    // })
+    // socket.emit('getAllQuotes', true)
+    // socket.on(`realtime_${selectedPlan}_quotes`, data => {
+    //   console.log(data)
+    //   actions.receiveRealTimeQuote(data)
+    // })
   }
 
-  componentWillUnmount() { socket.disconnect() }
+  // componentWillUnmount() { socket.disconnect() }
 
   expandStock(stock,e) {
     if(_.toArray(e.target.classList)[0]) {

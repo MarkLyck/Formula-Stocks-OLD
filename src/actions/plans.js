@@ -32,7 +32,7 @@ export function fetchPlanIfNeeded(plan) {
 function fetchPlan(plan, type) {
   return (dispatch) => {
     dispatch(fetchingPlan(plan))
-    fetch(`https://formulastocks-server.tk:3001/${type}/${plan}`)
+    fetch(`https://formulastocks-server-khnzsyflwm.now.sh/${type}/${plan}`)
       .then(response => response.json())
       .then(json => dispatch(receivePlan(plan, json)))
   }
@@ -42,7 +42,7 @@ function receivePlan(plan, json) { return { type: RECEIVE_PLAN, plan: plan, data
 
 export function selectNewPlan(plan) {
   return (dispatch) => {
-    dispatch( fetchPlanIfNeeded(plan) )
+    dispatch(fetchPlanIfNeeded(plan))
     dispatch({ type: SELECT_NEW_PLAN, plan: plan })
   }
 }
@@ -50,31 +50,31 @@ export function selectNewPlan(plan) {
 export function updatePlan(fileArr, planName) {
   return (dispatch) => {
     if (store.getState().plans.data[planName]) {
-      if (  store.getState().plans.data[planName].suggestions
-            && store.getState().plans.data[planName].portfolio
-            && store.getState().plans.data[planName].annualData
-          ) {
-        dispatch( uploadPlanData(fileArr, planName) )
+      if (store.getState().plans.data[planName].suggestions
+        && store.getState().plans.data[planName].portfolio
+        && store.getState().plans.data[planName].annualData
+      ) {
+        dispatch(uploadPlanData(fileArr, planName))
         return
       }
     }
     if (!store.getState().plans.data[planName]) {
-        fetch(`https://formulastocks-server.tk:3001/private/${planName}`)
-          .then(response => response.json())
-          .then(json => dispatch( receivePlan(planName, json)) )
-          .then(() => dispatch( updatePlan(fileArr, planName)) )
+      fetch(`https://formulastocks-server-khnzsyflwm.now.sh/private/${planName}`)
+        .then(response => response.json())
+        .then(json => dispatch(receivePlan(planName, json)))
+        .then(() => dispatch(updatePlan(fileArr, planName)))
     }
     else if (!store.getState().plans.data[planName].suggestions) {
-        fetch(`https://formulastocks-server.tk:3001/private/${planName}`)
-          .then(response => response.json())
-          .then(json => dispatch( receivePlan(planName, json)) )
-          .then(() => dispatch( updatePlan(fileArr, planName)) )
+      fetch(`https://formulastocks-server-khnzsyflwm.now.sh/private/${planName}`)
+        .then(response => response.json())
+        .then(json => dispatch(receivePlan(planName, json)))
+        .then(() => dispatch(updatePlan(fileArr, planName)))
     }
     else if (!store.getState().plans.data[planName].annualData) {
-      fetch(`https://formulastocks-server.tk:3001/public/${planName}`)
+      fetch(`https://formulastocks-server-khnzsyflwm.now.sh/public/${planName}`)
         .then(response => response.json())
-        .then(json => dispatch( receivePlan(planName, json)) )
-        .then(() => dispatch( updatePlan(fileArr, planName)) )
+        .then(json => dispatch(receivePlan(planName, json)))
+        .then(() => dispatch(updatePlan(fileArr, planName)))
     }
   }
 }
@@ -94,20 +94,20 @@ function uploadPlanData(fileArr, planName) {
         plan.suggestions = _.union(data.actionable, monthlySuggestions)
       } else if (fileArr[i].name.indexOf('monthly') > -1) {
         // Monthly file
-         const weeklySuggestions = plan.suggestions.filter(sug => sug.model ? false : true)
+        const weeklySuggestions = plan.suggestions.filter(sug => sug.model ? false : true)
 
-         let newSuggestions = []
-         if (data.actionable) {
+        let newSuggestions = []
+        if (data.actionable) {
           newSuggestions = data.actionable.map(sug => {
-             sug.model = true
-             return sug
-           })
-         }
-         newSuggestions = _.union(weeklySuggestions, newSuggestions)
-         plan.suggestions = newSuggestions
-         plan.portfolio = data.portfolio
-         plan.portfolioYields = data.logs
-         plan.portfolioReturn = data.statistics.total_return
+            sug.model = true
+            return sug
+          })
+        }
+        newSuggestions = _.union(weeklySuggestions, newSuggestions)
+        plan.suggestions = newSuggestions
+        plan.portfolio = data.portfolio
+        plan.portfolioYields = data.logs
+        plan.portfolioReturn = data.statistics.total_return
       } else if (fileArr[i].name.indexOf('annual') > -1) {
         // Annual file
         let newStats = data.statistics
@@ -120,25 +120,25 @@ function uploadPlanData(fileArr, planName) {
 
       // Remove same-type duplicates
       plan.suggestions = plan.suggestions.reduce((suggestions, sug, i) => {
-         let dupeIndex = -1
-         suggestions.forEach((suggestion, i) => {
-           if (suggestion.model === sug.model) {
-             if (suggestion.ticker === sug.ticker) { dupeIndex = i }
-           }
-         })
+        let dupeIndex = -1
+        suggestions.forEach((suggestion, i) => {
+          if (suggestion.model === sug.model) {
+            if (suggestion.ticker === sug.ticker) { dupeIndex = i }
+          }
+        })
 
-         if (dupeIndex > -1) {
-           if (suggestions[dupeIndex].percentage_weight && sug.percentage_weight) {
-             suggestions[dupeIndex].percentage_weight += sug.percentage_weight
-           } else if (suggestions[dupeIndex].portfolio_weight && sug.portfolio_weight) {
-             suggestions[dupeIndex].portfolio_weight += sug.portfolio_weight
-           }
-           return suggestions
-         }
-         return suggestions.concat(sug)
-       }, [])
+        if (dupeIndex > -1) {
+          if (suggestions[dupeIndex].percentage_weight && sug.percentage_weight) {
+            suggestions[dupeIndex].percentage_weight += sug.percentage_weight
+          } else if (suggestions[dupeIndex].portfolio_weight && sug.portfolio_weight) {
+            suggestions[dupeIndex].portfolio_weight += sug.portfolio_weight
+          }
+          return suggestions
+        }
+        return suggestions.concat(sug)
+      }, [])
 
-       switch (planName) {
+      switch (planName) {
         case 'basic':
           plan.info = {
             "roundtripTradesPerYear": 82,
@@ -203,12 +203,12 @@ function uploadPlanData(fileArr, planName) {
           break
       }
 
-      const publicData = _.omit(plan, ['portfolio', 'suggestions', '_acl', '_kmd', '__v'] )
-      dispatch( updatePublicPlan(publicData, planName) )
+      const publicData = _.omit(plan, ['portfolio', 'suggestions', '_acl', '_kmd', '__v'])
+      dispatch(updatePublicPlan(publicData, planName))
 
       let privateData = _.omit(plan, ['annualData', 'info', '_acl', '_kmd', '__v'])
       privateData.stats = { CAGR: privateData.stats.CAGR, WLRatio: privateData.stats.WLRatio }
-      dispatch( updatePrivatePlan(privateData, planName) )
+      dispatch(updatePrivatePlan(privateData, planName))
     }
 
     fileArr.forEach((file, i) => {
@@ -229,10 +229,10 @@ function updatePublicPlan(publicData, planName) {
       headers: updatePlanHeaders,
       body: JSON.stringify(publicData)
     }
-    fetch(`https://formulastocks-server.tk:3001/public/${planName}`, options)
-      .then(() => dispatch( { type: UPDATED_PLAN }) )
-      .then(() => dispatch( showNotification(`successfully updated public API: ${planName}`)) )
-      .then(() => dispatch( receivePlan(planName, publicData)) )
+    fetch(`https://formulastocks-server-khnzsyflwm.now.sh/public/${planName}`, options)
+      .then(() => dispatch({ type: UPDATED_PLAN }))
+      .then(() => dispatch(showNotification(`successfully updated public API: ${planName}`)))
+      .then(() => dispatch(receivePlan(planName, publicData)))
   }
 }
 
@@ -243,9 +243,9 @@ function updatePrivatePlan(privateData, planName) {
       headers: updatePlanHeaders,
       body: JSON.stringify(privateData)
     }
-    fetch(`https://formulastocks-server.tk:3001/private/${planName}`, options)
-      .then(() => dispatch( { type: UPDATED_PLAN }) )
-      .then(() => dispatch( showNotification(`succesfully updated private API: ${planName}`)) )
-      .then(() => dispatch( receivePlan(planName, privateData)) )
+    fetch(`https://formulastocks-server-khnzsyflwm.now.sh/private/${planName}`, options)
+      .then(() => dispatch({ type: UPDATED_PLAN }))
+      .then(() => dispatch(showNotification(`succesfully updated private API: ${planName}`)))
+      .then(() => dispatch(receivePlan(planName, privateData)))
   }
 }

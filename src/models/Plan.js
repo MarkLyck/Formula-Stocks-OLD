@@ -138,7 +138,8 @@ const Plan = Backbone.Model.extend({
       }
 
       $.ajax({
-        url: `https://formulastocks-server.tk:3001/public/${planName}`,
+        // url: `https://formulastocks-server.ga:3001/public/${planName}`,
+        url: `https://formulastocks-server-khnzsyflwm.now.sh/public/${planName}`,
         type: 'PUT',
         data: JSON.stringify(publicData),
         contentType: 'application/json'
@@ -178,7 +179,7 @@ const Plan = Backbone.Model.extend({
      }
 
      $.ajax({
-       url: `https://formulastocks-server.tk:3001/private/${planName}`,
+       url: `https://formulastocks-server-khnzsyflwm.now.sh/private/${planName}`,
        type: 'PUT',
        data: JSON.stringify(privateData),
        contentType: 'application/json'

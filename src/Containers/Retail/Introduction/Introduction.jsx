@@ -29,20 +29,20 @@ const Introduction = ({ portfolioYields, portfolioReturn, winRate }) => {
       <div className="beside">
         <p className="intro-text left">
           Formula Stocks offers a better way to invest. We forecast which stocks will go up, before they go up. {winRate}%
-          of the times we have made such an estimate, it has proved successful in the long run. You simply
-          buy these stocks in your own account.<br/><br/>
+          of the time we have made such an estimate, it has proved a successful long term investment.
+          You simply buy these stocks in your own account.<br/><br/>
 
-          Investing using these estimates, cumulative returns since 2009 have been {portfolioReturn.toFixed(0)}%<sup>*</sup> vs. the S&P500's 225%. Our Entry portfolio
-          returned {returns2017.toFixed(2)}% in 2017 and {returns2016.toFixed(2)}% in 2016. It is based on groundbreaking technology
-          and really makes a difference for our members.
+          Investing using these estimates, cumulative returns since 2009 have been {portfolioReturn.toFixed(0)}%<sup>*</sup> vs.
+          the S&P500's 225%. Our Entry portfolio returned {returns2017.toFixed(2)}% in 2017 and {returns2016.toFixed(2)}% in 2016.
+
+          Powered by Artificial Intelligence forecasting, this performance strongly exceeds the 6-7% average returns
+          typically expected from the stock market. 
         </p>
         <p className="left">
-          Typically, when you invest in stocks, your basic expectation is to receive 6-7% p.a. on average.
-          Usually a fund product will provide you a risk adjusted, long-term return in this neighborhood.
-          Or, if it is a better performing fund, demand very high fees.
+          This performance strongly exceeds the 6-7% average returns typically expected from the stock market.
         </p>
         <p className="left">
-          Join to better your returns, save on fees, and moderate your risk. Sign up for a 30-day free trial
+          Join us to better your returns, save on fees, and moderate your risk. Sign up for a 30-day free trial
           without any obligations.
         </p>
         <p className="disclaimer">*Past performance is not neccesarily indicative of future results.</p>

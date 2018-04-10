@@ -9,9 +9,9 @@ import { sawSuggestions } from '../../../actions/session'
 import moment from 'moment'
 import { Link } from 'react-router'
 
-import io from 'socket.io-client/dist/socket.io.min'
-let socket
-let socketURL = 'wss://formulastocks-server.tk:8080'
+// import io from 'socket.io-client/dist/socket.io.min'
+// let socket
+// let socketURL = 'wss://formulastocks-server.ga:8080'
 
 import Loader from '../../../components/Loader/Loader'
 import Suggestion from './Stock'
@@ -31,19 +31,19 @@ class Suggestions extends React.Component {
     actions.fetchPlanIfNeeded(selectedPlan)
     actions.sawSuggestions()
 
-    socket = io.connect(socketURL)
-    socket.on(`latest_${selectedPlan}_quotes`, data => {
-      if (!this.state.receivedAllQuotes) {
-        actions.receiveAllRealTimeQuotes(data)
-        this.setState({ receivedAllQuotes: true })
-      }
-    })
-    socket.emit('getAllQuotes', true)
-    socket.on(`realtime_${selectedPlan}_quotes`, data => {
-      actions.receiveRealTimeQuote(data)
-    })
+    // socket = io.connect(socketURL)
+    // socket.on(`latest_${selectedPlan}_quotes`, data => {
+    //   if (!this.state.receivedAllQuotes) {
+    //     actions.receiveAllRealTimeQuotes(data)
+    //     this.setState({ receivedAllQuotes: true })
+    //   }
+    // })
+    // socket.emit('getAllQuotes', true)
+    // socket.on(`realtime_${selectedPlan}_quotes`, data => {
+    //   actions.receiveRealTimeQuote(data)
+    // })
   }
-  componentWillUnmount() { socket.disconnect() }
+  // componentWillUnmount() { socket.disconnect() }
 
   render() {
     const { plans, selectedPlan, actions, stocks = {} } = this.props
