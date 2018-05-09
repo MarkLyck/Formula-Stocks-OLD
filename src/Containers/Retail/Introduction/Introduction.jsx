@@ -39,9 +39,6 @@ const Introduction = ({ portfolioYields, portfolioReturn, winRate }) => {
           typically expected from the stock market. 
         </p>
         <p className="left">
-          This performance strongly exceeds the 6-7% average returns typically expected from the stock market.
-        </p>
-        <p className="left">
           Join us to better your returns, save on fees, and moderate your risk. Sign up for a 30-day free trial
           without any obligations.
         </p>
