@@ -176,8 +176,7 @@ class Portfolio extends React.Component {
                 newestPrice = stocks[stock.ticker].newPrice
               }
             }
-            const dividends = stock.dividends * stock.number_held
-            newBalance += newestPrice * stock.number_held + dividends
+            newBalance += newestPrice * stock.number_held
           }
         })
         newBalance += portfolioYields[portfolioYields.length - 1].cash
